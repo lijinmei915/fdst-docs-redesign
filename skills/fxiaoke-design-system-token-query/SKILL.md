@@ -1,6 +1,6 @@
 ---
 name: fxiaoke-design-system-token-query
-description: 查询并推荐 Fxiaoke Design System Tokens（FDS）。当用户询问 FDS Token、--fds-g-*、页面背景、文字颜色、间距、圆角、阴影、层级或动效应使用哪个变量，并需要 CSS 示例、层级或引用链时使用；新增、修改、发布 Token 或设计组件 Token 时不使用。
+description: 查询并推荐 Fxiaoke Design System Tokens（FDS）。当用户询问 FDS Token、--fds-g-*、--fds-s-*、页面背景、文字颜色、间距、圆角、阴影、层级或动效应使用哪个变量，并需要 CSS 示例、层级或引用链时使用；新增、修改、发布 Token 或设计组件 Token 时不使用。
 ---
 
 # Fxiaoke Design System Tokens 查询
@@ -15,7 +15,7 @@ description: 查询并推荐 Fxiaoke Design System Tokens（FDS）。当用户�
 
 以下请求使用本 Skill：
 
-- 查询 Token 名称或 `--fds-g-*` CSS Variable 的定义、层级、值或引用链。
+- 查询 Token 名称或 `--fds-g-*`、`--fds-s-*` CSS Variable 的定义、层级、值或引用链。
 - 按用途查找页面背景、文本色、状态色、间距、尺寸、圆角、阴影、层级或动效 Token。
 - 为页面或应用推荐 FDS Global Token 并给出 CSS 示例。
 - 确认某个 Token 是否属于 FDS Global Token。
@@ -30,7 +30,7 @@ description: 查询并推荐 Fxiaoke Design System Tokens（FDS）。当用户�
 
 用户至少提供以下一种信息：
 
-- Token 名或 `--fds-g-*` CSS Variable；
+- Token 名或 `--fds-g-*`、`--fds-s-*` CSS Variable；
 - CSS 属性、界面用途或使用场景；
 - 需要筛选的层级、类别或类型。
 
@@ -41,7 +41,7 @@ description: 查询并推荐 Fxiaoke Design System Tokens（FDS）。当用户�
 所有查询都在本 Skill 目录运行 `scripts/query_tokens.sh`：
 
 ```bash
-bash scripts/query_tokens.sh --name "<Token 名或 --fds-g-* 变量>"
+bash scripts/query_tokens.sh --name "<Token 名或 --fds-g-* / --fds-s-* 变量>"
 bash scripts/query_tokens.sh --search "<用途关键词>" --limit 5
 bash scripts/query_tokens.sh --search "<用途关键词>" --category "<category>" --tier "<tier>" --limit 5
 ```

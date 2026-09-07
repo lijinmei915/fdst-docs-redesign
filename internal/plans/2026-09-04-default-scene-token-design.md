@@ -2,6 +2,8 @@
 
 > 内部历史设计记录；正式使用说明见 `docs/semantics/场景语义.md`。
 
+> 2026-09-07 起，本记录中的 `scene-*` / `--fds-g-scene-*` 命名已由 `2026-09-07-scene-namespace.md` 替代，仅保留用于追溯历史决策。
+
 ## 决策
 
 FDS Scene 层发布 `scene-*` 默认协议，不发布 `workbench-*`、`detail-*`、`dashboard-*` 等具体业务场景名称。

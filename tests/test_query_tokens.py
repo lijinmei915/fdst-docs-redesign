@@ -132,7 +132,8 @@ class QueryTokensTest(unittest.TestCase):
         self.assertEqual(0, result.returncode, result.stderr)
         tokens = parse_results(result)
         self.assertEqual(1, len(tokens))
-        self.assertTrue(tokens[0]["name"].startswith("scene-card-title-"))
+        self.assertTrue(tokens[0]["name"].startswith("card-title-"))
+        self.assertTrue(tokens[0]["cssVariable"].startswith("--fds-s-card-title-"))
         self.assertEqual("scene", tokens[0]["tier"])
 
     def test_dropdown_search_returns_the_context_motion_group(self) -> None:
@@ -156,9 +157,22 @@ class QueryTokensTest(unittest.TestCase):
 
         self.assertEqual(0, result.returncode, result.stderr)
         self.assertEqual(
-            ["scene-card-title-size"],
+            ["card-title-size"],
             [token["name"] for token in parse_results(result)],
         )
+
+    def test_scene_css_variable_uses_scene_namespace_without_scene_name_segment(self) -> None:
+        result = run_query("--name", "--fds-s-card-padding")
+
+        self.assertEqual(0, result.returncode, result.stderr)
+        tokens = parse_results(result)
+        self.assertEqual(["card-padding"], [token["name"] for token in tokens])
+        self.assertEqual("--fds-s-card-padding", tokens[0]["cssVariable"])
+        self.assertEqual(["card-padding", "spacing-4"], tokens[0]["referenceChain"])
+
+        removed = run_query("--name", "--fds-g-scene-card-padding")
+        self.assertEqual(0, removed.returncode, removed.stderr)
+        self.assertEqual([], parse_results(removed))
 
     def test_opacity_query_contains_only_six_atomic_values(self) -> None:
         result = run_query(

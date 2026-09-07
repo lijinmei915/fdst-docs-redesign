@@ -16,6 +16,8 @@ ROOT = Path(__file__).resolve().parents[1]
 TOKENS_ROOT = ROOT / "tokens"
 ENTRY = TOKENS_ROOT / "fds-global.yml"
 OUTPUT = ROOT / "dist" / "fds-global-tokens.css"
+DEFAULT_NAMESPACE = "--fds-g-"
+SCENE_NAMESPACE = "--fds-s-"
 TOKEN_ID_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 REFERENCE_RE = re.compile(r"\{!([a-z0-9]+(?:-[a-z0-9]+)*)\}")
 LEVEL_ORDER = {
@@ -51,6 +53,7 @@ FORBIDDEN_LENGTH_SEEDS = {
 @dataclass(frozen=True)
 class Token:
     token_id: str
+    namespace: str
     value: str
     token_type: str
     layer: str
@@ -81,8 +84,8 @@ def collect_sources() -> tuple[str, list[tuple[str, dict]]]:
     if entry.get("schema") != "fds-token-package/v1":
         raise ValueError("tokens/fds-global.yml: schema 必须为 fds-token-package/v1")
     namespace = entry.get("global", {}).get("namespace")
-    if namespace != "--fds-g-":
-        raise ValueError("tokens/fds-global.yml: namespace 必须为 --fds-g-")
+    if namespace != DEFAULT_NAMESPACE:
+        raise ValueError(f"tokens/fds-global.yml: namespace 必须为 {DEFAULT_NAMESPACE}")
 
     visited: set[Path] = set()
     visiting: list[Path] = []
@@ -142,6 +145,15 @@ def validate_sources(sources: list[tuple[str, dict]]) -> tuple[dict[str, Token],
         if level not in LEVEL_ORDER:
             errors.append(f"{relative}: 非法 layer/tier：{layer}/{tier}")
             continue
+        source_namespace = global_meta.get("namespace")
+        if level == ("semantic", "scene"):
+            if source_namespace != SCENE_NAMESPACE:
+                errors.append(f"{relative}: Semantic/Scene namespace 必须为 {SCENE_NAMESPACE}")
+            namespace = SCENE_NAMESPACE
+        else:
+            if source_namespace not in (None, DEFAULT_NAMESPACE):
+                errors.append(f"{relative}: 仅 Semantic/Scene 可以使用 {SCENE_NAMESPACE}")
+            namespace = DEFAULT_NAMESPACE
         if scope != "global":
             errors.append(f"{relative}: scope 必须为 global")
         if not isinstance(category, str) or not category:
@@ -173,7 +185,7 @@ def validate_sources(sources: list[tuple[str, dict]]) -> tuple[dict[str, Token],
             if not value:
                 errors.append(f"{relative}: {token_id} 的 value 不能为空")
                 continue
-            if "--fds-g-" in value or "var(" in value:
+            if "--fds-" in value or "var(" in value:
                 errors.append(f"{relative}: {token_id} 必须使用 {{!token-id}} 源引用，不能写 CSS 变量")
             if "rem" in value.lower() or "calc(" in value.lower():
                 errors.append(f"{relative}: {token_id} 禁止使用 rem/calc()")
@@ -184,6 +196,7 @@ def validate_sources(sources: list[tuple[str, dict]]) -> tuple[dict[str, Token],
 
             tokens[token_id] = Token(
                 token_id=token_id,
+                namespace=namespace,
                 value=value,
                 token_type=token_type,
                 layer=layer,
@@ -242,8 +255,11 @@ def validate_references(tokens: dict[str, Token], errors: list[str]) -> None:
         visit(token_id)
 
 
-def to_css_value(value: str, namespace: str) -> str:
-    return REFERENCE_RE.sub(lambda match: f"var({namespace}{match.group(1)})", value)
+def to_css_value(value: str, tokens: dict[str, Token]) -> str:
+    return REFERENCE_RE.sub(
+        lambda match: f"var({tokens[match.group(1)].namespace}{match.group(1)})",
+        value,
+    )
 
 
 def build_css(namespace: str, sources: list[tuple[str, dict]], tokens: dict[str, Token]) -> str:
@@ -263,7 +279,9 @@ def build_css(namespace: str, sources: list[tuple[str, dict]], tokens: dict[str,
         for token_id in source["props"]:
             token = tokens[token_id]
             comment = f" /* {token.comment} */" if token.comment else ""
-            lines.append(f"  {namespace}{token_id}: {to_css_value(token.value, namespace)};{comment}")
+            lines.append(
+                f"  {token.namespace}{token_id}: {to_css_value(token.value, tokens)};{comment}"
+            )
         lines.append("")
     lines.append("}")
 
@@ -283,8 +301,12 @@ def build_css(namespace: str, sources: list[tuple[str, dict]], tokens: dict[str,
                 "  :root {",
             ]
         )
+        reduced_motion_value = tokens["motion-duration-0"]
         for token in reduced_motion_tokens:
-            lines.append(f"    {namespace}{token.token_id}: var({namespace}motion-duration-0);")
+            lines.append(
+                f"    {token.namespace}{token.token_id}: "
+                f"var({reduced_motion_value.namespace}motion-duration-0);"
+            )
         lines.extend(["  }", "}"])
     return "\n".join(lines) + "\n"
 

@@ -126,6 +126,7 @@ fi
 matches_line() {
     local line="$1"
     local normalized_name="${NAME#--fds-g-}"
+    normalized_name="${normalized_name#--fds-s-}"
     local term
 
     [[ -z "$NAME" || "$line" == *"\"name\":\"$normalized_name\""* ]] || return 1

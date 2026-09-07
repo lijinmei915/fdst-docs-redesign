@@ -47,6 +47,7 @@ props:
 | `global.type` | 文件内统一时提供默认类型，单个 Token 可覆盖 |
 | `global.scope` | 当前固定为 `global` |
 | `global.primitive` | Atomic 为 `true`，Semantic 为 `false` |
+| `global.namespace` | Semantic/Scene 必须显式使用 `--fds-s-`；其他层省略并使用包级 `--fds-g-` |
 | `global.source` | 可选的维护来源：`manual/generated/derived` |
 | `imports` | 相对当前 YAML 文件的直接依赖 |
 | `props` | Token ID 到定义的映射，Key 为小写 kebab-case |
@@ -55,7 +56,7 @@ props:
 
 ## 引用规则
 
-YAML 中只使用 `{!token-id}`，不写 CSS `var()`。例如前述引用会转换为 `var(--fds-g-color-brand-90)`。
+YAML 中只使用 `{!token-id}`，不写 CSS `var()`。构建器按被引用 Token 的 namespace 生成 CSS：Base 引用转换为 `var(--fds-g-color-brand-90)`，Scene 引用 Base/Map 时同样指向 `--fds-g-*`。
 
 依赖只允许沿 `Atomic/Seed -> Atomic/Map -> Semantic/Base -> Semantic/Scene` 正向或同级流动，禁止反向和循环引用。引用的类型必须一致；Shadow 组合 Color 是当前受支持的例外。
 

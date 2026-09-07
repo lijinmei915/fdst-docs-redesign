@@ -17,7 +17,7 @@ Token 是否存在、类型、源值和解析值，以 `tokens/fds-global.yml` �
 - 唯一源入口是 `tokens/fds-global.yml`，加载顺序由 YAML imports 决定。
 - 依赖方向固定为 `Atomic/Seed -> Atomic/Map -> Semantic/Base -> Semantic/Scene`。
 - 业务样式优先使用 Semantic/Base；通用页面组合优先使用 Semantic/Scene。
-- `--fds-g-` 是 CSS 输出命名空间，不写入 YAML Token ID。
+- `--fds-g-` 是 Atomic/Map 与 Semantic/Base 的 CSS 命名空间，`--fds-s-` 是 Semantic/Scene 的 CSS 命名空间；二者都不写入 YAML Token ID。
 - Component Token 由组件包维护，业务私有变量由业务作用域维护。
 - 当前只维护统一亮色色系，不承诺暗色主题、栅格、响应式断点或组件 Token。
 

@@ -14,16 +14,25 @@ sys.modules[SPEC.name] = BUILD
 SPEC.loader.exec_module(BUILD)
 
 
-def source(layer: str, tier: str, token_type: str, props: dict) -> dict:
-    return {
-        "global": {
+def source(
+    layer: str,
+    tier: str,
+    token_type: str,
+    props: dict,
+    namespace: str | None = None,
+) -> dict:
+    global_meta = {
             "layer": layer,
             "tier": tier,
             "category": "test",
             "type": token_type,
             "scope": "global",
             "primitive": layer == "atomic",
-        },
+        }
+    if namespace is not None:
+        global_meta["namespace"] = namespace
+    return {
+        "global": global_meta,
         "props": props,
     }
 
@@ -176,7 +185,7 @@ class BuildTest(unittest.TestCase):
         self.assertEqual("{!shadow-1}", tokens["shadow-active"].value)
         self.assertEqual("{!shadow-2}", tokens["shadow-drag"].value)
         self.assertEqual("{!shadow-3}", tokens["shadow-dropdown"].value)
-        self.assertEqual("{!shadow-none}", tokens["scene-card-shadow"].value)
+        self.assertEqual("{!shadow-none}", tokens["card-shadow"].value)
 
         namespace, sources = BUILD.collect_sources()
         css = BUILD.build_css(namespace, sources, tokens)
@@ -238,17 +247,49 @@ class BuildTest(unittest.TestCase):
         scene_tokens = {
             token_id: token
             for token_id, token in tokens.items()
-            if token_id.startswith("scene-")
+            if token.tier == "scene"
         }
         self.assertEqual(14, len(scene_tokens))
-        self.assertTrue(all(token.tier == "scene" for token in scene_tokens.values()))
+        self.assertTrue(all(token.namespace == "--fds-s-" for token in scene_tokens.values()))
+        self.assertTrue(all(not token_id.startswith("scene-") for token_id in scene_tokens))
         self.assertTrue(all(token.value.startswith("{!") for token in scene_tokens.values()))
-        self.assertEqual("{!background-main}", tokens["scene-background"].value)
-        self.assertEqual("{!container-radius}", tokens["scene-card-radius"].value)
+        self.assertEqual("{!background-main}", tokens["background"].value)
+        self.assertEqual("{!container-radius}", tokens["card-radius"].value)
         self.assertEqual(
             "{!typography-heading-5-size}",
-            tokens["scene-card-title-size"].value,
+            tokens["card-title-size"].value,
         )
+
+        namespace, sources = BUILD.collect_sources()
+        css = BUILD.build_css(namespace, sources, tokens)
+        self.assertIn("--fds-s-card-padding: var(--fds-g-spacing-4);", css)
+        self.assertIn("--fds-s-card-title-color: var(--fds-g-typography-heading-color);", css)
+        self.assertNotIn("--fds-g-scene-", css)
+
+    def test_scene_namespace_is_explicit_and_reserved(self) -> None:
+        missing_scene_namespace = [
+            (
+                "semantic/scene/test.yml",
+                source("semantic", "scene", "color", {"background": {"value": "#FFFFFF"}}),
+            )
+        ]
+        _, errors = BUILD.validate_sources(missing_scene_namespace)
+        self.assertTrue(any("Semantic/Scene namespace 必须为 --fds-s-" in error for error in errors))
+
+        scene_namespace_on_base = [
+            (
+                "semantic/base/test.yml",
+                source(
+                    "semantic",
+                    "base",
+                    "color",
+                    {"background": {"value": "#FFFFFF"}},
+                    namespace="--fds-s-",
+                ),
+            )
+        ]
+        _, errors = BUILD.validate_sources(scene_namespace_on_base)
+        self.assertTrue(any("仅 Semantic/Scene 可以使用 --fds-s-" in error for error in errors))
 
     def test_rejects_upward_reference(self) -> None:
         sources = [
@@ -307,9 +348,18 @@ class BuildTest(unittest.TestCase):
         self.assertEqual([], errors)
 
     def test_converts_source_reference_to_css_variable(self) -> None:
+        sources = [
+            (
+                "atomic/map/test.yml",
+                source("atomic", "map", "color", {"color-brand-90": {"value": "#FF7C19"}}),
+            )
+        ]
+        tokens, errors = BUILD.validate_sources(sources)
+
+        self.assertEqual([], errors)
         self.assertEqual(
             "var(--fds-g-color-brand-90)",
-            BUILD.to_css_value("{!color-brand-90}", "--fds-g-"),
+            BUILD.to_css_value("{!color-brand-90}", tokens),
         )
 
 

@@ -2,6 +2,10 @@
   "schema": "fds-token-catalog/v1",
   "name": "fds-global",
   "namespace": "--fds-g-",
+  "namespaces": {
+    "default": "--fds-g-",
+    "scene": "--fds-s-"
+  },
   "source": "tokens/fds-global.yml",
   "generatedBy": "tools/export_catalog.py",
   "tokenCount": 392,
@@ -7004,9 +7008,9 @@
       "sourceFile": "tokens/semantic/base/typography.yml"
     },
     {
-      "id": "scene-background",
-      "name": "scene-background",
-      "cssVariable": "--fds-g-scene-background",
+      "id": "background",
+      "name": "background",
+      "cssVariable": "--fds-s-background",
       "layer": "semantic",
       "tier": "scene",
       "category": "scene",
@@ -7017,7 +7021,7 @@
         "background-main"
       ],
       "referenceChain": [
-        "scene-background",
+        "background",
         "background-main",
         "color-surface-page",
         "color-gray-30"
@@ -7027,9 +7031,9 @@
       "comment": "页面型场景的默认画布背景，可由具体业务场景在自身作用域内覆盖。"
     },
     {
-      "id": "scene-card-background",
-      "name": "scene-card-background",
-      "cssVariable": "--fds-g-scene-card-background",
+      "id": "card-background",
+      "name": "card-background",
+      "cssVariable": "--fds-s-card-background",
       "layer": "semantic",
       "tier": "scene",
       "category": "scene",
@@ -7040,7 +7044,7 @@
         "background-container"
       ],
       "referenceChain": [
-        "scene-card-background",
+        "card-background",
         "background-container",
         "color-surface-container",
         "color-gray-10"
@@ -7050,9 +7054,9 @@
       "comment": "页面型场景中通用内容卡片的默认表面背景。"
     },
     {
-      "id": "scene-card-border-color",
-      "name": "scene-card-border-color",
-      "cssVariable": "--fds-g-scene-card-border-color",
+      "id": "card-border-color",
+      "name": "card-border-color",
+      "cssVariable": "--fds-s-card-border-color",
       "layer": "semantic",
       "tier": "scene",
       "category": "scene",
@@ -7063,7 +7067,7 @@
         "border-subtle"
       ],
       "referenceChain": [
-        "scene-card-border-color",
+        "card-border-color",
         "border-subtle",
         "color-gray-40"
       ],
@@ -7072,9 +7076,9 @@
       "comment": "场景卡片与页面画布之间的默认弱分隔色。"
     },
     {
-      "id": "scene-card-border-width",
-      "name": "scene-card-border-width",
-      "cssVariable": "--fds-g-scene-card-border-width",
+      "id": "card-border-width",
+      "name": "card-border-width",
+      "cssVariable": "--fds-s-card-border-width",
       "layer": "semantic",
       "tier": "scene",
       "category": "scene",
@@ -7085,7 +7089,7 @@
         "border-width-1"
       ],
       "referenceChain": [
-        "scene-card-border-width",
+        "card-border-width",
         "border-width-1"
       ],
       "source": "tokens/semantic/scene/default.yml",
@@ -7093,9 +7097,9 @@
       "comment": "场景卡片的默认边框宽度。"
     },
     {
-      "id": "scene-card-gap",
-      "name": "scene-card-gap",
-      "cssVariable": "--fds-g-scene-card-gap",
+      "id": "card-gap",
+      "name": "card-gap",
+      "cssVariable": "--fds-s-card-gap",
       "layer": "semantic",
       "tier": "scene",
       "category": "scene",
@@ -7106,7 +7110,7 @@
         "spacing-3"
       ],
       "referenceChain": [
-        "scene-card-gap",
+        "card-gap",
         "spacing-3"
       ],
       "source": "tokens/semantic/scene/default.yml",
@@ -7114,9 +7118,9 @@
       "comment": "页面型场景内并列或上下排列内容卡片之间的默认间距。"
     },
     {
-      "id": "scene-card-padding",
-      "name": "scene-card-padding",
-      "cssVariable": "--fds-g-scene-card-padding",
+      "id": "card-padding",
+      "name": "card-padding",
+      "cssVariable": "--fds-s-card-padding",
       "layer": "semantic",
       "tier": "scene",
       "category": "scene",
@@ -7127,7 +7131,7 @@
         "spacing-4"
       ],
       "referenceChain": [
-        "scene-card-padding",
+        "card-padding",
         "spacing-4"
       ],
       "source": "tokens/semantic/scene/default.yml",
@@ -7135,9 +7139,9 @@
       "comment": "场景卡片边界与主体内容之间的默认留白。"
     },
     {
-      "id": "scene-card-radius",
-      "name": "scene-card-radius",
-      "cssVariable": "--fds-g-scene-card-radius",
+      "id": "card-radius",
+      "name": "card-radius",
+      "cssVariable": "--fds-s-card-radius",
       "layer": "semantic",
       "tier": "scene",
       "category": "scene",
@@ -7148,7 +7152,7 @@
         "container-radius"
       ],
       "referenceChain": [
-        "scene-card-radius",
+        "card-radius",
         "container-radius",
         "radius-4"
       ],
@@ -7157,9 +7161,9 @@
       "comment": "场景卡片的默认圆角，不替代 Card 组件自身的组件 Token。"
     },
     {
-      "id": "scene-card-shadow",
-      "name": "scene-card-shadow",
-      "cssVariable": "--fds-g-scene-card-shadow",
+      "id": "card-shadow",
+      "name": "card-shadow",
+      "cssVariable": "--fds-s-card-shadow",
       "layer": "semantic",
       "tier": "scene",
       "category": "scene",
@@ -7170,7 +7174,7 @@
         "shadow-none"
       ],
       "referenceChain": [
-        "scene-card-shadow",
+        "card-shadow",
         "shadow-none",
         "shadow-0"
       ],
@@ -7179,9 +7183,9 @@
       "comment": "场景卡片默认依靠背景和边框建立层次，不预设悬浮阴影。"
     },
     {
-      "id": "scene-card-title-color",
-      "name": "scene-card-title-color",
-      "cssVariable": "--fds-g-scene-card-title-color",
+      "id": "card-title-color",
+      "name": "card-title-color",
+      "cssVariable": "--fds-s-card-title-color",
       "layer": "semantic",
       "tier": "scene",
       "category": "scene",
@@ -7192,7 +7196,7 @@
         "typography-heading-color"
       ],
       "referenceChain": [
-        "scene-card-title-color",
+        "card-title-color",
         "typography-heading-color",
         "color-text-primary",
         "color-gray-200"
@@ -7202,9 +7206,9 @@
       "comment": "场景卡片标题的默认文本色。"
     },
     {
-      "id": "scene-card-title-gap",
-      "name": "scene-card-title-gap",
-      "cssVariable": "--fds-g-scene-card-title-gap",
+      "id": "card-title-gap",
+      "name": "card-title-gap",
+      "cssVariable": "--fds-s-card-title-gap",
       "layer": "semantic",
       "tier": "scene",
       "category": "scene",
@@ -7215,7 +7219,7 @@
         "spacing-3"
       ],
       "referenceChain": [
-        "scene-card-title-gap",
+        "card-title-gap",
         "spacing-3"
       ],
       "source": "tokens/semantic/scene/default.yml",
@@ -7223,9 +7227,9 @@
       "comment": "场景卡片标题区与主体内容之间的默认间距。"
     },
     {
-      "id": "scene-card-title-line-height",
-      "name": "scene-card-title-line-height",
-      "cssVariable": "--fds-g-scene-card-title-line-height",
+      "id": "card-title-line-height",
+      "name": "card-title-line-height",
+      "cssVariable": "--fds-s-card-title-line-height",
       "layer": "semantic",
       "tier": "scene",
       "category": "scene",
@@ -7236,7 +7240,7 @@
         "typography-heading-5-line-height"
       ],
       "referenceChain": [
-        "scene-card-title-line-height",
+        "card-title-line-height",
         "typography-heading-5-line-height",
         "line-height-5"
       ],
@@ -7245,9 +7249,9 @@
       "comment": "场景卡片标题的默认行高。"
     },
     {
-      "id": "scene-card-title-size",
-      "name": "scene-card-title-size",
-      "cssVariable": "--fds-g-scene-card-title-size",
+      "id": "card-title-size",
+      "name": "card-title-size",
+      "cssVariable": "--fds-s-card-title-size",
       "layer": "semantic",
       "tier": "scene",
       "category": "scene",
@@ -7258,7 +7262,7 @@
         "typography-heading-5-size"
       ],
       "referenceChain": [
-        "scene-card-title-size",
+        "card-title-size",
         "typography-heading-5-size",
         "font-size-5"
       ],
@@ -7267,9 +7271,9 @@
       "comment": "场景卡片标题的默认字号。"
     },
     {
-      "id": "scene-card-title-weight",
-      "name": "scene-card-title-weight",
-      "cssVariable": "--fds-g-scene-card-title-weight",
+      "id": "card-title-weight",
+      "name": "card-title-weight",
+      "cssVariable": "--fds-s-card-title-weight",
       "layer": "semantic",
       "tier": "scene",
       "category": "scene",
@@ -7280,7 +7284,7 @@
         "typography-heading-5-weight"
       ],
       "referenceChain": [
-        "scene-card-title-weight",
+        "card-title-weight",
         "typography-heading-5-weight",
         "font-weight-semibold"
       ],
@@ -7289,9 +7293,9 @@
       "comment": "场景卡片标题的默认字重。"
     },
     {
-      "id": "scene-content-padding",
-      "name": "scene-content-padding",
-      "cssVariable": "--fds-g-scene-content-padding",
+      "id": "content-padding",
+      "name": "content-padding",
+      "cssVariable": "--fds-s-content-padding",
       "layer": "semantic",
       "tier": "scene",
       "category": "scene",
@@ -7302,7 +7306,7 @@
         "spacing-6"
       ],
       "referenceChain": [
-        "scene-content-padding",
+        "content-padding",
         "spacing-6"
       ],
       "source": "tokens/semantic/scene/default.yml",

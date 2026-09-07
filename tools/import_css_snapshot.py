@@ -12,8 +12,13 @@ import yaml
 
 ROOT = Path(__file__).resolve().parents[1]
 TOKENS_ROOT = ROOT / "tokens"
-DECL_RE = re.compile(r"^\s*(--fds-g-[a-z0-9-]+)\s*:\s*(.*?);(?:\s*/\*.*)?$")
-CSS_REFERENCE_RE = re.compile(r"var\(--fds-g-([a-z0-9-]+)\)")
+DEFAULT_NAMESPACE = "--fds-g-"
+SCENE_NAMESPACE = "--fds-s-"
+DECL_RE = re.compile(
+    r"^\s*(?P<namespace>--fds-(?:g|s)-)(?P<token_id>[a-z0-9-]+)\s*:\s*"
+    r"(?P<value>.*?);(?:\s*/\*.*)?$"
+)
+CSS_REFERENCE_RE = re.compile(r"var\(--fds-(?:g|s)-([a-z0-9-]+)\)")
 COLOR_FAMILIES = (
     "brand",
     "amber",
@@ -107,6 +112,24 @@ SOURCE_FILES = {
         "global": {"layer": "semantic", "tier": "base", "category": "motion", "type": "duration", "scope": "global", "primitive": False},
         "imports": ["../../atomic/map/motion.yml"],
     },
+    "semantic/scene/default.yml": {
+        "global": {
+            "layer": "semantic",
+            "tier": "scene",
+            "category": "scene",
+            "scope": "global",
+            "primitive": False,
+            "namespace": SCENE_NAMESPACE,
+        },
+        "imports": [
+            "../base/layout.yml",
+            "../base/effects.yml",
+            "../base/typography.yml",
+            "../../atomic/map/spacing.yml",
+            "../../atomic/map/shape.yml",
+            "../../atomic/map/effects.yml",
+        ],
+    },
 }
 
 GROUP_FILES = {
@@ -137,16 +160,42 @@ GROUP_FILES = {
     },
     "semantic/base.yml": {
         "schema": "fds-token-group/v1",
-        "imports": ["./base/base.yml"],
+        "imports": ["./base/base.yml", "./scene/base.yml"],
     },
     "semantic/base/base.yml": {
         "schema": "fds-token-group/v1",
         "imports": ["./color.yml", "./typography.yml", "./layout.yml", "./effects.yml", "./motion.yml"],
     },
+    "semantic/scene/base.yml": {
+        "schema": "fds-token-group/v1",
+        "imports": ["./default.yml"],
+    },
 }
 
 
-def classify(token_id: str) -> str:
+SCENE_TOKEN_TYPES = {
+    "background": "color",
+    "content-padding": "dimension",
+    "card-gap": "dimension",
+    "card-background": "color",
+    "card-border-color": "color",
+    "card-border-width": "dimension",
+    "card-radius": "dimension",
+    "card-padding": "dimension",
+    "card-shadow": "shadow",
+    "card-title-color": "color",
+    "card-title-size": "dimension",
+    "card-title-line-height": "dimension",
+    "card-title-weight": "font-weight",
+    "card-title-gap": "dimension",
+}
+
+
+def classify(token_id: str, namespace: str = DEFAULT_NAMESPACE) -> str:
+    if namespace == SCENE_NAMESPACE:
+        if token_id not in SCENE_TOKEN_TYPES:
+            raise ValueError(f"无法分类 Scene Token：{token_id}")
+        return "semantic/scene/default.yml"
     if COLOR_SEED_RE.fullmatch(token_id):
         return "atomic/seed/color.yml"
     color_match = COLOR_SCALE_RE.fullmatch(token_id)
@@ -160,7 +209,7 @@ def classify(token_id: str) -> str:
         return "atomic/map/color/rgb.yml"
     if token_id.startswith(("font-family-", "font-size-", "line-height-", "font-weight-")):
         return "atomic/map/typography.yml"
-    if token_id.startswith("size-"):
+    if token_id.startswith("spacing-"):
         return "atomic/map/spacing.yml"
     if token_id.startswith(("control-height-", "icon-size-")) and token_id.rsplit("-", 1)[-1].isdigit():
         return "atomic/map/sizing.yml"
@@ -184,6 +233,8 @@ def classify(token_id: str) -> str:
 
 
 def token_type(token_id: str) -> str:
+    if token_id in SCENE_TOKEN_TYPES:
+        return SCENE_TOKEN_TYPES[token_id]
     if token_id.endswith("-rgb"):
         return "string"
     if token_id.startswith(("color-", "background-", "border-")) or token_id.endswith("-color"):
@@ -192,7 +243,7 @@ def token_type(token_id: str) -> str:
         return "font-family"
     if token_id.startswith("font-weight-") or token_id.endswith("-weight"):
         return "font-weight"
-    if token_id.startswith(("font-size-", "line-height-", "size-", "control-height-", "icon-size-", "radius-", "border-width-")):
+    if token_id.startswith(("font-size-", "line-height-", "spacing-", "control-height-", "icon-size-", "radius-", "border-width-")):
         return "dimension"
     if token_id.endswith(("-size", "-line-height", "-radius")):
         return "dimension"
@@ -223,9 +274,10 @@ def main() -> int:
         match = DECL_RE.match(line)
         if not match:
             continue
-        css_name, value = match.groups()
-        token_id = css_name.removeprefix("--fds-g-").replace("color-seed-", "color-", 1)
-        source_path = classify(token_id)
+        namespace = match.group("namespace")
+        token_id = match.group("token_id").replace("color-seed-", "color-", 1)
+        value = match.group("value")
+        source_path = classify(token_id, namespace)
         source_meta = SOURCE_FILES[source_path]["global"]
         definition: dict[str, str] = {
             "value": CSS_REFERENCE_RE.sub(lambda ref: f"{{!{ref.group(1)}}}", value.strip())

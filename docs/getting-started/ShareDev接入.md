@@ -25,14 +25,14 @@ getComputedStyle(document.documentElement)
 }
 
 .work-area__content {
-  padding: var(--fds-g-scene-content-padding);
+  padding: var(--fds-s-content-padding);
 }
 
 .work-area__panel {
-  background: var(--fds-g-scene-card-background);
-  border: var(--fds-g-scene-card-border-width) solid
-    var(--fds-g-scene-card-border-color);
-  border-radius: var(--fds-g-scene-card-radius);
+  background: var(--fds-s-card-background);
+  border: var(--fds-s-card-border-width) solid
+    var(--fds-s-card-border-color);
+  border-radius: var(--fds-s-card-radius);
 }
 ```
 
@@ -57,9 +57,9 @@ getComputedStyle(document.documentElement)
 | --- | --- | --- |
 | 复制 `:root` 变量到页面 CSS | 形成不可追踪的第二份事实 | 引入构建产物 |
 | 根据颜色外观直接选色阶 | 语义变化时业务无法统一迁移 | 优先选择状态、文本或表面语义 |
-| 用 `--fds-g-scene-card-*` 改组件内部结构 | Scene 不拥有 Card 组件实现 | 使用组件 API 或组件 Token |
+| 用 `--fds-s-card-*` 改组件内部结构 | Scene 不拥有 Card 组件实现 | 使用组件 API 或组件 Token |
 | 猜测不存在的变量名 | 命名相似不代表已经发布 | 查询自动生成的 Token 目录 |
-| 在客户或业务作用域定义新 `--fds-g-*` | 冒充全局公开契约 | 使用业务私有前缀 |
+| 在客户或业务作用域定义新 `--fds-g-*` 或 `--fds-s-*` | 冒充 FDS 公开契约 | 使用业务私有前缀 |
 
 ## 边界
 

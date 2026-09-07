@@ -433,20 +433,20 @@
   --fds-g-motion-prominent-exit-easing: var(--fds-g-motion-easing-3); /* 显著变化退出采用 Exit 曲线，避免离场拖沓。 */
 
   /* semantic / scene / scene · source: tokens/semantic/scene/default.yml */
-  --fds-g-scene-background: var(--fds-g-background-main); /* 页面型场景的默认画布背景，可由具体业务场景在自身作用域内覆盖。 */
-  --fds-g-scene-content-padding: var(--fds-g-spacing-6); /* 页面型场景内容与画布边界之间的默认留白。 */
-  --fds-g-scene-card-gap: var(--fds-g-spacing-3); /* 页面型场景内并列或上下排列内容卡片之间的默认间距。 */
-  --fds-g-scene-card-background: var(--fds-g-background-container); /* 页面型场景中通用内容卡片的默认表面背景。 */
-  --fds-g-scene-card-border-color: var(--fds-g-border-subtle); /* 场景卡片与页面画布之间的默认弱分隔色。 */
-  --fds-g-scene-card-border-width: var(--fds-g-border-width-1); /* 场景卡片的默认边框宽度。 */
-  --fds-g-scene-card-radius: var(--fds-g-container-radius); /* 场景卡片的默认圆角，不替代 Card 组件自身的组件 Token。 */
-  --fds-g-scene-card-padding: var(--fds-g-spacing-4); /* 场景卡片边界与主体内容之间的默认留白。 */
-  --fds-g-scene-card-shadow: var(--fds-g-shadow-none); /* 场景卡片默认依靠背景和边框建立层次，不预设悬浮阴影。 */
-  --fds-g-scene-card-title-color: var(--fds-g-typography-heading-color); /* 场景卡片标题的默认文本色。 */
-  --fds-g-scene-card-title-size: var(--fds-g-typography-heading-5-size); /* 场景卡片标题的默认字号。 */
-  --fds-g-scene-card-title-line-height: var(--fds-g-typography-heading-5-line-height); /* 场景卡片标题的默认行高。 */
-  --fds-g-scene-card-title-weight: var(--fds-g-typography-heading-5-weight); /* 场景卡片标题的默认字重。 */
-  --fds-g-scene-card-title-gap: var(--fds-g-spacing-3); /* 场景卡片标题区与主体内容之间的默认间距。 */
+  --fds-s-background: var(--fds-g-background-main); /* 页面型场景的默认画布背景，可由具体业务场景在自身作用域内覆盖。 */
+  --fds-s-content-padding: var(--fds-g-spacing-6); /* 页面型场景内容与画布边界之间的默认留白。 */
+  --fds-s-card-gap: var(--fds-g-spacing-3); /* 页面型场景内并列或上下排列内容卡片之间的默认间距。 */
+  --fds-s-card-background: var(--fds-g-background-container); /* 页面型场景中通用内容卡片的默认表面背景。 */
+  --fds-s-card-border-color: var(--fds-g-border-subtle); /* 场景卡片与页面画布之间的默认弱分隔色。 */
+  --fds-s-card-border-width: var(--fds-g-border-width-1); /* 场景卡片的默认边框宽度。 */
+  --fds-s-card-radius: var(--fds-g-container-radius); /* 场景卡片的默认圆角，不替代 Card 组件自身的组件 Token。 */
+  --fds-s-card-padding: var(--fds-g-spacing-4); /* 场景卡片边界与主体内容之间的默认留白。 */
+  --fds-s-card-shadow: var(--fds-g-shadow-none); /* 场景卡片默认依靠背景和边框建立层次，不预设悬浮阴影。 */
+  --fds-s-card-title-color: var(--fds-g-typography-heading-color); /* 场景卡片标题的默认文本色。 */
+  --fds-s-card-title-size: var(--fds-g-typography-heading-5-size); /* 场景卡片标题的默认字号。 */
+  --fds-s-card-title-line-height: var(--fds-g-typography-heading-5-line-height); /* 场景卡片标题的默认行高。 */
+  --fds-s-card-title-weight: var(--fds-g-typography-heading-5-weight); /* 场景卡片标题的默认字重。 */
+  --fds-s-card-title-gap: var(--fds-g-spacing-3); /* 场景卡片标题区与主体内容之间的默认间距。 */
 
 }
 

@@ -438,17 +438,17 @@
 
 | CSS Variable | 类型 | 源值 | 解析值 | 来源 |
 | --- | --- | --- | --- | --- |
-| `--fds-g-scene-background` | `color` | `{!background-main}` | `#F1F0F0` | `tokens/semantic/scene/default.yml` |
-| `--fds-g-scene-card-background` | `color` | `{!background-container}` | `#FFFFFF` | `tokens/semantic/scene/default.yml` |
-| `--fds-g-scene-card-border-color` | `color` | `{!border-subtle}` | `#E5E5E4` | `tokens/semantic/scene/default.yml` |
-| `--fds-g-scene-card-border-width` | `dimension` | `{!border-width-1}` | `1px` | `tokens/semantic/scene/default.yml` |
-| `--fds-g-scene-card-gap` | `dimension` | `{!spacing-3}` | `12px` | `tokens/semantic/scene/default.yml` |
-| `--fds-g-scene-card-padding` | `dimension` | `{!spacing-4}` | `16px` | `tokens/semantic/scene/default.yml` |
-| `--fds-g-scene-card-radius` | `dimension` | `{!container-radius}` | `8px` | `tokens/semantic/scene/default.yml` |
-| `--fds-g-scene-card-shadow` | `shadow` | `{!shadow-none}` | `none` | `tokens/semantic/scene/default.yml` |
-| `--fds-g-scene-card-title-color` | `color` | `{!typography-heading-color}` | `#080504` | `tokens/semantic/scene/default.yml` |
-| `--fds-g-scene-card-title-gap` | `dimension` | `{!spacing-3}` | `12px` | `tokens/semantic/scene/default.yml` |
-| `--fds-g-scene-card-title-line-height` | `dimension` | `{!typography-heading-5-line-height}` | `24px` | `tokens/semantic/scene/default.yml` |
-| `--fds-g-scene-card-title-size` | `dimension` | `{!typography-heading-5-size}` | `16px` | `tokens/semantic/scene/default.yml` |
-| `--fds-g-scene-card-title-weight` | `font-weight` | `{!typography-heading-5-weight}` | `600` | `tokens/semantic/scene/default.yml` |
-| `--fds-g-scene-content-padding` | `dimension` | `{!spacing-6}` | `24px` | `tokens/semantic/scene/default.yml` |
+| `--fds-s-background` | `color` | `{!background-main}` | `#F1F0F0` | `tokens/semantic/scene/default.yml` |
+| `--fds-s-card-background` | `color` | `{!background-container}` | `#FFFFFF` | `tokens/semantic/scene/default.yml` |
+| `--fds-s-card-border-color` | `color` | `{!border-subtle}` | `#E5E5E4` | `tokens/semantic/scene/default.yml` |
+| `--fds-s-card-border-width` | `dimension` | `{!border-width-1}` | `1px` | `tokens/semantic/scene/default.yml` |
+| `--fds-s-card-gap` | `dimension` | `{!spacing-3}` | `12px` | `tokens/semantic/scene/default.yml` |
+| `--fds-s-card-padding` | `dimension` | `{!spacing-4}` | `16px` | `tokens/semantic/scene/default.yml` |
+| `--fds-s-card-radius` | `dimension` | `{!container-radius}` | `8px` | `tokens/semantic/scene/default.yml` |
+| `--fds-s-card-shadow` | `shadow` | `{!shadow-none}` | `none` | `tokens/semantic/scene/default.yml` |
+| `--fds-s-card-title-color` | `color` | `{!typography-heading-color}` | `#080504` | `tokens/semantic/scene/default.yml` |
+| `--fds-s-card-title-gap` | `dimension` | `{!spacing-3}` | `12px` | `tokens/semantic/scene/default.yml` |
+| `--fds-s-card-title-line-height` | `dimension` | `{!typography-heading-5-line-height}` | `24px` | `tokens/semantic/scene/default.yml` |
+| `--fds-s-card-title-size` | `dimension` | `{!typography-heading-5-size}` | `16px` | `tokens/semantic/scene/default.yml` |
+| `--fds-s-card-title-weight` | `font-weight` | `{!typography-heading-5-weight}` | `600` | `tokens/semantic/scene/default.yml` |
+| `--fds-s-content-padding` | `dimension` | `{!spacing-6}` | `24px` | `tokens/semantic/scene/default.yml` |

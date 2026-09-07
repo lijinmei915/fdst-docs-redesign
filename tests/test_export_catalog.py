@@ -75,8 +75,13 @@ class ExportCatalogTest(unittest.TestCase):
             tokens["color-danger-background"]["referenceChain"],
         )
         self.assertEqual(
-            ["scene-card-radius", "container-radius", "radius-4"],
-            tokens["scene-card-radius"]["referenceChain"],
+            ["card-radius", "container-radius", "radius-4"],
+            tokens["card-radius"]["referenceChain"],
+        )
+        self.assertEqual("--fds-s-card-radius", tokens["card-radius"]["cssVariable"])
+        self.assertEqual(
+            {"default": "--fds-g-", "scene": "--fds-s-"},
+            catalog["namespaces"],
         )
         self.assertEqual(["color-red-40"], tokens["color-red-40"]["referenceChain"])
 
@@ -92,19 +97,22 @@ class ExportCatalogTest(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             docs_root = Path(directory)
             (docs_root / "example.md").write_text(
-                "color: var(--fds-g-not-a-real-token);\n", encoding="utf-8"
+                "color: var(--fds-g-not-a-real-token);\n"
+                "background: var(--fds-s-not-a-real-token);\n",
+                encoding="utf-8",
             )
             with mock.patch.object(EXPORT, "DOCS_ROOT", docs_root):
                 errors = EXPORT.validate_doc_variables(catalog)
 
-        self.assertEqual(1, len(errors))
-        self.assertIn("--fds-g-not-a-real-token", errors[0])
+        self.assertEqual(2, len(errors))
+        self.assertTrue(any("--fds-g-not-a-real-token" in error for error in errors))
+        self.assertTrue(any("--fds-s-not-a-real-token" in error for error in errors))
 
     def test_wildcard_is_not_treated_as_an_example(self) -> None:
         catalog = EXPORT.build_catalog()
         with tempfile.TemporaryDirectory() as directory:
             docs_root = Path(directory)
-            (docs_root / "guide.md").write_text("`--fds-g-scene-*`\n", encoding="utf-8")
+            (docs_root / "guide.md").write_text("`--fds-s-*`\n", encoding="utf-8")
             with mock.patch.object(EXPORT, "DOCS_ROOT", docs_root):
                 errors = EXPORT.validate_doc_variables(catalog)
 

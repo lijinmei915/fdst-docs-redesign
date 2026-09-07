@@ -43,10 +43,10 @@
 
 ```css
 .scene-card__title {
-  color: var(--fds-g-scene-card-title-color);
-  font-size: var(--fds-g-scene-card-title-size);
-  line-height: var(--fds-g-scene-card-title-line-height);
-  font-weight: var(--fds-g-scene-card-title-weight);
+  color: var(--fds-s-card-title-color);
+  font-size: var(--fds-s-card-title-size);
+  line-height: var(--fds-s-card-title-line-height);
+  font-weight: var(--fds-s-card-title-weight);
 }
 ```
 
@@ -55,5 +55,5 @@ Dropdown 动效应查询 `Semantic/Base/Motion` 中的 Context Duration、Enter 
 ## 边界
 
 - 示例只演示 Global Token 消费，不定义组件内部结构。
-- 一个查询结果可用于多个合法 CSS 属性时，以用户场景为准；不确定时先返回 `var(--fds-g-*)` 并说明需确认具体属性。
+- 一个查询结果可用于多个合法 CSS 属性时，以用户场景为准；不确定时先返回查询结果中的 `var(--fds-g-*)` 或 `var(--fds-s-*)`，并说明需确认具体属性。
 - 禁止为了让示例看起来完整而加入查询索引中不存在的变量。

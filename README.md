@@ -21,6 +21,8 @@ Atomic/Seed -> Atomic/Map -> Semantic/Base -> Semantic/Scene
 
 Component Token 由组件包自行维护，不进入 FDS Global Token。当前只维护统一亮色色系，不包含暗色主题、栅格、响应式断点或业务私有场景。
 
+CSS Variable 使用两套公开前缀：Atomic/Map 与 Semantic/Base 使用 `--fds-g-*`，Semantic/Scene 使用 `--fds-s-*`。Scene Token ID 不再重复包含 `scene` 名称段。
+
 ## 生成产物
 
 | 产物 | 路径 | 用途 |

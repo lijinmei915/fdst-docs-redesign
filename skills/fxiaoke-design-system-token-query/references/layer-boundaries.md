@@ -28,11 +28,11 @@ Atomic / Seed -> Atomic / Map -> Semantic / Base -> Semantic / Scene
 - 暗色主题、响应式断点和栅格协议；
 - 单个页面、单张卡片或单种图表的局部样式。
 
-`scene-card-*` 描述页面场景中多张内容卡片共享的规则，不是 Card 组件 Token。组件 Token 由 FxUI、AvaUI 或对应组件包维护，并可引用 FDS Global Token。
+`--fds-s-card-*` 描述页面场景中多张内容卡片共享的规则，不是 Card 组件 Token。组件 Token 由 FxUI、AvaUI 或对应组件包维护，并可引用 FDS Token。
 
 ## 禁止推断
 
-- 不按 `--fds-g-` 命名模式猜测变量。
+- 不按 `--fds-g-` 或 `--fds-s-` 命名模式猜测变量。
 - 不把浏览器中可写的任意 CSS Variable 视为 FDS Token。
 - 不把 Atomic 色阶包装成不存在的 Semantic Token。
 - 不把组件或业务私有变量当作 FDS Global Token 返回。

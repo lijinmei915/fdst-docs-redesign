@@ -25,7 +25,7 @@ SKILL_SEARCH_INDEX_OUTPUT = (
 )
 TOKEN_INDEX_OUTPUT = DOCS_ROOT / "reference" / "Token目录.md"
 MARKDOWN_LINK_RE = re.compile(r"(?<!!)\[[^\]]+\]\(([^)]+)\)")
-CSS_VARIABLE_RE = re.compile(r"--fds-g-[a-z0-9]+(?:-[a-z0-9]+)*(?![a-z0-9*-])")
+CSS_VARIABLE_RE = re.compile(r"--fds-(?:g|s)-[a-z0-9]+(?:-[a-z0-9]+)*(?![a-z0-9*-])")
 LEVEL_LABELS = {
     ("atomic", "seed"): "Atomic / Seed",
     ("atomic", "map"): "Atomic / Map",
@@ -41,15 +41,15 @@ QUERY_LEVEL_PRIORITY = {
 SEARCH_ALIASES = {
     "危险状态": ("danger",),
     "浅色背景": ("background",),
-    "页面主背景": ("background-main", "scene-background", "surface-page"),
-    "卡片标题": ("scene-card-title",),
+    "页面主背景": ("background-main", "fds-s-background", "surface-page"),
+    "卡片标题": ("fds-s-card-title",),
     "上下文浮层": ("motion-context", "layer-popup"),
     "危险": ("danger",),
     "警告": ("warning",),
     "成功": ("success",),
     "信息": ("info",),
     "浅背景": ("background",),
-    "主背景": ("background-main", "scene-background", "surface-page"),
+    "主背景": ("background-main", "fds-s-background", "surface-page"),
     "文本": ("text", "typography"),
     "文字": ("text", "typography"),
     "图标": ("icon",),
@@ -61,7 +61,7 @@ SEARCH_ALIASES = {
     "动效": ("motion",),
     "下拉": ("dropdown", "motion-context"),
     "dropdown": ("motion-context",),
-    "卡片": ("scene-card",),
+    "卡片": ("fds-s-card",),
     "标题": ("heading", "title"),
     "字号": ("font-size", "title-size"),
     "行高": ("line-height",),
@@ -116,6 +116,10 @@ def build_catalog() -> dict:
         "schema": "fds-token-catalog/v1",
         "name": "fds-global",
         "namespace": namespace,
+        "namespaces": {
+            "default": namespace,
+            "scene": token_build.SCENE_NAMESPACE,
+        },
         "source": "tokens/fds-global.yml",
         "generatedBy": "tools/export_catalog.py",
         "tokenCount": len(ordered_tokens),
@@ -123,7 +127,7 @@ def build_catalog() -> dict:
             {
                 "id": token.token_id,
                 "name": token.token_id,
-                "cssVariable": f"{namespace}{token.token_id}",
+                "cssVariable": f"{token.namespace}{token.token_id}",
                 "layer": token.layer,
                 "tier": token.tier,
                 "category": token.category,
