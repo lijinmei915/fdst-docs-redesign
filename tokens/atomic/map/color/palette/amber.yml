@@ -9,26 +9,26 @@ global:
   source: generated
 props:
   color-amber-10:
-    value: '#FCF6F0'
+    value: '#FEF3EC'
   color-amber-20:
-    value: '#FAF1E7'
+    value: '#FFE6D9'
   color-amber-30:
-    value: '#F7E7D5'
+    value: '#FFD7C1'
   color-amber-40:
-    value: '#F5DABC'
+    value: '#FFC8A8'
   color-amber-50:
-    value: '#F4CC9F'
+    value: '#FFB98E'
   color-amber-60:
-    value: '#F3BD7D'
+    value: '#FFA973'
   color-amber-70:
-    value: '#F4AE57'
+    value: '#FF9958'
   color-amber-80:
-    value: '#F7A531'
+    value: '#FF8A3B'
   color-amber-90:
-    value: '#F59E0B'
+    value: '#FF7C19'
   color-amber-100:
-    value: '#DD8C00'
+    value: '#D36100'
   color-amber-110:
-    value: '#A36100'
+    value: '#7F2B00'
   color-amber-120:
-    value: '#451600'
+    value: '#430B00'

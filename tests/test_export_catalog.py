@@ -71,7 +71,7 @@ class ExportCatalogTest(unittest.TestCase):
         tokens = {item["id"]: item for item in catalog["tokens"]}
 
         self.assertEqual(
-            ["color-danger-background", "color-red-40"],
+            ["color-danger-background", "color-red-10"],
             tokens["color-danger-background"]["referenceChain"],
         )
         self.assertEqual(

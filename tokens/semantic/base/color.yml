@@ -13,25 +13,25 @@ props:
   color-primary:
     value: '{!color-brand-90}'
   color-primary-background:
-    value: '{!color-brand-40}'
+    value: '{!color-brand-10}'
   color-primary-background-hover:
-    value: '{!color-brand-50}'
+    value: '{!color-brand-20}'
   color-primary-background-active:
-    value: '{!color-brand-60}'
+    value: '{!color-brand-30}'
   color-primary-hover:
     value: '{!color-brand-80}'
   color-primary-active:
     value: '{!color-brand-100}'
   color-primary-disabled:
-    value: '{!color-brand-60}'
+    value: '{!color-brand-50}'
   color-danger:
     value: '{!color-red-90}'
   color-danger-background:
-    value: '{!color-red-40}'
+    value: '{!color-red-10}'
   color-danger-background-hover:
-    value: '{!color-red-50}'
+    value: '{!color-red-20}'
   color-danger-background-active:
-    value: '{!color-red-60}'
+    value: '{!color-red-30}'
   color-danger-hover:
     value: '{!color-red-80}'
   color-danger-active:
@@ -41,11 +41,11 @@ props:
   color-warning:
     value: '{!color-amber-90}'
   color-warning-background:
-    value: '{!color-amber-40}'
+    value: '{!color-amber-10}'
   color-warning-background-hover:
-    value: '{!color-amber-50}'
+    value: '{!color-amber-20}'
   color-warning-background-active:
-    value: '{!color-amber-60}'
+    value: '{!color-amber-30}'
   color-warning-hover:
     value: '{!color-amber-80}'
   color-warning-active:
@@ -55,11 +55,11 @@ props:
   color-success:
     value: '{!color-green-90}'
   color-success-background:
-    value: '{!color-green-40}'
+    value: '{!color-green-10}'
   color-success-background-hover:
-    value: '{!color-green-50}'
+    value: '{!color-green-20}'
   color-success-background-active:
-    value: '{!color-green-60}'
+    value: '{!color-green-30}'
   color-success-hover:
     value: '{!color-green-80}'
   color-success-active:
@@ -69,11 +69,11 @@ props:
   color-info:
     value: '{!color-blue-90}'
   color-info-background:
-    value: '{!color-blue-40}'
+    value: '{!color-blue-10}'
   color-info-background-hover:
-    value: '{!color-blue-50}'
+    value: '{!color-blue-20}'
   color-info-background-active:
-    value: '{!color-blue-60}'
+    value: '{!color-blue-30}'
   color-info-hover:
     value: '{!color-blue-80}'
   color-info-active:

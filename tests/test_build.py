@@ -35,18 +35,60 @@ class BuildTest(unittest.TestCase):
 
         self.assertEqual("--fds-g-", namespace)
         self.assertEqual([], errors)
-        self.assertEqual(31, len(sources))
-        self.assertEqual(462, len(tokens))
+        self.assertEqual(26, len(sources))
+        self.assertEqual(392, len(tokens))
         self.assertFalse(any("-dark-" in token_id for token_id in tokens))
         self.assertFalse(
             any(token_id.startswith("color-") and "-base-" in token_id for token_id in tokens)
         )
+
+    def test_design_color_families_and_seeds(self) -> None:
+        _, sources = BUILD.collect_sources()
+        tokens, errors = BUILD.validate_sources(sources)
+
+        self.assertEqual([], errors)
+        seeds = {
+            "brand": "#FF7C19",
+            "amber": "#FF7C19",
+            "yellow": "#FFB602",
+            "yellow-green": "#87CC3B",
+            "green": "#30C776",
+            "teal": "#16B4AB",
+            "blue": "#189DFF",
+            "indigo": "#0C6CFF",
+            "purple": "#7341DE",
+            "magenta": "#FF4A66",
+            "red": "#FF522A",
+        }
+        self.assertEqual(
+            {f"color-{family}": value for family, value in seeds.items()},
+            {
+                token_id: token.value
+                for token_id, token in tokens.items()
+                if token.layer == "atomic" and token.tier == "seed" and token.category == "color"
+            },
+        )
+        for family, seed in seeds.items():
+            scale = [tokens[f"color-{family}-{step}"] for step in range(10, 121, 10)]
+            self.assertEqual(12, len(scale))
+            self.assertTrue(
+                all(
+                    token.source == f"atomic/map/color/palette/{family}.yml"
+                    for token in scale
+                )
+            )
+            self.assertEqual(seed, tokens[f"color-{family}-90"].value)
 
     def test_confirmed_non_color_scales(self) -> None:
         _, sources = BUILD.collect_sources()
         tokens, errors = BUILD.validate_sources(sources)
 
         self.assertEqual([], errors)
+        self.assertEqual(
+            ["0", "4px", "8px", "12px", "16px", "20px", "24px", "32px", "48px"],
+            [tokens[f"spacing-{index}"].value for index in range(9)],
+        )
+        self.assertTrue(all(f"size-{index}" not in tokens for index in range(9)))
         self.assertEqual(
             [12, 13, 14, 15, 16, 18, 20, 22, 24, 28, 32, 36, 40, 48],
             [int(tokens[f"font-size-{index}"].value.removesuffix("px")) for index in range(1, 15)],
@@ -156,8 +198,8 @@ class BuildTest(unittest.TestCase):
         tokens, errors = BUILD.validate_sources(sources)
 
         self.assertEqual([], errors)
-        self.assertEqual("{!color-brand-40}", tokens["color-primary-background"].value)
-        self.assertEqual("{!color-brand-60}", tokens["color-primary-disabled"].value)
+        self.assertEqual("{!color-brand-10}", tokens["color-primary-background"].value)
+        self.assertEqual("{!color-brand-50}", tokens["color-primary-disabled"].value)
         self.assertEqual("{!color-brand-80}", tokens["color-primary-hover"].value)
         self.assertEqual("{!color-brand-90}", tokens["color-primary"].value)
         self.assertEqual("{!color-brand-100}", tokens["color-primary-active"].value)
@@ -176,15 +218,15 @@ class BuildTest(unittest.TestCase):
         }
         for semantic, family in families.items():
             self.assertEqual(
-                f"{{!color-{family}-40}}",
+                f"{{!color-{family}-10}}",
                 tokens[f"color-{semantic}-background"].value,
             )
             self.assertEqual(
-                f"{{!color-{family}-50}}",
+                f"{{!color-{family}-20}}",
                 tokens[f"color-{semantic}-background-hover"].value,
             )
             self.assertEqual(
-                f"{{!color-{family}-60}}",
+                f"{{!color-{family}-30}}",
                 tokens[f"color-{semantic}-background-active"].value,
             )
 

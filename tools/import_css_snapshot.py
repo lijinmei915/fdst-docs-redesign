@@ -16,20 +16,15 @@ DECL_RE = re.compile(r"^\s*(--fds-g-[a-z0-9-]+)\s*:\s*(.*?);(?:\s*/\*.*)?$")
 CSS_REFERENCE_RE = re.compile(r"var\(--fds-g-([a-z0-9-]+)\)")
 COLOR_FAMILIES = (
     "brand",
-    "deep-orange",
     "amber",
     "yellow",
-    "lime",
     "yellow-green",
     "green",
     "teal",
-    "cyan",
-    "light-blue",
     "blue",
     "indigo",
     "purple",
     "magenta",
-    "pink",
     "red",
 )
 COLOR_FAMILY_PATTERN = "|".join(re.escape(family) for family in COLOR_FAMILIES)

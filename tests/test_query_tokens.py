@@ -183,6 +183,16 @@ class QueryTokensTest(unittest.TestCase):
         self.assertEqual(0, result.returncode, result.stderr)
         self.assertEqual([], parse_results(result))
 
+    def test_spacing_scale_uses_explicit_spacing_name(self) -> None:
+        result = run_query("--name", "--fds-g-spacing-4")
+
+        self.assertEqual(0, result.returncode, result.stderr)
+        self.assertEqual("16px", parse_results(result)[0]["resolvedValue"])
+
+        removed = run_query("--name", "--fds-g-size-4")
+        self.assertEqual(0, removed.returncode, removed.stderr)
+        self.assertEqual([], parse_results(removed))
+
     def test_result_contains_css_layer_and_chain_without_source_metadata(self) -> None:
         result = run_query("--name", "color-danger-background")
 
@@ -192,7 +202,7 @@ class QueryTokensTest(unittest.TestCase):
             "background-color: var(--fds-g-color-danger-background);",
             token["cssExample"],
         )
-        self.assertEqual(["color-danger-background", "color-red-40"], token["referenceChain"])
+        self.assertEqual(["color-danger-background", "color-red-10"], token["referenceChain"])
         self.assertNotIn("source", token)
         self.assertNotIn("sourceFile", token)
         self.assertNotIn("origin", token)

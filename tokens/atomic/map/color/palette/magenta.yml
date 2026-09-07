@@ -9,26 +9,26 @@ global:
   source: generated
 props:
   color-magenta-10:
-    value: '#F9F1FA'
+    value: '#FFF1F1'
   color-magenta-20:
-    value: '#F6E8F8'
+    value: '#FFE0E1'
   color-magenta-30:
-    value: '#EFD7F3'
+    value: '#FFCCCE'
   color-magenta-40:
-    value: '#EAC1F0'
+    value: '#FFB8BB'
   color-magenta-50:
-    value: '#E5A7EE'
+    value: '#FFA3A9'
   color-magenta-60:
-    value: '#E08CED'
+    value: '#FF8D96'
   color-magenta-70:
-    value: '#DC6EED'
+    value: '#FF7685'
   color-magenta-80:
-    value: '#E35DF8'
+    value: '#FF6075'
   color-magenta-90:
-    value: '#D946EF'
+    value: '#FF4A66'
   color-magenta-100:
-    value: '#C439D8'
+    value: '#D43550'
   color-magenta-110:
-    value: '#9117A2'
+    value: '#850226'
   color-magenta-120:
-    value: '#3D004A'
+    value: '#4A000D'

@@ -9,34 +9,24 @@ global:
   source: manual
 props:
   color-brand:
-    value: '#FF8000'
-  color-deep-orange:
-    value: '#F97316'
+    value: '#FF7C19'
   color-amber:
-    value: '#F59E0B'
+    value: '#FF7C19'
   color-yellow:
-    value: '#EAB308'
-  color-lime:
-    value: '#84CC16'
+    value: '#FFB602'
   color-yellow-green:
-    value: '#6FC447'
+    value: '#87CC3B'
   color-green:
-    value: '#22C55E'
+    value: '#30C776'
   color-teal:
-    value: '#14B8A6'
-  color-cyan:
-    value: '#06B6D4'
-  color-light-blue:
-    value: '#0EA5E9'
+    value: '#16B4AB'
   color-blue:
-    value: '#3B73E8'
+    value: '#189DFF'
   color-indigo:
-    value: '#6366F1'
+    value: '#0C6CFF'
   color-purple:
-    value: '#8B5CF6'
+    value: '#7341DE'
   color-magenta:
-    value: '#D946EF'
-  color-pink:
-    value: '#EC4899'
+    value: '#FF4A66'
   color-red:
-    value: '#EF4444'
+    value: '#FF522A'

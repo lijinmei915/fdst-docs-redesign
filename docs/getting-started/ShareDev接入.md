@@ -44,7 +44,7 @@ getComputedStyle(document.documentElement)
 
 ```css
 .sales-dashboard {
-  --sales-dashboard-card-gap: var(--fds-g-size-4);
+  --sales-dashboard-card-gap: var(--fds-g-spacing-4);
   gap: var(--sales-dashboard-card-gap);
 }
 ```
@@ -72,4 +72,3 @@ getComputedStyle(document.documentElement)
 - [快速开始](快速开始.md)
 - [场景语义](../semantics/场景语义.md)
 - [版本与发布](../engineering/版本与发布.md)
-

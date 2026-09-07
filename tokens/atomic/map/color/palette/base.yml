@@ -2,18 +2,13 @@ schema: fds-token-group/v1
 imports:
 - ../../../seed/color.yml
 - ./brand.yml
-- ./deep-orange.yml
 - ./amber.yml
 - ./yellow.yml
-- ./lime.yml
 - ./yellow-green.yml
 - ./green.yml
 - ./teal.yml
-- ./cyan.yml
-- ./light-blue.yml
 - ./blue.yml
 - ./indigo.yml
 - ./purple.yml
 - ./magenta.yml
-- ./pink.yml
 - ./red.yml

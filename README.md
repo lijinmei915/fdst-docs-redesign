@@ -56,4 +56,4 @@ python tools/export_catalog.py --check-docs
 - [SLDS primitive/base.yml](https://github.com/salesforce-ux/design-system/blob/9bc6a4046d10d95b4f3fb9cee7c7dc036bf43ad2/design-tokens/primitive/base.yml)
 - [SLDS Token 构建脚本](https://github.com/salesforce-ux/design-system/blob/9bc6a4046d10d95b4f3fb9cee7c7dc036bf43ad2/scripts/gulp/generate/tokens.js)
 
-颜色基础来源固定于 [sharecrm-design-system 提交 8512d4f5](https://git.firstshare.cn/bigfe/sharecrm-design-system/-/commit/8512d4f578b807596fa0bf985d4af779da5406ed)。本次文档体系不调整现有 Token 值、层级或命名。
+颜色基础来源固定于 [sharecrm-design-system 提交 38667a8f](https://git.firstshare.cn/bigfe/sharecrm-design-system/-/commit/38667a8f693ef0682560c18f782156d5a644c42d)。FDS 保持现有 Token 命名，按设计侧 Seed 和 `seed-anchored-oklch-v1` 公式在构建期固化具体色值。

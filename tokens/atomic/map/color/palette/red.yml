@@ -9,26 +9,26 @@ global:
   source: generated
 props:
   color-red-10:
-    value: '#FBF0EF'
+    value: '#FFF1EE'
   color-red-20:
-    value: '#FAE7E5'
+    value: '#FFE2D9'
   color-red-30:
-    value: '#F6D5D1'
+    value: '#FFCEC1'
   color-red-40:
-    value: '#F3BEB8'
+    value: '#FFBBA9'
   color-red-50:
-    value: '#F2A49D'
+    value: '#FFA78F'
   color-red-60:
-    value: '#F18880'
+    value: '#FF9175'
   color-red-70:
-    value: '#F06A64'
+    value: '#FF7C5C'
   color-red-80:
-    value: '#FA5B56'
+    value: '#FF6743'
   color-red-90:
-    value: '#EF4444'
+    value: '#FF522A'
   color-red-100:
-    value: '#D83839'
+    value: '#D53D18'
   color-red-110:
-    value: '#A1181F'
+    value: '#850C00'
   color-red-120:
-    value: '#480000'
+    value: '#4A0000'

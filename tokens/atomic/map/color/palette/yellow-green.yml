@@ -9,26 +9,26 @@ global:
   source: generated
 props:
   color-yellow-green-10:
-    value: '#F3F8F1'
+    value: '#F1F7ED'
   color-yellow-green-20:
-    value: '#ECF4E9'
+    value: '#E6F3DC'
   color-yellow-green-30:
-    value: '#DDECD7'
+    value: '#D7EDC7'
   color-yellow-green-40:
-    value: '#CBE4C1'
+    value: '#C9E8B1'
   color-yellow-green-50:
-    value: '#B6DBA7'
+    value: '#BBE49A'
   color-yellow-green-60:
-    value: '#9FD38B'
+    value: '#ACDF81'
   color-yellow-green-70:
-    value: '#88CC6D'
+    value: '#9FD96A'
   color-yellow-green-80:
-    value: '#7DCD5A'
+    value: '#92D352'
   color-yellow-green-90:
-    value: '#6FC447'
+    value: '#87CC3B'
   color-yellow-green-100:
-    value: '#60B03A'
+    value: '#69A522'
   color-yellow-green-110:
-    value: '#3E7F19'
+    value: '#305C00'
   color-yellow-green-120:
-    value: '#002F00'
+    value: '#0E2A00'

@@ -54,7 +54,7 @@ SEARCH_ALIASES = {
     "文字": ("text", "typography"),
     "图标": ("icon",),
     "边框": ("border",),
-    "间距": ("spacing", "gap", "padding", "size"),
+    "间距": ("spacing", "gap", "padding", "margin"),
     "圆角": ("radius",),
     "阴影": ("shadow",),
     "层级": ("layer", "z-index"),

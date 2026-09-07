@@ -9,28 +9,28 @@ global:
   source: generated
 props:
   color-brand-10:
-    value: '#FDF4EF'
+    value: '#FEF3EC'
   color-brand-20:
-    value: '#FCEEE6'
+    value: '#FFE6D9'
   color-brand-30:
-    value: '#F9E1D2'
+    value: '#FFD7C1'
   color-brand-40:
-    value: '#F9D1B8'
+    value: '#FFC8A8'
   color-brand-50:
-    value: '#F9BE9A'
+    value: '#FFB98E'
   color-brand-60:
-    value: '#FBAB78'
+    value: '#FFA973'
   color-brand-70:
-    value: '#FD9751'
+    value: '#FF9958'
   color-brand-80:
-    value: '#FF8E32'
+    value: '#FF8A3B'
   color-brand-90:
-    value: '#FF8000'
+    value: '#FF7C19'
   color-brand-100:
-    value: '#E77000'
+    value: '#D36100'
   color-brand-110:
-    value: '#AB4A00'
+    value: '#7F2B00'
   color-brand-120:
-    value: '#4B0100'
+    value: '#430B00'
   color-brand-vivid:
-    value: '#FB7C00'
+    value: '#FD7A14'

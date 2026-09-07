@@ -9,26 +9,26 @@ global:
   source: generated
 props:
   color-green-10:
-    value: '#F1F8F2'
+    value: '#EEF8F1'
   color-green-20:
-    value: '#E8F4EA'
+    value: '#DDF3E3'
   color-green-30:
-    value: '#D6ECD9'
+    value: '#C8ECD3'
   color-green-40:
-    value: '#BFE4C5'
+    value: '#B3E7C3'
   color-green-50:
-    value: '#A3DCAD'
+    value: '#9BE2B2'
   color-green-60:
-    value: '#84D394'
+    value: '#82DCA1'
   color-green-70:
-    value: '#60CC7B'
+    value: '#69D692'
   color-green-80:
-    value: '#44CE6E'
+    value: '#4DCF83'
   color-green-90:
-    value: '#22C55E'
+    value: '#30C776'
   color-green-100:
-    value: '#0CB151'
+    value: '#14A25C'
   color-green-110:
-    value: '#008031'
+    value: '#005D29'
   color-green-120:
-    value: '#003000'
+    value: '#002D0B'

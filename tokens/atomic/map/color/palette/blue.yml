@@ -9,26 +9,26 @@ global:
   source: generated
 props:
   color-blue-10:
-    value: '#EDF1F9'
+    value: '#EEF6FF'
   color-blue-20:
-    value: '#E2E9F6'
+    value: '#DAEDFF'
   color-blue-30:
-    value: '#CDD9F0'
+    value: '#C2E1FF'
   color-blue-40:
-    value: '#B2C6EB'
+    value: '#AAD6FF'
   color-blue-50:
-    value: '#95B2E8'
+    value: '#91CCFF'
   color-blue-60:
-    value: '#779DE7'
+    value: '#75C0FF'
   color-blue-70:
-    value: '#5A89E7'
+    value: '#5AB5FF'
   color-blue-80:
-    value: '#4E84F3'
+    value: '#3CA9FF'
   color-blue-90:
-    value: '#3B73E8'
+    value: '#189DFF'
   color-blue-100:
-    value: '#3266D3'
+    value: '#0080D5'
   color-blue-110:
-    value: '#1B459F'
+    value: '#004786'
   color-blue-120:
-    value: '#00094D'
+    value: '#00224B'

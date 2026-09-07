@@ -18,11 +18,11 @@ props:
     type: color
     comment: 页面型场景的默认画布背景，可由具体业务场景在自身作用域内覆盖。
   scene-content-padding:
-    value: '{!size-6}'
+    value: '{!spacing-6}'
     type: dimension
     comment: 页面型场景内容与画布边界之间的默认留白。
   scene-card-gap:
-    value: '{!size-3}'
+    value: '{!spacing-3}'
     type: dimension
     comment: 页面型场景内并列或上下排列内容卡片之间的默认间距。
   scene-card-background:
@@ -42,7 +42,7 @@ props:
     type: dimension
     comment: 场景卡片的默认圆角，不替代 Card 组件自身的组件 Token。
   scene-card-padding:
-    value: '{!size-4}'
+    value: '{!spacing-4}'
     type: dimension
     comment: 场景卡片边界与主体内容之间的默认留白。
   scene-card-shadow:
@@ -66,6 +66,6 @@ props:
     type: font-weight
     comment: 场景卡片标题的默认字重。
   scene-card-title-gap:
-    value: '{!size-3}'
+    value: '{!spacing-3}'
     type: dimension
     comment: 场景卡片标题区与主体内容之间的默认间距。

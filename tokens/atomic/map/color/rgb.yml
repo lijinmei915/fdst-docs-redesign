@@ -12,34 +12,24 @@ imports:
 - ./palette/base.yml
 props:
   color-brand-90-rgb:
-    value: 255, 128, 0
-  color-deep-orange-90-rgb:
-    value: 249, 115, 22
+    value: 255, 124, 25
   color-amber-90-rgb:
-    value: 245, 158, 11
+    value: 255, 124, 25
   color-yellow-90-rgb:
-    value: 234, 179, 8
-  color-lime-90-rgb:
-    value: 132, 204, 22
+    value: 255, 182, 2
   color-yellow-green-90-rgb:
-    value: 111, 196, 71
+    value: 135, 204, 59
   color-green-90-rgb:
-    value: 34, 197, 94
+    value: 48, 199, 118
   color-teal-90-rgb:
-    value: 20, 184, 166
-  color-cyan-90-rgb:
-    value: 6, 182, 212
-  color-light-blue-90-rgb:
-    value: 14, 165, 233
+    value: 22, 180, 171
   color-blue-90-rgb:
-    value: 59, 115, 232
+    value: 24, 157, 255
   color-indigo-90-rgb:
-    value: 99, 102, 241
+    value: 12, 108, 255
   color-purple-90-rgb:
-    value: 139, 92, 246
+    value: 115, 65, 222
   color-magenta-90-rgb:
-    value: 217, 70, 239
-  color-pink-90-rgb:
-    value: 236, 72, 153
+    value: 255, 74, 102
   color-red-90-rgb:
-    value: 239, 68, 68
+    value: 255, 82, 42

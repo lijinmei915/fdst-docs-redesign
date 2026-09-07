@@ -9,26 +9,26 @@ global:
   source: generated
 props:
   color-purple-10:
-    value: '#F2F1FA'
+    value: '#F5F3FF'
   color-purple-20:
-    value: '#EAE8F8'
+    value: '#E4E1FE'
   color-purple-30:
-    value: '#DBD6F3'
+    value: '#D1CAFA'
   color-purple-40:
-    value: '#C9C1F1'
+    value: '#BFB4F9'
   color-purple-50:
-    value: '#B8AAF0'
+    value: '#AF9EF7'
   color-purple-60:
-    value: '#A792F0'
+    value: '#9F88F6'
   color-purple-70:
-    value: '#9879F2'
+    value: '#9071F1'
   color-purple-80:
-    value: '#986FFF'
+    value: '#8159E9'
   color-purple-90:
-    value: '#8B5CF6'
+    value: '#7341DE'
   color-purple-100:
-    value: '#7C4FE0'
+    value: '#6134BE'
   color-purple-110:
-    value: '#5931A9'
+    value: '#3E1983'
   color-purple-120:
-    value: '#210052'
+    value: '#250D53'
