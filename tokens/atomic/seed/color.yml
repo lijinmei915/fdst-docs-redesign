@@ -1,0 +1,42 @@
+schema: fds-token-source/v1
+global:
+  layer: atomic
+  tier: seed
+  category: color
+  type: color
+  scope: global
+  primitive: true
+  source: manual
+props:
+  color-brand:
+    value: '#FF8000'
+  color-deep-orange:
+    value: '#F97316'
+  color-amber:
+    value: '#F59E0B'
+  color-yellow:
+    value: '#EAB308'
+  color-lime:
+    value: '#84CC16'
+  color-yellow-green:
+    value: '#6FC447'
+  color-green:
+    value: '#22C55E'
+  color-teal:
+    value: '#14B8A6'
+  color-cyan:
+    value: '#06B6D4'
+  color-light-blue:
+    value: '#0EA5E9'
+  color-blue:
+    value: '#3B73E8'
+  color-indigo:
+    value: '#6366F1'
+  color-purple:
+    value: '#8B5CF6'
+  color-magenta:
+    value: '#D946EF'
+  color-pink:
+    value: '#EC4899'
+  color-red:
+    value: '#EF4444'

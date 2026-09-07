@@ -1,0 +1,118 @@
+schema: fds-token-source/v1
+global:
+  layer: semantic
+  tier: base
+  category: color
+  type: color
+  scope: global
+  primitive: false
+imports:
+- ../../atomic/map/color/palette/base.yml
+- ../../atomic/map/color/gray.yml
+props:
+  color-primary:
+    value: '{!color-brand-90}'
+  color-primary-background:
+    value: '{!color-brand-40}'
+  color-primary-background-hover:
+    value: '{!color-brand-50}'
+  color-primary-background-active:
+    value: '{!color-brand-60}'
+  color-primary-hover:
+    value: '{!color-brand-80}'
+  color-primary-active:
+    value: '{!color-brand-100}'
+  color-primary-disabled:
+    value: '{!color-brand-60}'
+  color-danger:
+    value: '{!color-red-90}'
+  color-danger-background:
+    value: '{!color-red-40}'
+  color-danger-background-hover:
+    value: '{!color-red-50}'
+  color-danger-background-active:
+    value: '{!color-red-60}'
+  color-danger-hover:
+    value: '{!color-red-80}'
+  color-danger-active:
+    value: '{!color-red-100}'
+  color-danger-disabled:
+    value: '{!color-red-50}'
+  color-warning:
+    value: '{!color-amber-90}'
+  color-warning-background:
+    value: '{!color-amber-40}'
+  color-warning-background-hover:
+    value: '{!color-amber-50}'
+  color-warning-background-active:
+    value: '{!color-amber-60}'
+  color-warning-hover:
+    value: '{!color-amber-80}'
+  color-warning-active:
+    value: '{!color-amber-100}'
+  color-warning-disabled:
+    value: '{!color-amber-50}'
+  color-success:
+    value: '{!color-green-90}'
+  color-success-background:
+    value: '{!color-green-40}'
+  color-success-background-hover:
+    value: '{!color-green-50}'
+  color-success-background-active:
+    value: '{!color-green-60}'
+  color-success-hover:
+    value: '{!color-green-80}'
+  color-success-active:
+    value: '{!color-green-100}'
+  color-success-disabled:
+    value: '{!color-green-50}'
+  color-info:
+    value: '{!color-blue-90}'
+  color-info-background:
+    value: '{!color-blue-40}'
+  color-info-background-hover:
+    value: '{!color-blue-50}'
+  color-info-background-active:
+    value: '{!color-blue-60}'
+  color-info-hover:
+    value: '{!color-blue-80}'
+  color-info-active:
+    value: '{!color-blue-100}'
+  color-info-disabled:
+    value: '{!color-blue-50}'
+  color-text-primary:
+    value: '{!color-gray-200}'
+  color-text-secondary:
+    value: '{!color-gray-150}'
+  color-text-tertiary:
+    value: '{!color-gray-120}'
+  color-text-disabled:
+    value: '{!color-gray-60}'
+  color-text-inverse:
+    value: '{!color-gray-10}'
+  color-icon-primary:
+    value: '{!color-gray-200}'
+  color-icon-secondary:
+    value: '{!color-gray-110}'
+  color-icon-disabled:
+    value: '{!color-gray-60}'
+  color-surface-page:
+    value: '{!color-gray-30}'
+  color-surface-container:
+    value: '{!color-gray-10}'
+  color-surface-elevated:
+    value: '{!color-gray-10}'
+  color-surface-disabled:
+    value: '{!color-gray-20}'
+  color-mask:
+    value: rgb(8 5 4 / 20%)
+  border-default:
+    value: '{!color-gray-50}'
+  border-subtle:
+    value: '{!color-gray-40}'
+  border-disabled:
+    value: '{!color-gray-20}'
+  border-focus:
+    value: '{!color-primary}'
+  border-error:
+    value: '{!color-danger}'

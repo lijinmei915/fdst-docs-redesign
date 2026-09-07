@@ -1,0 +1,71 @@
+schema: fds-token-source/v1
+global:
+  layer: semantic
+  tier: scene
+  category: scene
+  scope: global
+  primitive: false
+imports:
+- ../base/layout.yml
+- ../base/effects.yml
+- ../base/typography.yml
+- ../../atomic/map/spacing.yml
+- ../../atomic/map/shape.yml
+- ../../atomic/map/effects.yml
+props:
+  scene-background:
+    value: '{!background-main}'
+    type: color
+    comment: 页面型场景的默认画布背景，可由具体业务场景在自身作用域内覆盖。
+  scene-content-padding:
+    value: '{!size-6}'
+    type: dimension
+    comment: 页面型场景内容与画布边界之间的默认留白。
+  scene-card-gap:
+    value: '{!size-3}'
+    type: dimension
+    comment: 页面型场景内并列或上下排列内容卡片之间的默认间距。
+  scene-card-background:
+    value: '{!background-container}'
+    type: color
+    comment: 页面型场景中通用内容卡片的默认表面背景。
+  scene-card-border-color:
+    value: '{!border-subtle}'
+    type: color
+    comment: 场景卡片与页面画布之间的默认弱分隔色。
+  scene-card-border-width:
+    value: '{!border-width-1}'
+    type: dimension
+    comment: 场景卡片的默认边框宽度。
+  scene-card-radius:
+    value: '{!container-radius}'
+    type: dimension
+    comment: 场景卡片的默认圆角，不替代 Card 组件自身的组件 Token。
+  scene-card-padding:
+    value: '{!size-4}'
+    type: dimension
+    comment: 场景卡片边界与主体内容之间的默认留白。
+  scene-card-shadow:
+    value: '{!shadow-none}'
+    type: shadow
+    comment: 场景卡片默认依靠背景和边框建立层次，不预设悬浮阴影。
+  scene-card-title-color:
+    value: '{!typography-heading-color}'
+    type: color
+    comment: 场景卡片标题的默认文本色。
+  scene-card-title-size:
+    value: '{!typography-heading-5-size}'
+    type: dimension
+    comment: 场景卡片标题的默认字号。
+  scene-card-title-line-height:
+    value: '{!typography-heading-5-line-height}'
+    type: dimension
+    comment: 场景卡片标题的默认行高。
+  scene-card-title-weight:
+    value: '{!typography-heading-5-weight}'
+    type: font-weight
+    comment: 场景卡片标题的默认字重。
+  scene-card-title-gap:
+    value: '{!size-3}'
+    type: dimension
+    comment: 场景卡片标题区与主体内容之间的默认间距。

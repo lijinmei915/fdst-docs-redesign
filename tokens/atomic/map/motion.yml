@@ -1,0 +1,36 @@
+schema: fds-token-source/v1
+global:
+  layer: atomic
+  tier: map
+  category: motion
+  type: duration
+  scope: global
+  primitive: true
+props:
+  motion-duration-0:
+    value: 0ms
+    comment: 关闭动效和减少动态效果模式使用；不是普通动效档位，也不表示停留时长。
+  motion-duration-1:
+    value: 100ms
+    comment: 小范围即时反馈的原子时长，由 Feedback 场景消费。
+  motion-duration-2:
+    value: 200ms
+    comment: 上下文浮层和轻量状态变化的原子时长，由 Context 场景消费。
+  motion-duration-3:
+    value: 300ms
+    comment: 内容结构展开或收起的原子时长，由 Disclosure 场景消费。
+  motion-duration-4:
+    value: 400ms
+    comment: 重要反馈或较大范围变化的原子时长，由 Prominent 场景受限消费。
+  motion-easing-1:
+    value: cubic-bezier(0.3, 0, 0.15, 1)
+    type: cubic-bezier
+    comment: Standard 曲线；元素在整个过程中持续可见，适用于结构展开、收起和位置调整。
+  motion-easing-2:
+    value: cubic-bezier(0, 0.3, 0.15, 1)
+    type: cubic-bezier
+    comment: Enter 曲线；快速进入后平缓停止，用于新元素出现和即时反馈。
+  motion-easing-3:
+    value: cubic-bezier(0.3, 0, 1, 0.3)
+    type: cubic-bezier
+    comment: Exit 曲线；离场阶段逐步加速，避免消失过程阻塞操作。

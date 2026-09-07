@@ -1,0 +1,27 @@
+schema: fds-token-source/v1
+global:
+  layer: atomic
+  tier: map
+  category: spacing
+  type: dimension
+  scope: global
+  primitive: true
+props:
+  size-0:
+    value: '0'
+  size-1:
+    value: 4px
+  size-2:
+    value: 8px
+  size-3:
+    value: 12px
+  size-4:
+    value: 16px
+  size-5:
+    value: 20px
+  size-6:
+    value: 24px
+  size-7:
+    value: 32px
+  size-8:
+    value: 48px

@@ -1,0 +1,4 @@
+schema: fds-token-group/v1
+imports:
+- ./base/base.yml
+- ./scene/base.yml

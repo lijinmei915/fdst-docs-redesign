@@ -1,0 +1,541 @@
+/**
+ * FDS Global CSS Token（由 YAML 源文件生成，请勿直接编辑）。
+ * 层级：Atomic（Seed / Map）-> Semantic（Base / Scene）。
+ */
+
+:root {
+  /* atomic / seed / color · source: tokens/atomic/seed/color.yml */
+  --fds-g-color-brand: #FF8000;
+  --fds-g-color-deep-orange: #F97316;
+  --fds-g-color-amber: #F59E0B;
+  --fds-g-color-yellow: #EAB308;
+  --fds-g-color-lime: #84CC16;
+  --fds-g-color-yellow-green: #6FC447;
+  --fds-g-color-green: #22C55E;
+  --fds-g-color-teal: #14B8A6;
+  --fds-g-color-cyan: #06B6D4;
+  --fds-g-color-light-blue: #0EA5E9;
+  --fds-g-color-blue: #3B73E8;
+  --fds-g-color-indigo: #6366F1;
+  --fds-g-color-purple: #8B5CF6;
+  --fds-g-color-magenta: #D946EF;
+  --fds-g-color-pink: #EC4899;
+  --fds-g-color-red: #EF4444;
+
+  /* atomic / map / color · source: tokens/atomic/map/color/palette/brand.yml */
+  --fds-g-color-brand-10: #FDF4EF;
+  --fds-g-color-brand-20: #FCEEE6;
+  --fds-g-color-brand-30: #F9E1D2;
+  --fds-g-color-brand-40: #F9D1B8;
+  --fds-g-color-brand-50: #F9BE9A;
+  --fds-g-color-brand-60: #FBAB78;
+  --fds-g-color-brand-70: #FD9751;
+  --fds-g-color-brand-80: #FF8E32;
+  --fds-g-color-brand-90: #FF8000;
+  --fds-g-color-brand-100: #E77000;
+  --fds-g-color-brand-110: #AB4A00;
+  --fds-g-color-brand-120: #4B0100;
+  --fds-g-color-brand-vivid: #FB7C00;
+
+  /* atomic / map / color · source: tokens/atomic/map/color/palette/deep-orange.yml */
+  --fds-g-color-deep-orange-10: #FCF3EF;
+  --fds-g-color-deep-orange-20: #FBECE5;
+  --fds-g-color-deep-orange-30: #F8DED1;
+  --fds-g-color-deep-orange-40: #F6CCB7;
+  --fds-g-color-deep-orange-50: #F6B899;
+  --fds-g-color-deep-orange-60: #F7A277;
+  --fds-g-color-deep-orange-70: #F88C52;
+  --fds-g-color-deep-orange-80: #FF8238;
+  --fds-g-color-deep-orange-90: #F97316;
+  --fds-g-color-deep-orange-100: #E16401;
+  --fds-g-color-deep-orange-110: #A74100;
+  --fds-g-color-deep-orange-120: #490000;
+
+  /* atomic / map / color · source: tokens/atomic/map/color/palette/amber.yml */
+  --fds-g-color-amber-10: #FCF6F0;
+  --fds-g-color-amber-20: #FAF1E7;
+  --fds-g-color-amber-30: #F7E7D5;
+  --fds-g-color-amber-40: #F5DABC;
+  --fds-g-color-amber-50: #F4CC9F;
+  --fds-g-color-amber-60: #F3BD7D;
+  --fds-g-color-amber-70: #F4AE57;
+  --fds-g-color-amber-80: #F7A531;
+  --fds-g-color-amber-90: #F59E0B;
+  --fds-g-color-amber-100: #DD8C00;
+  --fds-g-color-amber-110: #A36100;
+  --fds-g-color-amber-120: #451600;
+
+  /* atomic / map / color · source: tokens/atomic/map/color/palette/yellow.yml */
+  --fds-g-color-yellow-10: #FBF8F1;
+  --fds-g-color-yellow-20: #F9F4E8;
+  --fds-g-color-yellow-30: #F5EBD7;
+  --fds-g-color-yellow-40: #F1E1BF;
+  --fds-g-color-yellow-50: #EED6A2;
+  --fds-g-color-yellow-60: #ECCA80;
+  --fds-g-color-yellow-70: #EBBF59;
+  --fds-g-color-yellow-80: #F0BC37;
+  --fds-g-color-yellow-90: #EAB308;
+  --fds-g-color-yellow-100: #D39F00;
+  --fds-g-color-yellow-110: #9B7100;
+  --fds-g-color-yellow-120: #3F2100;
+
+  /* atomic / map / color · source: tokens/atomic/map/color/palette/lime.yml */
+  --fds-g-color-lime-10: #F4F9F1;
+  --fds-g-color-lime-20: #EEF6E8;
+  --fds-g-color-lime-30: #E1EFD6;
+  --fds-g-color-lime-40: #D1E8BE;
+  --fds-g-color-lime-50: #BFE0A1;
+  --fds-g-color-lime-60: #ABD980;
+  --fds-g-color-lime-70: #98D35A;
+  --fds-g-color-lime-80: #90D43B;
+  --fds-g-color-lime-90: #84CC16;
+  --fds-g-color-lime-100: #74B700;
+  --fds-g-color-lime-110: #4E8400;
+  --fds-g-color-lime-120: #0A3000;
+
+  /* atomic / map / color · source: tokens/atomic/map/color/palette/yellow-green.yml */
+  --fds-g-color-yellow-green-10: #F3F8F1;
+  --fds-g-color-yellow-green-20: #ECF4E9;
+  --fds-g-color-yellow-green-30: #DDECD7;
+  --fds-g-color-yellow-green-40: #CBE4C1;
+  --fds-g-color-yellow-green-50: #B6DBA7;
+  --fds-g-color-yellow-green-60: #9FD38B;
+  --fds-g-color-yellow-green-70: #88CC6D;
+  --fds-g-color-yellow-green-80: #7DCD5A;
+  --fds-g-color-yellow-green-90: #6FC447;
+  --fds-g-color-yellow-green-100: #60B03A;
+  --fds-g-color-yellow-green-110: #3E7F19;
+  --fds-g-color-yellow-green-120: #002F00;
+
+  /* atomic / map / color · source: tokens/atomic/map/color/palette/green.yml */
+  --fds-g-color-green-10: #F1F8F2;
+  --fds-g-color-green-20: #E8F4EA;
+  --fds-g-color-green-30: #D6ECD9;
+  --fds-g-color-green-40: #BFE4C5;
+  --fds-g-color-green-50: #A3DCAD;
+  --fds-g-color-green-60: #84D394;
+  --fds-g-color-green-70: #60CC7B;
+  --fds-g-color-green-80: #44CE6E;
+  --fds-g-color-green-90: #22C55E;
+  --fds-g-color-green-100: #0CB151;
+  --fds-g-color-green-110: #008031;
+  --fds-g-color-green-120: #003000;
+
+  /* atomic / map / color · source: tokens/atomic/map/color/palette/teal.yml */
+  --fds-g-color-teal-10: #F0F7F6;
+  --fds-g-color-teal-20: #E7F2F0;
+  --fds-g-color-teal-30: #D4E9E5;
+  --fds-g-color-teal-40: #BCDED8;
+  --fds-g-color-teal-50: #A0D4CB;
+  --fds-g-color-teal-60: #80CABE;
+  --fds-g-color-teal-70: #5AC1B2;
+  --fds-g-color-teal-80: #3EC2B1;
+  --fds-g-color-teal-90: #14B8A6;
+  --fds-g-color-teal-100: #00A594;
+  --fds-g-color-teal-110: #00776A;
+  --fds-g-color-teal-120: #002C24;
+
+  /* atomic / map / color · source: tokens/atomic/map/color/palette/cyan.yml */
+  --fds-g-color-cyan-10: #F0F7F9;
+  --fds-g-color-cyan-20: #E7F2F5;
+  --fds-g-color-cyan-30: #D5E9EE;
+  --fds-g-color-cyan-40: #BDDEE7;
+  --fds-g-color-cyan-50: #A0D4E1;
+  --fds-g-color-cyan-60: #7FC9DC;
+  --fds-g-color-cyan-70: #59C0D7;
+  --fds-g-color-cyan-80: #3AC0DC;
+  --fds-g-color-cyan-90: #06B6D4;
+  --fds-g-color-cyan-100: #00A3BF;
+  --fds-g-color-cyan-110: #00758C;
+  --fds-g-color-cyan-120: #002A3A;
+
+  /* atomic / map / color · source: tokens/atomic/map/color/palette/light-blue.yml */
+  --fds-g-color-light-blue-10: #EFF6FA;
+  --fds-g-color-light-blue-20: #E6F0F7;
+  --fds-g-color-light-blue-30: #D2E5F2;
+  --fds-g-color-light-blue-40: #B9D9EE;
+  --fds-g-color-light-blue-50: #9CCBEA;
+  --fds-g-color-light-blue-60: #7BBEE9;
+  --fds-g-color-light-blue-70: #55B2E8;
+  --fds-g-color-light-blue-80: #39B1F1;
+  --fds-g-color-light-blue-90: #0EA5E9;
+  --fds-g-color-light-blue-100: #0093D3;
+  --fds-g-color-light-blue-110: #00699D;
+  --fds-g-color-light-blue-120: #002246;
+
+  /* atomic / map / color · source: tokens/atomic/map/color/palette/blue.yml */
+  --fds-g-color-blue-10: #EDF1F9;
+  --fds-g-color-blue-20: #E2E9F6;
+  --fds-g-color-blue-30: #CDD9F0;
+  --fds-g-color-blue-40: #B2C6EB;
+  --fds-g-color-blue-50: #95B2E8;
+  --fds-g-color-blue-60: #779DE7;
+  --fds-g-color-blue-70: #5A89E7;
+  --fds-g-color-blue-80: #4E84F3;
+  --fds-g-color-blue-90: #3B73E8;
+  --fds-g-color-blue-100: #3266D3;
+  --fds-g-color-blue-110: #1B459F;
+  --fds-g-color-blue-120: #00094D;
+
+  /* atomic / map / color · source: tokens/atomic/map/color/palette/indigo.yml */
+  --fds-g-color-indigo-10: #EFF1FA;
+  --fds-g-color-indigo-20: #E5E8F7;
+  --fds-g-color-indigo-30: #D2D7F2;
+  --fds-g-color-indigo-40: #BBC3EE;
+  --fds-g-color-indigo-50: #A3ADED;
+  --fds-g-color-indigo-60: #8B96ED;
+  --fds-g-color-indigo-70: #7680EE;
+  --fds-g-color-indigo-80: #7178FC;
+  --fds-g-color-indigo-90: #6366F1;
+  --fds-g-color-indigo-100: #5759DB;
+  --fds-g-color-indigo-110: #3C3AA6;
+  --fds-g-color-indigo-120: #110051;
+
+  /* atomic / map / color · source: tokens/atomic/map/color/palette/purple.yml */
+  --fds-g-color-purple-10: #F2F1FA;
+  --fds-g-color-purple-20: #EAE8F8;
+  --fds-g-color-purple-30: #DBD6F3;
+  --fds-g-color-purple-40: #C9C1F1;
+  --fds-g-color-purple-50: #B8AAF0;
+  --fds-g-color-purple-60: #A792F0;
+  --fds-g-color-purple-70: #9879F2;
+  --fds-g-color-purple-80: #986FFF;
+  --fds-g-color-purple-90: #8B5CF6;
+  --fds-g-color-purple-100: #7C4FE0;
+  --fds-g-color-purple-110: #5931A9;
+  --fds-g-color-purple-120: #210052;
+
+  /* atomic / map / color · source: tokens/atomic/map/color/palette/magenta.yml */
+  --fds-g-color-magenta-10: #F9F1FA;
+  --fds-g-color-magenta-20: #F6E8F8;
+  --fds-g-color-magenta-30: #EFD7F3;
+  --fds-g-color-magenta-40: #EAC1F0;
+  --fds-g-color-magenta-50: #E5A7EE;
+  --fds-g-color-magenta-60: #E08CED;
+  --fds-g-color-magenta-70: #DC6EED;
+  --fds-g-color-magenta-80: #E35DF8;
+  --fds-g-color-magenta-90: #D946EF;
+  --fds-g-color-magenta-100: #C439D8;
+  --fds-g-color-magenta-110: #9117A2;
+  --fds-g-color-magenta-120: #3D004A;
+
+  /* atomic / map / color · source: tokens/atomic/map/color/palette/pink.yml */
+  --fds-g-color-pink-10: #FBF0F4;
+  --fds-g-color-pink-20: #F9E7EE;
+  --fds-g-color-pink-30: #F5D5E1;
+  --fds-g-color-pink-40: #F2BFD2;
+  --fds-g-color-pink-50: #F0A5C3;
+  --fds-g-color-pink-60: #EF8AB4;
+  --fds-g-color-pink-70: #ED6DA6;
+  --fds-g-color-pink-80: #F65DA5;
+  --fds-g-color-pink-90: #EC4899;
+  --fds-g-color-pink-100: #D53C89;
+  --fds-g-color-pink-110: #9F1D61;
+  --fds-g-color-pink-120: #450021;
+
+  /* atomic / map / color · source: tokens/atomic/map/color/palette/red.yml */
+  --fds-g-color-red-10: #FBF0EF;
+  --fds-g-color-red-20: #FAE7E5;
+  --fds-g-color-red-30: #F6D5D1;
+  --fds-g-color-red-40: #F3BEB8;
+  --fds-g-color-red-50: #F2A49D;
+  --fds-g-color-red-60: #F18880;
+  --fds-g-color-red-70: #F06A64;
+  --fds-g-color-red-80: #FA5B56;
+  --fds-g-color-red-90: #EF4444;
+  --fds-g-color-red-100: #D83839;
+  --fds-g-color-red-110: #A1181F;
+  --fds-g-color-red-120: #480000;
+
+  /* atomic / map / color · source: tokens/atomic/map/color/gray.yml */
+  --fds-g-color-gray-10: #FFFFFF;
+  --fds-g-color-gray-20: #F9F9F9;
+  --fds-g-color-gray-30: #F1F0F0;
+  --fds-g-color-gray-40: #E5E5E4;
+  --fds-g-color-gray-50: #D7D6D6;
+  --fds-g-color-gray-60: #C9C8C7;
+  --fds-g-color-gray-70: #B8B7B6;
+  --fds-g-color-gray-80: #A8A6A5;
+  --fds-g-color-gray-90: #989695;
+  --fds-g-color-gray-100: #888685;
+  --fds-g-color-gray-110: #797675;
+  --fds-g-color-gray-120: #6A6765;
+  --fds-g-color-gray-130: #5B5856;
+  --fds-g-color-gray-140: #4D4A48;
+  --fds-g-color-gray-150: #3F3C3A;
+  --fds-g-color-gray-160: #322E2C;
+  --fds-g-color-gray-170: #25211F;
+  --fds-g-color-gray-180: #1B1715;
+  --fds-g-color-gray-190: #110D0B;
+  --fds-g-color-gray-200: #080504;
+  --fds-g-color-white: var(--fds-g-color-gray-10);
+  --fds-g-color-black: var(--fds-g-color-gray-200);
+
+  /* atomic / map / color · source: tokens/atomic/map/color/rgb.yml */
+  --fds-g-color-brand-90-rgb: 255, 128, 0;
+  --fds-g-color-deep-orange-90-rgb: 249, 115, 22;
+  --fds-g-color-amber-90-rgb: 245, 158, 11;
+  --fds-g-color-yellow-90-rgb: 234, 179, 8;
+  --fds-g-color-lime-90-rgb: 132, 204, 22;
+  --fds-g-color-yellow-green-90-rgb: 111, 196, 71;
+  --fds-g-color-green-90-rgb: 34, 197, 94;
+  --fds-g-color-teal-90-rgb: 20, 184, 166;
+  --fds-g-color-cyan-90-rgb: 6, 182, 212;
+  --fds-g-color-light-blue-90-rgb: 14, 165, 233;
+  --fds-g-color-blue-90-rgb: 59, 115, 232;
+  --fds-g-color-indigo-90-rgb: 99, 102, 241;
+  --fds-g-color-purple-90-rgb: 139, 92, 246;
+  --fds-g-color-magenta-90-rgb: 217, 70, 239;
+  --fds-g-color-pink-90-rgb: 236, 72, 153;
+  --fds-g-color-red-90-rgb: 239, 68, 68;
+
+  /* atomic / map / typography · source: tokens/atomic/map/typography.yml */
+  --fds-g-font-family-sans: "Microsoft YaHei", "PingFang SC", "Segoe UI", Arial, sans-serif;
+  --fds-g-font-family-code: Consolas, "SFMono-Regular", "Liberation Mono", monospace;
+  --fds-g-font-size-1: 12px;
+  --fds-g-font-size-2: 13px;
+  --fds-g-font-size-3: 14px;
+  --fds-g-font-size-4: 15px;
+  --fds-g-font-size-5: 16px;
+  --fds-g-font-size-6: 18px;
+  --fds-g-font-size-7: 20px;
+  --fds-g-font-size-8: 22px;
+  --fds-g-font-size-9: 24px;
+  --fds-g-font-size-10: 28px;
+  --fds-g-font-size-11: 32px;
+  --fds-g-font-size-12: 36px;
+  --fds-g-font-size-13: 40px;
+  --fds-g-font-size-14: 48px;
+  --fds-g-line-height-1: 16px;
+  --fds-g-line-height-2: 18px;
+  --fds-g-line-height-3: 20px;
+  --fds-g-line-height-4: 22px;
+  --fds-g-line-height-5: 24px;
+  --fds-g-line-height-6: 28px;
+  --fds-g-line-height-7: 30px;
+  --fds-g-line-height-8: 32px;
+  --fds-g-line-height-9: 36px;
+  --fds-g-line-height-10: 38px;
+  --fds-g-line-height-11: 40px;
+  --fds-g-line-height-12: 44px;
+  --fds-g-line-height-13: 48px;
+  --fds-g-font-weight-regular: 400;
+  --fds-g-font-weight-medium: 500;
+  --fds-g-font-weight-semibold: 600;
+  --fds-g-font-weight-bold: 700;
+
+  /* atomic / map / spacing · source: tokens/atomic/map/spacing.yml */
+  --fds-g-size-0: 0;
+  --fds-g-size-1: 4px;
+  --fds-g-size-2: 8px;
+  --fds-g-size-3: 12px;
+  --fds-g-size-4: 16px;
+  --fds-g-size-5: 20px;
+  --fds-g-size-6: 24px;
+  --fds-g-size-7: 32px;
+  --fds-g-size-8: 48px;
+
+  /* atomic / map / sizing · source: tokens/atomic/map/sizing.yml */
+  --fds-g-control-height-1: 24px;
+  --fds-g-control-height-2: 28px;
+  --fds-g-control-height-3: 32px;
+  --fds-g-control-height-4: 36px;
+  --fds-g-control-height-5: 40px;
+  --fds-g-control-height-6: 48px;
+  --fds-g-icon-size-1: 12px;
+  --fds-g-icon-size-2: 16px;
+  --fds-g-icon-size-3: 20px;
+  --fds-g-icon-size-4: 24px;
+  --fds-g-icon-size-5: 32px;
+  --fds-g-icon-size-6: 48px;
+
+  /* atomic / map / shape · source: tokens/atomic/map/shape.yml */
+  --fds-g-radius-0: 0;
+  --fds-g-radius-1: 2px;
+  --fds-g-radius-2: 4px;
+  --fds-g-radius-3: 6px;
+  --fds-g-radius-4: 8px;
+  --fds-g-radius-5: 12px;
+  --fds-g-radius-6: 16px;
+  --fds-g-radius-full: 9999px;
+  --fds-g-border-width-1: 1px;
+  --fds-g-border-width-2: 2px;
+
+  /* atomic / map / effects · source: tokens/atomic/map/effects.yml */
+  --fds-g-opacity-0: 0; /* 整体不透明度端点；0 不等于隐藏布局、禁用交互或移除可访问性节点。 */
+  --fds-g-opacity-25: 0.25; /* 较强的整体弱化档；浅色表面与描边应使用颜色 alpha，不扩展细密 Opacity 梯度。 */
+  --fds-g-opacity-50: 0.5; /* 保留当前 Disabled 语义取值，与 SLDS 传统 Global 50% 档一致。 */
+  --fds-g-opacity-65: 0.65; /* 参考 Ant Design opacityLoading 的整体弱化取值，不自动绑定所有加载场景。 */
+  --fds-g-opacity-80: 0.8; /* 轻度整体弱化档，参考 SLDS 传统 Global 80% 档。 */
+  --fds-g-opacity-100: 1;
+  --fds-g-z-index-0: 0;
+  --fds-g-z-index-1: 100;
+  --fds-g-z-index-2: 1000; /* 轻量浮层区间起点，预留 1000-3999 给组件私有层级。 */
+  --fds-g-z-index-3: 4000; /* 全局遮罩区间起点，预留 4000-4999。 */
+  --fds-g-z-index-4: 5000; /* 模态交互区间起点，预留 5000-8999 给组件私有层级。 */
+  --fds-g-z-index-5: 9000; /* Message、Toast 等全局反馈区间起点，预留 9000-9999。 */
+  --fds-g-shadow-0: none; /* 无阴影，用于默认依靠边框分隔的静态表面。 */
+  --fds-g-shadow-1: 0 0 2px var(--fds-g-color-brand-90); /* 交互激活或键盘焦点的品牌色外发光配方，使用前需避免与 Focus Outline 重复叠加。 */
+  --fds-g-shadow-2: 0 2px 4px 0 rgb(0 0 0 / 40%); /* 拖拽中元素的临时悬浮配方，以较强阴影表达离开原表面。 */
+  --fds-g-shadow-3: 0 2px 3px 0 rgb(0 0 0 / 16%); /* Dropdown、Select、DatePicker 等轻量下拉浮层的投影配方。 */
+
+  /* atomic / map / motion · source: tokens/atomic/map/motion.yml */
+  --fds-g-motion-duration-0: 0ms; /* 关闭动效和减少动态效果模式使用；不是普通动效档位，也不表示停留时长。 */
+  --fds-g-motion-duration-1: 100ms; /* 小范围即时反馈的原子时长，由 Feedback 场景消费。 */
+  --fds-g-motion-duration-2: 200ms; /* 上下文浮层和轻量状态变化的原子时长，由 Context 场景消费。 */
+  --fds-g-motion-duration-3: 300ms; /* 内容结构展开或收起的原子时长，由 Disclosure 场景消费。 */
+  --fds-g-motion-duration-4: 400ms; /* 重要反馈或较大范围变化的原子时长，由 Prominent 场景受限消费。 */
+  --fds-g-motion-easing-1: cubic-bezier(0.3, 0, 0.15, 1); /* Standard 曲线；元素在整个过程中持续可见，适用于结构展开、收起和位置调整。 */
+  --fds-g-motion-easing-2: cubic-bezier(0, 0.3, 0.15, 1); /* Enter 曲线；快速进入后平缓停止，用于新元素出现和即时反馈。 */
+  --fds-g-motion-easing-3: cubic-bezier(0.3, 0, 1, 0.3); /* Exit 曲线；离场阶段逐步加速，避免消失过程阻塞操作。 */
+
+  /* semantic / base / color · source: tokens/semantic/base/color.yml */
+  --fds-g-color-primary: var(--fds-g-color-brand-90);
+  --fds-g-color-primary-background: var(--fds-g-color-brand-40);
+  --fds-g-color-primary-background-hover: var(--fds-g-color-brand-50);
+  --fds-g-color-primary-background-active: var(--fds-g-color-brand-60);
+  --fds-g-color-primary-hover: var(--fds-g-color-brand-80);
+  --fds-g-color-primary-active: var(--fds-g-color-brand-100);
+  --fds-g-color-primary-disabled: var(--fds-g-color-brand-60);
+  --fds-g-color-danger: var(--fds-g-color-red-90);
+  --fds-g-color-danger-background: var(--fds-g-color-red-40);
+  --fds-g-color-danger-background-hover: var(--fds-g-color-red-50);
+  --fds-g-color-danger-background-active: var(--fds-g-color-red-60);
+  --fds-g-color-danger-hover: var(--fds-g-color-red-80);
+  --fds-g-color-danger-active: var(--fds-g-color-red-100);
+  --fds-g-color-danger-disabled: var(--fds-g-color-red-50);
+  --fds-g-color-warning: var(--fds-g-color-amber-90);
+  --fds-g-color-warning-background: var(--fds-g-color-amber-40);
+  --fds-g-color-warning-background-hover: var(--fds-g-color-amber-50);
+  --fds-g-color-warning-background-active: var(--fds-g-color-amber-60);
+  --fds-g-color-warning-hover: var(--fds-g-color-amber-80);
+  --fds-g-color-warning-active: var(--fds-g-color-amber-100);
+  --fds-g-color-warning-disabled: var(--fds-g-color-amber-50);
+  --fds-g-color-success: var(--fds-g-color-green-90);
+  --fds-g-color-success-background: var(--fds-g-color-green-40);
+  --fds-g-color-success-background-hover: var(--fds-g-color-green-50);
+  --fds-g-color-success-background-active: var(--fds-g-color-green-60);
+  --fds-g-color-success-hover: var(--fds-g-color-green-80);
+  --fds-g-color-success-active: var(--fds-g-color-green-100);
+  --fds-g-color-success-disabled: var(--fds-g-color-green-50);
+  --fds-g-color-info: var(--fds-g-color-blue-90);
+  --fds-g-color-info-background: var(--fds-g-color-blue-40);
+  --fds-g-color-info-background-hover: var(--fds-g-color-blue-50);
+  --fds-g-color-info-background-active: var(--fds-g-color-blue-60);
+  --fds-g-color-info-hover: var(--fds-g-color-blue-80);
+  --fds-g-color-info-active: var(--fds-g-color-blue-100);
+  --fds-g-color-info-disabled: var(--fds-g-color-blue-50);
+  --fds-g-color-text-primary: var(--fds-g-color-gray-200);
+  --fds-g-color-text-secondary: var(--fds-g-color-gray-150);
+  --fds-g-color-text-tertiary: var(--fds-g-color-gray-120);
+  --fds-g-color-text-disabled: var(--fds-g-color-gray-60);
+  --fds-g-color-text-inverse: var(--fds-g-color-gray-10);
+  --fds-g-color-icon-primary: var(--fds-g-color-gray-200);
+  --fds-g-color-icon-secondary: var(--fds-g-color-gray-110);
+  --fds-g-color-icon-disabled: var(--fds-g-color-gray-60);
+  --fds-g-color-surface-page: var(--fds-g-color-gray-30);
+  --fds-g-color-surface-container: var(--fds-g-color-gray-10);
+  --fds-g-color-surface-elevated: var(--fds-g-color-gray-10);
+  --fds-g-color-surface-disabled: var(--fds-g-color-gray-20);
+  --fds-g-color-mask: rgb(8 5 4 / 20%);
+  --fds-g-border-default: var(--fds-g-color-gray-50);
+  --fds-g-border-subtle: var(--fds-g-color-gray-40);
+  --fds-g-border-disabled: var(--fds-g-color-gray-20);
+  --fds-g-border-focus: var(--fds-g-color-primary);
+  --fds-g-border-error: var(--fds-g-color-danger);
+
+  /* semantic / base / typography · source: tokens/semantic/base/typography.yml */
+  --fds-g-typography-heading-font-family: var(--fds-g-font-family-sans);
+  --fds-g-typography-heading-color: var(--fds-g-color-text-primary);
+  --fds-g-typography-heading-1-size: var(--fds-g-font-size-11);
+  --fds-g-typography-heading-1-line-height: var(--fds-g-line-height-13);
+  --fds-g-typography-heading-1-weight: var(--fds-g-font-weight-bold);
+  --fds-g-typography-heading-2-size: var(--fds-g-font-size-9);
+  --fds-g-typography-heading-2-line-height: var(--fds-g-line-height-9);
+  --fds-g-typography-heading-2-weight: var(--fds-g-font-weight-bold);
+  --fds-g-typography-heading-3-size: var(--fds-g-font-size-7);
+  --fds-g-typography-heading-3-line-height: var(--fds-g-line-height-8);
+  --fds-g-typography-heading-3-weight: var(--fds-g-font-weight-semibold);
+  --fds-g-typography-heading-4-size: var(--fds-g-font-size-6);
+  --fds-g-typography-heading-4-line-height: var(--fds-g-line-height-6);
+  --fds-g-typography-heading-4-weight: var(--fds-g-font-weight-semibold);
+  --fds-g-typography-heading-5-size: var(--fds-g-font-size-5);
+  --fds-g-typography-heading-5-line-height: var(--fds-g-line-height-5);
+  --fds-g-typography-heading-5-weight: var(--fds-g-font-weight-semibold);
+  --fds-g-typography-body-font-family: var(--fds-g-font-family-sans);
+  --fds-g-typography-body-color: var(--fds-g-color-text-primary);
+  --fds-g-typography-body-size: var(--fds-g-font-size-3);
+  --fds-g-typography-body-line-height: var(--fds-g-line-height-5);
+  --fds-g-typography-body-weight: var(--fds-g-font-weight-regular);
+  --fds-g-typography-label-size: var(--fds-g-font-size-3);
+  --fds-g-typography-label-line-height: var(--fds-g-line-height-4);
+  --fds-g-typography-label-weight: var(--fds-g-font-weight-medium);
+  --fds-g-typography-caption-size: var(--fds-g-font-size-1);
+  --fds-g-typography-caption-line-height: var(--fds-g-line-height-2);
+  --fds-g-typography-caption-weight: var(--fds-g-font-weight-regular);
+  --fds-g-typography-code-font-family: var(--fds-g-font-family-code);
+
+  /* semantic / base / layout · source: tokens/semantic/base/layout.yml */
+  --fds-g-opacity-disabled: var(--fds-g-opacity-50);
+  --fds-g-background-main: var(--fds-g-color-surface-page);
+  --fds-g-background-container: var(--fds-g-color-surface-container);
+  --fds-g-background-elevated: var(--fds-g-color-surface-elevated);
+  --fds-g-background-disabled: var(--fds-g-color-surface-disabled);
+  --fds-g-background-mask: var(--fds-g-color-mask);
+  --fds-g-control-height-compact: var(--fds-g-control-height-2);
+  --fds-g-control-height-default: var(--fds-g-control-height-3);
+  --fds-g-control-height-large: var(--fds-g-control-height-5);
+  --fds-g-control-radius: var(--fds-g-radius-2);
+  --fds-g-container-radius: var(--fds-g-radius-4);
+  --fds-g-layer-base: var(--fds-g-z-index-0);
+  --fds-g-layer-sticky: var(--fds-g-z-index-1); /* Sticky 与固定工具栏的全局入口，使用 100-999 层级区间。 */
+  --fds-g-layer-popup: var(--fds-g-z-index-2); /* Dropdown、Popover、Tooltip 等轻量浮层的全局入口，组件私有值限制在 1000-3999。 */
+  --fds-g-layer-overlay: var(--fds-g-z-index-3); /* 遮罩层的全局入口，使用 4000-4999 层级区间。 */
+  --fds-g-layer-modal: var(--fds-g-z-index-4); /* Modal、Drawer、Dialog 等模态交互的全局入口，组件私有值限制在 5000-8999。 */
+  --fds-g-layer-feedback: var(--fds-g-z-index-5); /* Message、Toast 等必须高于模态内容的全局反馈入口，使用 9000-9999 层级区间。 */
+
+  /* semantic / base / effects · source: tokens/semantic/base/effects.yml */
+  --fds-g-shadow-none: var(--fds-g-shadow-0); /* 静态表面默认不使用阴影，优先通过背景或边框建立边界。 */
+  --fds-g-shadow-active: var(--fds-g-shadow-1); /* 交互激活或键盘焦点的通用阴影；组件需与 Focus Outline 二选一或明确组合规则。 */
+  --fds-g-shadow-drag: var(--fds-g-shadow-2); /* 元素拖拽过程中脱离原表面的临时阴影。 */
+  --fds-g-shadow-dropdown: var(--fds-g-shadow-3); /* Dropdown、Select、DatePicker 等轻量下拉浮层的通用阴影。 */
+
+  /* semantic / base / motion · source: tokens/semantic/base/motion.yml */
+  --fds-g-motion-feedback-duration: var(--fds-g-motion-duration-1); /* Button 按压、Toggle 和选中标记等小范围即时反馈使用 100ms。 */
+  --fds-g-motion-feedback-easing: var(--fds-g-motion-easing-2); /* 即时反馈采用 Enter 曲线，快速响应输入并平缓停止。 */
+  --fds-g-motion-context-duration: var(--fds-g-motion-duration-2); /* Tooltip、Dropdown、Popover 等上下文浮层使用 200ms。 */
+  --fds-g-motion-context-enter-easing: var(--fds-g-motion-easing-2); /* 上下文浮层进入采用 Enter 曲线。 */
+  --fds-g-motion-context-exit-easing: var(--fds-g-motion-easing-3); /* 上下文浮层退出采用 Exit 曲线。 */
+  --fds-g-motion-disclosure-duration: var(--fds-g-motion-duration-3); /* Accordion、Tree、折叠区和侧栏等内容结构变化使用 300ms。 */
+  --fds-g-motion-disclosure-easing: var(--fds-g-motion-easing-1); /* 内容结构变化采用 Standard 曲线，保持展开和收起过程连续。 */
+  --fds-g-motion-prominent-duration: var(--fds-g-motion-duration-4); /* 重要 Notification、较大遮罩或显著位移使用 400ms，并限制使用频率。 */
+  --fds-g-motion-prominent-enter-easing: var(--fds-g-motion-easing-2); /* 显著变化进入采用 Enter 曲线，不增加弹跳或过冲效果。 */
+  --fds-g-motion-prominent-exit-easing: var(--fds-g-motion-easing-3); /* 显著变化退出采用 Exit 曲线，避免离场拖沓。 */
+
+  /* semantic / scene / scene · source: tokens/semantic/scene/default.yml */
+  --fds-g-scene-background: var(--fds-g-background-main); /* 页面型场景的默认画布背景，可由具体业务场景在自身作用域内覆盖。 */
+  --fds-g-scene-content-padding: var(--fds-g-size-6); /* 页面型场景内容与画布边界之间的默认留白。 */
+  --fds-g-scene-card-gap: var(--fds-g-size-3); /* 页面型场景内并列或上下排列内容卡片之间的默认间距。 */
+  --fds-g-scene-card-background: var(--fds-g-background-container); /* 页面型场景中通用内容卡片的默认表面背景。 */
+  --fds-g-scene-card-border-color: var(--fds-g-border-subtle); /* 场景卡片与页面画布之间的默认弱分隔色。 */
+  --fds-g-scene-card-border-width: var(--fds-g-border-width-1); /* 场景卡片的默认边框宽度。 */
+  --fds-g-scene-card-radius: var(--fds-g-container-radius); /* 场景卡片的默认圆角，不替代 Card 组件自身的组件 Token。 */
+  --fds-g-scene-card-padding: var(--fds-g-size-4); /* 场景卡片边界与主体内容之间的默认留白。 */
+  --fds-g-scene-card-shadow: var(--fds-g-shadow-none); /* 场景卡片默认依靠背景和边框建立层次，不预设悬浮阴影。 */
+  --fds-g-scene-card-title-color: var(--fds-g-typography-heading-color); /* 场景卡片标题的默认文本色。 */
+  --fds-g-scene-card-title-size: var(--fds-g-typography-heading-5-size); /* 场景卡片标题的默认字号。 */
+  --fds-g-scene-card-title-line-height: var(--fds-g-typography-heading-5-line-height); /* 场景卡片标题的默认行高。 */
+  --fds-g-scene-card-title-weight: var(--fds-g-typography-heading-5-weight); /* 场景卡片标题的默认字重。 */
+  --fds-g-scene-card-title-gap: var(--fds-g-size-3); /* 场景卡片标题区与主体内容之间的默认间距。 */
+
+}
+
+/* 减少动态效果时统一关闭语义动效；组件应消费语义 Motion Token。 */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --fds-g-motion-feedback-duration: var(--fds-g-motion-duration-0);
+    --fds-g-motion-context-duration: var(--fds-g-motion-duration-0);
+    --fds-g-motion-disclosure-duration: var(--fds-g-motion-duration-0);
+    --fds-g-motion-prominent-duration: var(--fds-g-motion-duration-0);
+  }
+}

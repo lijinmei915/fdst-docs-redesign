@@ -1,0 +1,71 @@
+schema: fds-token-source/v1
+global:
+  layer: atomic
+  tier: map
+  category: effects
+  scope: global
+  primitive: true
+imports:
+- ./color/palette/brand.yml
+props:
+  opacity-0:
+    value: '0'
+    type: number
+    comment: 整体不透明度端点；0 不等于隐藏布局、禁用交互或移除可访问性节点。
+  opacity-25:
+    value: '0.25'
+    type: number
+    comment: 较强的整体弱化档；浅色表面与描边应使用颜色 alpha，不扩展细密 Opacity 梯度。
+  opacity-50:
+    value: '0.5'
+    type: number
+    comment: 保留当前 Disabled 语义取值，与 SLDS 传统 Global 50% 档一致。
+  opacity-65:
+    value: '0.65'
+    type: number
+    comment: 参考 Ant Design opacityLoading 的整体弱化取值，不自动绑定所有加载场景。
+  opacity-80:
+    value: '0.8'
+    type: number
+    comment: 轻度整体弱化档，参考 SLDS 传统 Global 80% 档。
+  opacity-100:
+    value: '1'
+    type: number
+  z-index-0:
+    value: '0'
+    type: number
+  z-index-1:
+    value: '100'
+    type: number
+  z-index-2:
+    value: '1000'
+    type: number
+    comment: 轻量浮层区间起点，预留 1000-3999 给组件私有层级。
+  z-index-3:
+    value: '4000'
+    type: number
+    comment: 全局遮罩区间起点，预留 4000-4999。
+  z-index-4:
+    value: '5000'
+    type: number
+    comment: 模态交互区间起点，预留 5000-8999 给组件私有层级。
+  z-index-5:
+    value: '9000'
+    type: number
+    comment: Message、Toast 等全局反馈区间起点，预留 9000-9999。
+  shadow-0:
+    value: none
+    type: shadow
+    comment: 无阴影，用于默认依靠边框分隔的静态表面。
+  shadow-1:
+    value: 0 0 2px {!color-brand-90}
+    type: shadow
+    comment: 交互激活或键盘焦点的品牌色外发光配方，使用前需避免与 Focus Outline 重复叠加。
+  shadow-2:
+    value: 0 2px 4px 0 rgb(0 0 0 / 40%)
+    type: shadow
+    comment: 拖拽中元素的临时悬浮配方，以较强阴影表达离开原表面。
+  shadow-3:
+    value: 0 2px 3px 0 rgb(0 0 0 / 16%)
+    type: shadow
+    comment: Dropdown、Select、DatePicker 等轻量下拉浮层的投影配方。

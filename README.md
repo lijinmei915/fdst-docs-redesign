@@ -1,93 +1,59 @@
-# FDST
+# FDS Global Token 源文件项目
 
+本目录是 FDS Global CSS Token 的工程化维护入口。`tokens/fds-global.yml` 的 import 图是唯一 Token 事实源；CSS、catalog 和 Token 目录均由它生成。业务和组件只消费构建产物，不直接读取或修改 YAML。
 
+## 开始使用
 
-## Getting started
+- [FDS Global Token 文档首页](docs/README.md)
+- [快速开始](docs/getting-started/快速开始.md)
+- [ShareDev 接入](docs/getting-started/ShareDev接入.md)
+- [分层模型](docs/concepts/分层模型.md)
+- [Token 目录](docs/reference/Token目录.md)，自动生成，请勿手工编辑
+- [工程维护](docs/engineering/YAML源文件.md)
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+历史计划和已迁移的旧版资料统一保存在 [internal](internal/README.md)，不进入正式文档导航。
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+## 层级边界
 
-## Add your files
-
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
-
+```text
+Atomic/Seed -> Atomic/Map -> Semantic/Base -> Semantic/Scene
 ```
-cd existing_repo
-git remote add origin https://git.firstshare.cn/fx/fdst.git
-git branch -M master
-git push -uf origin master
+
+Component Token 由组件包自行维护，不进入 FDS Global Token。当前只维护统一亮色色系，不包含暗色主题、栅格、响应式断点或业务私有场景。
+
+## 生成产物
+
+| 产物 | 路径 | 用途 |
+| --- | --- | --- |
+| CSS Variables | `dist/fds-global-tokens.css` | 浏览器运行时消费 |
+| Catalog JSON | `dist/fds-token-catalog.json` | 确定性查询和文档生成 |
+| 查询 Skill JSONL | `skills/fxiaoke-design-system-token-query/references/fds-token-search.jsonl` | 纯 Bash 查询使用的单行索引，由 catalog 自动刷新 |
+| Token 目录 | `docs/reference/Token目录.md` | 开发者可读的完整索引 |
+
+## 常用命令
+
+需要 Python 3.10+ 和 PyYAML：
+
+```powershell
+python -m pip install -r requirements.txt
+python tools/build.py --check
+python -m unittest discover -s tests -p "test_*.py"
+python tools/build.py
+python tools/export_catalog.py --output dist/fds-token-catalog.json
+python tools/export_catalog.py
+python tools/export_catalog.py --check-docs
 ```
 
-## Integrate with your tools
+`python tools/export_catalog.py` 会同时更新 `dist` catalog、查询 Skill JSONL reference 和 Token 目录；这些文件都是生成产物，不得手工维护。Token 更新后重新执行该命令即可刷新 Skill reference，查询脚本无需修改。Python 和 PyYAML 只用于 FDS 源码维护端；交付给客户的 Skill 使用蜂巢平台预置 Bash 的内建能力查询，不依赖 Python、Node.js、`grep`、`rg`、`sed`、`awk` 或 `jq`。
 
-- [ ] [Set up project integrations](https://git.firstshare.cn/fx/fdst/-/settings/integrations)
+完整维护流程和错误排查见 [构建与校验](docs/engineering/构建与校验.md)；版本、发布与回退边界见 [版本与发布](docs/engineering/版本与发布.md)。
 
-## Collaborate with your team
+## 设计依据
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+当前 YAML schema 借鉴 DTCG 的显式类型和引用思想，但不是 DTCG 标准交换文件。源结构参考 SLDS 固定提交中的 `global + imports + props` 组织方式，不把外部平台作为运行时依赖。
 
-## Test and Deploy
+- [DTCG Design Tokens Format 2025.10](https://www.designtokens.org/TR/2025.10/format/)
+- [SLDS primitive/base.yml](https://github.com/salesforce-ux/design-system/blob/9bc6a4046d10d95b4f3fb9cee7c7dc036bf43ad2/design-tokens/primitive/base.yml)
+- [SLDS Token 构建脚本](https://github.com/salesforce-ux/design-system/blob/9bc6a4046d10d95b4f3fb9cee7c7dc036bf43ad2/scripts/gulp/generate/tokens.js)
 
-Use the built-in continuous integration in GitLab.
-
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
-
-***
-
-# Editing this README
-
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
-
-## Suggestions for a good README
-
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
-
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
-
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+颜色基础来源固定于 [sharecrm-design-system 提交 8512d4f5](https://git.firstshare.cn/bigfe/sharecrm-design-system/-/commit/8512d4f578b807596fa0bf985d4af779da5406ed)。本次文档体系不调整现有 Token 值、层级或命名。

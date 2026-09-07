@@ -1,0 +1,70 @@
+schema: fds-token-source/v1
+global:
+  layer: semantic
+  tier: base
+  category: layout
+  scope: global
+  primitive: false
+imports:
+- ./color.yml
+- ../../atomic/map/spacing.yml
+- ../../atomic/map/sizing.yml
+- ../../atomic/map/shape.yml
+- ../../atomic/map/effects.yml
+props:
+  opacity-disabled:
+    value: '{!opacity-50}'
+    type: number
+  background-main:
+    value: '{!color-surface-page}'
+    type: color
+  background-container:
+    value: '{!color-surface-container}'
+    type: color
+  background-elevated:
+    value: '{!color-surface-elevated}'
+    type: color
+  background-disabled:
+    value: '{!color-surface-disabled}'
+    type: color
+  background-mask:
+    value: '{!color-mask}'
+    type: color
+  control-height-compact:
+    value: '{!control-height-2}'
+    type: dimension
+  control-height-default:
+    value: '{!control-height-3}'
+    type: dimension
+  control-height-large:
+    value: '{!control-height-5}'
+    type: dimension
+  control-radius:
+    value: '{!radius-2}'
+    type: dimension
+  container-radius:
+    value: '{!radius-4}'
+    type: dimension
+  layer-base:
+    value: '{!z-index-0}'
+    type: number
+  layer-sticky:
+    value: '{!z-index-1}'
+    type: number
+    comment: Sticky 与固定工具栏的全局入口，使用 100-999 层级区间。
+  layer-popup:
+    value: '{!z-index-2}'
+    type: number
+    comment: Dropdown、Popover、Tooltip 等轻量浮层的全局入口，组件私有值限制在 1000-3999。
+  layer-overlay:
+    value: '{!z-index-3}'
+    type: number
+    comment: 遮罩层的全局入口，使用 4000-4999 层级区间。
+  layer-modal:
+    value: '{!z-index-4}'
+    type: number
+    comment: Modal、Drawer、Dialog 等模态交互的全局入口，组件私有值限制在 5000-8999。
+  layer-feedback:
+    value: '{!z-index-5}'
+    type: number
+    comment: Message、Toast 等必须高于模态内容的全局反馈入口，使用 9000-9999 层级区间。

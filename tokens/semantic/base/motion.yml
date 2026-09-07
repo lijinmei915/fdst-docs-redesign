@@ -1,0 +1,47 @@
+schema: fds-token-source/v1
+global:
+  layer: semantic
+  tier: base
+  category: motion
+  type: duration
+  scope: global
+  primitive: false
+imports:
+- ../../atomic/map/motion.yml
+props:
+  motion-feedback-duration:
+    value: '{!motion-duration-1}'
+    comment: Button 按压、Toggle 和选中标记等小范围即时反馈使用 100ms。
+  motion-feedback-easing:
+    value: '{!motion-easing-2}'
+    type: cubic-bezier
+    comment: 即时反馈采用 Enter 曲线，快速响应输入并平缓停止。
+  motion-context-duration:
+    value: '{!motion-duration-2}'
+    comment: Tooltip、Dropdown、Popover 等上下文浮层使用 200ms。
+  motion-context-enter-easing:
+    value: '{!motion-easing-2}'
+    type: cubic-bezier
+    comment: 上下文浮层进入采用 Enter 曲线。
+  motion-context-exit-easing:
+    value: '{!motion-easing-3}'
+    type: cubic-bezier
+    comment: 上下文浮层退出采用 Exit 曲线。
+  motion-disclosure-duration:
+    value: '{!motion-duration-3}'
+    comment: Accordion、Tree、折叠区和侧栏等内容结构变化使用 300ms。
+  motion-disclosure-easing:
+    value: '{!motion-easing-1}'
+    type: cubic-bezier
+    comment: 内容结构变化采用 Standard 曲线，保持展开和收起过程连续。
+  motion-prominent-duration:
+    value: '{!motion-duration-4}'
+    comment: 重要 Notification、较大遮罩或显著位移使用 400ms，并限制使用频率。
+  motion-prominent-enter-easing:
+    value: '{!motion-easing-2}'
+    type: cubic-bezier
+    comment: 显著变化进入采用 Enter 曲线，不增加弹跳或过冲效果。
+  motion-prominent-exit-easing:
+    value: '{!motion-easing-3}'
+    type: cubic-bezier
+    comment: 显著变化退出采用 Exit 曲线，避免离场拖沓。

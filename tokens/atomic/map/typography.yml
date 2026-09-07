@@ -1,0 +1,107 @@
+schema: fds-token-source/v1
+global:
+  layer: atomic
+  tier: map
+  category: typography
+  scope: global
+  primitive: true
+props:
+  font-family-sans:
+    value: '"Microsoft YaHei", "PingFang SC", "Segoe UI", Arial, sans-serif'
+    type: font-family
+  font-family-code:
+    value: Consolas, "SFMono-Regular", "Liberation Mono", monospace
+    type: font-family
+  font-size-1:
+    value: 12px
+    type: dimension
+  font-size-2:
+    value: 13px
+    type: dimension
+  font-size-3:
+    value: 14px
+    type: dimension
+  font-size-4:
+    value: 15px
+    type: dimension
+  font-size-5:
+    value: 16px
+    type: dimension
+  font-size-6:
+    value: 18px
+    type: dimension
+  font-size-7:
+    value: 20px
+    type: dimension
+  font-size-8:
+    value: 22px
+    type: dimension
+  font-size-9:
+    value: 24px
+    type: dimension
+  font-size-10:
+    value: 28px
+    type: dimension
+  font-size-11:
+    value: 32px
+    type: dimension
+  font-size-12:
+    value: 36px
+    type: dimension
+  font-size-13:
+    value: 40px
+    type: dimension
+  font-size-14:
+    value: 48px
+    type: dimension
+  line-height-1:
+    value: 16px
+    type: dimension
+  line-height-2:
+    value: 18px
+    type: dimension
+  line-height-3:
+    value: 20px
+    type: dimension
+  line-height-4:
+    value: 22px
+    type: dimension
+  line-height-5:
+    value: 24px
+    type: dimension
+  line-height-6:
+    value: 28px
+    type: dimension
+  line-height-7:
+    value: 30px
+    type: dimension
+  line-height-8:
+    value: 32px
+    type: dimension
+  line-height-9:
+    value: 36px
+    type: dimension
+  line-height-10:
+    value: 38px
+    type: dimension
+  line-height-11:
+    value: 40px
+    type: dimension
+  line-height-12:
+    value: 44px
+    type: dimension
+  line-height-13:
+    value: 48px
+    type: dimension
+  font-weight-regular:
+    value: '400'
+    type: font-weight
+  font-weight-medium:
+    value: '500'
+    type: font-weight
+  font-weight-semibold:
+    value: '600'
+    type: font-weight
+  font-weight-bold:
+    value: '700'
+    type: font-weight

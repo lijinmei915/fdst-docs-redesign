@@ -1,0 +1,8 @@
+schema: fds-token-package/v1
+global:
+  name: fds-global
+  namespace: --fds-g-
+  scope: global
+imports:
+- ./atomic/base.yml
+- ./semantic/base.yml

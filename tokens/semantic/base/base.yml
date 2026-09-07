@@ -1,0 +1,7 @@
+schema: fds-token-group/v1
+imports:
+- ./color.yml
+- ./typography.yml
+- ./layout.yml
+- ./effects.yml
+- ./motion.yml

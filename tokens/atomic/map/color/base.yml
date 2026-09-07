@@ -1,0 +1,5 @@
+schema: fds-token-group/v1
+imports:
+- ./palette/base.yml
+- ./gray.yml
+- ./rgb.yml

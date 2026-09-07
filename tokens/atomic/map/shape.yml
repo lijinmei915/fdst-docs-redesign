@@ -1,0 +1,29 @@
+schema: fds-token-source/v1
+global:
+  layer: atomic
+  tier: map
+  category: shape
+  type: dimension
+  scope: global
+  primitive: true
+props:
+  radius-0:
+    value: '0'
+  radius-1:
+    value: 2px
+  radius-2:
+    value: 4px
+  radius-3:
+    value: 6px
+  radius-4:
+    value: 8px
+  radius-5:
+    value: 12px
+  radius-6:
+    value: 16px
+  radius-full:
+    value: 9999px
+  border-width-1:
+    value: 1px
+  border-width-2:
+    value: 2px

@@ -1,0 +1,36 @@
+schema: fds-token-source/v1
+global:
+  layer: atomic
+  tier: map
+  category: color
+  type: color
+  scope: global
+  primitive: true
+  source: generated
+props:
+  color-brand-10:
+    value: '#FDF4EF'
+  color-brand-20:
+    value: '#FCEEE6'
+  color-brand-30:
+    value: '#F9E1D2'
+  color-brand-40:
+    value: '#F9D1B8'
+  color-brand-50:
+    value: '#F9BE9A'
+  color-brand-60:
+    value: '#FBAB78'
+  color-brand-70:
+    value: '#FD9751'
+  color-brand-80:
+    value: '#FF8E32'
+  color-brand-90:
+    value: '#FF8000'
+  color-brand-100:
+    value: '#E77000'
+  color-brand-110:
+    value: '#AB4A00'
+  color-brand-120:
+    value: '#4B0100'
+  color-brand-vivid:
+    value: '#FB7C00'

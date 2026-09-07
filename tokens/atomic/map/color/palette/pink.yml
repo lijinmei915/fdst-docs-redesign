@@ -1,0 +1,34 @@
+schema: fds-token-source/v1
+global:
+  layer: atomic
+  tier: map
+  category: color
+  type: color
+  scope: global
+  primitive: true
+  source: generated
+props:
+  color-pink-10:
+    value: '#FBF0F4'
+  color-pink-20:
+    value: '#F9E7EE'
+  color-pink-30:
+    value: '#F5D5E1'
+  color-pink-40:
+    value: '#F2BFD2'
+  color-pink-50:
+    value: '#F0A5C3'
+  color-pink-60:
+    value: '#EF8AB4'
+  color-pink-70:
+    value: '#ED6DA6'
+  color-pink-80:
+    value: '#F65DA5'
+  color-pink-90:
+    value: '#EC4899'
+  color-pink-100:
+    value: '#D53C89'
+  color-pink-110:
+    value: '#9F1D61'
+  color-pink-120:
+    value: '#450021'

@@ -1,0 +1,33 @@
+schema: fds-token-source/v1
+global:
+  layer: atomic
+  tier: map
+  category: sizing
+  type: dimension
+  scope: global
+  primitive: true
+props:
+  control-height-1:
+    value: 24px
+  control-height-2:
+    value: 28px
+  control-height-3:
+    value: 32px
+  control-height-4:
+    value: 36px
+  control-height-5:
+    value: 40px
+  control-height-6:
+    value: 48px
+  icon-size-1:
+    value: 12px
+  icon-size-2:
+    value: 16px
+  icon-size-3:
+    value: 20px
+  icon-size-4:
+    value: 24px
+  icon-size-5:
+    value: 32px
+  icon-size-6:
+    value: 48px

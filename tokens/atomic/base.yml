@@ -1,0 +1,4 @@
+schema: fds-token-group/v1
+imports:
+- ./seed/base.yml
+- ./map/base.yml

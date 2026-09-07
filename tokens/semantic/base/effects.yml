@@ -1,0 +1,23 @@
+schema: fds-token-source/v1
+global:
+  layer: semantic
+  tier: base
+  category: effects
+  type: shadow
+  scope: global
+  primitive: false
+imports:
+- ../../atomic/map/effects.yml
+props:
+  shadow-none:
+    value: '{!shadow-0}'
+    comment: 静态表面默认不使用阴影，优先通过背景或边框建立边界。
+  shadow-active:
+    value: '{!shadow-1}'
+    comment: 交互激活或键盘焦点的通用阴影；组件需与 Focus Outline 二选一或明确组合规则。
+  shadow-drag:
+    value: '{!shadow-2}'
+    comment: 元素拖拽过程中脱离原表面的临时阴影。
+  shadow-dropdown:
+    value: '{!shadow-3}'
+    comment: Dropdown、Select、DatePicker 等轻量下拉浮层的通用阴影。
