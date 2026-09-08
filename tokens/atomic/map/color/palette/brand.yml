@@ -6,31 +6,31 @@ global:
   type: color
   scope: global
   primitive: true
-  source: generated
+  source: manual
 props:
   color-brand-10:
     value: '#FEF3EC'
   color-brand-20:
     value: '#FFE6D9'
   color-brand-30:
-    value: '#FFD7C1'
+    value: '#FFD8C3'
   color-brand-40:
-    value: '#FFC8A8'
+    value: '#FFCAAD'
   color-brand-50:
-    value: '#FFB98E'
+    value: '#FFBC97'
   color-brand-60:
-    value: '#FFA973'
+    value: '#FFAD80'
   color-brand-70:
-    value: '#FF9958'
+    value: '#FF9E66'
   color-brand-80:
-    value: '#FF8A3B'
+    value: '#FF8E48'
   color-brand-90:
     value: '#FF7C19'
   color-brand-100:
-    value: '#D36100'
+    value: '#D26200'
   color-brand-110:
-    value: '#7F2B00'
+    value: '#763400'
   color-brand-120:
-    value: '#430B00'
+    value: '#3A1600'
   color-brand-vivid:
     value: '#FD7A14'

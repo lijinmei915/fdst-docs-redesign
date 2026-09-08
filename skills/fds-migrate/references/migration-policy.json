@@ -1,0 +1,173 @@
+{
+  "schema": "fds-token-migration-policy/v1",
+  "similarity": {
+    "colorOklabMaxDistance": 0.08,
+    "dimensionRelativeMaxDifference": 0.25,
+    "maxCandidates": 5
+  },
+  "exemptValues": [
+    "0",
+    "auto",
+    "inherit",
+    "initial",
+    "revert",
+    "revert-layer",
+    "unset",
+    "currentcolor"
+  ],
+  "rules": [
+    {
+      "id": "foreground-color",
+      "propertyPatterns": ["^color$"],
+      "types": ["color"],
+      "tokenNamePatterns": [
+        "^color-(?:danger|info|primary|success|warning)(?:-(?:active|disabled|hover))?$",
+        "^color-text-",
+        "^typography-.*-color$",
+        "^card-title-color$"
+      ],
+      "allowAtomicAuto": false,
+      "allowSimilarity": true,
+      "selectionOrder": ["scene-context", "semantic-base"]
+    },
+    {
+      "id": "background-color",
+      "propertyPatterns": ["^background-color$"],
+      "types": ["color"],
+      "tokenNamePatterns": [
+        "^background(?:-|$)",
+        "^color-(?:surface-|mask$|.*-background(?:-|$))",
+        "^card-background$"
+      ],
+      "allowAtomicAuto": false,
+      "allowSimilarity": true,
+      "selectionOrder": ["scene-context", "semantic-base"]
+    },
+    {
+      "id": "border-color",
+      "propertyPatterns": ["^(?:border(?:-(?:top|right|bottom|left))?-color|outline-color)$"],
+      "types": ["color"],
+      "tokenNamePatterns": ["^border-", "^card-border-color$"],
+      "allowAtomicAuto": false,
+      "allowSimilarity": true,
+      "selectionOrder": ["scene-context", "semantic-base"]
+    },
+    {
+      "id": "icon-color",
+      "propertyPatterns": ["^(?:fill|stroke)$"],
+      "types": ["color"],
+      "tokenNamePatterns": ["^color-icon-"],
+      "allowAtomicAuto": false,
+      "allowSimilarity": true,
+      "selectionOrder": ["semantic-base"]
+    },
+    {
+      "id": "spacing",
+      "propertyPatterns": ["^(?:margin|padding)(?:-(?:top|right|bottom|left|inline|block)(?:-(?:start|end))?)?$", "^(?:gap|row-gap|column-gap)$"],
+      "types": ["dimension"],
+      "tokenNamePatterns": ["^spacing-", "(?:padding|gap)$"],
+      "allowAtomicAuto": true,
+      "allowSimilarity": true,
+      "selectionOrder": ["scene-context", "atomic-map"]
+    },
+    {
+      "id": "sizing",
+      "propertyPatterns": ["^(?:width|height|min-width|max-width|min-height|max-height)$"],
+      "types": ["dimension"],
+      "tokenNamePatterns": ["^(?:control-height|icon-size)-"],
+      "allowAtomicAuto": true,
+      "allowSimilarity": true,
+      "selectionOrder": ["semantic-context", "atomic-context"]
+    },
+    {
+      "id": "border-radius",
+      "propertyPatterns": ["^border(?:-(?:top-left|top-right|bottom-left|bottom-right))?-radius$"],
+      "types": ["dimension"],
+      "tokenNamePatterns": ["^radius-", "radius$"],
+      "allowAtomicAuto": true,
+      "allowSimilarity": true,
+      "selectionOrder": ["scene-context", "semantic-context", "atomic-map"]
+    },
+    {
+      "id": "border-width",
+      "propertyPatterns": ["^(?:border(?:-(?:top|right|bottom|left))?-width|outline-width)$"],
+      "types": ["dimension"],
+      "tokenNamePatterns": ["^border-width-", "border-width$"],
+      "allowAtomicAuto": true,
+      "allowSimilarity": true,
+      "selectionOrder": ["scene-context", "atomic-map"]
+    },
+    {
+      "id": "font-size",
+      "propertyPatterns": ["^font-size$"],
+      "types": ["dimension"],
+      "tokenNamePatterns": ["^font-size-", "(?:^|-)size$"],
+      "allowAtomicAuto": true,
+      "allowSimilarity": true,
+      "selectionOrder": ["scene-context", "semantic-context", "atomic-map"]
+    },
+    {
+      "id": "line-height",
+      "propertyPatterns": ["^line-height$"],
+      "types": ["dimension"],
+      "tokenNamePatterns": ["(?:^|-)line-height(?:-|$)"],
+      "allowAtomicAuto": true,
+      "allowSimilarity": true,
+      "selectionOrder": ["scene-context", "semantic-context", "atomic-map"]
+    },
+    {
+      "id": "font-weight",
+      "propertyPatterns": ["^font-weight$"],
+      "types": ["font-weight"],
+      "tokenNamePatterns": ["(?:^|-)weight(?:-|$)"],
+      "allowAtomicAuto": true,
+      "allowSimilarity": false,
+      "selectionOrder": ["scene-context", "semantic-context", "atomic-map"]
+    },
+    {
+      "id": "box-shadow",
+      "propertyPatterns": ["^box-shadow$"],
+      "types": ["shadow"],
+      "tokenNamePatterns": ["(?:^|-)shadow(?:-|$)"],
+      "allowAtomicAuto": true,
+      "allowSimilarity": false,
+      "selectionOrder": ["scene-context", "semantic-context", "atomic-map"]
+    },
+    {
+      "id": "opacity",
+      "propertyPatterns": ["^opacity$"],
+      "types": ["number"],
+      "tokenNamePatterns": ["^opacity-"],
+      "allowAtomicAuto": true,
+      "allowSimilarity": true,
+      "selectionOrder": ["semantic-context", "atomic-map"]
+    },
+    {
+      "id": "layer",
+      "propertyPatterns": ["^z-index$"],
+      "types": ["number"],
+      "tokenNamePatterns": ["^(?:layer|z-index)-"],
+      "allowAtomicAuto": false,
+      "allowSimilarity": false,
+      "selectionOrder": ["semantic-context"]
+    },
+    {
+      "id": "motion-duration",
+      "propertyPatterns": ["^(?:transition|animation)-duration$"],
+      "types": ["duration"],
+      "tokenNamePatterns": ["(?:^|-)duration(?:-|$)"],
+      "allowAtomicAuto": true,
+      "allowSimilarity": true,
+      "selectionOrder": ["semantic-context", "atomic-map"]
+    },
+    {
+      "id": "motion-easing",
+      "propertyPatterns": ["^(?:transition|animation)-timing-function$"],
+      "types": ["cubic-bezier"],
+      "tokenNamePatterns": ["(?:^|-)easing(?:-|$)"],
+      "allowAtomicAuto": true,
+      "allowSimilarity": false,
+      "selectionOrder": ["semantic-context", "atomic-map"]
+    }
+  ]
+}

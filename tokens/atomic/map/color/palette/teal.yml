@@ -6,7 +6,7 @@ global:
   type: color
   scope: global
   primitive: true
-  source: generated
+  source: manual
 props:
   color-teal-10:
     value: '#EEF7F6'
@@ -27,8 +27,8 @@ props:
   color-teal-90:
     value: '#16B4AB'
   color-teal-100:
-    value: '#00938C'
+    value: '#00938B'
   color-teal-110:
-    value: '#005550'
+    value: '#00534E'
   color-teal-120:
-    value: '#002A27'
+    value: '#002826'

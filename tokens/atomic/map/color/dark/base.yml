@@ -1,0 +1,12 @@
+schema: fds-token-group/v1
+imports:
+- ./amber.yml
+- ./yellow.yml
+- ./yellow-green.yml
+- ./green.yml
+- ./teal.yml
+- ./blue.yml
+- ./indigo.yml
+- ./purple.yml
+- ./magenta.yml
+- ./red.yml

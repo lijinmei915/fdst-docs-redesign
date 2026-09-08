@@ -11,8 +11,8 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SKILL_ROOT = ROOT / "skills" / "fxiaoke-design-system-token-query"
-SCRIPT = "./skills/fxiaoke-design-system-token-query/scripts/query_tokens.sh"
+SKILL_ROOT = ROOT / "skills" / "fds-apply"
+SCRIPT = "./skills/fds-apply/scripts/query_tokens.sh"
 
 
 def find_bash() -> str:
@@ -108,6 +108,16 @@ class QueryTokensTest(unittest.TestCase):
             ["color-primary-hover", "color-brand-80"],
             tokens[0]["referenceChain"],
         )
+
+    def test_exact_dark_map_variable_returns_fixed_atomic_value(self) -> None:
+        result = run_query("--name", "--fds-g-color-yellow-dark-100")
+
+        self.assertEqual(0, result.returncode, result.stderr)
+        tokens = parse_results(result)
+        self.assertEqual(1, len(tokens))
+        self.assertEqual("color-yellow-dark-100", tokens[0]["name"])
+        self.assertEqual(("atomic", "map"), (tokens[0]["layer"], tokens[0]["tier"]))
+        self.assertEqual("#FFC14D", tokens[0]["resolvedValue"])
 
     def test_usage_search_prefers_semantic_base(self) -> None:
         result = run_query("--search", "危险 浅背景", "--limit", "1")

@@ -1,5 +1,6 @@
 schema: fds-token-group/v1
 imports:
 - ./palette/base.yml
+- ./dark/base.yml
 - ./gray.yml
 - ./rgb.yml

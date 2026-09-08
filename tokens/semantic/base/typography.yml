@@ -9,9 +9,6 @@ imports:
 - ./color.yml
 - ../../atomic/map/typography.yml
 props:
-  typography-heading-font-family:
-    value: '{!font-family-sans}'
-    type: font-family
   typography-heading-color:
     value: '{!color-text-primary}'
     type: color
@@ -60,39 +57,18 @@ props:
   typography-heading-5-weight:
     value: '{!font-weight-semibold}'
     type: font-weight
-  typography-body-font-family:
-    value: '{!font-family-sans}'
-    type: font-family
-  typography-body-color:
+  typography-text-color:
     value: '{!color-text-primary}'
     type: color
-  typography-body-size:
+  typography-text-size:
     value: '{!font-size-3}'
     type: dimension
-  typography-body-line-height:
+  typography-text-line-height:
     value: '{!line-height-5}'
     type: dimension
-  typography-body-weight:
+  typography-text-weight:
     value: '{!font-weight-regular}'
     type: font-weight
   typography-label-size:
     value: '{!font-size-3}'
     type: dimension
-  typography-label-line-height:
-    value: '{!line-height-4}'
-    type: dimension
-  typography-label-weight:
-    value: '{!font-weight-medium}'
-    type: font-weight
-  typography-caption-size:
-    value: '{!font-size-1}'
-    type: dimension
-  typography-caption-line-height:
-    value: '{!line-height-2}'
-    type: dimension
-  typography-caption-weight:
-    value: '{!font-weight-regular}'
-    type: font-weight
-  typography-code-font-family:
-    value: '{!font-family-code}'
-    type: font-family

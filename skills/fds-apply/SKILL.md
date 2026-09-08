@@ -1,13 +1,13 @@
 ---
-name: fxiaoke-design-system-token-query
-description: 查询并推荐 Fxiaoke Design System Tokens（FDS）。当用户询问 FDS Token、--fds-g-*、--fds-s-*、页面背景、文字颜色、间距、圆角、阴影、层级或动效应使用哪个变量，并需要 CSS 示例、层级或引用链时使用；新增、修改、发布 Token 或设计组件 Token 时不使用。
+name: fds-apply
+description: 查询并推荐 Fxiaoke Design System Tokens（FDS）。当用户询问 FDS Token、--fds-g-*、--fds-s-*、页面背景、文字颜色、暗色色阶、间距、圆角、阴影、层级或动效应使用哪个变量，并需要 CSS 示例、层级或引用链时使用；新增、修改、发布 Token 或设计组件 Token 时不使用。
 ---
 
-# Fxiaoke Design System Tokens 查询
+# FDS Apply
 
 ## Goal / 目标
 
-从随 Skill 打包的搜索 reference 中确定性查询 FDS Global Token，优先推荐业务可消费的 Semantic Token，并返回可复制的 CSS 用法、层级和引用链。
+从随 Skill 打包的搜索 reference 中确定性查询 FDS Global Token，优先推荐业务可消费的 Semantic Token，并返回可直接应用的 CSS 用法、层级和引用链。
 
 本 Skill 只读，不创建、修改或发布 Token，也不修改业务代码、文档或远端数据。
 
@@ -16,6 +16,7 @@ description: 查询并推荐 Fxiaoke Design System Tokens（FDS）。当用户�
 以下请求使用本 Skill：
 
 - 查询 Token 名称或 `--fds-g-*`、`--fds-s-*` CSS Variable 的定义、层级、值或引用链。
+- 精确查询固定公司色系的 Base 或 Dark 原子色阶。
 - 按用途查找页面背景、文本色、状态色、间距、尺寸、圆角、阴影、层级或动效 Token。
 - 为页面或应用推荐 FDS Global Token 并给出 CSS 示例。
 - 确认某个 Token 是否属于 FDS Global Token。
@@ -59,7 +60,7 @@ bash scripts/query_tokens.sh --search "<用途关键词>" --category "<category>
 2. 精确名称使用 `--name ...`；用途查询使用 `--search ... --limit 5`。需要收窄时添加索引已有的过滤字段；用户同时询问字号、行高、字重等多个独立 CSS 属性时分别查询，再合并回答。
 3. 检查脚本结果：每个候选必须含 `name`、`cssVariable`、`layer`、`tier`、`category`、`type`、`resolvedValue` 和 `referenceChain`。
 4. 按以下优先级选择少量候选：精确命中 > Semantic/Base > Semantic/Scene > Atomic/Map > Atomic/Seed。
-5. 业务用途优先推荐 Semantic/Base；页面画布、内容区、场景卡片或卡片标题等公共组合可推荐 Semantic/Scene。Atomic/Map 只在没有合适语义入口或用户明确查询原子值时返回；Atomic/Seed 只解释值的引用链，不作为业务 CSS 首选。
+5. 业务用途优先推荐 Semantic/Base；页面画布、内容区、场景卡片或卡片标题等公共组合可推荐 Semantic/Scene。Atomic/Map 只在没有合适语义入口或用户明确查询原子值时返回；精确查询 `color-{family}-dark-*` 时可以返回固定 Dark Map，但必须说明它不代表暗色主题切换能力。Atomic/Seed 只解释值的引用链，不作为业务 CSS 首选。
 6. 根据用户提到的 CSS 属性生成用法，变量必须逐字取自查询结果。CSS 规则见 `references/css-usage.md`。
 7. 返回固定格式的结论。多个候选接近时说明用途差异，不倾倒完整索引。
 8. 零结果时明确回答“未找到”，并按 `references/layer-boundaries.md` 说明它可能属于组件或业务私有范围；不得按命名规律补全变量。

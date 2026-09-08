@@ -2,7 +2,7 @@
 
 > 本文件由 `python tools/export_catalog.py` 基于 `tokens/fds-global.yml` 的 import 图自动生成，请勿手工编辑。
 
-当前 catalog 共收录 392 个 Token。原始引用和值以 [catalog JSON](../../dist/fds-token-catalog.json) 为准。
+当前 catalog 共收录 502 个 Token。原始引用和值以 [catalog JSON](../../dist/fds-token-catalog.json) 为准。
 
 ## Atomic / Seed / color
 
@@ -24,43 +24,67 @@
 | CSS Variable | 类型 | 源值 | 解析值 | 来源 |
 | --- | --- | --- | --- | --- |
 | `--fds-g-color-amber-10` | `color` | `#FEF3EC` | `#FEF3EC` | `tokens/atomic/map/color/palette/amber.yml` |
-| `--fds-g-color-amber-100` | `color` | `#D36100` | `#D36100` | `tokens/atomic/map/color/palette/amber.yml` |
-| `--fds-g-color-amber-110` | `color` | `#7F2B00` | `#7F2B00` | `tokens/atomic/map/color/palette/amber.yml` |
-| `--fds-g-color-amber-120` | `color` | `#430B00` | `#430B00` | `tokens/atomic/map/color/palette/amber.yml` |
+| `--fds-g-color-amber-100` | `color` | `#D26200` | `#D26200` | `tokens/atomic/map/color/palette/amber.yml` |
+| `--fds-g-color-amber-110` | `color` | `#763400` | `#763400` | `tokens/atomic/map/color/palette/amber.yml` |
+| `--fds-g-color-amber-120` | `color` | `#3A1600` | `#3A1600` | `tokens/atomic/map/color/palette/amber.yml` |
 | `--fds-g-color-amber-20` | `color` | `#FFE6D9` | `#FFE6D9` | `tokens/atomic/map/color/palette/amber.yml` |
-| `--fds-g-color-amber-30` | `color` | `#FFD7C1` | `#FFD7C1` | `tokens/atomic/map/color/palette/amber.yml` |
-| `--fds-g-color-amber-40` | `color` | `#FFC8A8` | `#FFC8A8` | `tokens/atomic/map/color/palette/amber.yml` |
-| `--fds-g-color-amber-50` | `color` | `#FFB98E` | `#FFB98E` | `tokens/atomic/map/color/palette/amber.yml` |
-| `--fds-g-color-amber-60` | `color` | `#FFA973` | `#FFA973` | `tokens/atomic/map/color/palette/amber.yml` |
-| `--fds-g-color-amber-70` | `color` | `#FF9958` | `#FF9958` | `tokens/atomic/map/color/palette/amber.yml` |
-| `--fds-g-color-amber-80` | `color` | `#FF8A3B` | `#FF8A3B` | `tokens/atomic/map/color/palette/amber.yml` |
+| `--fds-g-color-amber-30` | `color` | `#FFD8C3` | `#FFD8C3` | `tokens/atomic/map/color/palette/amber.yml` |
+| `--fds-g-color-amber-40` | `color` | `#FFCAAD` | `#FFCAAD` | `tokens/atomic/map/color/palette/amber.yml` |
+| `--fds-g-color-amber-50` | `color` | `#FFBC97` | `#FFBC97` | `tokens/atomic/map/color/palette/amber.yml` |
+| `--fds-g-color-amber-60` | `color` | `#FFAD80` | `#FFAD80` | `tokens/atomic/map/color/palette/amber.yml` |
+| `--fds-g-color-amber-70` | `color` | `#FF9E66` | `#FF9E66` | `tokens/atomic/map/color/palette/amber.yml` |
+| `--fds-g-color-amber-80` | `color` | `#FF8E48` | `#FF8E48` | `tokens/atomic/map/color/palette/amber.yml` |
 | `--fds-g-color-amber-90` | `color` | `#FF7C19` | `#FF7C19` | `tokens/atomic/map/color/palette/amber.yml` |
 | `--fds-g-color-amber-90-rgb` | `string` | `255, 124, 25` | `255, 124, 25` | `tokens/atomic/map/color/rgb.yml` |
+| `--fds-g-color-amber-dark-10` | `color` | `#231914` | `#231914` | `tokens/atomic/map/color/dark/amber.yml` |
+| `--fds-g-color-amber-dark-100` | `color` | `#FF914E` | `#FF914E` | `tokens/atomic/map/color/dark/amber.yml` |
+| `--fds-g-color-amber-dark-110` | `color` | `#FFA571` | `#FFA571` | `tokens/atomic/map/color/dark/amber.yml` |
+| `--fds-g-color-amber-dark-120` | `color` | `#FFB992` | `#FFB992` | `tokens/atomic/map/color/dark/amber.yml` |
+| `--fds-g-color-amber-dark-20` | `color` | `#322219` | `#322219` | `tokens/atomic/map/color/dark/amber.yml` |
+| `--fds-g-color-amber-dark-30` | `color` | `#442B1E` | `#442B1E` | `tokens/atomic/map/color/dark/amber.yml` |
+| `--fds-g-color-amber-dark-40` | `color` | `#593622` | `#593622` | `tokens/atomic/map/color/dark/amber.yml` |
+| `--fds-g-color-amber-dark-50` | `color` | `#744124` | `#744124` | `tokens/atomic/map/color/dark/amber.yml` |
+| `--fds-g-color-amber-dark-60` | `color` | `#924D23` | `#924D23` | `tokens/atomic/map/color/dark/amber.yml` |
+| `--fds-g-color-amber-dark-70` | `color` | `#B2591C` | `#B2591C` | `tokens/atomic/map/color/dark/amber.yml` |
+| `--fds-g-color-amber-dark-80` | `color` | `#D76813` | `#D76813` | `tokens/atomic/map/color/dark/amber.yml` |
+| `--fds-g-color-amber-dark-90` | `color` | `#FF7C19` | `#FF7C19` | `tokens/atomic/map/color/dark/amber.yml` |
 | `--fds-g-color-black` | `color` | `{!color-gray-200}` | `#080504` | `tokens/atomic/map/color/gray.yml` |
 | `--fds-g-color-blue-10` | `color` | `#EEF6FF` | `#EEF6FF` | `tokens/atomic/map/color/palette/blue.yml` |
-| `--fds-g-color-blue-100` | `color` | `#0080D5` | `#0080D5` | `tokens/atomic/map/color/palette/blue.yml` |
-| `--fds-g-color-blue-110` | `color` | `#004786` | `#004786` | `tokens/atomic/map/color/palette/blue.yml` |
-| `--fds-g-color-blue-120` | `color` | `#00224B` | `#00224B` | `tokens/atomic/map/color/palette/blue.yml` |
-| `--fds-g-color-blue-20` | `color` | `#DAEDFF` | `#DAEDFF` | `tokens/atomic/map/color/palette/blue.yml` |
-| `--fds-g-color-blue-30` | `color` | `#C2E1FF` | `#C2E1FF` | `tokens/atomic/map/color/palette/blue.yml` |
-| `--fds-g-color-blue-40` | `color` | `#AAD6FF` | `#AAD6FF` | `tokens/atomic/map/color/palette/blue.yml` |
-| `--fds-g-color-blue-50` | `color` | `#91CCFF` | `#91CCFF` | `tokens/atomic/map/color/palette/blue.yml` |
-| `--fds-g-color-blue-60` | `color` | `#75C0FF` | `#75C0FF` | `tokens/atomic/map/color/palette/blue.yml` |
-| `--fds-g-color-blue-70` | `color` | `#5AB5FF` | `#5AB5FF` | `tokens/atomic/map/color/palette/blue.yml` |
-| `--fds-g-color-blue-80` | `color` | `#3CA9FF` | `#3CA9FF` | `tokens/atomic/map/color/palette/blue.yml` |
+| `--fds-g-color-blue-100` | `color` | `#0080D4` | `#0080D4` | `tokens/atomic/map/color/palette/blue.yml` |
+| `--fds-g-color-blue-110` | `color` | `#00487C` | `#00487C` | `tokens/atomic/map/color/palette/blue.yml` |
+| `--fds-g-color-blue-120` | `color` | `#002340` | `#002340` | `tokens/atomic/map/color/palette/blue.yml` |
+| `--fds-g-color-blue-20` | `color` | `#DBEDFF` | `#DBEDFF` | `tokens/atomic/map/color/palette/blue.yml` |
+| `--fds-g-color-blue-30` | `color` | `#C3E1FF` | `#C3E1FF` | `tokens/atomic/map/color/palette/blue.yml` |
+| `--fds-g-color-blue-40` | `color` | `#ADD6FF` | `#ADD6FF` | `tokens/atomic/map/color/palette/blue.yml` |
+| `--fds-g-color-blue-50` | `color` | `#96CBFF` | `#96CBFF` | `tokens/atomic/map/color/palette/blue.yml` |
+| `--fds-g-color-blue-60` | `color` | `#7EC0FF` | `#7EC0FF` | `tokens/atomic/map/color/palette/blue.yml` |
+| `--fds-g-color-blue-70` | `color` | `#64B5FF` | `#64B5FF` | `tokens/atomic/map/color/palette/blue.yml` |
+| `--fds-g-color-blue-80` | `color` | `#46A9FF` | `#46A9FF` | `tokens/atomic/map/color/palette/blue.yml` |
 | `--fds-g-color-blue-90` | `color` | `#189DFF` | `#189DFF` | `tokens/atomic/map/color/palette/blue.yml` |
 | `--fds-g-color-blue-90-rgb` | `string` | `24, 157, 255` | `24, 157, 255` | `tokens/atomic/map/color/rgb.yml` |
+| `--fds-g-color-blue-dark-10` | `color` | `#141B23` | `#141B23` | `tokens/atomic/map/color/dark/blue.yml` |
+| `--fds-g-color-blue-dark-100` | `color` | `#4BABFF` | `#4BABFF` | `tokens/atomic/map/color/dark/blue.yml` |
+| `--fds-g-color-blue-dark-110` | `color` | `#6FB9FF` | `#6FB9FF` | `tokens/atomic/map/color/dark/blue.yml` |
+| `--fds-g-color-blue-dark-120` | `color` | `#8FC8FF` | `#8FC8FF` | `tokens/atomic/map/color/dark/blue.yml` |
+| `--fds-g-color-blue-dark-20` | `color` | `#192531` | `#192531` | `tokens/atomic/map/color/dark/blue.yml` |
+| `--fds-g-color-blue-dark-30` | `color` | `#1E3143` | `#1E3143` | `tokens/atomic/map/color/dark/blue.yml` |
+| `--fds-g-color-blue-dark-40` | `color` | `#223E58` | `#223E58` | `tokens/atomic/map/color/dark/blue.yml` |
+| `--fds-g-color-blue-dark-50` | `color` | `#244D73` | `#244D73` | `tokens/atomic/map/color/dark/blue.yml` |
+| `--fds-g-color-blue-dark-60` | `color` | `#235E91` | `#235E91` | `tokens/atomic/map/color/dark/blue.yml` |
+| `--fds-g-color-blue-dark-70` | `color` | `#1C6FB2` | `#1C6FB2` | `tokens/atomic/map/color/dark/blue.yml` |
+| `--fds-g-color-blue-dark-80` | `color` | `#1384D8` | `#1384D8` | `tokens/atomic/map/color/dark/blue.yml` |
+| `--fds-g-color-blue-dark-90` | `color` | `#189DFF` | `#189DFF` | `tokens/atomic/map/color/dark/blue.yml` |
 | `--fds-g-color-brand-10` | `color` | `#FEF3EC` | `#FEF3EC` | `tokens/atomic/map/color/palette/brand.yml` |
-| `--fds-g-color-brand-100` | `color` | `#D36100` | `#D36100` | `tokens/atomic/map/color/palette/brand.yml` |
-| `--fds-g-color-brand-110` | `color` | `#7F2B00` | `#7F2B00` | `tokens/atomic/map/color/palette/brand.yml` |
-| `--fds-g-color-brand-120` | `color` | `#430B00` | `#430B00` | `tokens/atomic/map/color/palette/brand.yml` |
+| `--fds-g-color-brand-100` | `color` | `#D26200` | `#D26200` | `tokens/atomic/map/color/palette/brand.yml` |
+| `--fds-g-color-brand-110` | `color` | `#763400` | `#763400` | `tokens/atomic/map/color/palette/brand.yml` |
+| `--fds-g-color-brand-120` | `color` | `#3A1600` | `#3A1600` | `tokens/atomic/map/color/palette/brand.yml` |
 | `--fds-g-color-brand-20` | `color` | `#FFE6D9` | `#FFE6D9` | `tokens/atomic/map/color/palette/brand.yml` |
-| `--fds-g-color-brand-30` | `color` | `#FFD7C1` | `#FFD7C1` | `tokens/atomic/map/color/palette/brand.yml` |
-| `--fds-g-color-brand-40` | `color` | `#FFC8A8` | `#FFC8A8` | `tokens/atomic/map/color/palette/brand.yml` |
-| `--fds-g-color-brand-50` | `color` | `#FFB98E` | `#FFB98E` | `tokens/atomic/map/color/palette/brand.yml` |
-| `--fds-g-color-brand-60` | `color` | `#FFA973` | `#FFA973` | `tokens/atomic/map/color/palette/brand.yml` |
-| `--fds-g-color-brand-70` | `color` | `#FF9958` | `#FF9958` | `tokens/atomic/map/color/palette/brand.yml` |
-| `--fds-g-color-brand-80` | `color` | `#FF8A3B` | `#FF8A3B` | `tokens/atomic/map/color/palette/brand.yml` |
+| `--fds-g-color-brand-30` | `color` | `#FFD8C3` | `#FFD8C3` | `tokens/atomic/map/color/palette/brand.yml` |
+| `--fds-g-color-brand-40` | `color` | `#FFCAAD` | `#FFCAAD` | `tokens/atomic/map/color/palette/brand.yml` |
+| `--fds-g-color-brand-50` | `color` | `#FFBC97` | `#FFBC97` | `tokens/atomic/map/color/palette/brand.yml` |
+| `--fds-g-color-brand-60` | `color` | `#FFAD80` | `#FFAD80` | `tokens/atomic/map/color/palette/brand.yml` |
+| `--fds-g-color-brand-70` | `color` | `#FF9E66` | `#FF9E66` | `tokens/atomic/map/color/palette/brand.yml` |
+| `--fds-g-color-brand-80` | `color` | `#FF8E48` | `#FF8E48` | `tokens/atomic/map/color/palette/brand.yml` |
 | `--fds-g-color-brand-90` | `color` | `#FF7C19` | `#FF7C19` | `tokens/atomic/map/color/palette/brand.yml` |
 | `--fds-g-color-brand-90-rgb` | `string` | `255, 124, 25` | `255, 124, 25` | `tokens/atomic/map/color/rgb.yml` |
 | `--fds-g-color-brand-vivid` | `color` | `#FD7A14` | `#FD7A14` | `tokens/atomic/map/color/palette/brand.yml` |
@@ -86,8 +110,8 @@
 | `--fds-g-color-gray-90` | `color` | `#989695` | `#989695` | `tokens/atomic/map/color/gray.yml` |
 | `--fds-g-color-green-10` | `color` | `#EEF8F1` | `#EEF8F1` | `tokens/atomic/map/color/palette/green.yml` |
 | `--fds-g-color-green-100` | `color` | `#14A25C` | `#14A25C` | `tokens/atomic/map/color/palette/green.yml` |
-| `--fds-g-color-green-110` | `color` | `#005D29` | `#005D29` | `tokens/atomic/map/color/palette/green.yml` |
-| `--fds-g-color-green-120` | `color` | `#002D0B` | `#002D0B` | `tokens/atomic/map/color/palette/green.yml` |
+| `--fds-g-color-green-110` | `color` | `#005A2F` | `#005A2F` | `tokens/atomic/map/color/palette/green.yml` |
+| `--fds-g-color-green-120` | `color` | `#002A13` | `#002A13` | `tokens/atomic/map/color/palette/green.yml` |
 | `--fds-g-color-green-20` | `color` | `#DDF3E3` | `#DDF3E3` | `tokens/atomic/map/color/palette/green.yml` |
 | `--fds-g-color-green-30` | `color` | `#C8ECD3` | `#C8ECD3` | `tokens/atomic/map/color/palette/green.yml` |
 | `--fds-g-color-green-40` | `color` | `#B3E7C3` | `#B3E7C3` | `tokens/atomic/map/color/palette/green.yml` |
@@ -97,33 +121,69 @@
 | `--fds-g-color-green-80` | `color` | `#4DCF83` | `#4DCF83` | `tokens/atomic/map/color/palette/green.yml` |
 | `--fds-g-color-green-90` | `color` | `#30C776` | `#30C776` | `tokens/atomic/map/color/palette/green.yml` |
 | `--fds-g-color-green-90-rgb` | `string` | `48, 199, 118` | `48, 199, 118` | `tokens/atomic/map/color/rgb.yml` |
-| `--fds-g-color-indigo-10` | `color` | `#EEF6FF` | `#EEF6FF` | `tokens/atomic/map/color/palette/indigo.yml` |
+| `--fds-g-color-green-dark-10` | `color` | `#151E18` | `#151E18` | `tokens/atomic/map/color/dark/green.yml` |
+| `--fds-g-color-green-dark-100` | `color` | `#51D085` | `#51D085` | `tokens/atomic/map/color/dark/green.yml` |
+| `--fds-g-color-green-dark-110` | `color` | `#76D899` | `#76D899` | `tokens/atomic/map/color/dark/green.yml` |
+| `--fds-g-color-green-dark-120` | `color` | `#98E0AF` | `#98E0AF` | `tokens/atomic/map/color/dark/green.yml` |
+| `--fds-g-color-green-dark-20` | `color` | `#1C2A20` | `#1C2A20` | `tokens/atomic/map/color/dark/green.yml` |
+| `--fds-g-color-green-dark-30` | `color` | `#223829` | `#223829` | `tokens/atomic/map/color/dark/green.yml` |
+| `--fds-g-color-green-dark-40` | `color` | `#284934` | `#284934` | `tokens/atomic/map/color/dark/green.yml` |
+| `--fds-g-color-green-dark-50` | `color` | `#2C5D3E` | `#2C5D3E` | `tokens/atomic/map/color/dark/green.yml` |
+| `--fds-g-color-green-dark-60` | `color` | `#2D7449` | `#2D7449` | `tokens/atomic/map/color/dark/green.yml` |
+| `--fds-g-color-green-dark-70` | `color` | `#2A8B54` | `#2A8B54` | `tokens/atomic/map/color/dark/green.yml` |
+| `--fds-g-color-green-dark-80` | `color` | `#27A762` | `#27A762` | `tokens/atomic/map/color/dark/green.yml` |
+| `--fds-g-color-green-dark-90` | `color` | `#30C776` | `#30C776` | `tokens/atomic/map/color/dark/green.yml` |
+| `--fds-g-color-indigo-10` | `color` | `#F0F5FF` | `#F0F5FF` | `tokens/atomic/map/color/palette/indigo.yml` |
 | `--fds-g-color-indigo-100` | `color` | `#0158D9` | `#0158D9` | `tokens/atomic/map/color/palette/indigo.yml` |
-| `--fds-g-color-indigo-110` | `color` | `#003192` | `#003192` | `tokens/atomic/map/color/palette/indigo.yml` |
-| `--fds-g-color-indigo-120` | `color` | `#001A5A` | `#001A5A` | `tokens/atomic/map/color/palette/indigo.yml` |
-| `--fds-g-color-indigo-20` | `color` | `#D7E8FF` | `#D7E8FF` | `tokens/atomic/map/color/palette/indigo.yml` |
-| `--fds-g-color-indigo-30` | `color` | `#BBD6FF` | `#BBD6FF` | `tokens/atomic/map/color/palette/indigo.yml` |
-| `--fds-g-color-indigo-40` | `color` | `#9FC6FF` | `#9FC6FF` | `tokens/atomic/map/color/palette/indigo.yml` |
-| `--fds-g-color-indigo-50` | `color` | `#83B5FF` | `#83B5FF` | `tokens/atomic/map/color/palette/indigo.yml` |
-| `--fds-g-color-indigo-60` | `color` | `#66A4FF` | `#66A4FF` | `tokens/atomic/map/color/palette/indigo.yml` |
-| `--fds-g-color-indigo-70` | `color` | `#4B91FF` | `#4B91FF` | `tokens/atomic/map/color/palette/indigo.yml` |
-| `--fds-g-color-indigo-80` | `color` | `#2E7FFF` | `#2E7FFF` | `tokens/atomic/map/color/palette/indigo.yml` |
+| `--fds-g-color-indigo-110` | `color` | `#003589` | `#003589` | `tokens/atomic/map/color/palette/indigo.yml` |
+| `--fds-g-color-indigo-120` | `color` | `#001C52` | `#001C52` | `tokens/atomic/map/color/palette/indigo.yml` |
+| `--fds-g-color-indigo-20` | `color` | `#D9E7FF` | `#D9E7FF` | `tokens/atomic/map/color/palette/indigo.yml` |
+| `--fds-g-color-indigo-30` | `color` | `#BDD6FF` | `#BDD6FF` | `tokens/atomic/map/color/palette/indigo.yml` |
+| `--fds-g-color-indigo-40` | `color` | `#A4C6FF` | `#A4C6FF` | `tokens/atomic/map/color/palette/indigo.yml` |
+| `--fds-g-color-indigo-50` | `color` | `#8AB6FF` | `#8AB6FF` | `tokens/atomic/map/color/palette/indigo.yml` |
+| `--fds-g-color-indigo-60` | `color` | `#70A5FF` | `#70A5FF` | `tokens/atomic/map/color/palette/indigo.yml` |
+| `--fds-g-color-indigo-70` | `color` | `#5593FF` | `#5593FF` | `tokens/atomic/map/color/palette/indigo.yml` |
+| `--fds-g-color-indigo-80` | `color` | `#3781FF` | `#3781FF` | `tokens/atomic/map/color/palette/indigo.yml` |
 | `--fds-g-color-indigo-90` | `color` | `#0C6CFF` | `#0C6CFF` | `tokens/atomic/map/color/palette/indigo.yml` |
 | `--fds-g-color-indigo-90-rgb` | `string` | `12, 108, 255` | `12, 108, 255` | `tokens/atomic/map/color/rgb.yml` |
-| `--fds-g-color-magenta-10` | `color` | `#FFF1F1` | `#FFF1F1` | `tokens/atomic/map/color/palette/magenta.yml` |
+| `--fds-g-color-indigo-dark-10` | `color` | `#121924` | `#121924` | `tokens/atomic/map/color/dark/indigo.yml` |
+| `--fds-g-color-indigo-dark-100` | `color` | `#3B83FF` | `#3B83FF` | `tokens/atomic/map/color/dark/indigo.yml` |
+| `--fds-g-color-indigo-dark-110` | `color` | `#5E99FF` | `#5E99FF` | `tokens/atomic/map/color/dark/indigo.yml` |
+| `--fds-g-color-indigo-dark-120` | `color` | `#80AFFF` | `#80AFFF` | `tokens/atomic/map/color/dark/indigo.yml` |
+| `--fds-g-color-indigo-dark-20` | `color` | `#162032` | `#162032` | `tokens/atomic/map/color/dark/indigo.yml` |
+| `--fds-g-color-indigo-dark-30` | `color` | `#192843` | `#192843` | `tokens/atomic/map/color/dark/indigo.yml` |
+| `--fds-g-color-indigo-dark-40` | `color` | `#1B3258` | `#1B3258` | `tokens/atomic/map/color/dark/indigo.yml` |
+| `--fds-g-color-indigo-dark-50` | `color` | `#1B3B73` | `#1B3B73` | `tokens/atomic/map/color/dark/indigo.yml` |
+| `--fds-g-color-indigo-dark-60` | `color` | `#194692` | `#194692` | `tokens/atomic/map/color/dark/indigo.yml` |
+| `--fds-g-color-indigo-dark-70` | `color` | `#1350B4` | `#1350B4` | `tokens/atomic/map/color/dark/indigo.yml` |
+| `--fds-g-color-indigo-dark-80` | `color` | `#0B5CD9` | `#0B5CD9` | `tokens/atomic/map/color/dark/indigo.yml` |
+| `--fds-g-color-indigo-dark-90` | `color` | `#0C6CFF` | `#0C6CFF` | `tokens/atomic/map/color/dark/indigo.yml` |
+| `--fds-g-color-magenta-10` | `color` | `#FFF1F2` | `#FFF1F2` | `tokens/atomic/map/color/palette/magenta.yml` |
 | `--fds-g-color-magenta-100` | `color` | `#D43550` | `#D43550` | `tokens/atomic/map/color/palette/magenta.yml` |
 | `--fds-g-color-magenta-110` | `color` | `#850226` | `#850226` | `tokens/atomic/map/color/palette/magenta.yml` |
-| `--fds-g-color-magenta-120` | `color` | `#4A000D` | `#4A000D` | `tokens/atomic/map/color/palette/magenta.yml` |
-| `--fds-g-color-magenta-20` | `color` | `#FFE0E1` | `#FFE0E1` | `tokens/atomic/map/color/palette/magenta.yml` |
-| `--fds-g-color-magenta-30` | `color` | `#FFCCCE` | `#FFCCCE` | `tokens/atomic/map/color/palette/magenta.yml` |
-| `--fds-g-color-magenta-40` | `color` | `#FFB8BB` | `#FFB8BB` | `tokens/atomic/map/color/palette/magenta.yml` |
-| `--fds-g-color-magenta-50` | `color` | `#FFA3A9` | `#FFA3A9` | `tokens/atomic/map/color/palette/magenta.yml` |
-| `--fds-g-color-magenta-60` | `color` | `#FF8D96` | `#FF8D96` | `tokens/atomic/map/color/palette/magenta.yml` |
-| `--fds-g-color-magenta-70` | `color` | `#FF7685` | `#FF7685` | `tokens/atomic/map/color/palette/magenta.yml` |
-| `--fds-g-color-magenta-80` | `color` | `#FF6075` | `#FF6075` | `tokens/atomic/map/color/palette/magenta.yml` |
+| `--fds-g-color-magenta-120` | `color` | `#460010` | `#460010` | `tokens/atomic/map/color/palette/magenta.yml` |
+| `--fds-g-color-magenta-20` | `color` | `#FFE2E3` | `#FFE2E3` | `tokens/atomic/map/color/palette/magenta.yml` |
+| `--fds-g-color-magenta-30` | `color` | `#FFCFD0` | `#FFCFD0` | `tokens/atomic/map/color/palette/magenta.yml` |
+| `--fds-g-color-magenta-40` | `color` | `#FFBDBF` | `#FFBDBF` | `tokens/atomic/map/color/palette/magenta.yml` |
+| `--fds-g-color-magenta-50` | `color` | `#FFAAAE` | `#FFAAAE` | `tokens/atomic/map/color/palette/magenta.yml` |
+| `--fds-g-color-magenta-60` | `color` | `#FF969D` | `#FF969D` | `tokens/atomic/map/color/palette/magenta.yml` |
+| `--fds-g-color-magenta-70` | `color` | `#FF818B` | `#FF818B` | `tokens/atomic/map/color/palette/magenta.yml` |
+| `--fds-g-color-magenta-80` | `color` | `#FF6979` | `#FF6979` | `tokens/atomic/map/color/palette/magenta.yml` |
 | `--fds-g-color-magenta-90` | `color` | `#FF4A66` | `#FF4A66` | `tokens/atomic/map/color/palette/magenta.yml` |
 | `--fds-g-color-magenta-90-rgb` | `string` | `255, 74, 102` | `255, 74, 102` | `tokens/atomic/map/color/rgb.yml` |
-| `--fds-g-color-purple-10` | `color` | `#F5F3FF` | `#F5F3FF` | `tokens/atomic/map/color/palette/purple.yml` |
+| `--fds-g-color-magenta-dark-10` | `color` | `#241617` | `#241617` | `tokens/atomic/map/color/dark/magenta.yml` |
+| `--fds-g-color-magenta-dark-100` | `color` | `#FF6C7B` | `#FF6C7B` | `tokens/atomic/map/color/dark/magenta.yml` |
+| `--fds-g-color-magenta-dark-110` | `color` | `#FF8992` | `#FF8992` | `tokens/atomic/map/color/dark/magenta.yml` |
+| `--fds-g-color-magenta-dark-120` | `color` | `#FFA4A9` | `#FFA4A9` | `tokens/atomic/map/color/dark/magenta.yml` |
+| `--fds-g-color-magenta-dark-20` | `color` | `#331D1E` | `#331D1E` | `tokens/atomic/map/color/dark/magenta.yml` |
+| `--fds-g-color-magenta-dark-30` | `color` | `#442426` | `#442426` | `tokens/atomic/map/color/dark/magenta.yml` |
+| `--fds-g-color-magenta-dark-40` | `color` | `#5A2B2E` | `#5A2B2E` | `tokens/atomic/map/color/dark/magenta.yml` |
+| `--fds-g-color-magenta-dark-50` | `color` | `#743137` | `#743137` | `tokens/atomic/map/color/dark/magenta.yml` |
+| `--fds-g-color-magenta-dark-60` | `color` | `#933641` | `#933641` | `tokens/atomic/map/color/dark/magenta.yml` |
+| `--fds-g-color-magenta-dark-70` | `color` | `#B33949` | `#B33949` | `tokens/atomic/map/color/dark/magenta.yml` |
+| `--fds-g-color-magenta-dark-80` | `color` | `#D83E55` | `#D83E55` | `tokens/atomic/map/color/dark/magenta.yml` |
+| `--fds-g-color-magenta-dark-90` | `color` | `#FF4A66` | `#FF4A66` | `tokens/atomic/map/color/dark/magenta.yml` |
+| `--fds-g-color-purple-10` | `color` | `#F5F4FF` | `#F5F4FF` | `tokens/atomic/map/color/palette/purple.yml` |
 | `--fds-g-color-purple-100` | `color` | `#6134BE` | `#6134BE` | `tokens/atomic/map/color/palette/purple.yml` |
 | `--fds-g-color-purple-110` | `color` | `#3E1983` | `#3E1983` | `tokens/atomic/map/color/palette/purple.yml` |
 | `--fds-g-color-purple-120` | `color` | `#250D53` | `#250D53` | `tokens/atomic/map/color/palette/purple.yml` |
@@ -136,23 +196,47 @@
 | `--fds-g-color-purple-80` | `color` | `#8159E9` | `#8159E9` | `tokens/atomic/map/color/palette/purple.yml` |
 | `--fds-g-color-purple-90` | `color` | `#7341DE` | `#7341DE` | `tokens/atomic/map/color/palette/purple.yml` |
 | `--fds-g-color-purple-90-rgb` | `string` | `115, 65, 222` | `115, 65, 222` | `tokens/atomic/map/color/rgb.yml` |
-| `--fds-g-color-red-10` | `color` | `#FFF1EE` | `#FFF1EE` | `tokens/atomic/map/color/palette/red.yml` |
+| `--fds-g-color-purple-dark-10` | `color` | `#181621` | `#181621` | `tokens/atomic/map/color/dark/purple.yml` |
+| `--fds-g-color-purple-dark-100` | `color` | `#835CEA` | `#835CEA` | `tokens/atomic/map/color/dark/purple.yml` |
+| `--fds-g-color-purple-dark-110` | `color` | `#9479EF` | `#9479EF` | `tokens/atomic/map/color/dark/purple.yml` |
+| `--fds-g-color-purple-dark-120` | `color` | `#A897F1` | `#A897F1` | `tokens/atomic/map/color/dark/purple.yml` |
+| `--fds-g-color-purple-dark-20` | `color` | `#1E1B2E` | `#1E1B2E` | `tokens/atomic/map/color/dark/purple.yml` |
+| `--fds-g-color-purple-dark-30` | `color` | `#26213D` | `#26213D` | `tokens/atomic/map/color/dark/purple.yml` |
+| `--fds-g-color-purple-dark-40` | `color` | `#2F264F` | `#2F264F` | `tokens/atomic/map/color/dark/purple.yml` |
+| `--fds-g-color-purple-dark-50` | `color` | `#3A2C66` | `#3A2C66` | `tokens/atomic/map/color/dark/purple.yml` |
+| `--fds-g-color-purple-dark-60` | `color` | `#463081` | `#463081` | `tokens/atomic/map/color/dark/purple.yml` |
+| `--fds-g-color-purple-dark-70` | `color` | `#53349E` | `#53349E` | `tokens/atomic/map/color/dark/purple.yml` |
+| `--fds-g-color-purple-dark-80` | `color` | `#6238BE` | `#6238BE` | `tokens/atomic/map/color/dark/purple.yml` |
+| `--fds-g-color-purple-dark-90` | `color` | `#7341DE` | `#7341DE` | `tokens/atomic/map/color/dark/purple.yml` |
+| `--fds-g-color-red-10` | `color` | `#FFF2EF` | `#FFF2EF` | `tokens/atomic/map/color/palette/red.yml` |
 | `--fds-g-color-red-100` | `color` | `#D53D18` | `#D53D18` | `tokens/atomic/map/color/palette/red.yml` |
-| `--fds-g-color-red-110` | `color` | `#850C00` | `#850C00` | `tokens/atomic/map/color/palette/red.yml` |
-| `--fds-g-color-red-120` | `color` | `#4A0000` | `#4A0000` | `tokens/atomic/map/color/palette/red.yml` |
-| `--fds-g-color-red-20` | `color` | `#FFE2D9` | `#FFE2D9` | `tokens/atomic/map/color/palette/red.yml` |
-| `--fds-g-color-red-30` | `color` | `#FFCEC1` | `#FFCEC1` | `tokens/atomic/map/color/palette/red.yml` |
-| `--fds-g-color-red-40` | `color` | `#FFBBA9` | `#FFBBA9` | `tokens/atomic/map/color/palette/red.yml` |
-| `--fds-g-color-red-50` | `color` | `#FFA78F` | `#FFA78F` | `tokens/atomic/map/color/palette/red.yml` |
-| `--fds-g-color-red-60` | `color` | `#FF9175` | `#FF9175` | `tokens/atomic/map/color/palette/red.yml` |
-| `--fds-g-color-red-70` | `color` | `#FF7C5C` | `#FF7C5C` | `tokens/atomic/map/color/palette/red.yml` |
-| `--fds-g-color-red-80` | `color` | `#FF6743` | `#FF6743` | `tokens/atomic/map/color/palette/red.yml` |
+| `--fds-g-color-red-110` | `color` | `#801A00` | `#801A00` | `tokens/atomic/map/color/palette/red.yml` |
+| `--fds-g-color-red-120` | `color` | `#430900` | `#430900` | `tokens/atomic/map/color/palette/red.yml` |
+| `--fds-g-color-red-20` | `color` | `#FFE3DC` | `#FFE3DC` | `tokens/atomic/map/color/palette/red.yml` |
+| `--fds-g-color-red-30` | `color` | `#FFD0C5` | `#FFD0C5` | `tokens/atomic/map/color/palette/red.yml` |
+| `--fds-g-color-red-40` | `color` | `#FFBFB0` | `#FFBFB0` | `tokens/atomic/map/color/palette/red.yml` |
+| `--fds-g-color-red-50` | `color` | `#FFAD99` | `#FFAD99` | `tokens/atomic/map/color/palette/red.yml` |
+| `--fds-g-color-red-60` | `color` | `#FF9A82` | `#FF9A82` | `tokens/atomic/map/color/palette/red.yml` |
+| `--fds-g-color-red-70` | `color` | `#FF8569` | `#FF8569` | `tokens/atomic/map/color/palette/red.yml` |
+| `--fds-g-color-red-80` | `color` | `#FF6E4E` | `#FF6E4E` | `tokens/atomic/map/color/palette/red.yml` |
 | `--fds-g-color-red-90` | `color` | `#FF522A` | `#FF522A` | `tokens/atomic/map/color/palette/red.yml` |
 | `--fds-g-color-red-90-rgb` | `string` | `255, 82, 42` | `255, 82, 42` | `tokens/atomic/map/color/rgb.yml` |
+| `--fds-g-color-red-dark-10` | `color` | `#241714` | `#241714` | `tokens/atomic/map/color/dark/red.yml` |
+| `--fds-g-color-red-dark-100` | `color` | `#FF7252` | `#FF7252` | `tokens/atomic/map/color/dark/red.yml` |
+| `--fds-g-color-red-dark-110` | `color` | `#FF8D73` | `#FF8D73` | `tokens/atomic/map/color/dark/red.yml` |
+| `--fds-g-color-red-dark-120` | `color` | `#FFA793` | `#FFA793` | `tokens/atomic/map/color/dark/red.yml` |
+| `--fds-g-color-red-dark-20` | `color` | `#331E19` | `#331E19` | `tokens/atomic/map/color/dark/red.yml` |
+| `--fds-g-color-red-dark-30` | `color` | `#44251E` | `#44251E` | `tokens/atomic/map/color/dark/red.yml` |
+| `--fds-g-color-red-dark-40` | `color` | `#5A2D22` | `#5A2D22` | `tokens/atomic/map/color/dark/red.yml` |
+| `--fds-g-color-red-dark-50` | `color` | `#743325` | `#743325` | `tokens/atomic/map/color/dark/red.yml` |
+| `--fds-g-color-red-dark-60` | `color` | `#933A26` | `#933A26` | `tokens/atomic/map/color/dark/red.yml` |
+| `--fds-g-color-red-dark-70` | `color` | `#B33E24` | `#B33E24` | `tokens/atomic/map/color/dark/red.yml` |
+| `--fds-g-color-red-dark-80` | `color` | `#D84422` | `#D84422` | `tokens/atomic/map/color/dark/red.yml` |
+| `--fds-g-color-red-dark-90` | `color` | `#FF522A` | `#FF522A` | `tokens/atomic/map/color/dark/red.yml` |
 | `--fds-g-color-teal-10` | `color` | `#EEF7F6` | `#EEF7F6` | `tokens/atomic/map/color/palette/teal.yml` |
-| `--fds-g-color-teal-100` | `color` | `#00938C` | `#00938C` | `tokens/atomic/map/color/palette/teal.yml` |
-| `--fds-g-color-teal-110` | `color` | `#005550` | `#005550` | `tokens/atomic/map/color/palette/teal.yml` |
-| `--fds-g-color-teal-120` | `color` | `#002A27` | `#002A27` | `tokens/atomic/map/color/palette/teal.yml` |
+| `--fds-g-color-teal-100` | `color` | `#00938B` | `#00938B` | `tokens/atomic/map/color/palette/teal.yml` |
+| `--fds-g-color-teal-110` | `color` | `#00534E` | `#00534E` | `tokens/atomic/map/color/palette/teal.yml` |
+| `--fds-g-color-teal-120` | `color` | `#002826` | `#002826` | `tokens/atomic/map/color/palette/teal.yml` |
 | `--fds-g-color-teal-20` | `color` | `#DCF0ED` | `#DCF0ED` | `tokens/atomic/map/color/palette/teal.yml` |
 | `--fds-g-color-teal-30` | `color` | `#C5E7E3` | `#C5E7E3` | `tokens/atomic/map/color/palette/teal.yml` |
 | `--fds-g-color-teal-40` | `color` | `#AEDFDA` | `#AEDFDA` | `tokens/atomic/map/color/palette/teal.yml` |
@@ -162,24 +246,48 @@
 | `--fds-g-color-teal-80` | `color` | `#3FBEB5` | `#3FBEB5` | `tokens/atomic/map/color/palette/teal.yml` |
 | `--fds-g-color-teal-90` | `color` | `#16B4AB` | `#16B4AB` | `tokens/atomic/map/color/palette/teal.yml` |
 | `--fds-g-color-teal-90-rgb` | `string` | `22, 180, 171` | `22, 180, 171` | `tokens/atomic/map/color/rgb.yml` |
+| `--fds-g-color-teal-dark-10` | `color` | `#151D1C` | `#151D1C` | `tokens/atomic/map/color/dark/teal.yml` |
+| `--fds-g-color-teal-dark-100` | `color` | `#44BFB6` | `#44BFB6` | `tokens/atomic/map/color/dark/teal.yml` |
+| `--fds-g-color-teal-dark-110` | `color` | `#6DC9C2` | `#6DC9C2` | `tokens/atomic/map/color/dark/teal.yml` |
+| `--fds-g-color-teal-dark-120` | `color` | `#91D4CE` | `#91D4CE` | `tokens/atomic/map/color/dark/teal.yml` |
+| `--fds-g-color-teal-dark-20` | `color` | `#1A2826` | `#1A2826` | `tokens/atomic/map/color/dark/teal.yml` |
+| `--fds-g-color-teal-dark-30` | `color` | `#203533` | `#203533` | `tokens/atomic/map/color/dark/teal.yml` |
+| `--fds-g-color-teal-dark-40` | `color` | `#244441` | `#244441` | `tokens/atomic/map/color/dark/teal.yml` |
+| `--fds-g-color-teal-dark-50` | `color` | `#265552` | `#265552` | `tokens/atomic/map/color/dark/teal.yml` |
+| `--fds-g-color-teal-dark-60` | `color` | `#256A65` | `#256A65` | `tokens/atomic/map/color/dark/teal.yml` |
+| `--fds-g-color-teal-dark-70` | `color` | `#1E7F78` | `#1E7F78` | `tokens/atomic/map/color/dark/teal.yml` |
+| `--fds-g-color-teal-dark-80` | `color` | `#129890` | `#129890` | `tokens/atomic/map/color/dark/teal.yml` |
+| `--fds-g-color-teal-dark-90` | `color` | `#16B4AB` | `#16B4AB` | `tokens/atomic/map/color/dark/teal.yml` |
 | `--fds-g-color-white` | `color` | `{!color-gray-10}` | `#FFFFFF` | `tokens/atomic/map/color/gray.yml` |
 | `--fds-g-color-yellow-10` | `color` | `#FAF4EB` | `#FAF4EB` | `tokens/atomic/map/color/palette/yellow.yml` |
-| `--fds-g-color-yellow-100` | `color` | `#CF9000` | `#CF9000` | `tokens/atomic/map/color/palette/yellow.yml` |
-| `--fds-g-color-yellow-110` | `color` | `#764800` | `#764800` | `tokens/atomic/map/color/palette/yellow.yml` |
-| `--fds-g-color-yellow-120` | `color` | `#371900` | `#371900` | `tokens/atomic/map/color/palette/yellow.yml` |
+| `--fds-g-color-yellow-100` | `color` | `#CD9100` | `#CD9100` | `tokens/atomic/map/color/palette/yellow.yml` |
+| `--fds-g-color-yellow-110` | `color` | `#6D4C00` | `#6D4C00` | `tokens/atomic/map/color/palette/yellow.yml` |
+| `--fds-g-color-yellow-120` | `color` | `#2F1E00` | `#2F1E00` | `tokens/atomic/map/color/palette/yellow.yml` |
 | `--fds-g-color-yellow-20` | `color` | `#FBEED9` | `#FBEED9` | `tokens/atomic/map/color/palette/yellow.yml` |
 | `--fds-g-color-yellow-30` | `color` | `#FCE6C3` | `#FCE6C3` | `tokens/atomic/map/color/palette/yellow.yml` |
 | `--fds-g-color-yellow-40` | `color` | `#FDDEAC` | `#FDDEAC` | `tokens/atomic/map/color/palette/yellow.yml` |
-| `--fds-g-color-yellow-50` | `color` | `#FFD692` | `#FFD692` | `tokens/atomic/map/color/palette/yellow.yml` |
-| `--fds-g-color-yellow-60` | `color` | `#FFCE76` | `#FFCE76` | `tokens/atomic/map/color/palette/yellow.yml` |
-| `--fds-g-color-yellow-70` | `color` | `#FFC659` | `#FFC659` | `tokens/atomic/map/color/palette/yellow.yml` |
-| `--fds-g-color-yellow-80` | `color` | `#FFBE38` | `#FFBE38` | `tokens/atomic/map/color/palette/yellow.yml` |
+| `--fds-g-color-yellow-50` | `color` | `#FFD693` | `#FFD693` | `tokens/atomic/map/color/palette/yellow.yml` |
+| `--fds-g-color-yellow-60` | `color` | `#FFCF7D` | `#FFCF7D` | `tokens/atomic/map/color/palette/yellow.yml` |
+| `--fds-g-color-yellow-70` | `color` | `#FFC764` | `#FFC764` | `tokens/atomic/map/color/palette/yellow.yml` |
+| `--fds-g-color-yellow-80` | `color` | `#FFBE45` | `#FFBE45` | `tokens/atomic/map/color/palette/yellow.yml` |
 | `--fds-g-color-yellow-90` | `color` | `#FFB602` | `#FFB602` | `tokens/atomic/map/color/palette/yellow.yml` |
 | `--fds-g-color-yellow-90-rgb` | `string` | `255, 182, 2` | `255, 182, 2` | `tokens/atomic/map/color/rgb.yml` |
+| `--fds-g-color-yellow-dark-10` | `color` | `#221C14` | `#221C14` | `tokens/atomic/map/color/dark/yellow.yml` |
+| `--fds-g-color-yellow-dark-100` | `color` | `#FFC14D` | `#FFC14D` | `tokens/atomic/map/color/dark/yellow.yml` |
+| `--fds-g-color-yellow-dark-110` | `color` | `#FFCB73` | `#FFCB73` | `tokens/atomic/map/color/dark/yellow.yml` |
+| `--fds-g-color-yellow-dark-120` | `color` | `#FFD794` | `#FFD794` | `tokens/atomic/map/color/dark/yellow.yml` |
+| `--fds-g-color-yellow-dark-20` | `color` | `#31281A` | `#31281A` | `tokens/atomic/map/color/dark/yellow.yml` |
+| `--fds-g-color-yellow-dark-30` | `color` | `#433620` | `#433620` | `tokens/atomic/map/color/dark/yellow.yml` |
+| `--fds-g-color-yellow-dark-40` | `color` | `#594625` | `#594625` | `tokens/atomic/map/color/dark/yellow.yml` |
+| `--fds-g-color-yellow-dark-50` | `color` | `#735727` | `#735727` | `tokens/atomic/map/color/dark/yellow.yml` |
+| `--fds-g-color-yellow-dark-60` | `color` | `#916B24` | `#916B24` | `tokens/atomic/map/color/dark/yellow.yml` |
+| `--fds-g-color-yellow-dark-70` | `color` | `#B17F17` | `#B17F17` | `tokens/atomic/map/color/dark/yellow.yml` |
+| `--fds-g-color-yellow-dark-80` | `color` | `#D69800` | `#D69800` | `tokens/atomic/map/color/dark/yellow.yml` |
+| `--fds-g-color-yellow-dark-90` | `color` | `#FFB602` | `#FFB602` | `tokens/atomic/map/color/dark/yellow.yml` |
 | `--fds-g-color-yellow-green-10` | `color` | `#F1F7ED` | `#F1F7ED` | `tokens/atomic/map/color/palette/yellow-green.yml` |
 | `--fds-g-color-yellow-green-100` | `color` | `#69A522` | `#69A522` | `tokens/atomic/map/color/palette/yellow-green.yml` |
-| `--fds-g-color-yellow-green-110` | `color` | `#305C00` | `#305C00` | `tokens/atomic/map/color/palette/yellow-green.yml` |
-| `--fds-g-color-yellow-green-120` | `color` | `#0E2A00` | `#0E2A00` | `tokens/atomic/map/color/palette/yellow-green.yml` |
+| `--fds-g-color-yellow-green-110` | `color` | `#355A00` | `#355A00` | `tokens/atomic/map/color/palette/yellow-green.yml` |
+| `--fds-g-color-yellow-green-120` | `color` | `#152800` | `#152800` | `tokens/atomic/map/color/palette/yellow-green.yml` |
 | `--fds-g-color-yellow-green-20` | `color` | `#E6F3DC` | `#E6F3DC` | `tokens/atomic/map/color/palette/yellow-green.yml` |
 | `--fds-g-color-yellow-green-30` | `color` | `#D7EDC7` | `#D7EDC7` | `tokens/atomic/map/color/palette/yellow-green.yml` |
 | `--fds-g-color-yellow-green-40` | `color` | `#C9E8B1` | `#C9E8B1` | `tokens/atomic/map/color/palette/yellow-green.yml` |
@@ -189,6 +297,18 @@
 | `--fds-g-color-yellow-green-80` | `color` | `#92D352` | `#92D352` | `tokens/atomic/map/color/palette/yellow-green.yml` |
 | `--fds-g-color-yellow-green-90` | `color` | `#87CC3B` | `#87CC3B` | `tokens/atomic/map/color/palette/yellow-green.yml` |
 | `--fds-g-color-yellow-green-90-rgb` | `string` | `135, 204, 59` | `135, 204, 59` | `tokens/atomic/map/color/rgb.yml` |
+| `--fds-g-color-yellow-green-dark-10` | `color` | `#191E15` | `#191E15` | `tokens/atomic/map/color/dark/yellow-green.yml` |
+| `--fds-g-color-yellow-green-dark-100` | `color` | `#94D455` | `#94D455` | `tokens/atomic/map/color/dark/yellow-green.yml` |
+| `--fds-g-color-yellow-green-dark-110` | `color` | `#A6DB77` | `#A6DB77` | `tokens/atomic/map/color/dark/yellow-green.yml` |
+| `--fds-g-color-yellow-green-dark-120` | `color` | `#B9E398` | `#B9E398` | `tokens/atomic/map/color/dark/yellow-green.yml` |
+| `--fds-g-color-yellow-green-dark-20` | `color` | `#222B1B` | `#222B1B` | `tokens/atomic/map/color/dark/yellow-green.yml` |
+| `--fds-g-color-yellow-green-dark-30` | `color` | `#2D3A22` | `#2D3A22` | `tokens/atomic/map/color/dark/yellow-green.yml` |
+| `--fds-g-color-yellow-green-dark-40` | `color` | `#384B28` | `#384B28` | `tokens/atomic/map/color/dark/yellow-green.yml` |
+| `--fds-g-color-yellow-green-dark-50` | `color` | `#455F2D` | `#455F2D` | `tokens/atomic/map/color/dark/yellow-green.yml` |
+| `--fds-g-color-yellow-green-dark-60` | `color` | `#52762F` | `#52762F` | `tokens/atomic/map/color/dark/yellow-green.yml` |
+| `--fds-g-color-yellow-green-dark-70` | `color` | `#5F8F2E` | `#5F8F2E` | `tokens/atomic/map/color/dark/yellow-green.yml` |
+| `--fds-g-color-yellow-green-dark-80` | `color` | `#70AB2F` | `#70AB2F` | `tokens/atomic/map/color/dark/yellow-green.yml` |
+| `--fds-g-color-yellow-green-dark-90` | `color` | `#87CC3B` | `#87CC3B` | `tokens/atomic/map/color/dark/yellow-green.yml` |
 ## Atomic / Map / effects
 
 | CSS Variable | 类型 | 源值 | 解析值 | 来源 |
@@ -268,8 +388,6 @@
 
 | CSS Variable | 类型 | 源值 | 解析值 | 来源 |
 | --- | --- | --- | --- | --- |
-| `--fds-g-font-family-code` | `font-family` | `Consolas, "SFMono-Regular", "Liberation Mono", monospace` | `Consolas, "SFMono-Regular", "Liberation Mono", monospace` | `tokens/atomic/map/typography.yml` |
-| `--fds-g-font-family-sans` | `font-family` | `"Microsoft YaHei", "PingFang SC", "Segoe UI", Arial, sans-serif` | `"Microsoft YaHei", "PingFang SC", "Segoe UI", Arial, sans-serif` | `tokens/atomic/map/typography.yml` |
 | `--fds-g-font-size-1` | `dimension` | `12px` | `12px` | `tokens/atomic/map/typography.yml` |
 | `--fds-g-font-size-10` | `dimension` | `28px` | `28px` | `tokens/atomic/map/typography.yml` |
 | `--fds-g-font-size-11` | `dimension` | `32px` | `32px` | `tokens/atomic/map/typography.yml` |
@@ -312,29 +430,29 @@
 | `--fds-g-border-subtle` | `color` | `{!color-gray-40}` | `#E5E5E4` | `tokens/semantic/base/color.yml` |
 | `--fds-g-color-danger` | `color` | `{!color-red-90}` | `#FF522A` | `tokens/semantic/base/color.yml` |
 | `--fds-g-color-danger-active` | `color` | `{!color-red-100}` | `#D53D18` | `tokens/semantic/base/color.yml` |
-| `--fds-g-color-danger-background` | `color` | `{!color-red-10}` | `#FFF1EE` | `tokens/semantic/base/color.yml` |
-| `--fds-g-color-danger-background-active` | `color` | `{!color-red-30}` | `#FFCEC1` | `tokens/semantic/base/color.yml` |
-| `--fds-g-color-danger-background-hover` | `color` | `{!color-red-20}` | `#FFE2D9` | `tokens/semantic/base/color.yml` |
-| `--fds-g-color-danger-disabled` | `color` | `{!color-red-50}` | `#FFA78F` | `tokens/semantic/base/color.yml` |
-| `--fds-g-color-danger-hover` | `color` | `{!color-red-80}` | `#FF6743` | `tokens/semantic/base/color.yml` |
+| `--fds-g-color-danger-background` | `color` | `{!color-red-10}` | `#FFF2EF` | `tokens/semantic/base/color.yml` |
+| `--fds-g-color-danger-background-active` | `color` | `{!color-red-30}` | `#FFD0C5` | `tokens/semantic/base/color.yml` |
+| `--fds-g-color-danger-background-hover` | `color` | `{!color-red-20}` | `#FFE3DC` | `tokens/semantic/base/color.yml` |
+| `--fds-g-color-danger-disabled` | `color` | `{!color-red-50}` | `#FFAD99` | `tokens/semantic/base/color.yml` |
+| `--fds-g-color-danger-hover` | `color` | `{!color-red-80}` | `#FF6E4E` | `tokens/semantic/base/color.yml` |
 | `--fds-g-color-icon-disabled` | `color` | `{!color-gray-60}` | `#C9C8C7` | `tokens/semantic/base/color.yml` |
 | `--fds-g-color-icon-primary` | `color` | `{!color-gray-200}` | `#080504` | `tokens/semantic/base/color.yml` |
 | `--fds-g-color-icon-secondary` | `color` | `{!color-gray-110}` | `#797675` | `tokens/semantic/base/color.yml` |
 | `--fds-g-color-info` | `color` | `{!color-blue-90}` | `#189DFF` | `tokens/semantic/base/color.yml` |
-| `--fds-g-color-info-active` | `color` | `{!color-blue-100}` | `#0080D5` | `tokens/semantic/base/color.yml` |
+| `--fds-g-color-info-active` | `color` | `{!color-blue-100}` | `#0080D4` | `tokens/semantic/base/color.yml` |
 | `--fds-g-color-info-background` | `color` | `{!color-blue-10}` | `#EEF6FF` | `tokens/semantic/base/color.yml` |
-| `--fds-g-color-info-background-active` | `color` | `{!color-blue-30}` | `#C2E1FF` | `tokens/semantic/base/color.yml` |
-| `--fds-g-color-info-background-hover` | `color` | `{!color-blue-20}` | `#DAEDFF` | `tokens/semantic/base/color.yml` |
-| `--fds-g-color-info-disabled` | `color` | `{!color-blue-50}` | `#91CCFF` | `tokens/semantic/base/color.yml` |
-| `--fds-g-color-info-hover` | `color` | `{!color-blue-80}` | `#3CA9FF` | `tokens/semantic/base/color.yml` |
+| `--fds-g-color-info-background-active` | `color` | `{!color-blue-30}` | `#C3E1FF` | `tokens/semantic/base/color.yml` |
+| `--fds-g-color-info-background-hover` | `color` | `{!color-blue-20}` | `#DBEDFF` | `tokens/semantic/base/color.yml` |
+| `--fds-g-color-info-disabled` | `color` | `{!color-blue-50}` | `#96CBFF` | `tokens/semantic/base/color.yml` |
+| `--fds-g-color-info-hover` | `color` | `{!color-blue-80}` | `#46A9FF` | `tokens/semantic/base/color.yml` |
 | `--fds-g-color-mask` | `color` | `rgb(8 5 4 / 20%)` | `rgb(8 5 4 / 20%)` | `tokens/semantic/base/color.yml` |
 | `--fds-g-color-primary` | `color` | `{!color-brand-90}` | `#FF7C19` | `tokens/semantic/base/color.yml` |
-| `--fds-g-color-primary-active` | `color` | `{!color-brand-100}` | `#D36100` | `tokens/semantic/base/color.yml` |
+| `--fds-g-color-primary-active` | `color` | `{!color-brand-100}` | `#D26200` | `tokens/semantic/base/color.yml` |
 | `--fds-g-color-primary-background` | `color` | `{!color-brand-10}` | `#FEF3EC` | `tokens/semantic/base/color.yml` |
-| `--fds-g-color-primary-background-active` | `color` | `{!color-brand-30}` | `#FFD7C1` | `tokens/semantic/base/color.yml` |
+| `--fds-g-color-primary-background-active` | `color` | `{!color-brand-30}` | `#FFD8C3` | `tokens/semantic/base/color.yml` |
 | `--fds-g-color-primary-background-hover` | `color` | `{!color-brand-20}` | `#FFE6D9` | `tokens/semantic/base/color.yml` |
-| `--fds-g-color-primary-disabled` | `color` | `{!color-brand-50}` | `#FFB98E` | `tokens/semantic/base/color.yml` |
-| `--fds-g-color-primary-hover` | `color` | `{!color-brand-80}` | `#FF8A3B` | `tokens/semantic/base/color.yml` |
+| `--fds-g-color-primary-disabled` | `color` | `{!color-brand-50}` | `#FFBC97` | `tokens/semantic/base/color.yml` |
+| `--fds-g-color-primary-hover` | `color` | `{!color-brand-80}` | `#FF8E48` | `tokens/semantic/base/color.yml` |
 | `--fds-g-color-success` | `color` | `{!color-green-90}` | `#30C776` | `tokens/semantic/base/color.yml` |
 | `--fds-g-color-success-active` | `color` | `{!color-green-100}` | `#14A25C` | `tokens/semantic/base/color.yml` |
 | `--fds-g-color-success-background` | `color` | `{!color-green-10}` | `#EEF8F1` | `tokens/semantic/base/color.yml` |
@@ -352,12 +470,12 @@
 | `--fds-g-color-text-secondary` | `color` | `{!color-gray-150}` | `#3F3C3A` | `tokens/semantic/base/color.yml` |
 | `--fds-g-color-text-tertiary` | `color` | `{!color-gray-120}` | `#6A6765` | `tokens/semantic/base/color.yml` |
 | `--fds-g-color-warning` | `color` | `{!color-amber-90}` | `#FF7C19` | `tokens/semantic/base/color.yml` |
-| `--fds-g-color-warning-active` | `color` | `{!color-amber-100}` | `#D36100` | `tokens/semantic/base/color.yml` |
+| `--fds-g-color-warning-active` | `color` | `{!color-amber-100}` | `#D26200` | `tokens/semantic/base/color.yml` |
 | `--fds-g-color-warning-background` | `color` | `{!color-amber-10}` | `#FEF3EC` | `tokens/semantic/base/color.yml` |
-| `--fds-g-color-warning-background-active` | `color` | `{!color-amber-30}` | `#FFD7C1` | `tokens/semantic/base/color.yml` |
+| `--fds-g-color-warning-background-active` | `color` | `{!color-amber-30}` | `#FFD8C3` | `tokens/semantic/base/color.yml` |
 | `--fds-g-color-warning-background-hover` | `color` | `{!color-amber-20}` | `#FFE6D9` | `tokens/semantic/base/color.yml` |
-| `--fds-g-color-warning-disabled` | `color` | `{!color-amber-50}` | `#FFB98E` | `tokens/semantic/base/color.yml` |
-| `--fds-g-color-warning-hover` | `color` | `{!color-amber-80}` | `#FF8A3B` | `tokens/semantic/base/color.yml` |
+| `--fds-g-color-warning-disabled` | `color` | `{!color-amber-50}` | `#FFBC97` | `tokens/semantic/base/color.yml` |
+| `--fds-g-color-warning-hover` | `color` | `{!color-amber-80}` | `#FF8E48` | `tokens/semantic/base/color.yml` |
 ## Semantic / Base / effects
 
 | CSS Variable | 类型 | 源值 | 解析值 | 来源 |
@@ -405,15 +523,6 @@
 
 | CSS Variable | 类型 | 源值 | 解析值 | 来源 |
 | --- | --- | --- | --- | --- |
-| `--fds-g-typography-body-color` | `color` | `{!color-text-primary}` | `#080504` | `tokens/semantic/base/typography.yml` |
-| `--fds-g-typography-body-font-family` | `font-family` | `{!font-family-sans}` | `"Microsoft YaHei", "PingFang SC", "Segoe UI", Arial, sans-serif` | `tokens/semantic/base/typography.yml` |
-| `--fds-g-typography-body-line-height` | `dimension` | `{!line-height-5}` | `24px` | `tokens/semantic/base/typography.yml` |
-| `--fds-g-typography-body-size` | `dimension` | `{!font-size-3}` | `14px` | `tokens/semantic/base/typography.yml` |
-| `--fds-g-typography-body-weight` | `font-weight` | `{!font-weight-regular}` | `400` | `tokens/semantic/base/typography.yml` |
-| `--fds-g-typography-caption-line-height` | `dimension` | `{!line-height-2}` | `18px` | `tokens/semantic/base/typography.yml` |
-| `--fds-g-typography-caption-size` | `dimension` | `{!font-size-1}` | `12px` | `tokens/semantic/base/typography.yml` |
-| `--fds-g-typography-caption-weight` | `font-weight` | `{!font-weight-regular}` | `400` | `tokens/semantic/base/typography.yml` |
-| `--fds-g-typography-code-font-family` | `font-family` | `{!font-family-code}` | `Consolas, "SFMono-Regular", "Liberation Mono", monospace` | `tokens/semantic/base/typography.yml` |
 | `--fds-g-typography-heading-1-line-height` | `dimension` | `{!line-height-13}` | `48px` | `tokens/semantic/base/typography.yml` |
 | `--fds-g-typography-heading-1-size` | `dimension` | `{!font-size-11}` | `32px` | `tokens/semantic/base/typography.yml` |
 | `--fds-g-typography-heading-1-weight` | `font-weight` | `{!font-weight-bold}` | `700` | `tokens/semantic/base/typography.yml` |
@@ -430,10 +539,11 @@
 | `--fds-g-typography-heading-5-size` | `dimension` | `{!font-size-5}` | `16px` | `tokens/semantic/base/typography.yml` |
 | `--fds-g-typography-heading-5-weight` | `font-weight` | `{!font-weight-semibold}` | `600` | `tokens/semantic/base/typography.yml` |
 | `--fds-g-typography-heading-color` | `color` | `{!color-text-primary}` | `#080504` | `tokens/semantic/base/typography.yml` |
-| `--fds-g-typography-heading-font-family` | `font-family` | `{!font-family-sans}` | `"Microsoft YaHei", "PingFang SC", "Segoe UI", Arial, sans-serif` | `tokens/semantic/base/typography.yml` |
-| `--fds-g-typography-label-line-height` | `dimension` | `{!line-height-4}` | `22px` | `tokens/semantic/base/typography.yml` |
 | `--fds-g-typography-label-size` | `dimension` | `{!font-size-3}` | `14px` | `tokens/semantic/base/typography.yml` |
-| `--fds-g-typography-label-weight` | `font-weight` | `{!font-weight-medium}` | `500` | `tokens/semantic/base/typography.yml` |
+| `--fds-g-typography-text-color` | `color` | `{!color-text-primary}` | `#080504` | `tokens/semantic/base/typography.yml` |
+| `--fds-g-typography-text-line-height` | `dimension` | `{!line-height-5}` | `24px` | `tokens/semantic/base/typography.yml` |
+| `--fds-g-typography-text-size` | `dimension` | `{!font-size-3}` | `14px` | `tokens/semantic/base/typography.yml` |
+| `--fds-g-typography-text-weight` | `font-weight` | `{!font-weight-regular}` | `400` | `tokens/semantic/base/typography.yml` |
 ## Semantic / Scene / scene
 
 | CSS Variable | 类型 | 源值 | 解析值 | 来源 |

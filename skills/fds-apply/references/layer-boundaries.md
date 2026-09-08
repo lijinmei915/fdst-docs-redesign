@@ -21,11 +21,13 @@ Atomic / Seed -> Atomic / Map -> Semantic / Base -> Semantic / Scene
 4. `Atomic/Seed` 只说明颜色派生起点，不作为业务 CSS API 推荐。
 5. 查不到时说明缺口，不从相邻层级拼出一个新 Token。
 
+固定公司色系的 Dark Map 属于 `Atomic/Map`，可以按完整名称精确查询。它只是暗色值域，不等于已经存在暗色 Semantic、主题切换协议或组件暗色状态映射。
+
 ## 不属于 FDS Global Token
 
 - Button、Input、Card、Tab 等组件的内部结构、尺寸和交互状态 Token；
 - Workbench、Dashboard、Detail 等具体业务私有命名；
-- 暗色主题、响应式断点和栅格协议；
+- 暗色 Semantic 与主题切换协议、响应式断点和栅格协议；
 - 单个页面、单张卡片或单种图表的局部样式。
 
 `--fds-s-card-*` 描述页面场景中多张内容卡片共享的规则，不是 Card 组件 Token。组件 Token 由 FxUI、AvaUI 或对应组件包维护，并可引用 FDS Token。

@@ -2,8 +2,10 @@ from __future__ import annotations
 
 import importlib.util
 import sys
+import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -38,15 +40,59 @@ def source(
 
 
 class BuildTest(unittest.TestCase):
+    def test_build_writes_pretty_and_minified_css(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            output = Path(directory) / "fds-global-tokens.css"
+            minified_output = Path(directory) / "fds-global-tokens.min.css"
+            with (
+                mock.patch.object(BUILD, "OUTPUT", output),
+                mock.patch.object(BUILD, "MINIFIED_OUTPUT", minified_output),
+                mock.patch.object(sys, "argv", ["build.py"]),
+            ):
+                self.assertEqual(0, BUILD.main())
+
+            self.assertTrue(output.is_file())
+            self.assertTrue(minified_output.is_file())
+            pretty_css = output.read_text(encoding="utf-8")
+            minified_css = minified_output.read_text(encoding="utf-8")
+            self.assertNotIn("\n", minified_css)
+            self.assertNotIn("/*", minified_css)
+            self.assertLess(len(minified_css), len(pretty_css))
+            self.assertIn("--fds-g-color-yellow-dark-100:#FFC14D;", minified_css)
+            self.assertIn("@media (prefers-reduced-motion:reduce)", minified_css)
+
+            _, sources = BUILD.collect_sources()
+            tokens, errors = BUILD.validate_sources(sources)
+            self.assertEqual([], errors)
+            for token in tokens.values():
+                declaration = (
+                    f"{token.namespace}{token.token_id}:"
+                    f"{BUILD.to_css_value(token.value, tokens)};"
+                )
+                self.assertIn(declaration, minified_css, token.token_id)
+
+    def test_check_mode_does_not_write_css(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            output = Path(directory) / "fds-global-tokens.css"
+            minified_output = Path(directory) / "fds-global-tokens.min.css"
+            with (
+                mock.patch.object(BUILD, "OUTPUT", output),
+                mock.patch.object(BUILD, "MINIFIED_OUTPUT", minified_output),
+                mock.patch.object(sys, "argv", ["build.py", "--check"]),
+            ):
+                self.assertEqual(0, BUILD.main())
+
+            self.assertFalse(output.exists())
+            self.assertFalse(minified_output.exists())
+
     def test_current_sources_are_valid(self) -> None:
         namespace, sources = BUILD.collect_sources()
         tokens, errors = BUILD.validate_sources(sources)
 
         self.assertEqual("--fds-g-", namespace)
         self.assertEqual([], errors)
-        self.assertEqual(26, len(sources))
-        self.assertEqual(392, len(tokens))
-        self.assertFalse(any("-dark-" in token_id for token_id in tokens))
+        self.assertEqual(36, len(sources))
+        self.assertEqual(502, len(tokens))
         self.assertFalse(
             any(token_id.startswith("color-") and "-base-" in token_id for token_id in tokens)
         )
@@ -88,6 +134,21 @@ class BuildTest(unittest.TestCase):
             )
             self.assertEqual(seed, tokens[f"color-{family}-90"].value)
 
+        fixed_families = tuple(family for family in seeds if family != "brand")
+        self.assertFalse(any(token_id.startswith("color-brand-dark-") for token_id in tokens))
+        for family in fixed_families:
+            scale = [tokens[f"color-{family}-dark-{step}"] for step in range(10, 121, 10)]
+            self.assertEqual(12, len(scale))
+            self.assertTrue(
+                all(
+                    token.source == f"atomic/map/color/dark/{family}.yml"
+                    for token in scale
+                )
+            )
+            self.assertEqual(seeds[family], tokens[f"color-{family}-dark-90"].value)
+
+        self.assertEqual("#FFC14D", tokens["color-yellow-dark-100"].value)
+
     def test_confirmed_non_color_scales(self) -> None:
         _, sources = BUILD.collect_sources()
         tokens, errors = BUILD.validate_sources(sources)
@@ -113,6 +174,46 @@ class BuildTest(unittest.TestCase):
         self.assertEqual("1", tokens["opacity-100"].value)
         self.assertEqual("{!opacity-50}", tokens["opacity-disabled"].value)
         self.assertEqual("{!radius-4}", tokens["container-radius"].value)
+
+    def test_confirmed_typography_contract(self) -> None:
+        _, sources = BUILD.collect_sources()
+        tokens, errors = BUILD.validate_sources(sources)
+
+        self.assertEqual([], errors)
+        self.assertEqual(
+            {
+                "typography-text-color": "{!color-text-primary}",
+                "typography-text-size": "{!font-size-3}",
+                "typography-text-line-height": "{!line-height-5}",
+                "typography-text-weight": "{!font-weight-regular}",
+            },
+            {
+                token_id: tokens[token_id].value
+                for token_id in (
+                    "typography-text-color",
+                    "typography-text-size",
+                    "typography-text-line-height",
+                    "typography-text-weight",
+                )
+            },
+        )
+        removed_tokens = {
+            "font-family-code",
+            "font-family-sans",
+            "typography-body-color",
+            "typography-body-font-family",
+            "typography-body-line-height",
+            "typography-body-size",
+            "typography-body-weight",
+            "typography-caption-line-height",
+            "typography-caption-size",
+            "typography-caption-weight",
+            "typography-code-font-family",
+            "typography-heading-font-family",
+            "typography-label-line-height",
+            "typography-label-weight",
+        }
+        self.assertTrue(removed_tokens.isdisjoint(tokens))
 
     def test_opacity_is_limited_to_six_common_values(self) -> None:
         namespace, sources = BUILD.collect_sources()

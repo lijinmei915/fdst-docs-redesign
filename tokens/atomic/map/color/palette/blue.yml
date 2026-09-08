@@ -6,29 +6,29 @@ global:
   type: color
   scope: global
   primitive: true
-  source: generated
+  source: manual
 props:
   color-blue-10:
     value: '#EEF6FF'
   color-blue-20:
-    value: '#DAEDFF'
+    value: '#DBEDFF'
   color-blue-30:
-    value: '#C2E1FF'
+    value: '#C3E1FF'
   color-blue-40:
-    value: '#AAD6FF'
+    value: '#ADD6FF'
   color-blue-50:
-    value: '#91CCFF'
+    value: '#96CBFF'
   color-blue-60:
-    value: '#75C0FF'
+    value: '#7EC0FF'
   color-blue-70:
-    value: '#5AB5FF'
+    value: '#64B5FF'
   color-blue-80:
-    value: '#3CA9FF'
+    value: '#46A9FF'
   color-blue-90:
     value: '#189DFF'
   color-blue-100:
-    value: '#0080D5'
+    value: '#0080D4'
   color-blue-110:
-    value: '#004786'
+    value: '#00487C'
   color-blue-120:
-    value: '#00224B'
+    value: '#002340'

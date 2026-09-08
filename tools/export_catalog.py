@@ -19,9 +19,16 @@ CATALOG_OUTPUT = ROOT / "dist" / "fds-token-catalog.json"
 SKILL_SEARCH_INDEX_OUTPUT = (
     ROOT
     / "skills"
-    / "fxiaoke-design-system-token-query"
+    / "fds-apply"
     / "references"
     / "fds-token-search.jsonl"
+)
+SKILL_MIGRATION_CATALOG_OUTPUT = (
+    ROOT
+    / "skills"
+    / "fds-migrate"
+    / "references"
+    / "fds-token-catalog.jsonl"
 )
 TOKEN_INDEX_OUTPUT = DOCS_ROOT / "reference" / "Token目录.md"
 MARKDOWN_LINK_RE = re.compile(r"(?<!!)\[[^\]]+\]\(([^)]+)\)")
@@ -163,7 +170,11 @@ def css_property_for(token: dict) -> str:
         return "border-color" if token_type == "color" else "border-width"
     if "font-family" in name:
         return "font-family"
-    if "font-size" in name or name.endswith("-title-size"):
+    if (
+        "font-size" in name
+        or name.endswith("-title-size")
+        or (token["category"] == "typography" and name.endswith("-size"))
+    ):
         return "font-size"
     if "line-height" in name:
         return "line-height"
@@ -241,6 +252,13 @@ def render_search_index(catalog: dict) -> str:
     )
 
 
+def render_migration_catalog(catalog: dict) -> str:
+    return "".join(
+        json.dumps(token, ensure_ascii=False, separators=(",", ":")) + "\n"
+        for token in catalog["tokens"]
+    )
+
+
 def render_token_index(catalog: dict) -> str:
     lines = [
         "# FDS Token 目录",
@@ -282,7 +300,7 @@ def display_path(path: Path) -> str:
 
 
 def documentation_files() -> list[Path]:
-    return sorted(DOCS_ROOT.rglob("*.md"))
+    return sorted([*DOCS_ROOT.rglob("*.md"), *DOCS_ROOT.rglob("*.html")])
 
 
 def validate_markdown_links() -> list[str]:
@@ -313,6 +331,7 @@ def check_outputs(catalog: dict) -> list[str]:
     expected = {
         CATALOG_OUTPUT: render_catalog(catalog),
         SKILL_SEARCH_INDEX_OUTPUT: render_search_index(catalog),
+        SKILL_MIGRATION_CATALOG_OUTPUT: render_migration_catalog(catalog),
         TOKEN_INDEX_OUTPUT: render_token_index(catalog),
     }
     errors: list[str] = []
@@ -328,6 +347,7 @@ def write_outputs(catalog: dict) -> None:
     for path, content in (
         (CATALOG_OUTPUT, render_catalog(catalog)),
         (SKILL_SEARCH_INDEX_OUTPUT, render_search_index(catalog)),
+        (SKILL_MIGRATION_CATALOG_OUTPUT, render_migration_catalog(catalog)),
         (TOKEN_INDEX_OUTPUT, render_token_index(catalog)),
     ):
         path.parent.mkdir(parents=True, exist_ok=True)
@@ -370,13 +390,13 @@ def main() -> int:
                 return 1
             print(
                 f"生成物校验通过：{catalog['tokenCount']} 个 Token，"
-                "dist catalog、Skill 搜索索引、链接和示例变量均有效"
+                "dist catalog、Skill Token 快照、链接和示例变量均有效"
             )
             return 0
 
         write_outputs(catalog)
         print(
-            f"Catalog 与 Token 目录生成完成：{catalog['tokenCount']} 个 Token",
+            f"Catalog、Skill Token 快照与 Token 目录生成完成：{catalog['tokenCount']} 个 Token",
         )
         return 0
     except (OSError, KeyError, TypeError, ValueError) as error:

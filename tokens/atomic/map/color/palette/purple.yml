@@ -6,10 +6,10 @@ global:
   type: color
   scope: global
   primitive: true
-  source: generated
+  source: manual
 props:
   color-purple-10:
-    value: '#F5F3FF'
+    value: '#F5F4FF'
   color-purple-20:
     value: '#E4E1FE'
   color-purple-30:

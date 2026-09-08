@@ -6,12 +6,6 @@ global:
   scope: global
   primitive: true
 props:
-  font-family-sans:
-    value: '"Microsoft YaHei", "PingFang SC", "Segoe UI", Arial, sans-serif'
-    type: font-family
-  font-family-code:
-    value: Consolas, "SFMono-Regular", "Liberation Mono", monospace
-    type: font-family
   font-size-1:
     value: 12px
     type: dimension

@@ -6,29 +6,29 @@ global:
   type: color
   scope: global
   primitive: true
-  source: generated
+  source: manual
 props:
   color-amber-10:
     value: '#FEF3EC'
   color-amber-20:
     value: '#FFE6D9'
   color-amber-30:
-    value: '#FFD7C1'
+    value: '#FFD8C3'
   color-amber-40:
-    value: '#FFC8A8'
+    value: '#FFCAAD'
   color-amber-50:
-    value: '#FFB98E'
+    value: '#FFBC97'
   color-amber-60:
-    value: '#FFA973'
+    value: '#FFAD80'
   color-amber-70:
-    value: '#FF9958'
+    value: '#FF9E66'
   color-amber-80:
-    value: '#FF8A3B'
+    value: '#FF8E48'
   color-amber-90:
     value: '#FF7C19'
   color-amber-100:
-    value: '#D36100'
+    value: '#D26200'
   color-amber-110:
-    value: '#7F2B00'
+    value: '#763400'
   color-amber-120:
-    value: '#430B00'
+    value: '#3A1600'

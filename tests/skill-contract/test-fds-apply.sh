@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
-# Deterministic contract test for fxiaoke-design-system-token-query.
+# Deterministic contract test for fds-apply.
 set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "$0")/../.." && pwd)"
-SKILL_DIR="$ROOT_DIR/skills/fxiaoke-design-system-token-query"
+SKILL_DIR="$ROOT_DIR/skills/fds-apply"
 SKILL="$SKILL_DIR/SKILL.md"
 SEARCH_INDEX="$SKILL_DIR/references/fds-token-search.jsonl"
 QUERY="$SKILL_DIR/scripts/query_tokens.sh"
@@ -21,6 +21,7 @@ fi
 
 for file in \
     "$SKILL" \
+    "$SKILL_DIR/agents/openai.yaml" \
     "$SEARCH_INDEX" \
     "$QUERY" \
     "$SKILL_DIR/references/layer-boundaries.md" \
@@ -43,7 +44,7 @@ match = re.match(r"^---\n(.*?)\n---\n", skill_text, re.S)
 assert match, "SKILL.md 缺少首行 YAML frontmatter"
 keys = [line.split(":", 1)[0] for line in match.group(1).splitlines() if ":" in line]
 assert keys == ["name", "description"], f"frontmatter 只能包含 name/description，实际为 {keys}"
-assert "name: fxiaoke-design-system-token-query" in match.group(0), "Skill name 与目录名不一致"
+assert "name: fds-apply" in match.group(0), "Skill name 与目录名不一致"
 assert "TODO" not in skill_text and "EXAMPLE" not in skill_text, "Skill 含未清理占位符"
 for heading in ("Goal", "When to Use", "ToolsList", "Workflow", "Resources", "Output"):
     assert re.search(rf"^## .*{re.escape(heading)}", skill_text, re.M), f"缺少 {heading} 章节"
@@ -75,4 +76,4 @@ PY
     -s "$ROOT_DIR/tests" \
     -p 'test_query_tokens.py'
 
-echo 'fxiaoke-design-system-token-query Skill contract passed'
+echo 'fds-apply Skill contract passed'

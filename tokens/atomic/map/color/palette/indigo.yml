@@ -6,29 +6,29 @@ global:
   type: color
   scope: global
   primitive: true
-  source: generated
+  source: manual
 props:
   color-indigo-10:
-    value: '#EEF6FF'
+    value: '#F0F5FF'
   color-indigo-20:
-    value: '#D7E8FF'
+    value: '#D9E7FF'
   color-indigo-30:
-    value: '#BBD6FF'
+    value: '#BDD6FF'
   color-indigo-40:
-    value: '#9FC6FF'
+    value: '#A4C6FF'
   color-indigo-50:
-    value: '#83B5FF'
+    value: '#8AB6FF'
   color-indigo-60:
-    value: '#66A4FF'
+    value: '#70A5FF'
   color-indigo-70:
-    value: '#4B91FF'
+    value: '#5593FF'
   color-indigo-80:
-    value: '#2E7FFF'
+    value: '#3781FF'
   color-indigo-90:
     value: '#0C6CFF'
   color-indigo-100:
     value: '#0158D9'
   color-indigo-110:
-    value: '#003192'
+    value: '#003589'
   color-indigo-120:
-    value: '#001A5A'
+    value: '#001C52'

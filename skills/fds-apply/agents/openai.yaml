@@ -1,0 +1,4 @@
+interface:
+  display_name: "FDS Apply"
+  short_description: "查询并推荐可直接应用的 FDS Token 与 CSS 用法"
+  default_prompt: "使用 $fds-apply 查询并推荐适合当前界面用途的 FDS Token，给出可直接应用的 CSS 用法。"

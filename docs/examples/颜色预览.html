@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FDS 颜色视觉预览</title>
+  <link rel="stylesheet" href="../../dist/fds-global-tokens.css">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--fds-g-color-text-primary);
+      background: var(--fds-g-color-surface-page);
+      font-family: Arial, "Microsoft YaHei", sans-serif;
+      letter-spacing: 0;
+    }
+    header, main { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
+    header { padding: 40px 0 24px; }
+    h1 { margin: 0 0 8px; font-size: 32px; line-height: 1.3; }
+    h2 { margin: 0 0 16px; font-size: 20px; line-height: 1.4; }
+    p { margin: 0; color: var(--fds-g-color-text-secondary); line-height: 1.6; }
+    section { padding: 24px 0 32px; border-top: var(--fds-g-border-width-1) solid var(--fds-g-border-subtle); }
+    .state-grid, .family-grid, .neutral-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: var(--fds-g-spacing-3);
+    }
+    .family-grid, .neutral-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+    .swatch {
+      min-width: 0;
+      overflow: hidden;
+      border: var(--fds-g-border-width-1) solid var(--fds-g-border-default);
+      border-radius: var(--fds-g-radius-3);
+      background: var(--fds-g-color-surface-container);
+    }
+    .sample { height: 80px; background: var(--swatch); }
+    .meta { padding: 10px 12px 12px; }
+    .meta strong, .meta code { display: block; overflow-wrap: anywhere; }
+    .meta strong { margin-bottom: 4px; font-size: 14px; }
+    .meta code { color: var(--fds-g-color-text-secondary); font-size: 11px; line-height: 1.45; }
+    .primary { --swatch: var(--fds-g-color-primary); }
+    .primary-hover { --swatch: var(--fds-g-color-primary-hover); }
+    .primary-active { --swatch: var(--fds-g-color-primary-active); }
+    .primary-disabled { --swatch: var(--fds-g-color-primary-disabled); }
+    .danger { --swatch: var(--fds-g-color-danger); }
+    .warning { --swatch: var(--fds-g-color-warning); }
+    .success { --swatch: var(--fds-g-color-success); }
+    .info { --swatch: var(--fds-g-color-info); }
+    .brand { --swatch: var(--fds-g-color-brand-90); }
+    .amber { --swatch: var(--fds-g-color-amber-90); }
+    .yellow { --swatch: var(--fds-g-color-yellow-90); }
+    .yellow-green { --swatch: var(--fds-g-color-yellow-green-90); }
+    .green { --swatch: var(--fds-g-color-green-90); }
+    .teal { --swatch: var(--fds-g-color-teal-90); }
+    .blue { --swatch: var(--fds-g-color-blue-90); }
+    .indigo { --swatch: var(--fds-g-color-indigo-90); }
+    .purple { --swatch: var(--fds-g-color-purple-90); }
+    .magenta { --swatch: var(--fds-g-color-magenta-90); }
+    .red { --swatch: var(--fds-g-color-red-90); }
+    .gray-10 { --swatch: var(--fds-g-color-gray-10); }
+    .gray-30 { --swatch: var(--fds-g-color-gray-30); }
+    .gray-50 { --swatch: var(--fds-g-color-gray-50); }
+    .gray-100 { --swatch: var(--fds-g-color-gray-100); }
+    .gray-150 { --swatch: var(--fds-g-color-gray-150); }
+    .gray-200 { --swatch: var(--fds-g-color-gray-200); }
+    @media (max-width: 760px) {
+      header, main { width: min(100% - 24px, 1120px); }
+      header { padding-top: 28px; }
+      h1 { font-size: 26px; }
+      .state-grid, .family-grid, .neutral-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>FDS 颜色视觉预览</h1>
+    <p>直接使用 fdst CSS Variable，展示语义状态、固定公司色系和中性色层级。</p>
+  </header>
+  <main>
+    <section>
+      <h2>主操作状态</h2>
+      <div class="state-grid">
+        <article class="swatch primary"><div class="sample"></div><div class="meta"><strong>Default</strong><code>--fds-g-color-primary</code></div></article>
+        <article class="swatch primary-hover"><div class="sample"></div><div class="meta"><strong>Hover</strong><code>--fds-g-color-primary-hover</code></div></article>
+        <article class="swatch primary-active"><div class="sample"></div><div class="meta"><strong>Active</strong><code>--fds-g-color-primary-active</code></div></article>
+        <article class="swatch primary-disabled"><div class="sample"></div><div class="meta"><strong>Disabled</strong><code>--fds-g-color-primary-disabled</code></div></article>
+      </div>
+    </section>
+    <section>
+      <h2>功能语义</h2>
+      <div class="state-grid">
+        <article class="swatch danger"><div class="sample"></div><div class="meta"><strong>Danger</strong><code>--fds-g-color-danger</code></div></article>
+        <article class="swatch warning"><div class="sample"></div><div class="meta"><strong>Warning</strong><code>--fds-g-color-warning</code></div></article>
+        <article class="swatch success"><div class="sample"></div><div class="meta"><strong>Success</strong><code>--fds-g-color-success</code></div></article>
+        <article class="swatch info"><div class="sample"></div><div class="meta"><strong>Info</strong><code>--fds-g-color-info</code></div></article>
+      </div>
+    </section>
+    <section>
+      <h2>主题色与固定公司色系</h2>
+      <div class="family-grid">
+        <article class="swatch brand"><div class="sample"></div><div class="meta"><strong>Brand</strong><code>brand-90</code></div></article>
+        <article class="swatch amber"><div class="sample"></div><div class="meta"><strong>Amber</strong><code>amber-90</code></div></article>
+        <article class="swatch yellow"><div class="sample"></div><div class="meta"><strong>Yellow</strong><code>yellow-90</code></div></article>
+        <article class="swatch yellow-green"><div class="sample"></div><div class="meta"><strong>Yellow Green</strong><code>yellow-green-90</code></div></article>
+        <article class="swatch green"><div class="sample"></div><div class="meta"><strong>Green</strong><code>green-90</code></div></article>
+        <article class="swatch teal"><div class="sample"></div><div class="meta"><strong>Teal</strong><code>teal-90</code></div></article>
+        <article class="swatch blue"><div class="sample"></div><div class="meta"><strong>Blue</strong><code>blue-90</code></div></article>
+        <article class="swatch indigo"><div class="sample"></div><div class="meta"><strong>Indigo</strong><code>indigo-90</code></div></article>
+        <article class="swatch purple"><div class="sample"></div><div class="meta"><strong>Purple</strong><code>purple-90</code></div></article>
+        <article class="swatch magenta"><div class="sample"></div><div class="meta"><strong>Magenta</strong><code>magenta-90</code></div></article>
+        <article class="swatch red"><div class="sample"></div><div class="meta"><strong>Red</strong><code>red-90</code></div></article>
+      </div>
+    </section>
+    <section>
+      <h2>中性色层级</h2>
+      <div class="neutral-grid">
+        <article class="swatch gray-10"><div class="sample"></div><div class="meta"><strong>Gray 10</strong><code>surface</code></div></article>
+        <article class="swatch gray-30"><div class="sample"></div><div class="meta"><strong>Gray 30</strong><code>page</code></div></article>
+        <article class="swatch gray-50"><div class="sample"></div><div class="meta"><strong>Gray 50</strong><code>border</code></div></article>
+        <article class="swatch gray-100"><div class="sample"></div><div class="meta"><strong>Gray 100</strong><code>middle</code></div></article>
+        <article class="swatch gray-150"><div class="sample"></div><div class="meta"><strong>Gray 150</strong><code>secondary text</code></div></article>
+        <article class="swatch gray-200"><div class="sample"></div><div class="meta"><strong>Gray 200</strong><code>primary text</code></div></article>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

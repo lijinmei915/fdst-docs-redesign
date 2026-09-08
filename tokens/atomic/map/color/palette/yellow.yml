@@ -6,7 +6,7 @@ global:
   type: color
   scope: global
   primitive: true
-  source: generated
+  source: manual
 props:
   color-yellow-10:
     value: '#FAF4EB'
@@ -17,18 +17,18 @@ props:
   color-yellow-40:
     value: '#FDDEAC'
   color-yellow-50:
-    value: '#FFD692'
+    value: '#FFD693'
   color-yellow-60:
-    value: '#FFCE76'
+    value: '#FFCF7D'
   color-yellow-70:
-    value: '#FFC659'
+    value: '#FFC764'
   color-yellow-80:
-    value: '#FFBE38'
+    value: '#FFBE45'
   color-yellow-90:
     value: '#FFB602'
   color-yellow-100:
-    value: '#CF9000'
+    value: '#CD9100'
   color-yellow-110:
-    value: '#764800'
+    value: '#6D4C00'
   color-yellow-120:
-    value: '#371900'
+    value: '#2F1E00'

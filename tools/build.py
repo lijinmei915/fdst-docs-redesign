@@ -16,6 +16,7 @@ ROOT = Path(__file__).resolve().parents[1]
 TOKENS_ROOT = ROOT / "tokens"
 ENTRY = TOKENS_ROOT / "fds-global.yml"
 OUTPUT = ROOT / "dist" / "fds-global-tokens.css"
+MINIFIED_OUTPUT = ROOT / "dist" / "fds-global-tokens.min.css"
 DEFAULT_NAMESPACE = "--fds-g-"
 SCENE_NAMESPACE = "--fds-s-"
 TOKEN_ID_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
@@ -311,6 +312,39 @@ def build_css(namespace: str, sources: list[tuple[str, dict]], tokens: dict[str,
     return "\n".join(lines) + "\n"
 
 
+def build_minified_css(
+    namespace: str,
+    sources: list[tuple[str, dict]],
+    tokens: dict[str, Token],
+) -> str:
+    parts = [":root{"]
+    for _, source in sources:
+        for token_id in source["props"]:
+            token = tokens[token_id]
+            parts.append(
+                f"{token.namespace}{token_id}:{to_css_value(token.value, tokens)};"
+            )
+    parts.append("}")
+
+    reduced_motion_tokens = [
+        token
+        for token in tokens.values()
+        if token.layer == "semantic"
+        and token.category == "motion"
+        and token.token_type == "duration"
+    ]
+    if reduced_motion_tokens:
+        parts.append("@media (prefers-reduced-motion:reduce){:root{")
+        reduced_motion_value = tokens["motion-duration-0"]
+        for token in reduced_motion_tokens:
+            parts.append(
+                f"{token.namespace}{token.token_id}:"
+                f"var({reduced_motion_value.namespace}motion-duration-0);"
+            )
+        parts.append("}}")
+    return "".join(parts)
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check", action="store_true", help="只校验，不写入产物")
@@ -322,13 +356,18 @@ def main() -> int:
             print("Token 校验失败：", file=sys.stderr)
             print("\n".join(f"- {error}" for error in errors), file=sys.stderr)
             return 1
-        output = build_css(namespace, sources, tokens)
         if args.check:
             print(f"Token 校验通过：{len(tokens)} 个变量，{len(sources)} 个源文件")
         else:
+            output = build_css(namespace, sources, tokens)
+            minified_output = build_minified_css(namespace, sources, tokens)
             OUTPUT.parent.mkdir(parents=True, exist_ok=True)
             OUTPUT.write_text(output, encoding="utf-8", newline="\n")
-            print(f"Token 构建完成：{OUTPUT}（{len(tokens)} 个变量）")
+            MINIFIED_OUTPUT.write_text(minified_output, encoding="utf-8", newline="\n")
+            print(
+                f"Token 构建完成：{OUTPUT}、{MINIFIED_OUTPUT}"
+                f"（{len(tokens)} 个变量）"
+            )
         return 0
     except (OSError, KeyError, TypeError, ValueError, yaml.YAMLError) as error:
         print(f"Token 构建失败：{error}", file=sys.stderr)

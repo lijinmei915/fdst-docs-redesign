@@ -6,7 +6,7 @@ global:
   type: color
   scope: global
   primitive: true
-  source: generated
+  source: manual
 props:
   color-green-10:
     value: '#EEF8F1'
@@ -29,6 +29,6 @@ props:
   color-green-100:
     value: '#14A25C'
   color-green-110:
-    value: '#005D29'
+    value: '#005A2F'
   color-green-120:
-    value: '#002D0B'
+    value: '#002A13'

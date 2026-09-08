@@ -1,0 +1,22 @@
+schema: fds-token-source/v1
+global:
+  layer: atomic
+  tier: map
+  category: color
+  type: color
+  scope: global
+  primitive: true
+  source: manual
+props:
+  color-magenta-dark-10: {value: '#241617'}
+  color-magenta-dark-20: {value: '#331D1E'}
+  color-magenta-dark-30: {value: '#442426'}
+  color-magenta-dark-40: {value: '#5A2B2E'}
+  color-magenta-dark-50: {value: '#743137'}
+  color-magenta-dark-60: {value: '#933641'}
+  color-magenta-dark-70: {value: '#B33949'}
+  color-magenta-dark-80: {value: '#D83E55'}
+  color-magenta-dark-90: {value: '#FF4A66'}
+  color-magenta-dark-100: {value: '#FF6C7B'}
+  color-magenta-dark-110: {value: '#FF8992'}
+  color-magenta-dark-120: {value: '#FFA4A9'}

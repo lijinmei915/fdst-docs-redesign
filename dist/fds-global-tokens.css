@@ -20,45 +20,45 @@
   /* atomic / map / color · source: tokens/atomic/map/color/palette/brand.yml */
   --fds-g-color-brand-10: #FEF3EC;
   --fds-g-color-brand-20: #FFE6D9;
-  --fds-g-color-brand-30: #FFD7C1;
-  --fds-g-color-brand-40: #FFC8A8;
-  --fds-g-color-brand-50: #FFB98E;
-  --fds-g-color-brand-60: #FFA973;
-  --fds-g-color-brand-70: #FF9958;
-  --fds-g-color-brand-80: #FF8A3B;
+  --fds-g-color-brand-30: #FFD8C3;
+  --fds-g-color-brand-40: #FFCAAD;
+  --fds-g-color-brand-50: #FFBC97;
+  --fds-g-color-brand-60: #FFAD80;
+  --fds-g-color-brand-70: #FF9E66;
+  --fds-g-color-brand-80: #FF8E48;
   --fds-g-color-brand-90: #FF7C19;
-  --fds-g-color-brand-100: #D36100;
-  --fds-g-color-brand-110: #7F2B00;
-  --fds-g-color-brand-120: #430B00;
+  --fds-g-color-brand-100: #D26200;
+  --fds-g-color-brand-110: #763400;
+  --fds-g-color-brand-120: #3A1600;
   --fds-g-color-brand-vivid: #FD7A14;
 
   /* atomic / map / color · source: tokens/atomic/map/color/palette/amber.yml */
   --fds-g-color-amber-10: #FEF3EC;
   --fds-g-color-amber-20: #FFE6D9;
-  --fds-g-color-amber-30: #FFD7C1;
-  --fds-g-color-amber-40: #FFC8A8;
-  --fds-g-color-amber-50: #FFB98E;
-  --fds-g-color-amber-60: #FFA973;
-  --fds-g-color-amber-70: #FF9958;
-  --fds-g-color-amber-80: #FF8A3B;
+  --fds-g-color-amber-30: #FFD8C3;
+  --fds-g-color-amber-40: #FFCAAD;
+  --fds-g-color-amber-50: #FFBC97;
+  --fds-g-color-amber-60: #FFAD80;
+  --fds-g-color-amber-70: #FF9E66;
+  --fds-g-color-amber-80: #FF8E48;
   --fds-g-color-amber-90: #FF7C19;
-  --fds-g-color-amber-100: #D36100;
-  --fds-g-color-amber-110: #7F2B00;
-  --fds-g-color-amber-120: #430B00;
+  --fds-g-color-amber-100: #D26200;
+  --fds-g-color-amber-110: #763400;
+  --fds-g-color-amber-120: #3A1600;
 
   /* atomic / map / color · source: tokens/atomic/map/color/palette/yellow.yml */
   --fds-g-color-yellow-10: #FAF4EB;
   --fds-g-color-yellow-20: #FBEED9;
   --fds-g-color-yellow-30: #FCE6C3;
   --fds-g-color-yellow-40: #FDDEAC;
-  --fds-g-color-yellow-50: #FFD692;
-  --fds-g-color-yellow-60: #FFCE76;
-  --fds-g-color-yellow-70: #FFC659;
-  --fds-g-color-yellow-80: #FFBE38;
+  --fds-g-color-yellow-50: #FFD693;
+  --fds-g-color-yellow-60: #FFCF7D;
+  --fds-g-color-yellow-70: #FFC764;
+  --fds-g-color-yellow-80: #FFBE45;
   --fds-g-color-yellow-90: #FFB602;
-  --fds-g-color-yellow-100: #CF9000;
-  --fds-g-color-yellow-110: #764800;
-  --fds-g-color-yellow-120: #371900;
+  --fds-g-color-yellow-100: #CD9100;
+  --fds-g-color-yellow-110: #6D4C00;
+  --fds-g-color-yellow-120: #2F1E00;
 
   /* atomic / map / color · source: tokens/atomic/map/color/palette/yellow-green.yml */
   --fds-g-color-yellow-green-10: #F1F7ED;
@@ -71,8 +71,8 @@
   --fds-g-color-yellow-green-80: #92D352;
   --fds-g-color-yellow-green-90: #87CC3B;
   --fds-g-color-yellow-green-100: #69A522;
-  --fds-g-color-yellow-green-110: #305C00;
-  --fds-g-color-yellow-green-120: #0E2A00;
+  --fds-g-color-yellow-green-110: #355A00;
+  --fds-g-color-yellow-green-120: #152800;
 
   /* atomic / map / color · source: tokens/atomic/map/color/palette/green.yml */
   --fds-g-color-green-10: #EEF8F1;
@@ -85,8 +85,8 @@
   --fds-g-color-green-80: #4DCF83;
   --fds-g-color-green-90: #30C776;
   --fds-g-color-green-100: #14A25C;
-  --fds-g-color-green-110: #005D29;
-  --fds-g-color-green-120: #002D0B;
+  --fds-g-color-green-110: #005A2F;
+  --fds-g-color-green-120: #002A13;
 
   /* atomic / map / color · source: tokens/atomic/map/color/palette/teal.yml */
   --fds-g-color-teal-10: #EEF7F6;
@@ -98,40 +98,40 @@
   --fds-g-color-teal-70: #5EC6BE;
   --fds-g-color-teal-80: #3FBEB5;
   --fds-g-color-teal-90: #16B4AB;
-  --fds-g-color-teal-100: #00938C;
-  --fds-g-color-teal-110: #005550;
-  --fds-g-color-teal-120: #002A27;
+  --fds-g-color-teal-100: #00938B;
+  --fds-g-color-teal-110: #00534E;
+  --fds-g-color-teal-120: #002826;
 
   /* atomic / map / color · source: tokens/atomic/map/color/palette/blue.yml */
   --fds-g-color-blue-10: #EEF6FF;
-  --fds-g-color-blue-20: #DAEDFF;
-  --fds-g-color-blue-30: #C2E1FF;
-  --fds-g-color-blue-40: #AAD6FF;
-  --fds-g-color-blue-50: #91CCFF;
-  --fds-g-color-blue-60: #75C0FF;
-  --fds-g-color-blue-70: #5AB5FF;
-  --fds-g-color-blue-80: #3CA9FF;
+  --fds-g-color-blue-20: #DBEDFF;
+  --fds-g-color-blue-30: #C3E1FF;
+  --fds-g-color-blue-40: #ADD6FF;
+  --fds-g-color-blue-50: #96CBFF;
+  --fds-g-color-blue-60: #7EC0FF;
+  --fds-g-color-blue-70: #64B5FF;
+  --fds-g-color-blue-80: #46A9FF;
   --fds-g-color-blue-90: #189DFF;
-  --fds-g-color-blue-100: #0080D5;
-  --fds-g-color-blue-110: #004786;
-  --fds-g-color-blue-120: #00224B;
+  --fds-g-color-blue-100: #0080D4;
+  --fds-g-color-blue-110: #00487C;
+  --fds-g-color-blue-120: #002340;
 
   /* atomic / map / color · source: tokens/atomic/map/color/palette/indigo.yml */
-  --fds-g-color-indigo-10: #EEF6FF;
-  --fds-g-color-indigo-20: #D7E8FF;
-  --fds-g-color-indigo-30: #BBD6FF;
-  --fds-g-color-indigo-40: #9FC6FF;
-  --fds-g-color-indigo-50: #83B5FF;
-  --fds-g-color-indigo-60: #66A4FF;
-  --fds-g-color-indigo-70: #4B91FF;
-  --fds-g-color-indigo-80: #2E7FFF;
+  --fds-g-color-indigo-10: #F0F5FF;
+  --fds-g-color-indigo-20: #D9E7FF;
+  --fds-g-color-indigo-30: #BDD6FF;
+  --fds-g-color-indigo-40: #A4C6FF;
+  --fds-g-color-indigo-50: #8AB6FF;
+  --fds-g-color-indigo-60: #70A5FF;
+  --fds-g-color-indigo-70: #5593FF;
+  --fds-g-color-indigo-80: #3781FF;
   --fds-g-color-indigo-90: #0C6CFF;
   --fds-g-color-indigo-100: #0158D9;
-  --fds-g-color-indigo-110: #003192;
-  --fds-g-color-indigo-120: #001A5A;
+  --fds-g-color-indigo-110: #003589;
+  --fds-g-color-indigo-120: #001C52;
 
   /* atomic / map / color · source: tokens/atomic/map/color/palette/purple.yml */
-  --fds-g-color-purple-10: #F5F3FF;
+  --fds-g-color-purple-10: #F5F4FF;
   --fds-g-color-purple-20: #E4E1FE;
   --fds-g-color-purple-30: #D1CAFA;
   --fds-g-color-purple-40: #BFB4F9;
@@ -145,32 +145,172 @@
   --fds-g-color-purple-120: #250D53;
 
   /* atomic / map / color · source: tokens/atomic/map/color/palette/magenta.yml */
-  --fds-g-color-magenta-10: #FFF1F1;
-  --fds-g-color-magenta-20: #FFE0E1;
-  --fds-g-color-magenta-30: #FFCCCE;
-  --fds-g-color-magenta-40: #FFB8BB;
-  --fds-g-color-magenta-50: #FFA3A9;
-  --fds-g-color-magenta-60: #FF8D96;
-  --fds-g-color-magenta-70: #FF7685;
-  --fds-g-color-magenta-80: #FF6075;
+  --fds-g-color-magenta-10: #FFF1F2;
+  --fds-g-color-magenta-20: #FFE2E3;
+  --fds-g-color-magenta-30: #FFCFD0;
+  --fds-g-color-magenta-40: #FFBDBF;
+  --fds-g-color-magenta-50: #FFAAAE;
+  --fds-g-color-magenta-60: #FF969D;
+  --fds-g-color-magenta-70: #FF818B;
+  --fds-g-color-magenta-80: #FF6979;
   --fds-g-color-magenta-90: #FF4A66;
   --fds-g-color-magenta-100: #D43550;
   --fds-g-color-magenta-110: #850226;
-  --fds-g-color-magenta-120: #4A000D;
+  --fds-g-color-magenta-120: #460010;
 
   /* atomic / map / color · source: tokens/atomic/map/color/palette/red.yml */
-  --fds-g-color-red-10: #FFF1EE;
-  --fds-g-color-red-20: #FFE2D9;
-  --fds-g-color-red-30: #FFCEC1;
-  --fds-g-color-red-40: #FFBBA9;
-  --fds-g-color-red-50: #FFA78F;
-  --fds-g-color-red-60: #FF9175;
-  --fds-g-color-red-70: #FF7C5C;
-  --fds-g-color-red-80: #FF6743;
+  --fds-g-color-red-10: #FFF2EF;
+  --fds-g-color-red-20: #FFE3DC;
+  --fds-g-color-red-30: #FFD0C5;
+  --fds-g-color-red-40: #FFBFB0;
+  --fds-g-color-red-50: #FFAD99;
+  --fds-g-color-red-60: #FF9A82;
+  --fds-g-color-red-70: #FF8569;
+  --fds-g-color-red-80: #FF6E4E;
   --fds-g-color-red-90: #FF522A;
   --fds-g-color-red-100: #D53D18;
-  --fds-g-color-red-110: #850C00;
-  --fds-g-color-red-120: #4A0000;
+  --fds-g-color-red-110: #801A00;
+  --fds-g-color-red-120: #430900;
+
+  /* atomic / map / color · source: tokens/atomic/map/color/dark/amber.yml */
+  --fds-g-color-amber-dark-10: #231914;
+  --fds-g-color-amber-dark-20: #322219;
+  --fds-g-color-amber-dark-30: #442B1E;
+  --fds-g-color-amber-dark-40: #593622;
+  --fds-g-color-amber-dark-50: #744124;
+  --fds-g-color-amber-dark-60: #924D23;
+  --fds-g-color-amber-dark-70: #B2591C;
+  --fds-g-color-amber-dark-80: #D76813;
+  --fds-g-color-amber-dark-90: #FF7C19;
+  --fds-g-color-amber-dark-100: #FF914E;
+  --fds-g-color-amber-dark-110: #FFA571;
+  --fds-g-color-amber-dark-120: #FFB992;
+
+  /* atomic / map / color · source: tokens/atomic/map/color/dark/yellow.yml */
+  --fds-g-color-yellow-dark-10: #221C14;
+  --fds-g-color-yellow-dark-20: #31281A;
+  --fds-g-color-yellow-dark-30: #433620;
+  --fds-g-color-yellow-dark-40: #594625;
+  --fds-g-color-yellow-dark-50: #735727;
+  --fds-g-color-yellow-dark-60: #916B24;
+  --fds-g-color-yellow-dark-70: #B17F17;
+  --fds-g-color-yellow-dark-80: #D69800;
+  --fds-g-color-yellow-dark-90: #FFB602;
+  --fds-g-color-yellow-dark-100: #FFC14D;
+  --fds-g-color-yellow-dark-110: #FFCB73;
+  --fds-g-color-yellow-dark-120: #FFD794;
+
+  /* atomic / map / color · source: tokens/atomic/map/color/dark/yellow-green.yml */
+  --fds-g-color-yellow-green-dark-10: #191E15;
+  --fds-g-color-yellow-green-dark-20: #222B1B;
+  --fds-g-color-yellow-green-dark-30: #2D3A22;
+  --fds-g-color-yellow-green-dark-40: #384B28;
+  --fds-g-color-yellow-green-dark-50: #455F2D;
+  --fds-g-color-yellow-green-dark-60: #52762F;
+  --fds-g-color-yellow-green-dark-70: #5F8F2E;
+  --fds-g-color-yellow-green-dark-80: #70AB2F;
+  --fds-g-color-yellow-green-dark-90: #87CC3B;
+  --fds-g-color-yellow-green-dark-100: #94D455;
+  --fds-g-color-yellow-green-dark-110: #A6DB77;
+  --fds-g-color-yellow-green-dark-120: #B9E398;
+
+  /* atomic / map / color · source: tokens/atomic/map/color/dark/green.yml */
+  --fds-g-color-green-dark-10: #151E18;
+  --fds-g-color-green-dark-20: #1C2A20;
+  --fds-g-color-green-dark-30: #223829;
+  --fds-g-color-green-dark-40: #284934;
+  --fds-g-color-green-dark-50: #2C5D3E;
+  --fds-g-color-green-dark-60: #2D7449;
+  --fds-g-color-green-dark-70: #2A8B54;
+  --fds-g-color-green-dark-80: #27A762;
+  --fds-g-color-green-dark-90: #30C776;
+  --fds-g-color-green-dark-100: #51D085;
+  --fds-g-color-green-dark-110: #76D899;
+  --fds-g-color-green-dark-120: #98E0AF;
+
+  /* atomic / map / color · source: tokens/atomic/map/color/dark/teal.yml */
+  --fds-g-color-teal-dark-10: #151D1C;
+  --fds-g-color-teal-dark-20: #1A2826;
+  --fds-g-color-teal-dark-30: #203533;
+  --fds-g-color-teal-dark-40: #244441;
+  --fds-g-color-teal-dark-50: #265552;
+  --fds-g-color-teal-dark-60: #256A65;
+  --fds-g-color-teal-dark-70: #1E7F78;
+  --fds-g-color-teal-dark-80: #129890;
+  --fds-g-color-teal-dark-90: #16B4AB;
+  --fds-g-color-teal-dark-100: #44BFB6;
+  --fds-g-color-teal-dark-110: #6DC9C2;
+  --fds-g-color-teal-dark-120: #91D4CE;
+
+  /* atomic / map / color · source: tokens/atomic/map/color/dark/blue.yml */
+  --fds-g-color-blue-dark-10: #141B23;
+  --fds-g-color-blue-dark-20: #192531;
+  --fds-g-color-blue-dark-30: #1E3143;
+  --fds-g-color-blue-dark-40: #223E58;
+  --fds-g-color-blue-dark-50: #244D73;
+  --fds-g-color-blue-dark-60: #235E91;
+  --fds-g-color-blue-dark-70: #1C6FB2;
+  --fds-g-color-blue-dark-80: #1384D8;
+  --fds-g-color-blue-dark-90: #189DFF;
+  --fds-g-color-blue-dark-100: #4BABFF;
+  --fds-g-color-blue-dark-110: #6FB9FF;
+  --fds-g-color-blue-dark-120: #8FC8FF;
+
+  /* atomic / map / color · source: tokens/atomic/map/color/dark/indigo.yml */
+  --fds-g-color-indigo-dark-10: #121924;
+  --fds-g-color-indigo-dark-20: #162032;
+  --fds-g-color-indigo-dark-30: #192843;
+  --fds-g-color-indigo-dark-40: #1B3258;
+  --fds-g-color-indigo-dark-50: #1B3B73;
+  --fds-g-color-indigo-dark-60: #194692;
+  --fds-g-color-indigo-dark-70: #1350B4;
+  --fds-g-color-indigo-dark-80: #0B5CD9;
+  --fds-g-color-indigo-dark-90: #0C6CFF;
+  --fds-g-color-indigo-dark-100: #3B83FF;
+  --fds-g-color-indigo-dark-110: #5E99FF;
+  --fds-g-color-indigo-dark-120: #80AFFF;
+
+  /* atomic / map / color · source: tokens/atomic/map/color/dark/purple.yml */
+  --fds-g-color-purple-dark-10: #181621;
+  --fds-g-color-purple-dark-20: #1E1B2E;
+  --fds-g-color-purple-dark-30: #26213D;
+  --fds-g-color-purple-dark-40: #2F264F;
+  --fds-g-color-purple-dark-50: #3A2C66;
+  --fds-g-color-purple-dark-60: #463081;
+  --fds-g-color-purple-dark-70: #53349E;
+  --fds-g-color-purple-dark-80: #6238BE;
+  --fds-g-color-purple-dark-90: #7341DE;
+  --fds-g-color-purple-dark-100: #835CEA;
+  --fds-g-color-purple-dark-110: #9479EF;
+  --fds-g-color-purple-dark-120: #A897F1;
+
+  /* atomic / map / color · source: tokens/atomic/map/color/dark/magenta.yml */
+  --fds-g-color-magenta-dark-10: #241617;
+  --fds-g-color-magenta-dark-20: #331D1E;
+  --fds-g-color-magenta-dark-30: #442426;
+  --fds-g-color-magenta-dark-40: #5A2B2E;
+  --fds-g-color-magenta-dark-50: #743137;
+  --fds-g-color-magenta-dark-60: #933641;
+  --fds-g-color-magenta-dark-70: #B33949;
+  --fds-g-color-magenta-dark-80: #D83E55;
+  --fds-g-color-magenta-dark-90: #FF4A66;
+  --fds-g-color-magenta-dark-100: #FF6C7B;
+  --fds-g-color-magenta-dark-110: #FF8992;
+  --fds-g-color-magenta-dark-120: #FFA4A9;
+
+  /* atomic / map / color · source: tokens/atomic/map/color/dark/red.yml */
+  --fds-g-color-red-dark-10: #241714;
+  --fds-g-color-red-dark-20: #331E19;
+  --fds-g-color-red-dark-30: #44251E;
+  --fds-g-color-red-dark-40: #5A2D22;
+  --fds-g-color-red-dark-50: #743325;
+  --fds-g-color-red-dark-60: #933A26;
+  --fds-g-color-red-dark-70: #B33E24;
+  --fds-g-color-red-dark-80: #D84422;
+  --fds-g-color-red-dark-90: #FF522A;
+  --fds-g-color-red-dark-100: #FF7252;
+  --fds-g-color-red-dark-110: #FF8D73;
+  --fds-g-color-red-dark-120: #FFA793;
 
   /* atomic / map / color · source: tokens/atomic/map/color/gray.yml */
   --fds-g-color-gray-10: #FFFFFF;
@@ -210,8 +350,6 @@
   --fds-g-color-red-90-rgb: 255, 82, 42;
 
   /* atomic / map / typography · source: tokens/atomic/map/typography.yml */
-  --fds-g-font-family-sans: "Microsoft YaHei", "PingFang SC", "Segoe UI", Arial, sans-serif;
-  --fds-g-font-family-code: Consolas, "SFMono-Regular", "Liberation Mono", monospace;
   --fds-g-font-size-1: 12px;
   --fds-g-font-size-2: 13px;
   --fds-g-font-size-3: 14px;
@@ -365,7 +503,6 @@
   --fds-g-border-error: var(--fds-g-color-danger);
 
   /* semantic / base / typography · source: tokens/semantic/base/typography.yml */
-  --fds-g-typography-heading-font-family: var(--fds-g-font-family-sans);
   --fds-g-typography-heading-color: var(--fds-g-color-text-primary);
   --fds-g-typography-heading-1-size: var(--fds-g-font-size-11);
   --fds-g-typography-heading-1-line-height: var(--fds-g-line-height-13);
@@ -382,18 +519,11 @@
   --fds-g-typography-heading-5-size: var(--fds-g-font-size-5);
   --fds-g-typography-heading-5-line-height: var(--fds-g-line-height-5);
   --fds-g-typography-heading-5-weight: var(--fds-g-font-weight-semibold);
-  --fds-g-typography-body-font-family: var(--fds-g-font-family-sans);
-  --fds-g-typography-body-color: var(--fds-g-color-text-primary);
-  --fds-g-typography-body-size: var(--fds-g-font-size-3);
-  --fds-g-typography-body-line-height: var(--fds-g-line-height-5);
-  --fds-g-typography-body-weight: var(--fds-g-font-weight-regular);
+  --fds-g-typography-text-color: var(--fds-g-color-text-primary);
+  --fds-g-typography-text-size: var(--fds-g-font-size-3);
+  --fds-g-typography-text-line-height: var(--fds-g-line-height-5);
+  --fds-g-typography-text-weight: var(--fds-g-font-weight-regular);
   --fds-g-typography-label-size: var(--fds-g-font-size-3);
-  --fds-g-typography-label-line-height: var(--fds-g-line-height-4);
-  --fds-g-typography-label-weight: var(--fds-g-font-weight-medium);
-  --fds-g-typography-caption-size: var(--fds-g-font-size-1);
-  --fds-g-typography-caption-line-height: var(--fds-g-line-height-2);
-  --fds-g-typography-caption-weight: var(--fds-g-font-weight-regular);
-  --fds-g-typography-code-font-family: var(--fds-g-font-family-code);
 
   /* semantic / base / layout · source: tokens/semantic/base/layout.yml */
   --fds-g-opacity-disabled: var(--fds-g-opacity-50);

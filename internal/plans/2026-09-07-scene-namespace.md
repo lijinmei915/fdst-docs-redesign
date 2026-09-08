@@ -38,11 +38,11 @@
 
 **Files:**
 - Modify: `docs/**`
-- Modify: `skills/fxiaoke-design-system-token-query/**`
+- Modify: `skills/fds-apply/**`
 - Generate: `dist/fds-global-tokens.css`
 - Generate: `dist/fds-token-catalog.json`
 - Generate: `docs/reference/Token目录.md`
-- Generate: `skills/fxiaoke-design-system-token-query/references/fds-token-search.jsonl`
+- Generate: `skills/fds-apply/references/fds-token-search.jsonl`
 
 1. 将正式 Scene 示例和名称改为 `--fds-s-*`，保留 Semantic/Scene 层级概念。
 2. 查询 Skill 同时接受 `--fds-g-*` 与 `--fds-s-*`。
@@ -53,5 +53,5 @@
 1. 运行 `python tools/build.py --check`。
 2. 运行 `python tools/export_catalog.py --check-docs`。
 3. 运行 `python -m unittest discover -s tests -p "test_*.py"`。
-4. 运行 `tests/skill-contract/test-fxiaoke-design-system-token-query.sh`。
+4. 运行 `tests/skill-contract/test-fds-apply.sh`。
 5. 扫描正式源码和本地业务仓库中的旧 `--fds-g-scene-*` 消费并记录发布风险。

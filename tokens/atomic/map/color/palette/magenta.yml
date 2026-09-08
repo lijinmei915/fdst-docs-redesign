@@ -6,24 +6,24 @@ global:
   type: color
   scope: global
   primitive: true
-  source: generated
+  source: manual
 props:
   color-magenta-10:
-    value: '#FFF1F1'
+    value: '#FFF1F2'
   color-magenta-20:
-    value: '#FFE0E1'
+    value: '#FFE2E3'
   color-magenta-30:
-    value: '#FFCCCE'
+    value: '#FFCFD0'
   color-magenta-40:
-    value: '#FFB8BB'
+    value: '#FFBDBF'
   color-magenta-50:
-    value: '#FFA3A9'
+    value: '#FFAAAE'
   color-magenta-60:
-    value: '#FF8D96'
+    value: '#FF969D'
   color-magenta-70:
-    value: '#FF7685'
+    value: '#FF818B'
   color-magenta-80:
-    value: '#FF6075'
+    value: '#FF6979'
   color-magenta-90:
     value: '#FF4A66'
   color-magenta-100:
@@ -31,4 +31,4 @@ props:
   color-magenta-110:
     value: '#850226'
   color-magenta-120:
-    value: '#4A000D'
+    value: '#460010'

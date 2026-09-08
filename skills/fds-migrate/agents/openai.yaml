@@ -1,0 +1,4 @@
+interface:
+  display_name: "FDS Migrate"
+  short_description: "扫描并迁移多种前端样式到 FDS Token，输出可审计报告"
+  default_prompt: "使用 $fds-migrate 扫描指定前端目录中的样式节点，先生成报告，不修改源码。"

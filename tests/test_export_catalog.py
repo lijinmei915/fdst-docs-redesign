@@ -62,7 +62,8 @@ class ExportCatalogTest(unittest.TestCase):
         tokens = {item["id"]: item for item in catalog["tokens"]}
 
         self.assertEqual("manual", tokens["color-brand"]["origin"])
-        self.assertEqual("generated", tokens["color-brand-90"]["origin"])
+        self.assertEqual("manual", tokens["color-brand-90"]["origin"])
+        self.assertEqual("manual", tokens["color-yellow-dark-100"]["origin"])
         self.assertEqual("manual", tokens["color-gray-10"]["origin"])
         self.assertEqual("derived", tokens["color-brand-90-rgb"]["origin"])
 
@@ -84,6 +85,23 @@ class ExportCatalogTest(unittest.TestCase):
             catalog["namespaces"],
         )
         self.assertEqual(["color-red-40"], tokens["color-red-40"]["referenceChain"])
+
+    def test_typography_size_search_examples_use_font_size(self) -> None:
+        catalog = EXPORT.build_catalog()
+        tokens = {item["id"]: item for item in catalog["tokens"]}
+
+        for token_id in (
+            "typography-heading-1-size",
+            "typography-heading-5-size",
+            "typography-text-size",
+            "typography-label-size",
+        ):
+            record = EXPORT.build_search_record(tokens[token_id])
+            self.assertEqual(
+                f"font-size: var({tokens[token_id]['cssVariable']});",
+                record["cssExample"],
+            )
+        self.assertEqual("gap", EXPORT.css_property_for(tokens["spacing-4"]))
 
     def test_catalog_contains_only_relative_source_paths(self) -> None:
         catalog = EXPORT.build_catalog()
@@ -107,6 +125,21 @@ class ExportCatalogTest(unittest.TestCase):
         self.assertEqual(2, len(errors))
         self.assertTrue(any("--fds-g-not-a-real-token" in error for error in errors))
         self.assertTrue(any("--fds-s-not-a-real-token" in error for error in errors))
+
+    def test_unknown_html_preview_variable_is_reported(self) -> None:
+        catalog = EXPORT.build_catalog()
+        with tempfile.TemporaryDirectory() as directory:
+            docs_root = Path(directory)
+            (docs_root / "preview.html").write_text(
+                "<style>color: var(--fds-g-not-a-real-token);</style>\n",
+                encoding="utf-8",
+            )
+            with mock.patch.object(EXPORT, "DOCS_ROOT", docs_root):
+                errors = EXPORT.validate_doc_variables(catalog)
+
+        self.assertEqual(1, len(errors))
+        self.assertIn("preview.html", errors[0])
+        self.assertIn("--fds-g-not-a-real-token", errors[0])
 
     def test_wildcard_is_not_treated_as_an_example(self) -> None:
         catalog = EXPORT.build_catalog()
@@ -169,6 +202,21 @@ class ExportCatalogTest(unittest.TestCase):
             ),
         )
         self.assertEqual([], EXPORT.check_outputs(catalog))
+
+    def test_migration_skill_contains_complete_catalog_jsonl(self) -> None:
+        catalog = EXPORT.build_catalog()
+        migration_records = [
+            json.loads(line)
+            for line in EXPORT.SKILL_MIGRATION_CATALOG_OUTPUT.read_text(
+                encoding="utf-8"
+            ).splitlines()
+        ]
+
+        self.assertEqual(catalog["tokens"], migration_records)
+        self.assertEqual(
+            EXPORT.render_migration_catalog(catalog),
+            EXPORT.SKILL_MIGRATION_CATALOG_OUTPUT.read_text(encoding="utf-8"),
+        )
 
     def test_write_catalog_writes_only_the_requested_json(self) -> None:
         catalog = EXPORT.build_catalog()
