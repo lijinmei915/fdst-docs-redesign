@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { readFile, writeFile } from "node:fs/promises";
 import test from "node:test";
 import path from "node:path";
-import { renderHtml } from "../scripts/lib/report.mjs";
+import { buildDecisionPrompt, renderHtml } from "../scripts/lib/report.mjs";
 import { fixture, readReport, runBundledTool, runProjectTool, runTool } from "./helpers.mjs";
 
 test("CSS 扫描保持首版匹配行为并输出三类报告", async () => {
@@ -32,6 +32,15 @@ test("CSS 扫描保持首版匹配行为并输出三类报告", async () => {
   assert.match(html, /<meta name="viewport"/);
   assert.match(html, /data-prompt-drawer/);
   assert.match(html, /data-prompt-trigger=/);
+  assert.match(html, /data-decision-select=/);
+  assert.match(html, /value="--fds-g-color-danger"/);
+  assert.match(html, /data-batch-prompt-open/);
+  assert.match(html, /data-batch-prompt-drawer/);
+  assert.match(html, /data-batch-prompt-regenerate/);
+  assert.match(html, /data-batch-prompt-text spellcheck="false"><\/textarea>/);
+  assert.doesNotMatch(html, /data-batch-prompt-text readonly/);
+  assert.match(html, /data-decision-count>0<\/span>/);
+  assert.match(html, /data-decision-storage-key="fds-migrate-decisions:v1:/);
   const promptData = JSON.parse(html.match(/<script id="finding-prompt-data" type="application\/json">([\s\S]*?)<\/script>/)[1]);
   assert.equal(promptData.length, 5);
   assert.match(promptData.find((item) => item.status === "auto-replace").prompt, /var\(--fds-g-color-danger, #FF522A\)/);
@@ -75,8 +84,43 @@ test("HTML 内嵌提示词数据会转义 script 结束标签", () => {
   });
   assert.doesNotMatch(html, /<\/script><script>alert/);
   assert.match(html, /\\u003c\/script\\u003e\\u003cscript\\u003ealert/);
+  assert.match(html, /data-decision-note="safe-id"/);
   const promptData = JSON.parse(html.match(/<script id="finding-prompt-data" type="application\/json">([\s\S]*?)<\/script>/)[1]);
   assert.equal(promptData[0].originalValue, unsafeValue);
+});
+
+test("汇总提示词同时包含人工选定 Token 和无候选处理说明", () => {
+  const baseItem = {
+    id: "finding-1",
+    file: "src/example.css",
+    line: 2,
+    column: 3,
+    property: "color",
+    selector: ".example",
+    originalValue: "#FF522A",
+    status: "ambiguous",
+    statusLabel: "存在歧义",
+    reason: "存在多个精确候选",
+  };
+  const prompt = buildDecisionPrompt([
+    {
+      item: baseItem,
+      candidate: { cssVariable: "--fds-g-color-danger", resolvedValue: "#FF522A", match: "exact" },
+      note: null,
+    },
+    {
+      item: { ...baseItem, id: "finding-2", line: 3, property: "box-shadow", originalValue: "none", status: "missing-token", statusLabel: "缺少 Token" },
+      candidate: null,
+      note: "保留原值，并登记 Token 缺口。",
+    },
+  ]);
+  assert.match(prompt, /请按以下人工决策处理 FDS Token 迁移（2 项）/);
+  assert.match(prompt, /\[finding-1\] src\/example\.css:2:3/);
+  assert.match(prompt, /使用 --fds-g-color-danger（#FF522A）/);
+  assert.match(prompt, /说明：保留原值，并登记 Token 缺口。/);
+  assert.match(prompt, /组件变量 > FDS Token > --color-blueXX > 原值/);
+  assert.doesNotMatch(prompt, /报告状态|判定原因|匹配类型/);
+  assert.ok(prompt.split("\n").length <= 13, prompt);
 });
 
 test("CSS apply 仅替换唯一精确候选并保留原值及 CRLF", async () => {

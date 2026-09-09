@@ -138,6 +138,10 @@ code { font-family: "Cascadia Code", Consolas, monospace; font-size: 12px; overf
 .brand { display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 700; }
 .brand-mark { width: 26px; height: 26px; display: grid; place-items: center; border-radius: 5px; background: var(--accent); color: #fff; font-size: 12px; }
 .topbar a { color: #fff; font-size: 13px; }
+.topbar-actions { display: flex; align-items: center; gap: 10px; }
+.batch-prompt-button { min-height: 34px; padding: 6px 11px; border: 1px solid #fff; border-radius: 4px; background: #fff; color: #20272c; font: inherit; font-size: 12px; font-weight: 700; cursor: pointer; white-space: nowrap; }
+.batch-prompt-button:hover { border-color: var(--accent); background: var(--accent); color: #fff; }
+.batch-prompt-button:disabled { border-color: #77818a; background: transparent; color: #aeb6bd; cursor: default; }
 main { width: min(1440px, calc(100% - 40px)); margin: 0 auto; padding: 30px 0 56px; }
 .report-heading { padding: 0 0 24px; border-bottom: 1px solid var(--line); }
 .eyebrow { margin: 0 0 6px; color: var(--accent); font-size: 12px; font-weight: 700; text-transform: uppercase; }
@@ -192,7 +196,8 @@ tbody tr:hover { background: #fffdfb; }
 .col-property { width: 10%; }
 .col-value { width: 12%; }
 .col-status { width: 108px; }
-.col-token { width: 25%; }
+.col-token { width: 20%; }
+.col-decision { width: 220px; }
 .position { color: var(--ink-muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
 .context { color: var(--ink-muted); }
 .token-list { display: grid; gap: 6px; }
@@ -202,8 +207,14 @@ tbody tr:hover { background: #fffdfb; }
 .finding-row { cursor: pointer; }
 .finding-row:focus-within { outline: 2px solid var(--info); outline-offset: -2px; }
 .finding-row.is-active { background: var(--accent-soft); }
+.finding-row.is-decided { box-shadow: inset 3px 0 0 var(--success); }
 .col-action { width: 104px; }
-.prompt-trigger, .prompt-copy, .prompt-nav-button, .prompt-close { border: 1px solid var(--line-strong); border-radius: 4px; background: var(--surface); color: var(--ink); font: inherit; font-weight: 600; cursor: pointer; }
+.decision-select, .decision-note { width: 100%; border: 1px solid var(--line-strong); border-radius: 4px; background: var(--surface); color: var(--ink); font-family: inherit; font-size: 12px; line-height: 1.45; letter-spacing: 0; }
+.decision-select { min-height: 34px; padding: 5px 28px 5px 8px; }
+.decision-note { min-height: 58px; padding: 7px 8px; resize: vertical; }
+.decision-select:focus, .decision-note:focus { border-color: var(--info); outline: 2px solid rgba(23, 105, 170, 0.16); }
+.decision-select.is-decided, .decision-note.is-decided { border-color: #7cc29d; background: var(--success-soft); }
+.prompt-trigger, .prompt-copy, .prompt-nav-button, .prompt-close, .decision-clear { border: 1px solid var(--line-strong); border-radius: 4px; background: var(--surface); color: var(--ink); font: inherit; font-weight: 600; cursor: pointer; }
 .prompt-trigger { min-height: 30px; padding: 4px 9px; font-size: 12px; white-space: nowrap; }
 .prompt-trigger:hover, .prompt-nav-button:hover, .prompt-close:hover { border-color: var(--accent); color: var(--accent); }
 .prompt-backdrop { position: fixed; inset: 0; z-index: 20; background: rgba(24, 32, 38, 0.34); }
@@ -227,6 +238,8 @@ tbody tr:hover { background: #fffdfb; }
 .prompt-nav-button:disabled { color: #9aa4ad; cursor: default; border-color: var(--line); }
 .prompt-copy { min-height: 38px; padding: 7px 14px; border-color: #20272c; background: #20272c; color: #fff; font-size: 13px; }
 .prompt-copy:hover { border-color: var(--accent); background: var(--accent); }
+.decision-clear { min-height: 36px; padding: 6px 10px; font-size: 12px; }
+.decision-clear:hover { border-color: var(--danger); color: var(--danger); }
 .prompt-toast { position: fixed; right: 20px; bottom: 20px; z-index: 30; max-width: min(360px, calc(100% - 40px)); padding: 10px 13px; border-radius: 5px; background: #20272c; color: #fff; font-size: 12px; box-shadow: 0 6px 20px rgba(24, 32, 38, 0.2); }
 .prompt-open { overflow: hidden; }
 .boundary { margin-top: 36px; padding-top: 22px; border-top: 1px solid var(--line); }
@@ -244,6 +257,7 @@ tbody tr:hover { background: #fffdfb; }
 .footer { margin-top: 36px; color: var(--ink-muted); font-size: 12px; }
 @media (max-width: 820px) {
   .topbar-inner, main { width: min(100% - 24px, 1440px); }
+  .topbar-inner { flex-wrap: wrap; padding: 8px 0; }
   main { padding-top: 22px; }
   h1 { font-size: 23px; }
   .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -269,7 +283,7 @@ tbody tr:hover { background: #fffdfb; }
 }
 @media print {
   body { background: #fff; }
-  .topbar, .section-nav, .prompt-trigger, .prompt-backdrop, .prompt-drawer, .prompt-toast { display: none; }
+  .topbar, .section-nav, .prompt-trigger, .decision-select, .decision-note, .prompt-backdrop, .prompt-drawer, .prompt-toast { display: none; }
   main { width: 100%; padding: 0; }
   .file-group { break-inside: avoid; }
 }
@@ -436,12 +450,25 @@ function promptItem(finding, mode) {
     container: finding.container,
     property: finding.property,
     originalValue: finding.originalValue,
+    selector: finding.selector || finding.container,
+    reason: finding.reason,
     priorityVariables: finding.priorityVariables || [],
     componentVariables: finding.componentVariables || [],
     legacyBrandVariables: finding.legacyBrandVariables || [],
     candidates: finding.candidates || [],
     prompt: findingPrompt(finding, mode),
   };
+}
+
+function decisionControlHtml(finding) {
+  const label = `${finding.file}:${finding.line}:${finding.column} ${finding.property}`;
+  if (finding.candidates?.length) {
+    const options = finding.candidates.map((candidate) => `<option value="${escapeHtml(candidate.cssVariable)}">${escapeHtml(candidate.cssVariable)} · ${escapeHtml(candidate.resolvedValue)}</option>`).join("");
+    return `<select class="decision-select" data-decision-select="${escapeHtml(finding.id)}" aria-label="为 ${escapeHtml(label)} 选择 Token">
+      <option value="">选择 Token</option>${options}
+    </select>`;
+  }
+  return `<textarea class="decision-note" data-decision-note="${escapeHtml(finding.id)}" aria-label="填写 ${escapeHtml(label)} 的处理说明" placeholder="填写处理说明" maxlength="500" rows="2"></textarea>`;
 }
 
 function findingRows(findings) {
@@ -456,6 +483,7 @@ function findingRows(findings) {
     <td data-label="状态">${statusBadge(displayStatus(finding))}${hasPriorityRule(finding) && !["compliant", "exempt"].includes(finding.status) ? ` ${statusBadge("priority-protected")}` : ""}</td>
     <td data-label="Token / 候选">${candidateHtml(finding)}</td>
     <td data-label="原因"><span class="reason">${escapeHtml(finding.reason)}</span></td>
+    <td data-label="处理">${decisionControlHtml(finding)}</td>
     <td data-label="操作"><button class="prompt-trigger" type="button" data-prompt-trigger="${escapeHtml(finding.id)}">生成提示词</button></td>
   </tr>`).join("");
 }
@@ -473,7 +501,7 @@ function groupedFindingHtml(findings) {
     <div class="table-wrap">
       <table class="finding-table">
         <thead><tr>
-          <th class="col-position">位置</th><th class="col-context">语法 / 容器</th><th class="col-property">属性</th><th class="col-value">原值</th><th class="col-status">状态</th><th class="col-token">Token / 候选</th><th>原因</th><th class="col-action">操作</th>
+          <th class="col-position">位置</th><th class="col-context">语法 / 容器</th><th class="col-property">属性</th><th class="col-value">原值</th><th class="col-status">状态</th><th class="col-token">Token / 候选</th><th>原因</th><th class="col-decision">处理</th><th class="col-action">操作</th>
         </tr></thead>
         <tbody>${findingRows(fileFindings)}</tbody>
       </table>
@@ -510,8 +538,32 @@ function noncompliantFilters(findings) {
   return `<div class="filter-bar" role="group" aria-label="不符合规范状态筛选">${filters.map(([status, label, count], index) => `<button class="filter-button" type="button" data-status-filter="${status}" aria-pressed="${index === 0 ? "true" : "false"}"${count === 0 ? " disabled" : ""}>${escapeHtml(label)} ${count}</button>`).join("")}</div>`;
 }
 
+export function buildDecisionPrompt(decisions) {
+  const lines = [
+    `请按以下人工决策处理 FDS Token 迁移（${decisions.length} 项）。`,
+    "",
+    "要求：",
+    "- 只改清单项，不格式化无关代码；定位失效时先重新扫描。",
+    "- 使用所选 Token，保留原值 fallback 和‘组件变量 > FDS Token > --color-blueXX > 原值’顺序；Token 不存在或属性不兼容时跳过，不得自行改选。",
+    "- 完成后运行 fds-migrate verify 和相关测试，并说明跳过项。",
+    "",
+  ];
+  decisions.forEach(({ item, candidate, note }, index) => {
+    lines.push(
+      `${index + 1}. [${item.id}] ${item.file}:${item.line}:${item.column}  ${item.property}: ${item.originalValue}`,
+    );
+    if (candidate) {
+      lines.push(`   使用 ${candidate.cssVariable}（${candidate.resolvedValue}）`);
+    } else {
+      lines.push(`   说明：${note}`);
+    }
+  });
+  return lines.join("\n");
+}
+
 const REPORT_SCRIPT = `<script>
 (() => {
+  ${buildDecisionPrompt.toString()}
   const section = document.getElementById("noncompliant");
   const buttons = section ? [...section.querySelectorAll("[data-status-filter]")] : [];
   const rows = section ? [...section.querySelectorAll("tr[data-status]")] : [];
@@ -549,13 +601,31 @@ const REPORT_SCRIPT = `<script>
   const previousButton = document.querySelector('[data-prompt-nav="previous"]');
   const nextButton = document.querySelector('[data-prompt-nav="next"]');
   const copyButton = document.querySelector("[data-prompt-copy]");
+  const batchOpenButton = document.querySelector("[data-batch-prompt-open]");
+  const batchDrawer = document.querySelector("[data-batch-prompt-drawer]");
+  const batchBackdrop = document.querySelector("[data-batch-prompt-backdrop]");
+  const batchCloseButton = document.querySelector("[data-batch-prompt-close]");
+  const batchCopyButton = document.querySelector("[data-batch-prompt-copy]");
+  const batchRegenerateButton = document.querySelector("[data-batch-prompt-regenerate]");
+  const batchPromptText = document.querySelector("[data-batch-prompt-text]");
+  const batchDecisionCount = document.querySelector("[data-batch-decision-count]");
+  const decisionCount = document.querySelector("[data-decision-count]");
+  const decisionClearButton = document.querySelector("[data-decision-clear]");
+  const decisionSelects = [...document.querySelectorAll("[data-decision-select]")];
+  const decisionNotes = [...document.querySelectorAll("[data-decision-note]")];
   const toast = document.querySelector("[data-prompt-toast]");
   const allRows = [...document.querySelectorAll("tr[data-finding-id]")];
   let promptItems = [];
   try { promptItems = JSON.parse(dataElement?.textContent || "[]"); } catch { promptItems = []; }
   const promptById = new Map(promptItems.map((item) => [item.id, item]));
+  const decisionSelectById = new Map(decisionSelects.map((control) => [control.dataset.decisionSelect, control]));
+  const decisionNoteById = new Map(decisionNotes.map((control) => [control.dataset.decisionNote, control]));
+  const decisionStorageKey = batchDrawer?.dataset.decisionStorageKey;
   let activeId = null;
   let returnFocus = null;
+  let batchReturnFocus = null;
+  let batchPromptSignature = null;
+  let batchPromptEdited = false;
   let toastTimer = null;
 
   const visibleRows = () => allRows.filter((row) => !row.hidden && !row.closest("[data-file-group]")?.hidden);
@@ -572,6 +642,7 @@ const REPORT_SCRIPT = `<script>
   const openDrawer = (id, trigger) => {
     const item = promptById.get(id);
     if (!item) return;
+    closeBatchDrawer(false);
     returnFocus = trigger || document.activeElement;
     activeId = id;
     for (const row of allRows) row.classList.toggle("is-active", row.dataset.findingId === id);
@@ -593,14 +664,14 @@ const REPORT_SCRIPT = `<script>
     updateNavigation();
     closeButton.focus();
   };
-  const closeDrawer = () => {
+  const closeDrawer = (restoreFocus = true) => {
     if (!drawer || drawer.hidden) return;
     drawer.hidden = true;
     backdrop.hidden = true;
     document.body.classList.remove("prompt-open");
     for (const row of allRows) row.classList.remove("is-active");
     activeId = null;
-    if (returnFocus?.isConnected) returnFocus.focus();
+    if (restoreFocus && returnFocus?.isConnected) returnFocus.focus();
   };
   const navigate = (direction) => {
     const currentRows = visibleRows();
@@ -614,21 +685,104 @@ const REPORT_SCRIPT = `<script>
     toast.hidden = false;
     toastTimer = setTimeout(() => { toast.hidden = true; }, 2200);
   };
-  const copyPrompt = async () => {
+  const copyText = async (textarea, successMessage) => {
     let copied = false;
     try {
       if (navigator.clipboard?.writeText) {
-        await navigator.clipboard.writeText(promptText.value);
+        await navigator.clipboard.writeText(textarea.value);
         copied = true;
       }
     } catch {}
     if (!copied) {
-      promptText.focus();
-      promptText.select();
+      textarea.focus();
+      textarea.select();
       try { copied = document.execCommand("copy"); } catch {}
     }
-    showToast(copied ? "提示词已复制" : "已选中提示词，请手动复制");
+    showToast(copied ? successMessage : "已选中提示词，请手动复制");
   };
+  const copyPrompt = () => copyText(promptText, "提示词已复制");
+
+  const selectedDecisions = () => promptItems.flatMap((item) => {
+    const select = decisionSelectById.get(item.id);
+    if (select?.value) {
+      const candidate = item.candidates.find((value) => value.cssVariable === select.value);
+      return candidate ? [{ item, candidate, note: null }] : [];
+    }
+    const note = decisionNoteById.get(item.id)?.value.trim();
+    return note ? [{ item, candidate: null, note }] : [];
+  });
+  const saveDecisionState = () => {
+    if (!decisionStorageKey) return;
+    const state = {};
+    for (const { item, candidate, note } of selectedDecisions()) {
+      state[item.id] = candidate ? { token: candidate.cssVariable } : { note };
+    }
+    try {
+      if (Object.keys(state).length) localStorage.setItem(decisionStorageKey, JSON.stringify(state));
+      else localStorage.removeItem(decisionStorageKey);
+    } catch {}
+  };
+  const updateDecisionSummary = () => {
+    const decisions = selectedDecisions();
+    const decidedIds = new Set(decisions.map(({ item }) => item.id));
+    for (const row of allRows) row.classList.toggle("is-decided", decidedIds.has(row.dataset.findingId));
+    for (const control of [...decisionSelects, ...decisionNotes]) {
+      const id = control.dataset.decisionSelect || control.dataset.decisionNote;
+      control.classList.toggle("is-decided", decidedIds.has(id));
+    }
+    if (decisionCount) decisionCount.textContent = String(decisions.length);
+    if (batchOpenButton) batchOpenButton.disabled = decisions.length === 0;
+    saveDecisionState();
+    return decisions;
+  };
+  const restoreDecisionState = () => {
+    if (!decisionStorageKey) return;
+    let state = {};
+    try { state = JSON.parse(localStorage.getItem(decisionStorageKey) || "{}"); } catch { state = {}; }
+    for (const item of promptItems) {
+      const stored = state[item.id];
+      const select = decisionSelectById.get(item.id);
+      if (select && item.candidates.some((candidate) => candidate.cssVariable === stored?.token)) select.value = stored.token;
+      const note = decisionNoteById.get(item.id);
+      if (note && typeof stored?.note === "string") note.value = stored.note.slice(0, 500);
+    }
+  };
+  const decisionSignature = (decisions) => JSON.stringify(decisions.map(({ item, candidate, note }) => [
+    item.id,
+    candidate?.cssVariable || null,
+    note || null,
+  ]));
+  const regenerateBatchPrompt = (showFeedback = false) => {
+    const decisions = selectedDecisions();
+    if (!decisions.length || !batchPromptText) return;
+    batchPromptText.value = buildDecisionPrompt(decisions);
+    batchPromptSignature = decisionSignature(decisions);
+    batchPromptEdited = false;
+    if (showFeedback) showToast("已重新生成提示词");
+  };
+  const openBatchDrawer = () => {
+    const decisions = selectedDecisions();
+    if (!decisions.length || !batchDrawer) return;
+    batchReturnFocus = document.activeElement;
+    closeDrawer(false);
+    const signature = decisionSignature(decisions);
+    if (!batchPromptEdited || batchPromptSignature !== signature) regenerateBatchPrompt();
+    batchDecisionCount.textContent = String(decisions.length);
+    batchBackdrop.hidden = false;
+    batchDrawer.hidden = false;
+    document.body.classList.add("prompt-open");
+    batchCloseButton.focus();
+  };
+  const closeBatchDrawer = (restoreFocus = true) => {
+    if (!batchDrawer || batchDrawer.hidden) return;
+    batchDrawer.hidden = true;
+    batchBackdrop.hidden = true;
+    document.body.classList.remove("prompt-open");
+    if (restoreFocus && batchReturnFocus?.isConnected) batchReturnFocus.focus();
+  };
+
+  restoreDecisionState();
+  updateDecisionSummary();
 
   for (const trigger of document.querySelectorAll("[data-prompt-trigger]")) {
     trigger.addEventListener("click", (event) => {
@@ -643,14 +797,33 @@ const REPORT_SCRIPT = `<script>
       openDrawer(row.dataset.findingId, row.querySelector("[data-prompt-trigger]"));
     });
   }
+  for (const select of decisionSelects) select.addEventListener("change", updateDecisionSummary);
+  for (const note of decisionNotes) note.addEventListener("input", updateDecisionSummary);
   closeButton?.addEventListener("click", closeDrawer);
   backdrop?.addEventListener("click", closeDrawer);
   previousButton?.addEventListener("click", () => navigate(-1));
   nextButton?.addEventListener("click", () => navigate(1));
   copyButton?.addEventListener("click", copyPrompt);
+  batchOpenButton?.addEventListener("click", openBatchDrawer);
+  batchCloseButton?.addEventListener("click", closeBatchDrawer);
+  batchBackdrop?.addEventListener("click", closeBatchDrawer);
+  batchRegenerateButton?.addEventListener("click", () => regenerateBatchPrompt(true));
+  batchPromptText?.addEventListener("input", () => { batchPromptEdited = true; });
+  batchCopyButton?.addEventListener("click", () => copyText(batchPromptText, "汇总提示词已复制"));
+  decisionClearButton?.addEventListener("click", () => {
+    for (const select of decisionSelects) select.value = "";
+    for (const note of decisionNotes) note.value = "";
+    updateDecisionSummary();
+    batchPromptText.value = "";
+    batchPromptSignature = null;
+    batchPromptEdited = false;
+    closeBatchDrawer(false);
+    showToast("已清空处理选择");
+  });
   document.addEventListener("keydown", (event) => {
-    if (!drawer || drawer.hidden) return;
-    if (event.key === "Escape") closeDrawer();
+    if (event.key !== "Escape") return;
+    if (batchDrawer && !batchDrawer.hidden) closeBatchDrawer();
+    else if (drawer && !drawer.hidden) closeDrawer();
   });
 })();
 </script>`;
@@ -688,6 +861,32 @@ function promptDrawer(promptItems) {
   <script id="finding-prompt-data" type="application/json">${jsonForHtmlScript(promptItems)}</script>`;
 }
 
+function decisionStorageKey(report, promptItems) {
+  const fingerprint = [report.catalog.sha256, ...report.targets, ...promptItems.map((item) => item.id)].join("|");
+  return `fds-migrate-decisions:v1:${createHash("sha256").update(fingerprint).digest("hex").slice(0, 24)}`;
+}
+
+function batchPromptDrawer(storageKey) {
+  return `<div class="prompt-backdrop" data-batch-prompt-backdrop hidden></div>
+  <aside class="prompt-drawer" data-batch-prompt-drawer data-decision-storage-key="${escapeHtml(storageKey)}" role="dialog" aria-modal="true" aria-labelledby="batch-prompt-drawer-title" hidden>
+    <header class="prompt-drawer-header">
+      <div><h2 class="prompt-drawer-title" id="batch-prompt-drawer-title">汇总处理提示词</h2><span class="prompt-drawer-id"><span data-batch-decision-count>0</span> 项人工决策</span></div>
+      <button class="prompt-close" type="button" data-batch-prompt-close aria-label="关闭" title="关闭">×</button>
+    </header>
+    <div class="prompt-drawer-body">
+      <label class="prompt-preview-label" for="batch-prompt-text">最终提示词</label>
+      <textarea class="prompt-preview" id="batch-prompt-text" data-batch-prompt-text spellcheck="false"></textarea>
+    </div>
+    <footer class="prompt-drawer-footer">
+      <div class="prompt-navigation">
+        <button class="decision-clear" type="button" data-decision-clear>清空处理</button>
+        <button class="prompt-nav-button" type="button" data-batch-prompt-regenerate>重新生成</button>
+      </div>
+      <button class="prompt-copy" type="button" data-batch-prompt-copy>复制提示词</button>
+    </footer>
+  </aside>`;
+}
+
 export function renderHtml(report) {
   const findings = report.findings;
   const replaced = findings.filter((item) => item.status === "replaced");
@@ -697,6 +896,7 @@ export function renderHtml(report) {
   const priorityCount = findings.filter((item) => hasPriorityRule(item)).length;
   const priorityResolved = findings.filter((item) => hasPriorityRule(item) && ["compliant", "exempt"].includes(item.status));
   const promptItems = [...replaced, ...autoReplace, ...noncompliant, ...priorityResolved, ...unsupported].map((finding) => promptItem(finding, report.mode));
+  const storageKey = decisionStorageKey(report, promptItems);
   const parseItems = report.parseErrors.length
     ? `<ul class="boundary-list">${report.parseErrors.map((error) => `<li><code>${escapeHtml(error.file)}:${escapeHtml(error.line)}:${escapeHtml(error.column)}</code> ${escapeHtml(error.message)}</li>`).join("")}</ul>`
     : '<div class="empty">未发现解析错误</div>';
@@ -745,10 +945,10 @@ export function renderHtml(report) {
       <div class="notice">静态报告不能替代页面功能、视觉、主题和可访问性验证。</div>
     </section>
     <footer class="footer">FDS Token Migration / ${escapeHtml(report.mode)}</footer>
-  </main>${promptDrawer(promptItems)}${REPORT_SCRIPT}`;
+  </main>${promptDrawer(promptItems)}${batchPromptDrawer(storageKey)}${REPORT_SCRIPT}`;
   return pageShell({
     title: `FDS Token 迁移报告 - ${target}`,
-    topbarAction: '<a href="../../fds-token-migration-index.html">返回报告索引</a>',
+    topbarAction: '<div class="topbar-actions"><a href="../../fds-token-migration-index.html">返回报告索引</a><button class="batch-prompt-button" type="button" data-batch-prompt-open disabled>汇总提示词（<span data-decision-count>0</span>）</button></div>',
     content,
   });
 }

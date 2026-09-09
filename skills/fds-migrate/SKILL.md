@@ -44,7 +44,7 @@ node <skill-root>/scripts/migrate_styles.mjs verify
 - 默认使用 Skill 自带的完整 Token JSONL，不要求调用方提供 FDST 仓库或外部 Catalog；`--catalog <json|jsonl>` 仅用于测试和受控调试覆盖。
 - 默认入口为 `src`；默认报告目录为 `.fdst/reports/migrate/<mode>/`。
 - 每个配置 `entry` 或命令行目标都是一个组件报告单元；批量执行时根目录只生成索引，明细分别写入 `components/<组件名>/`。
-- 组件 HTML 报告中的每条结果都可生成状态化处理提示词；复制提示词不代表问题已修复，修改后仍须重新执行 `verify`。
+- 组件 HTML 报告中的每条结果都可生成状态化处理提示词；列表内可从本次报告候选中选择具体 Token，无候选时可填写处理说明，并统一汇总为一份可局部编辑的处理提示词。人工选择、编辑和复制不代表问题已修复，修改后仍须重新执行 `verify`。
 - 项目级配置固定放在 `.fdst/migrate.json`；配置字段、CLI 参数和覆盖顺序见 [项目配置与 CLI](references/configuration.md)。
 - `--context card` 等显式场景可让匹配器考虑对应 Scene Token；不得仅凭文件名猜测 Scene。
 - `--include <glob>` 可重复指定扫描范围；未指定时扫描支持矩阵中的全部文件，并跳过 `.git/node_modules/dist/build/coverage`。
@@ -81,7 +81,7 @@ node <skill-root>/scripts/migrate_styles.mjs verify
 
 批量执行另外生成 `fds-token-migration-index.json` 和 `fds-token-migration-index.html`，只汇总组件状态并链接各组件明细，不集中复制全部 finding。
 
-报告中的源码路径全部相对项目根目录；HTML 先按文件分组，明细表内只保留行号和列号，并提供适合桌面与窄屏审查的自包含样式，不加载外部资源。默认报告属于本地生成物，建议通过 `.fdst/.gitignore` 忽略 `reports/`；需要留档时使用 `--report-dir` 输出到受版本控制目录。
+报告中的源码路径全部相对项目根目录；HTML 先按文件分组，明细表内只保留行号和列号，并提供适合桌面与窄屏审查的自包含样式，不加载外部资源。候选选择和无候选处理说明只属于浏览器本地交互状态，不写回 JSON 事实源或源码。默认报告属于本地生成物，建议通过 `.fdst/.gitignore` 忽略 `reports/`；需要留档时使用 `--report-dir` 输出到受版本控制目录。
 
 报告字段与状态含义见 [报告契约](references/report-schema.md)。报告中的候选必须逐字来自本次内置 Token 快照，包含 CSS Variable、解析值、层级、匹配类型和未自动替换原因。
 
