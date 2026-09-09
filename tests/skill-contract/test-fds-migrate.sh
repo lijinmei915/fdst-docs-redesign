@@ -13,6 +13,7 @@ for file in \
     "$SKILL_DIR/references/fds-token-catalog.jsonl" \
     "$SKILL_DIR/references/migration-policy.json" \
     "$SKILL_DIR/references/matching-policy.md" \
+    "$SKILL_DIR/references/configuration.md" \
     "$SKILL_DIR/references/report-schema.md" \
     "$SKILL_DIR/references/syntax-support.md"
 do
@@ -35,8 +36,12 @@ const frontmatter = skill.match(/^---\n([\s\S]*?)\n---\n/);
 if (!frontmatter) throw new Error("SKILL.md 缺少 YAML frontmatter");
 if (!frontmatter[0].includes("name: fds-migrate")) throw new Error("Skill name 不正确");
 if (/TODO|EXAMPLE/.test(skill)) throw new Error("SKILL.md 包含占位内容");
-for (const term of ["scan", "apply", "verify", "auto-replace", "ambiguous", "similar", "unsupported", "fallback"]) {
+for (const term of ["scan", "apply", "verify", "auto-replace", "ambiguous", "similar", "unsupported", "fallback", ".fdst/migrate.json", "components/<组件名>"]) {
   if (!skill.includes(term)) throw new Error(`SKILL.md 缺少关键契约：${term}`);
+}
+const configuration = fs.readFileSync(path.join(root, "references", "configuration.md"), "utf8");
+for (const term of ["fds-migrate-config/v1", "src", "reportRoot", "include", "exclude", "contexts", "fds-token-migration-index.json", "fds-token-migration-index.html"]) {
+  if (!configuration.includes(term)) throw new Error(`项目配置文档缺少关键契约：${term}`);
 }
 const policy = JSON.parse(fs.readFileSync(path.join(root, "references", "migration-policy.json"), "utf8"));
 if (policy.schema !== "fds-token-migration-policy/v1" || !policy.rules?.length) throw new Error("迁移策略无效");

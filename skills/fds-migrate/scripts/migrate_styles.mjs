@@ -6,7 +6,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { classifyOccurrence, compilePolicy, MigrationError, NONCOMPLIANT_STATUSES } from "./lib/matcher.mjs";
 import { parseMarkup, parseVue } from "./lib/markup-adapter.mjs";
-import { buildReport, writeReport } from "./lib/report.mjs";
+import { buildReport, writeReportSet } from "./lib/report.mjs";
 import { parseScript } from "./lib/script-adapter.mjs";
 import { parseStylesheet } from "./lib/stylesheet-adapter.mjs";
 
@@ -94,7 +94,9 @@ async function resolveOptions(cliOptions) {
   const configuredEntries = config.entry === undefined
     ? [DEFAULT_ENTRY]
     : Array.isArray(config.entry)
-      ? validateStringList(config.entry, "entry")
+      ? (config.entry.length
+        ? validateStringList(config.entry, "entry")
+        : (() => { throw new MigrationError("项目配置 entry 不能为空数组"); })())
       : typeof config.entry === "string" && config.entry.trim()
         ? [config.entry]
         : (() => { throw new MigrationError("项目配置 entry 必须是非空字符串或字符串数组"); })();
@@ -193,6 +195,30 @@ async function discoverFiles(targets, includes, excludes, projectRoot) {
   return { files: [...files].sort(), unsupported: [...unsupported].sort() };
 }
 
+function reportUnitNames(targets) {
+  const used = new Map();
+  return targets.map((target, index) => {
+    const rawName = path.basename(target, path.extname(target));
+    const baseName = rawName.replace(/[^A-Za-z0-9._-]+/g, "-").replace(/^-+|-+$/g, "") || `component-${index + 1}`;
+    const count = (used.get(baseName) || 0) + 1;
+    used.set(baseName, count);
+    return count === 1 ? baseName : `${baseName}-${count}`;
+  });
+}
+
+function assertIndependentTargets(targets) {
+  const normalized = targets.map((target) => path.resolve(target));
+  for (let first = 0; first < normalized.length; first += 1) {
+    for (let second = first + 1; second < normalized.length; second += 1) {
+      const relative = path.relative(normalized[first], normalized[second]);
+      const reverse = path.relative(normalized[second], normalized[first]);
+      if (!relative || (!relative.startsWith("..") && !path.isAbsolute(relative)) || (!reverse.startsWith("..") && !path.isAbsolute(reverse))) {
+        throw new MigrationError(`组件入口不能重复或互相包含：${targets[first]} / ${targets[second]}`);
+      }
+    }
+  }
+}
+
 async function readSource(file) {
   const bytes = await readFile(file);
   const hasBom = bytes.length >= 3 && bytes[0] === 0xef && bytes[1] === 0xbb && bytes[2] === 0xbf;
@@ -256,39 +282,61 @@ async function main() {
   const catalog = await readCatalog(catalogPath);
   validateCatalog(catalog);
   const policy = compilePolicy(await readJson(path.resolve(options.policy), "迁移策略"));
-  const { files, unsupported } = await discoverFiles(options.targets, options.includes, options.excludes, options.projectRoot);
-  const findings = [];
-  const parseErrors = [];
+  assertIndependentTargets(options.targets);
+  const unitNames = reportUnitNames(options.targets);
+  const units = [];
   const sources = new Map();
-  for (const file of files) {
-    const source = await readSource(file);
-    const result = parseSource(source);
-    sources.set(file.replaceAll("\\", "/"), source);
-    parseErrors.push(...result.parseErrors);
-    findings.push(...result.occurrences.map((occurrence) => classifyOccurrence(occurrence, catalog.tokens, policy, options.contexts)));
+  for (const [index, target] of options.targets.entries()) {
+    const { files, unsupported } = await discoverFiles([target], options.includes, options.excludes, options.projectRoot);
+    const occurrences = [];
+    const parseErrors = [];
+    for (const file of files) {
+      const source = await readSource(file);
+      const result = parseSource(source);
+      sources.set(file.replaceAll("\\", "/"), source);
+      parseErrors.push(...result.parseErrors);
+      occurrences.push(...result.occurrences);
+    }
+    const componentVariables = new Set(occurrences
+      .map((occurrence) => occurrence.property)
+      .filter((property) => property.startsWith("--")));
+    const findings = occurrences.map((occurrence) => classifyOccurrence(
+      occurrence,
+      catalog.tokens,
+      policy,
+      options.contexts,
+      componentVariables,
+    ));
+    findings.sort((a, b) => a.file.localeCompare(b.file) || a.line - b.line || a.column - b.column);
+    units.push({ name: unitNames[index], target, files, unsupported, findings, parseErrors });
   }
-  findings.sort((a, b) => a.file.localeCompare(b.file) || a.line - b.line || a.column - b.column);
+  const findings = units.flatMap((unit) => unit.findings);
+  const parseErrors = units.flatMap((unit) => unit.parseErrors);
+  const unsupported = units.flatMap((unit) => unit.unsupported);
   const applyBlocked = options.mode === "apply" && parseErrors.length > 0;
   if (options.mode === "apply" && !applyBlocked) await applyReplacements(findings, sources);
-  const report = await buildReport({
-    mode: options.mode,
-    catalogPath,
-    catalogSource: catalogPath === path.resolve(DEFAULT_CATALOG) ? "bundled" : "override",
-    catalog,
-    projectRoot: options.projectRoot,
-    configPath: options.configPath,
-    targets: options.targets,
-    findings,
-    parseErrors,
-    unsupportedFiles: unsupported,
-    fileCount: files.length,
-    applyBlocked,
-  });
-  const [jsonPath, markdownPath] = await writeReport(options.reportDir, report);
+  const reports = await Promise.all(units.map(async (unit) => ({
+    name: unit.name,
+    report: await buildReport({
+      mode: options.mode,
+      catalogPath,
+      catalogSource: catalogPath === path.resolve(DEFAULT_CATALOG) ? "bundled" : "override",
+      catalog,
+      projectRoot: options.projectRoot,
+      configPath: options.configPath,
+      targets: [unit.target],
+      findings: unit.findings,
+      parseErrors: unit.parseErrors,
+      unsupportedFiles: unit.unsupported,
+      fileCount: unit.files.length,
+      applyBlocked,
+    }),
+  })));
+  const [jsonPath, htmlPath, summary] = await writeReportSet(options.reportDir, reports);
   const displayPath = (file) => path.relative(options.projectRoot, file).replaceAll("\\", "/") || ".";
-  console.log(`FDS Token 迁移 ${options.mode} 完成：${files.length} 个文件，${findings.length} 个样式 occurrence，状态 ${JSON.stringify(report.summary.statusCounts)}`);
-  console.log(`JSON 报告：${displayPath(jsonPath)}`);
-  console.log(`Markdown 报告：${displayPath(markdownPath)}`);
+  console.log(`FDS Token 迁移 ${options.mode} 完成：${reports.length} 个组件，${summary.fileCount} 个文件，${summary.occurrenceCount} 个样式 occurrence，状态 ${JSON.stringify(summary.statusCounts)}`);
+  console.log(`报告索引 JSON：${displayPath(jsonPath)}`);
+  console.log(`报告索引 HTML：${displayPath(htmlPath)}`);
   if (applyBlocked) {
     console.error("存在解析错误；为避免部分迁移，apply 未写入任何源码");
     return 1;

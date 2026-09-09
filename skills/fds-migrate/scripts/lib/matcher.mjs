@@ -11,6 +11,7 @@ const SELECTION_GROUPS = new Set([
 ]);
 const toRgb = converter("rgb");
 const toOklab = converter("oklab");
+const LEGACY_BRAND_VARIABLE = /^--color-blue(?:0\d|10)$/i;
 
 export const NONCOMPLIANT_STATUSES = new Set([
   "auto-replace",
@@ -166,11 +167,80 @@ function collectCssVariables(value) {
   return names;
 }
 
-function findStandaloneFdsVariable(value) {
+function parseVariableChain(value) {
   const nodes = significantNodes(value);
   if (nodes.length !== 1 || nodes[0].type !== "function" || nodes[0].value.toLowerCase() !== "var") return null;
-  const first = nodes[0].nodes.find((node) => node.type !== "space" && node.type !== "comment" && node.type !== "div");
-  return first?.type === "word" && first.value.startsWith("--fds-") ? first.value : null;
+
+  const variables = [];
+  const levels = [];
+  let current = nodes[0];
+  while (current?.type === "function" && current.value.toLowerCase() === "var") {
+    const variable = current.nodes.find((node) => node.type !== "space" && node.type !== "comment" && node.type !== "div");
+    if (variable?.type !== "word" || !variable.value.startsWith("--")) return null;
+    variables.push(variable.value);
+    const level = { name: variable.value };
+
+    const separatorIndex = current.nodes.findIndex((node) => node.type === "div" && node.value === ",");
+    if (separatorIndex < 0) {
+      levels.push(level);
+      return { variables, levels, fallback: null };
+    }
+    const separator = current.nodes[separatorIndex];
+    let start = separator.sourceEndIndex;
+    let end = current.sourceEndIndex - 1;
+    while (start < end && /\s/.test(value[start])) start += 1;
+    while (end > start && /\s/.test(value[end - 1])) end -= 1;
+    level.fallback = { value: value.slice(start, end), start, end };
+    levels.push(level);
+
+    const fallbackNodes = current.nodes
+      .slice(separatorIndex + 1)
+      .filter((node) => node.type !== "space" && node.type !== "comment");
+    const nested = fallbackNodes.length === 1 && fallbackNodes[0].type === "function" &&
+      fallbackNodes[0].value.toLowerCase() === "var" &&
+      fallbackNodes[0].sourceIndex === start && fallbackNodes[0].sourceEndIndex === end;
+    if (nested) {
+      current = fallbackNodes[0];
+      continue;
+    }
+    return {
+      variables,
+      levels,
+      fallback: start < end ? { value: value.slice(start, end), start, end } : null,
+    };
+  }
+  return null;
+}
+
+function variableKind(name, componentVariables) {
+  if (name.startsWith("--fds-")) return "fds";
+  if (LEGACY_BRAND_VARIABLE.test(name)) return "legacy-brand";
+  if (name.startsWith("--bc-") || componentVariables.has(name)) return "component";
+  return "unknown";
+}
+
+function analyzePriorityChain(chain, componentVariables) {
+  if (!chain) return null;
+  const kinds = chain.variables.map((name) => variableKind(name, componentVariables));
+  if (kinds.includes("unknown")) return null;
+  const component = chain.variables.filter((_, index) => kinds[index] === "component");
+  const fds = chain.variables.filter((_, index) => kinds[index] === "fds");
+  const legacyBrand = chain.variables.filter((_, index) => kinds[index] === "legacy-brand");
+  const ranks = kinds.map((kind) => ({ component: 0, fds: 1, "legacy-brand": 2 })[kind]);
+  const orderValid = fds.length <= 1 && ranks.every((rank, index) => index === 0 || ranks[index - 1] <= rank);
+  const leadingComponentCount = kinds.findIndex((kind) => kind !== "component");
+  const componentCount = leadingComponentCount < 0 ? kinds.length : leadingComponentCount;
+  const insertionSpan = componentCount
+    ? chain.levels[componentCount - 1].fallback || null
+    : { value: null, start: 0, end: null };
+  return { ...chain, kinds, component, fds, legacyBrand, orderValid, insertionSpan };
+}
+
+function priorityFallbackReplacement(originalValue, chain, token) {
+  const { start, value } = chain.insertionSpan;
+  const end = chain.insertionSpan.end ?? originalValue.length;
+  const fallback = value ?? originalValue;
+  return `${originalValue.slice(0, start)}var(${token.cssVariable}, ${fallback})${originalValue.slice(end)}`;
 }
 
 function makeId(occurrence) {
@@ -180,7 +250,7 @@ function makeId(occurrence) {
     .slice(0, 16);
 }
 
-export function classifyOccurrence(occurrence, tokens, policy, contexts = []) {
+export function classifyOccurrence(occurrence, tokens, policy, contexts = [], componentVariables = new Set()) {
   const property = occurrence.property.toLowerCase();
   const rule = findRule(property, policy);
   const finding = {
@@ -216,25 +286,58 @@ export function classifyOccurrence(occurrence, tokens, policy, contexts = []) {
   }
 
   const tokenByVariable = new Map(tokens.map((token) => [token.cssVariable, token]));
-  const standalone = findStandaloneFdsVariable(occurrence.originalValue);
-  if (standalone) {
-    const token = tokenByVariable.get(standalone);
-    if (!token) {
-      finding.status = "invalid-token";
-      finding.reason = "FDS Catalog 中不存在该变量";
-    } else if (!tokenAllowed(token, rule)) {
-      finding.status = "invalid-token";
-      finding.reason = "Token 存在，但与当前 CSS property 不兼容";
-      finding.candidates = [candidateRecord(token, "invalid-property")];
-    } else {
-      finding.status = "compliant";
-      finding.reason = "FDS Token 存在且 property 兼容";
-      finding.candidates = [candidateRecord(token, "existing")];
+  const priorityChain = analyzePriorityChain(parseVariableChain(occurrence.originalValue), componentVariables);
+  let comparisonValue = occurrence.originalValue;
+  if (priorityChain) {
+    if (priorityChain.component.length || priorityChain.legacyBrand.length) {
+      finding.priorityVariables = priorityChain.variables;
     }
-    return finding;
+    if (priorityChain.component.length) {
+      finding.priorityProtected = true;
+      finding.componentVariables = priorityChain.component;
+    }
+    if (priorityChain.legacyBrand.length) finding.legacyBrandVariables = priorityChain.legacyBrand;
+    if (priorityChain.fallback) finding.fallbackValue = priorityChain.fallback.value;
+
+    const fdsVariables = [...new Set(priorityChain.fds)];
+    if (fdsVariables.length) {
+      const invalid = fdsVariables.filter((name) => !tokenByVariable.has(name));
+      if (invalid.length) {
+        finding.status = "invalid-token";
+        finding.reason = `变量 fallback 链中包含 Catalog 不存在的 FDS Token：${invalid.join(", ")}`;
+        return finding;
+      }
+      const existingTokens = fdsVariables.map((name) => tokenByVariable.get(name));
+      const incompatible = existingTokens.filter((token) => !tokenAllowed(token, rule));
+      finding.candidates = existingTokens.map((token) => candidateRecord(token, incompatible.includes(token) ? "invalid-property" : "existing"));
+      if (incompatible.length) {
+        finding.status = "invalid-token";
+        finding.reason = "变量 fallback 链中的 FDS Token 与当前 CSS property 不兼容";
+      } else if (!priorityChain.orderValid) {
+        finding.status = "invalid-token";
+        finding.reason = "变量 fallback 优先级不符合“组件变量 > FDS Token > --color-blueXX > 原值”，保持源码不变";
+      } else {
+        finding.status = "compliant";
+        finding.reason = priorityChain.component.length && priorityChain.legacyBrand.length
+          ? "已保持组件变量在 FDS 外层，老品牌色变量在 FDS 之后"
+          : priorityChain.component.length
+          ? "已保持组件自定义变量在 FDS 外层"
+          : priorityChain.legacyBrand.length
+          ? "已保持 FDS 在老品牌色变量之前"
+          : "FDS Token 存在且 property 兼容";
+      }
+      return finding;
+    }
+    if (!priorityChain.fallback) {
+      finding.reason = priorityChain.component.length
+        ? "组件自定义变量优先；未提供可验证的末端原值，不插入 FDS Token"
+        : "老品牌色变量未提供可验证的末端原值，无法选择 FDS Token";
+      return finding;
+    }
+    comparisonValue = priorityChain.fallback.value;
   }
 
-  const variables = collectCssVariables(occurrence.originalValue);
+  const variables = collectCssVariables(comparisonValue);
   const invalid = [...new Set(variables.filter((name) => name.startsWith("--fds-") && !tokenByVariable.has(name)))].sort();
   if (invalid.length) {
     finding.status = "invalid-token";
@@ -242,23 +345,29 @@ export function classifyOccurrence(occurrence, tokens, policy, contexts = []) {
     return finding;
   }
   if (variables.length) {
-    finding.reason = variables.every((name) => name.startsWith("--fds-"))
+    finding.reason = priorityChain
+      ? "变量链末端 fallback 是复合变量表达式，无法安全插入 FDS Token"
+      : variables.every((name) => name.startsWith("--fds-"))
       ? "包含 FDS Token 的复合表达式，当前不对表达式语义做自动判断"
       : "非 FDS 动态变量可能属于组件或业务私有契约，需要显式映射后再判断";
     return finding;
   }
-  if (policy.exemptValues.some((value) => value.toLowerCase() === occurrence.originalValue.trim().toLowerCase())) {
-    finding.reason = "CSS 通用值或零值无需 Token 化";
+  if (policy.exemptValues.some((value) => value.toLowerCase() === comparisonValue.trim().toLowerCase())) {
+    finding.reason = priorityChain
+      ? "变量链末端 fallback 是无需 Token 化的 CSS 通用值或零值"
+      : "CSS 通用值或零值无需 Token 化";
     return finding;
   }
 
   let parsedSource = null;
   for (const tokenType of rule.types) {
-    parsedSource = parseTypedValue(occurrence.originalValue, tokenType);
+    parsedSource = parseTypedValue(comparisonValue, tokenType);
     if (parsedSource) break;
   }
   if (!parsedSource) {
-    finding.reason = "当前值不是可完整比较的单一 Token 值，未处理 shorthand 或动态表达式";
+    finding.reason = priorityChain
+      ? "变量链末端 fallback 不是可完整比较的单一 Token 值，保持原链不变"
+      : "当前值不是可完整比较的单一 Token 值，未处理 shorthand 或动态表达式";
     return finding;
   }
 
@@ -276,18 +385,27 @@ export function classifyOccurrence(occurrence, tokens, policy, contexts = []) {
     finding.candidates = exact.slice(0, maxCandidates).map((token) => candidateRecord(token, "exact"));
     if (selected && occurrence.writable && finding._span) {
       finding.status = "auto-replace";
-      finding.reason = "唯一精确候选满足 property 和层级边界";
+      finding.reason = priorityChain?.component.length && priorityChain.legacyBrand.length
+        ? "唯一精确候选满足规则；FDS 插入组件变量之后、老品牌色变量之前"
+        : priorityChain?.component.length
+        ? "唯一精确候选满足规则；保留组件变量优先级，在其 fallback 中插入 FDS"
+        : priorityChain?.legacyBrand.length
+        ? "唯一精确候选满足规则；FDS 插入老品牌色变量之前"
+        : "唯一精确候选满足 property 和层级边界";
       finding.selectedToken = candidateRecord(selected, "exact");
-      finding.replacement = `var(${selected.cssVariable}, ${occurrence.originalValue})`;
+      finding.replacement = priorityChain
+        ? priorityFallbackReplacement(occurrence.originalValue, priorityChain, selected)
+        : `var(${selected.cssVariable}, ${occurrence.originalValue})`;
     } else if (selected) {
       finding.status = "unsupported";
       finding.reason = "存在唯一精确候选，但当前语法节点不能安全局部改写";
       finding.selectedToken = candidateRecord(selected, "exact");
     } else {
       finding.status = "ambiguous";
-      finding.reason = selection === "multiple"
+      const reason = selection === "multiple"
         ? "同一优先级存在多个精确候选，需要语义判断"
         : "精确候选存在，但超出自动消费层级或缺少 Scene 上下文";
+      finding.reason = priorityChain ? `${reason}；已有变量 fallback 链保持不变` : reason;
     }
     return finding;
   }
@@ -306,14 +424,18 @@ export function classifyOccurrence(occurrence, tokens, policy, contexts = []) {
     scored.sort((a, b) => a[0] - b[0] || a[1].cssVariable.localeCompare(b[1].cssVariable));
     if (scored.length) {
       finding.status = "similar";
-      finding.reason = "仅存在相近候选；数值接近不证明语义一致";
+      finding.reason = priorityChain
+        ? "末端原值仅存在相近候选；数值接近不证明语义一致，已有变量 fallback 链保持不变"
+        : "仅存在相近候选；数值接近不证明语义一致";
       finding.candidates = scored.slice(0, maxCandidates).map(([distance, token]) => candidateRecord(token, "similar", distance));
       return finding;
     }
   }
 
   finding.status = "missing-token";
-  finding.reason = "该 property 属于 Token 管理范围，但没有可靠候选";
+  finding.reason = priorityChain
+    ? "变量链末端原值没有可靠 FDS Token 候选，保持原链不变"
+    : "该 property 属于 Token 管理范围，但没有可靠候选";
   return finding;
 }
 

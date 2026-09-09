@@ -23,6 +23,33 @@ color: #FF522A;
 color: var(--fds-g-color-danger, #FF522A);
 ```
 
+## CSS 变量定义与消费优先级
+
+CSS Custom Property 的定义声明不属于迁移对象。工具会保留定义位置的原始值，只收集变量名作为当前组件报告单元的所有权证据：
+
+```css
+.button {
+  --button-text-color: #FF522A;
+}
+```
+
+普通 CSS property 消费变量时，优先级固定为“组件自定义变量 / `--bc-*` > FDS > 老品牌色 `--color-blueXX` > 原值”。组件自定义变量必须在当前组件报告单元内存在定义；`--bc-*` 作为既有组件/搭建协议兼容识别。只有整个声明值是纯 `var()` fallback 链，并且末端存在可完整解析的具体原值时，工具才允许插入 FDS：
+
+```css
+color: var(--button-text-color, #FF522A);
+color: var(--button-text-color, var(--fds-g-color-danger, #FF522A));
+
+border-color: var(--color-blue06, #FF522A);
+border-color: var(--fds-g-color-danger, var(--color-blue06, #FF522A));
+
+outline-color: var(--button-text-color, var(--color-blue06, #FF522A));
+outline-color: var(--button-text-color, var(--fds-g-color-danger, var(--color-blue06, #FF522A)));
+```
+
+不得在变量定义声明里直接写入 FDS，也不得生成 `var(--fds-*, var(--component-*, 原值))` 或 `var(--color-blueXX, var(--fds-*, 原值))`。如果链中已有真实、property 兼容且顺序正确的 FDS Token，结果为 `compliant`，不得重复包裹；非法、property 不兼容或优先级错误的 FDS Token 仍为 `invalid-token`，但工具不自动重排已有链。
+
+没有末端原值、末端是动态/复合表达式或具体值本身无需 Token 化时，保留原链。末端原值只有歧义、相近或缺失候选时，沿用 `ambiguous`、`similar`、`missing-token`，但不得改变已有变量顺序。未在当前组件报告单元内定义、且不属于 `--bc-*`、FDS 或 `--color-blueXX` 的变量，仍视为来源未知，不自动套用优先级规则。
+
 ## 候选优先级
 
 优先级由每类 CSS property 单独定义，不能全局套用“Semantic 永远优先”：

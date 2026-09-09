@@ -72,5 +72,13 @@ export function runProjectTool(mode, projectRoot, ...extra) {
 }
 
 export async function readReport(reportDir) {
-  return JSON.parse(await readFile(path.join(reportDir, "fds-token-migration-report.json"), "utf8"));
+  const direct = path.join(reportDir, "fds-token-migration-report.json");
+  try {
+    return JSON.parse(await readFile(direct, "utf8"));
+  } catch (error) {
+    if (error.code !== "ENOENT") throw error;
+  }
+  const index = JSON.parse(await readFile(path.join(reportDir, "fds-token-migration-index.json"), "utf8"));
+  if (index.components.length !== 1) throw new Error("readReport 仅支持单组件报告");
+  return JSON.parse(await readFile(path.join(reportDir, index.components[0].jsonReport), "utf8"));
 }
