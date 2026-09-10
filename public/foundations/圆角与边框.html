@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="FDS 圆角、边框宽度及场景与组件的职责边界">
+  <title>圆角与边框 | FDS Token</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="../assets/fds-global-tokens.css">
+  <link rel="stylesheet" href="../assets/fds-docs.css">
+  <script defer src="../assets/search-index.js"></script>
+  <script defer src="../assets/fds-demos.js"></script>
+  <script defer src="../assets/fds-docs.js"></script>
+</head>
+<body data-page="foundations/圆角与边框.md" data-root="..">
+  <header class="docs-topbar">
+    <a class="docs-brand" href="../index.html" aria-label="FDS Token 文档首页"><span>FDS</span><strong>Token</strong></a>
+    <span class="docs-area">Foundation</span>
+    <div class="docs-topbar-actions">
+      <button class="docs-search-trigger" type="button" data-search-open>搜索文档</button>
+      <button class="docs-menu-trigger" type="button" data-menu-toggle aria-expanded="false">目录</button>
+    </div>
+  </header>
+  <div class="docs-shell">
+    <aside class="docs-sidebar" data-sidebar aria-label="文档导航"><section class="docs-nav-group"><h2>概览</h2><a class="docs-nav-link" href="../index.html">文档首页</a><a class="docs-nav-link" href="../examples/index.html">视觉工作台</a></section><section class="docs-nav-group"><h2>Foundation</h2><a class="docs-nav-link" href="index.html">基础规范</a><a class="docs-nav-link" href="颜色.html">颜色</a><a class="docs-nav-link" href="排版.html">排版</a><a class="docs-nav-link" href="间距与尺寸.html">间距与尺寸</a><a class="docs-nav-link is-active" href="圆角与边框.html" aria-current="page">圆角与边框</a><a class="docs-nav-link" href="阴影与层级.html">阴影与层级</a><a class="docs-nav-link" href="动效.html">动效</a></section><section class="docs-nav-group"><h2>语义</h2><a class="docs-nav-link" href="../semantics/基础语义.html">基础语义</a><a class="docs-nav-link" href="../semantics/场景语义.html">场景语义</a></section><section class="docs-nav-group"><h2>开始使用</h2><a class="docs-nav-link" href="../getting-started/快速开始.html">快速开始</a><a class="docs-nav-link" href="../getting-started/ShareDev接入.html">ShareDev 接入</a></section><section class="docs-nav-group"><h2>概念</h2><a class="docs-nav-link" href="../concepts/分层模型.html">分层模型</a><a class="docs-nav-link" href="../concepts/命名规则.html">命名规则</a><a class="docs-nav-link" href="../concepts/引用与边界.html">引用与边界</a></section><section class="docs-nav-group"><h2>工程维护</h2><a class="docs-nav-link" href="../engineering/YAML源文件.html">YAML 源文件</a><a class="docs-nav-link" href="../engineering/构建与校验.html">构建与校验</a><a class="docs-nav-link" href="../engineering/版本与发布.html">版本与发布</a><a class="docs-nav-link" href="../engineering/文档维护.html">文档维护</a></section><section class="docs-nav-group"><h2>参考</h2><a class="docs-nav-link" href="../reference/Token目录.html">Token 目录</a><a class="docs-nav-link" href="../reference/迁移与常见问题.html">迁移与常见问题</a></section></aside>
+    <main class="docs-main">
+      <div class="docs-breadcrumb"><span>Foundation</span><span>/</span><strong>圆角与边框</strong></div>
+      <article class="docs-article"><h1 id="_1">圆角与边框</h1>
+<h2 id="_2">适用范围</h2>
+<p>本页说明 Atomic/Map 的圆角和边框宽度值域，以及 Scene、组件和业务容器各自负责的圆角入口。</p>
+<h2 id="_3">设计原则</h2>
+<ul>
+<li><strong>圆角表达对象层级。</strong> 控件、容器和胶囊形态按职责选择，不把圆角当作独立装饰。</li>
+<li><strong>同类对象保持一致。</strong> 同一组件或同一层级容器不因页面不同随意换档。</li>
+<li><strong>所有权优先。</strong> 场景卡片使用 Scene，控件使用组件契约；Atomic 只作为经过评审的底层映射。</li>
+<li><strong>边框同时考虑颜色。</strong> Border Width 只决定几何宽度，状态和强调程度由语义颜色承担。</li>
+</ul>
+<h2 id="_4">按场景选择</h2>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>推荐入口</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>普通输入、按钮等控件</td>
+<td>Component Token / 组件 API</td>
+<td>Global 不再发布通用控件圆角</td>
+</tr>
+<tr>
+<td>普通业务容器</td>
+<td>业务私有变量</td>
+<td>没有跨业务稳定语义时不补造 Global Token</td>
+</tr>
+<tr>
+<td>通用场景卡片</td>
+<td><code>--fds-s-card-radius</code></td>
+<td>与卡片边框、背景和阴影成组使用</td>
+</tr>
+<tr>
+<td>胶囊、圆形底座</td>
+<td><code>--fds-g-radius-full</code></td>
+<td>仅在形态确实要求时使用</td>
+</tr>
+<tr>
+<td>默认与强调边框</td>
+<td><code>--fds-g-border-width-1</code>、<code>--fds-g-border-width-2</code></td>
+<td>必须同时选择合适的语义颜色</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_5">视觉预览</h2>
+<p>下面按对象职责对比常用圆角和边框关系，不把圆角作为装饰效果孤立选择。</p>
+<div class="fds-demo" data-demo="radius"></div>
+
+<h2 id="_6">当前值域</h2>
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>当前范围</th>
+<th>适用属性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Radius</td>
+<td>0、2、4、6、8、12、16、9999px</td>
+<td><code>border-radius</code></td>
+</tr>
+<tr>
+<td>Border Width</td>
+<td>1、2px</td>
+<td><code>border-width</code></td>
+</tr>
+</tbody>
+</table>
+<p><code>9999px</code> 表示 full 圆角的固定枚举；它不是需要调用方计算的百分比。</p>
+<h2 id="_7">使用规则</h2>
+<pre><code class="language-css">.scene-panel {
+  border: var(--fds-g-border-width-1) solid var(--fds-g-border-default);
+  border-radius: var(--fds-s-card-radius);
+}
+
+.pill {
+  border-radius: var(--fds-g-radius-full);
+}
+</code></pre>
+<p>控件圆角由组件 API 或 Component Token 管理，普通业务容器使用业务私有变量。场景卡片优先使用 <code>--fds-s-card-border-*</code> 和 <code>--fds-s-card-radius</code>。</p>
+<h2 id="do-dont">Do / Don't</h2>
+<table>
+<thead>
+<tr>
+<th>Do</th>
+<th>Don't</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>按控件、容器、卡片或胶囊职责选择圆角</td>
+<td>为了让页面“更柔和”统一放大所有圆角</td>
+</tr>
+<tr>
+<td>同一类组件保持统一映射</td>
+<td>在业务调用处逐个覆盖组件圆角</td>
+</tr>
+<tr>
+<td>边框宽度与语义颜色共同评审</td>
+<td>只加粗边框表达所有选中、焦点和错误状态</td>
+</tr>
+<tr>
+<td>嵌套表面由组件维护几何关系</td>
+<td>页面用 <code>calc()</code> 临时计算内外圆角</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_8">边界</h2>
+<ul>
+<li>Border Width 只描述几何宽度，颜色和状态由 Semantic/Color 提供。</li>
+<li><code>radius-full</code> 适合胶囊或圆形实现底座，不代表所有圆形组件都应直接消费 Atomic。</li>
+<li>组件特殊轮廓和内部结构由组件 Token 负责。</li>
+<li>本任务不调整现有圆角或边框数值。</li>
+</ul>
+<h2 id="_9">来源</h2>
+<ul>
+<li><a href="https://git.firstshare.cn/fx/fdst/-/blob/master/tokens/atomic/map/shape.yml">形状 Map</a></li>
+<li><a href="https://git.firstshare.cn/fx/fdst/-/blob/master/tokens/semantic/scene/default.yml">场景语义源</a></li>
+</ul></article>
+    </main>
+    <aside class="docs-toc" aria-label="本页目录"><strong>本页目录</strong><a href="#_2">适用范围</a><a href="#_3">设计原则</a><a href="#_4">按场景选择</a><a href="#_5">视觉预览</a><a href="#_6">当前值域</a><a href="#_7">使用规则</a><a href="#do-dont">Do / Don&#x27;t</a><a href="#_8">边界</a><a href="#_9">来源</a></aside>
+  </div>
+  <div class="docs-backdrop" data-menu-backdrop hidden></div>
+  <dialog class="docs-search" data-search-dialog>
+    <form method="dialog" class="docs-search-head"><label for="docs-search-input">搜索文档</label><button type="submit">关闭</button></form>
+    <input id="docs-search-input" type="search" autocomplete="off" placeholder="输入 Token、用途或规范名称" data-search-input>
+    <div class="docs-search-results" data-search-results></div>
+  </dialog>
+</body>
+</html>

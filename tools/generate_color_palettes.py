@@ -31,7 +31,7 @@ COLOR_FAMILIES = (
     "red",
 )
 DARK_COLOR_FAMILIES = COLOR_FAMILIES[1:]
-STEPS = tuple(range(10, 121, 10))
+STEPS = tuple(range(1, 13))
 CHROMA_FACTORS = (0.08, 0.179, 0.30, 0.43, 0.57, 0.71, 0.83, 0.93, 1.0, 0.90, 0.72, 0.52)
 LIGHT_LIGHTNESS_PROGRESS = (0.0, 0.1125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875)
 DARK_LIGHTNESS_PROGRESS = (0.22, 0.667, 1.0)
@@ -176,10 +176,10 @@ def generate_palette(seed: str) -> dict[int, str]:
     palette: dict[int, str] = {}
 
     for index, (step, chroma_factor) in enumerate(zip(STEPS, CHROMA_FACTORS)):
-        if step == 90:
+        if step == 9:
             palette[step] = normalized_seed
             continue
-        if step < 90:
+        if step < 9:
             lightness = _lerp(
                 0.97,
                 seed_color.lightness,
@@ -206,10 +206,10 @@ def generate_dark_palette(family: str, seed: str) -> dict[int, str]:
     palette: dict[int, str] = {}
 
     for index, step in enumerate(STEPS):
-        if step == 90:
+        if step == 9:
             palette[step] = normalized_seed
             continue
-        if step < 90:
+        if step < 9:
             lightness = _lerp(
                 0.18,
                 seed_color.lightness,
@@ -224,7 +224,7 @@ def generate_dark_palette(family: str, seed: str) -> dict[int, str]:
                 DARK_HIGH_LIGHTNESS_PROGRESS[high_index],
             )
             chroma_factor = DARK_HIGH_CHROMA_FACTORS[high_index]
-            if family == "yellow" and step == 100:
+            if family == "yellow" and step == 10:
                 chroma_factor = YELLOW_DARK_100_CHROMA_FACTOR
         palette[step] = oklch_to_hex(
             Oklch(lightness, seed_color.chroma * chroma_factor, seed_color.hue)

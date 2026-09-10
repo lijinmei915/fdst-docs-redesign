@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="FDS 字号、行高、字重和语义排版组合">
+  <title>排版 | FDS Token</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="../assets/fds-global-tokens.css">
+  <link rel="stylesheet" href="../assets/fds-docs.css">
+  <script defer src="../assets/search-index.js"></script>
+  <script defer src="../assets/fds-demos.js"></script>
+  <script defer src="../assets/fds-docs.js"></script>
+</head>
+<body data-page="foundations/排版.md" data-root="..">
+  <header class="docs-topbar">
+    <a class="docs-brand" href="../index.html" aria-label="FDS Token 文档首页"><span>FDS</span><strong>Token</strong></a>
+    <span class="docs-area">Foundation</span>
+    <div class="docs-topbar-actions">
+      <button class="docs-search-trigger" type="button" data-search-open>搜索文档</button>
+      <button class="docs-menu-trigger" type="button" data-menu-toggle aria-expanded="false">目录</button>
+    </div>
+  </header>
+  <div class="docs-shell">
+    <aside class="docs-sidebar" data-sidebar aria-label="文档导航"><section class="docs-nav-group"><h2>概览</h2><a class="docs-nav-link" href="../index.html">文档首页</a><a class="docs-nav-link" href="../examples/index.html">视觉工作台</a></section><section class="docs-nav-group"><h2>Foundation</h2><a class="docs-nav-link" href="index.html">基础规范</a><a class="docs-nav-link" href="颜色.html">颜色</a><a class="docs-nav-link is-active" href="排版.html" aria-current="page">排版</a><a class="docs-nav-link" href="间距与尺寸.html">间距与尺寸</a><a class="docs-nav-link" href="圆角与边框.html">圆角与边框</a><a class="docs-nav-link" href="阴影与层级.html">阴影与层级</a><a class="docs-nav-link" href="动效.html">动效</a></section><section class="docs-nav-group"><h2>语义</h2><a class="docs-nav-link" href="../semantics/基础语义.html">基础语义</a><a class="docs-nav-link" href="../semantics/场景语义.html">场景语义</a></section><section class="docs-nav-group"><h2>开始使用</h2><a class="docs-nav-link" href="../getting-started/快速开始.html">快速开始</a><a class="docs-nav-link" href="../getting-started/ShareDev接入.html">ShareDev 接入</a></section><section class="docs-nav-group"><h2>概念</h2><a class="docs-nav-link" href="../concepts/分层模型.html">分层模型</a><a class="docs-nav-link" href="../concepts/命名规则.html">命名规则</a><a class="docs-nav-link" href="../concepts/引用与边界.html">引用与边界</a></section><section class="docs-nav-group"><h2>工程维护</h2><a class="docs-nav-link" href="../engineering/YAML源文件.html">YAML 源文件</a><a class="docs-nav-link" href="../engineering/构建与校验.html">构建与校验</a><a class="docs-nav-link" href="../engineering/版本与发布.html">版本与发布</a><a class="docs-nav-link" href="../engineering/文档维护.html">文档维护</a></section><section class="docs-nav-group"><h2>参考</h2><a class="docs-nav-link" href="../reference/Token目录.html">Token 目录</a><a class="docs-nav-link" href="../reference/迁移与常见问题.html">迁移与常见问题</a></section></aside>
+    <main class="docs-main">
+      <div class="docs-breadcrumb"><span>Foundation</span><span>/</span><strong>排版</strong></div>
+      <article class="docs-article"><h1 id="_1">排版</h1>
+<h2 id="_2">适用范围</h2>
+<p>本页说明 Atomic/Map 中的字号、行高和字重值域。业务标题和正文文本优先使用 Semantic 排版 recipe；标签等组件文本由组件契约负责。</p>
+<h2 id="_3">设计原则</h2>
+<ul>
+<li><strong>层级来自内容结构。</strong> 先判断标题、正文或标签职责，再选择排版组合，不按“看起来够大”临时挑字号。</li>
+<li><strong>组合完整使用。</strong> Heading 和 Text 同时包含字号、行高和字重，避免只改一个属性破坏节奏。</li>
+<li><strong>同级保持一致。</strong> 同一页面中承担相同职责的标题和正文使用同一 recipe，不因容器不同随意变化。</li>
+<li><strong>可读性优先。</strong> 长文本、窄容器和中文混排需要检查换行、行高和信息密度，不能仅验收单行样张。</li>
+</ul>
+<h2 id="_4">按场景选择</h2>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>推荐入口</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>页面与内容标题</td>
+<td><code>heading-1</code> 至 <code>heading-5</code> recipe</td>
+<td>按信息层级选择，并完整使用 Size、Line Height、Weight</td>
+</tr>
+<tr>
+<td>常规正文</td>
+<td><code>text</code> recipe</td>
+<td>作为跨页面稳定的正文底座</td>
+</tr>
+<tr>
+<td>标签和紧凑字段名</td>
+<td>Component Token</td>
+<td>当前不发布 Global Label recipe</td>
+</tr>
+<tr>
+<td>组件内部特殊文本</td>
+<td>Component Token</td>
+<td>不在页面调用处拼装新的全局文本角色</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_5">视觉预览</h2>
+<p>下面的业务片段直接组合当前 Heading、Text 和 Label Token，用于检查真实信息层级，而不是孤立展示字号列表。</p>
+<div class="fds-demo" data-demo="typography"></div>
+
+<h2 id="_6">当前值域</h2>
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>当前范围</th>
+<th>适用属性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Font Size</td>
+<td>12、13、14、15、16、18、20、22、24、28、32、36、40、48px</td>
+<td><code>font-size</code></td>
+</tr>
+<tr>
+<td>Line Height</td>
+<td>16、18、20、22、24、28、30、32、36、38、40、44、48px</td>
+<td><code>line-height</code></td>
+</tr>
+<tr>
+<td>Font Weight</td>
+<td>400、500、600、700</td>
+<td><code>font-weight</code></td>
+</tr>
+</tbody>
+</table>
+<p>数字档位只表达本领域的有序值，不表示 Heading 或 Text 用途。具体映射由 Semantic/Typography 保存。</p>
+<h2 id="_7">使用规则</h2>
+<pre><code class="language-css">.panel-title {
+  color: var(--fds-g-heading-color);
+  font-size: var(--fds-g-heading-5-size);
+  line-height: var(--fds-g-heading-5-line-height);
+  font-weight: var(--fds-g-heading-5-weight);
+}
+
+.panel-content {
+  color: var(--fds-g-text-color);
+  font-size: var(--fds-g-text-size);
+  line-height: var(--fds-g-text-line-height);
+  font-weight: var(--fds-g-text-weight);
+}
+</code></pre>
+<p>Heading 与 Text 使用完整 recipe，避免只替换字号而遗失匹配的行高和字重。Label 的字号、行高和字重由组件或具体场景负责。</p>
+<h2 id="do-dont">Do / Don't</h2>
+<table>
+<thead>
+<tr>
+<th>Do</th>
+<th>Don't</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>根据内容层级选择完整 Heading 或 Text recipe</td>
+<td>只复制字号，遗漏配套行高和字重</td>
+</tr>
+<tr>
+<td>在真实宽度下检查中文换行和多行节奏</td>
+<td>只用英文短句或单行样张验收</td>
+</tr>
+<tr>
+<td>组件特殊排版回到组件契约</td>
+<td>在业务页面新增全局排版角色</td>
+</tr>
+<tr>
+<td>弱化内容优先调整语义颜色和信息层级</td>
+<td>单纯缩小字号制造不可读的次要信息</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_8">边界</h2>
+<ul>
+<li>FDS Global Token 不发布字体族、Label、Caption 或 Code 排版 recipe；这些能力由应用、组件或具体场景负责。</li>
+<li>Atomic 字号和行高使用固定 px，不使用 <code>rem</code> 或运行时计算。</li>
+<li>本项目不定义响应式排版阶梯。</li>
+<li>组件内部排版仍可由组件 Token 约束，但应引用全局底座而非复制具体值。</li>
+</ul>
+<h2 id="_9">来源</h2>
+<ul>
+<li><a href="https://git.firstshare.cn/fx/fdst/-/blob/master/tokens/atomic/map/typography.yml">Atomic 排版</a></li>
+<li><a href="https://git.firstshare.cn/fx/fdst/-/blob/master/tokens/semantic/base/typography.yml">Semantic 排版</a></li>
+</ul></article>
+    </main>
+    <aside class="docs-toc" aria-label="本页目录"><strong>本页目录</strong><a href="#_2">适用范围</a><a href="#_3">设计原则</a><a href="#_4">按场景选择</a><a href="#_5">视觉预览</a><a href="#_6">当前值域</a><a href="#_7">使用规则</a><a href="#do-dont">Do / Don&#x27;t</a><a href="#_8">边界</a><a href="#_9">来源</a></aside>
+  </div>
+  <div class="docs-backdrop" data-menu-backdrop hidden></div>
+  <dialog class="docs-search" data-search-dialog>
+    <form method="dialog" class="docs-search-head"><label for="docs-search-input">搜索文档</label><button type="submit">关闭</button></form>
+    <input id="docs-search-input" type="search" autocomplete="off" placeholder="输入 Token、用途或规范名称" data-search-input>
+    <div class="docs-search-results" data-search-results></div>
+  </dialog>
+</body>
+</html>

@@ -8,15 +8,15 @@ global:
   primitive: true
   source: manual
 props:
-  color-amber-dark-10: {value: '#231914'}
-  color-amber-dark-20: {value: '#322219'}
-  color-amber-dark-30: {value: '#442B1E'}
-  color-amber-dark-40: {value: '#593622'}
-  color-amber-dark-50: {value: '#744124'}
-  color-amber-dark-60: {value: '#924D23'}
-  color-amber-dark-70: {value: '#B2591C'}
-  color-amber-dark-80: {value: '#D76813'}
-  color-amber-dark-90: {value: '#FF7C19'}
-  color-amber-dark-100: {value: '#FF914E'}
-  color-amber-dark-110: {value: '#FFA571'}
-  color-amber-dark-120: {value: '#FFB992'}
+  color-amber-dark-1: {value: '#231914'}
+  color-amber-dark-2: {value: '#322219'}
+  color-amber-dark-3: {value: '#442B1E'}
+  color-amber-dark-4: {value: '#593622'}
+  color-amber-dark-5: {value: '#744124'}
+  color-amber-dark-6: {value: '#924D23'}
+  color-amber-dark-7: {value: '#B2591C'}
+  color-amber-dark-8: {value: '#D76813'}
+  color-amber-dark-9: {value: '#FF7C19'}
+  color-amber-dark-10: {value: '#FF914E'}
+  color-amber-dark-11: {value: '#FFA571'}
+  color-amber-dark-12: {value: '#FFB992'}

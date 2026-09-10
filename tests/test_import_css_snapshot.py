@@ -39,7 +39,7 @@ class ImportCssSnapshotTest(unittest.TestCase):
                 )
             )
             self.assertEqual("--fds-s-", scene_source["global"]["namespace"])
-            self.assertEqual(14, len(scene_source["props"]))
+            self.assertEqual(13, len(scene_source["props"]))
             self.assertEqual("{!spacing-4}", scene_source["props"]["card-padding"]["value"])
 
     def test_scene_namespace_is_imported_into_scene_source(self) -> None:

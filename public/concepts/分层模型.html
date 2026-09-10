@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <title>分层模型 | FDS Token</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="../assets/fds-global-tokens.css">
+  <link rel="stylesheet" href="../assets/fds-docs.css">
+  <script defer src="../assets/search-index.js"></script>
+  <script defer src="../assets/fds-demos.js"></script>
+  <script defer src="../assets/fds-docs.js"></script>
+</head>
+<body data-page="concepts/分层模型.md" data-root="..">
+  <header class="docs-topbar">
+    <a class="docs-brand" href="../index.html" aria-label="FDS Token 文档首页"><span>FDS</span><strong>Token</strong></a>
+    <span class="docs-area">Foundation</span>
+    <div class="docs-topbar-actions">
+      <button class="docs-search-trigger" type="button" data-search-open>搜索文档</button>
+      <button class="docs-menu-trigger" type="button" data-menu-toggle aria-expanded="false">目录</button>
+    </div>
+  </header>
+  <div class="docs-shell">
+    <aside class="docs-sidebar" data-sidebar aria-label="文档导航"><section class="docs-nav-group"><h2>概览</h2><a class="docs-nav-link" href="../index.html">文档首页</a><a class="docs-nav-link" href="../examples/index.html">视觉工作台</a></section><section class="docs-nav-group"><h2>Foundation</h2><a class="docs-nav-link" href="../foundations/index.html">基础规范</a><a class="docs-nav-link" href="../foundations/颜色.html">颜色</a><a class="docs-nav-link" href="../foundations/排版.html">排版</a><a class="docs-nav-link" href="../foundations/间距与尺寸.html">间距与尺寸</a><a class="docs-nav-link" href="../foundations/圆角与边框.html">圆角与边框</a><a class="docs-nav-link" href="../foundations/阴影与层级.html">阴影与层级</a><a class="docs-nav-link" href="../foundations/动效.html">动效</a></section><section class="docs-nav-group"><h2>语义</h2><a class="docs-nav-link" href="../semantics/基础语义.html">基础语义</a><a class="docs-nav-link" href="../semantics/场景语义.html">场景语义</a></section><section class="docs-nav-group"><h2>开始使用</h2><a class="docs-nav-link" href="../getting-started/快速开始.html">快速开始</a><a class="docs-nav-link" href="../getting-started/ShareDev接入.html">ShareDev 接入</a></section><section class="docs-nav-group"><h2>概念</h2><a class="docs-nav-link is-active" href="分层模型.html" aria-current="page">分层模型</a><a class="docs-nav-link" href="命名规则.html">命名规则</a><a class="docs-nav-link" href="引用与边界.html">引用与边界</a></section><section class="docs-nav-group"><h2>工程维护</h2><a class="docs-nav-link" href="../engineering/YAML源文件.html">YAML 源文件</a><a class="docs-nav-link" href="../engineering/构建与校验.html">构建与校验</a><a class="docs-nav-link" href="../engineering/版本与发布.html">版本与发布</a><a class="docs-nav-link" href="../engineering/文档维护.html">文档维护</a></section><section class="docs-nav-group"><h2>参考</h2><a class="docs-nav-link" href="../reference/Token目录.html">Token 目录</a><a class="docs-nav-link" href="../reference/迁移与常见问题.html">迁移与常见问题</a></section></aside>
+    <main class="docs-main">
+      <div class="docs-breadcrumb"><span>概念</span><span>/</span><strong>分层模型</strong></div>
+      <article class="docs-article"><h1 id="_1">分层模型</h1>
+<h2 id="_2">适用范围</h2>
+<p>本页定义 FDS Global Token 的层级职责和依赖方向，用于判断一个值应在哪里维护、调用方应从哪一层消费。</p>
+<h2 id="_3">模型</h2>
+<pre><code class="language-text">Atomic 原子层
+  Seed    有真实派生关系的最小输入
+  Map     构建后的具体值域与固定枚举
+
+Semantic 语义层
+  Base    跨业务、跨区域成立的基础用途
+  Scene   跨业务可复用的页面组合协议
+
+Component 组件层
+  由组件包自行维护，不进入本项目
+</code></pre>
+<p>依赖方向固定为：</p>
+<pre><code class="language-text">Atomic/Seed -&gt; Atomic/Map -&gt; Semantic/Base -&gt; Semantic/Scene
+</code></pre>
+<p>允许同级引用，禁止反向引用和循环引用。构建器依据 import 图和每个引用的实际层级执行校验。</p>
+<h2 id="_4">各层职责</h2>
+<table>
+<thead>
+<tr>
+<th>层级</th>
+<th>保存什么</th>
+<th>主要读者</th>
+<th>是否建议业务直接消费</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Atomic/Seed</td>
+<td>会参与派生的颜色输入</td>
+<td>Token 维护者</td>
+<td>否</td>
+</tr>
+<tr>
+<td>Atomic/Map</td>
+<td>具体色阶、尺寸、字体、透明度、层级、阴影和动效枚举</td>
+<td>Token 和组件维护者</td>
+<td>仅无合适语义时</td>
+</tr>
+<tr>
+<td>Semantic/Base</td>
+<td>文本、状态、背景、排版、效果和动效用途</td>
+<td>全部开发者</td>
+<td>是</td>
+</tr>
+<tr>
+<td>Semantic/Scene</td>
+<td>页面、场景卡片和卡片标题组合规则</td>
+<td>页面开发者</td>
+<td>是</td>
+</tr>
+<tr>
+<td>Component</td>
+<td>组件结构和状态的公开样式契约</td>
+<td>组件消费者</td>
+<td>按组件 API</td>
+</tr>
+</tbody>
+</table>
+<h2 id="seed">当前 Seed 边界</h2>
+<p>当前只有颜色 Seed，因为有彩色色阶存在真实的构建期派生关系。间距、字号、行高、图标尺寸、圆角和动效时长是设计确认的离散 Map 值，不从“基础单位”运行时计算。</p>
+<h2 id="_5">示例</h2>
+<p>业务页面文本应使用：</p>
+<pre><code class="language-css">.record-title {
+  color: var(--fds-g-color-text-primary);
+  font-size: var(--fds-g-heading-4-size);
+}
+</code></pre>
+<p>不要为了获得相同的当前外观而直接绑定灰阶或字号档位。Atomic 的值可能稳定，但它不表达业务用途。</p>
+<h2 id="_6">边界</h2>
+<ul>
+<li>Scene 不包含 <code>workbench-*</code>、<code>detail-*</code>、<code>dashboard-*</code> 等业务名称。</li>
+<li>Global 层不包含 Button、Input、Tab、Card 等组件 Token。</li>
+<li>当前模型不包含 Theme 层或暗色 Semantic 分支；固定公司色系的 Dark Map 仍属于 Atomic/Map。</li>
+</ul>
+<h2 id="_7">来源</h2>
+<ul>
+<li><a href="https://git.firstshare.cn/fx/fdst/-/blob/master/README.md">工程 README</a></li>
+<li><a href="https://git.firstshare.cn/fx/fdst/-/blob/master/tokens/atomic/base.yml">Atomic 聚合入口</a></li>
+<li><a href="https://git.firstshare.cn/fx/fdst/-/blob/master/tokens/semantic/base.yml">Semantic 聚合入口</a></li>
+<li><a href="https://git.firstshare.cn/fx/fdst/-/blob/master/tokens/semantic/scene/README.md">Scene 边界</a></li>
+</ul></article>
+    </main>
+    <aside class="docs-toc" aria-label="本页目录"><strong>本页目录</strong><a href="#_2">适用范围</a><a href="#_3">模型</a><a href="#_4">各层职责</a><a href="#seed">当前 Seed 边界</a><a href="#_5">示例</a><a href="#_6">边界</a><a href="#_7">来源</a></aside>
+  </div>
+  <div class="docs-backdrop" data-menu-backdrop hidden></div>
+  <dialog class="docs-search" data-search-dialog>
+    <form method="dialog" class="docs-search-head"><label for="docs-search-input">搜索文档</label><button type="submit">关闭</button></form>
+    <input id="docs-search-input" type="search" autocomplete="off" placeholder="输入 Token、用途或规范名称" data-search-input>
+    <div class="docs-search-results" data-search-results></div>
+  </dialog>
+</body>
+</html>

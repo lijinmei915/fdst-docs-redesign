@@ -48,7 +48,7 @@ QUERY_LEVEL_PRIORITY = {
 SEARCH_ALIASES = {
     "危险状态": ("danger",),
     "浅色背景": ("background",),
-    "页面主背景": ("background-main", "fds-s-background", "surface-page"),
+    "页面主背景": ("background-main",),
     "卡片标题": ("fds-s-card-title",),
     "上下文浮层": ("motion-context", "layer-popup"),
     "危险": ("danger",),
@@ -56,9 +56,9 @@ SEARCH_ALIASES = {
     "成功": ("success",),
     "信息": ("info",),
     "浅背景": ("background",),
-    "主背景": ("background-main", "fds-s-background", "surface-page"),
-    "文本": ("text", "typography"),
-    "文字": ("text", "typography"),
+    "主背景": ("background-main",),
+    "文本": ("text",),
+    "文字": ("text",),
     "图标": ("icon",),
     "边框": ("border",),
     "间距": ("spacing", "gap", "padding", "margin"),
@@ -303,6 +303,16 @@ def documentation_files() -> list[Path]:
     return sorted([*DOCS_ROOT.rglob("*.md"), *DOCS_ROOT.rglob("*.html")])
 
 
+def documentation_token_files() -> list[Path]:
+    return sorted(
+        {
+            *documentation_files(),
+            *DOCS_ROOT.rglob("*.css"),
+            *DOCS_ROOT.rglob("*.js"),
+        }
+    )
+
+
 def validate_markdown_links() -> list[str]:
     errors: list[str] = []
     for path in documentation_files():
@@ -320,7 +330,7 @@ def validate_markdown_links() -> list[str]:
 def validate_doc_variables(catalog: dict) -> list[str]:
     known = {token["cssVariable"] for token in catalog["tokens"]}
     errors: list[str] = []
-    for path in documentation_files():
+    for path in documentation_token_files():
         text = path.read_text(encoding="utf-8")
         for variable in sorted(set(CSS_VARIABLE_RE.findall(text)) - known):
             errors.append(f"{display_path(path)}: catalog 中不存在示例变量 {variable}")

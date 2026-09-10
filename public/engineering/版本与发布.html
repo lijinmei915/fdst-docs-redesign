@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <title>版本与发布 | FDS Token</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="../assets/fds-global-tokens.css">
+  <link rel="stylesheet" href="../assets/fds-docs.css">
+  <script defer src="../assets/search-index.js"></script>
+  <script defer src="../assets/fds-demos.js"></script>
+  <script defer src="../assets/fds-docs.js"></script>
+</head>
+<body data-page="engineering/版本与发布.md" data-root="..">
+  <header class="docs-topbar">
+    <a class="docs-brand" href="../index.html" aria-label="FDS Token 文档首页"><span>FDS</span><strong>Token</strong></a>
+    <span class="docs-area">Foundation</span>
+    <div class="docs-topbar-actions">
+      <button class="docs-search-trigger" type="button" data-search-open>搜索文档</button>
+      <button class="docs-menu-trigger" type="button" data-menu-toggle aria-expanded="false">目录</button>
+    </div>
+  </header>
+  <div class="docs-shell">
+    <aside class="docs-sidebar" data-sidebar aria-label="文档导航"><section class="docs-nav-group"><h2>概览</h2><a class="docs-nav-link" href="../index.html">文档首页</a><a class="docs-nav-link" href="../examples/index.html">视觉工作台</a></section><section class="docs-nav-group"><h2>Foundation</h2><a class="docs-nav-link" href="../foundations/index.html">基础规范</a><a class="docs-nav-link" href="../foundations/颜色.html">颜色</a><a class="docs-nav-link" href="../foundations/排版.html">排版</a><a class="docs-nav-link" href="../foundations/间距与尺寸.html">间距与尺寸</a><a class="docs-nav-link" href="../foundations/圆角与边框.html">圆角与边框</a><a class="docs-nav-link" href="../foundations/阴影与层级.html">阴影与层级</a><a class="docs-nav-link" href="../foundations/动效.html">动效</a></section><section class="docs-nav-group"><h2>语义</h2><a class="docs-nav-link" href="../semantics/基础语义.html">基础语义</a><a class="docs-nav-link" href="../semantics/场景语义.html">场景语义</a></section><section class="docs-nav-group"><h2>开始使用</h2><a class="docs-nav-link" href="../getting-started/快速开始.html">快速开始</a><a class="docs-nav-link" href="../getting-started/ShareDev接入.html">ShareDev 接入</a></section><section class="docs-nav-group"><h2>概念</h2><a class="docs-nav-link" href="../concepts/分层模型.html">分层模型</a><a class="docs-nav-link" href="../concepts/命名规则.html">命名规则</a><a class="docs-nav-link" href="../concepts/引用与边界.html">引用与边界</a></section><section class="docs-nav-group"><h2>工程维护</h2><a class="docs-nav-link" href="YAML源文件.html">YAML 源文件</a><a class="docs-nav-link" href="构建与校验.html">构建与校验</a><a class="docs-nav-link is-active" href="版本与发布.html" aria-current="page">版本与发布</a><a class="docs-nav-link" href="文档维护.html">文档维护</a></section><section class="docs-nav-group"><h2>参考</h2><a class="docs-nav-link" href="../reference/Token目录.html">Token 目录</a><a class="docs-nav-link" href="../reference/迁移与常见问题.html">迁移与常见问题</a></section></aside>
+    <main class="docs-main">
+      <div class="docs-breadcrumb"><span>工程维护</span><span>/</span><strong>版本与发布</strong></div>
+      <article class="docs-article"><h1 id="_1">版本与发布</h1>
+<h2 id="_2">适用范围</h2>
+<p>本页定义源变更后各产物的同步顺序和发布前门禁。正式长期仓库、版本号规则、发布责任人和 ShareDev 发布命令尚未确认，本页不代替发布流程。</p>
+<h2 id="_3">同步顺序</h2>
+<pre><code class="language-text">tokens/fds-global.yml import 图
+  -&gt; CSS Variables（普通版 + min 版）
+  -&gt; catalog JSON
+       -&gt; Token 目录
+       -&gt; FDS Apply 查询 JSONL
+       -&gt; FDS Migrate 完整 Token JSONL
+</code></pre>
+<p>普通版 CSS、min 版 CSS 和 catalog 都从 YAML import 图生成。Token 目录及两个 Skill 的 JSONL 快照从同一个 catalog 对象生成；Skill 运行时只读取随包资产，不依赖 FDST 仓库，也不自行解析 Markdown 或 HTML。</p>
+<h2 id="_4">变更步骤</h2>
+<ol>
+<li>在对应 YAML 叶子文件修改 Token，并更新最近一级 imports。</li>
+<li>运行 <code>python tools/build.py --check</code> 和单元测试。</li>
+<li>生成普通版/min 版 CSS、catalog 与 Token 目录。</li>
+<li>更新解释性文档；不手工编辑 Token 目录。</li>
+<li>重跑文档链接、示例变量和生成一致性校验。</li>
+<li>评审变更是否影响公开变量、引用关系或运行时值。</li>
+<li>进入正式发布门禁后，再同步两个 Skill 资产和消费环境。</li>
+</ol>
+<h2 id="_5">变更风险</h2>
+<table>
+<thead>
+<tr>
+<th>变更</th>
+<th>主要风险</th>
+<th>发布前要求</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>新增 Token</td>
+<td>API 扩大、用途重复</td>
+<td>确认层级、命名、所有权和使用场景</td>
+</tr>
+<tr>
+<td>修改值或引用</td>
+<td>页面视觉行为变化</td>
+<td>评审影响范围并验证主要消费路径</td>
+</tr>
+<tr>
+<td>重命名/删除</td>
+<td>现有调用方失效</td>
+<td>先确认引用与迁移策略，不直接发布</td>
+</tr>
+<tr>
+<td>调整 schema/import</td>
+<td>构建与下游工具失效</td>
+<td>构建、catalog 和查询契约联合验证</td>
+</tr>
+</tbody>
+</table>
+<p>回退以源 YAML 变更为单位：恢复已评审的上一版 YAML，再重新生成全部产物。不得只回退任一 CSS 或 catalog，否则会造成事实不一致。</p>
+<h2 id="_6">发布门禁</h2>
+<p>以下事项当前为待确认：</p>
+<ul>
+<li>FDS YAML 的正式长期维护仓库和 catalog 来源提交记录方式；</li>
+<li>版本号、变更日志和兼容性策略；</li>
+<li>Token 评审、质量门禁和发布责任人；</li>
+<li>ShareDev 公共资源注入、灰度、缓存刷新和回退命令；</li>
+<li><code>fds-apply</code>、<code>fds-migrate</code> 的正式打包与发布流程。</li>
+</ul>
+<p>这些事项确认前，可以生成和验证本地产物，但不能据此宣称已经发布。</p>
+<h2 id="_7">边界</h2>
+<ul>
+<li>HTML 分享页和 KDocs 是展示/同步材料，不是发布源。</li>
+<li>本项目不自动写入 ShareDev Skill 仓库，也不发布任何包。</li>
+<li>本次文档工作不改变现有 Token 值、层级或命名。</li>
+</ul>
+<h2 id="_8">来源</h2>
+<ul>
+<li><a href="YAML源文件.html">YAML 源文件</a></li>
+<li><a href="构建与校验.html">构建与校验</a></li>
+<li><a href="https://git.firstshare.cn/fx/fdst/-/blob/master/tokens/fds-global.yml">包入口</a></li>
+</ul></article>
+    </main>
+    <aside class="docs-toc" aria-label="本页目录"><strong>本页目录</strong><a href="#_2">适用范围</a><a href="#_3">同步顺序</a><a href="#_4">变更步骤</a><a href="#_5">变更风险</a><a href="#_6">发布门禁</a><a href="#_7">边界</a><a href="#_8">来源</a></aside>
+  </div>
+  <div class="docs-backdrop" data-menu-backdrop hidden></div>
+  <dialog class="docs-search" data-search-dialog>
+    <form method="dialog" class="docs-search-head"><label for="docs-search-input">搜索文档</label><button type="submit">关闭</button></form>
+    <input id="docs-search-input" type="search" autocomplete="off" placeholder="输入 Token、用途或规范名称" data-search-input>
+    <div class="docs-search-results" data-search-results></div>
+  </dialog>
+</body>
+</html>

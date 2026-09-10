@@ -7,18 +7,6 @@ global:
   scope: global
   primitive: true
 props:
-  control-height-1:
-    value: 24px
-  control-height-2:
-    value: 28px
-  control-height-3:
-    value: 32px
-  control-height-4:
-    value: 36px
-  control-height-5:
-    value: 40px
-  control-height-6:
-    value: 48px
   icon-size-1:
     value: 12px
   icon-size-2:

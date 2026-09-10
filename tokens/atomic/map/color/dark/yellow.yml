@@ -8,15 +8,15 @@ global:
   primitive: true
   source: manual
 props:
-  color-yellow-dark-10: {value: '#221C14'}
-  color-yellow-dark-20: {value: '#31281A'}
-  color-yellow-dark-30: {value: '#433620'}
-  color-yellow-dark-40: {value: '#594625'}
-  color-yellow-dark-50: {value: '#735727'}
-  color-yellow-dark-60: {value: '#916B24'}
-  color-yellow-dark-70: {value: '#B17F17'}
-  color-yellow-dark-80: {value: '#D69800'}
-  color-yellow-dark-90: {value: '#FFB602'}
-  color-yellow-dark-100: {value: '#FFC14D'}
-  color-yellow-dark-110: {value: '#FFCB73'}
-  color-yellow-dark-120: {value: '#FFD794'}
+  color-yellow-dark-1: {value: '#221C14'}
+  color-yellow-dark-2: {value: '#31281A'}
+  color-yellow-dark-3: {value: '#433620'}
+  color-yellow-dark-4: {value: '#594625'}
+  color-yellow-dark-5: {value: '#735727'}
+  color-yellow-dark-6: {value: '#916B24'}
+  color-yellow-dark-7: {value: '#B17F17'}
+  color-yellow-dark-8: {value: '#D69800'}
+  color-yellow-dark-9: {value: '#FFB602'}
+  color-yellow-dark-10: {value: '#FFC14D'}
+  color-yellow-dark-11: {value: '#FFCB73'}
+  color-yellow-dark-12: {value: '#FFD794'}

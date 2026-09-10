@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="FDS 动效时长、缓动和反馈场景分类">
+  <title>动效 | FDS Token</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="../assets/fds-global-tokens.css">
+  <link rel="stylesheet" href="../assets/fds-docs.css">
+  <script defer src="../assets/search-index.js"></script>
+  <script defer src="../assets/fds-demos.js"></script>
+  <script defer src="../assets/fds-docs.js"></script>
+</head>
+<body data-page="foundations/动效.md" data-root="..">
+  <header class="docs-topbar">
+    <a class="docs-brand" href="../index.html" aria-label="FDS Token 文档首页"><span>FDS</span><strong>Token</strong></a>
+    <span class="docs-area">Foundation</span>
+    <div class="docs-topbar-actions">
+      <button class="docs-search-trigger" type="button" data-search-open>搜索文档</button>
+      <button class="docs-menu-trigger" type="button" data-menu-toggle aria-expanded="false">目录</button>
+    </div>
+  </header>
+  <div class="docs-shell">
+    <aside class="docs-sidebar" data-sidebar aria-label="文档导航"><section class="docs-nav-group"><h2>概览</h2><a class="docs-nav-link" href="../index.html">文档首页</a><a class="docs-nav-link" href="../examples/index.html">视觉工作台</a></section><section class="docs-nav-group"><h2>Foundation</h2><a class="docs-nav-link" href="index.html">基础规范</a><a class="docs-nav-link" href="颜色.html">颜色</a><a class="docs-nav-link" href="排版.html">排版</a><a class="docs-nav-link" href="间距与尺寸.html">间距与尺寸</a><a class="docs-nav-link" href="圆角与边框.html">圆角与边框</a><a class="docs-nav-link" href="阴影与层级.html">阴影与层级</a><a class="docs-nav-link is-active" href="动效.html" aria-current="page">动效</a></section><section class="docs-nav-group"><h2>语义</h2><a class="docs-nav-link" href="../semantics/基础语义.html">基础语义</a><a class="docs-nav-link" href="../semantics/场景语义.html">场景语义</a></section><section class="docs-nav-group"><h2>开始使用</h2><a class="docs-nav-link" href="../getting-started/快速开始.html">快速开始</a><a class="docs-nav-link" href="../getting-started/ShareDev接入.html">ShareDev 接入</a></section><section class="docs-nav-group"><h2>概念</h2><a class="docs-nav-link" href="../concepts/分层模型.html">分层模型</a><a class="docs-nav-link" href="../concepts/命名规则.html">命名规则</a><a class="docs-nav-link" href="../concepts/引用与边界.html">引用与边界</a></section><section class="docs-nav-group"><h2>工程维护</h2><a class="docs-nav-link" href="../engineering/YAML源文件.html">YAML 源文件</a><a class="docs-nav-link" href="../engineering/构建与校验.html">构建与校验</a><a class="docs-nav-link" href="../engineering/版本与发布.html">版本与发布</a><a class="docs-nav-link" href="../engineering/文档维护.html">文档维护</a></section><section class="docs-nav-group"><h2>参考</h2><a class="docs-nav-link" href="../reference/Token目录.html">Token 目录</a><a class="docs-nav-link" href="../reference/迁移与常见问题.html">迁移与常见问题</a></section></aside>
+    <main class="docs-main">
+      <div class="docs-breadcrumb"><span>Foundation</span><span>/</span><strong>动效</strong></div>
+      <article class="docs-article"><h1 id="_1">动效</h1>
+<h2 id="_2">适用范围</h2>
+<p>本页说明动效时长和缓动的 Atomic 值域，以及 Feedback、Context、Disclosure、Prominent 四类 Semantic recipe。</p>
+<h2 id="_3">设计原则</h2>
+<ul>
+<li><strong>动效服务反馈。</strong> 用户操作与界面响应之间建立因果关系，不为了装饰增加持续运动。</li>
+<li><strong>按变化规模选择时长。</strong> 小范围反馈短，结构变化适中，显著变化受限使用。</li>
+<li><strong>进入和退出分别处理。</strong> 新内容出现与旧内容离场的节奏不同，不用一条曲线覆盖所有状态。</li>
+<li><strong>状态驱动并尊重减弱动效。</strong> 组件根据 Open、Closed、Selected 等状态切换，系统偏好减少动效时降为 <code>0ms</code>。</li>
+</ul>
+<h2 id="atomic">Atomic 值域</h2>
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>当前范围</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Duration</td>
+<td>0、100、200、300、400ms</td>
+<td>从关闭动效到受限的显著变化</td>
+</tr>
+<tr>
+<td>Easing</td>
+<td>Standard、Enter、Exit</td>
+<td>持续可见、进入、退出三类运动过程</td>
+</tr>
+</tbody>
+</table>
+<p>调用方不要把数字档位重新命名成脱离场景的 fast/mid/slow。组件负责决定实际过渡属性、关键帧和是否需要进入/退出两条曲线。</p>
+<h2 id="_4">四类语义</h2>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>示例</th>
+<th>使用方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Feedback</td>
+<td>Button 按压、Toggle、选中标记</td>
+<td>Duration + Easing</td>
+</tr>
+<tr>
+<td>Context</td>
+<td>Tooltip、Dropdown、Popover</td>
+<td>Duration + Enter/Exit Easing</td>
+</tr>
+<tr>
+<td>Disclosure</td>
+<td>Accordion、Tree、折叠区、侧栏</td>
+<td>Duration + Easing</td>
+</tr>
+<tr>
+<td>Prominent</td>
+<td>重要 Notification、较大遮罩、显著位移</td>
+<td>Duration + Enter/Exit Easing，限制频率</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_5">视觉预览</h2>
+<p>下面使用当前语义 Duration 与 Easing 对比四类任务的节奏。</p>
+<div class="fds-demo" data-demo="motion"></div>
+
+<pre><code class="language-css">.context-menu[data-state='open'] {
+  transition-duration: var(--fds-g-motion-context-duration);
+  transition-timing-function: var(--fds-g-motion-context-enter-easing);
+}
+
+.context-menu[data-state='closed'] {
+  transition-timing-function: var(--fds-g-motion-context-exit-easing);
+}
+</code></pre>
+<p>生成 CSS 在 <code>prefers-reduced-motion: reduce</code> 下把四类 Semantic Duration 统一覆盖为 <code>0ms</code>，缓动变量保持不变。</p>
+<h2 id="do-dont">Do / Don't</h2>
+<table>
+<thead>
+<tr>
+<th>Do</th>
+<th>Don't</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>根据 Feedback、Context、Disclosure、Prominent 选择 recipe</td>
+<td>把时长数字重新包装成模糊的 fast、slow</td>
+</tr>
+<tr>
+<td>用真实组件状态触发进入和退出</td>
+<td>用定时器猜测动画何时结束</td>
+</tr>
+<tr>
+<td>为位移、透明度和尺寸变化控制范围</td>
+<td>同时堆叠过多效果制造干扰</td>
+</tr>
+<tr>
+<td>验证 <code>prefers-reduced-motion</code></td>
+<td>让减少动效用户仍承受循环或大幅位移</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">边界</h2>
+<ul>
+<li><code>motion-duration-0</code> 用于关闭动效和减少动态效果，不是普通速度档位或停留时长。</li>
+<li>500ms 及以上的 Carousel、Progress、循环动画等由组件或业务场景私有维护。</li>
+<li>本体系不定义弹簧物理参数、关键帧或动画库接口。</li>
+<li>不用一个全局 Enter 时长覆盖不同尺寸和交互场景。</li>
+</ul>
+<h2 id="_7">来源</h2>
+<ul>
+<li><a href="https://git.firstshare.cn/fx/fdst/-/blob/master/tokens/atomic/map/motion.yml">Motion Map</a></li>
+<li><a href="https://git.firstshare.cn/fx/fdst/-/blob/master/tokens/semantic/base/motion.yml">Motion Base</a></li>
+<li><a href="https://git.firstshare.cn/fx/fdst/-/blob/master/dist/fds-global-tokens.css">生成 CSS</a></li>
+</ul></article>
+    </main>
+    <aside class="docs-toc" aria-label="本页目录"><strong>本页目录</strong><a href="#_2">适用范围</a><a href="#_3">设计原则</a><a href="#atomic">Atomic 值域</a><a href="#_4">四类语义</a><a href="#_5">视觉预览</a><a href="#do-dont">Do / Don&#x27;t</a><a href="#_6">边界</a><a href="#_7">来源</a></aside>
+  </div>
+  <div class="docs-backdrop" data-menu-backdrop hidden></div>
+  <dialog class="docs-search" data-search-dialog>
+    <form method="dialog" class="docs-search-head"><label for="docs-search-input">搜索文档</label><button type="submit">关闭</button></form>
+    <input id="docs-search-input" type="search" autocomplete="off" placeholder="输入 Token、用途或规范名称" data-search-input>
+    <div class="docs-search-results" data-search-results></div>
+  </dialog>
+</body>
+</html>

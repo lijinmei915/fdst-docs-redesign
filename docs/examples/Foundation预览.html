@@ -3,183 +3,19 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>FDS Foundation 视觉预览</title>
+  <title>FDS Foundation 视觉工作台</title>
   <link rel="stylesheet" href="../../dist/fds-global-tokens.css">
-  <style>
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      color: var(--fds-g-color-text-primary);
-      background: var(--fds-g-color-surface-page);
-      font-family: Arial, "Microsoft YaHei", sans-serif;
-      letter-spacing: 0;
-    }
-    header, nav, main { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
-    header { padding: 36px 0 20px; }
-    h1 { margin: 0 0 8px; font-size: 30px; line-height: 1.35; }
-    h2 { margin: 0 0 16px; font-size: 20px; line-height: 1.4; }
-    h3 { margin: 0 0 8px; font-size: 15px; line-height: 1.5; }
-    p { margin: 0; color: var(--fds-g-color-text-secondary); line-height: 1.6; }
-    nav { display: flex; flex-wrap: wrap; gap: var(--fds-g-spacing-2); padding-bottom: 20px; }
-    nav a {
-      color: var(--fds-g-color-text-primary);
-      background: var(--fds-g-color-surface-container);
-      border: var(--fds-g-border-width-1) solid var(--fds-g-border-default);
-      border-radius: var(--fds-g-radius-2);
-      padding: var(--fds-g-spacing-1) var(--fds-g-spacing-2);
-      text-decoration: none;
-      font-size: 13px;
-    }
-    section { padding: 28px 0 36px; border-top: var(--fds-g-border-width-1) solid var(--fds-g-border-subtle); }
-    .surface {
-      background: var(--fds-g-color-surface-container);
-      border: var(--fds-g-border-width-1) solid var(--fds-g-border-default);
-      border-radius: var(--fds-g-container-radius);
-      padding: var(--fds-g-spacing-4);
-    }
-    .type-list { display: grid; gap: var(--fds-g-spacing-3); }
-    .type-list div { border-bottom: var(--fds-g-border-width-1) solid var(--fds-g-border-subtle); padding-bottom: var(--fds-g-spacing-2); }
-    .type-list div:last-child { border-bottom: 0; padding-bottom: 0; }
-    .heading-1 { font-size: var(--fds-g-typography-heading-1-size); line-height: var(--fds-g-typography-heading-1-line-height); font-weight: var(--fds-g-typography-heading-1-weight); }
-    .heading-2 { font-size: var(--fds-g-typography-heading-2-size); line-height: var(--fds-g-typography-heading-2-line-height); font-weight: var(--fds-g-typography-heading-2-weight); }
-    .heading-3 { font-size: var(--fds-g-typography-heading-3-size); line-height: var(--fds-g-typography-heading-3-line-height); font-weight: var(--fds-g-typography-heading-3-weight); }
-    .heading-4 { font-size: var(--fds-g-typography-heading-4-size); line-height: var(--fds-g-typography-heading-4-line-height); font-weight: var(--fds-g-typography-heading-4-weight); }
-    .heading-5 { font-size: var(--fds-g-typography-heading-5-size); line-height: var(--fds-g-typography-heading-5-line-height); font-weight: var(--fds-g-typography-heading-5-weight); }
-    .text { font-size: var(--fds-g-typography-text-size); line-height: var(--fds-g-typography-text-line-height); font-weight: var(--fds-g-typography-text-weight); }
-    .sample-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--fds-g-spacing-3); }
-    .scale-list { display: grid; gap: var(--fds-g-spacing-2); }
-    .scale-row { display: grid; grid-template-columns: 92px minmax(0, 1fr) 48px; align-items: center; gap: var(--fds-g-spacing-2); font-size: 12px; }
-    .scale-track { height: 8px; background: var(--fds-g-color-surface-disabled); }
-    .scale-value { height: 8px; background: var(--fds-g-color-primary); width: var(--scale); }
-    .control-row { display: flex; align-items: flex-end; flex-wrap: wrap; gap: var(--fds-g-spacing-3); margin-top: var(--fds-g-spacing-4); }
-    .control-demo { display: grid; place-items: center; min-width: 112px; padding: 0 var(--fds-g-spacing-3); border: var(--fds-g-border-width-1) solid var(--fds-g-border-default); border-radius: var(--fds-g-control-radius); background: var(--fds-g-color-surface-container); font-size: 12px; }
-    .compact { height: var(--fds-g-control-height-compact); }
-    .default { height: var(--fds-g-control-height-default); }
-    .large { height: var(--fds-g-control-height-large); }
-    .radius-demo { height: 96px; display: grid; place-items: center; border: var(--fds-g-border-width-2) solid var(--fds-g-color-primary); background: var(--fds-g-color-primary-background); font-size: 12px; }
-    .radius-0 { border-radius: var(--fds-g-radius-0); }
-    .radius-control { border-radius: var(--fds-g-control-radius); }
-    .radius-container { border-radius: var(--fds-g-container-radius); }
-    .radius-full { border-radius: var(--fds-g-radius-full); }
-    .effect-demo { min-height: 120px; display: grid; place-items: center; background: var(--fds-g-color-surface-container); border-radius: var(--fds-g-radius-3); font-size: 12px; }
-    .shadow-none { box-shadow: var(--fds-g-shadow-none); border: var(--fds-g-border-width-1) solid var(--fds-g-border-default); }
-    .shadow-active { box-shadow: var(--fds-g-shadow-active); }
-    .shadow-drag { box-shadow: var(--fds-g-shadow-drag); }
-    .shadow-dropdown { box-shadow: var(--fds-g-shadow-dropdown); }
-    .opacity-row { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--fds-g-spacing-2); margin-top: var(--fds-g-spacing-4); }
-    .opacity-demo { padding: var(--fds-g-spacing-3); color: var(--fds-g-color-text-inverse); background: var(--fds-g-color-primary); text-align: center; border-radius: var(--fds-g-radius-2); font-size: 12px; }
-    .opacity-25 { opacity: var(--fds-g-opacity-25); }
-    .opacity-50 { opacity: var(--fds-g-opacity-50); }
-    .opacity-65 { opacity: var(--fds-g-opacity-65); }
-    .opacity-80 { opacity: var(--fds-g-opacity-80); }
-    .opacity-100 { opacity: var(--fds-g-opacity-100); }
-    .layer-list { display: grid; gap: var(--fds-g-spacing-1); margin-top: var(--fds-g-spacing-4); }
-    .layer-row { display: flex; justify-content: space-between; gap: var(--fds-g-spacing-2); padding: var(--fds-g-spacing-2) var(--fds-g-spacing-3); border-left: 6px solid var(--fds-g-color-primary); background: var(--fds-g-color-primary-background); font-size: 12px; }
-    .motion-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--fds-g-spacing-3); }
-    .motion-demo { min-width: 0; height: 104px; padding: var(--fds-g-spacing-3); color: var(--fds-g-color-text-primary); background: var(--fds-g-color-surface-container); border: var(--fds-g-border-width-1) solid var(--fds-g-border-default); border-radius: var(--fds-g-radius-3); cursor: pointer; font: inherit; text-align: left; }
-    .motion-demo span { display: block; width: 32px; height: 32px; margin-bottom: var(--fds-g-spacing-2); background: var(--fds-g-color-primary); border-radius: var(--fds-g-radius-2); }
-    .motion-demo:hover span, .motion-demo:focus-visible span { transform: translateX(32px); }
-    .feedback span { transition: transform var(--fds-g-motion-feedback-duration) var(--fds-g-motion-feedback-easing); }
-    .context span { transition: transform var(--fds-g-motion-context-duration) var(--fds-g-motion-context-enter-easing); }
-    .disclosure span { transition: transform var(--fds-g-motion-disclosure-duration) var(--fds-g-motion-disclosure-easing); }
-    .prominent span { transition: transform var(--fds-g-motion-prominent-duration) var(--fds-g-motion-prominent-enter-easing); }
-    @media (max-width: 760px) {
-      header, nav, main { width: min(100% - 24px, 1120px); }
-      header { padding-top: 28px; }
-      h1 { font-size: 26px; }
-      .sample-grid, .motion-grid { grid-template-columns: 1fr 1fr; }
-      .opacity-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    }
-    @media (max-width: 440px) {
-      .sample-grid, .motion-grid { grid-template-columns: 1fr; }
-      .scale-row { grid-template-columns: 78px minmax(0, 1fr) 40px; }
-    }
-  </style>
+  <link rel="stylesheet" href="../site-assets/fds-docs.css">
+  <script defer src="../site-assets/fds-demos.js"></script>
 </head>
 <body>
-  <header>
-    <h1>FDS Foundation 视觉预览</h1>
-    <p>直接使用 fdst CSS Variable，对比排版、间距、尺寸、圆角、阴影、层级、透明度和动效。</p>
-  </header>
-  <nav aria-label="预览目录">
-    <a href="#typography">排版</a>
-    <a href="#spacing">间距与尺寸</a>
-    <a href="#radius">圆角与边框</a>
-    <a href="#effects">阴影与层级</a>
-    <a href="#motion">动效</a>
-  </nav>
-  <main>
-    <section id="typography">
-      <h2>排版层级</h2>
-      <div class="surface type-list">
-        <div class="heading-1">Heading 1 标题层级样张</div>
-        <div class="heading-2">Heading 2 标题层级样张</div>
-        <div class="heading-3">Heading 3 标题层级样张</div>
-        <div class="heading-4">Heading 4 标题层级样张</div>
-        <div class="heading-5">Heading 5 标题层级样张</div>
-        <div class="text">Text 正文用于持续阅读的业务内容，并通过稳定行高保持中文换行节奏。</div>
-      </div>
-    </section>
-    <section id="spacing">
-      <h2>间距与控件尺寸</h2>
-      <div class="surface">
-        <div class="scale-list">
-          <div class="scale-row"><span>Spacing 1</span><div class="scale-track"><div class="scale-value" style="--scale: var(--fds-g-spacing-1)"></div></div><span>4px</span></div>
-          <div class="scale-row"><span>Spacing 2</span><div class="scale-track"><div class="scale-value" style="--scale: var(--fds-g-spacing-2)"></div></div><span>8px</span></div>
-          <div class="scale-row"><span>Spacing 3</span><div class="scale-track"><div class="scale-value" style="--scale: var(--fds-g-spacing-3)"></div></div><span>12px</span></div>
-          <div class="scale-row"><span>Spacing 4</span><div class="scale-track"><div class="scale-value" style="--scale: var(--fds-g-spacing-4)"></div></div><span>16px</span></div>
-          <div class="scale-row"><span>Spacing 6</span><div class="scale-track"><div class="scale-value" style="--scale: var(--fds-g-spacing-6)"></div></div><span>24px</span></div>
-          <div class="scale-row"><span>Spacing 8</span><div class="scale-track"><div class="scale-value" style="--scale: var(--fds-g-spacing-8)"></div></div><span>48px</span></div>
-        </div>
-        <div class="control-row">
-          <div class="control-demo compact">Compact 28px</div>
-          <div class="control-demo default">Default 32px</div>
-          <div class="control-demo large">Large 40px</div>
-        </div>
-      </div>
-    </section>
-    <section id="radius">
-      <h2>圆角与边框</h2>
-      <div class="sample-grid">
-        <div class="radius-demo radius-0">Radius 0</div>
-        <div class="radius-demo radius-control">Control</div>
-        <div class="radius-demo radius-container">Container</div>
-        <div class="radius-demo radius-full">Full</div>
-      </div>
-    </section>
-    <section id="effects">
-      <h2>阴影、透明度与层级</h2>
-      <div class="sample-grid">
-        <div class="effect-demo shadow-none">静态表面 / None</div>
-        <div class="effect-demo shadow-active">激活 / Active</div>
-        <div class="effect-demo shadow-drag">拖拽 / Drag</div>
-        <div class="effect-demo shadow-dropdown">轻量浮层 / Dropdown</div>
-      </div>
-      <div class="opacity-row">
-        <div class="opacity-demo opacity-25">25%</div>
-        <div class="opacity-demo opacity-50">50%</div>
-        <div class="opacity-demo opacity-65">65%</div>
-        <div class="opacity-demo opacity-80">80%</div>
-        <div class="opacity-demo opacity-100">100%</div>
-      </div>
-      <div class="layer-list">
-        <div class="layer-row"><span>Sticky</span><code>100-999</code></div>
-        <div class="layer-row"><span>Popup</span><code>1000-3999</code></div>
-        <div class="layer-row"><span>Overlay</span><code>4000-4999</code></div>
-        <div class="layer-row"><span>Modal</span><code>5000-8999</code></div>
-        <div class="layer-row"><span>Feedback</span><code>9000-9999</code></div>
-      </div>
-    </section>
-    <section id="motion">
-      <h2>动效时长</h2>
-      <div class="motion-grid">
-        <button class="motion-demo feedback" type="button"><span></span>Feedback 100ms</button>
-        <button class="motion-demo context" type="button"><span></span>Context 200ms</button>
-        <button class="motion-demo disclosure" type="button"><span></span>Disclosure 300ms</button>
-        <button class="motion-demo prominent" type="button"><span></span>Prominent 400ms</button>
-      </div>
-    </section>
+  <main class="docs-main" style="width: min(1120px, 100%); margin: 0 auto; padding-top: 40px">
+    <article class="docs-article">
+      <div class="docs-breadcrumb"><span>FDS Token</span><span>/</span><strong>视觉工作台</strong></div>
+      <h1>Foundation 视觉工作台</h1>
+      <p>与正式文档站复用同一套 Demo，并直接加载当前 FDST CSS。</p>
+      <div class="fds-demo" data-demo="workbench"></div>
+    </article>
   </main>
 </body>
 </html>

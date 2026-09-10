@@ -8,15 +8,15 @@ global:
   primitive: true
   source: manual
 props:
-  color-purple-dark-10: {value: '#181621'}
-  color-purple-dark-20: {value: '#1E1B2E'}
-  color-purple-dark-30: {value: '#26213D'}
-  color-purple-dark-40: {value: '#2F264F'}
-  color-purple-dark-50: {value: '#3A2C66'}
-  color-purple-dark-60: {value: '#463081'}
-  color-purple-dark-70: {value: '#53349E'}
-  color-purple-dark-80: {value: '#6238BE'}
-  color-purple-dark-90: {value: '#7341DE'}
-  color-purple-dark-100: {value: '#835CEA'}
-  color-purple-dark-110: {value: '#9479EF'}
-  color-purple-dark-120: {value: '#A897F1'}
+  color-purple-dark-1: {value: '#181621'}
+  color-purple-dark-2: {value: '#1E1B2E'}
+  color-purple-dark-3: {value: '#26213D'}
+  color-purple-dark-4: {value: '#2F264F'}
+  color-purple-dark-5: {value: '#3A2C66'}
+  color-purple-dark-6: {value: '#463081'}
+  color-purple-dark-7: {value: '#53349E'}
+  color-purple-dark-8: {value: '#6238BE'}
+  color-purple-dark-9: {value: '#7341DE'}
+  color-purple-dark-10: {value: '#835CEA'}
+  color-purple-dark-11: {value: '#9479EF'}
+  color-purple-dark-12: {value: '#A897F1'}

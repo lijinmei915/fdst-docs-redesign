@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <title>YAML 源文件 | FDS Token</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="../assets/fds-global-tokens.css">
+  <link rel="stylesheet" href="../assets/fds-docs.css">
+  <script defer src="../assets/search-index.js"></script>
+  <script defer src="../assets/fds-demos.js"></script>
+  <script defer src="../assets/fds-docs.js"></script>
+</head>
+<body data-page="engineering/YAML源文件.md" data-root="..">
+  <header class="docs-topbar">
+    <a class="docs-brand" href="../index.html" aria-label="FDS Token 文档首页"><span>FDS</span><strong>Token</strong></a>
+    <span class="docs-area">Foundation</span>
+    <div class="docs-topbar-actions">
+      <button class="docs-search-trigger" type="button" data-search-open>搜索文档</button>
+      <button class="docs-menu-trigger" type="button" data-menu-toggle aria-expanded="false">目录</button>
+    </div>
+  </header>
+  <div class="docs-shell">
+    <aside class="docs-sidebar" data-sidebar aria-label="文档导航"><section class="docs-nav-group"><h2>概览</h2><a class="docs-nav-link" href="../index.html">文档首页</a><a class="docs-nav-link" href="../examples/index.html">视觉工作台</a></section><section class="docs-nav-group"><h2>Foundation</h2><a class="docs-nav-link" href="../foundations/index.html">基础规范</a><a class="docs-nav-link" href="../foundations/颜色.html">颜色</a><a class="docs-nav-link" href="../foundations/排版.html">排版</a><a class="docs-nav-link" href="../foundations/间距与尺寸.html">间距与尺寸</a><a class="docs-nav-link" href="../foundations/圆角与边框.html">圆角与边框</a><a class="docs-nav-link" href="../foundations/阴影与层级.html">阴影与层级</a><a class="docs-nav-link" href="../foundations/动效.html">动效</a></section><section class="docs-nav-group"><h2>语义</h2><a class="docs-nav-link" href="../semantics/基础语义.html">基础语义</a><a class="docs-nav-link" href="../semantics/场景语义.html">场景语义</a></section><section class="docs-nav-group"><h2>开始使用</h2><a class="docs-nav-link" href="../getting-started/快速开始.html">快速开始</a><a class="docs-nav-link" href="../getting-started/ShareDev接入.html">ShareDev 接入</a></section><section class="docs-nav-group"><h2>概念</h2><a class="docs-nav-link" href="../concepts/分层模型.html">分层模型</a><a class="docs-nav-link" href="../concepts/命名规则.html">命名规则</a><a class="docs-nav-link" href="../concepts/引用与边界.html">引用与边界</a></section><section class="docs-nav-group"><h2>工程维护</h2><a class="docs-nav-link is-active" href="YAML源文件.html" aria-current="page">YAML 源文件</a><a class="docs-nav-link" href="构建与校验.html">构建与校验</a><a class="docs-nav-link" href="版本与发布.html">版本与发布</a><a class="docs-nav-link" href="文档维护.html">文档维护</a></section><section class="docs-nav-group"><h2>参考</h2><a class="docs-nav-link" href="../reference/Token目录.html">Token 目录</a><a class="docs-nav-link" href="../reference/迁移与常见问题.html">迁移与常见问题</a></section></aside>
+    <main class="docs-main">
+      <div class="docs-breadcrumb"><span>工程维护</span><span>/</span><strong>YAML 源文件</strong></div>
+      <article class="docs-article"><h1 id="yaml">YAML 源文件</h1>
+<h2 id="_1">适用范围</h2>
+<p>本页面向 Token 维护者，说明源文件入口、目录职责、schema 和引用语法。YAML 是维护入口，业务和组件运行时只消费构建产物。</p>
+<h2 id="import">唯一入口与 import 图</h2>
+<p><code>tokens/fds-global.yml</code> 是唯一包入口：</p>
+<pre><code class="language-yaml">schema: fds-token-package/v1
+global:
+  name: fds-global
+  namespace: --fds-g-
+  scope: global
+imports:
+- ./atomic/base.yml
+- ./semantic/base.yml
+</code></pre>
+<p>聚合文件使用 <code>fds-token-group/v1</code>，只维护 imports；叶子文件使用 <code>fds-token-source/v1</code>，才维护 props。新增叶子文件时，把它加入最近一级聚合入口，不在构建脚本中维护另一份加载清单。</p>
+<h2 id="_2">叶子文件结构</h2>
+<pre><code class="language-yaml">schema: fds-token-source/v1
+global:
+  layer: semantic
+  tier: base
+  category: color
+  type: color
+  scope: global
+  primitive: false
+imports:
+- ../../atomic/map/color/palette/base.yml
+props:
+  color-primary:
+    value: '{!color-brand-9}'
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>规则</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>global.layer</code></td>
+<td><code>atomic</code> 或 <code>semantic</code></td>
+</tr>
+<tr>
+<td><code>global.tier</code></td>
+<td>Atomic 使用 <code>seed/map</code>；Semantic 使用 <code>base/scene</code></td>
+</tr>
+<tr>
+<td><code>global.category</code></td>
+<td>文件负责的领域，如 <code>color</code>、<code>layout</code>、<code>motion</code></td>
+</tr>
+<tr>
+<td><code>global.type</code></td>
+<td>文件内统一时提供默认类型，单个 Token 可覆盖</td>
+</tr>
+<tr>
+<td><code>global.scope</code></td>
+<td>当前固定为 <code>global</code></td>
+</tr>
+<tr>
+<td><code>global.primitive</code></td>
+<td>Atomic 为 <code>true</code>，Semantic 为 <code>false</code></td>
+</tr>
+<tr>
+<td><code>global.namespace</code></td>
+<td>Semantic/Scene 必须显式使用 <code>--fds-s-</code>；其他层省略并使用包级 <code>--fds-g-</code></td>
+</tr>
+<tr>
+<td><code>global.source</code></td>
+<td>可选的维护来源：<code>manual/generated/derived</code></td>
+</tr>
+<tr>
+<td><code>imports</code></td>
+<td>相对当前 YAML 文件的直接依赖</td>
+</tr>
+<tr>
+<td><code>props</code></td>
+<td>Token ID 到定义的映射，Key 为小写 kebab-case</td>
+</tr>
+<tr>
+<td><code>value</code></td>
+<td>原始值或 <code>{!token-id}</code> 源引用</td>
+</tr>
+<tr>
+<td><code>comment</code></td>
+<td>只解释名称无法表达的约束和边界</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_3">引用规则</h2>
+<p>YAML 中只使用 <code>{!token-id}</code>，不写 CSS <code>var()</code>。构建器按被引用 Token 的 namespace 生成 CSS：Base 引用转换为 <code>var(--fds-g-color-brand-9)</code>，Scene 引用 Base/Map 时同样指向 <code>--fds-g-*</code>。</p>
+<p>依赖只允许沿 <code>Atomic/Seed -&gt; Atomic/Map -&gt; Semantic/Base -&gt; Semantic/Scene</code> 正向或同级流动，禁止反向和循环引用。引用的类型必须一致；Shadow 组合 Color 是当前受支持的例外。</p>
+<h2 id="_4">修改流程</h2>
+<ol>
+<li>从包入口沿 imports 找到对应叶子文件。</li>
+<li>修改 props，不编辑 <code>dist</code>、catalog 或自动生成的 Token 目录。</li>
+<li>运行 <a href="构建与校验.html">构建与校验</a> 中的完整命令。</li>
+<li>评审 YAML、CSS、catalog 和文档 diff 是否一致。</li>
+</ol>
+<h2 id="_5">边界</h2>
+<ul>
+<li>当前 schema 借鉴 DTCG 的显式类型和引用思想，但不是 DTCG 标准交换文件。</li>
+<li>源文件禁止 <code>rem</code>、<code>calc()</code> 和长度 Seed。</li>
+<li>生成色阶以具体值写入 YAML；浏览器运行时不执行颜色生成算法。</li>
+<li>有彩色 Base/Dark Map 使用 <code>1-12</code> 索引；Gray 独立使用 <code>10-200</code> 索引。</li>
+</ul>
+<h2 id="_6">来源</h2>
+<ul>
+<li><a href="https://git.firstshare.cn/fx/fdst/-/blob/master/tokens/fds-global.yml">包入口</a></li>
+<li><a href="https://git.firstshare.cn/fx/fdst/-/blob/master/tools/build.py">构建器</a></li>
+<li><a href="https://www.designtokens.org/TR/2025.10/format/">DTCG Design Tokens Format 2025.10</a></li>
+</ul></article>
+    </main>
+    <aside class="docs-toc" aria-label="本页目录"><strong>本页目录</strong><a href="#_1">适用范围</a><a href="#import">唯一入口与 import 图</a><a href="#_2">叶子文件结构</a><a href="#_3">引用规则</a><a href="#_4">修改流程</a><a href="#_5">边界</a><a href="#_6">来源</a></aside>
+  </div>
+  <div class="docs-backdrop" data-menu-backdrop hidden></div>
+  <dialog class="docs-search" data-search-dialog>
+    <form method="dialog" class="docs-search-head"><label for="docs-search-input">搜索文档</label><button type="submit">关闭</button></form>
+    <input id="docs-search-input" type="search" autocomplete="off" placeholder="输入 Token、用途或规范名称" data-search-input>
+    <div class="docs-search-results" data-search-results></div>
+  </dialog>
+</body>
+</html>

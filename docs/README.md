@@ -10,7 +10,11 @@ use_when: "查询颜色、排版、间距、圆角、阴影、层级、动效或
 
 这里是 FDS Token 的统一文档入口，面向设计师、产品、业务开发者、组件开发者和 Token 维护者。详细 Token 规范在 `fdst` 维护；SDS 保留宏观 FDS、Components 和其他非 Token 设计规范，并链接到这里。
 
+正式阅读入口是由本目录同源生成的 [FDS Token 可视化文档站](../public/index.html)。Markdown 保存可审查的规范正文，文档站提供导航、搜索、页内目录和与正文原位结合的视觉示例。
+
 页面和组件运行时使用 [FDS CSS](../dist/fds-global-tokens.css)。Token 是否存在、类型、源值和解析值，以 `tokens/fds-global.yml` 的 import 图及其生成物为准；catalog JSON 只服务文档生成、查询和校验，不要求设计读者或普通业务接入。
+
+<div class="fds-demo" data-demo="overview"></div>
 
 ## 按角色开始
 
@@ -38,6 +42,7 @@ SDS 中涉及具体 Token 的页面只保留入口链接。Icons、Charts 等混
 | `dist/fds-global-tokens.css` | 页面、组件、文档预览 | 浏览器运行时直接消费 |
 | `dist/fds-global-tokens.min.css` | 生产环境 | 与普通版等价的压缩产物 |
 | `docs/` | 设计、产品、开发 | 设计规则、场景和接入说明 |
+| `public/` | 设计、产品、开发 | 从 `docs/` 生成的可展示站点 |
 | `dist/fds-token-catalog.json` | 生成器、校验器、查询工具 | 机器读取的派生数据，不是设计侧接入要求 |
 
 ## 核心原则
@@ -71,7 +76,7 @@ SDS 中涉及具体 Token 的页面只保留入口链接。Icons、Charts 等混
 - [圆角与边框](foundations/圆角与边框.md)
 - [阴影与层级](foundations/阴影与层级.md)
 - [动效](foundations/动效.md)
-- [Foundation 视觉预览](examples/Foundation预览.html)
+- [Foundation 视觉工作台](examples/README.md)
 
 ### Semantic
 

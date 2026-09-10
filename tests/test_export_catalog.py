@@ -62,21 +62,21 @@ class ExportCatalogTest(unittest.TestCase):
         tokens = {item["id"]: item for item in catalog["tokens"]}
 
         self.assertEqual("manual", tokens["color-brand"]["origin"])
-        self.assertEqual("manual", tokens["color-brand-90"]["origin"])
-        self.assertEqual("manual", tokens["color-yellow-dark-100"]["origin"])
+        self.assertEqual("manual", tokens["color-brand-9"]["origin"])
+        self.assertEqual("manual", tokens["color-yellow-dark-10"]["origin"])
         self.assertEqual("manual", tokens["color-gray-10"]["origin"])
-        self.assertEqual("derived", tokens["color-brand-90-rgb"]["origin"])
+        self.assertEqual("derived", tokens["color-brand-9-rgb"]["origin"])
 
     def test_catalog_contains_complete_reference_chains(self) -> None:
         catalog = EXPORT.build_catalog()
         tokens = {item["id"]: item for item in catalog["tokens"]}
 
         self.assertEqual(
-            ["color-danger-background", "color-red-10"],
+            ["color-danger-background", "color-red-1"],
             tokens["color-danger-background"]["referenceChain"],
         )
         self.assertEqual(
-            ["card-radius", "container-radius", "radius-4"],
+            ["card-radius", "radius-4"],
             tokens["card-radius"]["referenceChain"],
         )
         self.assertEqual("--fds-s-card-radius", tokens["card-radius"]["cssVariable"])
@@ -84,17 +84,16 @@ class ExportCatalogTest(unittest.TestCase):
             {"default": "--fds-g-", "scene": "--fds-s-"},
             catalog["namespaces"],
         )
-        self.assertEqual(["color-red-40"], tokens["color-red-40"]["referenceChain"])
+        self.assertEqual(["color-red-4"], tokens["color-red-4"]["referenceChain"])
 
     def test_typography_size_search_examples_use_font_size(self) -> None:
         catalog = EXPORT.build_catalog()
         tokens = {item["id"]: item for item in catalog["tokens"]}
 
         for token_id in (
-            "typography-heading-1-size",
-            "typography-heading-5-size",
-            "typography-text-size",
-            "typography-label-size",
+            "heading-1-size",
+            "heading-5-size",
+            "text-size",
         ):
             record = EXPORT.build_search_record(tokens[token_id])
             self.assertEqual(
@@ -140,6 +139,20 @@ class ExportCatalogTest(unittest.TestCase):
         self.assertEqual(1, len(errors))
         self.assertIn("preview.html", errors[0])
         self.assertIn("--fds-g-not-a-real-token", errors[0])
+
+    def test_unknown_site_asset_variable_is_reported(self) -> None:
+        catalog = EXPORT.build_catalog()
+        with tempfile.TemporaryDirectory() as directory:
+            docs_root = Path(directory)
+            (docs_root / "demo.js").write_text(
+                'const token = "--fds-g-not-a-real-token";\n',
+                encoding="utf-8",
+            )
+            with mock.patch.object(EXPORT, "DOCS_ROOT", docs_root):
+                errors = EXPORT.validate_doc_variables(catalog)
+
+        self.assertEqual(1, len(errors))
+        self.assertIn("demo.js", errors[0])
 
     def test_wildcard_is_not_treated_as_an_example(self) -> None:
         catalog = EXPORT.build_catalog()

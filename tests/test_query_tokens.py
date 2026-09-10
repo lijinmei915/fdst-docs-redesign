@@ -105,17 +105,17 @@ class QueryTokensTest(unittest.TestCase):
         self.assertEqual("color-primary-hover", tokens[0]["name"])
         self.assertEqual(("semantic", "base"), (tokens[0]["layer"], tokens[0]["tier"]))
         self.assertEqual(
-            ["color-primary-hover", "color-brand-80"],
+            ["color-primary-hover", "color-brand-8"],
             tokens[0]["referenceChain"],
         )
 
     def test_exact_dark_map_variable_returns_fixed_atomic_value(self) -> None:
-        result = run_query("--name", "--fds-g-color-yellow-dark-100")
+        result = run_query("--name", "--fds-g-color-yellow-dark-10")
 
         self.assertEqual(0, result.returncode, result.stderr)
         tokens = parse_results(result)
         self.assertEqual(1, len(tokens))
-        self.assertEqual("color-yellow-dark-100", tokens[0]["name"])
+        self.assertEqual("color-yellow-dark-10", tokens[0]["name"])
         self.assertEqual(("atomic", "map"), (tokens[0]["layer"], tokens[0]["tier"]))
         self.assertEqual("#FFC14D", tokens[0]["resolvedValue"])
 
@@ -226,7 +226,7 @@ class QueryTokensTest(unittest.TestCase):
             "background-color: var(--fds-g-color-danger-background);",
             token["cssExample"],
         )
-        self.assertEqual(["color-danger-background", "color-red-10"], token["referenceChain"])
+        self.assertEqual(["color-danger-background", "color-red-1"], token["referenceChain"])
         self.assertNotIn("source", token)
         self.assertNotIn("sourceFile", token)
         self.assertNotIn("origin", token)

@@ -8,15 +8,15 @@ global:
   primitive: true
   source: manual
 props:
-  color-blue-dark-10: {value: '#141B23'}
-  color-blue-dark-20: {value: '#192531'}
-  color-blue-dark-30: {value: '#1E3143'}
-  color-blue-dark-40: {value: '#223E58'}
-  color-blue-dark-50: {value: '#244D73'}
-  color-blue-dark-60: {value: '#235E91'}
-  color-blue-dark-70: {value: '#1C6FB2'}
-  color-blue-dark-80: {value: '#1384D8'}
-  color-blue-dark-90: {value: '#189DFF'}
-  color-blue-dark-100: {value: '#4BABFF'}
-  color-blue-dark-110: {value: '#6FB9FF'}
-  color-blue-dark-120: {value: '#8FC8FF'}
+  color-blue-dark-1: {value: '#141B23'}
+  color-blue-dark-2: {value: '#192531'}
+  color-blue-dark-3: {value: '#1E3143'}
+  color-blue-dark-4: {value: '#223E58'}
+  color-blue-dark-5: {value: '#244D73'}
+  color-blue-dark-6: {value: '#235E91'}
+  color-blue-dark-7: {value: '#1C6FB2'}
+  color-blue-dark-8: {value: '#1384D8'}
+  color-blue-dark-9: {value: '#189DFF'}
+  color-blue-dark-10: {value: '#4BABFF'}
+  color-blue-dark-11: {value: '#6FB9FF'}
+  color-blue-dark-12: {value: '#8FC8FF'}

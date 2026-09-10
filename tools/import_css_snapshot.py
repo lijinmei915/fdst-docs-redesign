@@ -174,7 +174,6 @@ GROUP_FILES = {
 
 
 SCENE_TOKEN_TYPES = {
-    "background": "color",
     "content-padding": "dimension",
     "card-gap": "dimension",
     "card-background": "color",
@@ -211,7 +210,7 @@ def classify(token_id: str, namespace: str = DEFAULT_NAMESPACE) -> str:
         return "atomic/map/typography.yml"
     if token_id.startswith("spacing-"):
         return "atomic/map/spacing.yml"
-    if token_id.startswith(("control-height-", "icon-size-")) and token_id.rsplit("-", 1)[-1].isdigit():
+    if token_id.startswith("icon-size-") and token_id.rsplit("-", 1)[-1].isdigit():
         return "atomic/map/sizing.yml"
     if token_id.startswith(("radius-", "border-width-")):
         return "atomic/map/shape.yml"
@@ -221,9 +220,11 @@ def classify(token_id: str, namespace: str = DEFAULT_NAMESPACE) -> str:
         return "atomic/map/effects.yml"
     if token_id.startswith(("color-", "border-")):
         return "semantic/base/color.yml"
-    if token_id.startswith("typography-"):
+    if token_id == "heading-color" or re.fullmatch(
+        r"(?:heading-\d+|text)-(?:color|size|line-height|weight)", token_id
+    ):
         return "semantic/base/typography.yml"
-    if token_id.startswith(("background-", "control-", "container-", "opacity-", "layer-")):
+    if token_id.startswith(("background-", "opacity-", "layer-")):
         return "semantic/base/layout.yml"
     if token_id in {"shadow-none", "shadow-active", "shadow-drag", "shadow-dropdown"}:
         return "semantic/base/effects.yml"
@@ -243,7 +244,7 @@ def token_type(token_id: str) -> str:
         return "font-family"
     if token_id.startswith("font-weight-") or token_id.endswith("-weight"):
         return "font-weight"
-    if token_id.startswith(("font-size-", "line-height-", "spacing-", "control-height-", "icon-size-", "radius-", "border-width-")):
+    if token_id.startswith(("font-size-", "line-height-", "spacing-", "icon-size-", "radius-", "border-width-")):
         return "dimension"
     if token_id.endswith(("-size", "-line-height", "-radius")):
         return "dimension"

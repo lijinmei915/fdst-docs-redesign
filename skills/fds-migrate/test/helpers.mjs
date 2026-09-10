@@ -29,9 +29,7 @@ export const CATALOG = {
     token("spacing-4", "--fds-g-spacing-4", "16px", { layer: "atomic", tier: "map", category: "spacing", type: "dimension" }),
     token("card-padding", "--fds-s-card-padding", "16px", { tier: "scene", category: "scene", type: "dimension" }),
     token("icon-size-1", "--fds-g-icon-size-1", "16px", { layer: "atomic", tier: "map", category: "sizing", type: "dimension" }),
-    token("control-height-default", "--fds-g-control-height-default", "16px", { category: "layout", type: "dimension" }),
     token("radius-2", "--fds-g-radius-2", "4px", { layer: "atomic", tier: "map", category: "shape", type: "dimension" }),
-    token("control-radius", "--fds-g-control-radius", "4px", { category: "layout", type: "dimension" }),
   ],
 };
 

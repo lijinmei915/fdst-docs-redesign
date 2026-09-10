@@ -36,7 +36,7 @@ imports:
 - ../../atomic/map/color/palette/base.yml
 props:
   color-primary:
-    value: '{!color-brand-90}'
+    value: '{!color-brand-9}'
 ```
 
 | 字段 | 规则 |
@@ -56,7 +56,7 @@ props:
 
 ## 引用规则
 
-YAML 中只使用 `{!token-id}`，不写 CSS `var()`。构建器按被引用 Token 的 namespace 生成 CSS：Base 引用转换为 `var(--fds-g-color-brand-90)`，Scene 引用 Base/Map 时同样指向 `--fds-g-*`。
+YAML 中只使用 `{!token-id}`，不写 CSS `var()`。构建器按被引用 Token 的 namespace 生成 CSS：Base 引用转换为 `var(--fds-g-color-brand-9)`，Scene 引用 Base/Map 时同样指向 `--fds-g-*`。
 
 依赖只允许沿 `Atomic/Seed -> Atomic/Map -> Semantic/Base -> Semantic/Scene` 正向或同级流动，禁止反向和循环引用。引用的类型必须一致；Shadow 组合 Color 是当前受支持的例外。
 
@@ -72,6 +72,7 @@ YAML 中只使用 `{!token-id}`，不写 CSS `var()`。构建器按被引用 Tok
 - 当前 schema 借鉴 DTCG 的显式类型和引用思想，但不是 DTCG 标准交换文件。
 - 源文件禁止 `rem`、`calc()` 和长度 Seed。
 - 生成色阶以具体值写入 YAML；浏览器运行时不执行颜色生成算法。
+- 有彩色 Base/Dark Map 使用 `1-12` 索引；Gray 独立使用 `10-200` 索引。
 
 ## 来源
 

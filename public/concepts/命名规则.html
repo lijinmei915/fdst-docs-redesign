@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <title>命名规则 | FDS Token</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="../assets/fds-global-tokens.css">
+  <link rel="stylesheet" href="../assets/fds-docs.css">
+  <script defer src="../assets/search-index.js"></script>
+  <script defer src="../assets/fds-demos.js"></script>
+  <script defer src="../assets/fds-docs.js"></script>
+</head>
+<body data-page="concepts/命名规则.md" data-root="..">
+  <header class="docs-topbar">
+    <a class="docs-brand" href="../index.html" aria-label="FDS Token 文档首页"><span>FDS</span><strong>Token</strong></a>
+    <span class="docs-area">Foundation</span>
+    <div class="docs-topbar-actions">
+      <button class="docs-search-trigger" type="button" data-search-open>搜索文档</button>
+      <button class="docs-menu-trigger" type="button" data-menu-toggle aria-expanded="false">目录</button>
+    </div>
+  </header>
+  <div class="docs-shell">
+    <aside class="docs-sidebar" data-sidebar aria-label="文档导航"><section class="docs-nav-group"><h2>概览</h2><a class="docs-nav-link" href="../index.html">文档首页</a><a class="docs-nav-link" href="../examples/index.html">视觉工作台</a></section><section class="docs-nav-group"><h2>Foundation</h2><a class="docs-nav-link" href="../foundations/index.html">基础规范</a><a class="docs-nav-link" href="../foundations/颜色.html">颜色</a><a class="docs-nav-link" href="../foundations/排版.html">排版</a><a class="docs-nav-link" href="../foundations/间距与尺寸.html">间距与尺寸</a><a class="docs-nav-link" href="../foundations/圆角与边框.html">圆角与边框</a><a class="docs-nav-link" href="../foundations/阴影与层级.html">阴影与层级</a><a class="docs-nav-link" href="../foundations/动效.html">动效</a></section><section class="docs-nav-group"><h2>语义</h2><a class="docs-nav-link" href="../semantics/基础语义.html">基础语义</a><a class="docs-nav-link" href="../semantics/场景语义.html">场景语义</a></section><section class="docs-nav-group"><h2>开始使用</h2><a class="docs-nav-link" href="../getting-started/快速开始.html">快速开始</a><a class="docs-nav-link" href="../getting-started/ShareDev接入.html">ShareDev 接入</a></section><section class="docs-nav-group"><h2>概念</h2><a class="docs-nav-link" href="分层模型.html">分层模型</a><a class="docs-nav-link is-active" href="命名规则.html" aria-current="page">命名规则</a><a class="docs-nav-link" href="引用与边界.html">引用与边界</a></section><section class="docs-nav-group"><h2>工程维护</h2><a class="docs-nav-link" href="../engineering/YAML源文件.html">YAML 源文件</a><a class="docs-nav-link" href="../engineering/构建与校验.html">构建与校验</a><a class="docs-nav-link" href="../engineering/版本与发布.html">版本与发布</a><a class="docs-nav-link" href="../engineering/文档维护.html">文档维护</a></section><section class="docs-nav-group"><h2>参考</h2><a class="docs-nav-link" href="../reference/Token目录.html">Token 目录</a><a class="docs-nav-link" href="../reference/迁移与常见问题.html">迁移与常见问题</a></section></aside>
+    <main class="docs-main">
+      <div class="docs-breadcrumb"><span>概念</span><span>/</span><strong>命名规则</strong></div>
+      <article class="docs-article"><h1 id="_1">命名规则</h1>
+<h2 id="_2">适用范围</h2>
+<p>本页说明 YAML Token ID、CSS Variable、数字档位和语义名称的写法。完整名称清单只在 <a href="../reference/Token目录.html">Token 目录</a> 中生成。</p>
+<h2 id="yaml-css">YAML 与 CSS 命名</h2>
+<p>YAML <code>props</code> Key 使用小写 kebab-case，不包含命名空间：</p>
+<pre><code class="language-yaml">color-primary:
+  value: '{!color-brand-9}'
+</code></pre>
+<p>构建后对应：</p>
+<pre><code class="language-css">--fds-g-color-primary: var(--fds-g-color-brand-9);
+</code></pre>
+<p><code>--fds-g-</code> 表示 Atomic/Map 与 Semantic/Base 公共契约，<code>--fds-s-</code> 表示 Semantic/Scene 公共契约。业务私有变量和组件变量不得复用这两个前缀。</p>
+<h2 id="_3">数字档位</h2>
+<p>Atomic/Map 采用领域名加数字或稳定枚举，例如 <code>spacing-4</code>、<code>radius-2</code>、<code>font-weight-semibold</code>。数字表示该领域内部的有序档位，不跨领域比较，也不等于业务语义。</p>
+<p>有彩色 Base Palette 与固定 Dark Palette 使用 <code>1-12</code>，例如 <code>color-brand-1</code>、<code>color-brand-12</code>、<code>color-blue-dark-1</code>、<code>color-blue-dark-12</code>。Gray 是独立的 20 阶中性色板，使用 <code>color-gray-10</code> 至 <code>color-gray-200</code>，不套用有彩色索引。</p>
+<p>业务代码优先使用 <code>background-container</code>、<code>layer-popup</code> 等已发布语义名称。控件高度和控件圆角由组件契约负责；只有在布局组合没有合适语义时，才直接选择 <code>spacing-*</code>。</p>
+<h2 id="_4">语义名称</h2>
+<ul>
+<li>状态色：<code>color-primary</code>、<code>color-danger-hover</code>、<code>color-success-background-active</code>。</li>
+<li>内容角色：<code>color-text-secondary</code>、<code>background-container</code>、<code>border-subtle</code>。</li>
+<li>排版 recipe：<code>heading-3-size</code>、<code>text-line-height</code>。</li>
+<li>动效 recipe：<code>motion-context-duration</code>、<code>motion-context-exit-easing</code>。</li>
+<li>场景协议：<code>content-padding</code>、<code>card-padding</code>、<code>card-title-weight</code>，输出为 <code>--fds-s-*</code>。</li>
+</ul>
+<p>名称描述用途，不携带当前具体值。引用方不应从变量名推断值。</p>
+<h2 id="_5">禁止模式</h2>
+<ul>
+<li>不在 YAML ID 中写 <code>--fds-g-</code>、<code>--fds-s-</code> 或 CSS <code>var()</code>。</li>
+<li>不使用大写、下划线或连续分隔符。</li>
+<li>不为长度增加 Seed，也不使用 <code>rem</code> 或 <code>calc()</code>。</li>
+<li><code>color-{family}-dark-{step}</code> 仅用于固定公司色系的 Dark Map，不代表已经提供暗色 Semantic 或主题切换能力。</li>
+<li>不在 Global 命名空间加入客户、页面或组件私有名称。</li>
+<li>不根据相邻名称猜测 Token；以 catalog 精确结果为准。</li>
+</ul>
+<h2 id="_6">边界</h2>
+<p>重命名已发布 Token 会改变接口契约，必须按版本变更处理。本文只记录规则，不授权重命名或新增别名。</p>
+<h2 id="_7">来源</h2>
+<ul>
+<li><a href="../engineering/YAML源文件.html">YAML 源文件</a></li>
+<li><a href="https://git.firstshare.cn/fx/fdst/-/blob/master/tools/build.py">构建器命名校验</a></li>
+<li><a href="https://git.firstshare.cn/fx/fdst/-/blob/master/tokens/fds-global.yml">YAML 包入口</a></li>
+</ul></article>
+    </main>
+    <aside class="docs-toc" aria-label="本页目录"><strong>本页目录</strong><a href="#_2">适用范围</a><a href="#yaml-css">YAML 与 CSS 命名</a><a href="#_3">数字档位</a><a href="#_4">语义名称</a><a href="#_5">禁止模式</a><a href="#_6">边界</a><a href="#_7">来源</a></aside>
+  </div>
+  <div class="docs-backdrop" data-menu-backdrop hidden></div>
+  <dialog class="docs-search" data-search-dialog>
+    <form method="dialog" class="docs-search-head"><label for="docs-search-input">搜索文档</label><button type="submit">关闭</button></form>
+    <input id="docs-search-input" type="search" autocomplete="off" placeholder="输入 Token、用途或规范名称" data-search-input>
+    <div class="docs-search-results" data-search-results></div>
+  </dialog>
+</body>
+</html>

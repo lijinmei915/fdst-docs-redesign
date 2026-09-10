@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <title>构建与校验 | FDS Token</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="../assets/fds-global-tokens.css">
+  <link rel="stylesheet" href="../assets/fds-docs.css">
+  <script defer src="../assets/search-index.js"></script>
+  <script defer src="../assets/fds-demos.js"></script>
+  <script defer src="../assets/fds-docs.js"></script>
+</head>
+<body data-page="engineering/构建与校验.md" data-root="..">
+  <header class="docs-topbar">
+    <a class="docs-brand" href="../index.html" aria-label="FDS Token 文档首页"><span>FDS</span><strong>Token</strong></a>
+    <span class="docs-area">Foundation</span>
+    <div class="docs-topbar-actions">
+      <button class="docs-search-trigger" type="button" data-search-open>搜索文档</button>
+      <button class="docs-menu-trigger" type="button" data-menu-toggle aria-expanded="false">目录</button>
+    </div>
+  </header>
+  <div class="docs-shell">
+    <aside class="docs-sidebar" data-sidebar aria-label="文档导航"><section class="docs-nav-group"><h2>概览</h2><a class="docs-nav-link" href="../index.html">文档首页</a><a class="docs-nav-link" href="../examples/index.html">视觉工作台</a></section><section class="docs-nav-group"><h2>Foundation</h2><a class="docs-nav-link" href="../foundations/index.html">基础规范</a><a class="docs-nav-link" href="../foundations/颜色.html">颜色</a><a class="docs-nav-link" href="../foundations/排版.html">排版</a><a class="docs-nav-link" href="../foundations/间距与尺寸.html">间距与尺寸</a><a class="docs-nav-link" href="../foundations/圆角与边框.html">圆角与边框</a><a class="docs-nav-link" href="../foundations/阴影与层级.html">阴影与层级</a><a class="docs-nav-link" href="../foundations/动效.html">动效</a></section><section class="docs-nav-group"><h2>语义</h2><a class="docs-nav-link" href="../semantics/基础语义.html">基础语义</a><a class="docs-nav-link" href="../semantics/场景语义.html">场景语义</a></section><section class="docs-nav-group"><h2>开始使用</h2><a class="docs-nav-link" href="../getting-started/快速开始.html">快速开始</a><a class="docs-nav-link" href="../getting-started/ShareDev接入.html">ShareDev 接入</a></section><section class="docs-nav-group"><h2>概念</h2><a class="docs-nav-link" href="../concepts/分层模型.html">分层模型</a><a class="docs-nav-link" href="../concepts/命名规则.html">命名规则</a><a class="docs-nav-link" href="../concepts/引用与边界.html">引用与边界</a></section><section class="docs-nav-group"><h2>工程维护</h2><a class="docs-nav-link" href="YAML源文件.html">YAML 源文件</a><a class="docs-nav-link is-active" href="构建与校验.html" aria-current="page">构建与校验</a><a class="docs-nav-link" href="版本与发布.html">版本与发布</a><a class="docs-nav-link" href="文档维护.html">文档维护</a></section><section class="docs-nav-group"><h2>参考</h2><a class="docs-nav-link" href="../reference/Token目录.html">Token 目录</a><a class="docs-nav-link" href="../reference/迁移与常见问题.html">迁移与常见问题</a></section></aside>
+    <main class="docs-main">
+      <div class="docs-breadcrumb"><span>工程维护</span><span>/</span><strong>构建与校验</strong></div>
+      <article class="docs-article"><h1 id="_1">构建与校验</h1>
+<h2 id="_2">适用范围</h2>
+<p>本页说明如何从 YAML 生成 CSS、catalog 和 Token 目录，以及如何验证源文件、文档链接和示例变量。命令均以项目根目录为当前目录，在 Windows PowerShell 中执行。</p>
+<h2 id="_3">环境</h2>
+<ul>
+<li>Python 3.10+</li>
+<li>PyYAML 与 Python-Markdown，依赖声明见 <code>requirements.txt</code></li>
+<li>迁移 Skill 另需 Node.js 16+；依赖锁定在 <code>skills/fds-migrate/package-lock.json</code></li>
+</ul>
+<pre><code class="language-powershell">python -m pip install -r requirements.txt
+npm --prefix skills/fds-migrate ci --ignore-scripts
+npm --prefix skills/fds-migrate test
+</code></pre>
+<h2 id="_4">日常校验</h2>
+<pre><code class="language-powershell">python tools/build.py --check
+python -m unittest discover -s tests -p &quot;test_*.py&quot;
+python tools/export_catalog.py --check-docs
+python tools/build_docs.py --check
+git diff --check
+</code></pre>
+<p><code>build.py --check</code> 只读取 YAML 并校验，不写 CSS。无参数执行 <code>build.py</code> 时会同时生成普通版和 min 版 CSS。<code>export_catalog.py --check-docs</code> 重新从 import 图计算预期结果，检查 catalog、Token 目录、正式文档相对链接以及所有 FDS 变量示例。</p>
+<p><code>docs/</code> 是正式文档主目录，其中每一篇 Markdown 都纳入链接和示例变量校验。历史计划与旧版资料已移至项目 <code>internal/</code> 目录。</p>
+<p>颜色算法可按需人工对照：</p>
+<pre><code class="language-powershell">python tools/generate_color_palettes.py --check
+</code></pre>
+<p>该命令只比较设计侧 Palette 固定 Hex 与参考算法结果，不写文件、不参与正式构建，也不作为 CI 发布门禁。Palette YAML 是构建输入，<code>build.py</code> 不会从 Seed 重新生成颜色。</p>
+<h2 id="_5">重新生成产物</h2>
+<p>源 YAML 变化后按顺序执行：</p>
+<pre><code class="language-powershell">python tools/build.py
+python tools/export_catalog.py
+python tools/build_docs.py
+python -m unittest discover -s tests -p &quot;test_*.py&quot;
+python tools/export_catalog.py --check-docs
+python tools/build_docs.py --check
+</code></pre>
+<p>生成结果：</p>
+<table>
+<thead>
+<tr>
+<th>产物</th>
+<th>位置</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CSS Variables</td>
+<td><code>dist/fds-global-tokens.css</code></td>
+<td>浏览器运行时消费</td>
+</tr>
+<tr>
+<td>Minified CSS Variables</td>
+<td><code>dist/fds-global-tokens.min.css</code></td>
+<td>生产环境按需直接引入</td>
+</tr>
+<tr>
+<td>Catalog JSON</td>
+<td><code>dist/fds-token-catalog.json</code></td>
+<td>精确查询、文档生成和其他只读工具</td>
+</tr>
+<tr>
+<td>FDS Apply JSONL</td>
+<td><code>skills/fds-apply/references/fds-token-search.jsonl</code></td>
+<td>查询 Skill 的完整可搜索 Token 快照</td>
+</tr>
+<tr>
+<td>FDS Migrate JSONL</td>
+<td><code>skills/fds-migrate/references/fds-token-catalog.jsonl</code></td>
+<td>迁移 Skill 自带的完整 Token 快照</td>
+</tr>
+<tr>
+<td>可视化文档站</td>
+<td><code>public/</code></td>
+<td>Markdown 同源生成的导航、搜索和内嵌 Demo 页面</td>
+</tr>
+</tbody>
+</table>
+<p>普通版保留来源注释和换行，便于开发与审查；min 版移除注释和非必要空白。两份 CSS 由同一次构建从同一 Token 图生成，声明和值完全一致，不应分别维护。
+| Token 目录 | <code>docs/reference/Token目录.md</code> | 开发者可读索引 |</p>
+<h2 id="_6">校验范围</h2>
+<p>构建器检查 import 文件缺失/循环、schema 与层级、目录与元数据一致性、Token ID、重复定义、未定义引用、反向引用、类型和引用循环，并拒绝源文件中的 CSS Variable、<code>var()</code>、<code>rem</code>、<code>calc()</code> 与长度 Seed。</p>
+<p>文档生成器检查：</p>
+<ul>
+<li>catalog、两个 Skill JSONL 与 Token 目录是否为当前 YAML 的可重复生成结果；</li>
+<li>每个目录项是否来自 catalog；</li>
+<li>正式文档相对链接是否存在；</li>
+<li>每个 <code>--fds-g-*</code> 和 <code>--fds-s-*</code> 示例是否能在 catalog 精确命中。</li>
+</ul>
+<p>文档站生成器检查导航中的 Markdown 源、页面输出、共享资产、搜索索引和当前 Token CSS 是否与 <code>public/</code> 一致。</p>
+<h2 id="_7">排查入口</h2>
+<ol>
+<li>YAML 错误先看输出中的源文件与 Token ID。</li>
+<li>生成文件过期时执行生成命令，评审 diff 后重跑 <code>--check-docs</code>。</li>
+<li>文档变量不存在时查询 Token 目录，不按命名规律补写。</li>
+<li>相对链接失败时从报错文档所在目录解析目标路径。</li>
+</ol>
+<h2 id="_8">边界</h2>
+<ul>
+<li>通过校验只说明源和文档契约一致，不等于已经在 ShareDev 环境发布或完成页面验收。</li>
+<li>不运行会自动改写无关代码的 lint/format/fix 命令。</li>
+</ul>
+<h2 id="_9">来源</h2>
+<ul>
+<li><a href="https://git.firstshare.cn/fx/fdst/-/blob/master/tools/build.py">构建器</a></li>
+<li><a href="https://git.firstshare.cn/fx/fdst/-/blob/master/tools/export_catalog.py">Catalog 生成器</a></li>
+<li><a href="https://git.firstshare.cn/fx/fdst/-/blob/master/tests/test_build.py">构建测试</a></li>
+<li><a href="https://git.firstshare.cn/fx/fdst/-/blob/master/tests/test_export_catalog.py">Catalog 测试</a></li>
+</ul></article>
+    </main>
+    <aside class="docs-toc" aria-label="本页目录"><strong>本页目录</strong><a href="#_2">适用范围</a><a href="#_3">环境</a><a href="#_4">日常校验</a><a href="#_5">重新生成产物</a><a href="#_6">校验范围</a><a href="#_7">排查入口</a><a href="#_8">边界</a><a href="#_9">来源</a></aside>
+  </div>
+  <div class="docs-backdrop" data-menu-backdrop hidden></div>
+  <dialog class="docs-search" data-search-dialog>
+    <form method="dialog" class="docs-search-head"><label for="docs-search-input">搜索文档</label><button type="submit">关闭</button></form>
+    <input id="docs-search-input" type="search" autocomplete="off" placeholder="输入 Token、用途或规范名称" data-search-input>
+    <div class="docs-search-results" data-search-results></div>
+  </dialog>
+</body>
+</html>

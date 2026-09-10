@@ -9,19 +9,21 @@ Atomic / Seed -> Atomic / Map -> Semantic / Base -> Semantic / Scene
 - `Atomic/Seed`：参与派生的最小输入。当前仅保留颜色 Seed，只用于解释值的派生起点。
 - `Atomic/Map`：具体值域和固定枚举。用户明确查询色阶、尺寸档位或原子值时可返回。
 - `Semantic/Base`：跨页面、跨业务成立的基础用途，是业务 CSS 的默认推荐层。
-- `Semantic/Scene`：页面画布、内容区、场景卡片和卡片标题等公共组合协议。
+- `Semantic/Scene`：页面内容区、场景卡片和卡片标题等公共组合协议。
 
 同级引用允许；引用方向不能反向，也不能形成循环。查询脚本返回的 `referenceChain` 是该关系的机器可读证据。
 
 ## 推荐规则
 
 1. 普通业务用途先找 `Semantic/Base`。
-2. 页面画布、场景卡片和卡片标题等公共组合找 `Semantic/Scene`。
+2. 页面内容区、场景卡片和卡片标题等公共组合找 `Semantic/Scene`。
 3. 没有合适语义入口，或用户明确询问具体值域时，才返回 `Atomic/Map`。
 4. `Atomic/Seed` 只说明颜色派生起点，不作为业务 CSS API 推荐。
 5. 查不到时说明缺口，不从相邻层级拼出一个新 Token。
 
 固定公司色系的 Dark Map 属于 `Atomic/Map`，可以按完整名称精确查询。它只是暗色值域，不等于已经存在暗色 Semantic、主题切换协议或组件暗色状态映射。
+
+有彩色 Base/Dark Map 使用 `1-12` 索引，Gray 独立使用 `10-200` 索引。不要把 Gray 的编号规则套用到有彩色 Token，也不要按旧有彩色 `10-120` 规则猜测名称。
 
 ## 不属于 FDS Global Token
 

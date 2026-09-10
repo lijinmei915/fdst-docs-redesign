@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="fdst 设计文档与工程文档的职责、数据来源和维护流程">
+  <title>文档维护 | FDS Token</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="../assets/fds-global-tokens.css">
+  <link rel="stylesheet" href="../assets/fds-docs.css">
+  <script defer src="../assets/search-index.js"></script>
+  <script defer src="../assets/fds-demos.js"></script>
+  <script defer src="../assets/fds-docs.js"></script>
+</head>
+<body data-page="engineering/文档维护.md" data-root="..">
+  <header class="docs-topbar">
+    <a class="docs-brand" href="../index.html" aria-label="FDS Token 文档首页"><span>FDS</span><strong>Token</strong></a>
+    <span class="docs-area">Foundation</span>
+    <div class="docs-topbar-actions">
+      <button class="docs-search-trigger" type="button" data-search-open>搜索文档</button>
+      <button class="docs-menu-trigger" type="button" data-menu-toggle aria-expanded="false">目录</button>
+    </div>
+  </header>
+  <div class="docs-shell">
+    <aside class="docs-sidebar" data-sidebar aria-label="文档导航"><section class="docs-nav-group"><h2>概览</h2><a class="docs-nav-link" href="../index.html">文档首页</a><a class="docs-nav-link" href="../examples/index.html">视觉工作台</a></section><section class="docs-nav-group"><h2>Foundation</h2><a class="docs-nav-link" href="../foundations/index.html">基础规范</a><a class="docs-nav-link" href="../foundations/颜色.html">颜色</a><a class="docs-nav-link" href="../foundations/排版.html">排版</a><a class="docs-nav-link" href="../foundations/间距与尺寸.html">间距与尺寸</a><a class="docs-nav-link" href="../foundations/圆角与边框.html">圆角与边框</a><a class="docs-nav-link" href="../foundations/阴影与层级.html">阴影与层级</a><a class="docs-nav-link" href="../foundations/动效.html">动效</a></section><section class="docs-nav-group"><h2>语义</h2><a class="docs-nav-link" href="../semantics/基础语义.html">基础语义</a><a class="docs-nav-link" href="../semantics/场景语义.html">场景语义</a></section><section class="docs-nav-group"><h2>开始使用</h2><a class="docs-nav-link" href="../getting-started/快速开始.html">快速开始</a><a class="docs-nav-link" href="../getting-started/ShareDev接入.html">ShareDev 接入</a></section><section class="docs-nav-group"><h2>概念</h2><a class="docs-nav-link" href="../concepts/分层模型.html">分层模型</a><a class="docs-nav-link" href="../concepts/命名规则.html">命名规则</a><a class="docs-nav-link" href="../concepts/引用与边界.html">引用与边界</a></section><section class="docs-nav-group"><h2>工程维护</h2><a class="docs-nav-link" href="YAML源文件.html">YAML 源文件</a><a class="docs-nav-link" href="构建与校验.html">构建与校验</a><a class="docs-nav-link" href="版本与发布.html">版本与发布</a><a class="docs-nav-link is-active" href="文档维护.html" aria-current="page">文档维护</a></section><section class="docs-nav-group"><h2>参考</h2><a class="docs-nav-link" href="../reference/Token目录.html">Token 目录</a><a class="docs-nav-link" href="../reference/迁移与常见问题.html">迁移与常见问题</a></section></aside>
+    <main class="docs-main">
+      <div class="docs-breadcrumb"><span>工程维护</span><span>/</span><strong>文档维护</strong></div>
+      <article class="docs-article"><h1 id="_1">文档维护</h1>
+<h2 id="_2">目标</h2>
+<p><code>fdst/docs</code> 同时服务设计读者和工程维护者，但两类内容分开组织：</p>
+<ul>
+<li><code>foundations/</code>、<code>semantics/</code> 面向设计、产品和使用 Token 的开发者，优先说明原则、场景和视觉结果。</li>
+<li><code>getting-started/</code>、<code>concepts/</code> 面向接入与架构读者。</li>
+<li><code>engineering/</code> 面向 Token 维护者，保存 YAML、构建、校验、版本和发布细节。</li>
+<li><code>reference/Token目录.md</code> 是自动生成的完整索引，不手工编辑。</li>
+</ul>
+<p>设计读者通过 <code>public/</code> 文档站阅读。<code>docs/</code> Markdown 是内容源，<code>docs/site-assets/</code> 保存站点壳层和可复用 Demo，<code>public/</code> 由 <code>tools/build_docs.py</code> 确定性生成，不直接编辑。</p>
+<h2 id="_3">数据来源</h2>
+<pre><code class="language-text">tokens/fds-global.yml import 图
+  -&gt; dist/fds-global-tokens.css
+  -&gt; dist/fds-global-tokens.min.css
+  -&gt; dist/fds-token-catalog.json
+  -&gt; docs/reference/Token目录.md
+  -&gt; public/ 可视化文档站
+</code></pre>
+<p>CSS 是页面、组件和视觉预览的运行时交付物。catalog JSON 是文档生成、查询和校验的派生数据，不是设计人员必须使用的接入格式。</p>
+<h2 id="sds">SDS 文档迁移规则</h2>
+<ol>
+<li>迁移 Token 总览、颜色、排版、间距、圆角、透明度、阴影、层级和动效等详细 Token 内容。</li>
+<li>保留 SDS 的 <code>teaches</code>、<code>use_when</code>、任务型标题、设计原则、使用场景、Do / Don't 和视觉示例习惯。</li>
+<li>不复制 SDS 中的旧 Token 名称、数值、算法或真相源描述；所有事实按当前 YAML、CSS 和 catalog 校正。</li>
+<li>Grid、Layout、Icons、Charts 等混合页面只迁移其中的具体 Token 说明，宏观设计规范继续留在 SDS。</li>
+<li>SDS 对已迁移的 Token 主题改为链接本仓库，不再保存详细副本或读取 catalog 重新生成一套页面数据。</li>
+</ol>
+<h2 id="_4">页面维护顺序</h2>
+<ol>
+<li>先确认页面属于 Token 详细规范，而不是 Components 或其他宏观设计规范。</li>
+<li>从 catalog 和 YAML 核对名称、值、层级、引用和当前能力边界。</li>
+<li>按“目标 -&gt; 原则 -&gt; 场景 -&gt; Do / Don't -&gt; 视觉示例 -&gt; 工程来源”组织内容。</li>
+<li>需要视觉示例时，在正文对应位置加入 <code>data-demo</code> 容器，并复用 <code>docs/site-assets/fds-demos.js</code> 中的现有 Demo；不得在单篇页面复制一套 CSS 或 Token 值。</li>
+<li>运行 <code>python tools/build_docs.py</code> 生成 <code>public/</code>，再运行文档校验。</li>
+<li>在发布记录中注明 Token 版本和文档变更范围。</li>
+</ol>
+<h2 id="_5">校验</h2>
+<pre><code class="language-powershell">python tools/build.py --check
+python tools/export_catalog.py --check-docs
+python tools/build_docs.py --check
+python -m unittest discover -s tests -p &quot;test_*.py&quot;
+</code></pre>
+<p>文档不得手工维护完整 Token 清单，不得把 catalog JSON 描述为设计侧的主要接入产物，也不得把尚未发布的本地生成物写成线上已可用。</p>
+<h2 id="_6">来源</h2>
+<ul>
+<li><a href="../index.html">FDS Token 文档首页</a></li>
+<li><a href="../foundations/index.html">Foundation 设计规范</a></li>
+<li><a href="构建与校验.html">构建与校验</a></li>
+<li><a href="版本与发布.html">版本与发布</a></li>
+</ul></article>
+    </main>
+    <aside class="docs-toc" aria-label="本页目录"><strong>本页目录</strong><a href="#_2">目标</a><a href="#_3">数据来源</a><a href="#sds">SDS 文档迁移规则</a><a href="#_4">页面维护顺序</a><a href="#_5">校验</a><a href="#_6">来源</a></aside>
+  </div>
+  <div class="docs-backdrop" data-menu-backdrop hidden></div>
+  <dialog class="docs-search" data-search-dialog>
+    <form method="dialog" class="docs-search-head"><label for="docs-search-input">搜索文档</label><button type="submit">关闭</button></form>
+    <input id="docs-search-input" type="search" autocomplete="off" placeholder="输入 Token、用途或规范名称" data-search-input>
+    <div class="docs-search-results" data-search-results></div>
+  </dialog>
+</body>
+</html>

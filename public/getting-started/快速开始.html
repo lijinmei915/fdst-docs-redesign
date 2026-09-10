@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <title>快速开始 | FDS Token</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="../assets/fds-global-tokens.css">
+  <link rel="stylesheet" href="../assets/fds-docs.css">
+  <script defer src="../assets/search-index.js"></script>
+  <script defer src="../assets/fds-demos.js"></script>
+  <script defer src="../assets/fds-docs.js"></script>
+</head>
+<body data-page="getting-started/快速开始.md" data-root="..">
+  <header class="docs-topbar">
+    <a class="docs-brand" href="../index.html" aria-label="FDS Token 文档首页"><span>FDS</span><strong>Token</strong></a>
+    <span class="docs-area">Foundation</span>
+    <div class="docs-topbar-actions">
+      <button class="docs-search-trigger" type="button" data-search-open>搜索文档</button>
+      <button class="docs-menu-trigger" type="button" data-menu-toggle aria-expanded="false">目录</button>
+    </div>
+  </header>
+  <div class="docs-shell">
+    <aside class="docs-sidebar" data-sidebar aria-label="文档导航"><section class="docs-nav-group"><h2>概览</h2><a class="docs-nav-link" href="../index.html">文档首页</a><a class="docs-nav-link" href="../examples/index.html">视觉工作台</a></section><section class="docs-nav-group"><h2>Foundation</h2><a class="docs-nav-link" href="../foundations/index.html">基础规范</a><a class="docs-nav-link" href="../foundations/颜色.html">颜色</a><a class="docs-nav-link" href="../foundations/排版.html">排版</a><a class="docs-nav-link" href="../foundations/间距与尺寸.html">间距与尺寸</a><a class="docs-nav-link" href="../foundations/圆角与边框.html">圆角与边框</a><a class="docs-nav-link" href="../foundations/阴影与层级.html">阴影与层级</a><a class="docs-nav-link" href="../foundations/动效.html">动效</a></section><section class="docs-nav-group"><h2>语义</h2><a class="docs-nav-link" href="../semantics/基础语义.html">基础语义</a><a class="docs-nav-link" href="../semantics/场景语义.html">场景语义</a></section><section class="docs-nav-group"><h2>开始使用</h2><a class="docs-nav-link is-active" href="快速开始.html" aria-current="page">快速开始</a><a class="docs-nav-link" href="ShareDev接入.html">ShareDev 接入</a></section><section class="docs-nav-group"><h2>概念</h2><a class="docs-nav-link" href="../concepts/分层模型.html">分层模型</a><a class="docs-nav-link" href="../concepts/命名规则.html">命名规则</a><a class="docs-nav-link" href="../concepts/引用与边界.html">引用与边界</a></section><section class="docs-nav-group"><h2>工程维护</h2><a class="docs-nav-link" href="../engineering/YAML源文件.html">YAML 源文件</a><a class="docs-nav-link" href="../engineering/构建与校验.html">构建与校验</a><a class="docs-nav-link" href="../engineering/版本与发布.html">版本与发布</a><a class="docs-nav-link" href="../engineering/文档维护.html">文档维护</a></section><section class="docs-nav-group"><h2>参考</h2><a class="docs-nav-link" href="../reference/Token目录.html">Token 目录</a><a class="docs-nav-link" href="../reference/迁移与常见问题.html">迁移与常见问题</a></section></aside>
+    <main class="docs-main">
+      <div class="docs-breadcrumb"><span>开始使用</span><span>/</span><strong>快速开始</strong></div>
+      <article class="docs-article"><h1 id="_1">快速开始</h1>
+<h2 id="_2">适用范围</h2>
+<p>本页说明如何在已经能够加载 FDS CSS 产物的页面中使用 Global Token。项目如何打包或发布该 CSS，请转到 <a href="ShareDev接入.html">ShareDev 接入</a> 和 <a href="../engineering/版本与发布.html">版本与发布</a>。</p>
+<h2 id="1-css">1. 引入 CSS</h2>
+<p>将普通版 <code>dist/fds-global-tokens.css</code> 或压缩版 <code>dist/fds-global-tokens.min.css</code> 纳入应用的全局样式入口。两份文件的变量和行为一致，同一页面只加载一份。下面是普通 CSS 入口示例，实际相对路径由消费项目决定：</p>
+<pre><code class="language-css">@import url(&quot;./fds-global-tokens.css&quot;);
+</code></pre>
+<p>产物在 <code>:root</code> 上声明变量，因此页面不需要逐个复制变量。</p>
+<h2 id="2-token">2. 优先选择语义 Token</h2>
+<pre><code class="language-css">.page {
+  color: var(--fds-g-color-text-primary);
+  background: var(--fds-g-background-main);
+}
+
+.primary-action {
+  color: var(--fds-g-color-text-inverse);
+  background: var(--fds-g-color-primary);
+}
+
+.primary-action:hover {
+  background: var(--fds-g-color-primary-hover);
+}
+</code></pre>
+<p>颜色、间距或字号的数字档位不是业务含义。业务代码不要因为某个当前值看起来合适，就直接把 <code>Atomic/Map</code> 当作默认选择。</p>
+<h2 id="3-token">3. 查询 Token</h2>
+<p>在 <a href="../reference/Token目录.html">Token 目录</a> 中按用途或 CSS Variable 搜索。目录由 catalog 自动生成，能回溯到 YAML 源文件。</p>
+<p>选择顺序：</p>
+<ol>
+<li>普通文本、状态、背景、层级和动效使用 Semantic/Base。</li>
+<li>页面内容区、场景卡片和卡片标题使用 Semantic/Scene。</li>
+<li>组件内部细节使用组件包自己的 Component Token。</li>
+<li>只有没有合适语义或正在维护 Token 体系时才使用 Atomic/Map。</li>
+</ol>
+<p>找不到符合含义的 Token 时，不按命名规律猜一个变量，按 <a href="../reference/迁移与常见问题.html">迁移与常见问题</a> 记录缺口。</p>
+<h2 id="_3">边界</h2>
+<ul>
+<li>Dark Map 仅提供固定原子色阶，当前不支持暗色 Semantic 或主题切换。</li>
+<li><code>--fds-s-card-*</code> 是页面场景协议，不是 Card 组件 Token。</li>
+<li>业务私有视觉规则应限制在业务作用域，不进入 <code>--fds-g-</code> 或 <code>--fds-s-</code> 命名空间。</li>
+<li>不从 CSS 产物或 Markdown 反向维护 Token。</li>
+</ul>
+<h2 id="_4">来源</h2>
+<ul>
+<li><a href="https://git.firstshare.cn/fx/fdst/-/blob/master/tokens/fds-global.yml">YAML 包入口</a></li>
+<li><a href="https://git.firstshare.cn/fx/fdst/-/blob/master/dist/fds-global-tokens.css">生成的 CSS</a></li>
+<li><a href="https://git.firstshare.cn/fx/fdst/-/blob/master/dist/fds-global-tokens.min.css">生成的 Minified CSS</a></li>
+<li><a href="../concepts/引用与边界.html">引用与边界</a></li>
+</ul></article>
+    </main>
+    <aside class="docs-toc" aria-label="本页目录"><strong>本页目录</strong><a href="#_2">适用范围</a><a href="#1-css">1. 引入 CSS</a><a href="#2-token">2. 优先选择语义 Token</a><a href="#3-token">3. 查询 Token</a><a href="#_3">边界</a><a href="#_4">来源</a></aside>
+  </div>
+  <div class="docs-backdrop" data-menu-backdrop hidden></div>
+  <dialog class="docs-search" data-search-dialog>
+    <form method="dialog" class="docs-search-head"><label for="docs-search-input">搜索文档</label><button type="submit">关闭</button></form>
+    <input id="docs-search-input" type="search" autocomplete="off" placeholder="输入 Token、用途或规范名称" data-search-input>
+    <div class="docs-search-results" data-search-results></div>
+  </dialog>
+</body>
+</html>

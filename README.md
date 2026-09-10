@@ -7,6 +7,7 @@ Token 的详细设计说明与工程文档统一在本仓库维护。SDS 继续�
 ## 开始使用
 
 - [FDS Global Token 文档首页](docs/README.md)
+- [FDS Token 可视化文档站](public/index.html)
 - [面向设计读者的 Foundation 入口](docs/foundations/README.md)
 - [快速开始](docs/getting-started/快速开始.md)
 - [ShareDev 接入](docs/getting-started/ShareDev接入.md)
@@ -27,6 +28,8 @@ Component Token 由组件包自行维护，不进入 FDS Global Token。当前�
 
 CSS Variable 使用两套公开前缀：Atomic/Map 与 Semantic/Base 使用 `--fds-g-*`，Semantic/Scene 使用 `--fds-s-*`。Scene Token ID 不再重复包含 `scene` 名称段。
 
+有彩色 Base Palette 与固定 Dark Palette 统一使用 `1-12` 索引，例如 `--fds-g-color-brand-9`、`--fds-g-color-yellow-dark-10`；Gray 是独立的 20 阶中性色板，继续使用 `10-200` 索引。旧有彩色 `10-120` 索引不保留兼容别名。
+
 ## 生成产物
 
 | 产物 | 路径 | 用途 |
@@ -38,10 +41,11 @@ CSS Variable 使用两套公开前缀：Atomic/Map 与 Semantic/Base 使用 `--f
 | FDS Migrate 快照 | `skills/fds-migrate/references/fds-token-catalog.jsonl` | `fds-migrate` 自带的完整 Token 数据，由 catalog 自动刷新 |
 | FDS Migrate | `skills/fds-migrate` | 独立扫描并迁移 CSS、Vue、JS/TS 与受控 CSS-in-JS，输出审计报告 |
 | Token 目录 | `docs/reference/Token目录.md` | 开发者可读的完整索引 |
+| 可视化文档站 | `public/` | 由 `docs/` 同源生成，提供导航、搜索和正文内嵌 Demo |
 
 ## 常用命令
 
-需要 Python 3.10+ 和 PyYAML：
+需要 Python 3.10+、PyYAML 和 Python-Markdown：
 
 ```powershell
 python -m pip install -r requirements.txt
@@ -51,9 +55,11 @@ python tools/build.py
 python tools/export_catalog.py --output dist/fds-token-catalog.json
 python tools/export_catalog.py
 python tools/export_catalog.py --check-docs
+python tools/build_docs.py
+python tools/build_docs.py --check
 ```
 
-`python tools/build.py` 会同时生成普通版和 min 版 CSS，两者变量与运行时行为一致，不得手工维护。`python tools/export_catalog.py` 会同时更新 `dist` catalog、`fds-apply` 查询 JSONL、`fds-migrate` 完整 Token JSONL 和 Token 目录。Token 更新后重新执行这两个命令即可刷新全部产物，两个 Skill 均不在运行时读取 FDST 仓库中的 YAML 或 `dist`。Python 和 PyYAML 只用于 FDS 源码维护端；`fds-apply` 使用蜂巢平台预置 Bash 的内建能力，不依赖 Python、Node.js、`grep`、`rg`、`sed`、`awk` 或 `jq`。`fds-migrate` 因需要多语法 AST，独立要求 Node.js 16+，依赖锁定在其自身目录。
+`python tools/build.py` 会同时生成普通版和 min 版 CSS，两者变量与运行时行为一致，不得手工维护。`python tools/export_catalog.py` 会同时更新 `dist` catalog、`fds-apply` 查询 JSONL、`fds-migrate` 完整 Token JSONL 和 Token 目录。`python tools/build_docs.py` 将 Markdown、站点资产和当前 CSS 生成到 `public/`，该目录同样不得手工编辑。Token 更新后重新执行三个生成命令即可刷新全部产物。两个 Skill 均不在运行时读取 FDST 仓库中的 YAML 或 `dist`。Python、PyYAML 和 Python-Markdown 只用于 FDS 源码维护端；`fds-apply` 使用蜂巢平台预置 Bash 的内建能力，不依赖 Python、Node.js、`grep`、`rg`、`sed`、`awk` 或 `jq`。`fds-migrate` 因需要多语法 AST，独立要求 Node.js 16+，依赖锁定在其自身目录。
 
 完整维护流程和错误排查见 [构建与校验](docs/engineering/构建与校验.md)；版本、发布与回退边界见 [版本与发布](docs/engineering/版本与发布.md)。
 

@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <title>迁移与常见问题 | FDS Token</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="../assets/fds-global-tokens.css">
+  <link rel="stylesheet" href="../assets/fds-docs.css">
+  <script defer src="../assets/search-index.js"></script>
+  <script defer src="../assets/fds-demos.js"></script>
+  <script defer src="../assets/fds-docs.js"></script>
+</head>
+<body data-page="reference/迁移与常见问题.md" data-root="..">
+  <header class="docs-topbar">
+    <a class="docs-brand" href="../index.html" aria-label="FDS Token 文档首页"><span>FDS</span><strong>Token</strong></a>
+    <span class="docs-area">Foundation</span>
+    <div class="docs-topbar-actions">
+      <button class="docs-search-trigger" type="button" data-search-open>搜索文档</button>
+      <button class="docs-menu-trigger" type="button" data-menu-toggle aria-expanded="false">目录</button>
+    </div>
+  </header>
+  <div class="docs-shell">
+    <aside class="docs-sidebar" data-sidebar aria-label="文档导航"><section class="docs-nav-group"><h2>概览</h2><a class="docs-nav-link" href="../index.html">文档首页</a><a class="docs-nav-link" href="../examples/index.html">视觉工作台</a></section><section class="docs-nav-group"><h2>Foundation</h2><a class="docs-nav-link" href="../foundations/index.html">基础规范</a><a class="docs-nav-link" href="../foundations/颜色.html">颜色</a><a class="docs-nav-link" href="../foundations/排版.html">排版</a><a class="docs-nav-link" href="../foundations/间距与尺寸.html">间距与尺寸</a><a class="docs-nav-link" href="../foundations/圆角与边框.html">圆角与边框</a><a class="docs-nav-link" href="../foundations/阴影与层级.html">阴影与层级</a><a class="docs-nav-link" href="../foundations/动效.html">动效</a></section><section class="docs-nav-group"><h2>语义</h2><a class="docs-nav-link" href="../semantics/基础语义.html">基础语义</a><a class="docs-nav-link" href="../semantics/场景语义.html">场景语义</a></section><section class="docs-nav-group"><h2>开始使用</h2><a class="docs-nav-link" href="../getting-started/快速开始.html">快速开始</a><a class="docs-nav-link" href="../getting-started/ShareDev接入.html">ShareDev 接入</a></section><section class="docs-nav-group"><h2>概念</h2><a class="docs-nav-link" href="../concepts/分层模型.html">分层模型</a><a class="docs-nav-link" href="../concepts/命名规则.html">命名规则</a><a class="docs-nav-link" href="../concepts/引用与边界.html">引用与边界</a></section><section class="docs-nav-group"><h2>工程维护</h2><a class="docs-nav-link" href="../engineering/YAML源文件.html">YAML 源文件</a><a class="docs-nav-link" href="../engineering/构建与校验.html">构建与校验</a><a class="docs-nav-link" href="../engineering/版本与发布.html">版本与发布</a><a class="docs-nav-link" href="../engineering/文档维护.html">文档维护</a></section><section class="docs-nav-group"><h2>参考</h2><a class="docs-nav-link" href="Token目录.html">Token 目录</a><a class="docs-nav-link is-active" href="迁移与常见问题.html" aria-current="page">迁移与常见问题</a></section></aside>
+    <main class="docs-main">
+      <div class="docs-breadcrumb"><span>参考</span><span>/</span><strong>迁移与常见问题</strong></div>
+      <article class="docs-article"><h1 id="_1">迁移与常见问题</h1>
+<h2 id="_2">适用范围</h2>
+<p>本页帮助业务代码从硬编码或旧变量迁移到 FDS Global Token，并说明查不到合适 Token 时的处理方式。具体变量是否存在，以 <a href="Token目录.html">Token 目录</a> 为准。</p>
+<h2 id="_3">从硬编码迁移</h2>
+<p>先识别值的用途，再选择 Semantic Token，不按当前颜色或尺寸做机械替换。</p>
+<pre><code class="language-css">/* 迁移前 */
+.notice {
+  color: #ef4444;
+  background: #f3beb8;
+}
+
+/* 迁移后 */
+.notice {
+  color: var(--fds-g-color-danger);
+  background: var(--fds-g-color-danger-background);
+}
+</code></pre>
+<p>迁移后验证 Default、Hover、Active、Disabled 等完整状态；不要只替换静态截图中出现的一个值。</p>
+<h2 id="_4">从旧变量迁移</h2>
+<ol>
+<li>查明旧变量的真实用途和所有调用方。</li>
+<li>在 catalog 中按用途查找 Semantic/Base 或 Semantic/Scene。</li>
+<li>对比运行时值只是验证手段，不是映射依据。</li>
+<li>找到稳定语义后逐处替换，并验证主要页面状态。</li>
+<li>没有等价语义时保留旧变量或业务私有变量，记录缺口，不猜新名称。</li>
+</ol>
+<h3 id="_5">有彩色色阶索引调整</h3>
+<p>有彩色 Base Palette 与固定 Dark Palette 已从 <code>10-120</code> 调整为 <code>1-12</code>，映射规则为旧索引除以 10：</p>
+<table>
+<thead>
+<tr>
+<th>旧索引</th>
+<th>1-12 索引</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>10 / 20 / 30 / 40</code></td>
+<td><code>1 / 2 / 3 / 4</code></td>
+</tr>
+<tr>
+<td><code>50 / 60 / 70 / 80</code></td>
+<td><code>5 / 6 / 7 / 8</code></td>
+</tr>
+<tr>
+<td><code>90 / 100 / 110 / 120</code></td>
+<td><code>9 / 10 / 11 / 12</code></td>
+</tr>
+</tbody>
+</table>
+<p>这是公开变量的破坏性更名，不提供旧名兼容别名。尤其注意 <code>color-{family}-10</code> 和 <code>color-{family}-dark-10</code> 在新规则中仍然存在，但已经表示第 10 阶，不再表示旧第 1 阶；不能只凭变量名仍可解析就认为迁移完成。应优先迁移到 Semantic Token；确需消费 Atomic Palette 时，按上表逐项改名并核对解析值。Gray 不在本次调整范围内，仍使用 <code>color-gray-10</code> 至 <code>color-gray-200</code>。</p>
+<h3 id="_6">排版变量调整</h3>
+<p>当前 YAML 已移除 Typography Token ID 中多余的 <code>typography-</code> 前缀。下表记录 Token ID；对应 CSS Variable 使用 <code>--fds-g-*</code> 前缀：</p>
+<table>
+<thead>
+<tr>
+<th>旧 Token ID</th>
+<th>当前 Token ID</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>typography-body-color</code>、<code>typography-text-color</code></td>
+<td><code>text-color</code></td>
+</tr>
+<tr>
+<td><code>typography-body-size</code>、<code>typography-text-size</code></td>
+<td><code>text-size</code></td>
+</tr>
+<tr>
+<td><code>typography-body-line-height</code>、<code>typography-text-line-height</code></td>
+<td><code>text-line-height</code></td>
+</tr>
+<tr>
+<td><code>typography-body-weight</code>、<code>typography-text-weight</code></td>
+<td><code>text-weight</code></td>
+</tr>
+<tr>
+<td><code>typography-heading-color</code></td>
+<td><code>heading-color</code></td>
+</tr>
+<tr>
+<td><code>typography-heading-{1-5}-{size/line-height/weight}</code></td>
+<td><code>heading-{1-5}-{size/line-height/weight}</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="_7">精简的全局语义</h3>
+<p>以下表面别名已收敛到现有 Background 语义：</p>
+<table>
+<thead>
+<tr>
+<th>已删除 Token ID</th>
+<th>当前 Token ID</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>color-surface-page</code></td>
+<td><code>background-main</code></td>
+</tr>
+<tr>
+<td><code>color-surface-container</code></td>
+<td><code>background-container</code></td>
+</tr>
+<tr>
+<td><code>color-surface-elevated</code></td>
+<td><code>background-elevated</code></td>
+</tr>
+<tr>
+<td><code>color-surface-disabled</code></td>
+<td><code>background-disabled</code></td>
+</tr>
+<tr>
+<td>Scene <code>background</code></td>
+<td>Base <code>background-main</code></td>
+</tr>
+</tbody>
+</table>
+<p>以下变量已从 Global Token 删除，当前没有全局替代项：</p>
+<ul>
+<li><code>control-height-1</code> 至 <code>control-height-6</code></li>
+<li><code>control-height-compact</code>、<code>control-height-default</code>、<code>control-height-large</code></li>
+<li><code>control-radius</code>、<code>container-radius</code></li>
+<li><code>typography-label-size</code></li>
+<li><code>font-family-sans</code>、<code>font-family-code</code></li>
+<li><code>typography-heading-font-family</code>、<code>typography-body-font-family</code></li>
+<li><code>typography-label-line-height</code>、<code>typography-label-weight</code></li>
+<li><code>typography-caption-size</code>、<code>typography-caption-line-height</code>、<code>typography-caption-weight</code></li>
+<li><code>typography-code-font-family</code></li>
+</ul>
+<p>控件高度、控件圆角、字体族、Label、Caption 和 Code 由应用、组件或具体场景负责。除上述已确认调整外，项目没有完整的旧变量映射表，不能根据名称相似自动替换。</p>
+<h2 id="_8">常见问题</h2>
+<h3 id="palette">为什么不直接使用 Palette？</h3>
+<p>Palette 表达具体值域，不表达业务用途。状态、文本、背景和边框应使用 Semantic Token，后续映射调整时调用方无需重新选择色阶。</p>
+<h3 id="-fds-s-card-card-token"><code>--fds-s-card-*</code> 是 Card 组件 Token 吗？</h3>
+<p>不是。它描述页面场景中多张内容卡片共享的容器规则。Card 内部头部、操作、交互状态和尺寸由组件包维护。</p>
+<h3 id="_9">可以新增一个看起来符合规律的变量吗？</h3>
+<p>不可以。先在 catalog 中精确查询；不存在时需要确认层级、所有权和跨业务稳定性，再从 YAML 源新增并生成产物。</p>
+<h3 id="_10">如何覆盖某个业务场景？</h3>
+<p>在业务根作用域覆盖已发布的 Scene Token，或建立业务私有变量。不要在业务代码中定义新的 <code>--fds-g-*</code> 或 <code>--fds-s-*</code>。</p>
+<h3 id="rem-calc">为什么禁用 <code>rem</code> 和 <code>calc()</code>？</h3>
+<p>当前长度契约是设计确认的固定 px Map，不依赖运行时基础单位计算。若未来调整此原则，需要先修改体系决策和构建校验，不能由单个业务绕过。</p>
+<h3 id="_11">是否支持暗色主题或响应式断点？</h3>
+<p>当前只提供 10 个固定公司色系的 Dark Atomic/Map，不提供暗色 Semantic 或主题切换；响应式断点也未纳入。不要因为存在 <code>color-{family}-dark-*</code> 就推断页面或组件已经支持暗色主题。</p>
+<h3 id="_12">校验通过是否代表已经发布？</h3>
+<p>不代表。校验只确认本地 YAML、生成物、文档链接和示例变量一致；ShareDev 发布链路仍需单独执行并验证。</p>
+<h2 id="_13">缺口记录模板</h2>
+<pre><code class="language-text">用途：
+影响范围：
+现有 Token 查询结果：无匹配 / 仅有近似项
+建议归属：Global Base / Global Scene / Component / 业务私有 / 待确认
+临时处理：
+验收方式：
+</code></pre>
+<p>Token 体系本身的问题在评审前只记录为待确认项，不在文档任务中顺手修改 YAML。</p>
+<h2 id="_14">来源</h2>
+<ul>
+<li><a href="../concepts/引用与边界.html">引用与边界</a></li>
+<li><a href="../getting-started/快速开始.html">快速开始</a></li>
+<li><a href="../engineering/版本与发布.html">版本与发布</a></li>
+</ul></article>
+    </main>
+    <aside class="docs-toc" aria-label="本页目录"><strong>本页目录</strong><a href="#_2">适用范围</a><a href="#_3">从硬编码迁移</a><a href="#_4">从旧变量迁移</a><a href="#_8">常见问题</a><a href="#_13">缺口记录模板</a><a href="#_14">来源</a></aside>
+  </div>
+  <div class="docs-backdrop" data-menu-backdrop hidden></div>
+  <dialog class="docs-search" data-search-dialog>
+    <form method="dialog" class="docs-search-head"><label for="docs-search-input">搜索文档</label><button type="submit">关闭</button></form>
+    <input id="docs-search-input" type="search" autocomplete="off" placeholder="输入 Token、用途或规范名称" data-search-input>
+    <div class="docs-search-results" data-search-results></div>
+  </dialog>
+</body>
+</html>

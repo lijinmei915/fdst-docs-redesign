@@ -58,7 +58,7 @@ class BuildTest(unittest.TestCase):
             self.assertNotIn("\n", minified_css)
             self.assertNotIn("/*", minified_css)
             self.assertLess(len(minified_css), len(pretty_css))
-            self.assertIn("--fds-g-color-yellow-dark-100:#FFC14D;", minified_css)
+            self.assertIn("--fds-g-color-yellow-dark-10:#FFC14D;", minified_css)
             self.assertIn("@media (prefers-reduced-motion:reduce)", minified_css)
 
             _, sources = BUILD.collect_sources()
@@ -92,7 +92,7 @@ class BuildTest(unittest.TestCase):
         self.assertEqual("--fds-g-", namespace)
         self.assertEqual([], errors)
         self.assertEqual(36, len(sources))
-        self.assertEqual(502, len(tokens))
+        self.assertEqual(485, len(tokens))
         self.assertFalse(
             any(token_id.startswith("color-") and "-base-" in token_id for token_id in tokens)
         )
@@ -124,7 +124,7 @@ class BuildTest(unittest.TestCase):
             },
         )
         for family, seed in seeds.items():
-            scale = [tokens[f"color-{family}-{step}"] for step in range(10, 121, 10)]
+            scale = [tokens[f"color-{family}-{step}"] for step in range(1, 13)]
             self.assertEqual(12, len(scale))
             self.assertTrue(
                 all(
@@ -132,12 +132,12 @@ class BuildTest(unittest.TestCase):
                     for token in scale
                 )
             )
-            self.assertEqual(seed, tokens[f"color-{family}-90"].value)
+            self.assertEqual(seed, tokens[f"color-{family}-9"].value)
 
         fixed_families = tuple(family for family in seeds if family != "brand")
         self.assertFalse(any(token_id.startswith("color-brand-dark-") for token_id in tokens))
         for family in fixed_families:
-            scale = [tokens[f"color-{family}-dark-{step}"] for step in range(10, 121, 10)]
+            scale = [tokens[f"color-{family}-dark-{step}"] for step in range(1, 13)]
             self.assertEqual(12, len(scale))
             self.assertTrue(
                 all(
@@ -145,9 +145,18 @@ class BuildTest(unittest.TestCase):
                     for token in scale
                 )
             )
-            self.assertEqual(seeds[family], tokens[f"color-{family}-dark-90"].value)
+            self.assertEqual(seeds[family], tokens[f"color-{family}-dark-9"].value)
 
-        self.assertEqual("#FFC14D", tokens["color-yellow-dark-100"].value)
+        self.assertEqual("#FFC14D", tokens["color-yellow-dark-10"].value)
+        self.assertTrue(
+            all(
+                f"color-{family}-{old_step}" not in tokens
+                for family in seeds
+                for old_step in range(20, 121, 10)
+            )
+        )
+        self.assertEqual("#FFFFFF", tokens["color-gray-10"].value)
+        self.assertEqual("#080504", tokens["color-gray-200"].value)
 
     def test_confirmed_non_color_scales(self) -> None:
         _, sources = BUILD.collect_sources()
@@ -173,7 +182,16 @@ class BuildTest(unittest.TestCase):
         self.assertEqual("0.5", tokens["opacity-50"].value)
         self.assertEqual("1", tokens["opacity-100"].value)
         self.assertEqual("{!opacity-50}", tokens["opacity-disabled"].value)
-        self.assertEqual("{!radius-4}", tokens["container-radius"].value)
+        self.assertTrue(
+            {
+                *(f"control-height-{index}" for index in range(1, 7)),
+                "control-height-compact",
+                "control-height-default",
+                "control-height-large",
+                "control-radius",
+                "container-radius",
+            }.isdisjoint(tokens)
+        )
 
     def test_confirmed_typography_contract(self) -> None:
         _, sources = BUILD.collect_sources()
@@ -182,18 +200,18 @@ class BuildTest(unittest.TestCase):
         self.assertEqual([], errors)
         self.assertEqual(
             {
-                "typography-text-color": "{!color-text-primary}",
-                "typography-text-size": "{!font-size-3}",
-                "typography-text-line-height": "{!line-height-5}",
-                "typography-text-weight": "{!font-weight-regular}",
+                "text-color": "{!color-text-primary}",
+                "text-size": "{!font-size-3}",
+                "text-line-height": "{!line-height-5}",
+                "text-weight": "{!font-weight-regular}",
             },
             {
                 token_id: tokens[token_id].value
                 for token_id in (
-                    "typography-text-color",
-                    "typography-text-size",
-                    "typography-text-line-height",
-                    "typography-text-weight",
+                    "text-color",
+                    "text-size",
+                    "text-line-height",
+                    "text-weight",
                 )
             },
         )
@@ -211,6 +229,7 @@ class BuildTest(unittest.TestCase):
             "typography-code-font-family",
             "typography-heading-font-family",
             "typography-label-line-height",
+            "typography-label-size",
             "typography-label-weight",
         }
         self.assertTrue(removed_tokens.isdisjoint(tokens))
@@ -282,7 +301,7 @@ class BuildTest(unittest.TestCase):
         self.assertNotIn("layer-dropdown", tokens)
         self.assertNotIn("layer-popover", tokens)
         self.assertNotIn("layer-message", tokens)
-        self.assertEqual("0 0 2px {!color-brand-90}", tokens["shadow-1"].value)
+        self.assertEqual("0 0 2px {!color-brand-9}", tokens["shadow-1"].value)
         self.assertEqual("{!shadow-1}", tokens["shadow-active"].value)
         self.assertEqual("{!shadow-2}", tokens["shadow-drag"].value)
         self.assertEqual("{!shadow-3}", tokens["shadow-dropdown"].value)
@@ -308,11 +327,11 @@ class BuildTest(unittest.TestCase):
         tokens, errors = BUILD.validate_sources(sources)
 
         self.assertEqual([], errors)
-        self.assertEqual("{!color-brand-10}", tokens["color-primary-background"].value)
-        self.assertEqual("{!color-brand-50}", tokens["color-primary-disabled"].value)
-        self.assertEqual("{!color-brand-80}", tokens["color-primary-hover"].value)
-        self.assertEqual("{!color-brand-90}", tokens["color-primary"].value)
-        self.assertEqual("{!color-brand-100}", tokens["color-primary-active"].value)
+        self.assertEqual("{!color-brand-1}", tokens["color-primary-background"].value)
+        self.assertEqual("{!color-brand-5}", tokens["color-primary-disabled"].value)
+        self.assertEqual("{!color-brand-8}", tokens["color-primary-hover"].value)
+        self.assertEqual("{!color-brand-9}", tokens["color-primary"].value)
+        self.assertEqual("{!color-brand-10}", tokens["color-primary-active"].value)
 
     def test_semantic_status_background_scale_mapping(self) -> None:
         _, sources = BUILD.collect_sources()
@@ -328,15 +347,15 @@ class BuildTest(unittest.TestCase):
         }
         for semantic, family in families.items():
             self.assertEqual(
-                f"{{!color-{family}-10}}",
+                f"{{!color-{family}-1}}",
                 tokens[f"color-{semantic}-background"].value,
             )
             self.assertEqual(
-                f"{{!color-{family}-20}}",
+                f"{{!color-{family}-2}}",
                 tokens[f"color-{semantic}-background-hover"].value,
             )
             self.assertEqual(
-                f"{{!color-{family}-30}}",
+                f"{{!color-{family}-3}}",
                 tokens[f"color-{semantic}-background-active"].value,
             )
 
@@ -350,21 +369,21 @@ class BuildTest(unittest.TestCase):
             for token_id, token in tokens.items()
             if token.tier == "scene"
         }
-        self.assertEqual(14, len(scene_tokens))
+        self.assertEqual(13, len(scene_tokens))
         self.assertTrue(all(token.namespace == "--fds-s-" for token in scene_tokens.values()))
         self.assertTrue(all(not token_id.startswith("scene-") for token_id in scene_tokens))
         self.assertTrue(all(token.value.startswith("{!") for token in scene_tokens.values()))
-        self.assertEqual("{!background-main}", tokens["background"].value)
-        self.assertEqual("{!container-radius}", tokens["card-radius"].value)
+        self.assertNotIn("background", tokens)
+        self.assertEqual("{!radius-4}", tokens["card-radius"].value)
         self.assertEqual(
-            "{!typography-heading-5-size}",
+            "{!heading-5-size}",
             tokens["card-title-size"].value,
         )
 
         namespace, sources = BUILD.collect_sources()
         css = BUILD.build_css(namespace, sources, tokens)
         self.assertIn("--fds-s-card-padding: var(--fds-g-spacing-4);", css)
-        self.assertIn("--fds-s-card-title-color: var(--fds-g-typography-heading-color);", css)
+        self.assertIn("--fds-s-card-title-color: var(--fds-g-heading-color);", css)
         self.assertNotIn("--fds-g-scene-", css)
 
     def test_scene_namespace_is_explicit_and_reserved(self) -> None:
@@ -452,15 +471,15 @@ class BuildTest(unittest.TestCase):
         sources = [
             (
                 "atomic/map/test.yml",
-                source("atomic", "map", "color", {"color-brand-90": {"value": "#FF7C19"}}),
+                source("atomic", "map", "color", {"color-brand-9": {"value": "#FF7C19"}}),
             )
         ]
         tokens, errors = BUILD.validate_sources(sources)
 
         self.assertEqual([], errors)
         self.assertEqual(
-            "var(--fds-g-color-brand-90)",
-            BUILD.to_css_value("{!color-brand-90}", tokens),
+            "var(--fds-g-color-brand-9)",
+            BUILD.to_css_value("{!color-brand-9}", tokens),
         )
 
 

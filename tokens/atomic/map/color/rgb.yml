@@ -11,25 +11,25 @@ global:
 imports:
 - ./palette/base.yml
 props:
-  color-brand-90-rgb:
+  color-brand-9-rgb:
     value: 255, 124, 25
-  color-amber-90-rgb:
+  color-amber-9-rgb:
     value: 255, 124, 25
-  color-yellow-90-rgb:
+  color-yellow-9-rgb:
     value: 255, 182, 2
-  color-yellow-green-90-rgb:
+  color-yellow-green-9-rgb:
     value: 135, 204, 59
-  color-green-90-rgb:
+  color-green-9-rgb:
     value: 48, 199, 118
-  color-teal-90-rgb:
+  color-teal-9-rgb:
     value: 22, 180, 171
-  color-blue-90-rgb:
+  color-blue-9-rgb:
     value: 24, 157, 255
-  color-indigo-90-rgb:
+  color-indigo-9-rgb:
     value: 12, 108, 255
-  color-purple-90-rgb:
+  color-purple-9-rgb:
     value: 115, 65, 222
-  color-magenta-90-rgb:
+  color-magenta-9-rgb:
     value: 255, 74, 102
-  color-red-90-rgb:
+  color-red-9-rgb:
     value: 255, 82, 42

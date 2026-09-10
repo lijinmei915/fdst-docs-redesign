@@ -17,7 +17,7 @@ sys.modules[SPEC.name] = PALETTES
 SPEC.loader.exec_module(PALETTES)
 
 
-# 设计参考中的 10 套固定色板；02 阶采用最终确认参数，两项 8-bit 量化差异在测试末尾显式锁定。
+# 设计参考中的 10 套固定色板；第 2 阶采用最终确认参数，两项 8-bit 量化差异在测试末尾显式锁定。
 DESIGN_REFERENCE = {
     "magenta": "FFF1F2 FFE2E3 FFCFD0 FFBDBF FFAAAE FF969D FF818B FF6979 FF4A66 D43550 850226 460010",
     "red": "FFF2EF FFE3DC FFD0C5 FFBFB0 FFAD99 FF9A82 FF8569 FF6E4E FF522A D53D18 801A00 430900",
@@ -40,7 +40,8 @@ def channel_delta(first: str, second: str) -> int:
 
 
 class GenerateColorPalettesTest(unittest.TestCase):
-    def test_step_20_uses_design_parameters(self) -> None:
+    def test_step_2_uses_design_parameters(self) -> None:
+        self.assertEqual(tuple(range(1, 13)), PALETTES.STEPS)
         self.assertEqual(0.1125, PALETTES.LIGHT_LIGHTNESS_PROGRESS[1])
         self.assertEqual(0.179, PALETTES.CHROMA_FACTORS[1])
 
@@ -62,15 +63,15 @@ class GenerateColorPalettesTest(unittest.TestCase):
 
         self.assertEqual(
             [
-                ("amber", 110, "#763400", "#773400"),
-                ("green", 110, "#005A2F", "#005A30"),
+                ("amber", 11, "#763400", "#773400"),
+                ("green", 11, "#005A2F", "#005A30"),
             ],
             exact_mismatches,
         )
 
-    def test_step_90_preserves_seed_exactly(self) -> None:
+    def test_step_9_preserves_seed_exactly(self) -> None:
         for family, seed in PALETTES.load_color_seeds().items():
-            self.assertEqual(seed, PALETTES.generate_palette(seed)[90], family)
+            self.assertEqual(seed, PALETTES.generate_palette(seed)[9], family)
 
     def test_dark_map_matches_design_contract(self) -> None:
         seeds = PALETTES.load_color_seeds()
@@ -79,8 +80,8 @@ class GenerateColorPalettesTest(unittest.TestCase):
         self.assertEqual(set(PALETTES.DARK_COLOR_FAMILIES), set(palettes))
         self.assertNotIn("brand", palettes)
         for family, palette in palettes.items():
-            self.assertEqual(seeds[family], palette[90], family)
-        self.assertEqual("#FFC14D", palettes["yellow"][100])
+            self.assertEqual(seeds[family], palette[9], family)
+        self.assertEqual("#FFC14D", palettes["yellow"][10])
 
     def test_dark_map_rejects_dynamic_brand(self) -> None:
         with self.assertRaises(ValueError):

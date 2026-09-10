@@ -11,75 +11,75 @@ imports:
 - ../../atomic/map/color/gray.yml
 props:
   color-primary:
-    value: '{!color-brand-90}'
+    value: '{!color-brand-9}'
   color-primary-background:
-    value: '{!color-brand-10}'
+    value: '{!color-brand-1}'
   color-primary-background-hover:
-    value: '{!color-brand-20}'
+    value: '{!color-brand-2}'
   color-primary-background-active:
-    value: '{!color-brand-30}'
+    value: '{!color-brand-3}'
   color-primary-hover:
-    value: '{!color-brand-80}'
+    value: '{!color-brand-8}'
   color-primary-active:
-    value: '{!color-brand-100}'
+    value: '{!color-brand-10}'
   color-primary-disabled:
-    value: '{!color-brand-50}'
+    value: '{!color-brand-5}'
   color-danger:
-    value: '{!color-red-90}'
+    value: '{!color-red-9}'
   color-danger-background:
-    value: '{!color-red-10}'
+    value: '{!color-red-1}'
   color-danger-background-hover:
-    value: '{!color-red-20}'
+    value: '{!color-red-2}'
   color-danger-background-active:
-    value: '{!color-red-30}'
+    value: '{!color-red-3}'
   color-danger-hover:
-    value: '{!color-red-80}'
+    value: '{!color-red-8}'
   color-danger-active:
-    value: '{!color-red-100}'
+    value: '{!color-red-10}'
   color-danger-disabled:
-    value: '{!color-red-50}'
+    value: '{!color-red-5}'
   color-warning:
-    value: '{!color-amber-90}'
+    value: '{!color-amber-9}'
   color-warning-background:
-    value: '{!color-amber-10}'
+    value: '{!color-amber-1}'
   color-warning-background-hover:
-    value: '{!color-amber-20}'
+    value: '{!color-amber-2}'
   color-warning-background-active:
-    value: '{!color-amber-30}'
+    value: '{!color-amber-3}'
   color-warning-hover:
-    value: '{!color-amber-80}'
+    value: '{!color-amber-8}'
   color-warning-active:
-    value: '{!color-amber-100}'
+    value: '{!color-amber-10}'
   color-warning-disabled:
-    value: '{!color-amber-50}'
+    value: '{!color-amber-5}'
   color-success:
-    value: '{!color-green-90}'
+    value: '{!color-green-9}'
   color-success-background:
-    value: '{!color-green-10}'
+    value: '{!color-green-1}'
   color-success-background-hover:
-    value: '{!color-green-20}'
+    value: '{!color-green-2}'
   color-success-background-active:
-    value: '{!color-green-30}'
+    value: '{!color-green-3}'
   color-success-hover:
-    value: '{!color-green-80}'
+    value: '{!color-green-8}'
   color-success-active:
-    value: '{!color-green-100}'
+    value: '{!color-green-10}'
   color-success-disabled:
-    value: '{!color-green-50}'
+    value: '{!color-green-5}'
   color-info:
-    value: '{!color-blue-90}'
+    value: '{!color-blue-9}'
   color-info-background:
-    value: '{!color-blue-10}'
+    value: '{!color-blue-1}'
   color-info-background-hover:
-    value: '{!color-blue-20}'
+    value: '{!color-blue-2}'
   color-info-background-active:
-    value: '{!color-blue-30}'
+    value: '{!color-blue-3}'
   color-info-hover:
-    value: '{!color-blue-80}'
+    value: '{!color-blue-8}'
   color-info-active:
-    value: '{!color-blue-100}'
+    value: '{!color-blue-10}'
   color-info-disabled:
-    value: '{!color-blue-50}'
+    value: '{!color-blue-5}'
   color-text-primary:
     value: '{!color-gray-200}'
   color-text-secondary:
@@ -96,14 +96,6 @@ props:
     value: '{!color-gray-110}'
   color-icon-disabled:
     value: '{!color-gray-60}'
-  color-surface-page:
-    value: '{!color-gray-30}'
-  color-surface-container:
-    value: '{!color-gray-10}'
-  color-surface-elevated:
-    value: '{!color-gray-10}'
-  color-surface-disabled:
-    value: '{!color-gray-20}'
   color-mask:
     value: rgb(8 5 4 / 20%)
   border-default:

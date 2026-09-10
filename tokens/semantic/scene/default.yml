@@ -14,10 +14,6 @@ imports:
 - ../../atomic/map/shape.yml
 - ../../atomic/map/effects.yml
 props:
-  background:
-    value: '{!background-main}'
-    type: color
-    comment: 页面型场景的默认画布背景，可由具体业务场景在自身作用域内覆盖。
   content-padding:
     value: '{!spacing-6}'
     type: dimension
@@ -39,7 +35,7 @@ props:
     type: dimension
     comment: 场景卡片的默认边框宽度。
   card-radius:
-    value: '{!container-radius}'
+    value: '{!radius-4}'
     type: dimension
     comment: 场景卡片的默认圆角，不替代 Card 组件自身的组件 Token。
   card-padding:
@@ -51,19 +47,19 @@ props:
     type: shadow
     comment: 场景卡片默认依靠背景和边框建立层次，不预设悬浮阴影。
   card-title-color:
-    value: '{!typography-heading-color}'
+    value: '{!heading-color}'
     type: color
     comment: 场景卡片标题的默认文本色。
   card-title-size:
-    value: '{!typography-heading-5-size}'
+    value: '{!heading-5-size}'
     type: dimension
     comment: 场景卡片标题的默认字号。
   card-title-line-height:
-    value: '{!typography-heading-5-line-height}'
+    value: '{!heading-5-line-height}'
     type: dimension
     comment: 场景卡片标题的默认行高。
   card-title-weight:
-    value: '{!typography-heading-5-weight}'
+    value: '{!heading-5-weight}'
     type: font-weight
     comment: 场景卡片标题的默认字重。
   card-title-gap:

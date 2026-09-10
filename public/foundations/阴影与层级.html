@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="FDS 透明度、全局层级区间和用途型阴影规则">
+  <title>阴影与层级 | FDS Token</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="../assets/fds-global-tokens.css">
+  <link rel="stylesheet" href="../assets/fds-docs.css">
+  <script defer src="../assets/search-index.js"></script>
+  <script defer src="../assets/fds-demos.js"></script>
+  <script defer src="../assets/fds-docs.js"></script>
+</head>
+<body data-page="foundations/阴影与层级.md" data-root="..">
+  <header class="docs-topbar">
+    <a class="docs-brand" href="../index.html" aria-label="FDS Token 文档首页"><span>FDS</span><strong>Token</strong></a>
+    <span class="docs-area">Foundation</span>
+    <div class="docs-topbar-actions">
+      <button class="docs-search-trigger" type="button" data-search-open>搜索文档</button>
+      <button class="docs-menu-trigger" type="button" data-menu-toggle aria-expanded="false">目录</button>
+    </div>
+  </header>
+  <div class="docs-shell">
+    <aside class="docs-sidebar" data-sidebar aria-label="文档导航"><section class="docs-nav-group"><h2>概览</h2><a class="docs-nav-link" href="../index.html">文档首页</a><a class="docs-nav-link" href="../examples/index.html">视觉工作台</a></section><section class="docs-nav-group"><h2>Foundation</h2><a class="docs-nav-link" href="index.html">基础规范</a><a class="docs-nav-link" href="颜色.html">颜色</a><a class="docs-nav-link" href="排版.html">排版</a><a class="docs-nav-link" href="间距与尺寸.html">间距与尺寸</a><a class="docs-nav-link" href="圆角与边框.html">圆角与边框</a><a class="docs-nav-link is-active" href="阴影与层级.html" aria-current="page">阴影与层级</a><a class="docs-nav-link" href="动效.html">动效</a></section><section class="docs-nav-group"><h2>语义</h2><a class="docs-nav-link" href="../semantics/基础语义.html">基础语义</a><a class="docs-nav-link" href="../semantics/场景语义.html">场景语义</a></section><section class="docs-nav-group"><h2>开始使用</h2><a class="docs-nav-link" href="../getting-started/快速开始.html">快速开始</a><a class="docs-nav-link" href="../getting-started/ShareDev接入.html">ShareDev 接入</a></section><section class="docs-nav-group"><h2>概念</h2><a class="docs-nav-link" href="../concepts/分层模型.html">分层模型</a><a class="docs-nav-link" href="../concepts/命名规则.html">命名规则</a><a class="docs-nav-link" href="../concepts/引用与边界.html">引用与边界</a></section><section class="docs-nav-group"><h2>工程维护</h2><a class="docs-nav-link" href="../engineering/YAML源文件.html">YAML 源文件</a><a class="docs-nav-link" href="../engineering/构建与校验.html">构建与校验</a><a class="docs-nav-link" href="../engineering/版本与发布.html">版本与发布</a><a class="docs-nav-link" href="../engineering/文档维护.html">文档维护</a></section><section class="docs-nav-group"><h2>参考</h2><a class="docs-nav-link" href="../reference/Token目录.html">Token 目录</a><a class="docs-nav-link" href="../reference/迁移与常见问题.html">迁移与常见问题</a></section></aside>
+    <main class="docs-main">
+      <div class="docs-breadcrumb"><span>Foundation</span><span>/</span><strong>阴影与层级</strong></div>
+      <article class="docs-article"><h1 id="_1">阴影与层级</h1>
+<h2 id="_2">适用范围</h2>
+<p>本页说明 Opacity、Z-Index 和 Shadow 的 Atomic 值域，以及调用方如何通过稳定用途消费它们。</p>
+<h2 id="_3">设计原则</h2>
+<ul>
+<li><strong>先判断层级，再选择效果。</strong> Z-Index 解决覆盖顺序，Shadow 只辅助表达离开原表面的关系。</li>
+<li><strong>静态表面默认无阴影。</strong> 页面分区和卡片优先依靠背景与边框，不把阴影作为装饰。</li>
+<li><strong>层级按用途分区。</strong> Sticky、Popup、Overlay、Modal、Feedback 使用固定区间，组件私有层级限制在所属区间内。</li>
+<li><strong>透明度不替代颜色语义。</strong> Opacity 会影响整个元素及其内容，文字、边框和背景的弱化优先使用颜色 Token。</li>
+</ul>
+<h2 id="_4">按场景选择</h2>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>推荐入口</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>静态页面和卡片</td>
+<td><code>--fds-g-shadow-none</code></td>
+<td>默认依靠背景与边框分隔</td>
+</tr>
+<tr>
+<td>激活或焦点强调</td>
+<td><code>--fds-g-shadow-active</code></td>
+<td>与 Focus Outline 二选一或明确组合</td>
+</tr>
+<tr>
+<td>拖拽中的元素</td>
+<td><code>--fds-g-shadow-drag</code></td>
+<td>仅在脱离原表面的过程中使用</td>
+</tr>
+<tr>
+<td>Dropdown、Select、DatePicker</td>
+<td><code>--fds-g-shadow-dropdown</code>、<code>--fds-g-layer-popup</code></td>
+<td>阴影和覆盖层级成组判断</td>
+</tr>
+<tr>
+<td>Modal、Drawer、Dialog</td>
+<td><code>--fds-g-layer-modal</code></td>
+<td>方向性阴影由组件契约维护</td>
+</tr>
+<tr>
+<td>Message、Toast</td>
+<td><code>--fds-g-layer-feedback</code></td>
+<td>保证反馈高于模态内容</td>
+</tr>
+<tr>
+<td>禁用元素整体弱化</td>
+<td><code>--fds-g-opacity-disabled</code></td>
+<td>同时保留禁用行为和可访问状态</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_5">视觉预览</h2>
+<p>下面在同一上下文中对比阴影、透明度和覆盖层级，避免把三者混成单一“层次感”。</p>
+<div class="fds-demo" data-demo="effects"></div>
+
+<h2 id="_6">当前模型</h2>
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>Atomic 值域</th>
+<th>推荐语义入口</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Opacity</td>
+<td><code>0 / 25 / 50 / 65 / 80 / 100%</code>，共 6 档</td>
+<td><code>opacity-disabled</code>，保持 50%</td>
+</tr>
+<tr>
+<td>Z-Index</td>
+<td>0、100、1000、4000、5000、9000</td>
+<td><code>layer-base</code> 至 <code>layer-feedback</code></td>
+</tr>
+<tr>
+<td>Shadow</td>
+<td>None、Active 配方、Drag 配方、Dropdown 配方</td>
+<td><code>shadow-none</code>、<code>shadow-active</code>、<code>shadow-drag</code>、<code>shadow-dropdown</code></td>
+</tr>
+</tbody>
+</table>
+<p>Z-Index 是用途区间的起点：Sticky 为 100-999，轻量浮层为 1000-3999，Overlay 为 4000-4999，Modal 为 5000-8999，Feedback 为 9000-9999。组件私有层级只能在所属区间内管理。</p>
+<h2 id="opacity">Opacity 取值依据</h2>
+<p>整体透明度按用途保留少量离散值，不按固定步长生成：0 / 100% 是两端，25% 保留较强弱化选项，50% 延续当前 Disabled，65% 参考 Ant Design 加载态，80% 参考 SLDS 轻度弱化取值。数值越大越不透明；这些原子值不自动赋予交互语义。</p>
+<ul>
+<li>Ant Design 6.6.1 的全局快照提供 <code>opacityImage = 1</code>、<code>opacityLoading = 0.65</code>，不是一套密集的透明度梯度。</li>
+<li>SLDS 固定源码中的传统 Global Opacity 仅有 <code>0.5 / 0.8</code>。本次借鉴两者少量、按用途取值的思想，不声称六档是任一平台的原样规范。</li>
+<li><code>opacity</code> 作用于元素整体及其内容；颜色中的 alpha 只影响对应颜色。文字、浅背景和描边的细微差别由颜色语义表达，不扩展整体透明度档位。</li>
+<li><code>opacity: 0</code> 不会自动移除布局、焦点或点击响应；隐藏和禁用行为由调用方控制。</li>
+</ul>
+<p>2026-09-07 将原 18 档收敛为 6 档；移除 3/5/6/8/10/12/18/20/22/40/60/75/90%，新增 65%。Disabled、颜色 alpha、遮罩和阴影配方不变。直接消费已删除原子变量的调用方须按用途迁移，不能机械取最近值；本地调整不等于已发布。回退需恢复上一版 Effects YAML 并重新生成 CSS、catalog 和查询资产。</p>
+<h2 id="_7">使用规则</h2>
+<pre><code class="language-css">.dropdown-surface {
+  z-index: var(--fds-g-layer-popup);
+  box-shadow: var(--fds-g-shadow-dropdown);
+}
+
+.dragging-item {
+  box-shadow: var(--fds-g-shadow-drag);
+}
+</code></pre>
+<p>静态表面默认不使用阴影，优先通过背景和边框建立边界。场景卡片已经通过 <code>--fds-s-card-shadow</code> 表达这一默认值。</p>
+<h2 id="do-dont">Do / Don't</h2>
+<table>
+<thead>
+<tr>
+<th>Do</th>
+<th>Don't</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>根据覆盖关系选择全局层级入口</td>
+<td>用任意大数字解决局部遮挡</td>
+</tr>
+<tr>
+<td>只在浮层、拖拽和明确交互中使用阴影</td>
+<td>给所有卡片和容器增加默认投影</td>
+</tr>
+<tr>
+<td>将 Focus、Active 和 Selected 分开设计</td>
+<td>同时叠加外发光、Outline 和强边框</td>
+</tr>
+<tr>
+<td>用颜色语义表达细微弱化</td>
+<td>用整体 Opacity 处理所有次要文字和浅背景</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_8">边界</h2>
+<ul>
+<li>不直接用任意大数字解决覆盖关系；先判断所属的全局层级。</li>
+<li>Modal、Drawer 的方向性阴影和其他组件私有投影不进入 Global Token。</li>
+<li>Active 阴影与 Focus Outline 需要二选一或明确组合规则，避免重复强调。</li>
+<li>Opacity Token 不代替颜色透明度语义。</li>
+</ul>
+<h2 id="_9">来源</h2>
+<ul>
+<li><a href="https://git.firstshare.cn/fx/fdst/-/blob/master/tokens/atomic/map/effects.yml">Effects Map</a></li>
+<li><a href="https://git.firstshare.cn/fx/fdst/-/blob/master/tokens/semantic/base/layout.yml">布局语义</a></li>
+<li><a href="https://git.firstshare.cn/fx/fdst/-/blob/master/tokens/semantic/base/effects.yml">效果语义</a></li>
+<li><a href="https://git.firstshare.cn/fx/fdst/-/blob/master/internal/references/antd-tokens-6.6.1.global.csv">Ant Design 6.6.1 全局 Token 快照</a></li>
+<li><a href="https://github.com/salesforce-ux/design-system/blob/9bc6a4046d10d95b4f3fb9cee7c7dc036bf43ad2/design-tokens/primitive/opacity.yml">SLDS 传统 Global Opacity 固定源码</a></li>
+</ul></article>
+    </main>
+    <aside class="docs-toc" aria-label="本页目录"><strong>本页目录</strong><a href="#_2">适用范围</a><a href="#_3">设计原则</a><a href="#_4">按场景选择</a><a href="#_5">视觉预览</a><a href="#_6">当前模型</a><a href="#opacity">Opacity 取值依据</a><a href="#_7">使用规则</a><a href="#do-dont">Do / Don&#x27;t</a><a href="#_8">边界</a><a href="#_9">来源</a></aside>
+  </div>
+  <div class="docs-backdrop" data-menu-backdrop hidden></div>
+  <dialog class="docs-search" data-search-dialog>
+    <form method="dialog" class="docs-search-head"><label for="docs-search-input">搜索文档</label><button type="submit">关闭</button></form>
+    <input id="docs-search-input" type="search" autocomplete="off" placeholder="输入 Token、用途或规范名称" data-search-input>
+    <div class="docs-search-results" data-search-results></div>
+  </dialog>
+</body>
+</html>

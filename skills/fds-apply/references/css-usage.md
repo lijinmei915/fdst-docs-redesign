@@ -23,7 +23,7 @@
 | 边框颜色、边框宽度 | `border-color`、`border-width` |
 | 字号、行高、字重 | `font-size`、`line-height`、`font-weight` |
 | 间距和留白 | `gap`、`padding`、`margin` |
-| 控件高度、图标尺寸 | `height`、`width`、`font-size` |
+| 图标尺寸 | `height`、`width`、`font-size` |
 | 圆角 | `border-radius` |
 | 透明度、层级、阴影 | `opacity`、`z-index`、`box-shadow` |
 | 动效时长、缓动 | `transition-duration`、`transition-timing-function` |

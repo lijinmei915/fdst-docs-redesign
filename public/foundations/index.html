@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="FDS Foundation 各类 Token 的设计目标、使用场景和阅读入口">
+  <title>FDS Foundation 设计规范 | FDS Token</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="../assets/fds-global-tokens.css">
+  <link rel="stylesheet" href="../assets/fds-docs.css">
+  <script defer src="../assets/search-index.js"></script>
+  <script defer src="../assets/fds-demos.js"></script>
+  <script defer src="../assets/fds-docs.js"></script>
+</head>
+<body data-page="foundations/README.md" data-root="..">
+  <header class="docs-topbar">
+    <a class="docs-brand" href="../index.html" aria-label="FDS Token 文档首页"><span>FDS</span><strong>Token</strong></a>
+    <span class="docs-area">Foundation</span>
+    <div class="docs-topbar-actions">
+      <button class="docs-search-trigger" type="button" data-search-open>搜索文档</button>
+      <button class="docs-menu-trigger" type="button" data-menu-toggle aria-expanded="false">目录</button>
+    </div>
+  </header>
+  <div class="docs-shell">
+    <aside class="docs-sidebar" data-sidebar aria-label="文档导航"><section class="docs-nav-group"><h2>概览</h2><a class="docs-nav-link" href="../index.html">文档首页</a><a class="docs-nav-link" href="../examples/index.html">视觉工作台</a></section><section class="docs-nav-group"><h2>Foundation</h2><a class="docs-nav-link is-active" href="index.html" aria-current="page">基础规范</a><a class="docs-nav-link" href="颜色.html">颜色</a><a class="docs-nav-link" href="排版.html">排版</a><a class="docs-nav-link" href="间距与尺寸.html">间距与尺寸</a><a class="docs-nav-link" href="圆角与边框.html">圆角与边框</a><a class="docs-nav-link" href="阴影与层级.html">阴影与层级</a><a class="docs-nav-link" href="动效.html">动效</a></section><section class="docs-nav-group"><h2>语义</h2><a class="docs-nav-link" href="../semantics/基础语义.html">基础语义</a><a class="docs-nav-link" href="../semantics/场景语义.html">场景语义</a></section><section class="docs-nav-group"><h2>开始使用</h2><a class="docs-nav-link" href="../getting-started/快速开始.html">快速开始</a><a class="docs-nav-link" href="../getting-started/ShareDev接入.html">ShareDev 接入</a></section><section class="docs-nav-group"><h2>概念</h2><a class="docs-nav-link" href="../concepts/分层模型.html">分层模型</a><a class="docs-nav-link" href="../concepts/命名规则.html">命名规则</a><a class="docs-nav-link" href="../concepts/引用与边界.html">引用与边界</a></section><section class="docs-nav-group"><h2>工程维护</h2><a class="docs-nav-link" href="../engineering/YAML源文件.html">YAML 源文件</a><a class="docs-nav-link" href="../engineering/构建与校验.html">构建与校验</a><a class="docs-nav-link" href="../engineering/版本与发布.html">版本与发布</a><a class="docs-nav-link" href="../engineering/文档维护.html">文档维护</a></section><section class="docs-nav-group"><h2>参考</h2><a class="docs-nav-link" href="../reference/Token目录.html">Token 目录</a><a class="docs-nav-link" href="../reference/迁移与常见问题.html">迁移与常见问题</a></section></aside>
+    <main class="docs-main">
+      <div class="docs-breadcrumb"><span>Foundation</span><span>/</span><strong>FDS Foundation 设计规范</strong></div>
+      <article class="docs-article"><h1 id="fds-foundation">FDS Foundation 设计规范</h1>
+<p>Foundation 将视觉选择收敛为可复用的 Token 规则。设计和开发应先按用途选择 Semantic Token；只有维护底层体系或没有合适语义时，才直接选择 Atomic 数值档。</p>
+<h2 id="_1">按设计任务查阅</h2>
+<table>
+<thead>
+<tr>
+<th>任务</th>
+<th>文档</th>
+<th>当前内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>选择品牌色、状态色、文字色和表面色</td>
+<td><a href="颜色.html">颜色</a></td>
+<td>设计原则、场景、状态组合、视觉预览和固定色板边界</td>
+</tr>
+<tr>
+<td>确定标题、正文、标签的字号组合</td>
+<td><a href="排版.html">排版</a></td>
+<td>字号、行高、字重和 Semantic recipe</td>
+</tr>
+<tr>
+<td>安排页面留白和图标尺寸</td>
+<td><a href="间距与尺寸.html">间距与尺寸</a></td>
+<td>Spacing、Icon Size 和组件尺寸边界</td>
+</tr>
+<tr>
+<td>选择场景卡片、组件和胶囊圆角</td>
+<td><a href="圆角与边框.html">圆角与边框</a></td>
+<td>Radius、Border Width 和职责边界</td>
+</tr>
+<tr>
+<td>处理浮层、拖拽、层级和透明度</td>
+<td><a href="阴影与层级.html">阴影与层级</a></td>
+<td>Shadow、Z-Index 和 Opacity</td>
+</tr>
+<tr>
+<td>设计反馈、浮层和展开收起动效</td>
+<td><a href="动效.html">动效</a></td>
+<td>Duration、Easing 和四类语义动效</td>
+</tr>
+</tbody>
+</table>
+<p>Foundation 六个专题已按同一结构补充设计原则、典型场景、Do / Don't 和视觉示例入口。完整 Token 值仍由自动生成目录承载，不在专题页复制维护。</p>
+<h2 id="_2">页面统一结构</h2>
+<p>Foundation 专题页按以下顺序组织：</p>
+<ol>
+<li>这项规范解决什么问题。</li>
+<li>设计原则和适用场景。</li>
+<li>推荐与不推荐的使用方式。</li>
+<li>可感知的视觉示例。</li>
+<li>当前 Token 与工程边界。</li>
+<li>来源、版本和维护信息。</li>
+</ol>
+<p>设计读者不需要先理解 YAML、schema 或构建命令。完整值表由 <a href="../reference/Token目录.html">Token 目录</a> 自动生成；工程维护信息集中在 <a href="../engineering/文档维护.html">文档维护</a>。</p>
+<p>需要从基础值进入页面用途时，继续阅读 <a href="../semantics/基础语义.html">基础语义</a> 和 <a href="../semantics/场景语义.html">场景语义</a>。</p>
+<h2 id="sds">与 SDS 的边界</h2>
+<ul>
+<li>本目录维护 Token 相关的详细设计规范。</li>
+<li>SDS 维护宏观 FDS、Components、Grid、Layout、Icons、Charts、无障碍和其他非 Token 规范。</li>
+<li>SDS 不复制本目录的 Token 名称和值；需要引用时直接链接到对应专题页。</li>
+<li>Components 页面中的设计语境留在 SDS，具体 Component Token 在 <code>fdst</code> 发布后由本仓库提供详情入口。</li>
+</ul>
+<h2 id="_3">来源</h2>
+<ul>
+<li><a href="../index.html">FDS Token 文档首页</a></li>
+<li><a href="../concepts/分层模型.html">分层模型</a></li>
+<li><a href="../concepts/引用与边界.html">引用与边界</a></li>
+<li><a href="../engineering/文档维护.html">文档维护</a></li>
+</ul></article>
+    </main>
+    <aside class="docs-toc" aria-label="本页目录"><strong>本页目录</strong><a href="#_1">按设计任务查阅</a><a href="#_2">页面统一结构</a><a href="#sds">与 SDS 的边界</a><a href="#_3">来源</a></aside>
+  </div>
+  <div class="docs-backdrop" data-menu-backdrop hidden></div>
+  <dialog class="docs-search" data-search-dialog>
+    <form method="dialog" class="docs-search-head"><label for="docs-search-input">搜索文档</label><button type="submit">关闭</button></form>
+    <input id="docs-search-input" type="search" autocomplete="off" placeholder="输入 Token、用途或规范名称" data-search-input>
+    <div class="docs-search-results" data-search-results></div>
+  </dialog>
+</body>
+</html>
