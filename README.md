@@ -39,7 +39,7 @@ CSS Variable 使用两套公开前缀：Atomic/Map 与 Semantic/Base 使用 `--f
 | Catalog JSON | `dist/fds-token-catalog.json` | 确定性查询和文档生成 |
 | FDS Apply 索引 | `skills/fds-apply/references/fds-token-search.jsonl` | `fds-apply` 查询和推荐使用的单行索引，由 catalog 自动刷新 |
 | FDS Migrate 快照 | `skills/fds-migrate/references/fds-token-catalog.jsonl` | `fds-migrate` 自带的完整 Token 数据，由 catalog 自动刷新 |
-| FDS Migrate | `skills/fds-migrate` | 独立扫描并迁移 CSS、Vue、JS/TS 与受控 CSS-in-JS，输出审计报告 |
+| FDS Migrate | `skills/fds-migrate` | 独立扫描并迁移 CSS/WXSS、Vue/HTML/WXML、JS/TS 与受控 CSS-in-JS，输出审计报告 |
 | Token 目录 | `docs/reference/Token目录.md` | 开发者可读的完整索引 |
 | 可视化文档站 | `public/` | 由 `docs/` 同源生成，提供导航、搜索和正文内嵌 Demo |
 

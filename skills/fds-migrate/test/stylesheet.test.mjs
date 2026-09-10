@@ -243,6 +243,7 @@ test("组件变量所有权按报告单元隔离", async () => {
 
 for (const [extension, source] of [
   ["pcss", ".card { padding: 16px; }\n"],
+  ["wxss", ".card { padding: 16px; width: 32rpx; }\n"],
   ["scss", "$space: 16px;\n.card { padding: 16px; }\n"],
   ["less", "@space: 16px;\n.card { padding: 16px; }\n"],
   ["sass", "$space: 16px\n.card\n  padding: 16px\n"],
@@ -253,7 +254,8 @@ for (const [extension, source] of [
     assert.equal(result.status, 0, result.stderr);
     const migrated = await readFile(context.paths[`component.${extension}`], "utf8");
     assert.match(migrated, /padding:\s*var\(--fds-g-spacing-4, 16px\)/);
-    if (extension !== "pcss") assert.match(migrated, /\$space: 16px|@space: 16px/);
+    if (!["pcss", "wxss"].includes(extension)) assert.match(migrated, /\$space: 16px|@space: 16px/);
+    if (extension === "wxss") assert.match(migrated, /width: 32rpx/);
   });
 }
 

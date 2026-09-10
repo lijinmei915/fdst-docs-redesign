@@ -18,8 +18,8 @@ const DEFAULT_CONFIG = path.join(".fdst", "migrate.json");
 const DEFAULT_ENTRY = "src";
 const DEFAULT_REPORT_ROOT = path.join(".fdst", "reports", "migrate");
 const CONFIG_SCHEMA = "fds-migrate-config/v1";
-const STYLESHEET_EXTENSIONS = new Set([".css", ".pcss", ".scss", ".sass", ".less"]);
-const MARKUP_EXTENSIONS = new Set([".html", ".htm"]);
+const STYLESHEET_EXTENSIONS = new Set([".css", ".pcss", ".scss", ".sass", ".less", ".wxss"]);
+const MARKUP_EXTENSIONS = new Set([".html", ".htm", ".wxml"]);
 const SCRIPT_EXTENSIONS = new Set([".js", ".jsx", ".ts", ".tsx"]);
 const SUPPORTED_EXTENSIONS = new Set([...STYLESHEET_EXTENSIONS, ...MARKUP_EXTENSIONS, ...SCRIPT_EXTENSIONS, ".vue"]);
 const UNSUPPORTED_STYLE_EXTENSIONS = new Set([".styl", ".stylus", ".svelte"]);
@@ -236,7 +236,9 @@ function parseSource(source) {
   if (STYLESHEET_EXTENSIONS.has(extension)) {
     return parseStylesheet({ text: source.text, file, syntax: extension.slice(1), container: "stylesheet" });
   }
-  if (MARKUP_EXTENSIONS.has(extension)) return parseMarkup({ text: source.text, file, syntax: "html" });
+  if (MARKUP_EXTENSIONS.has(extension)) {
+    return parseMarkup({ text: source.text, file, syntax: extension === ".wxml" ? "wxml" : "html" });
+  }
   if (SCRIPT_EXTENSIONS.has(extension)) return parseScript({ text: source.text, file, extension });
   if (extension === ".vue") return parseVue({ text: source.text, file });
   throw new MigrationError(`缺少语法适配器：${source.file}`);

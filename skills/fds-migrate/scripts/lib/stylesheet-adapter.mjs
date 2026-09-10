@@ -3,7 +3,7 @@ import scss from "postcss-scss";
 import less from "postcss-less";
 import sass from "postcss-sass";
 
-const PARSERS = { css: undefined, pcss: undefined, "css-in-js-template": undefined, scss, less, sass };
+const PARSERS = { css: undefined, pcss: undefined, wxss: undefined, "css-in-js-template": undefined, scss, less, sass };
 
 function offsetToPosition(fullText, offset) {
   const before = fullText.slice(0, offset);

@@ -5,6 +5,7 @@
 | 文件 / 容器 | 扫描 | 自动改写 | 首版边界 |
 | --- | --- | --- | --- |
 | `.css/.pcss` | 是 | 是 | 仅完整 declaration value；不拆多值 shorthand |
+| `.wxss` | 是 | 是 | 按 CSS declaration 解析；`rpx` 等无兼容 Token 的值只报告或豁免，不换算单位 |
 | `.scss` | 是 | 是 | 变量和插值不是静态单一值时不改写 |
 | `.less` | 是 | 是 | 变量、mixin 和动态表达式不改写 |
 | `.sass` | 是 | 是 | `postcss-sass` 可解析的缩进语法；解析失败阻止整次 `apply` |
@@ -13,6 +14,7 @@
 | `.vue` 简单 `:style="{...}"` | 是 | 是 | 只改写字符串或无插值模板字面量 |
 | `.vue` `<script>/<script setup>` | 是 | 是 | 与对应 JS/TS 规则一致 |
 | `.html/.htm` 静态 `style="..."` | 是 | 是 | 不解析普通属性字符串或 `<script>` 内容 |
+| `.wxml` 静态 `style="..."` | 是 | 是 | 不解析 `wx:*`、事件或普通属性；含 `{{...}}` 的整个 style 只报告为 `unsupported` |
 | `.js/.jsx/.ts/.tsx` JSX `style={{...}}` | 是 | 是 | 字符串或无插值模板字面量；引用变量只报告 |
 | `CSSProperties` 类型对象 | 是 | 是 | 支持直接类型标注、`as`、`satisfies` 及嵌套对象 |
 | `css/createStyles/makeStyles` 对象参数 | 是 | 是 | 支持直接对象及函数直接返回的对象 |

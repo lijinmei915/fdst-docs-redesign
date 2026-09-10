@@ -1,6 +1,6 @@
 ---
 name: fds-migrate
-description: 使用 Skill 内置的完整 FDS Token 快照扫描 CSS、SCSS、Sass、Less、Vue、HTML、JS、JSX、TS、TSX 和受控 CSS-in-JS 样式节点，生成可审计报告，并在用户明确要求时将唯一、属性兼容的值替换为带原值 fallback 的 FDS Token。处理 FDS Token 合规迁移、相近 Token 推荐或迁移复核时使用；创建、修改或发布 Token 时不使用。
+description: 使用 Skill 内置的完整 FDS Token 快照扫描 CSS、SCSS、Sass、Less、WXSS、Vue、HTML、WXML、JS、JSX、TS、TSX 和受控 CSS-in-JS 样式节点，生成可审计报告，并在用户明确要求时将唯一、属性兼容的值替换为带原值 fallback 的 FDS Token。处理 FDS Token 合规迁移、相近 Token 推荐或迁移复核时使用；创建、修改或发布 Token 时不使用。
 ---
 
 # FDS Token 迁移
@@ -11,9 +11,9 @@ description: 使用 Skill 内置的完整 FDS Token 快照扫描 CSS、SCSS、Sa
 
 ## When to Use / 使用场景
 
-- 扫描 `.css/.pcss/.scss/.sass/.less` 样式表。
+- 扫描 `.css/.pcss/.scss/.sass/.less/.wxss` 样式表。
 - 扫描 `.vue` 的 `<style>`、template 内联样式和 `<script>/<script setup>` 样式节点。
-- 扫描 `.html/.htm` 静态内联 `style`。
+- 扫描 `.html/.htm/.wxml` 静态内联 `style`；WXML 模板插值只报告，不自动改写。
 - 扫描 `.js/.jsx/.ts/.tsx` 中明确的 JSX style、`CSSProperties` 和白名单 CSS-in-JS。
 - 校验现有 `--fds-g-*` / `--fds-s-*` 是否真实存在。
 - 输出已替换项、不符合规范项、相近 Token 推荐和无法静态判定项。

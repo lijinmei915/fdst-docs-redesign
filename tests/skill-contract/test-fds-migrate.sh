@@ -36,7 +36,7 @@ const frontmatter = skill.match(/^---\n([\s\S]*?)\n---\n/);
 if (!frontmatter) throw new Error("SKILL.md 缺少 YAML frontmatter");
 if (!frontmatter[0].includes("name: fds-migrate")) throw new Error("Skill name 不正确");
 if (/TODO|EXAMPLE/.test(skill)) throw new Error("SKILL.md 包含占位内容");
-for (const term of ["scan", "apply", "verify", "auto-replace", "ambiguous", "similar", "unsupported", "fallback", ".fdst/migrate.json", "components/<组件名>"]) {
+for (const term of ["scan", "apply", "verify", "auto-replace", "ambiguous", "similar", "unsupported", "fallback", ".fdst/migrate.json", "components/<组件名>", ".wxss", ".wxml"]) {
   if (!skill.includes(term)) throw new Error(`SKILL.md 缺少关键契约：${term}`);
 }
 const configuration = fs.readFileSync(path.join(root, "references", "configuration.md"), "utf8");

@@ -66,8 +66,27 @@ export function parseMarkup({ text, fullText = text, file, baseOffset = 0, synta
       if (!range) continue;
       const elementContainer = `${syntax}:<${node.tag}> style`;
       if (isStaticStyle) {
+        const inlineStyle = fullText.slice(range[0], range[1]);
+        if (syntax === "wxml" && (inlineStyle.includes("{{") || inlineStyle.includes("}}"))) {
+          const position = offsetToPosition(fullText, range[0]);
+          occurrences.push({
+            file,
+            syntax: "wxml-inline-style",
+            container: elementContainer,
+            selector: elementContainer,
+            property: "<style-interpolation>",
+            originalValue: inlineStyle,
+            start: range[0],
+            end: range[1],
+            line: position.line,
+            column: position.column,
+            writable: false,
+            unsupportedReason: "WXML style 包含模板插值，无法静态证明完整声明值",
+          });
+          continue;
+        }
         const result = parseInlineStyle({
-          text: fullText.slice(range[0], range[1]),
+          text: inlineStyle,
           fullText,
           file,
           baseOffset: range[0],

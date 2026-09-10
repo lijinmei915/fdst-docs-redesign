@@ -79,6 +79,6 @@ outline-color: var(--button-text-color, var(--fds-g-color-danger, var(--color-bl
 
 ## 语法证据边界
 
-CSS、SCSS、Sass、Less、Vue、HTML、JS、JSX、TS、TSX 和白名单 CSS-in-JS 分别由专用 AST 适配器定位。适配器只能提交完整样式值及其原文件 offset，不参与 Token 选择。
+CSS、SCSS、Sass、Less、WXSS、Vue、HTML、WXML、JS、JSX、TS、TSX 和白名单 CSS-in-JS 分别由专用 AST 适配器定位。适配器只能提交完整样式值及其原文件 offset，不参与 Token 选择。
 
 普通字符串和普通数据对象不扫描。动态表达式、spread、跨变量引用、数值 style 和模板插值标记为 `unsupported`，不因文件扩展名已支持而自动改写。详见 [语法支持范围](syntax-support.md)。

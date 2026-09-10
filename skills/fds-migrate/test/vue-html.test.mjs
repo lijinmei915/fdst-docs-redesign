@@ -13,6 +13,33 @@ test("HTML 静态内联 style 可迁移，普通属性字符串不参与", async
   assert.match(migrated, /style="color: var\(--fds-g-color-danger, #FF522A\); padding: var\(--fds-g-spacing-4, 16px\)"/);
 });
 
+test("WXML 静态内联 style 可迁移，小程序属性不参与", async () => {
+  const source = '<view wx:if="{{visible}}" bindtap="onTap" data-note="color: #FF522A" style="color: #FF522A; padding: 16px"></view>\n';
+  const context = await fixture({ "page.wxml": source });
+  const result = runTool("apply", context.paths["page.wxml"], context.catalog, context.reportDir);
+  assert.equal(result.status, 0, result.stderr);
+  const migrated = await readFile(context.paths["page.wxml"], "utf8");
+  assert.match(migrated, /wx:if="{{visible}}" bindtap="onTap" data-note="color: #FF522A"/);
+  assert.match(migrated, /style="color: var\(--fds-g-color-danger, #FF522A\); padding: var\(--fds-g-spacing-4, 16px\)"/);
+  const report = await readReport(context.reportDir);
+  assert.deepEqual(new Set(report.findings.map((item) => item.syntax)), new Set(["wxml-inline-style"]));
+});
+
+test("WXML style 模板插值只报告人工检查，不阻止同文件静态 style 迁移", async () => {
+  const source = '<view style="color: {{color}}; padding: 16px"></view>\n<view style="color: #FF522A"></view>\n';
+  const context = await fixture({ "page.wxml": source });
+  const result = runTool("apply", context.paths["page.wxml"], context.catalog, context.reportDir);
+  assert.equal(result.status, 0, result.stderr);
+  const migrated = await readFile(context.paths["page.wxml"], "utf8");
+  assert.match(migrated, /style="color: {{color}}; padding: 16px"/);
+  assert.match(migrated, /style="color: var\(--fds-g-color-danger, #FF522A\)"/);
+  const report = await readReport(context.reportDir);
+  const unsupported = report.findings.find((item) => item.status === "unsupported");
+  assert.equal(unsupported.property, "<style-interpolation>");
+  assert.match(unsupported.reason, /WXML style 包含模板插值/);
+  assert.equal(report.parseErrors.length, 0);
+});
+
 test("Vue 同时处理 style、template 与 script 的确定性样式节点", async () => {
   const source = `<template>
   <div style="padding: 16px" :style="{ color: '#FF522A' }" :data-note="'color: #FF522A'" />
