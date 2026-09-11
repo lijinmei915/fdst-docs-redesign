@@ -28,7 +28,7 @@ Component Token 由组件包自行维护，不进入 FDS Global Token。当前�
 
 CSS Variable 使用两套公开前缀：Atomic/Map 与 Semantic/Base 使用 `--fds-g-*`，Semantic/Scene 使用 `--fds-s-*`。Scene Token ID 不再重复包含 `scene` 名称段。
 
-有彩色 Base Palette 与固定 Dark Palette 统一使用 `1-12` 索引，例如 `--fds-g-color-brand-9`、`--fds-g-color-yellow-dark-10`；Gray 是独立的 20 阶中性色板，继续使用 `10-200` 索引。旧有彩色 `10-120` 索引不保留兼容别名。
+有彩色 Base Palette 与固定 Dark Palette 统一使用 `0-11` 索引，例如 `--fds-g-color-brand-8`、`--fds-g-color-yellow-dark-9`；Gray 独立使用 `1-20`，Special 使用 `1-4`。有彩色第 `11` 阶和 Gray 第 `20` 阶是扩展档；旧名称不保留兼容别名。
 
 ## 生成产物
 

@@ -8,15 +8,15 @@ global:
   primitive: true
   source: manual
 props:
-  color-yellow-green-dark-1: {value: '#191E15'}
-  color-yellow-green-dark-2: {value: '#222B1B'}
-  color-yellow-green-dark-3: {value: '#2D3A22'}
-  color-yellow-green-dark-4: {value: '#384B28'}
-  color-yellow-green-dark-5: {value: '#455F2D'}
-  color-yellow-green-dark-6: {value: '#52762F'}
-  color-yellow-green-dark-7: {value: '#5F8F2E'}
-  color-yellow-green-dark-8: {value: '#70AB2F'}
-  color-yellow-green-dark-9: {value: '#87CC3B'}
-  color-yellow-green-dark-10: {value: '#94D455'}
-  color-yellow-green-dark-11: {value: '#A6DB77'}
-  color-yellow-green-dark-12: {value: '#B9E398'}
+  color-yellow-green-dark-0: {value: '#191E15'}
+  color-yellow-green-dark-1: {value: '#222B1B'}
+  color-yellow-green-dark-2: {value: '#2D3A22'}
+  color-yellow-green-dark-3: {value: '#384B28'}
+  color-yellow-green-dark-4: {value: '#455F2D'}
+  color-yellow-green-dark-5: {value: '#52762F'}
+  color-yellow-green-dark-6: {value: '#5F8F2E'}
+  color-yellow-green-dark-7: {value: '#70AB2F'}
+  color-yellow-green-dark-8: {value: '#87CC3B'}
+  color-yellow-green-dark-9: {value: '#94D455'}
+  color-yellow-green-dark-10: {value: '#A6DB77'}
+  color-yellow-green-dark-11: {value: '#B9E398'}

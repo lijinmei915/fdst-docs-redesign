@@ -9,47 +9,47 @@ global:
   variant: gray
   source: manual
 props:
-  color-gray-10:
+  color-gray-1:
     value: '#FFFFFF'
-  color-gray-20:
+  color-gray-2:
     value: '#F9F9F9'
-  color-gray-30:
+  color-gray-3:
     value: '#F1F0F0'
-  color-gray-40:
+  color-gray-4:
     value: '#E5E5E4'
-  color-gray-50:
+  color-gray-5:
     value: '#D7D6D6'
-  color-gray-60:
+  color-gray-6:
     value: '#C9C8C7'
-  color-gray-70:
+  color-gray-7:
     value: '#B8B7B6'
-  color-gray-80:
+  color-gray-8:
     value: '#A8A6A5'
-  color-gray-90:
+  color-gray-9:
     value: '#989695'
-  color-gray-100:
+  color-gray-10:
     value: '#888685'
-  color-gray-110:
+  color-gray-11:
     value: '#797675'
-  color-gray-120:
+  color-gray-12:
     value: '#6A6765'
-  color-gray-130:
+  color-gray-13:
     value: '#5B5856'
-  color-gray-140:
+  color-gray-14:
     value: '#4D4A48'
-  color-gray-150:
+  color-gray-15:
     value: '#3F3C3A'
-  color-gray-160:
+  color-gray-16:
     value: '#322E2C'
-  color-gray-170:
+  color-gray-17:
     value: '#25211F'
-  color-gray-180:
+  color-gray-18:
     value: '#1B1715'
-  color-gray-190:
+  color-gray-19:
     value: '#110D0B'
-  color-gray-200:
+  color-gray-20:
     value: '#080504'
   color-white:
-    value: '{!color-gray-10}'
+    value: '{!color-gray-1}'
   color-black:
-    value: '{!color-gray-200}'
+    value: '{!color-gray-20}'

@@ -1,0 +1,19 @@
+schema: fds-token-source/v1
+global:
+  layer: atomic
+  tier: map
+  category: color
+  type: color
+  scope: global
+  primitive: true
+  variant: special
+  source: manual
+props:
+  color-special-1:
+    value: '#F2F4FB'
+  color-special-2:
+    value: '#737C8C'
+  color-special-3:
+    value: '#EFF1F3'
+  color-special-4:
+    value: '#F7F8FA'

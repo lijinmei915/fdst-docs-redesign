@@ -51,31 +51,33 @@
 <li>找到稳定语义后逐处替换，并验证主要页面状态。</li>
 <li>没有等价语义时保留旧变量或业务私有变量，记录缺口，不猜新名称。</li>
 </ol>
-<h3 id="_5">有彩色色阶索引调整</h3>
-<p>有彩色 Base Palette 与固定 Dark Palette 已从 <code>10-120</code> 调整为 <code>1-12</code>，映射规则为旧索引除以 10：</p>
+<h3 id="_5">色阶索引调整</h3>
+<p>有彩色 Base Palette 与固定 Dark Palette 当前使用 <code>0-11</code>。若从早期 <code>10-120</code> 名称迁移，映射规则为旧索引除以 10 后减 1：</p>
 <table>
 <thead>
 <tr>
-<th>旧索引</th>
-<th>1-12 索引</th>
+<th>早期索引</th>
+<th>当前 <code>0-11</code> 索引</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>10 / 20 / 30 / 40</code></td>
-<td><code>1 / 2 / 3 / 4</code></td>
+<td><code>0 / 1 / 2 / 3</code></td>
 </tr>
 <tr>
 <td><code>50 / 60 / 70 / 80</code></td>
-<td><code>5 / 6 / 7 / 8</code></td>
+<td><code>4 / 5 / 6 / 7</code></td>
 </tr>
 <tr>
 <td><code>90 / 100 / 110 / 120</code></td>
-<td><code>9 / 10 / 11 / 12</code></td>
+<td><code>8 / 9 / 10 / 11</code></td>
 </tr>
 </tbody>
 </table>
-<p>这是公开变量的破坏性更名，不提供旧名兼容别名。尤其注意 <code>color-{family}-10</code> 和 <code>color-{family}-dark-10</code> 在新规则中仍然存在，但已经表示第 10 阶，不再表示旧第 1 阶；不能只凭变量名仍可解析就认为迁移完成。应优先迁移到 Semantic Token；确需消费 Atomic Palette 时，按上表逐项改名并核对解析值。Gray 不在本次调整范围内，仍使用 <code>color-gray-10</code> 至 <code>color-gray-200</code>。</p>
+<p>从旧 <code>fx-style</code> 迁移时不按色值贴近，而是保留用户熟悉的索引对应关系：有彩色 <code>00-10</code> 一对一迁移到当前 <code>0-10</code>，当前第 <code>11</code> 阶是扩展档；<code>neutrals01-19</code> 一对一迁移到 Gray <code>1-19</code>，Gray 第 <code>20</code> 阶是扩展档；<code>special01-04</code> 一对一迁移到 Special <code>1-4</code>。旧 RGB 和 Dark 色板不自动迁移。</p>
+<p>Gray 自身从早期 <code>10-200</code> 名称迁移到当前 <code>1-20</code> 时，仍按旧索引除以 10，例如 <code>color-gray-10 → color-gray-1</code>、<code>color-gray-150 → color-gray-15</code>、<code>color-gray-200 → color-gray-20</code>。</p>
+<p>这些都是公开变量的破坏性更名，不提供旧名兼容别名。尤其注意 <code>color-{family}-10</code>、<code>color-{family}-dark-10</code>、<code>color-gray-10</code> 和 <code>color-gray-20</code> 在当前规则中仍然存在，但含义可能已变化；不能只凭变量名仍可解析就认为迁移完成。业务代码应优先迁移到 Semantic Token；确需消费 Atomic Palette 时，按对应色板的索引规则逐项改名并核对解析值。</p>
 <h3 id="_6">排版变量调整</h3>
 <p>当前 YAML 已移除 Typography Token ID 中多余的 <code>typography-</code> 前缀。下表记录 Token ID；对应 CSS Variable 使用 <code>--fds-g-*</code> 前缀：</p>
 <table>

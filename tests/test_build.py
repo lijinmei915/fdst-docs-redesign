@@ -58,7 +58,7 @@ class BuildTest(unittest.TestCase):
             self.assertNotIn("\n", minified_css)
             self.assertNotIn("/*", minified_css)
             self.assertLess(len(minified_css), len(pretty_css))
-            self.assertIn("--fds-g-color-yellow-dark-10:#FFC14D;", minified_css)
+            self.assertIn("--fds-g-color-yellow-dark-9:#FFC14D;", minified_css)
             self.assertIn("@media (prefers-reduced-motion:reduce)", minified_css)
 
             _, sources = BUILD.collect_sources()
@@ -91,8 +91,8 @@ class BuildTest(unittest.TestCase):
 
         self.assertEqual("--fds-g-", namespace)
         self.assertEqual([], errors)
-        self.assertEqual(36, len(sources))
-        self.assertEqual(485, len(tokens))
+        self.assertEqual(37, len(sources))
+        self.assertEqual(489, len(tokens))
         self.assertFalse(
             any(token_id.startswith("color-") and "-base-" in token_id for token_id in tokens)
         )
@@ -124,7 +124,7 @@ class BuildTest(unittest.TestCase):
             },
         )
         for family, seed in seeds.items():
-            scale = [tokens[f"color-{family}-{step}"] for step in range(1, 13)]
+            scale = [tokens[f"color-{family}-{step}"] for step in range(12)]
             self.assertEqual(12, len(scale))
             self.assertTrue(
                 all(
@@ -132,12 +132,12 @@ class BuildTest(unittest.TestCase):
                     for token in scale
                 )
             )
-            self.assertEqual(seed, tokens[f"color-{family}-9"].value)
+            self.assertEqual(seed, tokens[f"color-{family}-8"].value)
 
         fixed_families = tuple(family for family in seeds if family != "brand")
         self.assertFalse(any(token_id.startswith("color-brand-dark-") for token_id in tokens))
         for family in fixed_families:
-            scale = [tokens[f"color-{family}-dark-{step}"] for step in range(1, 13)]
+            scale = [tokens[f"color-{family}-dark-{step}"] for step in range(12)]
             self.assertEqual(12, len(scale))
             self.assertTrue(
                 all(
@@ -145,9 +145,9 @@ class BuildTest(unittest.TestCase):
                     for token in scale
                 )
             )
-            self.assertEqual(seeds[family], tokens[f"color-{family}-dark-9"].value)
+            self.assertEqual(seeds[family], tokens[f"color-{family}-dark-8"].value)
 
-        self.assertEqual("#FFC14D", tokens["color-yellow-dark-10"].value)
+        self.assertEqual("#FFC14D", tokens["color-yellow-dark-9"].value)
         self.assertTrue(
             all(
                 f"color-{family}-{old_step}" not in tokens
@@ -155,8 +155,47 @@ class BuildTest(unittest.TestCase):
                 for old_step in range(20, 121, 10)
             )
         )
-        self.assertEqual("#FFFFFF", tokens["color-gray-10"].value)
-        self.assertEqual("#080504", tokens["color-gray-200"].value)
+        gray_tokens = {
+            token_id: token
+            for token_id, token in tokens.items()
+            if token_id.startswith("color-gray-")
+            and token_id.removeprefix("color-gray-").isdigit()
+        }
+        self.assertEqual(
+            [f"color-gray-{step}" for step in range(1, 21)],
+            sorted(gray_tokens, key=lambda token_id: int(token_id.rsplit("-", 1)[1])),
+        )
+        self.assertEqual(
+            [
+                "#FFFFFF",
+                "#F9F9F9",
+                "#F1F0F0",
+                "#E5E5E4",
+                "#D7D6D6",
+                "#C9C8C7",
+                "#B8B7B6",
+                "#A8A6A5",
+                "#989695",
+                "#888685",
+                "#797675",
+                "#6A6765",
+                "#5B5856",
+                "#4D4A48",
+                "#3F3C3A",
+                "#322E2C",
+                "#25211F",
+                "#1B1715",
+                "#110D0B",
+                "#080504",
+            ],
+            [gray_tokens[f"color-gray-{step}"].value for step in range(1, 21)],
+        )
+        self.assertEqual("{!color-gray-1}", tokens["color-white"].value)
+        self.assertEqual("{!color-gray-20}", tokens["color-black"].value)
+        self.assertEqual(
+            ["#F2F4FB", "#737C8C", "#EFF1F3", "#F7F8FA"],
+            [tokens[f"color-special-{step}"].value for step in range(1, 5)],
+        )
 
     def test_confirmed_non_color_scales(self) -> None:
         _, sources = BUILD.collect_sources()
@@ -301,7 +340,7 @@ class BuildTest(unittest.TestCase):
         self.assertNotIn("layer-dropdown", tokens)
         self.assertNotIn("layer-popover", tokens)
         self.assertNotIn("layer-message", tokens)
-        self.assertEqual("0 0 2px {!color-brand-9}", tokens["shadow-1"].value)
+        self.assertEqual("0 0 2px {!color-brand-8}", tokens["shadow-1"].value)
         self.assertEqual("{!shadow-1}", tokens["shadow-active"].value)
         self.assertEqual("{!shadow-2}", tokens["shadow-drag"].value)
         self.assertEqual("{!shadow-3}", tokens["shadow-dropdown"].value)
@@ -327,11 +366,38 @@ class BuildTest(unittest.TestCase):
         tokens, errors = BUILD.validate_sources(sources)
 
         self.assertEqual([], errors)
-        self.assertEqual("{!color-brand-1}", tokens["color-primary-background"].value)
-        self.assertEqual("{!color-brand-5}", tokens["color-primary-disabled"].value)
-        self.assertEqual("{!color-brand-8}", tokens["color-primary-hover"].value)
-        self.assertEqual("{!color-brand-9}", tokens["color-primary"].value)
-        self.assertEqual("{!color-brand-10}", tokens["color-primary-active"].value)
+        self.assertEqual("{!color-brand-0}", tokens["color-primary-background"].value)
+        self.assertEqual("{!color-brand-4}", tokens["color-primary-disabled"].value)
+        self.assertEqual("{!color-brand-7}", tokens["color-primary-hover"].value)
+        self.assertEqual("{!color-brand-8}", tokens["color-primary"].value)
+        self.assertEqual("{!color-brand-9}", tokens["color-primary-active"].value)
+
+    def test_gray_semantic_scale_mapping(self) -> None:
+        _, sources = BUILD.collect_sources()
+        tokens, errors = BUILD.validate_sources(sources)
+
+        self.assertEqual([], errors)
+        expected = {
+            "color-text-primary": "{!color-gray-20}",
+            "color-text-secondary": "{!color-gray-15}",
+            "color-text-tertiary": "{!color-gray-12}",
+            "color-text-disabled": "{!color-gray-6}",
+            "color-text-inverse": "{!color-gray-1}",
+            "color-icon-primary": "{!color-gray-20}",
+            "color-icon-secondary": "{!color-gray-11}",
+            "color-icon-disabled": "{!color-gray-6}",
+            "border-default": "{!color-gray-5}",
+            "border-subtle": "{!color-gray-4}",
+            "border-disabled": "{!color-gray-2}",
+            "background-main": "{!color-gray-3}",
+            "background-container": "{!color-gray-1}",
+            "background-elevated": "{!color-gray-1}",
+            "background-disabled": "{!color-gray-2}",
+        }
+        self.assertEqual(
+            expected,
+            {token_id: tokens[token_id].value for token_id in expected},
+        )
 
     def test_semantic_status_background_scale_mapping(self) -> None:
         _, sources = BUILD.collect_sources()
@@ -347,15 +413,15 @@ class BuildTest(unittest.TestCase):
         }
         for semantic, family in families.items():
             self.assertEqual(
-                f"{{!color-{family}-1}}",
+                f"{{!color-{family}-0}}",
                 tokens[f"color-{semantic}-background"].value,
             )
             self.assertEqual(
-                f"{{!color-{family}-2}}",
+                f"{{!color-{family}-1}}",
                 tokens[f"color-{semantic}-background-hover"].value,
             )
             self.assertEqual(
-                f"{{!color-{family}-3}}",
+                f"{{!color-{family}-2}}",
                 tokens[f"color-{semantic}-background-active"].value,
             )
 
@@ -471,15 +537,15 @@ class BuildTest(unittest.TestCase):
         sources = [
             (
                 "atomic/map/test.yml",
-                source("atomic", "map", "color", {"color-brand-9": {"value": "#FF7C19"}}),
+                source("atomic", "map", "color", {"color-brand-8": {"value": "#FF7C19"}}),
             )
         ]
         tokens, errors = BUILD.validate_sources(sources)
 
         self.assertEqual([], errors)
         self.assertEqual(
-            "var(--fds-g-color-brand-9)",
-            BUILD.to_css_value("{!color-brand-9}", tokens),
+            "var(--fds-g-color-brand-8)",
+            BUILD.to_css_value("{!color-brand-8}", tokens),
         )
 
 

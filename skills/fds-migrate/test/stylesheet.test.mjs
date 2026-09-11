@@ -5,7 +5,7 @@ import path from "node:path";
 import { buildDecisionPrompt, renderHtml } from "../scripts/lib/report.mjs";
 import { fixture, readReport, runBundledTool, runProjectTool, runTool } from "./helpers.mjs";
 
-test("CSS 扫描保持首版匹配行为并输出三类报告", async () => {
+test("CSS 扫描对颜色使用旧色板索引，对非颜色保持值匹配", async () => {
   const original = ".sample {\n  color: #FF522A;\n  background-color: #FFFFFF;\n  border-color: #FF542C;\n  padding: 16px;\n  width: 100%;\n  display: flex;\n  outline-color: var(--fds-g-missing, #000);\n}\n";
   const context = await fixture({ "component.css": original });
   const result = runTool("scan", context.paths["component.css"], context.catalog, context.reportDir);
@@ -15,8 +15,8 @@ test("CSS 扫描保持首版匹配行为并输出三类报告", async () => {
   const statuses = Object.fromEntries(report.findings.map((item) => [item.property, item.status]));
   assert.deepEqual(statuses, {
     color: "auto-replace",
-    "background-color": "ambiguous",
-    "border-color": "similar",
+    "background-color": "missing-token",
+    "border-color": "missing-token",
     padding: "auto-replace",
     width: "exempt",
     display: "exempt",
@@ -27,13 +27,13 @@ test("CSS 扫描保持首版匹配行为并输出三类报告", async () => {
   assert.match(html, /<h2>不符合规范<\/h2>/);
   assert.doesNotMatch(html, /<h2>相近 Token 推荐<\/h2>/);
   assert.match(html, /data-status-filter="similar"/);
-  assert.match(html, /data-status="similar"/);
-  assert.equal((html.match(/class="status status-similar"/g) || []).length, 2);
+  assert.doesNotMatch(html, /data-status="similar"/);
+  assert.equal((html.match(/class="status status-similar"/g) || []).length, 0);
   assert.match(html, /<meta name="viewport"/);
   assert.match(html, /data-prompt-drawer/);
   assert.match(html, /data-prompt-trigger=/);
   assert.match(html, /data-decision-select=/);
-  assert.match(html, /value="--fds-g-color-danger"/);
+  assert.match(html, /value="--fds-g-color-red-6"/);
   assert.match(html, /data-batch-prompt-open/);
   assert.match(html, /data-batch-prompt-drawer/);
   assert.match(html, /data-batch-prompt-regenerate/);
@@ -43,9 +43,8 @@ test("CSS 扫描保持首版匹配行为并输出三类报告", async () => {
   assert.match(html, /data-decision-storage-key="fds-migrate-decisions:v1:/);
   const promptData = JSON.parse(html.match(/<script id="finding-prompt-data" type="application\/json">([\s\S]*?)<\/script>/)[1]);
   assert.equal(promptData.length, 5);
-  assert.match(promptData.find((item) => item.status === "auto-replace").prompt, /var\(--fds-g-color-danger, #FF522A\)/);
-  assert.match(promptData.find((item) => item.status === "ambiguous").prompt, /无法消除歧义时保持源码不变/);
-  assert.match(promptData.find((item) => item.status === "similar").prompt, /不得仅凭数值或颜色距离接近直接替换/);
+  assert.match(promptData.find((item) => item.status === "auto-replace").prompt, /var\(--fds-g-color-red-6, #FF522A\)/);
+  assert.match(promptData.find((item) => item.status === "missing-token").prompt, /没有可靠 Token 时保持源码不变/);
   assert.match(promptData.find((item) => item.status === "invalid-token").prompt, /真实、属性兼容且语义一致的 Token/);
   assert.match(promptData[0].prompt, /只处理这一项及其必要上下文/);
   const executableScript = [...html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g)]
@@ -118,24 +117,96 @@ test("汇总提示词同时包含人工选定 Token 和无候选处理说明", (
   assert.match(prompt, /\[finding-1\] src\/example\.css:2:3/);
   assert.match(prompt, /使用 --fds-g-color-danger（#FF522A）/);
   assert.match(prompt, /说明：保留原值，并登记 Token 缺口。/);
-  assert.match(prompt, /组件变量 > FDS Token > --color-blueXX > 原值/);
+  assert.match(prompt, /组件变量 > FDS Token > 旧色板变量 > 原值/);
   assert.doesNotMatch(prompt, /报告状态|判定原因|匹配类型/);
   assert.ok(prompt.split("\n").length <= 13, prompt);
 });
 
-test("CSS apply 仅替换唯一精确候选并保留原值及 CRLF", async () => {
+test("CSS apply 按旧色板索引替换颜色并保留原值及 CRLF", async () => {
   const original = ".sample {\r\n  color: #FF522A;\r\n  background-color: #FFFFFF;\r\n  padding: 16px;\r\n}\r\n";
   const context = await fixture({ "component.css": original });
   const result = runTool("apply", context.paths["component.css"], context.catalog, context.reportDir);
   assert.equal(result.status, 0, result.stderr);
   const migrated = await readFile(context.paths["component.css"], "utf8");
-  assert.match(migrated, /color: var\(--fds-g-color-danger, #FF522A\);/);
+  assert.match(migrated, /color: var\(--fds-g-color-red-6, #FF522A\);/);
   assert.match(migrated, /padding: var\(--fds-g-spacing-4, 16px\);/);
   assert.match(migrated, /background-color: #FFFFFF;/);
   assert.ok(migrated.includes("\r\n"));
 });
 
-test("CSS 变量定义保持原样，消费链按组件变量、FDS、老品牌色和原值排序", async () => {
+test("有彩色按旧索引直接映射，不要求新旧值相等", async () => {
+  const original = ".sample { color: #FFCA7A; border-color: #123456; }\n";
+  const context = await fixture({ "component.css": original });
+  const result = runTool("apply", context.paths["component.css"], context.catalog, context.reportDir);
+  assert.equal(result.status, 0, result.stderr);
+  const migrated = await readFile(context.paths["component.css"], "utf8");
+  assert.match(migrated, /color: var\(--fds-g-color-brand-3, #FFCA7A\);/);
+  assert.match(migrated, /border-color: #123456;/);
+  const report = await readReport(context.reportDir);
+  const color = report.findings.find((finding) => finding.property === "color");
+  const border = report.findings.find((finding) => finding.property === "border-color");
+  assert.equal(color.status, "replaced");
+  assert.equal(color.selectedToken.match, "legacy-index");
+  assert.equal(report.legacyColorIndex.schema, "fds-legacy-color-index/v2");
+  assert.equal(report.legacyColorIndex.indexRule, "chromatic 00-10 -> 0-10; neutrals 01-19 -> gray 1-19; special 01-04 -> special 1-4");
+  assert.deepEqual(report.legacyColorIndex.indexRules, {
+    chromatic: "legacy k -> current k",
+    gray: "legacy n -> current n",
+    special: "legacy n -> current n",
+  });
+  assert.equal(report.legacyColorIndex.familyCount, 11);
+  assert.equal(report.legacyColorIndex.scaleCount, 2);
+  assert.equal(report.legacyColorIndex.recordCount, 144);
+  assert.match(report.legacyColorIndex.sha256, /^[a-f0-9]{64}$/);
+  assert.deepEqual(color.legacyColors, [{
+    family: "primary",
+    index: "03",
+    cssVariable: "--color-primary03",
+    resolvedValue: "#FFCA7A",
+    targetFamily: "brand",
+    targetIndex: 3,
+  }]);
+  assert.equal(border.status, "missing-token");
+  assert.equal(border.candidates.length, 0);
+  assert.match(border.reason, /不按当前 FDS 值或颜色距离猜测/);
+});
+
+test("11 套旧有彩色变量统一按同索引映射，且无 fallback 也可保留旧变量", async () => {
+  const pairs = [
+    ["primary", "brand"], ["warning", "amber"], ["yellow", "yellow"],
+    ["yellow-green", "yellow-green"], ["success", "green"], ["teal", "teal"],
+    ["blue", "blue"], ["info", "indigo"], ["purple", "purple"],
+    ["magenta", "magenta"], ["danger", "red"],
+  ];
+  const original = `.sample { ${pairs.map(([legacy]) => `--sample-${legacy}: 1; color: var(--color-${legacy}06);`).join(" ")} }\n`;
+  const context = await fixture({ "component.css": original });
+  let result = runBundledTool("apply", context.paths["component.css"], context.reportDir);
+  assert.equal(result.status, 0, result.stderr);
+  const migrated = await readFile(context.paths["component.css"], "utf8");
+  for (const [legacy, current] of pairs) {
+    assert.match(migrated, new RegExp(`color: var\\(--fds-g-color-${current}-6, var\\(--color-${legacy}06\\)\\);`));
+  }
+  result = runBundledTool("verify", context.paths["component.css"], context.reportDir);
+  assert.equal(result.status, 0, result.stderr);
+});
+
+test("旧 Gray 与 Special 保留用户索引并逐项一对一迁移", async () => {
+  const original = ".sample { color: var(--color-neutrals19); border-color: var(--color-special04); background-color: #F2F4FB; }\n";
+  const context = await fixture({ "component.css": original });
+  const result = runBundledTool("apply", context.paths["component.css"], context.reportDir);
+  assert.equal(result.status, 0, result.stderr);
+  const migrated = await readFile(context.paths["component.css"], "utf8");
+  assert.match(migrated, /color: var\(--fds-g-color-gray-19, var\(--color-neutrals19\)\);/);
+  assert.match(migrated, /border-color: var\(--fds-g-color-special-4, var\(--color-special04\)\);/);
+  assert.match(migrated, /background-color: var\(--fds-g-color-special-1, #F2F4FB\);/);
+  const report = await readReport(context.reportDir);
+  assert.deepEqual(
+    report.findings.map((finding) => finding.selectedToken.cssVariable),
+    ["--fds-g-color-gray-19", "--fds-g-color-special-4", "--fds-g-color-special-1"],
+  );
+});
+
+test("CSS 变量定义保持原样，消费链按组件变量、FDS、旧色板变量和原值排序", async () => {
   const original = `:root {
   --component-color: #FF522A;
   --color-blue06: #189DFF;
@@ -157,13 +228,13 @@ test("CSS 变量定义保持原样，消费链按组件变量、FDS、老品牌�
   assert.equal(find(":root", "--component-color").status, "exempt");
   assert.equal(find(":root", "--color-blue06").status, "exempt");
   assert.match(find(":root", "--component-color").reason, /定义不属于声明值迁移范围/);
-  assert.equal(find(".sample", "color").replacement, "var(--component-color, var(--fds-g-color-danger, #FF522A))");
+  assert.equal(find(".sample", "color").replacement, "var(--component-color, var(--fds-g-color-red-6, #FF522A))");
   assert.deepEqual(find(".sample", "color").componentVariables, ["--component-color"]);
   assert.equal(find(".sample", "padding").replacement, "var(--bc-c-padding, var(--bc-g-padding, var(--fds-g-spacing-4, 16px)))");
   assert.deepEqual(find(".sample", "padding").componentVariables, ["--bc-c-padding", "--bc-g-padding"]);
-  assert.equal(find(".sample", "border-color").replacement, "var(--fds-g-border-error, var(--color-blue06, #FF522A))");
-  assert.deepEqual(find(".sample", "border-color").legacyBrandVariables, ["--color-blue06"]);
-  assert.equal(find(".sample", "outline-color").replacement, "var(--component-color, var(--fds-g-border-error, var(--color-blue06, #FF522A)))");
+  assert.equal(find(".sample", "border-color").replacement, "var(--fds-g-color-blue-6, var(--color-blue06, #FF522A))");
+  assert.deepEqual(find(".sample", "border-color").legacyColorVariables, ["--color-blue06"]);
+  assert.equal(find(".sample", "outline-color").replacement, "var(--component-color, var(--fds-g-color-blue-6, var(--color-blue06, #FF522A)))");
   assert.equal(find(".sample", "background-color").status, "exempt");
   assert.equal(find(".sample", "background-color").priorityProtected, true);
   assert.match(find(".sample", "background-color").reason, /未提供可验证的末端原值/);
@@ -175,10 +246,10 @@ test("CSS 变量定义保持原样，消费链按组件变量、FDS、老品牌�
   const migrated = await readFile(context.paths["component.css"], "utf8");
   assert.match(migrated, /--component-color: #FF522A;/);
   assert.match(migrated, /--color-blue06: #189DFF;/);
-  assert.match(migrated, /color: var\(--component-color, var\(--fds-g-color-danger, #FF522A\)\);/);
+  assert.match(migrated, /color: var\(--component-color, var\(--fds-g-color-red-6, #FF522A\)\);/);
   assert.match(migrated, /padding: var\(--bc-c-padding, var\(--bc-g-padding, var\(--fds-g-spacing-4, 16px\)\)\);/);
-  assert.match(migrated, /border-color: var\(--fds-g-border-error, var\(--color-blue06, #FF522A\)\);/);
-  assert.match(migrated, /outline-color: var\(--component-color, var\(--fds-g-border-error, var\(--color-blue06, #FF522A\)\)\);/);
+  assert.match(migrated, /border-color: var\(--fds-g-color-blue-6, var\(--color-blue06, #FF522A\)\);/);
+  assert.match(migrated, /outline-color: var\(--component-color, var\(--fds-g-color-blue-6, var\(--color-blue06, #FF522A\)\)\);/);
 
   result = runTool("verify", context.paths["component.css"], context.catalog, context.reportDir);
   assert.equal(result.status, 0, result.stderr);
@@ -189,14 +260,14 @@ test("CSS 变量定义保持原样，消费链按组件变量、FDS、老品牌�
   assert.equal(verified("border-color").status, "compliant");
   assert.equal(verified("outline-color").status, "compliant");
   assert.match(verified("color").reason, /组件自定义变量在 FDS 外层/);
-  assert.match(verified("border-color").reason, /FDS 在老品牌色变量之前/);
+  assert.match(verified("border-color").reason, /FDS 在旧色板变量之前/);
   const html = await readFile(path.join(context.reportDir, "components", "component", "fds-token-migration-report.html"), "utf8");
   assert.match(html, /<h2>变量优先级<\/h2>/);
   assert.match(html, /class="status status-priority-protected"/);
   const promptData = JSON.parse(html.match(/<script id="finding-prompt-data" type="application\/json">([\s\S]*?)<\/script>/)[1]);
   const outlinePrompt = promptData.find((item) => item.property === "outline-color").prompt;
-  assert.match(outlinePrompt, /--component-color > --fds-g-border-error > --color-blue06 > 原值/);
-  assert.match(outlinePrompt, /组件变量 > FDS Token > --color-blueXX > 原值/);
+  assert.match(outlinePrompt, /--component-color > --fds-g-color-blue-6 > --color-blue06 > 原值/);
+  assert.match(outlinePrompt, /组件变量 > FDS Token > 旧色板变量 > 原值/);
 });
 
 test("已有变量链优先级错误时只报告不自动重排", async () => {
@@ -209,7 +280,7 @@ test("已有变量链优先级错误时只报告不自动重排", async () => {
   const report = await readReport(context.reportDir);
   const finding = report.findings.find((item) => item.property === "color");
   assert.equal(finding.status, "invalid-token");
-  assert.match(finding.reason, /组件变量 > FDS Token > --color-blueXX > 原值/);
+  assert.match(finding.reason, /组件变量 > FDS Token > 旧色板变量 > 原值/);
 
   const apply = runTool("apply", context.paths["component.css"], context.catalog, context.reportDir);
   assert.equal(apply.status, 0, apply.stderr);
@@ -310,13 +381,13 @@ test("verify 区分合规 Token、私有变量、复合表达式和失效 FDS �
   assert.deepEqual(report.findings.map((item) => item.status), ["compliant", "exempt", "exempt", "invalid-token"]);
 });
 
-test("Skill 内置完整 Token 快照且默认选择当前 danger Token", async () => {
+test("Skill 内置完整 Token 快照且颜色按旧索引选择当前色板 Token", async () => {
   const context = await fixture({ "component.css": ".danger { color: #FF522A; }\n" });
   const result = runBundledTool("scan", context.paths["component.css"], context.reportDir);
   assert.equal(result.status, 0, result.stderr);
   const report = await readReport(context.reportDir);
   const [finding] = report.findings;
-  assert.equal(finding.selectedToken.cssVariable, "--fds-g-color-danger");
+  assert.equal(finding.selectedToken.cssVariable, "--fds-g-color-red-6");
   assert.equal(report.catalog.source, "bundled");
   assert.equal(report.catalog.path, "references/fds-token-catalog.jsonl");
   assert.ok(report.catalog.tokenCount > 0);

@@ -8,7 +8,7 @@
   },
   "source": "tokens/fds-global.yml",
   "generatedBy": "tools/export_catalog.py",
-  "tokenCount": 485,
+  "tokenCount": 489,
   "tokens": [
     {
       "id": "color-amber",
@@ -209,6 +209,24 @@
       "origin": "manual"
     },
     {
+      "id": "color-amber-0",
+      "name": "color-amber-0",
+      "cssVariable": "--fds-g-color-amber-0",
+      "layer": "atomic",
+      "tier": "map",
+      "category": "color",
+      "type": "color",
+      "value": "#FEF3EC",
+      "resolvedValue": "#FEF3EC",
+      "references": [],
+      "referenceChain": [
+        "color-amber-0"
+      ],
+      "source": "tokens/atomic/map/color/palette/amber.yml",
+      "sourceFile": "tokens/atomic/map/color/palette/amber.yml",
+      "origin": "manual"
+    },
+    {
       "id": "color-amber-1",
       "name": "color-amber-1",
       "cssVariable": "--fds-g-color-amber-1",
@@ -216,8 +234,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FEF3EC",
-      "resolvedValue": "#FEF3EC",
+      "value": "#FFE6D9",
+      "resolvedValue": "#FFE6D9",
       "references": [],
       "referenceChain": [
         "color-amber-1"
@@ -234,8 +252,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#D26200",
-      "resolvedValue": "#D26200",
+      "value": "#763400",
+      "resolvedValue": "#763400",
       "references": [],
       "referenceChain": [
         "color-amber-10"
@@ -252,29 +270,11 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#763400",
-      "resolvedValue": "#763400",
-      "references": [],
-      "referenceChain": [
-        "color-amber-11"
-      ],
-      "source": "tokens/atomic/map/color/palette/amber.yml",
-      "sourceFile": "tokens/atomic/map/color/palette/amber.yml",
-      "origin": "manual"
-    },
-    {
-      "id": "color-amber-12",
-      "name": "color-amber-12",
-      "cssVariable": "--fds-g-color-amber-12",
-      "layer": "atomic",
-      "tier": "map",
-      "category": "color",
-      "type": "color",
       "value": "#3A1600",
       "resolvedValue": "#3A1600",
       "references": [],
       "referenceChain": [
-        "color-amber-12"
+        "color-amber-11"
       ],
       "source": "tokens/atomic/map/color/palette/amber.yml",
       "sourceFile": "tokens/atomic/map/color/palette/amber.yml",
@@ -288,8 +288,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FFE6D9",
-      "resolvedValue": "#FFE6D9",
+      "value": "#FFD8C3",
+      "resolvedValue": "#FFD8C3",
       "references": [],
       "referenceChain": [
         "color-amber-2"
@@ -306,8 +306,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FFD8C3",
-      "resolvedValue": "#FFD8C3",
+      "value": "#FFCAAD",
+      "resolvedValue": "#FFCAAD",
       "references": [],
       "referenceChain": [
         "color-amber-3"
@@ -324,8 +324,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FFCAAD",
-      "resolvedValue": "#FFCAAD",
+      "value": "#FFBC97",
+      "resolvedValue": "#FFBC97",
       "references": [],
       "referenceChain": [
         "color-amber-4"
@@ -342,8 +342,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FFBC97",
-      "resolvedValue": "#FFBC97",
+      "value": "#FFAD80",
+      "resolvedValue": "#FFAD80",
       "references": [],
       "referenceChain": [
         "color-amber-5"
@@ -360,8 +360,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FFAD80",
-      "resolvedValue": "#FFAD80",
+      "value": "#FF9E66",
+      "resolvedValue": "#FF9E66",
       "references": [],
       "referenceChain": [
         "color-amber-6"
@@ -378,8 +378,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FF9E66",
-      "resolvedValue": "#FF9E66",
+      "value": "#FF8E48",
+      "resolvedValue": "#FF8E48",
       "references": [],
       "referenceChain": [
         "color-amber-7"
@@ -396,8 +396,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FF8E48",
-      "resolvedValue": "#FF8E48",
+      "value": "#FF7C19",
+      "resolvedValue": "#FF7C19",
       "references": [],
       "referenceChain": [
         "color-amber-8"
@@ -407,6 +407,24 @@
       "origin": "manual"
     },
     {
+      "id": "color-amber-8-rgb",
+      "name": "color-amber-8-rgb",
+      "cssVariable": "--fds-g-color-amber-8-rgb",
+      "layer": "atomic",
+      "tier": "map",
+      "category": "color",
+      "type": "string",
+      "value": "255, 124, 25",
+      "resolvedValue": "255, 124, 25",
+      "references": [],
+      "referenceChain": [
+        "color-amber-8-rgb"
+      ],
+      "source": "tokens/atomic/map/color/rgb.yml",
+      "sourceFile": "tokens/atomic/map/color/rgb.yml",
+      "origin": "derived"
+    },
+    {
       "id": "color-amber-9",
       "name": "color-amber-9",
       "cssVariable": "--fds-g-color-amber-9",
@@ -414,8 +432,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FF7C19",
-      "resolvedValue": "#FF7C19",
+      "value": "#D26200",
+      "resolvedValue": "#D26200",
       "references": [],
       "referenceChain": [
         "color-amber-9"
@@ -425,22 +443,22 @@
       "origin": "manual"
     },
     {
-      "id": "color-amber-9-rgb",
-      "name": "color-amber-9-rgb",
-      "cssVariable": "--fds-g-color-amber-9-rgb",
+      "id": "color-amber-dark-0",
+      "name": "color-amber-dark-0",
+      "cssVariable": "--fds-g-color-amber-dark-0",
       "layer": "atomic",
       "tier": "map",
       "category": "color",
-      "type": "string",
-      "value": "255, 124, 25",
-      "resolvedValue": "255, 124, 25",
+      "type": "color",
+      "value": "#231914",
+      "resolvedValue": "#231914",
       "references": [],
       "referenceChain": [
-        "color-amber-9-rgb"
+        "color-amber-dark-0"
       ],
-      "source": "tokens/atomic/map/color/rgb.yml",
-      "sourceFile": "tokens/atomic/map/color/rgb.yml",
-      "origin": "derived"
+      "source": "tokens/atomic/map/color/dark/amber.yml",
+      "sourceFile": "tokens/atomic/map/color/dark/amber.yml",
+      "origin": "manual"
     },
     {
       "id": "color-amber-dark-1",
@@ -450,8 +468,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#231914",
-      "resolvedValue": "#231914",
+      "value": "#322219",
+      "resolvedValue": "#322219",
       "references": [],
       "referenceChain": [
         "color-amber-dark-1"
@@ -468,8 +486,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FF914E",
-      "resolvedValue": "#FF914E",
+      "value": "#FFA571",
+      "resolvedValue": "#FFA571",
       "references": [],
       "referenceChain": [
         "color-amber-dark-10"
@@ -486,29 +504,11 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FFA571",
-      "resolvedValue": "#FFA571",
-      "references": [],
-      "referenceChain": [
-        "color-amber-dark-11"
-      ],
-      "source": "tokens/atomic/map/color/dark/amber.yml",
-      "sourceFile": "tokens/atomic/map/color/dark/amber.yml",
-      "origin": "manual"
-    },
-    {
-      "id": "color-amber-dark-12",
-      "name": "color-amber-dark-12",
-      "cssVariable": "--fds-g-color-amber-dark-12",
-      "layer": "atomic",
-      "tier": "map",
-      "category": "color",
-      "type": "color",
       "value": "#FFB992",
       "resolvedValue": "#FFB992",
       "references": [],
       "referenceChain": [
-        "color-amber-dark-12"
+        "color-amber-dark-11"
       ],
       "source": "tokens/atomic/map/color/dark/amber.yml",
       "sourceFile": "tokens/atomic/map/color/dark/amber.yml",
@@ -522,8 +522,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#322219",
-      "resolvedValue": "#322219",
+      "value": "#442B1E",
+      "resolvedValue": "#442B1E",
       "references": [],
       "referenceChain": [
         "color-amber-dark-2"
@@ -540,8 +540,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#442B1E",
-      "resolvedValue": "#442B1E",
+      "value": "#593622",
+      "resolvedValue": "#593622",
       "references": [],
       "referenceChain": [
         "color-amber-dark-3"
@@ -558,8 +558,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#593622",
-      "resolvedValue": "#593622",
+      "value": "#744124",
+      "resolvedValue": "#744124",
       "references": [],
       "referenceChain": [
         "color-amber-dark-4"
@@ -576,8 +576,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#744124",
-      "resolvedValue": "#744124",
+      "value": "#924D23",
+      "resolvedValue": "#924D23",
       "references": [],
       "referenceChain": [
         "color-amber-dark-5"
@@ -594,8 +594,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#924D23",
-      "resolvedValue": "#924D23",
+      "value": "#B2591C",
+      "resolvedValue": "#B2591C",
       "references": [],
       "referenceChain": [
         "color-amber-dark-6"
@@ -612,8 +612,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#B2591C",
-      "resolvedValue": "#B2591C",
+      "value": "#D76813",
+      "resolvedValue": "#D76813",
       "references": [],
       "referenceChain": [
         "color-amber-dark-7"
@@ -630,8 +630,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#D76813",
-      "resolvedValue": "#D76813",
+      "value": "#FF7C19",
+      "resolvedValue": "#FF7C19",
       "references": [],
       "referenceChain": [
         "color-amber-dark-8"
@@ -648,8 +648,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FF7C19",
-      "resolvedValue": "#FF7C19",
+      "value": "#FF914E",
+      "resolvedValue": "#FF914E",
       "references": [],
       "referenceChain": [
         "color-amber-dark-9"
@@ -666,17 +666,35 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "{!color-gray-200}",
+      "value": "{!color-gray-20}",
       "resolvedValue": "#080504",
       "references": [
-        "color-gray-200"
+        "color-gray-20"
       ],
       "referenceChain": [
         "color-black",
-        "color-gray-200"
+        "color-gray-20"
       ],
       "source": "tokens/atomic/map/color/gray.yml",
       "sourceFile": "tokens/atomic/map/color/gray.yml",
+      "origin": "manual"
+    },
+    {
+      "id": "color-blue-0",
+      "name": "color-blue-0",
+      "cssVariable": "--fds-g-color-blue-0",
+      "layer": "atomic",
+      "tier": "map",
+      "category": "color",
+      "type": "color",
+      "value": "#EEF6FF",
+      "resolvedValue": "#EEF6FF",
+      "references": [],
+      "referenceChain": [
+        "color-blue-0"
+      ],
+      "source": "tokens/atomic/map/color/palette/blue.yml",
+      "sourceFile": "tokens/atomic/map/color/palette/blue.yml",
       "origin": "manual"
     },
     {
@@ -687,8 +705,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#EEF6FF",
-      "resolvedValue": "#EEF6FF",
+      "value": "#DBEDFF",
+      "resolvedValue": "#DBEDFF",
       "references": [],
       "referenceChain": [
         "color-blue-1"
@@ -705,8 +723,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#0080D4",
-      "resolvedValue": "#0080D4",
+      "value": "#00487C",
+      "resolvedValue": "#00487C",
       "references": [],
       "referenceChain": [
         "color-blue-10"
@@ -723,29 +741,11 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#00487C",
-      "resolvedValue": "#00487C",
-      "references": [],
-      "referenceChain": [
-        "color-blue-11"
-      ],
-      "source": "tokens/atomic/map/color/palette/blue.yml",
-      "sourceFile": "tokens/atomic/map/color/palette/blue.yml",
-      "origin": "manual"
-    },
-    {
-      "id": "color-blue-12",
-      "name": "color-blue-12",
-      "cssVariable": "--fds-g-color-blue-12",
-      "layer": "atomic",
-      "tier": "map",
-      "category": "color",
-      "type": "color",
       "value": "#002340",
       "resolvedValue": "#002340",
       "references": [],
       "referenceChain": [
-        "color-blue-12"
+        "color-blue-11"
       ],
       "source": "tokens/atomic/map/color/palette/blue.yml",
       "sourceFile": "tokens/atomic/map/color/palette/blue.yml",
@@ -759,8 +759,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#DBEDFF",
-      "resolvedValue": "#DBEDFF",
+      "value": "#C3E1FF",
+      "resolvedValue": "#C3E1FF",
       "references": [],
       "referenceChain": [
         "color-blue-2"
@@ -777,8 +777,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#C3E1FF",
-      "resolvedValue": "#C3E1FF",
+      "value": "#ADD6FF",
+      "resolvedValue": "#ADD6FF",
       "references": [],
       "referenceChain": [
         "color-blue-3"
@@ -795,8 +795,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#ADD6FF",
-      "resolvedValue": "#ADD6FF",
+      "value": "#96CBFF",
+      "resolvedValue": "#96CBFF",
       "references": [],
       "referenceChain": [
         "color-blue-4"
@@ -813,8 +813,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#96CBFF",
-      "resolvedValue": "#96CBFF",
+      "value": "#7EC0FF",
+      "resolvedValue": "#7EC0FF",
       "references": [],
       "referenceChain": [
         "color-blue-5"
@@ -831,8 +831,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#7EC0FF",
-      "resolvedValue": "#7EC0FF",
+      "value": "#64B5FF",
+      "resolvedValue": "#64B5FF",
       "references": [],
       "referenceChain": [
         "color-blue-6"
@@ -849,8 +849,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#64B5FF",
-      "resolvedValue": "#64B5FF",
+      "value": "#46A9FF",
+      "resolvedValue": "#46A9FF",
       "references": [],
       "referenceChain": [
         "color-blue-7"
@@ -867,8 +867,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#46A9FF",
-      "resolvedValue": "#46A9FF",
+      "value": "#189DFF",
+      "resolvedValue": "#189DFF",
       "references": [],
       "referenceChain": [
         "color-blue-8"
@@ -878,6 +878,24 @@
       "origin": "manual"
     },
     {
+      "id": "color-blue-8-rgb",
+      "name": "color-blue-8-rgb",
+      "cssVariable": "--fds-g-color-blue-8-rgb",
+      "layer": "atomic",
+      "tier": "map",
+      "category": "color",
+      "type": "string",
+      "value": "24, 157, 255",
+      "resolvedValue": "24, 157, 255",
+      "references": [],
+      "referenceChain": [
+        "color-blue-8-rgb"
+      ],
+      "source": "tokens/atomic/map/color/rgb.yml",
+      "sourceFile": "tokens/atomic/map/color/rgb.yml",
+      "origin": "derived"
+    },
+    {
       "id": "color-blue-9",
       "name": "color-blue-9",
       "cssVariable": "--fds-g-color-blue-9",
@@ -885,8 +903,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#189DFF",
-      "resolvedValue": "#189DFF",
+      "value": "#0080D4",
+      "resolvedValue": "#0080D4",
       "references": [],
       "referenceChain": [
         "color-blue-9"
@@ -896,22 +914,22 @@
       "origin": "manual"
     },
     {
-      "id": "color-blue-9-rgb",
-      "name": "color-blue-9-rgb",
-      "cssVariable": "--fds-g-color-blue-9-rgb",
+      "id": "color-blue-dark-0",
+      "name": "color-blue-dark-0",
+      "cssVariable": "--fds-g-color-blue-dark-0",
       "layer": "atomic",
       "tier": "map",
       "category": "color",
-      "type": "string",
-      "value": "24, 157, 255",
-      "resolvedValue": "24, 157, 255",
+      "type": "color",
+      "value": "#141B23",
+      "resolvedValue": "#141B23",
       "references": [],
       "referenceChain": [
-        "color-blue-9-rgb"
+        "color-blue-dark-0"
       ],
-      "source": "tokens/atomic/map/color/rgb.yml",
-      "sourceFile": "tokens/atomic/map/color/rgb.yml",
-      "origin": "derived"
+      "source": "tokens/atomic/map/color/dark/blue.yml",
+      "sourceFile": "tokens/atomic/map/color/dark/blue.yml",
+      "origin": "manual"
     },
     {
       "id": "color-blue-dark-1",
@@ -921,8 +939,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#141B23",
-      "resolvedValue": "#141B23",
+      "value": "#192531",
+      "resolvedValue": "#192531",
       "references": [],
       "referenceChain": [
         "color-blue-dark-1"
@@ -939,8 +957,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#4BABFF",
-      "resolvedValue": "#4BABFF",
+      "value": "#6FB9FF",
+      "resolvedValue": "#6FB9FF",
       "references": [],
       "referenceChain": [
         "color-blue-dark-10"
@@ -957,29 +975,11 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#6FB9FF",
-      "resolvedValue": "#6FB9FF",
-      "references": [],
-      "referenceChain": [
-        "color-blue-dark-11"
-      ],
-      "source": "tokens/atomic/map/color/dark/blue.yml",
-      "sourceFile": "tokens/atomic/map/color/dark/blue.yml",
-      "origin": "manual"
-    },
-    {
-      "id": "color-blue-dark-12",
-      "name": "color-blue-dark-12",
-      "cssVariable": "--fds-g-color-blue-dark-12",
-      "layer": "atomic",
-      "tier": "map",
-      "category": "color",
-      "type": "color",
       "value": "#8FC8FF",
       "resolvedValue": "#8FC8FF",
       "references": [],
       "referenceChain": [
-        "color-blue-dark-12"
+        "color-blue-dark-11"
       ],
       "source": "tokens/atomic/map/color/dark/blue.yml",
       "sourceFile": "tokens/atomic/map/color/dark/blue.yml",
@@ -993,8 +993,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#192531",
-      "resolvedValue": "#192531",
+      "value": "#1E3143",
+      "resolvedValue": "#1E3143",
       "references": [],
       "referenceChain": [
         "color-blue-dark-2"
@@ -1011,8 +1011,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#1E3143",
-      "resolvedValue": "#1E3143",
+      "value": "#223E58",
+      "resolvedValue": "#223E58",
       "references": [],
       "referenceChain": [
         "color-blue-dark-3"
@@ -1029,8 +1029,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#223E58",
-      "resolvedValue": "#223E58",
+      "value": "#244D73",
+      "resolvedValue": "#244D73",
       "references": [],
       "referenceChain": [
         "color-blue-dark-4"
@@ -1047,8 +1047,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#244D73",
-      "resolvedValue": "#244D73",
+      "value": "#235E91",
+      "resolvedValue": "#235E91",
       "references": [],
       "referenceChain": [
         "color-blue-dark-5"
@@ -1065,8 +1065,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#235E91",
-      "resolvedValue": "#235E91",
+      "value": "#1C6FB2",
+      "resolvedValue": "#1C6FB2",
       "references": [],
       "referenceChain": [
         "color-blue-dark-6"
@@ -1083,8 +1083,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#1C6FB2",
-      "resolvedValue": "#1C6FB2",
+      "value": "#1384D8",
+      "resolvedValue": "#1384D8",
       "references": [],
       "referenceChain": [
         "color-blue-dark-7"
@@ -1101,8 +1101,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#1384D8",
-      "resolvedValue": "#1384D8",
+      "value": "#189DFF",
+      "resolvedValue": "#189DFF",
       "references": [],
       "referenceChain": [
         "color-blue-dark-8"
@@ -1119,14 +1119,32 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#189DFF",
-      "resolvedValue": "#189DFF",
+      "value": "#4BABFF",
+      "resolvedValue": "#4BABFF",
       "references": [],
       "referenceChain": [
         "color-blue-dark-9"
       ],
       "source": "tokens/atomic/map/color/dark/blue.yml",
       "sourceFile": "tokens/atomic/map/color/dark/blue.yml",
+      "origin": "manual"
+    },
+    {
+      "id": "color-brand-0",
+      "name": "color-brand-0",
+      "cssVariable": "--fds-g-color-brand-0",
+      "layer": "atomic",
+      "tier": "map",
+      "category": "color",
+      "type": "color",
+      "value": "#FEF3EC",
+      "resolvedValue": "#FEF3EC",
+      "references": [],
+      "referenceChain": [
+        "color-brand-0"
+      ],
+      "source": "tokens/atomic/map/color/palette/brand.yml",
+      "sourceFile": "tokens/atomic/map/color/palette/brand.yml",
       "origin": "manual"
     },
     {
@@ -1137,8 +1155,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FEF3EC",
-      "resolvedValue": "#FEF3EC",
+      "value": "#FFE6D9",
+      "resolvedValue": "#FFE6D9",
       "references": [],
       "referenceChain": [
         "color-brand-1"
@@ -1155,8 +1173,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#D26200",
-      "resolvedValue": "#D26200",
+      "value": "#763400",
+      "resolvedValue": "#763400",
       "references": [],
       "referenceChain": [
         "color-brand-10"
@@ -1173,29 +1191,11 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#763400",
-      "resolvedValue": "#763400",
-      "references": [],
-      "referenceChain": [
-        "color-brand-11"
-      ],
-      "source": "tokens/atomic/map/color/palette/brand.yml",
-      "sourceFile": "tokens/atomic/map/color/palette/brand.yml",
-      "origin": "manual"
-    },
-    {
-      "id": "color-brand-12",
-      "name": "color-brand-12",
-      "cssVariable": "--fds-g-color-brand-12",
-      "layer": "atomic",
-      "tier": "map",
-      "category": "color",
-      "type": "color",
       "value": "#3A1600",
       "resolvedValue": "#3A1600",
       "references": [],
       "referenceChain": [
-        "color-brand-12"
+        "color-brand-11"
       ],
       "source": "tokens/atomic/map/color/palette/brand.yml",
       "sourceFile": "tokens/atomic/map/color/palette/brand.yml",
@@ -1209,8 +1209,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FFE6D9",
-      "resolvedValue": "#FFE6D9",
+      "value": "#FFD8C3",
+      "resolvedValue": "#FFD8C3",
       "references": [],
       "referenceChain": [
         "color-brand-2"
@@ -1227,8 +1227,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FFD8C3",
-      "resolvedValue": "#FFD8C3",
+      "value": "#FFCAAD",
+      "resolvedValue": "#FFCAAD",
       "references": [],
       "referenceChain": [
         "color-brand-3"
@@ -1245,8 +1245,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FFCAAD",
-      "resolvedValue": "#FFCAAD",
+      "value": "#FFBC97",
+      "resolvedValue": "#FFBC97",
       "references": [],
       "referenceChain": [
         "color-brand-4"
@@ -1263,8 +1263,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FFBC97",
-      "resolvedValue": "#FFBC97",
+      "value": "#FFAD80",
+      "resolvedValue": "#FFAD80",
       "references": [],
       "referenceChain": [
         "color-brand-5"
@@ -1281,8 +1281,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FFAD80",
-      "resolvedValue": "#FFAD80",
+      "value": "#FF9E66",
+      "resolvedValue": "#FF9E66",
       "references": [],
       "referenceChain": [
         "color-brand-6"
@@ -1299,8 +1299,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FF9E66",
-      "resolvedValue": "#FF9E66",
+      "value": "#FF8E48",
+      "resolvedValue": "#FF8E48",
       "references": [],
       "referenceChain": [
         "color-brand-7"
@@ -1317,8 +1317,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FF8E48",
-      "resolvedValue": "#FF8E48",
+      "value": "#FF7C19",
+      "resolvedValue": "#FF7C19",
       "references": [],
       "referenceChain": [
         "color-brand-8"
@@ -1328,27 +1328,9 @@
       "origin": "manual"
     },
     {
-      "id": "color-brand-9",
-      "name": "color-brand-9",
-      "cssVariable": "--fds-g-color-brand-9",
-      "layer": "atomic",
-      "tier": "map",
-      "category": "color",
-      "type": "color",
-      "value": "#FF7C19",
-      "resolvedValue": "#FF7C19",
-      "references": [],
-      "referenceChain": [
-        "color-brand-9"
-      ],
-      "source": "tokens/atomic/map/color/palette/brand.yml",
-      "sourceFile": "tokens/atomic/map/color/palette/brand.yml",
-      "origin": "manual"
-    },
-    {
-      "id": "color-brand-9-rgb",
-      "name": "color-brand-9-rgb",
-      "cssVariable": "--fds-g-color-brand-9-rgb",
+      "id": "color-brand-8-rgb",
+      "name": "color-brand-8-rgb",
+      "cssVariable": "--fds-g-color-brand-8-rgb",
       "layer": "atomic",
       "tier": "map",
       "category": "color",
@@ -1357,11 +1339,29 @@
       "resolvedValue": "255, 124, 25",
       "references": [],
       "referenceChain": [
-        "color-brand-9-rgb"
+        "color-brand-8-rgb"
       ],
       "source": "tokens/atomic/map/color/rgb.yml",
       "sourceFile": "tokens/atomic/map/color/rgb.yml",
       "origin": "derived"
+    },
+    {
+      "id": "color-brand-9",
+      "name": "color-brand-9",
+      "cssVariable": "--fds-g-color-brand-9",
+      "layer": "atomic",
+      "tier": "map",
+      "category": "color",
+      "type": "color",
+      "value": "#D26200",
+      "resolvedValue": "#D26200",
+      "references": [],
+      "referenceChain": [
+        "color-brand-9"
+      ],
+      "source": "tokens/atomic/map/color/palette/brand.yml",
+      "sourceFile": "tokens/atomic/map/color/palette/brand.yml",
+      "origin": "manual"
     },
     {
       "id": "color-brand-vivid",
@@ -1382,6 +1382,24 @@
       "origin": "manual"
     },
     {
+      "id": "color-gray-1",
+      "name": "color-gray-1",
+      "cssVariable": "--fds-g-color-gray-1",
+      "layer": "atomic",
+      "tier": "map",
+      "category": "color",
+      "type": "color",
+      "value": "#FFFFFF",
+      "resolvedValue": "#FFFFFF",
+      "references": [],
+      "referenceChain": [
+        "color-gray-1"
+      ],
+      "source": "tokens/atomic/map/color/gray.yml",
+      "sourceFile": "tokens/atomic/map/color/gray.yml",
+      "origin": "manual"
+    },
+    {
       "id": "color-gray-10",
       "name": "color-gray-10",
       "cssVariable": "--fds-g-color-gray-10",
@@ -1389,8 +1407,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FFFFFF",
-      "resolvedValue": "#FFFFFF",
+      "value": "#888685",
+      "resolvedValue": "#888685",
       "references": [],
       "referenceChain": [
         "color-gray-10"
@@ -1400,27 +1418,9 @@
       "origin": "manual"
     },
     {
-      "id": "color-gray-100",
-      "name": "color-gray-100",
-      "cssVariable": "--fds-g-color-gray-100",
-      "layer": "atomic",
-      "tier": "map",
-      "category": "color",
-      "type": "color",
-      "value": "#888685",
-      "resolvedValue": "#888685",
-      "references": [],
-      "referenceChain": [
-        "color-gray-100"
-      ],
-      "source": "tokens/atomic/map/color/gray.yml",
-      "sourceFile": "tokens/atomic/map/color/gray.yml",
-      "origin": "manual"
-    },
-    {
-      "id": "color-gray-110",
-      "name": "color-gray-110",
-      "cssVariable": "--fds-g-color-gray-110",
+      "id": "color-gray-11",
+      "name": "color-gray-11",
+      "cssVariable": "--fds-g-color-gray-11",
       "layer": "atomic",
       "tier": "map",
       "category": "color",
@@ -1429,16 +1429,16 @@
       "resolvedValue": "#797675",
       "references": [],
       "referenceChain": [
-        "color-gray-110"
+        "color-gray-11"
       ],
       "source": "tokens/atomic/map/color/gray.yml",
       "sourceFile": "tokens/atomic/map/color/gray.yml",
       "origin": "manual"
     },
     {
-      "id": "color-gray-120",
-      "name": "color-gray-120",
-      "cssVariable": "--fds-g-color-gray-120",
+      "id": "color-gray-12",
+      "name": "color-gray-12",
+      "cssVariable": "--fds-g-color-gray-12",
       "layer": "atomic",
       "tier": "map",
       "category": "color",
@@ -1447,16 +1447,16 @@
       "resolvedValue": "#6A6765",
       "references": [],
       "referenceChain": [
-        "color-gray-120"
+        "color-gray-12"
       ],
       "source": "tokens/atomic/map/color/gray.yml",
       "sourceFile": "tokens/atomic/map/color/gray.yml",
       "origin": "manual"
     },
     {
-      "id": "color-gray-130",
-      "name": "color-gray-130",
-      "cssVariable": "--fds-g-color-gray-130",
+      "id": "color-gray-13",
+      "name": "color-gray-13",
+      "cssVariable": "--fds-g-color-gray-13",
       "layer": "atomic",
       "tier": "map",
       "category": "color",
@@ -1465,16 +1465,16 @@
       "resolvedValue": "#5B5856",
       "references": [],
       "referenceChain": [
-        "color-gray-130"
+        "color-gray-13"
       ],
       "source": "tokens/atomic/map/color/gray.yml",
       "sourceFile": "tokens/atomic/map/color/gray.yml",
       "origin": "manual"
     },
     {
-      "id": "color-gray-140",
-      "name": "color-gray-140",
-      "cssVariable": "--fds-g-color-gray-140",
+      "id": "color-gray-14",
+      "name": "color-gray-14",
+      "cssVariable": "--fds-g-color-gray-14",
       "layer": "atomic",
       "tier": "map",
       "category": "color",
@@ -1483,16 +1483,16 @@
       "resolvedValue": "#4D4A48",
       "references": [],
       "referenceChain": [
-        "color-gray-140"
+        "color-gray-14"
       ],
       "source": "tokens/atomic/map/color/gray.yml",
       "sourceFile": "tokens/atomic/map/color/gray.yml",
       "origin": "manual"
     },
     {
-      "id": "color-gray-150",
-      "name": "color-gray-150",
-      "cssVariable": "--fds-g-color-gray-150",
+      "id": "color-gray-15",
+      "name": "color-gray-15",
+      "cssVariable": "--fds-g-color-gray-15",
       "layer": "atomic",
       "tier": "map",
       "category": "color",
@@ -1501,16 +1501,16 @@
       "resolvedValue": "#3F3C3A",
       "references": [],
       "referenceChain": [
-        "color-gray-150"
+        "color-gray-15"
       ],
       "source": "tokens/atomic/map/color/gray.yml",
       "sourceFile": "tokens/atomic/map/color/gray.yml",
       "origin": "manual"
     },
     {
-      "id": "color-gray-160",
-      "name": "color-gray-160",
-      "cssVariable": "--fds-g-color-gray-160",
+      "id": "color-gray-16",
+      "name": "color-gray-16",
+      "cssVariable": "--fds-g-color-gray-16",
       "layer": "atomic",
       "tier": "map",
       "category": "color",
@@ -1519,16 +1519,16 @@
       "resolvedValue": "#322E2C",
       "references": [],
       "referenceChain": [
-        "color-gray-160"
+        "color-gray-16"
       ],
       "source": "tokens/atomic/map/color/gray.yml",
       "sourceFile": "tokens/atomic/map/color/gray.yml",
       "origin": "manual"
     },
     {
-      "id": "color-gray-170",
-      "name": "color-gray-170",
-      "cssVariable": "--fds-g-color-gray-170",
+      "id": "color-gray-17",
+      "name": "color-gray-17",
+      "cssVariable": "--fds-g-color-gray-17",
       "layer": "atomic",
       "tier": "map",
       "category": "color",
@@ -1537,16 +1537,16 @@
       "resolvedValue": "#25211F",
       "references": [],
       "referenceChain": [
-        "color-gray-170"
+        "color-gray-17"
       ],
       "source": "tokens/atomic/map/color/gray.yml",
       "sourceFile": "tokens/atomic/map/color/gray.yml",
       "origin": "manual"
     },
     {
-      "id": "color-gray-180",
-      "name": "color-gray-180",
-      "cssVariable": "--fds-g-color-gray-180",
+      "id": "color-gray-18",
+      "name": "color-gray-18",
+      "cssVariable": "--fds-g-color-gray-18",
       "layer": "atomic",
       "tier": "map",
       "category": "color",
@@ -1555,16 +1555,16 @@
       "resolvedValue": "#1B1715",
       "references": [],
       "referenceChain": [
-        "color-gray-180"
+        "color-gray-18"
       ],
       "source": "tokens/atomic/map/color/gray.yml",
       "sourceFile": "tokens/atomic/map/color/gray.yml",
       "origin": "manual"
     },
     {
-      "id": "color-gray-190",
-      "name": "color-gray-190",
-      "cssVariable": "--fds-g-color-gray-190",
+      "id": "color-gray-19",
+      "name": "color-gray-19",
+      "cssVariable": "--fds-g-color-gray-19",
       "layer": "atomic",
       "tier": "map",
       "category": "color",
@@ -1573,7 +1573,25 @@
       "resolvedValue": "#110D0B",
       "references": [],
       "referenceChain": [
-        "color-gray-190"
+        "color-gray-19"
+      ],
+      "source": "tokens/atomic/map/color/gray.yml",
+      "sourceFile": "tokens/atomic/map/color/gray.yml",
+      "origin": "manual"
+    },
+    {
+      "id": "color-gray-2",
+      "name": "color-gray-2",
+      "cssVariable": "--fds-g-color-gray-2",
+      "layer": "atomic",
+      "tier": "map",
+      "category": "color",
+      "type": "color",
+      "value": "#F9F9F9",
+      "resolvedValue": "#F9F9F9",
+      "references": [],
+      "referenceChain": [
+        "color-gray-2"
       ],
       "source": "tokens/atomic/map/color/gray.yml",
       "sourceFile": "tokens/atomic/map/color/gray.yml",
@@ -1587,8 +1605,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#F9F9F9",
-      "resolvedValue": "#F9F9F9",
+      "value": "#080504",
+      "resolvedValue": "#080504",
       "references": [],
       "referenceChain": [
         "color-gray-20"
@@ -1598,27 +1616,9 @@
       "origin": "manual"
     },
     {
-      "id": "color-gray-200",
-      "name": "color-gray-200",
-      "cssVariable": "--fds-g-color-gray-200",
-      "layer": "atomic",
-      "tier": "map",
-      "category": "color",
-      "type": "color",
-      "value": "#080504",
-      "resolvedValue": "#080504",
-      "references": [],
-      "referenceChain": [
-        "color-gray-200"
-      ],
-      "source": "tokens/atomic/map/color/gray.yml",
-      "sourceFile": "tokens/atomic/map/color/gray.yml",
-      "origin": "manual"
-    },
-    {
-      "id": "color-gray-30",
-      "name": "color-gray-30",
-      "cssVariable": "--fds-g-color-gray-30",
+      "id": "color-gray-3",
+      "name": "color-gray-3",
+      "cssVariable": "--fds-g-color-gray-3",
       "layer": "atomic",
       "tier": "map",
       "category": "color",
@@ -1627,16 +1627,16 @@
       "resolvedValue": "#F1F0F0",
       "references": [],
       "referenceChain": [
-        "color-gray-30"
+        "color-gray-3"
       ],
       "source": "tokens/atomic/map/color/gray.yml",
       "sourceFile": "tokens/atomic/map/color/gray.yml",
       "origin": "manual"
     },
     {
-      "id": "color-gray-40",
-      "name": "color-gray-40",
-      "cssVariable": "--fds-g-color-gray-40",
+      "id": "color-gray-4",
+      "name": "color-gray-4",
+      "cssVariable": "--fds-g-color-gray-4",
       "layer": "atomic",
       "tier": "map",
       "category": "color",
@@ -1645,16 +1645,16 @@
       "resolvedValue": "#E5E5E4",
       "references": [],
       "referenceChain": [
-        "color-gray-40"
+        "color-gray-4"
       ],
       "source": "tokens/atomic/map/color/gray.yml",
       "sourceFile": "tokens/atomic/map/color/gray.yml",
       "origin": "manual"
     },
     {
-      "id": "color-gray-50",
-      "name": "color-gray-50",
-      "cssVariable": "--fds-g-color-gray-50",
+      "id": "color-gray-5",
+      "name": "color-gray-5",
+      "cssVariable": "--fds-g-color-gray-5",
       "layer": "atomic",
       "tier": "map",
       "category": "color",
@@ -1663,16 +1663,16 @@
       "resolvedValue": "#D7D6D6",
       "references": [],
       "referenceChain": [
-        "color-gray-50"
+        "color-gray-5"
       ],
       "source": "tokens/atomic/map/color/gray.yml",
       "sourceFile": "tokens/atomic/map/color/gray.yml",
       "origin": "manual"
     },
     {
-      "id": "color-gray-60",
-      "name": "color-gray-60",
-      "cssVariable": "--fds-g-color-gray-60",
+      "id": "color-gray-6",
+      "name": "color-gray-6",
+      "cssVariable": "--fds-g-color-gray-6",
       "layer": "atomic",
       "tier": "map",
       "category": "color",
@@ -1681,16 +1681,16 @@
       "resolvedValue": "#C9C8C7",
       "references": [],
       "referenceChain": [
-        "color-gray-60"
+        "color-gray-6"
       ],
       "source": "tokens/atomic/map/color/gray.yml",
       "sourceFile": "tokens/atomic/map/color/gray.yml",
       "origin": "manual"
     },
     {
-      "id": "color-gray-70",
-      "name": "color-gray-70",
-      "cssVariable": "--fds-g-color-gray-70",
+      "id": "color-gray-7",
+      "name": "color-gray-7",
+      "cssVariable": "--fds-g-color-gray-7",
       "layer": "atomic",
       "tier": "map",
       "category": "color",
@@ -1699,16 +1699,16 @@
       "resolvedValue": "#B8B7B6",
       "references": [],
       "referenceChain": [
-        "color-gray-70"
+        "color-gray-7"
       ],
       "source": "tokens/atomic/map/color/gray.yml",
       "sourceFile": "tokens/atomic/map/color/gray.yml",
       "origin": "manual"
     },
     {
-      "id": "color-gray-80",
-      "name": "color-gray-80",
-      "cssVariable": "--fds-g-color-gray-80",
+      "id": "color-gray-8",
+      "name": "color-gray-8",
+      "cssVariable": "--fds-g-color-gray-8",
       "layer": "atomic",
       "tier": "map",
       "category": "color",
@@ -1717,16 +1717,16 @@
       "resolvedValue": "#A8A6A5",
       "references": [],
       "referenceChain": [
-        "color-gray-80"
+        "color-gray-8"
       ],
       "source": "tokens/atomic/map/color/gray.yml",
       "sourceFile": "tokens/atomic/map/color/gray.yml",
       "origin": "manual"
     },
     {
-      "id": "color-gray-90",
-      "name": "color-gray-90",
-      "cssVariable": "--fds-g-color-gray-90",
+      "id": "color-gray-9",
+      "name": "color-gray-9",
+      "cssVariable": "--fds-g-color-gray-9",
       "layer": "atomic",
       "tier": "map",
       "category": "color",
@@ -1735,10 +1735,28 @@
       "resolvedValue": "#989695",
       "references": [],
       "referenceChain": [
-        "color-gray-90"
+        "color-gray-9"
       ],
       "source": "tokens/atomic/map/color/gray.yml",
       "sourceFile": "tokens/atomic/map/color/gray.yml",
+      "origin": "manual"
+    },
+    {
+      "id": "color-green-0",
+      "name": "color-green-0",
+      "cssVariable": "--fds-g-color-green-0",
+      "layer": "atomic",
+      "tier": "map",
+      "category": "color",
+      "type": "color",
+      "value": "#EEF8F1",
+      "resolvedValue": "#EEF8F1",
+      "references": [],
+      "referenceChain": [
+        "color-green-0"
+      ],
+      "source": "tokens/atomic/map/color/palette/green.yml",
+      "sourceFile": "tokens/atomic/map/color/palette/green.yml",
       "origin": "manual"
     },
     {
@@ -1749,8 +1767,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#EEF8F1",
-      "resolvedValue": "#EEF8F1",
+      "value": "#DDF3E3",
+      "resolvedValue": "#DDF3E3",
       "references": [],
       "referenceChain": [
         "color-green-1"
@@ -1767,8 +1785,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#14A25C",
-      "resolvedValue": "#14A25C",
+      "value": "#005A2F",
+      "resolvedValue": "#005A2F",
       "references": [],
       "referenceChain": [
         "color-green-10"
@@ -1785,29 +1803,11 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#005A2F",
-      "resolvedValue": "#005A2F",
-      "references": [],
-      "referenceChain": [
-        "color-green-11"
-      ],
-      "source": "tokens/atomic/map/color/palette/green.yml",
-      "sourceFile": "tokens/atomic/map/color/palette/green.yml",
-      "origin": "manual"
-    },
-    {
-      "id": "color-green-12",
-      "name": "color-green-12",
-      "cssVariable": "--fds-g-color-green-12",
-      "layer": "atomic",
-      "tier": "map",
-      "category": "color",
-      "type": "color",
       "value": "#002A13",
       "resolvedValue": "#002A13",
       "references": [],
       "referenceChain": [
-        "color-green-12"
+        "color-green-11"
       ],
       "source": "tokens/atomic/map/color/palette/green.yml",
       "sourceFile": "tokens/atomic/map/color/palette/green.yml",
@@ -1821,8 +1821,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#DDF3E3",
-      "resolvedValue": "#DDF3E3",
+      "value": "#C8ECD3",
+      "resolvedValue": "#C8ECD3",
       "references": [],
       "referenceChain": [
         "color-green-2"
@@ -1839,8 +1839,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#C8ECD3",
-      "resolvedValue": "#C8ECD3",
+      "value": "#B3E7C3",
+      "resolvedValue": "#B3E7C3",
       "references": [],
       "referenceChain": [
         "color-green-3"
@@ -1857,8 +1857,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#B3E7C3",
-      "resolvedValue": "#B3E7C3",
+      "value": "#9BE2B2",
+      "resolvedValue": "#9BE2B2",
       "references": [],
       "referenceChain": [
         "color-green-4"
@@ -1875,8 +1875,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#9BE2B2",
-      "resolvedValue": "#9BE2B2",
+      "value": "#82DCA1",
+      "resolvedValue": "#82DCA1",
       "references": [],
       "referenceChain": [
         "color-green-5"
@@ -1893,8 +1893,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#82DCA1",
-      "resolvedValue": "#82DCA1",
+      "value": "#69D692",
+      "resolvedValue": "#69D692",
       "references": [],
       "referenceChain": [
         "color-green-6"
@@ -1911,8 +1911,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#69D692",
-      "resolvedValue": "#69D692",
+      "value": "#4DCF83",
+      "resolvedValue": "#4DCF83",
       "references": [],
       "referenceChain": [
         "color-green-7"
@@ -1929,8 +1929,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#4DCF83",
-      "resolvedValue": "#4DCF83",
+      "value": "#30C776",
+      "resolvedValue": "#30C776",
       "references": [],
       "referenceChain": [
         "color-green-8"
@@ -1940,6 +1940,24 @@
       "origin": "manual"
     },
     {
+      "id": "color-green-8-rgb",
+      "name": "color-green-8-rgb",
+      "cssVariable": "--fds-g-color-green-8-rgb",
+      "layer": "atomic",
+      "tier": "map",
+      "category": "color",
+      "type": "string",
+      "value": "48, 199, 118",
+      "resolvedValue": "48, 199, 118",
+      "references": [],
+      "referenceChain": [
+        "color-green-8-rgb"
+      ],
+      "source": "tokens/atomic/map/color/rgb.yml",
+      "sourceFile": "tokens/atomic/map/color/rgb.yml",
+      "origin": "derived"
+    },
+    {
       "id": "color-green-9",
       "name": "color-green-9",
       "cssVariable": "--fds-g-color-green-9",
@@ -1947,8 +1965,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#30C776",
-      "resolvedValue": "#30C776",
+      "value": "#14A25C",
+      "resolvedValue": "#14A25C",
       "references": [],
       "referenceChain": [
         "color-green-9"
@@ -1958,22 +1976,22 @@
       "origin": "manual"
     },
     {
-      "id": "color-green-9-rgb",
-      "name": "color-green-9-rgb",
-      "cssVariable": "--fds-g-color-green-9-rgb",
+      "id": "color-green-dark-0",
+      "name": "color-green-dark-0",
+      "cssVariable": "--fds-g-color-green-dark-0",
       "layer": "atomic",
       "tier": "map",
       "category": "color",
-      "type": "string",
-      "value": "48, 199, 118",
-      "resolvedValue": "48, 199, 118",
+      "type": "color",
+      "value": "#151E18",
+      "resolvedValue": "#151E18",
       "references": [],
       "referenceChain": [
-        "color-green-9-rgb"
+        "color-green-dark-0"
       ],
-      "source": "tokens/atomic/map/color/rgb.yml",
-      "sourceFile": "tokens/atomic/map/color/rgb.yml",
-      "origin": "derived"
+      "source": "tokens/atomic/map/color/dark/green.yml",
+      "sourceFile": "tokens/atomic/map/color/dark/green.yml",
+      "origin": "manual"
     },
     {
       "id": "color-green-dark-1",
@@ -1983,8 +2001,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#151E18",
-      "resolvedValue": "#151E18",
+      "value": "#1C2A20",
+      "resolvedValue": "#1C2A20",
       "references": [],
       "referenceChain": [
         "color-green-dark-1"
@@ -2001,8 +2019,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#51D085",
-      "resolvedValue": "#51D085",
+      "value": "#76D899",
+      "resolvedValue": "#76D899",
       "references": [],
       "referenceChain": [
         "color-green-dark-10"
@@ -2019,29 +2037,11 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#76D899",
-      "resolvedValue": "#76D899",
-      "references": [],
-      "referenceChain": [
-        "color-green-dark-11"
-      ],
-      "source": "tokens/atomic/map/color/dark/green.yml",
-      "sourceFile": "tokens/atomic/map/color/dark/green.yml",
-      "origin": "manual"
-    },
-    {
-      "id": "color-green-dark-12",
-      "name": "color-green-dark-12",
-      "cssVariable": "--fds-g-color-green-dark-12",
-      "layer": "atomic",
-      "tier": "map",
-      "category": "color",
-      "type": "color",
       "value": "#98E0AF",
       "resolvedValue": "#98E0AF",
       "references": [],
       "referenceChain": [
-        "color-green-dark-12"
+        "color-green-dark-11"
       ],
       "source": "tokens/atomic/map/color/dark/green.yml",
       "sourceFile": "tokens/atomic/map/color/dark/green.yml",
@@ -2055,8 +2055,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#1C2A20",
-      "resolvedValue": "#1C2A20",
+      "value": "#223829",
+      "resolvedValue": "#223829",
       "references": [],
       "referenceChain": [
         "color-green-dark-2"
@@ -2073,8 +2073,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#223829",
-      "resolvedValue": "#223829",
+      "value": "#284934",
+      "resolvedValue": "#284934",
       "references": [],
       "referenceChain": [
         "color-green-dark-3"
@@ -2091,8 +2091,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#284934",
-      "resolvedValue": "#284934",
+      "value": "#2C5D3E",
+      "resolvedValue": "#2C5D3E",
       "references": [],
       "referenceChain": [
         "color-green-dark-4"
@@ -2109,8 +2109,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#2C5D3E",
-      "resolvedValue": "#2C5D3E",
+      "value": "#2D7449",
+      "resolvedValue": "#2D7449",
       "references": [],
       "referenceChain": [
         "color-green-dark-5"
@@ -2127,8 +2127,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#2D7449",
-      "resolvedValue": "#2D7449",
+      "value": "#2A8B54",
+      "resolvedValue": "#2A8B54",
       "references": [],
       "referenceChain": [
         "color-green-dark-6"
@@ -2145,8 +2145,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#2A8B54",
-      "resolvedValue": "#2A8B54",
+      "value": "#27A762",
+      "resolvedValue": "#27A762",
       "references": [],
       "referenceChain": [
         "color-green-dark-7"
@@ -2163,8 +2163,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#27A762",
-      "resolvedValue": "#27A762",
+      "value": "#30C776",
+      "resolvedValue": "#30C776",
       "references": [],
       "referenceChain": [
         "color-green-dark-8"
@@ -2181,14 +2181,32 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#30C776",
-      "resolvedValue": "#30C776",
+      "value": "#51D085",
+      "resolvedValue": "#51D085",
       "references": [],
       "referenceChain": [
         "color-green-dark-9"
       ],
       "source": "tokens/atomic/map/color/dark/green.yml",
       "sourceFile": "tokens/atomic/map/color/dark/green.yml",
+      "origin": "manual"
+    },
+    {
+      "id": "color-indigo-0",
+      "name": "color-indigo-0",
+      "cssVariable": "--fds-g-color-indigo-0",
+      "layer": "atomic",
+      "tier": "map",
+      "category": "color",
+      "type": "color",
+      "value": "#F0F5FF",
+      "resolvedValue": "#F0F5FF",
+      "references": [],
+      "referenceChain": [
+        "color-indigo-0"
+      ],
+      "source": "tokens/atomic/map/color/palette/indigo.yml",
+      "sourceFile": "tokens/atomic/map/color/palette/indigo.yml",
       "origin": "manual"
     },
     {
@@ -2199,8 +2217,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#F0F5FF",
-      "resolvedValue": "#F0F5FF",
+      "value": "#D9E7FF",
+      "resolvedValue": "#D9E7FF",
       "references": [],
       "referenceChain": [
         "color-indigo-1"
@@ -2217,8 +2235,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#0158D9",
-      "resolvedValue": "#0158D9",
+      "value": "#003589",
+      "resolvedValue": "#003589",
       "references": [],
       "referenceChain": [
         "color-indigo-10"
@@ -2235,29 +2253,11 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#003589",
-      "resolvedValue": "#003589",
-      "references": [],
-      "referenceChain": [
-        "color-indigo-11"
-      ],
-      "source": "tokens/atomic/map/color/palette/indigo.yml",
-      "sourceFile": "tokens/atomic/map/color/palette/indigo.yml",
-      "origin": "manual"
-    },
-    {
-      "id": "color-indigo-12",
-      "name": "color-indigo-12",
-      "cssVariable": "--fds-g-color-indigo-12",
-      "layer": "atomic",
-      "tier": "map",
-      "category": "color",
-      "type": "color",
       "value": "#001C52",
       "resolvedValue": "#001C52",
       "references": [],
       "referenceChain": [
-        "color-indigo-12"
+        "color-indigo-11"
       ],
       "source": "tokens/atomic/map/color/palette/indigo.yml",
       "sourceFile": "tokens/atomic/map/color/palette/indigo.yml",
@@ -2271,8 +2271,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#D9E7FF",
-      "resolvedValue": "#D9E7FF",
+      "value": "#BDD6FF",
+      "resolvedValue": "#BDD6FF",
       "references": [],
       "referenceChain": [
         "color-indigo-2"
@@ -2289,8 +2289,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#BDD6FF",
-      "resolvedValue": "#BDD6FF",
+      "value": "#A4C6FF",
+      "resolvedValue": "#A4C6FF",
       "references": [],
       "referenceChain": [
         "color-indigo-3"
@@ -2307,8 +2307,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#A4C6FF",
-      "resolvedValue": "#A4C6FF",
+      "value": "#8AB6FF",
+      "resolvedValue": "#8AB6FF",
       "references": [],
       "referenceChain": [
         "color-indigo-4"
@@ -2325,8 +2325,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#8AB6FF",
-      "resolvedValue": "#8AB6FF",
+      "value": "#70A5FF",
+      "resolvedValue": "#70A5FF",
       "references": [],
       "referenceChain": [
         "color-indigo-5"
@@ -2343,8 +2343,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#70A5FF",
-      "resolvedValue": "#70A5FF",
+      "value": "#5593FF",
+      "resolvedValue": "#5593FF",
       "references": [],
       "referenceChain": [
         "color-indigo-6"
@@ -2361,8 +2361,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#5593FF",
-      "resolvedValue": "#5593FF",
+      "value": "#3781FF",
+      "resolvedValue": "#3781FF",
       "references": [],
       "referenceChain": [
         "color-indigo-7"
@@ -2379,8 +2379,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#3781FF",
-      "resolvedValue": "#3781FF",
+      "value": "#0C6CFF",
+      "resolvedValue": "#0C6CFF",
       "references": [],
       "referenceChain": [
         "color-indigo-8"
@@ -2390,6 +2390,24 @@
       "origin": "manual"
     },
     {
+      "id": "color-indigo-8-rgb",
+      "name": "color-indigo-8-rgb",
+      "cssVariable": "--fds-g-color-indigo-8-rgb",
+      "layer": "atomic",
+      "tier": "map",
+      "category": "color",
+      "type": "string",
+      "value": "12, 108, 255",
+      "resolvedValue": "12, 108, 255",
+      "references": [],
+      "referenceChain": [
+        "color-indigo-8-rgb"
+      ],
+      "source": "tokens/atomic/map/color/rgb.yml",
+      "sourceFile": "tokens/atomic/map/color/rgb.yml",
+      "origin": "derived"
+    },
+    {
       "id": "color-indigo-9",
       "name": "color-indigo-9",
       "cssVariable": "--fds-g-color-indigo-9",
@@ -2397,8 +2415,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#0C6CFF",
-      "resolvedValue": "#0C6CFF",
+      "value": "#0158D9",
+      "resolvedValue": "#0158D9",
       "references": [],
       "referenceChain": [
         "color-indigo-9"
@@ -2408,22 +2426,22 @@
       "origin": "manual"
     },
     {
-      "id": "color-indigo-9-rgb",
-      "name": "color-indigo-9-rgb",
-      "cssVariable": "--fds-g-color-indigo-9-rgb",
+      "id": "color-indigo-dark-0",
+      "name": "color-indigo-dark-0",
+      "cssVariable": "--fds-g-color-indigo-dark-0",
       "layer": "atomic",
       "tier": "map",
       "category": "color",
-      "type": "string",
-      "value": "12, 108, 255",
-      "resolvedValue": "12, 108, 255",
+      "type": "color",
+      "value": "#121924",
+      "resolvedValue": "#121924",
       "references": [],
       "referenceChain": [
-        "color-indigo-9-rgb"
+        "color-indigo-dark-0"
       ],
-      "source": "tokens/atomic/map/color/rgb.yml",
-      "sourceFile": "tokens/atomic/map/color/rgb.yml",
-      "origin": "derived"
+      "source": "tokens/atomic/map/color/dark/indigo.yml",
+      "sourceFile": "tokens/atomic/map/color/dark/indigo.yml",
+      "origin": "manual"
     },
     {
       "id": "color-indigo-dark-1",
@@ -2433,8 +2451,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#121924",
-      "resolvedValue": "#121924",
+      "value": "#162032",
+      "resolvedValue": "#162032",
       "references": [],
       "referenceChain": [
         "color-indigo-dark-1"
@@ -2451,8 +2469,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#3B83FF",
-      "resolvedValue": "#3B83FF",
+      "value": "#5E99FF",
+      "resolvedValue": "#5E99FF",
       "references": [],
       "referenceChain": [
         "color-indigo-dark-10"
@@ -2469,29 +2487,11 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#5E99FF",
-      "resolvedValue": "#5E99FF",
-      "references": [],
-      "referenceChain": [
-        "color-indigo-dark-11"
-      ],
-      "source": "tokens/atomic/map/color/dark/indigo.yml",
-      "sourceFile": "tokens/atomic/map/color/dark/indigo.yml",
-      "origin": "manual"
-    },
-    {
-      "id": "color-indigo-dark-12",
-      "name": "color-indigo-dark-12",
-      "cssVariable": "--fds-g-color-indigo-dark-12",
-      "layer": "atomic",
-      "tier": "map",
-      "category": "color",
-      "type": "color",
       "value": "#80AFFF",
       "resolvedValue": "#80AFFF",
       "references": [],
       "referenceChain": [
-        "color-indigo-dark-12"
+        "color-indigo-dark-11"
       ],
       "source": "tokens/atomic/map/color/dark/indigo.yml",
       "sourceFile": "tokens/atomic/map/color/dark/indigo.yml",
@@ -2505,8 +2505,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#162032",
-      "resolvedValue": "#162032",
+      "value": "#192843",
+      "resolvedValue": "#192843",
       "references": [],
       "referenceChain": [
         "color-indigo-dark-2"
@@ -2523,8 +2523,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#192843",
-      "resolvedValue": "#192843",
+      "value": "#1B3258",
+      "resolvedValue": "#1B3258",
       "references": [],
       "referenceChain": [
         "color-indigo-dark-3"
@@ -2541,8 +2541,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#1B3258",
-      "resolvedValue": "#1B3258",
+      "value": "#1B3B73",
+      "resolvedValue": "#1B3B73",
       "references": [],
       "referenceChain": [
         "color-indigo-dark-4"
@@ -2559,8 +2559,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#1B3B73",
-      "resolvedValue": "#1B3B73",
+      "value": "#194692",
+      "resolvedValue": "#194692",
       "references": [],
       "referenceChain": [
         "color-indigo-dark-5"
@@ -2577,8 +2577,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#194692",
-      "resolvedValue": "#194692",
+      "value": "#1350B4",
+      "resolvedValue": "#1350B4",
       "references": [],
       "referenceChain": [
         "color-indigo-dark-6"
@@ -2595,8 +2595,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#1350B4",
-      "resolvedValue": "#1350B4",
+      "value": "#0B5CD9",
+      "resolvedValue": "#0B5CD9",
       "references": [],
       "referenceChain": [
         "color-indigo-dark-7"
@@ -2613,8 +2613,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#0B5CD9",
-      "resolvedValue": "#0B5CD9",
+      "value": "#0C6CFF",
+      "resolvedValue": "#0C6CFF",
       "references": [],
       "referenceChain": [
         "color-indigo-dark-8"
@@ -2631,14 +2631,32 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#0C6CFF",
-      "resolvedValue": "#0C6CFF",
+      "value": "#3B83FF",
+      "resolvedValue": "#3B83FF",
       "references": [],
       "referenceChain": [
         "color-indigo-dark-9"
       ],
       "source": "tokens/atomic/map/color/dark/indigo.yml",
       "sourceFile": "tokens/atomic/map/color/dark/indigo.yml",
+      "origin": "manual"
+    },
+    {
+      "id": "color-magenta-0",
+      "name": "color-magenta-0",
+      "cssVariable": "--fds-g-color-magenta-0",
+      "layer": "atomic",
+      "tier": "map",
+      "category": "color",
+      "type": "color",
+      "value": "#FFF1F2",
+      "resolvedValue": "#FFF1F2",
+      "references": [],
+      "referenceChain": [
+        "color-magenta-0"
+      ],
+      "source": "tokens/atomic/map/color/palette/magenta.yml",
+      "sourceFile": "tokens/atomic/map/color/palette/magenta.yml",
       "origin": "manual"
     },
     {
@@ -2649,8 +2667,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FFF1F2",
-      "resolvedValue": "#FFF1F2",
+      "value": "#FFE2E3",
+      "resolvedValue": "#FFE2E3",
       "references": [],
       "referenceChain": [
         "color-magenta-1"
@@ -2667,8 +2685,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#D43550",
-      "resolvedValue": "#D43550",
+      "value": "#850226",
+      "resolvedValue": "#850226",
       "references": [],
       "referenceChain": [
         "color-magenta-10"
@@ -2685,29 +2703,11 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#850226",
-      "resolvedValue": "#850226",
-      "references": [],
-      "referenceChain": [
-        "color-magenta-11"
-      ],
-      "source": "tokens/atomic/map/color/palette/magenta.yml",
-      "sourceFile": "tokens/atomic/map/color/palette/magenta.yml",
-      "origin": "manual"
-    },
-    {
-      "id": "color-magenta-12",
-      "name": "color-magenta-12",
-      "cssVariable": "--fds-g-color-magenta-12",
-      "layer": "atomic",
-      "tier": "map",
-      "category": "color",
-      "type": "color",
       "value": "#460010",
       "resolvedValue": "#460010",
       "references": [],
       "referenceChain": [
-        "color-magenta-12"
+        "color-magenta-11"
       ],
       "source": "tokens/atomic/map/color/palette/magenta.yml",
       "sourceFile": "tokens/atomic/map/color/palette/magenta.yml",
@@ -2721,8 +2721,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FFE2E3",
-      "resolvedValue": "#FFE2E3",
+      "value": "#FFCFD0",
+      "resolvedValue": "#FFCFD0",
       "references": [],
       "referenceChain": [
         "color-magenta-2"
@@ -2739,8 +2739,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FFCFD0",
-      "resolvedValue": "#FFCFD0",
+      "value": "#FFBDBF",
+      "resolvedValue": "#FFBDBF",
       "references": [],
       "referenceChain": [
         "color-magenta-3"
@@ -2757,8 +2757,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FFBDBF",
-      "resolvedValue": "#FFBDBF",
+      "value": "#FFAAAE",
+      "resolvedValue": "#FFAAAE",
       "references": [],
       "referenceChain": [
         "color-magenta-4"
@@ -2775,8 +2775,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FFAAAE",
-      "resolvedValue": "#FFAAAE",
+      "value": "#FF969D",
+      "resolvedValue": "#FF969D",
       "references": [],
       "referenceChain": [
         "color-magenta-5"
@@ -2793,8 +2793,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FF969D",
-      "resolvedValue": "#FF969D",
+      "value": "#FF818B",
+      "resolvedValue": "#FF818B",
       "references": [],
       "referenceChain": [
         "color-magenta-6"
@@ -2811,8 +2811,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FF818B",
-      "resolvedValue": "#FF818B",
+      "value": "#FF6979",
+      "resolvedValue": "#FF6979",
       "references": [],
       "referenceChain": [
         "color-magenta-7"
@@ -2829,8 +2829,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FF6979",
-      "resolvedValue": "#FF6979",
+      "value": "#FF4A66",
+      "resolvedValue": "#FF4A66",
       "references": [],
       "referenceChain": [
         "color-magenta-8"
@@ -2840,6 +2840,24 @@
       "origin": "manual"
     },
     {
+      "id": "color-magenta-8-rgb",
+      "name": "color-magenta-8-rgb",
+      "cssVariable": "--fds-g-color-magenta-8-rgb",
+      "layer": "atomic",
+      "tier": "map",
+      "category": "color",
+      "type": "string",
+      "value": "255, 74, 102",
+      "resolvedValue": "255, 74, 102",
+      "references": [],
+      "referenceChain": [
+        "color-magenta-8-rgb"
+      ],
+      "source": "tokens/atomic/map/color/rgb.yml",
+      "sourceFile": "tokens/atomic/map/color/rgb.yml",
+      "origin": "derived"
+    },
+    {
       "id": "color-magenta-9",
       "name": "color-magenta-9",
       "cssVariable": "--fds-g-color-magenta-9",
@@ -2847,8 +2865,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FF4A66",
-      "resolvedValue": "#FF4A66",
+      "value": "#D43550",
+      "resolvedValue": "#D43550",
       "references": [],
       "referenceChain": [
         "color-magenta-9"
@@ -2858,22 +2876,22 @@
       "origin": "manual"
     },
     {
-      "id": "color-magenta-9-rgb",
-      "name": "color-magenta-9-rgb",
-      "cssVariable": "--fds-g-color-magenta-9-rgb",
+      "id": "color-magenta-dark-0",
+      "name": "color-magenta-dark-0",
+      "cssVariable": "--fds-g-color-magenta-dark-0",
       "layer": "atomic",
       "tier": "map",
       "category": "color",
-      "type": "string",
-      "value": "255, 74, 102",
-      "resolvedValue": "255, 74, 102",
+      "type": "color",
+      "value": "#241617",
+      "resolvedValue": "#241617",
       "references": [],
       "referenceChain": [
-        "color-magenta-9-rgb"
+        "color-magenta-dark-0"
       ],
-      "source": "tokens/atomic/map/color/rgb.yml",
-      "sourceFile": "tokens/atomic/map/color/rgb.yml",
-      "origin": "derived"
+      "source": "tokens/atomic/map/color/dark/magenta.yml",
+      "sourceFile": "tokens/atomic/map/color/dark/magenta.yml",
+      "origin": "manual"
     },
     {
       "id": "color-magenta-dark-1",
@@ -2883,8 +2901,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#241617",
-      "resolvedValue": "#241617",
+      "value": "#331D1E",
+      "resolvedValue": "#331D1E",
       "references": [],
       "referenceChain": [
         "color-magenta-dark-1"
@@ -2901,8 +2919,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FF6C7B",
-      "resolvedValue": "#FF6C7B",
+      "value": "#FF8992",
+      "resolvedValue": "#FF8992",
       "references": [],
       "referenceChain": [
         "color-magenta-dark-10"
@@ -2919,29 +2937,11 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FF8992",
-      "resolvedValue": "#FF8992",
-      "references": [],
-      "referenceChain": [
-        "color-magenta-dark-11"
-      ],
-      "source": "tokens/atomic/map/color/dark/magenta.yml",
-      "sourceFile": "tokens/atomic/map/color/dark/magenta.yml",
-      "origin": "manual"
-    },
-    {
-      "id": "color-magenta-dark-12",
-      "name": "color-magenta-dark-12",
-      "cssVariable": "--fds-g-color-magenta-dark-12",
-      "layer": "atomic",
-      "tier": "map",
-      "category": "color",
-      "type": "color",
       "value": "#FFA4A9",
       "resolvedValue": "#FFA4A9",
       "references": [],
       "referenceChain": [
-        "color-magenta-dark-12"
+        "color-magenta-dark-11"
       ],
       "source": "tokens/atomic/map/color/dark/magenta.yml",
       "sourceFile": "tokens/atomic/map/color/dark/magenta.yml",
@@ -2955,8 +2955,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#331D1E",
-      "resolvedValue": "#331D1E",
+      "value": "#442426",
+      "resolvedValue": "#442426",
       "references": [],
       "referenceChain": [
         "color-magenta-dark-2"
@@ -2973,8 +2973,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#442426",
-      "resolvedValue": "#442426",
+      "value": "#5A2B2E",
+      "resolvedValue": "#5A2B2E",
       "references": [],
       "referenceChain": [
         "color-magenta-dark-3"
@@ -2991,8 +2991,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#5A2B2E",
-      "resolvedValue": "#5A2B2E",
+      "value": "#743137",
+      "resolvedValue": "#743137",
       "references": [],
       "referenceChain": [
         "color-magenta-dark-4"
@@ -3009,8 +3009,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#743137",
-      "resolvedValue": "#743137",
+      "value": "#933641",
+      "resolvedValue": "#933641",
       "references": [],
       "referenceChain": [
         "color-magenta-dark-5"
@@ -3027,8 +3027,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#933641",
-      "resolvedValue": "#933641",
+      "value": "#B33949",
+      "resolvedValue": "#B33949",
       "references": [],
       "referenceChain": [
         "color-magenta-dark-6"
@@ -3045,8 +3045,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#B33949",
-      "resolvedValue": "#B33949",
+      "value": "#D83E55",
+      "resolvedValue": "#D83E55",
       "references": [],
       "referenceChain": [
         "color-magenta-dark-7"
@@ -3063,8 +3063,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#D83E55",
-      "resolvedValue": "#D83E55",
+      "value": "#FF4A66",
+      "resolvedValue": "#FF4A66",
       "references": [],
       "referenceChain": [
         "color-magenta-dark-8"
@@ -3081,14 +3081,32 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FF4A66",
-      "resolvedValue": "#FF4A66",
+      "value": "#FF6C7B",
+      "resolvedValue": "#FF6C7B",
       "references": [],
       "referenceChain": [
         "color-magenta-dark-9"
       ],
       "source": "tokens/atomic/map/color/dark/magenta.yml",
       "sourceFile": "tokens/atomic/map/color/dark/magenta.yml",
+      "origin": "manual"
+    },
+    {
+      "id": "color-purple-0",
+      "name": "color-purple-0",
+      "cssVariable": "--fds-g-color-purple-0",
+      "layer": "atomic",
+      "tier": "map",
+      "category": "color",
+      "type": "color",
+      "value": "#F5F4FF",
+      "resolvedValue": "#F5F4FF",
+      "references": [],
+      "referenceChain": [
+        "color-purple-0"
+      ],
+      "source": "tokens/atomic/map/color/palette/purple.yml",
+      "sourceFile": "tokens/atomic/map/color/palette/purple.yml",
       "origin": "manual"
     },
     {
@@ -3099,8 +3117,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#F5F4FF",
-      "resolvedValue": "#F5F4FF",
+      "value": "#E4E1FE",
+      "resolvedValue": "#E4E1FE",
       "references": [],
       "referenceChain": [
         "color-purple-1"
@@ -3117,8 +3135,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#6134BE",
-      "resolvedValue": "#6134BE",
+      "value": "#3E1983",
+      "resolvedValue": "#3E1983",
       "references": [],
       "referenceChain": [
         "color-purple-10"
@@ -3135,29 +3153,11 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#3E1983",
-      "resolvedValue": "#3E1983",
-      "references": [],
-      "referenceChain": [
-        "color-purple-11"
-      ],
-      "source": "tokens/atomic/map/color/palette/purple.yml",
-      "sourceFile": "tokens/atomic/map/color/palette/purple.yml",
-      "origin": "manual"
-    },
-    {
-      "id": "color-purple-12",
-      "name": "color-purple-12",
-      "cssVariable": "--fds-g-color-purple-12",
-      "layer": "atomic",
-      "tier": "map",
-      "category": "color",
-      "type": "color",
       "value": "#250D53",
       "resolvedValue": "#250D53",
       "references": [],
       "referenceChain": [
-        "color-purple-12"
+        "color-purple-11"
       ],
       "source": "tokens/atomic/map/color/palette/purple.yml",
       "sourceFile": "tokens/atomic/map/color/palette/purple.yml",
@@ -3171,8 +3171,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#E4E1FE",
-      "resolvedValue": "#E4E1FE",
+      "value": "#D1CAFA",
+      "resolvedValue": "#D1CAFA",
       "references": [],
       "referenceChain": [
         "color-purple-2"
@@ -3189,8 +3189,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#D1CAFA",
-      "resolvedValue": "#D1CAFA",
+      "value": "#BFB4F9",
+      "resolvedValue": "#BFB4F9",
       "references": [],
       "referenceChain": [
         "color-purple-3"
@@ -3207,8 +3207,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#BFB4F9",
-      "resolvedValue": "#BFB4F9",
+      "value": "#AF9EF7",
+      "resolvedValue": "#AF9EF7",
       "references": [],
       "referenceChain": [
         "color-purple-4"
@@ -3225,8 +3225,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#AF9EF7",
-      "resolvedValue": "#AF9EF7",
+      "value": "#9F88F6",
+      "resolvedValue": "#9F88F6",
       "references": [],
       "referenceChain": [
         "color-purple-5"
@@ -3243,8 +3243,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#9F88F6",
-      "resolvedValue": "#9F88F6",
+      "value": "#9071F1",
+      "resolvedValue": "#9071F1",
       "references": [],
       "referenceChain": [
         "color-purple-6"
@@ -3261,8 +3261,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#9071F1",
-      "resolvedValue": "#9071F1",
+      "value": "#8159E9",
+      "resolvedValue": "#8159E9",
       "references": [],
       "referenceChain": [
         "color-purple-7"
@@ -3279,8 +3279,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#8159E9",
-      "resolvedValue": "#8159E9",
+      "value": "#7341DE",
+      "resolvedValue": "#7341DE",
       "references": [],
       "referenceChain": [
         "color-purple-8"
@@ -3290,6 +3290,24 @@
       "origin": "manual"
     },
     {
+      "id": "color-purple-8-rgb",
+      "name": "color-purple-8-rgb",
+      "cssVariable": "--fds-g-color-purple-8-rgb",
+      "layer": "atomic",
+      "tier": "map",
+      "category": "color",
+      "type": "string",
+      "value": "115, 65, 222",
+      "resolvedValue": "115, 65, 222",
+      "references": [],
+      "referenceChain": [
+        "color-purple-8-rgb"
+      ],
+      "source": "tokens/atomic/map/color/rgb.yml",
+      "sourceFile": "tokens/atomic/map/color/rgb.yml",
+      "origin": "derived"
+    },
+    {
       "id": "color-purple-9",
       "name": "color-purple-9",
       "cssVariable": "--fds-g-color-purple-9",
@@ -3297,8 +3315,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#7341DE",
-      "resolvedValue": "#7341DE",
+      "value": "#6134BE",
+      "resolvedValue": "#6134BE",
       "references": [],
       "referenceChain": [
         "color-purple-9"
@@ -3308,22 +3326,22 @@
       "origin": "manual"
     },
     {
-      "id": "color-purple-9-rgb",
-      "name": "color-purple-9-rgb",
-      "cssVariable": "--fds-g-color-purple-9-rgb",
+      "id": "color-purple-dark-0",
+      "name": "color-purple-dark-0",
+      "cssVariable": "--fds-g-color-purple-dark-0",
       "layer": "atomic",
       "tier": "map",
       "category": "color",
-      "type": "string",
-      "value": "115, 65, 222",
-      "resolvedValue": "115, 65, 222",
+      "type": "color",
+      "value": "#181621",
+      "resolvedValue": "#181621",
       "references": [],
       "referenceChain": [
-        "color-purple-9-rgb"
+        "color-purple-dark-0"
       ],
-      "source": "tokens/atomic/map/color/rgb.yml",
-      "sourceFile": "tokens/atomic/map/color/rgb.yml",
-      "origin": "derived"
+      "source": "tokens/atomic/map/color/dark/purple.yml",
+      "sourceFile": "tokens/atomic/map/color/dark/purple.yml",
+      "origin": "manual"
     },
     {
       "id": "color-purple-dark-1",
@@ -3333,8 +3351,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#181621",
-      "resolvedValue": "#181621",
+      "value": "#1E1B2E",
+      "resolvedValue": "#1E1B2E",
       "references": [],
       "referenceChain": [
         "color-purple-dark-1"
@@ -3351,8 +3369,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#835CEA",
-      "resolvedValue": "#835CEA",
+      "value": "#9479EF",
+      "resolvedValue": "#9479EF",
       "references": [],
       "referenceChain": [
         "color-purple-dark-10"
@@ -3369,29 +3387,11 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#9479EF",
-      "resolvedValue": "#9479EF",
-      "references": [],
-      "referenceChain": [
-        "color-purple-dark-11"
-      ],
-      "source": "tokens/atomic/map/color/dark/purple.yml",
-      "sourceFile": "tokens/atomic/map/color/dark/purple.yml",
-      "origin": "manual"
-    },
-    {
-      "id": "color-purple-dark-12",
-      "name": "color-purple-dark-12",
-      "cssVariable": "--fds-g-color-purple-dark-12",
-      "layer": "atomic",
-      "tier": "map",
-      "category": "color",
-      "type": "color",
       "value": "#A897F1",
       "resolvedValue": "#A897F1",
       "references": [],
       "referenceChain": [
-        "color-purple-dark-12"
+        "color-purple-dark-11"
       ],
       "source": "tokens/atomic/map/color/dark/purple.yml",
       "sourceFile": "tokens/atomic/map/color/dark/purple.yml",
@@ -3405,8 +3405,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#1E1B2E",
-      "resolvedValue": "#1E1B2E",
+      "value": "#26213D",
+      "resolvedValue": "#26213D",
       "references": [],
       "referenceChain": [
         "color-purple-dark-2"
@@ -3423,8 +3423,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#26213D",
-      "resolvedValue": "#26213D",
+      "value": "#2F264F",
+      "resolvedValue": "#2F264F",
       "references": [],
       "referenceChain": [
         "color-purple-dark-3"
@@ -3441,8 +3441,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#2F264F",
-      "resolvedValue": "#2F264F",
+      "value": "#3A2C66",
+      "resolvedValue": "#3A2C66",
       "references": [],
       "referenceChain": [
         "color-purple-dark-4"
@@ -3459,8 +3459,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#3A2C66",
-      "resolvedValue": "#3A2C66",
+      "value": "#463081",
+      "resolvedValue": "#463081",
       "references": [],
       "referenceChain": [
         "color-purple-dark-5"
@@ -3477,8 +3477,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#463081",
-      "resolvedValue": "#463081",
+      "value": "#53349E",
+      "resolvedValue": "#53349E",
       "references": [],
       "referenceChain": [
         "color-purple-dark-6"
@@ -3495,8 +3495,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#53349E",
-      "resolvedValue": "#53349E",
+      "value": "#6238BE",
+      "resolvedValue": "#6238BE",
       "references": [],
       "referenceChain": [
         "color-purple-dark-7"
@@ -3513,8 +3513,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#6238BE",
-      "resolvedValue": "#6238BE",
+      "value": "#7341DE",
+      "resolvedValue": "#7341DE",
       "references": [],
       "referenceChain": [
         "color-purple-dark-8"
@@ -3531,14 +3531,32 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#7341DE",
-      "resolvedValue": "#7341DE",
+      "value": "#835CEA",
+      "resolvedValue": "#835CEA",
       "references": [],
       "referenceChain": [
         "color-purple-dark-9"
       ],
       "source": "tokens/atomic/map/color/dark/purple.yml",
       "sourceFile": "tokens/atomic/map/color/dark/purple.yml",
+      "origin": "manual"
+    },
+    {
+      "id": "color-red-0",
+      "name": "color-red-0",
+      "cssVariable": "--fds-g-color-red-0",
+      "layer": "atomic",
+      "tier": "map",
+      "category": "color",
+      "type": "color",
+      "value": "#FFF2EF",
+      "resolvedValue": "#FFF2EF",
+      "references": [],
+      "referenceChain": [
+        "color-red-0"
+      ],
+      "source": "tokens/atomic/map/color/palette/red.yml",
+      "sourceFile": "tokens/atomic/map/color/palette/red.yml",
       "origin": "manual"
     },
     {
@@ -3549,8 +3567,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FFF2EF",
-      "resolvedValue": "#FFF2EF",
+      "value": "#FFE3DC",
+      "resolvedValue": "#FFE3DC",
       "references": [],
       "referenceChain": [
         "color-red-1"
@@ -3567,8 +3585,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#D53D18",
-      "resolvedValue": "#D53D18",
+      "value": "#801A00",
+      "resolvedValue": "#801A00",
       "references": [],
       "referenceChain": [
         "color-red-10"
@@ -3585,29 +3603,11 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#801A00",
-      "resolvedValue": "#801A00",
-      "references": [],
-      "referenceChain": [
-        "color-red-11"
-      ],
-      "source": "tokens/atomic/map/color/palette/red.yml",
-      "sourceFile": "tokens/atomic/map/color/palette/red.yml",
-      "origin": "manual"
-    },
-    {
-      "id": "color-red-12",
-      "name": "color-red-12",
-      "cssVariable": "--fds-g-color-red-12",
-      "layer": "atomic",
-      "tier": "map",
-      "category": "color",
-      "type": "color",
       "value": "#430900",
       "resolvedValue": "#430900",
       "references": [],
       "referenceChain": [
-        "color-red-12"
+        "color-red-11"
       ],
       "source": "tokens/atomic/map/color/palette/red.yml",
       "sourceFile": "tokens/atomic/map/color/palette/red.yml",
@@ -3621,8 +3621,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FFE3DC",
-      "resolvedValue": "#FFE3DC",
+      "value": "#FFD0C5",
+      "resolvedValue": "#FFD0C5",
       "references": [],
       "referenceChain": [
         "color-red-2"
@@ -3639,8 +3639,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FFD0C5",
-      "resolvedValue": "#FFD0C5",
+      "value": "#FFBFB0",
+      "resolvedValue": "#FFBFB0",
       "references": [],
       "referenceChain": [
         "color-red-3"
@@ -3657,8 +3657,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FFBFB0",
-      "resolvedValue": "#FFBFB0",
+      "value": "#FFAD99",
+      "resolvedValue": "#FFAD99",
       "references": [],
       "referenceChain": [
         "color-red-4"
@@ -3675,8 +3675,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FFAD99",
-      "resolvedValue": "#FFAD99",
+      "value": "#FF9A82",
+      "resolvedValue": "#FF9A82",
       "references": [],
       "referenceChain": [
         "color-red-5"
@@ -3693,8 +3693,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FF9A82",
-      "resolvedValue": "#FF9A82",
+      "value": "#FF8569",
+      "resolvedValue": "#FF8569",
       "references": [],
       "referenceChain": [
         "color-red-6"
@@ -3711,8 +3711,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FF8569",
-      "resolvedValue": "#FF8569",
+      "value": "#FF6E4E",
+      "resolvedValue": "#FF6E4E",
       "references": [],
       "referenceChain": [
         "color-red-7"
@@ -3729,8 +3729,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FF6E4E",
-      "resolvedValue": "#FF6E4E",
+      "value": "#FF522A",
+      "resolvedValue": "#FF522A",
       "references": [],
       "referenceChain": [
         "color-red-8"
@@ -3740,6 +3740,24 @@
       "origin": "manual"
     },
     {
+      "id": "color-red-8-rgb",
+      "name": "color-red-8-rgb",
+      "cssVariable": "--fds-g-color-red-8-rgb",
+      "layer": "atomic",
+      "tier": "map",
+      "category": "color",
+      "type": "string",
+      "value": "255, 82, 42",
+      "resolvedValue": "255, 82, 42",
+      "references": [],
+      "referenceChain": [
+        "color-red-8-rgb"
+      ],
+      "source": "tokens/atomic/map/color/rgb.yml",
+      "sourceFile": "tokens/atomic/map/color/rgb.yml",
+      "origin": "derived"
+    },
+    {
       "id": "color-red-9",
       "name": "color-red-9",
       "cssVariable": "--fds-g-color-red-9",
@@ -3747,8 +3765,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FF522A",
-      "resolvedValue": "#FF522A",
+      "value": "#D53D18",
+      "resolvedValue": "#D53D18",
       "references": [],
       "referenceChain": [
         "color-red-9"
@@ -3758,22 +3776,22 @@
       "origin": "manual"
     },
     {
-      "id": "color-red-9-rgb",
-      "name": "color-red-9-rgb",
-      "cssVariable": "--fds-g-color-red-9-rgb",
+      "id": "color-red-dark-0",
+      "name": "color-red-dark-0",
+      "cssVariable": "--fds-g-color-red-dark-0",
       "layer": "atomic",
       "tier": "map",
       "category": "color",
-      "type": "string",
-      "value": "255, 82, 42",
-      "resolvedValue": "255, 82, 42",
+      "type": "color",
+      "value": "#241714",
+      "resolvedValue": "#241714",
       "references": [],
       "referenceChain": [
-        "color-red-9-rgb"
+        "color-red-dark-0"
       ],
-      "source": "tokens/atomic/map/color/rgb.yml",
-      "sourceFile": "tokens/atomic/map/color/rgb.yml",
-      "origin": "derived"
+      "source": "tokens/atomic/map/color/dark/red.yml",
+      "sourceFile": "tokens/atomic/map/color/dark/red.yml",
+      "origin": "manual"
     },
     {
       "id": "color-red-dark-1",
@@ -3783,8 +3801,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#241714",
-      "resolvedValue": "#241714",
+      "value": "#331E19",
+      "resolvedValue": "#331E19",
       "references": [],
       "referenceChain": [
         "color-red-dark-1"
@@ -3801,8 +3819,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FF7252",
-      "resolvedValue": "#FF7252",
+      "value": "#FF8D73",
+      "resolvedValue": "#FF8D73",
       "references": [],
       "referenceChain": [
         "color-red-dark-10"
@@ -3819,29 +3837,11 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FF8D73",
-      "resolvedValue": "#FF8D73",
-      "references": [],
-      "referenceChain": [
-        "color-red-dark-11"
-      ],
-      "source": "tokens/atomic/map/color/dark/red.yml",
-      "sourceFile": "tokens/atomic/map/color/dark/red.yml",
-      "origin": "manual"
-    },
-    {
-      "id": "color-red-dark-12",
-      "name": "color-red-dark-12",
-      "cssVariable": "--fds-g-color-red-dark-12",
-      "layer": "atomic",
-      "tier": "map",
-      "category": "color",
-      "type": "color",
       "value": "#FFA793",
       "resolvedValue": "#FFA793",
       "references": [],
       "referenceChain": [
-        "color-red-dark-12"
+        "color-red-dark-11"
       ],
       "source": "tokens/atomic/map/color/dark/red.yml",
       "sourceFile": "tokens/atomic/map/color/dark/red.yml",
@@ -3855,8 +3855,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#331E19",
-      "resolvedValue": "#331E19",
+      "value": "#44251E",
+      "resolvedValue": "#44251E",
       "references": [],
       "referenceChain": [
         "color-red-dark-2"
@@ -3873,8 +3873,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#44251E",
-      "resolvedValue": "#44251E",
+      "value": "#5A2D22",
+      "resolvedValue": "#5A2D22",
       "references": [],
       "referenceChain": [
         "color-red-dark-3"
@@ -3891,8 +3891,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#5A2D22",
-      "resolvedValue": "#5A2D22",
+      "value": "#743325",
+      "resolvedValue": "#743325",
       "references": [],
       "referenceChain": [
         "color-red-dark-4"
@@ -3909,8 +3909,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#743325",
-      "resolvedValue": "#743325",
+      "value": "#933A26",
+      "resolvedValue": "#933A26",
       "references": [],
       "referenceChain": [
         "color-red-dark-5"
@@ -3927,8 +3927,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#933A26",
-      "resolvedValue": "#933A26",
+      "value": "#B33E24",
+      "resolvedValue": "#B33E24",
       "references": [],
       "referenceChain": [
         "color-red-dark-6"
@@ -3945,8 +3945,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#B33E24",
-      "resolvedValue": "#B33E24",
+      "value": "#D84422",
+      "resolvedValue": "#D84422",
       "references": [],
       "referenceChain": [
         "color-red-dark-7"
@@ -3963,8 +3963,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#D84422",
-      "resolvedValue": "#D84422",
+      "value": "#FF522A",
+      "resolvedValue": "#FF522A",
       "references": [],
       "referenceChain": [
         "color-red-dark-8"
@@ -3981,14 +3981,104 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FF522A",
-      "resolvedValue": "#FF522A",
+      "value": "#FF7252",
+      "resolvedValue": "#FF7252",
       "references": [],
       "referenceChain": [
         "color-red-dark-9"
       ],
       "source": "tokens/atomic/map/color/dark/red.yml",
       "sourceFile": "tokens/atomic/map/color/dark/red.yml",
+      "origin": "manual"
+    },
+    {
+      "id": "color-special-1",
+      "name": "color-special-1",
+      "cssVariable": "--fds-g-color-special-1",
+      "layer": "atomic",
+      "tier": "map",
+      "category": "color",
+      "type": "color",
+      "value": "#F2F4FB",
+      "resolvedValue": "#F2F4FB",
+      "references": [],
+      "referenceChain": [
+        "color-special-1"
+      ],
+      "source": "tokens/atomic/map/color/special.yml",
+      "sourceFile": "tokens/atomic/map/color/special.yml",
+      "origin": "manual"
+    },
+    {
+      "id": "color-special-2",
+      "name": "color-special-2",
+      "cssVariable": "--fds-g-color-special-2",
+      "layer": "atomic",
+      "tier": "map",
+      "category": "color",
+      "type": "color",
+      "value": "#737C8C",
+      "resolvedValue": "#737C8C",
+      "references": [],
+      "referenceChain": [
+        "color-special-2"
+      ],
+      "source": "tokens/atomic/map/color/special.yml",
+      "sourceFile": "tokens/atomic/map/color/special.yml",
+      "origin": "manual"
+    },
+    {
+      "id": "color-special-3",
+      "name": "color-special-3",
+      "cssVariable": "--fds-g-color-special-3",
+      "layer": "atomic",
+      "tier": "map",
+      "category": "color",
+      "type": "color",
+      "value": "#EFF1F3",
+      "resolvedValue": "#EFF1F3",
+      "references": [],
+      "referenceChain": [
+        "color-special-3"
+      ],
+      "source": "tokens/atomic/map/color/special.yml",
+      "sourceFile": "tokens/atomic/map/color/special.yml",
+      "origin": "manual"
+    },
+    {
+      "id": "color-special-4",
+      "name": "color-special-4",
+      "cssVariable": "--fds-g-color-special-4",
+      "layer": "atomic",
+      "tier": "map",
+      "category": "color",
+      "type": "color",
+      "value": "#F7F8FA",
+      "resolvedValue": "#F7F8FA",
+      "references": [],
+      "referenceChain": [
+        "color-special-4"
+      ],
+      "source": "tokens/atomic/map/color/special.yml",
+      "sourceFile": "tokens/atomic/map/color/special.yml",
+      "origin": "manual"
+    },
+    {
+      "id": "color-teal-0",
+      "name": "color-teal-0",
+      "cssVariable": "--fds-g-color-teal-0",
+      "layer": "atomic",
+      "tier": "map",
+      "category": "color",
+      "type": "color",
+      "value": "#EEF7F6",
+      "resolvedValue": "#EEF7F6",
+      "references": [],
+      "referenceChain": [
+        "color-teal-0"
+      ],
+      "source": "tokens/atomic/map/color/palette/teal.yml",
+      "sourceFile": "tokens/atomic/map/color/palette/teal.yml",
       "origin": "manual"
     },
     {
@@ -3999,8 +4089,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#EEF7F6",
-      "resolvedValue": "#EEF7F6",
+      "value": "#DCF0ED",
+      "resolvedValue": "#DCF0ED",
       "references": [],
       "referenceChain": [
         "color-teal-1"
@@ -4017,8 +4107,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#00938B",
-      "resolvedValue": "#00938B",
+      "value": "#00534E",
+      "resolvedValue": "#00534E",
       "references": [],
       "referenceChain": [
         "color-teal-10"
@@ -4035,29 +4125,11 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#00534E",
-      "resolvedValue": "#00534E",
-      "references": [],
-      "referenceChain": [
-        "color-teal-11"
-      ],
-      "source": "tokens/atomic/map/color/palette/teal.yml",
-      "sourceFile": "tokens/atomic/map/color/palette/teal.yml",
-      "origin": "manual"
-    },
-    {
-      "id": "color-teal-12",
-      "name": "color-teal-12",
-      "cssVariable": "--fds-g-color-teal-12",
-      "layer": "atomic",
-      "tier": "map",
-      "category": "color",
-      "type": "color",
       "value": "#002826",
       "resolvedValue": "#002826",
       "references": [],
       "referenceChain": [
-        "color-teal-12"
+        "color-teal-11"
       ],
       "source": "tokens/atomic/map/color/palette/teal.yml",
       "sourceFile": "tokens/atomic/map/color/palette/teal.yml",
@@ -4071,8 +4143,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#DCF0ED",
-      "resolvedValue": "#DCF0ED",
+      "value": "#C5E7E3",
+      "resolvedValue": "#C5E7E3",
       "references": [],
       "referenceChain": [
         "color-teal-2"
@@ -4089,8 +4161,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#C5E7E3",
-      "resolvedValue": "#C5E7E3",
+      "value": "#AEDFDA",
+      "resolvedValue": "#AEDFDA",
       "references": [],
       "referenceChain": [
         "color-teal-3"
@@ -4107,8 +4179,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#AEDFDA",
-      "resolvedValue": "#AEDFDA",
+      "value": "#95D7D0",
+      "resolvedValue": "#95D7D0",
       "references": [],
       "referenceChain": [
         "color-teal-4"
@@ -4125,8 +4197,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#95D7D0",
-      "resolvedValue": "#95D7D0",
+      "value": "#7ACFC7",
+      "resolvedValue": "#7ACFC7",
       "references": [],
       "referenceChain": [
         "color-teal-5"
@@ -4143,8 +4215,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#7ACFC7",
-      "resolvedValue": "#7ACFC7",
+      "value": "#5EC6BE",
+      "resolvedValue": "#5EC6BE",
       "references": [],
       "referenceChain": [
         "color-teal-6"
@@ -4161,8 +4233,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#5EC6BE",
-      "resolvedValue": "#5EC6BE",
+      "value": "#3FBEB5",
+      "resolvedValue": "#3FBEB5",
       "references": [],
       "referenceChain": [
         "color-teal-7"
@@ -4179,8 +4251,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#3FBEB5",
-      "resolvedValue": "#3FBEB5",
+      "value": "#16B4AB",
+      "resolvedValue": "#16B4AB",
       "references": [],
       "referenceChain": [
         "color-teal-8"
@@ -4190,6 +4262,24 @@
       "origin": "manual"
     },
     {
+      "id": "color-teal-8-rgb",
+      "name": "color-teal-8-rgb",
+      "cssVariable": "--fds-g-color-teal-8-rgb",
+      "layer": "atomic",
+      "tier": "map",
+      "category": "color",
+      "type": "string",
+      "value": "22, 180, 171",
+      "resolvedValue": "22, 180, 171",
+      "references": [],
+      "referenceChain": [
+        "color-teal-8-rgb"
+      ],
+      "source": "tokens/atomic/map/color/rgb.yml",
+      "sourceFile": "tokens/atomic/map/color/rgb.yml",
+      "origin": "derived"
+    },
+    {
       "id": "color-teal-9",
       "name": "color-teal-9",
       "cssVariable": "--fds-g-color-teal-9",
@@ -4197,8 +4287,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#16B4AB",
-      "resolvedValue": "#16B4AB",
+      "value": "#00938B",
+      "resolvedValue": "#00938B",
       "references": [],
       "referenceChain": [
         "color-teal-9"
@@ -4208,22 +4298,22 @@
       "origin": "manual"
     },
     {
-      "id": "color-teal-9-rgb",
-      "name": "color-teal-9-rgb",
-      "cssVariable": "--fds-g-color-teal-9-rgb",
+      "id": "color-teal-dark-0",
+      "name": "color-teal-dark-0",
+      "cssVariable": "--fds-g-color-teal-dark-0",
       "layer": "atomic",
       "tier": "map",
       "category": "color",
-      "type": "string",
-      "value": "22, 180, 171",
-      "resolvedValue": "22, 180, 171",
+      "type": "color",
+      "value": "#151D1C",
+      "resolvedValue": "#151D1C",
       "references": [],
       "referenceChain": [
-        "color-teal-9-rgb"
+        "color-teal-dark-0"
       ],
-      "source": "tokens/atomic/map/color/rgb.yml",
-      "sourceFile": "tokens/atomic/map/color/rgb.yml",
-      "origin": "derived"
+      "source": "tokens/atomic/map/color/dark/teal.yml",
+      "sourceFile": "tokens/atomic/map/color/dark/teal.yml",
+      "origin": "manual"
     },
     {
       "id": "color-teal-dark-1",
@@ -4233,8 +4323,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#151D1C",
-      "resolvedValue": "#151D1C",
+      "value": "#1A2826",
+      "resolvedValue": "#1A2826",
       "references": [],
       "referenceChain": [
         "color-teal-dark-1"
@@ -4251,8 +4341,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#44BFB6",
-      "resolvedValue": "#44BFB6",
+      "value": "#6DC9C2",
+      "resolvedValue": "#6DC9C2",
       "references": [],
       "referenceChain": [
         "color-teal-dark-10"
@@ -4269,29 +4359,11 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#6DC9C2",
-      "resolvedValue": "#6DC9C2",
-      "references": [],
-      "referenceChain": [
-        "color-teal-dark-11"
-      ],
-      "source": "tokens/atomic/map/color/dark/teal.yml",
-      "sourceFile": "tokens/atomic/map/color/dark/teal.yml",
-      "origin": "manual"
-    },
-    {
-      "id": "color-teal-dark-12",
-      "name": "color-teal-dark-12",
-      "cssVariable": "--fds-g-color-teal-dark-12",
-      "layer": "atomic",
-      "tier": "map",
-      "category": "color",
-      "type": "color",
       "value": "#91D4CE",
       "resolvedValue": "#91D4CE",
       "references": [],
       "referenceChain": [
-        "color-teal-dark-12"
+        "color-teal-dark-11"
       ],
       "source": "tokens/atomic/map/color/dark/teal.yml",
       "sourceFile": "tokens/atomic/map/color/dark/teal.yml",
@@ -4305,8 +4377,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#1A2826",
-      "resolvedValue": "#1A2826",
+      "value": "#203533",
+      "resolvedValue": "#203533",
       "references": [],
       "referenceChain": [
         "color-teal-dark-2"
@@ -4323,8 +4395,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#203533",
-      "resolvedValue": "#203533",
+      "value": "#244441",
+      "resolvedValue": "#244441",
       "references": [],
       "referenceChain": [
         "color-teal-dark-3"
@@ -4341,8 +4413,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#244441",
-      "resolvedValue": "#244441",
+      "value": "#265552",
+      "resolvedValue": "#265552",
       "references": [],
       "referenceChain": [
         "color-teal-dark-4"
@@ -4359,8 +4431,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#265552",
-      "resolvedValue": "#265552",
+      "value": "#256A65",
+      "resolvedValue": "#256A65",
       "references": [],
       "referenceChain": [
         "color-teal-dark-5"
@@ -4377,8 +4449,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#256A65",
-      "resolvedValue": "#256A65",
+      "value": "#1E7F78",
+      "resolvedValue": "#1E7F78",
       "references": [],
       "referenceChain": [
         "color-teal-dark-6"
@@ -4395,8 +4467,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#1E7F78",
-      "resolvedValue": "#1E7F78",
+      "value": "#129890",
+      "resolvedValue": "#129890",
       "references": [],
       "referenceChain": [
         "color-teal-dark-7"
@@ -4413,8 +4485,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#129890",
-      "resolvedValue": "#129890",
+      "value": "#16B4AB",
+      "resolvedValue": "#16B4AB",
       "references": [],
       "referenceChain": [
         "color-teal-dark-8"
@@ -4431,8 +4503,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#16B4AB",
-      "resolvedValue": "#16B4AB",
+      "value": "#44BFB6",
+      "resolvedValue": "#44BFB6",
       "references": [],
       "referenceChain": [
         "color-teal-dark-9"
@@ -4449,17 +4521,35 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "{!color-gray-10}",
+      "value": "{!color-gray-1}",
       "resolvedValue": "#FFFFFF",
       "references": [
-        "color-gray-10"
+        "color-gray-1"
       ],
       "referenceChain": [
         "color-white",
-        "color-gray-10"
+        "color-gray-1"
       ],
       "source": "tokens/atomic/map/color/gray.yml",
       "sourceFile": "tokens/atomic/map/color/gray.yml",
+      "origin": "manual"
+    },
+    {
+      "id": "color-yellow-0",
+      "name": "color-yellow-0",
+      "cssVariable": "--fds-g-color-yellow-0",
+      "layer": "atomic",
+      "tier": "map",
+      "category": "color",
+      "type": "color",
+      "value": "#FAF4EB",
+      "resolvedValue": "#FAF4EB",
+      "references": [],
+      "referenceChain": [
+        "color-yellow-0"
+      ],
+      "source": "tokens/atomic/map/color/palette/yellow.yml",
+      "sourceFile": "tokens/atomic/map/color/palette/yellow.yml",
       "origin": "manual"
     },
     {
@@ -4470,8 +4560,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FAF4EB",
-      "resolvedValue": "#FAF4EB",
+      "value": "#FBEED9",
+      "resolvedValue": "#FBEED9",
       "references": [],
       "referenceChain": [
         "color-yellow-1"
@@ -4488,8 +4578,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#CD9100",
-      "resolvedValue": "#CD9100",
+      "value": "#6D4C00",
+      "resolvedValue": "#6D4C00",
       "references": [],
       "referenceChain": [
         "color-yellow-10"
@@ -4506,29 +4596,11 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#6D4C00",
-      "resolvedValue": "#6D4C00",
-      "references": [],
-      "referenceChain": [
-        "color-yellow-11"
-      ],
-      "source": "tokens/atomic/map/color/palette/yellow.yml",
-      "sourceFile": "tokens/atomic/map/color/palette/yellow.yml",
-      "origin": "manual"
-    },
-    {
-      "id": "color-yellow-12",
-      "name": "color-yellow-12",
-      "cssVariable": "--fds-g-color-yellow-12",
-      "layer": "atomic",
-      "tier": "map",
-      "category": "color",
-      "type": "color",
       "value": "#2F1E00",
       "resolvedValue": "#2F1E00",
       "references": [],
       "referenceChain": [
-        "color-yellow-12"
+        "color-yellow-11"
       ],
       "source": "tokens/atomic/map/color/palette/yellow.yml",
       "sourceFile": "tokens/atomic/map/color/palette/yellow.yml",
@@ -4542,8 +4614,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FBEED9",
-      "resolvedValue": "#FBEED9",
+      "value": "#FCE6C3",
+      "resolvedValue": "#FCE6C3",
       "references": [],
       "referenceChain": [
         "color-yellow-2"
@@ -4560,8 +4632,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FCE6C3",
-      "resolvedValue": "#FCE6C3",
+      "value": "#FDDEAC",
+      "resolvedValue": "#FDDEAC",
       "references": [],
       "referenceChain": [
         "color-yellow-3"
@@ -4578,8 +4650,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FDDEAC",
-      "resolvedValue": "#FDDEAC",
+      "value": "#FFD693",
+      "resolvedValue": "#FFD693",
       "references": [],
       "referenceChain": [
         "color-yellow-4"
@@ -4596,8 +4668,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FFD693",
-      "resolvedValue": "#FFD693",
+      "value": "#FFCF7D",
+      "resolvedValue": "#FFCF7D",
       "references": [],
       "referenceChain": [
         "color-yellow-5"
@@ -4614,8 +4686,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FFCF7D",
-      "resolvedValue": "#FFCF7D",
+      "value": "#FFC764",
+      "resolvedValue": "#FFC764",
       "references": [],
       "referenceChain": [
         "color-yellow-6"
@@ -4632,8 +4704,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FFC764",
-      "resolvedValue": "#FFC764",
+      "value": "#FFBE45",
+      "resolvedValue": "#FFBE45",
       "references": [],
       "referenceChain": [
         "color-yellow-7"
@@ -4650,8 +4722,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FFBE45",
-      "resolvedValue": "#FFBE45",
+      "value": "#FFB602",
+      "resolvedValue": "#FFB602",
       "references": [],
       "referenceChain": [
         "color-yellow-8"
@@ -4661,6 +4733,24 @@
       "origin": "manual"
     },
     {
+      "id": "color-yellow-8-rgb",
+      "name": "color-yellow-8-rgb",
+      "cssVariable": "--fds-g-color-yellow-8-rgb",
+      "layer": "atomic",
+      "tier": "map",
+      "category": "color",
+      "type": "string",
+      "value": "255, 182, 2",
+      "resolvedValue": "255, 182, 2",
+      "references": [],
+      "referenceChain": [
+        "color-yellow-8-rgb"
+      ],
+      "source": "tokens/atomic/map/color/rgb.yml",
+      "sourceFile": "tokens/atomic/map/color/rgb.yml",
+      "origin": "derived"
+    },
+    {
       "id": "color-yellow-9",
       "name": "color-yellow-9",
       "cssVariable": "--fds-g-color-yellow-9",
@@ -4668,8 +4758,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FFB602",
-      "resolvedValue": "#FFB602",
+      "value": "#CD9100",
+      "resolvedValue": "#CD9100",
       "references": [],
       "referenceChain": [
         "color-yellow-9"
@@ -4679,22 +4769,22 @@
       "origin": "manual"
     },
     {
-      "id": "color-yellow-9-rgb",
-      "name": "color-yellow-9-rgb",
-      "cssVariable": "--fds-g-color-yellow-9-rgb",
+      "id": "color-yellow-dark-0",
+      "name": "color-yellow-dark-0",
+      "cssVariable": "--fds-g-color-yellow-dark-0",
       "layer": "atomic",
       "tier": "map",
       "category": "color",
-      "type": "string",
-      "value": "255, 182, 2",
-      "resolvedValue": "255, 182, 2",
+      "type": "color",
+      "value": "#221C14",
+      "resolvedValue": "#221C14",
       "references": [],
       "referenceChain": [
-        "color-yellow-9-rgb"
+        "color-yellow-dark-0"
       ],
-      "source": "tokens/atomic/map/color/rgb.yml",
-      "sourceFile": "tokens/atomic/map/color/rgb.yml",
-      "origin": "derived"
+      "source": "tokens/atomic/map/color/dark/yellow.yml",
+      "sourceFile": "tokens/atomic/map/color/dark/yellow.yml",
+      "origin": "manual"
     },
     {
       "id": "color-yellow-dark-1",
@@ -4704,8 +4794,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#221C14",
-      "resolvedValue": "#221C14",
+      "value": "#31281A",
+      "resolvedValue": "#31281A",
       "references": [],
       "referenceChain": [
         "color-yellow-dark-1"
@@ -4722,8 +4812,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FFC14D",
-      "resolvedValue": "#FFC14D",
+      "value": "#FFCB73",
+      "resolvedValue": "#FFCB73",
       "references": [],
       "referenceChain": [
         "color-yellow-dark-10"
@@ -4740,29 +4830,11 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FFCB73",
-      "resolvedValue": "#FFCB73",
-      "references": [],
-      "referenceChain": [
-        "color-yellow-dark-11"
-      ],
-      "source": "tokens/atomic/map/color/dark/yellow.yml",
-      "sourceFile": "tokens/atomic/map/color/dark/yellow.yml",
-      "origin": "manual"
-    },
-    {
-      "id": "color-yellow-dark-12",
-      "name": "color-yellow-dark-12",
-      "cssVariable": "--fds-g-color-yellow-dark-12",
-      "layer": "atomic",
-      "tier": "map",
-      "category": "color",
-      "type": "color",
       "value": "#FFD794",
       "resolvedValue": "#FFD794",
       "references": [],
       "referenceChain": [
-        "color-yellow-dark-12"
+        "color-yellow-dark-11"
       ],
       "source": "tokens/atomic/map/color/dark/yellow.yml",
       "sourceFile": "tokens/atomic/map/color/dark/yellow.yml",
@@ -4776,8 +4848,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#31281A",
-      "resolvedValue": "#31281A",
+      "value": "#433620",
+      "resolvedValue": "#433620",
       "references": [],
       "referenceChain": [
         "color-yellow-dark-2"
@@ -4794,8 +4866,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#433620",
-      "resolvedValue": "#433620",
+      "value": "#594625",
+      "resolvedValue": "#594625",
       "references": [],
       "referenceChain": [
         "color-yellow-dark-3"
@@ -4812,8 +4884,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#594625",
-      "resolvedValue": "#594625",
+      "value": "#735727",
+      "resolvedValue": "#735727",
       "references": [],
       "referenceChain": [
         "color-yellow-dark-4"
@@ -4830,8 +4902,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#735727",
-      "resolvedValue": "#735727",
+      "value": "#916B24",
+      "resolvedValue": "#916B24",
       "references": [],
       "referenceChain": [
         "color-yellow-dark-5"
@@ -4848,8 +4920,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#916B24",
-      "resolvedValue": "#916B24",
+      "value": "#B17F17",
+      "resolvedValue": "#B17F17",
       "references": [],
       "referenceChain": [
         "color-yellow-dark-6"
@@ -4866,8 +4938,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#B17F17",
-      "resolvedValue": "#B17F17",
+      "value": "#D69800",
+      "resolvedValue": "#D69800",
       "references": [],
       "referenceChain": [
         "color-yellow-dark-7"
@@ -4884,8 +4956,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#D69800",
-      "resolvedValue": "#D69800",
+      "value": "#FFB602",
+      "resolvedValue": "#FFB602",
       "references": [],
       "referenceChain": [
         "color-yellow-dark-8"
@@ -4902,14 +4974,32 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FFB602",
-      "resolvedValue": "#FFB602",
+      "value": "#FFC14D",
+      "resolvedValue": "#FFC14D",
       "references": [],
       "referenceChain": [
         "color-yellow-dark-9"
       ],
       "source": "tokens/atomic/map/color/dark/yellow.yml",
       "sourceFile": "tokens/atomic/map/color/dark/yellow.yml",
+      "origin": "manual"
+    },
+    {
+      "id": "color-yellow-green-0",
+      "name": "color-yellow-green-0",
+      "cssVariable": "--fds-g-color-yellow-green-0",
+      "layer": "atomic",
+      "tier": "map",
+      "category": "color",
+      "type": "color",
+      "value": "#F1F7ED",
+      "resolvedValue": "#F1F7ED",
+      "references": [],
+      "referenceChain": [
+        "color-yellow-green-0"
+      ],
+      "source": "tokens/atomic/map/color/palette/yellow-green.yml",
+      "sourceFile": "tokens/atomic/map/color/palette/yellow-green.yml",
       "origin": "manual"
     },
     {
@@ -4920,8 +5010,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#F1F7ED",
-      "resolvedValue": "#F1F7ED",
+      "value": "#E6F3DC",
+      "resolvedValue": "#E6F3DC",
       "references": [],
       "referenceChain": [
         "color-yellow-green-1"
@@ -4938,8 +5028,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#69A522",
-      "resolvedValue": "#69A522",
+      "value": "#355A00",
+      "resolvedValue": "#355A00",
       "references": [],
       "referenceChain": [
         "color-yellow-green-10"
@@ -4956,29 +5046,11 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#355A00",
-      "resolvedValue": "#355A00",
-      "references": [],
-      "referenceChain": [
-        "color-yellow-green-11"
-      ],
-      "source": "tokens/atomic/map/color/palette/yellow-green.yml",
-      "sourceFile": "tokens/atomic/map/color/palette/yellow-green.yml",
-      "origin": "manual"
-    },
-    {
-      "id": "color-yellow-green-12",
-      "name": "color-yellow-green-12",
-      "cssVariable": "--fds-g-color-yellow-green-12",
-      "layer": "atomic",
-      "tier": "map",
-      "category": "color",
-      "type": "color",
       "value": "#152800",
       "resolvedValue": "#152800",
       "references": [],
       "referenceChain": [
-        "color-yellow-green-12"
+        "color-yellow-green-11"
       ],
       "source": "tokens/atomic/map/color/palette/yellow-green.yml",
       "sourceFile": "tokens/atomic/map/color/palette/yellow-green.yml",
@@ -4992,8 +5064,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#E6F3DC",
-      "resolvedValue": "#E6F3DC",
+      "value": "#D7EDC7",
+      "resolvedValue": "#D7EDC7",
       "references": [],
       "referenceChain": [
         "color-yellow-green-2"
@@ -5010,8 +5082,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#D7EDC7",
-      "resolvedValue": "#D7EDC7",
+      "value": "#C9E8B1",
+      "resolvedValue": "#C9E8B1",
       "references": [],
       "referenceChain": [
         "color-yellow-green-3"
@@ -5028,8 +5100,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#C9E8B1",
-      "resolvedValue": "#C9E8B1",
+      "value": "#BBE49A",
+      "resolvedValue": "#BBE49A",
       "references": [],
       "referenceChain": [
         "color-yellow-green-4"
@@ -5046,8 +5118,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#BBE49A",
-      "resolvedValue": "#BBE49A",
+      "value": "#ACDF81",
+      "resolvedValue": "#ACDF81",
       "references": [],
       "referenceChain": [
         "color-yellow-green-5"
@@ -5064,8 +5136,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#ACDF81",
-      "resolvedValue": "#ACDF81",
+      "value": "#9FD96A",
+      "resolvedValue": "#9FD96A",
       "references": [],
       "referenceChain": [
         "color-yellow-green-6"
@@ -5082,8 +5154,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#9FD96A",
-      "resolvedValue": "#9FD96A",
+      "value": "#92D352",
+      "resolvedValue": "#92D352",
       "references": [],
       "referenceChain": [
         "color-yellow-green-7"
@@ -5100,8 +5172,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#92D352",
-      "resolvedValue": "#92D352",
+      "value": "#87CC3B",
+      "resolvedValue": "#87CC3B",
       "references": [],
       "referenceChain": [
         "color-yellow-green-8"
@@ -5111,6 +5183,24 @@
       "origin": "manual"
     },
     {
+      "id": "color-yellow-green-8-rgb",
+      "name": "color-yellow-green-8-rgb",
+      "cssVariable": "--fds-g-color-yellow-green-8-rgb",
+      "layer": "atomic",
+      "tier": "map",
+      "category": "color",
+      "type": "string",
+      "value": "135, 204, 59",
+      "resolvedValue": "135, 204, 59",
+      "references": [],
+      "referenceChain": [
+        "color-yellow-green-8-rgb"
+      ],
+      "source": "tokens/atomic/map/color/rgb.yml",
+      "sourceFile": "tokens/atomic/map/color/rgb.yml",
+      "origin": "derived"
+    },
+    {
       "id": "color-yellow-green-9",
       "name": "color-yellow-green-9",
       "cssVariable": "--fds-g-color-yellow-green-9",
@@ -5118,8 +5208,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#87CC3B",
-      "resolvedValue": "#87CC3B",
+      "value": "#69A522",
+      "resolvedValue": "#69A522",
       "references": [],
       "referenceChain": [
         "color-yellow-green-9"
@@ -5129,22 +5219,22 @@
       "origin": "manual"
     },
     {
-      "id": "color-yellow-green-9-rgb",
-      "name": "color-yellow-green-9-rgb",
-      "cssVariable": "--fds-g-color-yellow-green-9-rgb",
+      "id": "color-yellow-green-dark-0",
+      "name": "color-yellow-green-dark-0",
+      "cssVariable": "--fds-g-color-yellow-green-dark-0",
       "layer": "atomic",
       "tier": "map",
       "category": "color",
-      "type": "string",
-      "value": "135, 204, 59",
-      "resolvedValue": "135, 204, 59",
+      "type": "color",
+      "value": "#191E15",
+      "resolvedValue": "#191E15",
       "references": [],
       "referenceChain": [
-        "color-yellow-green-9-rgb"
+        "color-yellow-green-dark-0"
       ],
-      "source": "tokens/atomic/map/color/rgb.yml",
-      "sourceFile": "tokens/atomic/map/color/rgb.yml",
-      "origin": "derived"
+      "source": "tokens/atomic/map/color/dark/yellow-green.yml",
+      "sourceFile": "tokens/atomic/map/color/dark/yellow-green.yml",
+      "origin": "manual"
     },
     {
       "id": "color-yellow-green-dark-1",
@@ -5154,8 +5244,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#191E15",
-      "resolvedValue": "#191E15",
+      "value": "#222B1B",
+      "resolvedValue": "#222B1B",
       "references": [],
       "referenceChain": [
         "color-yellow-green-dark-1"
@@ -5172,8 +5262,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#94D455",
-      "resolvedValue": "#94D455",
+      "value": "#A6DB77",
+      "resolvedValue": "#A6DB77",
       "references": [],
       "referenceChain": [
         "color-yellow-green-dark-10"
@@ -5190,29 +5280,11 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#A6DB77",
-      "resolvedValue": "#A6DB77",
-      "references": [],
-      "referenceChain": [
-        "color-yellow-green-dark-11"
-      ],
-      "source": "tokens/atomic/map/color/dark/yellow-green.yml",
-      "sourceFile": "tokens/atomic/map/color/dark/yellow-green.yml",
-      "origin": "manual"
-    },
-    {
-      "id": "color-yellow-green-dark-12",
-      "name": "color-yellow-green-dark-12",
-      "cssVariable": "--fds-g-color-yellow-green-dark-12",
-      "layer": "atomic",
-      "tier": "map",
-      "category": "color",
-      "type": "color",
       "value": "#B9E398",
       "resolvedValue": "#B9E398",
       "references": [],
       "referenceChain": [
-        "color-yellow-green-dark-12"
+        "color-yellow-green-dark-11"
       ],
       "source": "tokens/atomic/map/color/dark/yellow-green.yml",
       "sourceFile": "tokens/atomic/map/color/dark/yellow-green.yml",
@@ -5226,8 +5298,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#222B1B",
-      "resolvedValue": "#222B1B",
+      "value": "#2D3A22",
+      "resolvedValue": "#2D3A22",
       "references": [],
       "referenceChain": [
         "color-yellow-green-dark-2"
@@ -5244,8 +5316,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#2D3A22",
-      "resolvedValue": "#2D3A22",
+      "value": "#384B28",
+      "resolvedValue": "#384B28",
       "references": [],
       "referenceChain": [
         "color-yellow-green-dark-3"
@@ -5262,8 +5334,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#384B28",
-      "resolvedValue": "#384B28",
+      "value": "#455F2D",
+      "resolvedValue": "#455F2D",
       "references": [],
       "referenceChain": [
         "color-yellow-green-dark-4"
@@ -5280,8 +5352,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#455F2D",
-      "resolvedValue": "#455F2D",
+      "value": "#52762F",
+      "resolvedValue": "#52762F",
       "references": [],
       "referenceChain": [
         "color-yellow-green-dark-5"
@@ -5298,8 +5370,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#52762F",
-      "resolvedValue": "#52762F",
+      "value": "#5F8F2E",
+      "resolvedValue": "#5F8F2E",
       "references": [],
       "referenceChain": [
         "color-yellow-green-dark-6"
@@ -5316,8 +5388,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#5F8F2E",
-      "resolvedValue": "#5F8F2E",
+      "value": "#70AB2F",
+      "resolvedValue": "#70AB2F",
       "references": [],
       "referenceChain": [
         "color-yellow-green-dark-7"
@@ -5334,8 +5406,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#70AB2F",
-      "resolvedValue": "#70AB2F",
+      "value": "#87CC3B",
+      "resolvedValue": "#87CC3B",
       "references": [],
       "referenceChain": [
         "color-yellow-green-dark-8"
@@ -5352,8 +5424,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#87CC3B",
-      "resolvedValue": "#87CC3B",
+      "value": "#94D455",
+      "resolvedValue": "#94D455",
       "references": [],
       "referenceChain": [
         "color-yellow-green-dark-9"
@@ -5495,14 +5567,14 @@
       "tier": "map",
       "category": "effects",
       "type": "shadow",
-      "value": "0 0 2px {!color-brand-9}",
+      "value": "0 0 2px {!color-brand-8}",
       "resolvedValue": "0 0 2px #FF7C19",
       "references": [
-        "color-brand-9"
+        "color-brand-8"
       ],
       "referenceChain": [
         "shadow-1",
-        "color-brand-9"
+        "color-brand-8"
       ],
       "source": "tokens/atomic/map/effects.yml",
       "sourceFile": "tokens/atomic/map/effects.yml",
@@ -6754,14 +6826,14 @@
       "tier": "base",
       "category": "color",
       "type": "color",
-      "value": "{!color-gray-50}",
+      "value": "{!color-gray-5}",
       "resolvedValue": "#D7D6D6",
       "references": [
-        "color-gray-50"
+        "color-gray-5"
       ],
       "referenceChain": [
         "border-default",
-        "color-gray-50"
+        "color-gray-5"
       ],
       "source": "tokens/semantic/base/color.yml",
       "sourceFile": "tokens/semantic/base/color.yml"
@@ -6774,14 +6846,14 @@
       "tier": "base",
       "category": "color",
       "type": "color",
-      "value": "{!color-gray-20}",
+      "value": "{!color-gray-2}",
       "resolvedValue": "#F9F9F9",
       "references": [
-        "color-gray-20"
+        "color-gray-2"
       ],
       "referenceChain": [
         "border-disabled",
-        "color-gray-20"
+        "color-gray-2"
       ],
       "source": "tokens/semantic/base/color.yml",
       "sourceFile": "tokens/semantic/base/color.yml"
@@ -6802,7 +6874,7 @@
       "referenceChain": [
         "border-error",
         "color-danger",
-        "color-red-9"
+        "color-red-8"
       ],
       "source": "tokens/semantic/base/color.yml",
       "sourceFile": "tokens/semantic/base/color.yml"
@@ -6823,7 +6895,7 @@
       "referenceChain": [
         "border-focus",
         "color-primary",
-        "color-brand-9"
+        "color-brand-8"
       ],
       "source": "tokens/semantic/base/color.yml",
       "sourceFile": "tokens/semantic/base/color.yml"
@@ -6836,14 +6908,14 @@
       "tier": "base",
       "category": "color",
       "type": "color",
-      "value": "{!color-gray-40}",
+      "value": "{!color-gray-4}",
       "resolvedValue": "#E5E5E4",
       "references": [
-        "color-gray-40"
+        "color-gray-4"
       ],
       "referenceChain": [
         "border-subtle",
-        "color-gray-40"
+        "color-gray-4"
       ],
       "source": "tokens/semantic/base/color.yml",
       "sourceFile": "tokens/semantic/base/color.yml"
@@ -6856,14 +6928,14 @@
       "tier": "base",
       "category": "color",
       "type": "color",
-      "value": "{!color-red-9}",
+      "value": "{!color-red-8}",
       "resolvedValue": "#FF522A",
       "references": [
-        "color-red-9"
+        "color-red-8"
       ],
       "referenceChain": [
         "color-danger",
-        "color-red-9"
+        "color-red-8"
       ],
       "source": "tokens/semantic/base/color.yml",
       "sourceFile": "tokens/semantic/base/color.yml"
@@ -6876,14 +6948,14 @@
       "tier": "base",
       "category": "color",
       "type": "color",
-      "value": "{!color-red-10}",
+      "value": "{!color-red-9}",
       "resolvedValue": "#D53D18",
       "references": [
-        "color-red-10"
+        "color-red-9"
       ],
       "referenceChain": [
         "color-danger-active",
-        "color-red-10"
+        "color-red-9"
       ],
       "source": "tokens/semantic/base/color.yml",
       "sourceFile": "tokens/semantic/base/color.yml"
@@ -6896,14 +6968,14 @@
       "tier": "base",
       "category": "color",
       "type": "color",
-      "value": "{!color-red-1}",
+      "value": "{!color-red-0}",
       "resolvedValue": "#FFF2EF",
       "references": [
-        "color-red-1"
+        "color-red-0"
       ],
       "referenceChain": [
         "color-danger-background",
-        "color-red-1"
+        "color-red-0"
       ],
       "source": "tokens/semantic/base/color.yml",
       "sourceFile": "tokens/semantic/base/color.yml"
@@ -6916,14 +6988,14 @@
       "tier": "base",
       "category": "color",
       "type": "color",
-      "value": "{!color-red-3}",
+      "value": "{!color-red-2}",
       "resolvedValue": "#FFD0C5",
       "references": [
-        "color-red-3"
+        "color-red-2"
       ],
       "referenceChain": [
         "color-danger-background-active",
-        "color-red-3"
+        "color-red-2"
       ],
       "source": "tokens/semantic/base/color.yml",
       "sourceFile": "tokens/semantic/base/color.yml"
@@ -6936,14 +7008,14 @@
       "tier": "base",
       "category": "color",
       "type": "color",
-      "value": "{!color-red-2}",
+      "value": "{!color-red-1}",
       "resolvedValue": "#FFE3DC",
       "references": [
-        "color-red-2"
+        "color-red-1"
       ],
       "referenceChain": [
         "color-danger-background-hover",
-        "color-red-2"
+        "color-red-1"
       ],
       "source": "tokens/semantic/base/color.yml",
       "sourceFile": "tokens/semantic/base/color.yml"
@@ -6956,14 +7028,14 @@
       "tier": "base",
       "category": "color",
       "type": "color",
-      "value": "{!color-red-5}",
+      "value": "{!color-red-4}",
       "resolvedValue": "#FFAD99",
       "references": [
-        "color-red-5"
+        "color-red-4"
       ],
       "referenceChain": [
         "color-danger-disabled",
-        "color-red-5"
+        "color-red-4"
       ],
       "source": "tokens/semantic/base/color.yml",
       "sourceFile": "tokens/semantic/base/color.yml"
@@ -6976,14 +7048,14 @@
       "tier": "base",
       "category": "color",
       "type": "color",
-      "value": "{!color-red-8}",
+      "value": "{!color-red-7}",
       "resolvedValue": "#FF6E4E",
       "references": [
-        "color-red-8"
+        "color-red-7"
       ],
       "referenceChain": [
         "color-danger-hover",
-        "color-red-8"
+        "color-red-7"
       ],
       "source": "tokens/semantic/base/color.yml",
       "sourceFile": "tokens/semantic/base/color.yml"
@@ -6996,14 +7068,14 @@
       "tier": "base",
       "category": "color",
       "type": "color",
-      "value": "{!color-gray-60}",
+      "value": "{!color-gray-6}",
       "resolvedValue": "#C9C8C7",
       "references": [
-        "color-gray-60"
+        "color-gray-6"
       ],
       "referenceChain": [
         "color-icon-disabled",
-        "color-gray-60"
+        "color-gray-6"
       ],
       "source": "tokens/semantic/base/color.yml",
       "sourceFile": "tokens/semantic/base/color.yml"
@@ -7016,14 +7088,14 @@
       "tier": "base",
       "category": "color",
       "type": "color",
-      "value": "{!color-gray-200}",
+      "value": "{!color-gray-20}",
       "resolvedValue": "#080504",
       "references": [
-        "color-gray-200"
+        "color-gray-20"
       ],
       "referenceChain": [
         "color-icon-primary",
-        "color-gray-200"
+        "color-gray-20"
       ],
       "source": "tokens/semantic/base/color.yml",
       "sourceFile": "tokens/semantic/base/color.yml"
@@ -7036,14 +7108,14 @@
       "tier": "base",
       "category": "color",
       "type": "color",
-      "value": "{!color-gray-110}",
+      "value": "{!color-gray-11}",
       "resolvedValue": "#797675",
       "references": [
-        "color-gray-110"
+        "color-gray-11"
       ],
       "referenceChain": [
         "color-icon-secondary",
-        "color-gray-110"
+        "color-gray-11"
       ],
       "source": "tokens/semantic/base/color.yml",
       "sourceFile": "tokens/semantic/base/color.yml"
@@ -7056,14 +7128,14 @@
       "tier": "base",
       "category": "color",
       "type": "color",
-      "value": "{!color-blue-9}",
+      "value": "{!color-blue-8}",
       "resolvedValue": "#189DFF",
       "references": [
-        "color-blue-9"
+        "color-blue-8"
       ],
       "referenceChain": [
         "color-info",
-        "color-blue-9"
+        "color-blue-8"
       ],
       "source": "tokens/semantic/base/color.yml",
       "sourceFile": "tokens/semantic/base/color.yml"
@@ -7076,14 +7148,14 @@
       "tier": "base",
       "category": "color",
       "type": "color",
-      "value": "{!color-blue-10}",
+      "value": "{!color-blue-9}",
       "resolvedValue": "#0080D4",
       "references": [
-        "color-blue-10"
+        "color-blue-9"
       ],
       "referenceChain": [
         "color-info-active",
-        "color-blue-10"
+        "color-blue-9"
       ],
       "source": "tokens/semantic/base/color.yml",
       "sourceFile": "tokens/semantic/base/color.yml"
@@ -7096,14 +7168,14 @@
       "tier": "base",
       "category": "color",
       "type": "color",
-      "value": "{!color-blue-1}",
+      "value": "{!color-blue-0}",
       "resolvedValue": "#EEF6FF",
       "references": [
-        "color-blue-1"
+        "color-blue-0"
       ],
       "referenceChain": [
         "color-info-background",
-        "color-blue-1"
+        "color-blue-0"
       ],
       "source": "tokens/semantic/base/color.yml",
       "sourceFile": "tokens/semantic/base/color.yml"
@@ -7116,14 +7188,14 @@
       "tier": "base",
       "category": "color",
       "type": "color",
-      "value": "{!color-blue-3}",
+      "value": "{!color-blue-2}",
       "resolvedValue": "#C3E1FF",
       "references": [
-        "color-blue-3"
+        "color-blue-2"
       ],
       "referenceChain": [
         "color-info-background-active",
-        "color-blue-3"
+        "color-blue-2"
       ],
       "source": "tokens/semantic/base/color.yml",
       "sourceFile": "tokens/semantic/base/color.yml"
@@ -7136,14 +7208,14 @@
       "tier": "base",
       "category": "color",
       "type": "color",
-      "value": "{!color-blue-2}",
+      "value": "{!color-blue-1}",
       "resolvedValue": "#DBEDFF",
       "references": [
-        "color-blue-2"
+        "color-blue-1"
       ],
       "referenceChain": [
         "color-info-background-hover",
-        "color-blue-2"
+        "color-blue-1"
       ],
       "source": "tokens/semantic/base/color.yml",
       "sourceFile": "tokens/semantic/base/color.yml"
@@ -7156,14 +7228,14 @@
       "tier": "base",
       "category": "color",
       "type": "color",
-      "value": "{!color-blue-5}",
+      "value": "{!color-blue-4}",
       "resolvedValue": "#96CBFF",
       "references": [
-        "color-blue-5"
+        "color-blue-4"
       ],
       "referenceChain": [
         "color-info-disabled",
-        "color-blue-5"
+        "color-blue-4"
       ],
       "source": "tokens/semantic/base/color.yml",
       "sourceFile": "tokens/semantic/base/color.yml"
@@ -7176,14 +7248,14 @@
       "tier": "base",
       "category": "color",
       "type": "color",
-      "value": "{!color-blue-8}",
+      "value": "{!color-blue-7}",
       "resolvedValue": "#46A9FF",
       "references": [
-        "color-blue-8"
+        "color-blue-7"
       ],
       "referenceChain": [
         "color-info-hover",
-        "color-blue-8"
+        "color-blue-7"
       ],
       "source": "tokens/semantic/base/color.yml",
       "sourceFile": "tokens/semantic/base/color.yml"
@@ -7213,14 +7285,14 @@
       "tier": "base",
       "category": "color",
       "type": "color",
-      "value": "{!color-brand-9}",
+      "value": "{!color-brand-8}",
       "resolvedValue": "#FF7C19",
       "references": [
-        "color-brand-9"
+        "color-brand-8"
       ],
       "referenceChain": [
         "color-primary",
-        "color-brand-9"
+        "color-brand-8"
       ],
       "source": "tokens/semantic/base/color.yml",
       "sourceFile": "tokens/semantic/base/color.yml"
@@ -7233,14 +7305,14 @@
       "tier": "base",
       "category": "color",
       "type": "color",
-      "value": "{!color-brand-10}",
+      "value": "{!color-brand-9}",
       "resolvedValue": "#D26200",
       "references": [
-        "color-brand-10"
+        "color-brand-9"
       ],
       "referenceChain": [
         "color-primary-active",
-        "color-brand-10"
+        "color-brand-9"
       ],
       "source": "tokens/semantic/base/color.yml",
       "sourceFile": "tokens/semantic/base/color.yml"
@@ -7253,14 +7325,14 @@
       "tier": "base",
       "category": "color",
       "type": "color",
-      "value": "{!color-brand-1}",
+      "value": "{!color-brand-0}",
       "resolvedValue": "#FEF3EC",
       "references": [
-        "color-brand-1"
+        "color-brand-0"
       ],
       "referenceChain": [
         "color-primary-background",
-        "color-brand-1"
+        "color-brand-0"
       ],
       "source": "tokens/semantic/base/color.yml",
       "sourceFile": "tokens/semantic/base/color.yml"
@@ -7273,14 +7345,14 @@
       "tier": "base",
       "category": "color",
       "type": "color",
-      "value": "{!color-brand-3}",
+      "value": "{!color-brand-2}",
       "resolvedValue": "#FFD8C3",
       "references": [
-        "color-brand-3"
+        "color-brand-2"
       ],
       "referenceChain": [
         "color-primary-background-active",
-        "color-brand-3"
+        "color-brand-2"
       ],
       "source": "tokens/semantic/base/color.yml",
       "sourceFile": "tokens/semantic/base/color.yml"
@@ -7293,14 +7365,14 @@
       "tier": "base",
       "category": "color",
       "type": "color",
-      "value": "{!color-brand-2}",
+      "value": "{!color-brand-1}",
       "resolvedValue": "#FFE6D9",
       "references": [
-        "color-brand-2"
+        "color-brand-1"
       ],
       "referenceChain": [
         "color-primary-background-hover",
-        "color-brand-2"
+        "color-brand-1"
       ],
       "source": "tokens/semantic/base/color.yml",
       "sourceFile": "tokens/semantic/base/color.yml"
@@ -7313,14 +7385,14 @@
       "tier": "base",
       "category": "color",
       "type": "color",
-      "value": "{!color-brand-5}",
+      "value": "{!color-brand-4}",
       "resolvedValue": "#FFBC97",
       "references": [
-        "color-brand-5"
+        "color-brand-4"
       ],
       "referenceChain": [
         "color-primary-disabled",
-        "color-brand-5"
+        "color-brand-4"
       ],
       "source": "tokens/semantic/base/color.yml",
       "sourceFile": "tokens/semantic/base/color.yml"
@@ -7333,14 +7405,14 @@
       "tier": "base",
       "category": "color",
       "type": "color",
-      "value": "{!color-brand-8}",
+      "value": "{!color-brand-7}",
       "resolvedValue": "#FF8E48",
       "references": [
-        "color-brand-8"
+        "color-brand-7"
       ],
       "referenceChain": [
         "color-primary-hover",
-        "color-brand-8"
+        "color-brand-7"
       ],
       "source": "tokens/semantic/base/color.yml",
       "sourceFile": "tokens/semantic/base/color.yml"
@@ -7353,14 +7425,14 @@
       "tier": "base",
       "category": "color",
       "type": "color",
-      "value": "{!color-green-9}",
+      "value": "{!color-green-8}",
       "resolvedValue": "#30C776",
       "references": [
-        "color-green-9"
+        "color-green-8"
       ],
       "referenceChain": [
         "color-success",
-        "color-green-9"
+        "color-green-8"
       ],
       "source": "tokens/semantic/base/color.yml",
       "sourceFile": "tokens/semantic/base/color.yml"
@@ -7373,14 +7445,14 @@
       "tier": "base",
       "category": "color",
       "type": "color",
-      "value": "{!color-green-10}",
+      "value": "{!color-green-9}",
       "resolvedValue": "#14A25C",
       "references": [
-        "color-green-10"
+        "color-green-9"
       ],
       "referenceChain": [
         "color-success-active",
-        "color-green-10"
+        "color-green-9"
       ],
       "source": "tokens/semantic/base/color.yml",
       "sourceFile": "tokens/semantic/base/color.yml"
@@ -7393,14 +7465,14 @@
       "tier": "base",
       "category": "color",
       "type": "color",
-      "value": "{!color-green-1}",
+      "value": "{!color-green-0}",
       "resolvedValue": "#EEF8F1",
       "references": [
-        "color-green-1"
+        "color-green-0"
       ],
       "referenceChain": [
         "color-success-background",
-        "color-green-1"
+        "color-green-0"
       ],
       "source": "tokens/semantic/base/color.yml",
       "sourceFile": "tokens/semantic/base/color.yml"
@@ -7413,14 +7485,14 @@
       "tier": "base",
       "category": "color",
       "type": "color",
-      "value": "{!color-green-3}",
+      "value": "{!color-green-2}",
       "resolvedValue": "#C8ECD3",
       "references": [
-        "color-green-3"
+        "color-green-2"
       ],
       "referenceChain": [
         "color-success-background-active",
-        "color-green-3"
+        "color-green-2"
       ],
       "source": "tokens/semantic/base/color.yml",
       "sourceFile": "tokens/semantic/base/color.yml"
@@ -7433,14 +7505,14 @@
       "tier": "base",
       "category": "color",
       "type": "color",
-      "value": "{!color-green-2}",
+      "value": "{!color-green-1}",
       "resolvedValue": "#DDF3E3",
       "references": [
-        "color-green-2"
+        "color-green-1"
       ],
       "referenceChain": [
         "color-success-background-hover",
-        "color-green-2"
+        "color-green-1"
       ],
       "source": "tokens/semantic/base/color.yml",
       "sourceFile": "tokens/semantic/base/color.yml"
@@ -7453,14 +7525,14 @@
       "tier": "base",
       "category": "color",
       "type": "color",
-      "value": "{!color-green-5}",
+      "value": "{!color-green-4}",
       "resolvedValue": "#9BE2B2",
       "references": [
-        "color-green-5"
+        "color-green-4"
       ],
       "referenceChain": [
         "color-success-disabled",
-        "color-green-5"
+        "color-green-4"
       ],
       "source": "tokens/semantic/base/color.yml",
       "sourceFile": "tokens/semantic/base/color.yml"
@@ -7473,14 +7545,14 @@
       "tier": "base",
       "category": "color",
       "type": "color",
-      "value": "{!color-green-8}",
+      "value": "{!color-green-7}",
       "resolvedValue": "#4DCF83",
       "references": [
-        "color-green-8"
+        "color-green-7"
       ],
       "referenceChain": [
         "color-success-hover",
-        "color-green-8"
+        "color-green-7"
       ],
       "source": "tokens/semantic/base/color.yml",
       "sourceFile": "tokens/semantic/base/color.yml"
@@ -7493,14 +7565,14 @@
       "tier": "base",
       "category": "color",
       "type": "color",
-      "value": "{!color-gray-60}",
+      "value": "{!color-gray-6}",
       "resolvedValue": "#C9C8C7",
       "references": [
-        "color-gray-60"
+        "color-gray-6"
       ],
       "referenceChain": [
         "color-text-disabled",
-        "color-gray-60"
+        "color-gray-6"
       ],
       "source": "tokens/semantic/base/color.yml",
       "sourceFile": "tokens/semantic/base/color.yml"
@@ -7513,14 +7585,14 @@
       "tier": "base",
       "category": "color",
       "type": "color",
-      "value": "{!color-gray-10}",
+      "value": "{!color-gray-1}",
       "resolvedValue": "#FFFFFF",
       "references": [
-        "color-gray-10"
+        "color-gray-1"
       ],
       "referenceChain": [
         "color-text-inverse",
-        "color-gray-10"
+        "color-gray-1"
       ],
       "source": "tokens/semantic/base/color.yml",
       "sourceFile": "tokens/semantic/base/color.yml"
@@ -7533,14 +7605,14 @@
       "tier": "base",
       "category": "color",
       "type": "color",
-      "value": "{!color-gray-200}",
+      "value": "{!color-gray-20}",
       "resolvedValue": "#080504",
       "references": [
-        "color-gray-200"
+        "color-gray-20"
       ],
       "referenceChain": [
         "color-text-primary",
-        "color-gray-200"
+        "color-gray-20"
       ],
       "source": "tokens/semantic/base/color.yml",
       "sourceFile": "tokens/semantic/base/color.yml"
@@ -7553,14 +7625,14 @@
       "tier": "base",
       "category": "color",
       "type": "color",
-      "value": "{!color-gray-150}",
+      "value": "{!color-gray-15}",
       "resolvedValue": "#3F3C3A",
       "references": [
-        "color-gray-150"
+        "color-gray-15"
       ],
       "referenceChain": [
         "color-text-secondary",
-        "color-gray-150"
+        "color-gray-15"
       ],
       "source": "tokens/semantic/base/color.yml",
       "sourceFile": "tokens/semantic/base/color.yml"
@@ -7573,14 +7645,14 @@
       "tier": "base",
       "category": "color",
       "type": "color",
-      "value": "{!color-gray-120}",
+      "value": "{!color-gray-12}",
       "resolvedValue": "#6A6765",
       "references": [
-        "color-gray-120"
+        "color-gray-12"
       ],
       "referenceChain": [
         "color-text-tertiary",
-        "color-gray-120"
+        "color-gray-12"
       ],
       "source": "tokens/semantic/base/color.yml",
       "sourceFile": "tokens/semantic/base/color.yml"
@@ -7593,14 +7665,14 @@
       "tier": "base",
       "category": "color",
       "type": "color",
-      "value": "{!color-amber-9}",
+      "value": "{!color-amber-8}",
       "resolvedValue": "#FF7C19",
       "references": [
-        "color-amber-9"
+        "color-amber-8"
       ],
       "referenceChain": [
         "color-warning",
-        "color-amber-9"
+        "color-amber-8"
       ],
       "source": "tokens/semantic/base/color.yml",
       "sourceFile": "tokens/semantic/base/color.yml"
@@ -7613,14 +7685,14 @@
       "tier": "base",
       "category": "color",
       "type": "color",
-      "value": "{!color-amber-10}",
+      "value": "{!color-amber-9}",
       "resolvedValue": "#D26200",
       "references": [
-        "color-amber-10"
+        "color-amber-9"
       ],
       "referenceChain": [
         "color-warning-active",
-        "color-amber-10"
+        "color-amber-9"
       ],
       "source": "tokens/semantic/base/color.yml",
       "sourceFile": "tokens/semantic/base/color.yml"
@@ -7633,14 +7705,14 @@
       "tier": "base",
       "category": "color",
       "type": "color",
-      "value": "{!color-amber-1}",
+      "value": "{!color-amber-0}",
       "resolvedValue": "#FEF3EC",
       "references": [
-        "color-amber-1"
+        "color-amber-0"
       ],
       "referenceChain": [
         "color-warning-background",
-        "color-amber-1"
+        "color-amber-0"
       ],
       "source": "tokens/semantic/base/color.yml",
       "sourceFile": "tokens/semantic/base/color.yml"
@@ -7653,14 +7725,14 @@
       "tier": "base",
       "category": "color",
       "type": "color",
-      "value": "{!color-amber-3}",
+      "value": "{!color-amber-2}",
       "resolvedValue": "#FFD8C3",
       "references": [
-        "color-amber-3"
+        "color-amber-2"
       ],
       "referenceChain": [
         "color-warning-background-active",
-        "color-amber-3"
+        "color-amber-2"
       ],
       "source": "tokens/semantic/base/color.yml",
       "sourceFile": "tokens/semantic/base/color.yml"
@@ -7673,14 +7745,14 @@
       "tier": "base",
       "category": "color",
       "type": "color",
-      "value": "{!color-amber-2}",
+      "value": "{!color-amber-1}",
       "resolvedValue": "#FFE6D9",
       "references": [
-        "color-amber-2"
+        "color-amber-1"
       ],
       "referenceChain": [
         "color-warning-background-hover",
-        "color-amber-2"
+        "color-amber-1"
       ],
       "source": "tokens/semantic/base/color.yml",
       "sourceFile": "tokens/semantic/base/color.yml"
@@ -7693,14 +7765,14 @@
       "tier": "base",
       "category": "color",
       "type": "color",
-      "value": "{!color-amber-5}",
+      "value": "{!color-amber-4}",
       "resolvedValue": "#FFBC97",
       "references": [
-        "color-amber-5"
+        "color-amber-4"
       ],
       "referenceChain": [
         "color-warning-disabled",
-        "color-amber-5"
+        "color-amber-4"
       ],
       "source": "tokens/semantic/base/color.yml",
       "sourceFile": "tokens/semantic/base/color.yml"
@@ -7713,14 +7785,14 @@
       "tier": "base",
       "category": "color",
       "type": "color",
-      "value": "{!color-amber-8}",
+      "value": "{!color-amber-7}",
       "resolvedValue": "#FF8E48",
       "references": [
-        "color-amber-8"
+        "color-amber-7"
       ],
       "referenceChain": [
         "color-warning-hover",
-        "color-amber-8"
+        "color-amber-7"
       ],
       "source": "tokens/semantic/base/color.yml",
       "sourceFile": "tokens/semantic/base/color.yml"
@@ -7741,7 +7813,7 @@
       "referenceChain": [
         "shadow-active",
         "shadow-1",
-        "color-brand-9"
+        "color-brand-8"
       ],
       "source": "tokens/semantic/base/effects.yml",
       "sourceFile": "tokens/semantic/base/effects.yml",
@@ -7818,14 +7890,14 @@
       "tier": "base",
       "category": "layout",
       "type": "color",
-      "value": "{!color-gray-10}",
+      "value": "{!color-gray-1}",
       "resolvedValue": "#FFFFFF",
       "references": [
-        "color-gray-10"
+        "color-gray-1"
       ],
       "referenceChain": [
         "background-container",
-        "color-gray-10"
+        "color-gray-1"
       ],
       "source": "tokens/semantic/base/layout.yml",
       "sourceFile": "tokens/semantic/base/layout.yml"
@@ -7838,14 +7910,14 @@
       "tier": "base",
       "category": "layout",
       "type": "color",
-      "value": "{!color-gray-20}",
+      "value": "{!color-gray-2}",
       "resolvedValue": "#F9F9F9",
       "references": [
-        "color-gray-20"
+        "color-gray-2"
       ],
       "referenceChain": [
         "background-disabled",
-        "color-gray-20"
+        "color-gray-2"
       ],
       "source": "tokens/semantic/base/layout.yml",
       "sourceFile": "tokens/semantic/base/layout.yml"
@@ -7858,14 +7930,14 @@
       "tier": "base",
       "category": "layout",
       "type": "color",
-      "value": "{!color-gray-10}",
+      "value": "{!color-gray-1}",
       "resolvedValue": "#FFFFFF",
       "references": [
-        "color-gray-10"
+        "color-gray-1"
       ],
       "referenceChain": [
         "background-elevated",
-        "color-gray-10"
+        "color-gray-1"
       ],
       "source": "tokens/semantic/base/layout.yml",
       "sourceFile": "tokens/semantic/base/layout.yml"
@@ -7878,14 +7950,14 @@
       "tier": "base",
       "category": "layout",
       "type": "color",
-      "value": "{!color-gray-30}",
+      "value": "{!color-gray-3}",
       "resolvedValue": "#F1F0F0",
       "references": [
-        "color-gray-30"
+        "color-gray-3"
       ],
       "referenceChain": [
         "background-main",
-        "color-gray-30"
+        "color-gray-3"
       ],
       "source": "tokens/semantic/base/layout.yml",
       "sourceFile": "tokens/semantic/base/layout.yml"
@@ -8581,7 +8653,7 @@
       "referenceChain": [
         "heading-color",
         "color-text-primary",
-        "color-gray-200"
+        "color-gray-20"
       ],
       "source": "tokens/semantic/base/typography.yml",
       "sourceFile": "tokens/semantic/base/typography.yml"
@@ -8602,7 +8674,7 @@
       "referenceChain": [
         "text-color",
         "color-text-primary",
-        "color-gray-200"
+        "color-gray-20"
       ],
       "source": "tokens/semantic/base/typography.yml",
       "sourceFile": "tokens/semantic/base/typography.yml"
@@ -8683,7 +8755,7 @@
       "referenceChain": [
         "card-background",
         "background-container",
-        "color-gray-10"
+        "color-gray-1"
       ],
       "source": "tokens/semantic/scene/default.yml",
       "sourceFile": "tokens/semantic/scene/default.yml",
@@ -8705,7 +8777,7 @@
       "referenceChain": [
         "card-border-color",
         "border-subtle",
-        "color-gray-40"
+        "color-gray-4"
       ],
       "source": "tokens/semantic/scene/default.yml",
       "sourceFile": "tokens/semantic/scene/default.yml",
@@ -8834,7 +8906,7 @@
         "card-title-color",
         "heading-color",
         "color-text-primary",
-        "color-gray-200"
+        "color-gray-20"
       ],
       "source": "tokens/semantic/scene/default.yml",
       "sourceFile": "tokens/semantic/scene/default.yml",

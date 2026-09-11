@@ -24,6 +24,9 @@ export const CATALOG = {
   tokens: [
     token("color-danger", "--fds-g-color-danger", "#FF522A"),
     token("border-error", "--fds-g-border-error", "#FF522A"),
+    token("color-red-6", "--fds-g-color-red-6", "#FF8569", { layer: "atomic", tier: "map" }),
+    token("color-brand-3", "--fds-g-color-brand-3", "#FFCAAD", { layer: "atomic", tier: "map" }),
+    token("color-blue-6", "--fds-g-color-blue-6", "#64B5FF", { layer: "atomic", tier: "map" }),
     token("background-container", "--fds-g-background-container", "#FFFFFF", { category: "layout" }),
     token("background-elevated", "--fds-g-background-elevated", "#FFFFFF", { category: "layout" }),
     token("spacing-4", "--fds-g-spacing-4", "16px", { layer: "atomic", tier: "map", category: "spacing", type: "dimension" }),

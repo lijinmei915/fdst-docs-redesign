@@ -4,7 +4,7 @@ import { TextDecoder } from "node:util";
 import { readdir, readFile, stat, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { classifyOccurrence, compilePolicy, MigrationError, NONCOMPLIANT_STATUSES } from "./lib/matcher.mjs";
+import { classifyOccurrence, compileLegacyColorIndex, compilePolicy, MigrationError, NONCOMPLIANT_STATUSES } from "./lib/matcher.mjs";
 import { parseMarkup, parseVue } from "./lib/markup-adapter.mjs";
 import { buildReport, writeReportSet } from "./lib/report.mjs";
 import { parseScript } from "./lib/script-adapter.mjs";
@@ -14,6 +14,7 @@ const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
 const SKILL_ROOT = path.dirname(SCRIPT_DIR);
 const DEFAULT_POLICY = path.join(SKILL_ROOT, "references", "migration-policy.json");
 const DEFAULT_CATALOG = path.join(SKILL_ROOT, "references", "fds-token-catalog.jsonl");
+const DEFAULT_LEGACY_COLOR_INDEX = path.join(SKILL_ROOT, "references", "legacy-color-index.json");
 const DEFAULT_CONFIG = path.join(".fdst", "migrate.json");
 const DEFAULT_ENTRY = "src";
 const DEFAULT_REPORT_ROOT = path.join(".fdst", "reports", "migrate");
@@ -271,7 +272,9 @@ async function applyReplacements(findings, sources) {
       const [start, end] = finding._span;
       text = text.slice(0, start) + finding.replacement + text.slice(end);
       finding.status = "replaced";
-      finding.reason = "已替换为唯一精确候选，并保留原始值 fallback";
+      finding.reason = finding.selectedToken?.match === "legacy-index"
+        ? "已按旧色板索引映射，并保留原始值 fallback"
+        : "已替换为唯一精确候选，并保留原始值 fallback";
     }
     const encoded = Buffer.from(text, "utf8");
     await writeFile(source.file, source.hasBom ? Buffer.concat([Buffer.from([0xef, 0xbb, 0xbf]), encoded]) : encoded);
@@ -284,6 +287,7 @@ async function main() {
   const catalog = await readCatalog(catalogPath);
   validateCatalog(catalog);
   const policy = compilePolicy(await readJson(path.resolve(options.policy), "迁移策略"));
+  const legacyColorIndex = compileLegacyColorIndex(await readJson(DEFAULT_LEGACY_COLOR_INDEX, "旧色板索引"));
   assertIndependentTargets(options.targets);
   const unitNames = reportUnitNames(options.targets);
   const units = [];
@@ -306,6 +310,7 @@ async function main() {
       occurrence,
       catalog.tokens,
       policy,
+      legacyColorIndex,
       options.contexts,
       componentVariables,
     ));
@@ -324,6 +329,8 @@ async function main() {
       catalogPath,
       catalogSource: catalogPath === path.resolve(DEFAULT_CATALOG) ? "bundled" : "override",
       catalog,
+      legacyColorIndexPath: DEFAULT_LEGACY_COLOR_INDEX,
+      legacyColorIndex,
       projectRoot: options.projectRoot,
       configPath: options.configPath,
       targets: [unit.target],

@@ -35,8 +35,11 @@ function relativePath(file, projectRoot) {
   return path.relative(projectRoot, path.resolve(file)).replaceAll("\\", "/") || ".";
 }
 
-export async function buildReport({ mode, catalogPath, catalogSource, catalog, projectRoot, configPath, targets, findings, parseErrors, unsupportedFiles, fileCount, applyBlocked }) {
-  const catalogBytes = await readFile(catalogPath);
+export async function buildReport({ mode, catalogPath, catalogSource, catalog, legacyColorIndexPath, legacyColorIndex, projectRoot, configPath, targets, findings, parseErrors, unsupportedFiles, fileCount, applyBlocked }) {
+  const [catalogBytes, legacyColorIndexBytes] = await Promise.all([
+    readFile(catalogPath),
+    readFile(legacyColorIndexPath),
+  ]);
   return {
     schema: "fds-token-migration-report/v2",
     mode,
@@ -49,6 +52,17 @@ export async function buildReport({ mode, catalogPath, catalogSource, catalog, p
       schema: catalog.schema,
       tokenCount: catalog.tokens.length,
       sha256: createHash("sha256").update(catalogBytes).digest("hex"),
+    },
+    legacyColorIndex: {
+      path: "references/legacy-color-index.json",
+      schema: legacyColorIndex.schema,
+      source: legacyColorIndex.source,
+      indexRule: legacyColorIndex.indexRule,
+      indexRules: legacyColorIndex.indexRules,
+      familyCount: Object.keys(legacyColorIndex.familyMappings).length,
+      scaleCount: Object.keys(legacyColorIndex.scales).length,
+      recordCount: legacyColorIndex._records.length,
+      sha256: createHash("sha256").update(legacyColorIndexBytes).digest("hex"),
     },
     project: {
       pathBase: "project-root",
@@ -332,7 +346,7 @@ function candidatePromptLines(finding) {
 }
 
 function hasPriorityRule(finding) {
-  return Boolean(finding.componentVariables?.length || finding.legacyBrandVariables?.length);
+  return Boolean(finding.componentVariables?.length || finding.legacyColorVariables?.length);
 }
 
 function priorityDescription(finding) {
@@ -342,7 +356,7 @@ function priorityDescription(finding) {
   return [
     ...(finding.componentVariables || []),
     ...fds,
-    ...(finding.legacyBrandVariables || []),
+    ...(finding.legacyColorVariables || []),
     ...(finding.fallbackValue ? ["原值"] : []),
   ].join(" > ");
 }
@@ -376,7 +390,7 @@ function statusPromptRequirements(finding) {
       ];
     case "similar":
       return [
-        "评估相近候选的设计语义，不得仅凭数值或颜色距离接近直接替换。",
+        "评估相近候选的设计语义，不得仅凭数值距离接近直接替换。",
         "只有确认允许视觉值变化且语义一致时才采用候选；否则保持源码不变并说明原因。",
       ];
     case "missing-token":
@@ -426,7 +440,7 @@ function findingPrompt(finding, mode) {
   ];
   const offset = requirements.length;
   const fallbackRequirement = hasPriorityRule(finding)
-    ? "保持“组件变量 > FDS Token > --color-blueXX > 原值”的相对顺序；组件变量位于 FDS 外层，老品牌色变量位于 FDS fallback 内层，并继续保留原值。"
+    ? "保持“组件变量 > FDS Token > 旧色板变量 > 原值”的相对顺序；组件变量位于 FDS 外层，旧色板变量位于 FDS fallback 内层，并继续保留原值。"
     : "任何替换都必须使用 var(--fds-*, 原值) 形式保留当前原值作为 fallback。";
   lines.push(
     `${offset + 1}. 只处理这一项及其必要上下文，不格式化文件，不修改无关代码。`,
@@ -454,7 +468,7 @@ function promptItem(finding, mode) {
     reason: finding.reason,
     priorityVariables: finding.priorityVariables || [],
     componentVariables: finding.componentVariables || [],
-    legacyBrandVariables: finding.legacyBrandVariables || [],
+    legacyColorVariables: finding.legacyColorVariables || [],
     candidates: finding.candidates || [],
     prompt: findingPrompt(finding, mode),
   };
@@ -544,7 +558,7 @@ export function buildDecisionPrompt(decisions) {
     "",
     "要求：",
     "- 只改清单项，不格式化无关代码；定位失效时先重新扫描。",
-    "- 使用所选 Token，保留原值 fallback 和‘组件变量 > FDS Token > --color-blueXX > 原值’顺序；Token 不存在或属性不兼容时跳过，不得自行改选。",
+    "- 使用所选 Token，保留原值 fallback 和‘组件变量 > FDS Token > 旧色板变量 > 原值’顺序；Token 不存在或属性不兼容时跳过，不得自行改选。",
     "- 完成后运行 fds-migrate verify 和相关测试，并说明跳过项。",
     "",
   ];
@@ -912,6 +926,7 @@ export function renderHtml(report) {
       <div class="meta">
         <span class="meta-item">Catalog ${escapeHtml(report.catalog.schema)}</span>
         <span class="meta-item">SHA ${escapeHtml(report.catalog.sha256.slice(0, 12))}</span>
+        ${report.legacyColorIndex ? `<span class="meta-item">旧色板 ${escapeHtml(report.legacyColorIndex.indexRule)}</span>` : ""}
         <span class="meta-item">${escapeHtml(report.generatedAt)}</span>
         <span class="meta-item">Apply 阻止：${report.applyBlocked ? "是" : "否"}</span>
       </div>
@@ -996,6 +1011,7 @@ function renderIndexHtml(index) {
       <div class="meta">
         <span class="meta-item">Catalog ${escapeHtml(index.catalog?.schema)}</span>
         <span class="meta-item">SHA ${escapeHtml(index.catalog?.sha256?.slice(0, 12))}</span>
+        ${index.legacyColorIndex ? `<span class="meta-item">旧色板 ${escapeHtml(index.legacyColorIndex.indexRule)}</span>` : ""}
         <span class="meta-item">${escapeHtml(index.generatedAt)}</span>
         <span class="meta-item">Apply 阻止：${index.applyBlocked ? "是" : "否"}</span>
       </div>
@@ -1042,6 +1058,7 @@ export async function writeReportSet(reportDir, reports) {
     mode: firstReport?.mode,
     generatedAt: new Date().toISOString(),
     catalog: firstReport?.catalog,
+    legacyColorIndex: firstReport?.legacyColorIndex,
     project: firstReport?.project,
     applyBlocked: reports.some(({ report }) => report.applyBlocked),
     summary,

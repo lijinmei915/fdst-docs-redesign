@@ -8,15 +8,15 @@ global:
   primitive: true
   source: manual
 props:
-  color-magenta-dark-1: {value: '#241617'}
-  color-magenta-dark-2: {value: '#331D1E'}
-  color-magenta-dark-3: {value: '#442426'}
-  color-magenta-dark-4: {value: '#5A2B2E'}
-  color-magenta-dark-5: {value: '#743137'}
-  color-magenta-dark-6: {value: '#933641'}
-  color-magenta-dark-7: {value: '#B33949'}
-  color-magenta-dark-8: {value: '#D83E55'}
-  color-magenta-dark-9: {value: '#FF4A66'}
-  color-magenta-dark-10: {value: '#FF6C7B'}
-  color-magenta-dark-11: {value: '#FF8992'}
-  color-magenta-dark-12: {value: '#FFA4A9'}
+  color-magenta-dark-0: {value: '#241617'}
+  color-magenta-dark-1: {value: '#331D1E'}
+  color-magenta-dark-2: {value: '#442426'}
+  color-magenta-dark-3: {value: '#5A2B2E'}
+  color-magenta-dark-4: {value: '#743137'}
+  color-magenta-dark-5: {value: '#933641'}
+  color-magenta-dark-6: {value: '#B33949'}
+  color-magenta-dark-7: {value: '#D83E55'}
+  color-magenta-dark-8: {value: '#FF4A66'}
+  color-magenta-dark-9: {value: '#FF6C7B'}
+  color-magenta-dark-10: {value: '#FF8992'}
+  color-magenta-dark-11: {value: '#FFA4A9'}

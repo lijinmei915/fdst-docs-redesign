@@ -11,99 +11,99 @@ imports:
 - ../../atomic/map/color/gray.yml
 props:
   color-primary:
-    value: '{!color-brand-9}'
-  color-primary-background:
-    value: '{!color-brand-1}'
-  color-primary-background-hover:
-    value: '{!color-brand-2}'
-  color-primary-background-active:
-    value: '{!color-brand-3}'
-  color-primary-hover:
     value: '{!color-brand-8}'
+  color-primary-background:
+    value: '{!color-brand-0}'
+  color-primary-background-hover:
+    value: '{!color-brand-1}'
+  color-primary-background-active:
+    value: '{!color-brand-2}'
+  color-primary-hover:
+    value: '{!color-brand-7}'
   color-primary-active:
-    value: '{!color-brand-10}'
+    value: '{!color-brand-9}'
   color-primary-disabled:
-    value: '{!color-brand-5}'
+    value: '{!color-brand-4}'
   color-danger:
-    value: '{!color-red-9}'
-  color-danger-background:
-    value: '{!color-red-1}'
-  color-danger-background-hover:
-    value: '{!color-red-2}'
-  color-danger-background-active:
-    value: '{!color-red-3}'
-  color-danger-hover:
     value: '{!color-red-8}'
+  color-danger-background:
+    value: '{!color-red-0}'
+  color-danger-background-hover:
+    value: '{!color-red-1}'
+  color-danger-background-active:
+    value: '{!color-red-2}'
+  color-danger-hover:
+    value: '{!color-red-7}'
   color-danger-active:
-    value: '{!color-red-10}'
+    value: '{!color-red-9}'
   color-danger-disabled:
-    value: '{!color-red-5}'
+    value: '{!color-red-4}'
   color-warning:
-    value: '{!color-amber-9}'
-  color-warning-background:
-    value: '{!color-amber-1}'
-  color-warning-background-hover:
-    value: '{!color-amber-2}'
-  color-warning-background-active:
-    value: '{!color-amber-3}'
-  color-warning-hover:
     value: '{!color-amber-8}'
+  color-warning-background:
+    value: '{!color-amber-0}'
+  color-warning-background-hover:
+    value: '{!color-amber-1}'
+  color-warning-background-active:
+    value: '{!color-amber-2}'
+  color-warning-hover:
+    value: '{!color-amber-7}'
   color-warning-active:
-    value: '{!color-amber-10}'
+    value: '{!color-amber-9}'
   color-warning-disabled:
-    value: '{!color-amber-5}'
+    value: '{!color-amber-4}'
   color-success:
-    value: '{!color-green-9}'
-  color-success-background:
-    value: '{!color-green-1}'
-  color-success-background-hover:
-    value: '{!color-green-2}'
-  color-success-background-active:
-    value: '{!color-green-3}'
-  color-success-hover:
     value: '{!color-green-8}'
+  color-success-background:
+    value: '{!color-green-0}'
+  color-success-background-hover:
+    value: '{!color-green-1}'
+  color-success-background-active:
+    value: '{!color-green-2}'
+  color-success-hover:
+    value: '{!color-green-7}'
   color-success-active:
-    value: '{!color-green-10}'
+    value: '{!color-green-9}'
   color-success-disabled:
-    value: '{!color-green-5}'
+    value: '{!color-green-4}'
   color-info:
-    value: '{!color-blue-9}'
-  color-info-background:
-    value: '{!color-blue-1}'
-  color-info-background-hover:
-    value: '{!color-blue-2}'
-  color-info-background-active:
-    value: '{!color-blue-3}'
-  color-info-hover:
     value: '{!color-blue-8}'
+  color-info-background:
+    value: '{!color-blue-0}'
+  color-info-background-hover:
+    value: '{!color-blue-1}'
+  color-info-background-active:
+    value: '{!color-blue-2}'
+  color-info-hover:
+    value: '{!color-blue-7}'
   color-info-active:
-    value: '{!color-blue-10}'
+    value: '{!color-blue-9}'
   color-info-disabled:
-    value: '{!color-blue-5}'
+    value: '{!color-blue-4}'
   color-text-primary:
-    value: '{!color-gray-200}'
+    value: '{!color-gray-20}'
   color-text-secondary:
-    value: '{!color-gray-150}'
+    value: '{!color-gray-15}'
   color-text-tertiary:
-    value: '{!color-gray-120}'
+    value: '{!color-gray-12}'
   color-text-disabled:
-    value: '{!color-gray-60}'
+    value: '{!color-gray-6}'
   color-text-inverse:
-    value: '{!color-gray-10}'
+    value: '{!color-gray-1}'
   color-icon-primary:
-    value: '{!color-gray-200}'
+    value: '{!color-gray-20}'
   color-icon-secondary:
-    value: '{!color-gray-110}'
+    value: '{!color-gray-11}'
   color-icon-disabled:
-    value: '{!color-gray-60}'
+    value: '{!color-gray-6}'
   color-mask:
     value: rgb(8 5 4 / 20%)
   border-default:
-    value: '{!color-gray-50}'
+    value: '{!color-gray-5}'
   border-subtle:
-    value: '{!color-gray-40}'
+    value: '{!color-gray-4}'
   border-disabled:
-    value: '{!color-gray-20}'
+    value: '{!color-gray-2}'
   border-focus:
     value: '{!color-primary}'
   border-error:

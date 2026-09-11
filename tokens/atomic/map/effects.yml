@@ -58,7 +58,7 @@ props:
     type: shadow
     comment: 无阴影，用于默认依靠边框分隔的静态表面。
   shadow-1:
-    value: 0 0 2px {!color-brand-9}
+    value: 0 0 2px {!color-brand-8}
     type: shadow
     comment: 交互激活或键盘焦点的品牌色外发光配方，使用前需避免与 Focus Outline 重复叠加。
   shadow-2:

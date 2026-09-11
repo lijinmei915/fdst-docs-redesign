@@ -23,7 +23,7 @@ Atomic / Seed -> Atomic / Map -> Semantic / Base -> Semantic / Scene
 
 固定公司色系的 Dark Map 属于 `Atomic/Map`，可以按完整名称精确查询。它只是暗色值域，不等于已经存在暗色 Semantic、主题切换协议或组件暗色状态映射。
 
-有彩色 Base/Dark Map 使用 `1-12` 索引，Gray 独立使用 `10-200` 索引。不要把 Gray 的编号规则套用到有彩色 Token，也不要按旧有彩色 `10-120` 规则猜测名称。
+有彩色 Base/Dark Map 使用 `0-11` 索引，Gray 使用 `1-20`，Special 使用 `1-4`。不要跨色板套用编号规则，也不要按旧有彩色 `10-120` 规则猜测名称。
 
 ## 不属于 FDS Global Token
 

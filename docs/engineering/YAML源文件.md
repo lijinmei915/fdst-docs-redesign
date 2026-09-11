@@ -72,7 +72,7 @@ YAML 中只使用 `{!token-id}`，不写 CSS `var()`。构建器按被引用 Tok
 - 当前 schema 借鉴 DTCG 的显式类型和引用思想，但不是 DTCG 标准交换文件。
 - 源文件禁止 `rem`、`calc()` 和长度 Seed。
 - 生成色阶以具体值写入 YAML；浏览器运行时不执行颜色生成算法。
-- 有彩色 Base/Dark Map 使用 `1-12` 索引；Gray 独立使用 `10-200` 索引。
+- 色板索引保留各自认知：有彩色 Base/Dark Map 使用 `0-11`，Gray 使用 `1-20`，Special 使用 `1-4`。
 
 ## 来源
 

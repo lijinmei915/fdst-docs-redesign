@@ -12,6 +12,7 @@
 | `mode` | `scan`、`apply` 或 `verify` |
 | `generatedAt` | UTC ISO 8601 时间 |
 | `catalog` | Token 快照来源（`bundled` / `override`）、路径、schema、Token 数和 SHA-256 |
+| `legacyColorIndex` | 内置旧色板快照的路径、schema、原始来源、各色板索引规则、有彩色色系数、独立尺度数、记录数和 SHA-256 |
 | `project` | 路径基准及实际读取的项目配置文件；路径基准固定为项目根目录 |
 | `targets` | 本次输入路径 |
 | `summary` | 文件、样式 occurrence、解析错误、不支持节点和各状态计数 |
@@ -30,12 +31,13 @@
 - `rule` 和 `reason`。
 - `replacement`：只有 `replaced` / `auto-replace` 存在。
 - `selectedToken`：唯一自动候选。
-- `candidates`：最多五项，包含 `cssVariable`、`resolvedValue`、`layer`、`tier`、`category`、`match` 和可选的 `distance`。
+- `candidates`：最多五项，包含 `cssVariable`、`resolvedValue`、`layer`、`tier`、`category`、`match` 和可选的 `distance`；颜色索引映射的 `match` 为 `legacy-index`。
 - `priorityProtected`：可选；为 `true` 表示声明包含组件自定义变量或 `--bc-*`，FDS 不得取得更高优先级。
 - `priorityVariables`：可选；按源码中的实际 fallback 顺序记录已有 CSS Variables。
 - `componentVariables`：可选；记录高于 FDS 的组件自定义变量和兼容识别的 `--bc-*`。
-- `legacyBrandVariables`：可选；记录应放在 FDS 之后的老品牌色 `--color-blueXX`。
-- `fallbackValue`：可选；AST 能静态证明的末端具体原值，匹配和推荐只基于该值。
+- `legacyColorVariables`：可选；记录应放在 FDS 之后的旧有彩色 `--color-<family>00..10`、`--color-neutrals01..19` 和 `--color-special01..04`。兼容字段 `legacyBrandVariables` 仅继续记录其中的 `--color-blueXX`。
+- `legacyColors`：可选；记录颜色迁移所用的旧色系、旧索引、旧变量/色值、目标色系和目标索引。
+- `fallbackValue`：可选；AST 能静态证明的末端具体原值。颜色只用它定位内置旧色板索引，不与当前 FDS 值比较；非颜色匹配和推荐仍基于该值。
 
 `targets`、`findings[].file`、`parseErrors[].file`、`unsupportedFiles[]` 和覆盖 Catalog 路径均使用项目根目录相对路径，不写入机器绝对路径。
 
@@ -48,7 +50,7 @@
 1. 已替换内容：只有 `apply` 实际写入的项目。
 2. 可自动替换：`scan` / `verify` 识别但未写入的项目。
 3. 不符合规范：统一展示 `ambiguous`、`similar`、`missing-token` 和 `invalid-token`，并提供上述状态筛选；`similar` 行直接列出相近 Token、差异及未自动替换原因，不再重复生成独立章节。
-4. 变量优先级：展示因组件变量 / `--bc-*` 保护或老品牌色 fallback 保持不变，以及已经按“组件变量 > FDS > `--color-blueXX` > 原值”消费有效 FDS Token 的项目；不得与已替换、不符合规范重复展示。
+4. 变量优先级：展示因组件变量 / `--bc-*` 保护或旧色板 fallback 保持不变，以及已经按“组件变量 > FDS > 旧色板变量 > 原值”消费有效 FDS Token 的项目；不得与已替换、不符合规范重复展示。
 5. 需人工检查：动态表达式、spread、插值模板、数值样式等 `unsupported` 节点。
 6. 统计与边界：`compliant`、`exempt`、解析错误和无适配器文件。
 

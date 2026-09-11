@@ -2,25 +2,24 @@
 
 ## 核心原则
 
-迁移遵循“先用途和属性，后比较值”。值相等只能证明视觉值当前一致，不能证明页面背景、容器背景、文字色、边框色或组件状态语义一致。
+迁移先判断 property，再区分颜色与非颜色。旧颜色通过内置 `fx-style` 色板定位色板和索引，再映射到当前 FDS 的对应索引；不比较新旧颜色值，也不按颜色距离猜测。非颜色仍以类型化精确值作为候选证据。
 
 ## 自动替换门槛
 
 声明只有同时满足以下条件才进入 `auto-replace`：
 
 1. CSS property 命中 `migration-policy.json` 中的规则。
-2. 值能够按对应 Token 类型完整解析，不是复合 shorthand 或动态表达式。
-3. 候选 Token 的 `resolvedValue` 与原值精确等价。
-4. 候选名称和类型均与 property 规则兼容。
-5. Semantic/Base 候选唯一；如果没有 Semantic/Base，只有规则明确允许时才考虑 Atomic/Map。
-6. Semantic/Scene 只有通过 `--context` 显式提供场景后才参与自动决策。
-7. 原始值可以原样嵌入 `var(--token, 原值)`，不需要格式化源文件。
+2. 颜色必须由旧变量名直接给出色板/索引，或由硬编码色值在内置旧色板中唯一定位；目标固定为该色板规则对应的 Atomic/Map Token。
+3. 非颜色值必须能够按对应 Token 类型完整解析，且候选 `resolvedValue` 与原值精确等价。
+4. 候选名称和类型与 property 规则兼容；颜色索引目标只要求 property 属于颜色规则且 Catalog 中存在目标 Token。
+5. 非颜色候选按各 property 的层级顺序选择；Scene 只有通过 `--context` 显式提供场景后才参与自动决策。
+6. 原始值可以原样嵌入 `var(--token, 原值)`，不需要格式化源文件。
 
 自动替换时保留原始字面量，包括大小写、单位和函数写法：
 
 ```css
-color: #FF522A;
-color: var(--fds-g-color-danger, #FF522A);
+color: #FFCA7A;
+color: var(--fds-g-color-brand-3, #FFCA7A);
 ```
 
 ## CSS 变量定义与消费优先级
@@ -33,28 +32,36 @@ CSS Custom Property 的定义声明不属于迁移对象。工具会保留定义
 }
 ```
 
-普通 CSS property 消费变量时，优先级固定为“组件自定义变量 / `--bc-*` > FDS > 老品牌色 `--color-blueXX` > 原值”。组件自定义变量必须在当前组件报告单元内存在定义；`--bc-*` 作为既有组件/搭建协议兼容识别。只有整个声明值是纯 `var()` fallback 链，并且末端存在可完整解析的具体原值时，工具才允许插入 FDS：
+普通 CSS property 消费变量时，优先级固定为“组件自定义变量 / `--bc-*` > FDS > 旧色板变量 > 原值”。旧色板变量覆盖 primary、warning、yellow、yellow-green、success、teal、blue、info、purple、magenta、danger 的 `00–10`，以及 `neutrals01–19`、`special01–04`；不含 RGB 和 Dark。组件自定义变量必须在当前组件报告单元内存在定义；`--bc-*` 作为既有组件/搭建协议兼容识别。颜色可从旧变量名直接取得索引，因此不要求末端存在具体色值：
 
 ```css
 color: var(--button-text-color, #FF522A);
 color: var(--button-text-color, var(--fds-g-color-danger, #FF522A));
 
-border-color: var(--color-blue06, #FF522A);
-border-color: var(--fds-g-color-danger, var(--color-blue06, #FF522A));
+border-color: var(--color-blue06, #189DFF);
+border-color: var(--fds-g-color-blue-6, var(--color-blue06, #189DFF));
 
-outline-color: var(--button-text-color, var(--color-blue06, #FF522A));
-outline-color: var(--button-text-color, var(--fds-g-color-danger, var(--color-blue06, #FF522A)));
+outline-color: var(--button-text-color, var(--color-blue06));
+outline-color: var(--button-text-color, var(--fds-g-color-blue-6, var(--color-blue06)));
 ```
 
-不得在变量定义声明里直接写入 FDS，也不得生成 `var(--fds-*, var(--component-*, 原值))` 或 `var(--color-blueXX, var(--fds-*, 原值))`。如果链中已有真实、property 兼容且顺序正确的 FDS Token，结果为 `compliant`，不得重复包裹；非法、property 不兼容或优先级错误的 FDS Token 仍为 `invalid-token`，但工具不自动重排已有链。
+不得在变量定义声明里直接写入 FDS，也不得生成 `var(--fds-*, var(--component-*, 原值))` 或 `var(--color-<family>XX, var(--fds-*, 原值))`。如果链中已有真实、property 兼容且顺序正确的 FDS Token，结果为 `compliant`，不得重复包裹；索引色 Token 必须与链内旧色板变量的映射目标一致。非法、property 不兼容或优先级错误的 FDS Token 仍为 `invalid-token`，但工具不自动重排已有链。
 
-没有末端原值、末端是动态/复合表达式或具体值本身无需 Token 化时，保留原链。末端原值只有歧义、相近或缺失候选时，沿用 `ambiguous`、`similar`、`missing-token`，但不得改变已有变量顺序。未在当前组件报告单元内定义、且不属于 `--bc-*`、FDS 或 `--color-blueXX` 的变量，仍视为来源未知，不自动套用优先级规则。
+非颜色链没有末端原值、末端是动态/复合表达式或具体值本身无需 Token 化时，保留原链。颜色硬编码值不在内置旧色板时归为 `missing-token`，不生成相似候选。未在当前组件报告单元内定义、且不属于 `--bc-*`、FDS 或明确旧色板变量的变量，仍视为来源未知，不自动套用优先级规则。
+
+## 旧色板索引映射
+
+- 11 套有彩色：旧 `00–10` 逐项映射到新 `0–10`。色系名称映射为 primary → brand、warning → amber、success → green、info → indigo、danger → red；yellow、yellow-green、teal、blue、purple、magenta 保持同名。新第 `11` 阶是扩展档。
+- Gray：旧 `neutrals01–19` 逐项映射到新 `gray-1–19`，保持用户已有的 1 起始认知。新 `gray-20` 是扩展档。
+- Special：旧 `special01–04` 逐项映射到新 `special-1–4`。
+
+这三套规则分别维护，不为了统一成同一起始数字而人为错位。旧 RGB 和 Dark 不进入自动迁移。
 
 ## 候选优先级
 
 优先级由每类 CSS property 单独定义，不能全局套用“Semantic 永远优先”：
 
-1. 颜色属性本身已提供较强语义，优先 Semantic/Base；Scene 仍需显式 `--context`。
+1. 旧颜色固定选择索引映射得到的 Atomic/Map Palette Token，不再从相同新色值的 Semantic/Base 候选中选择。
 2. spacing、radius、typography 等通用尺度在没有语义上下文时优先 Atomic/Map，避免把相同数值误解释为 Card、Control、Heading 或 Disabled。
 3. sizing、layer 等强场景属性必须由 `--context` 指向 `control`、`icon`、`modal` 等用途，否则不自动替换。
 4. Atomic/Seed 只用于解释引用链，不进入自动替换。
@@ -63,7 +70,7 @@ outline-color: var(--button-text-color, var(--fds-g-color-danger, var(--color-bl
 
 ## 相近推荐
 
-- 颜色使用 OKLab 感知距离排序，默认阈值为 `0.08`。
+- 颜色不做相似推荐；无法定位旧色板索引时直接报告 `missing-token`。
 - dimension、duration 和 number 仅在单位可比较且相对差异不超过 `25%` 时推荐。
 - shadow、easing 和复合值不做近似猜测。
 - 相近候选始终是 `similar`，不会进入 `apply`。

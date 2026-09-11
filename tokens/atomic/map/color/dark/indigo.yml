@@ -8,15 +8,15 @@ global:
   primitive: true
   source: manual
 props:
-  color-indigo-dark-1: {value: '#121924'}
-  color-indigo-dark-2: {value: '#162032'}
-  color-indigo-dark-3: {value: '#192843'}
-  color-indigo-dark-4: {value: '#1B3258'}
-  color-indigo-dark-5: {value: '#1B3B73'}
-  color-indigo-dark-6: {value: '#194692'}
-  color-indigo-dark-7: {value: '#1350B4'}
-  color-indigo-dark-8: {value: '#0B5CD9'}
-  color-indigo-dark-9: {value: '#0C6CFF'}
-  color-indigo-dark-10: {value: '#3B83FF'}
-  color-indigo-dark-11: {value: '#5E99FF'}
-  color-indigo-dark-12: {value: '#80AFFF'}
+  color-indigo-dark-0: {value: '#121924'}
+  color-indigo-dark-1: {value: '#162032'}
+  color-indigo-dark-2: {value: '#192843'}
+  color-indigo-dark-3: {value: '#1B3258'}
+  color-indigo-dark-4: {value: '#1B3B73'}
+  color-indigo-dark-5: {value: '#194692'}
+  color-indigo-dark-6: {value: '#1350B4'}
+  color-indigo-dark-7: {value: '#0B5CD9'}
+  color-indigo-dark-8: {value: '#0C6CFF'}
+  color-indigo-dark-9: {value: '#3B83FF'}
+  color-indigo-dark-10: {value: '#5E99FF'}
+  color-indigo-dark-11: {value: '#80AFFF'}

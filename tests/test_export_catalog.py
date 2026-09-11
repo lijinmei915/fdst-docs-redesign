@@ -62,17 +62,18 @@ class ExportCatalogTest(unittest.TestCase):
         tokens = {item["id"]: item for item in catalog["tokens"]}
 
         self.assertEqual("manual", tokens["color-brand"]["origin"])
-        self.assertEqual("manual", tokens["color-brand-9"]["origin"])
-        self.assertEqual("manual", tokens["color-yellow-dark-10"]["origin"])
-        self.assertEqual("manual", tokens["color-gray-10"]["origin"])
-        self.assertEqual("derived", tokens["color-brand-9-rgb"]["origin"])
+        self.assertEqual("manual", tokens["color-brand-8"]["origin"])
+        self.assertEqual("manual", tokens["color-yellow-dark-9"]["origin"])
+        self.assertEqual("manual", tokens["color-gray-1"]["origin"])
+        self.assertEqual("manual", tokens["color-special-1"]["origin"])
+        self.assertEqual("derived", tokens["color-brand-8-rgb"]["origin"])
 
     def test_catalog_contains_complete_reference_chains(self) -> None:
         catalog = EXPORT.build_catalog()
         tokens = {item["id"]: item for item in catalog["tokens"]}
 
         self.assertEqual(
-            ["color-danger-background", "color-red-1"],
+            ["color-danger-background", "color-red-0"],
             tokens["color-danger-background"]["referenceChain"],
         )
         self.assertEqual(

@@ -27,7 +27,7 @@
         "^card-title-color$"
       ],
       "allowAtomicAuto": false,
-      "allowSimilarity": true,
+      "allowSimilarity": false,
       "selectionOrder": ["scene-context", "semantic-base"]
     },
     {
@@ -40,7 +40,7 @@
         "^card-background$"
       ],
       "allowAtomicAuto": false,
-      "allowSimilarity": true,
+      "allowSimilarity": false,
       "selectionOrder": ["scene-context", "semantic-base"]
     },
     {
@@ -49,7 +49,7 @@
       "types": ["color"],
       "tokenNamePatterns": ["^border-", "^card-border-color$"],
       "allowAtomicAuto": false,
-      "allowSimilarity": true,
+      "allowSimilarity": false,
       "selectionOrder": ["scene-context", "semantic-base"]
     },
     {
@@ -58,7 +58,7 @@
       "types": ["color"],
       "tokenNamePatterns": ["^color-icon-"],
       "allowAtomicAuto": false,
-      "allowSimilarity": true,
+      "allowSimilarity": false,
       "selectionOrder": ["semantic-base"]
     },
     {

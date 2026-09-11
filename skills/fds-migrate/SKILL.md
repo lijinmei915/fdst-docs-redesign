@@ -1,13 +1,13 @@
 ---
 name: fds-migrate
-description: 使用 Skill 内置的完整 FDS Token 快照扫描 CSS、SCSS、Sass、Less、WXSS、Vue、HTML、WXML、JS、JSX、TS、TSX 和受控 CSS-in-JS 样式节点，生成可审计报告，并在用户明确要求时将唯一、属性兼容的值替换为带原值 fallback 的 FDS Token。处理 FDS Token 合规迁移、相近 Token 推荐或迁移复核时使用；创建、修改或发布 Token 时不使用。
+description: 使用 Skill 内置的完整 FDS Token 与旧色板索引快照扫描 CSS、SCSS、Sass、Less、WXSS、Vue、HTML、WXML、JS、JSX、TS、TSX 和受控 CSS-in-JS 样式节点，生成可审计报告，并在用户明确要求时将旧颜色按索引、其他值按唯一属性兼容候选替换为带原值 fallback 的 FDS Token。处理 FDS Token 合规迁移、相近非颜色 Token 推荐或迁移复核时使用；创建、修改或发布 Token 时不使用。
 ---
 
 # FDS Token 迁移
 
 ## Goal / 目标
 
-基于 Skill 内置的完整 FDS Token JSONL 快照做保守迁移：默认只扫描并输出报告；只有用户明确要求执行迁移时，才把 `auto-replace` 项改成带原值 fallback 的 FDS Token。CSS Custom Property 的定义声明不迁移；组件扫描单元内定义的变量和既有 `--bc-*` 保持高于 FDS，老品牌色 `--color-blue00` 至 `--color-blue10` 保持低于 FDS。值相同但语义不唯一、只有相近候选、跨越 Token 所有权边界或无法由 AST 静态证明的节点不得自动修改。
+基于 Skill 内置的完整 FDS Token JSONL 与旧 `fx-style` 色板索引快照做保守迁移：默认只扫描并输出报告；只有用户明确要求执行迁移时，才把 `auto-replace` 项改成带原值 fallback 的 FDS Token。CSS Custom Property 的定义声明不迁移；组件扫描单元内定义的变量和既有 `--bc-*` 保持高于 FDS，旧色板变量保持低于 FDS。颜色不与当前 FDS 色值做相等或相似度匹配，而是按色板和索引一对一迁移：有彩色 `00–10 -> 0–10`、`neutrals01–19 -> gray-1–19`、`special01–04 -> special-1–4`；有彩色第 `11` 阶和 Gray 第 `20` 阶是扩展档，不接收旧色阶自动迁移。非颜色值仍按唯一、属性兼容的精确候选处理。
 
 ## When to Use / 使用场景
 
@@ -23,7 +23,7 @@ description: 使用 Skill 内置的完整 FDS Token 快照扫描 CSS、SCSS、Sa
 ## Preconditions / 前置条件
 
 1. 在目标项目根目录运行；无显式目标时默认扫描 `src`，并自动读取可选的 `.fdst/migrate.json`。
-2. Token 数据默认读取本 Skill 的 `references/fds-token-catalog.jsonl`，不得从其他仓库、Markdown、CSS 示例或命名规律构造 Token。
+2. Token 数据默认读取本 Skill 的 `references/fds-token-catalog.jsonl`；旧有彩色定位读取 `references/legacy-color-index.json`。不得从调用方仓库、Markdown、CSS 示例或命名规律构造 Token。
 3. 检查工作树状态并保留用户已有修改。
 4. 使用 Node.js 16+，首次运行先在本 Skill 目录执行 `npm ci --ignore-scripts`。
 5. 修改源码前必须得到明确授权；“扫描”“检查”“生成报告”只授权 `scan`，不授权 `apply`。
@@ -59,7 +59,7 @@ node <skill-root>/scripts/migrate_styles.mjs verify
 
 ## Decision Rules / 决策规则
 
-- `auto-replace`：当前值与唯一候选精确相等，CSS property 兼容，层级允许自动消费，且源码区间可安全局部修改。
+- `auto-replace`：颜色命中唯一旧色板色系/索引并找到同索引目标，或非颜色值与唯一候选精确相等；同时要求 CSS property 兼容且源码区间可安全局部修改。
 - `ambiguous`：存在多个精确候选，或候选需要未提供的 Scene/组件语义。
 - `similar`：没有精确候选，但存在同 property、同类型的相近候选；仅报告。
 - `missing-token`：属于 Token 管理范围，但没有可靠候选。
@@ -68,9 +68,9 @@ node <skill-root>/scripts/migrate_styles.mjs verify
 - `unsupported`：AST 已定位样式容器，但动态表达式、spread、插值或数值单位语义无法静态判定；需人工检查。
 - `exempt`：不属于本规则管理的属性或合法结构值，不得描述成“不符合规范”。
 - CSS Custom Property 定义：`--component-color: #fff` 等定义声明始终保持原样，只在普通 CSS property 的消费位置迁移。
-- fallback 优先级链：固定为“组件自定义变量 / `--bc-*` > FDS > `--color-blueXX` > 原值”。组件变量必须在当前组件报告单元内存在定义；`--bc-*` 作为既有组件协议兼容识别。没有末端原值、链含未知变量、已有顺序错误、fallback 为复合表达式或候选不唯一时不得自动改写。
+- fallback 优先级链：固定为“组件自定义变量 / `--bc-*` > FDS > 旧色板变量 > 原值”。旧色板变量包括 11 套有彩色的 `--color-<family>00..10`、`--color-neutrals01..19` 和 `--color-special01..04`，不含 RGB 和 Dark。组件变量必须在当前组件报告单元内存在定义；`--bc-*` 作为既有组件协议兼容识别。颜色可直接从旧变量名取得索引，不要求变量链存在末端色值；链含未知变量、已有顺序错误或映射目标不唯一时不得自动改写。
 
-精确值只是候选证据，不等于语义证据。颜色相似度和尺寸差异只用于排序。完整规则见 [匹配策略](references/matching-policy.md)。
+颜色硬编码值只与内置旧色板快照核对以定位旧索引，不与新 FDS 值比较；非颜色精确值只是候选证据，不等于语义证据，尺寸差异只用于排序。完整规则见 [匹配策略](references/matching-policy.md)。
 
 ## Output / 输出
 
@@ -90,6 +90,7 @@ node <skill-root>/scripts/migrate_styles.mjs verify
 - `scripts/migrate_styles.mjs`：统一 CLI、受控写入和全局失败保护。
 - `scripts/lib/`：确定性 matcher、报告和各语法 AST 适配器。
 - `references/fds-token-catalog.jsonl`：随 Skill 打包的完整 Token 快照，每行一个 Token；由正式 YAML import 图自动生成，不手工维护。
+- `references/legacy-color-index.json`：旧 `fx-style` 11 套有彩色 `00–10`、Gray `neutrals01–19` 和 `special01–04` 快照，以及各色板的一对一索引映射依据；排除 RGB 与 Dark。
 - `references/migration-policy.json`：CSS property、Token 类型、命名边界和相似度阈值；不保存 Token 值。
 - `references/matching-policy.md`：自动替换门槛、Scene/Atomic 边界和近似推荐规则。
 - `references/syntax-support.md`：文件类型、样式容器和自动改写边界。

@@ -64,6 +64,10 @@ SOURCE_FILES = {
         "global": {"layer": "atomic", "tier": "map", "category": "color", "type": "color", "scope": "global", "primitive": True, "variant": "gray", "source": "manual"},
         "imports": [],
     },
+    "atomic/map/color/special.yml": {
+        "global": {"layer": "atomic", "tier": "map", "category": "color", "type": "color", "scope": "global", "primitive": True, "variant": "special", "source": "manual"},
+        "imports": [],
+    },
     "atomic/map/color/rgb.yml": {
         "global": {"layer": "atomic", "tier": "map", "category": "color", "type": "string", "scope": "global", "primitive": True, "variant": "rgb", "source": "derived"},
         "imports": ["./palette/base.yml"],
@@ -152,7 +156,7 @@ GROUP_FILES = {
     },
     "atomic/map/color/base.yml": {
         "schema": "fds-token-group/v1",
-        "imports": ["./palette/base.yml", "./gray.yml", "./rgb.yml"],
+        "imports": ["./palette/base.yml", "./gray.yml", "./special.yml", "./rgb.yml"],
     },
     "atomic/map/color/palette/base.yml": {
         "schema": "fds-token-group/v1",
@@ -204,6 +208,8 @@ def classify(token_id: str, namespace: str = DEFAULT_NAMESPACE) -> str:
         return "atomic/map/color/palette/brand.yml"
     if re.fullmatch(r"color-gray-\d+", token_id) or token_id in {"color-white", "color-black"}:
         return "atomic/map/color/gray.yml"
+    if re.fullmatch(r"color-special-[1-4]", token_id):
+        return "atomic/map/color/special.yml"
     if token_id.endswith("-rgb"):
         return "atomic/map/color/rgb.yml"
     if token_id.startswith(("font-family-", "font-size-", "line-height-", "font-weight-")):

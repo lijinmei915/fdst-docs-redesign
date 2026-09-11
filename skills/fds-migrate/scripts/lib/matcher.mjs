@@ -11,7 +11,6 @@ const SELECTION_GROUPS = new Set([
 ]);
 const toRgb = converter("rgb");
 const toOklab = converter("oklab");
-const LEGACY_BRAND_VARIABLE = /^--color-blue(?:0\d|10)$/i;
 
 export const NONCOMPLIANT_STATUSES = new Set([
   "auto-replace",
@@ -34,6 +33,59 @@ export function compilePolicy(policy) {
     if (unknown.length) throw new MigrationError(`迁移策略包含未知 selectionOrder：${unknown.join(", ")}`);
   }
   return policy;
+}
+
+export function compileLegacyColorIndex(index) {
+  if (index?.schema !== "fds-legacy-color-index/v2" || !index.familyMappings || !index.palettes || !index.scales) {
+    throw new MigrationError("旧色板索引 schema、familyMappings、palettes 或 scales 无效");
+  }
+  const records = [];
+  const addRecord = ({ legacyFamily, legacyIndex, resolvedValue, currentFamily, currentIndex }) => {
+    const indexLabel = String(legacyIndex).padStart(2, "0");
+    const parsedValue = parseTypedValue(String(resolvedValue), "color");
+    if (!parsedValue) throw new MigrationError(`旧色板 ${legacyFamily}${indexLabel} 不是有效颜色`);
+    records.push({
+      legacyFamily,
+      legacyIndex,
+      legacyIndexLabel: indexLabel,
+      legacyVariable: `--color-${legacyFamily}${indexLabel}`,
+      resolvedValue,
+      parsedValue,
+      currentFamily,
+      currentIndex,
+      targetVariable: `--fds-g-color-${currentFamily}-${currentIndex}`,
+    });
+  };
+  for (const [legacyFamily, currentFamily] of Object.entries(index.familyMappings)) {
+    const palette = index.palettes[legacyFamily];
+    if (!Array.isArray(palette) || palette.length !== 11) {
+      throw new MigrationError(`旧色板 ${legacyFamily} 必须包含 00 至 10 共 11 阶`);
+    }
+    palette.forEach((resolvedValue, legacyIndex) => addRecord({
+      legacyFamily,
+      legacyIndex,
+      resolvedValue,
+      currentFamily,
+      currentIndex: legacyIndex,
+    }));
+  }
+  for (const [legacyFamily, scale] of Object.entries(index.scales)) {
+    if (!Number.isInteger(scale.legacyStart) || !Number.isInteger(scale.currentStart) || !scale.currentFamily || !Array.isArray(scale.values) || !scale.values.length) {
+      throw new MigrationError(`旧色板 ${legacyFamily} 的起始索引、目标色系或 values 无效`);
+    }
+    scale.values.forEach((resolvedValue, offset) => addRecord({
+      legacyFamily,
+      legacyIndex: scale.legacyStart + offset,
+      resolvedValue,
+      currentFamily: scale.currentFamily,
+      currentIndex: scale.currentStart + offset,
+    }));
+  }
+  return {
+    ...index,
+    _records: records,
+    _byVariable: new Map(records.map((record) => [record.legacyVariable, record])),
+  };
 }
 
 function findRule(property, policy) {
@@ -130,6 +182,39 @@ function candidateRecord(token, match, distance) {
   return record;
 }
 
+function legacyColorRecord(record) {
+  return {
+    family: record.legacyFamily,
+    index: record.legacyIndexLabel,
+    cssVariable: record.legacyVariable,
+    resolvedValue: record.resolvedValue,
+    targetFamily: record.currentFamily,
+    targetIndex: record.currentIndex,
+  };
+}
+
+function findLegacyColorRecords(value, variables, legacyColorIndex) {
+  const variableRecords = [...new Set(variables)]
+    .map((name) => legacyColorIndex._byVariable.get(name.toLowerCase()))
+    .filter(Boolean);
+  if (variableRecords.length) return variableRecords;
+  const parsedValue = parseTypedValue(value, "color");
+  if (!parsedValue) return [];
+  return legacyColorIndex._records.filter((record) => valuesEqual(parsedValue, record.parsedValue));
+}
+
+function indexedColorDecision(value, variables, tokens, legacyColorIndex) {
+  const legacyRecords = findLegacyColorRecords(value, variables, legacyColorIndex);
+  if (!legacyRecords.length) return null;
+  const targetVariables = [...new Set(legacyRecords.map((record) => record.targetVariable))];
+  const tokenByVariable = new Map(tokens.map((token) => [token.cssVariable, token]));
+  return {
+    legacyRecords,
+    targetVariables,
+    token: targetVariables.length === 1 ? tokenByVariable.get(targetVariables[0]) || null : null,
+  };
+}
+
 function tokenMatchesContext(token, contexts) {
   const name = token.name.toLowerCase();
   return contexts.some((rawContext) => {
@@ -212,28 +297,28 @@ function parseVariableChain(value) {
   return null;
 }
 
-function variableKind(name, componentVariables) {
+function variableKind(name, componentVariables, legacyColorIndex) {
   if (name.startsWith("--fds-")) return "fds";
-  if (LEGACY_BRAND_VARIABLE.test(name)) return "legacy-brand";
+  if (legacyColorIndex._byVariable.has(name.toLowerCase())) return "legacy-color";
   if (name.startsWith("--bc-") || componentVariables.has(name)) return "component";
   return "unknown";
 }
 
-function analyzePriorityChain(chain, componentVariables) {
+function analyzePriorityChain(chain, componentVariables, legacyColorIndex) {
   if (!chain) return null;
-  const kinds = chain.variables.map((name) => variableKind(name, componentVariables));
+  const kinds = chain.variables.map((name) => variableKind(name, componentVariables, legacyColorIndex));
   if (kinds.includes("unknown")) return null;
   const component = chain.variables.filter((_, index) => kinds[index] === "component");
   const fds = chain.variables.filter((_, index) => kinds[index] === "fds");
-  const legacyBrand = chain.variables.filter((_, index) => kinds[index] === "legacy-brand");
-  const ranks = kinds.map((kind) => ({ component: 0, fds: 1, "legacy-brand": 2 })[kind]);
+  const legacyColor = chain.variables.filter((_, index) => kinds[index] === "legacy-color");
+  const ranks = kinds.map((kind) => ({ component: 0, fds: 1, "legacy-color": 2 })[kind]);
   const orderValid = fds.length <= 1 && ranks.every((rank, index) => index === 0 || ranks[index - 1] <= rank);
   const leadingComponentCount = kinds.findIndex((kind) => kind !== "component");
   const componentCount = leadingComponentCount < 0 ? kinds.length : leadingComponentCount;
   const insertionSpan = componentCount
     ? chain.levels[componentCount - 1].fallback || null
     : { value: null, start: 0, end: null };
-  return { ...chain, kinds, component, fds, legacyBrand, orderValid, insertionSpan };
+  return { ...chain, kinds, component, fds, legacyColor, orderValid, insertionSpan };
 }
 
 function priorityFallbackReplacement(originalValue, chain, token) {
@@ -250,7 +335,7 @@ function makeId(occurrence) {
     .slice(0, 16);
 }
 
-export function classifyOccurrence(occurrence, tokens, policy, contexts = [], componentVariables = new Set()) {
+export function classifyOccurrence(occurrence, tokens, policy, legacyColorIndex, contexts = [], componentVariables = new Set()) {
   const property = occurrence.property.toLowerCase();
   const rule = findRule(property, policy);
   const finding = {
@@ -286,17 +371,21 @@ export function classifyOccurrence(occurrence, tokens, policy, contexts = [], co
   }
 
   const tokenByVariable = new Map(tokens.map((token) => [token.cssVariable, token]));
-  const priorityChain = analyzePriorityChain(parseVariableChain(occurrence.originalValue), componentVariables);
+  const priorityChain = analyzePriorityChain(parseVariableChain(occurrence.originalValue), componentVariables, legacyColorIndex);
   let comparisonValue = occurrence.originalValue;
   if (priorityChain) {
-    if (priorityChain.component.length || priorityChain.legacyBrand.length) {
+    if (priorityChain.component.length || priorityChain.legacyColor.length) {
       finding.priorityVariables = priorityChain.variables;
     }
     if (priorityChain.component.length) {
       finding.priorityProtected = true;
       finding.componentVariables = priorityChain.component;
     }
-    if (priorityChain.legacyBrand.length) finding.legacyBrandVariables = priorityChain.legacyBrand;
+    if (priorityChain.legacyColor.length) {
+      finding.legacyColorVariables = priorityChain.legacyColor;
+      const legacyBrandVariables = priorityChain.legacyColor.filter((name) => /^--color-blue(?:0\d|10)$/i.test(name));
+      if (legacyBrandVariables.length) finding.legacyBrandVariables = legacyBrandVariables;
+    }
     if (priorityChain.fallback) finding.fallbackValue = priorityChain.fallback.value;
 
     const fdsVariables = [...new Set(priorityChain.fds)];
@@ -308,33 +397,37 @@ export function classifyOccurrence(occurrence, tokens, policy, contexts = [], co
         return finding;
       }
       const existingTokens = fdsVariables.map((name) => tokenByVariable.get(name));
-      const incompatible = existingTokens.filter((token) => !tokenAllowed(token, rule));
+      const indexedDecision = rule.types.includes("color")
+        ? indexedColorDecision(priorityChain.fallback?.value || occurrence.originalValue, priorityChain.legacyColor, tokens, legacyColorIndex)
+        : null;
+      const indexedTargetVariables = new Set(indexedDecision?.targetVariables || []);
+      const incompatible = existingTokens.filter((token) => !tokenAllowed(token, rule) && !indexedTargetVariables.has(token.cssVariable));
       finding.candidates = existingTokens.map((token) => candidateRecord(token, incompatible.includes(token) ? "invalid-property" : "existing"));
       if (incompatible.length) {
         finding.status = "invalid-token";
         finding.reason = "变量 fallback 链中的 FDS Token 与当前 CSS property 不兼容";
       } else if (!priorityChain.orderValid) {
         finding.status = "invalid-token";
-        finding.reason = "变量 fallback 优先级不符合“组件变量 > FDS Token > --color-blueXX > 原值”，保持源码不变";
+        finding.reason = "变量 fallback 优先级不符合“组件变量 > FDS Token > 旧色板变量 > 原值”，保持源码不变";
       } else {
         finding.status = "compliant";
-        finding.reason = priorityChain.component.length && priorityChain.legacyBrand.length
-          ? "已保持组件变量在 FDS 外层，老品牌色变量在 FDS 之后"
+        finding.reason = priorityChain.component.length && priorityChain.legacyColor.length
+          ? "已保持组件变量在 FDS 外层，旧色板变量在 FDS 之后"
           : priorityChain.component.length
           ? "已保持组件自定义变量在 FDS 外层"
-          : priorityChain.legacyBrand.length
-          ? "已保持 FDS 在老品牌色变量之前"
+          : priorityChain.legacyColor.length
+          ? "已保持 FDS 在旧色板变量之前"
           : "FDS Token 存在且 property 兼容";
       }
       return finding;
     }
-    if (!priorityChain.fallback) {
+    if (!priorityChain.fallback && !priorityChain.legacyColor.length) {
       finding.reason = priorityChain.component.length
         ? "组件自定义变量优先；未提供可验证的末端原值，不插入 FDS Token"
-        : "老品牌色变量未提供可验证的末端原值，无法选择 FDS Token";
+        : "变量未提供可验证的末端原值，无法选择 FDS Token";
       return finding;
     }
-    comparisonValue = priorityChain.fallback.value;
+    if (priorityChain.fallback) comparisonValue = priorityChain.fallback.value;
   }
 
   const variables = collectCssVariables(comparisonValue);
@@ -344,7 +437,7 @@ export function classifyOccurrence(occurrence, tokens, policy, contexts = [], co
     finding.reason = `FDS Catalog 中不存在变量：${invalid.join(", ")}`;
     return finding;
   }
-  if (variables.length) {
+  if (variables.length && !priorityChain?.legacyColor.length) {
     finding.reason = priorityChain
       ? "变量链末端 fallback 是复合变量表达式，无法安全插入 FDS Token"
       : variables.every((name) => name.startsWith("--fds-"))
@@ -352,6 +445,45 @@ export function classifyOccurrence(occurrence, tokens, policy, contexts = [], co
       : "非 FDS 动态变量可能属于组件或业务私有契约，需要显式映射后再判断";
     return finding;
   }
+
+  if (rule.types.includes("color")) {
+    const indexedDecision = indexedColorDecision(
+      comparisonValue,
+      priorityChain?.legacyColor || [],
+      tokens,
+      legacyColorIndex,
+    );
+    if (indexedDecision) {
+      finding.legacyColors = indexedDecision.legacyRecords.map(legacyColorRecord);
+      if (indexedDecision.targetVariables.length !== 1) {
+        finding.status = "ambiguous";
+        finding.reason = "旧色值对应多个不同的新色板索引，需要人工确认";
+        return finding;
+      }
+      if (!indexedDecision.token) {
+        finding.status = "missing-token";
+        finding.reason = `Catalog 缺少索引映射目标：${indexedDecision.targetVariables[0]}`;
+        return finding;
+      }
+      finding.candidates = [candidateRecord(indexedDecision.token, "legacy-index")];
+      finding.selectedToken = finding.candidates[0];
+      if (!occurrence.writable || !finding._span) {
+        finding.status = "unsupported";
+        finding.reason = "存在唯一旧色板索引映射，但当前语法节点不能安全局部改写";
+        return finding;
+      }
+      finding.status = "auto-replace";
+      finding.reason = "按已确认的旧新色板索引关系映射，不比较新旧颜色值";
+      finding.replacement = priorityChain
+        ? priorityFallbackReplacement(occurrence.originalValue, priorityChain, indexedDecision.token)
+        : `var(${indexedDecision.token.cssVariable}, ${occurrence.originalValue})`;
+      return finding;
+    }
+    finding.status = "missing-token";
+    finding.reason = "颜色迁移只接受内置旧色板的变量或色值，并按索引映射；不按当前 FDS 值或颜色距离猜测";
+    return finding;
+  }
+
   if (policy.exemptValues.some((value) => value.toLowerCase() === comparisonValue.trim().toLowerCase())) {
     finding.reason = priorityChain
       ? "变量链末端 fallback 是无需 Token 化的 CSS 通用值或零值"
@@ -385,12 +517,12 @@ export function classifyOccurrence(occurrence, tokens, policy, contexts = [], co
     finding.candidates = exact.slice(0, maxCandidates).map((token) => candidateRecord(token, "exact"));
     if (selected && occurrence.writable && finding._span) {
       finding.status = "auto-replace";
-      finding.reason = priorityChain?.component.length && priorityChain.legacyBrand.length
-        ? "唯一精确候选满足规则；FDS 插入组件变量之后、老品牌色变量之前"
+      finding.reason = priorityChain?.component.length && priorityChain.legacyColor.length
+        ? "唯一精确候选满足规则；FDS 插入组件变量之后、旧色板变量之前"
         : priorityChain?.component.length
         ? "唯一精确候选满足规则；保留组件变量优先级，在其 fallback 中插入 FDS"
-        : priorityChain?.legacyBrand.length
-        ? "唯一精确候选满足规则；FDS 插入老品牌色变量之前"
+        : priorityChain?.legacyColor.length
+        ? "唯一精确候选满足规则；FDS 插入旧色板变量之前"
         : "唯一精确候选满足 property 和层级边界";
       finding.selectedToken = candidateRecord(selected, "exact");
       finding.replacement = priorityChain

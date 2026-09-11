@@ -16,16 +16,16 @@ props:
     value: '{!opacity-50}'
     type: number
   background-main:
-    value: '{!color-gray-30}'
+    value: '{!color-gray-3}'
     type: color
   background-container:
-    value: '{!color-gray-10}'
+    value: '{!color-gray-1}'
     type: color
   background-elevated:
-    value: '{!color-gray-10}'
+    value: '{!color-gray-1}'
     type: color
   background-disabled:
-    value: '{!color-gray-20}'
+    value: '{!color-gray-2}'
     type: color
   background-mask:
     value: '{!color-mask}'

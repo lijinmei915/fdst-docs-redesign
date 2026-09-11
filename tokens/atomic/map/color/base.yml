@@ -3,4 +3,5 @@ imports:
 - ./palette/base.yml
 - ./dark/base.yml
 - ./gray.yml
+- ./special.yml
 - ./rgb.yml
