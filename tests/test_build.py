@@ -92,7 +92,7 @@ class BuildTest(unittest.TestCase):
         self.assertEqual("--fds-g-", namespace)
         self.assertEqual([], errors)
         self.assertEqual(37, len(sources))
-        self.assertEqual(489, len(tokens))
+        self.assertEqual(503, len(tokens))
         self.assertFalse(
             any(token_id.startswith("color-") and "-base-" in token_id for token_id in tokens)
         )
@@ -215,8 +215,16 @@ class BuildTest(unittest.TestCase):
             [16, 18, 20, 22, 24, 28, 30, 32, 36, 38, 40, 44, 48],
             [int(tokens[f"line-height-{index}"].value.removesuffix("px")) for index in range(1, 14)],
         )
+        self.assertEqual(
+            ["1.2", "1.3", "1.4", "1.5", "1.6", "1.8"],
+            [tokens[f"line-height-ratio-{index}"].value for index in range(1, 7)],
+        )
+        self.assertTrue(
+            all(tokens[f"line-height-ratio-{index}"].token_type == "number" for index in range(1, 7))
+        )
         self.assertEqual("6px", tokens["radius-3"].value)
         self.assertEqual("16px", tokens["radius-6"].value)
+        self.assertEqual("20px", tokens["radius-7"].value)
         self.assertEqual("9999px", tokens["radius-full"].value)
         self.assertEqual("0.5", tokens["opacity-50"].value)
         self.assertEqual("1", tokens["opacity-100"].value)
@@ -272,6 +280,9 @@ class BuildTest(unittest.TestCase):
             "typography-label-weight",
         }
         self.assertTrue(removed_tokens.isdisjoint(tokens))
+        self.assertEqual("{!font-size-3}", tokens["heading-6-size"].value)
+        self.assertEqual("{!line-height-3}", tokens["heading-6-line-height"].value)
+        self.assertEqual("{!font-weight-semibold}", tokens["heading-6-weight"].value)
 
     def test_opacity_is_limited_to_six_common_values(self) -> None:
         namespace, sources = BUILD.collect_sources()
@@ -306,8 +317,8 @@ class BuildTest(unittest.TestCase):
         self.assertEqual([], errors)
         self.assertNotIn("motion-duration-base", tokens)
         self.assertEqual(
-            ["0ms", "100ms", "200ms", "300ms", "400ms"],
-            [tokens[f"motion-duration-{index}"].value for index in range(5)],
+            ["0ms", "100ms", "200ms", "300ms", "400ms", "500ms", "600ms", "800ms", "1000ms"],
+            [tokens[f"motion-duration-{index}"].value for index in range(9)],
         )
         self.assertEqual(
             [

@@ -39,6 +39,7 @@
 <p><code>--fds-g-</code> 表示 Atomic/Map 与 Semantic/Base 公共契约，<code>--fds-s-</code> 表示 Semantic/Scene 公共契约。业务私有变量和组件变量不得复用这两个前缀。</p>
 <h2 id="_3">数字档位</h2>
 <p>Atomic/Map 采用领域名加数字或稳定枚举，例如 <code>spacing-4</code>、<code>radius-2</code>、<code>font-weight-semibold</code>。数字表示该领域内部的有序档位，不跨领域比较，也不等于业务语义。</p>
+<p>固定 <code>px</code> 行高保留 <code>line-height-{step}</code> 命名；无单位相对行高使用 <code>line-height-ratio-{step}</code>。<code>ratio</code> 明确表示字号倍数，避免把无单位值误解为 <code>rem</code>、百分比或固定高度。</p>
 <p>色板数字表示各自色板内的索引。Base Palette 与固定 Dark Palette 使用 <code>0-11</code>，例如 <code>color-brand-0</code>、<code>color-brand-11</code>、<code>color-blue-dark-0</code>、<code>color-blue-dark-11</code>；Gray 使用 <code>color-gray-1</code> 至 <code>color-gray-20</code>，Special 使用 <code>color-special-1</code> 至 <code>color-special-4</code>。不同色板的起始索引不强求一致。</p>
 <p>业务代码优先使用 <code>background-container</code>、<code>layer-popup</code> 等已发布语义名称。控件高度和控件圆角由组件契约负责；只有在布局组合没有合适语义时，才直接选择 <code>spacing-*</code>。</p>
 <h2 id="_4">语义名称</h2>

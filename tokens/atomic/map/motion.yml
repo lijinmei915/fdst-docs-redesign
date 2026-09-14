@@ -22,6 +22,18 @@ props:
   motion-duration-4:
     value: 400ms
     comment: 重要反馈或较大范围变化的原子时长，由 Prominent 场景受限消费。
+  motion-duration-5:
+    value: 500ms
+    comment: 大型元素或较长位移动效的原子时长，需由组件或明确场景约束。
+  motion-duration-6:
+    value: 600ms
+    comment: 复杂结构过渡的原子时长，需由组件或明确场景约束。
+  motion-duration-7:
+    value: 800ms
+    comment: 分阶段演示或长距离过渡的原子时长，不用于常规操作反馈。
+  motion-duration-8:
+    value: 1000ms
+    comment: 一秒级演示动效的原子时长，不用于常规操作反馈或停留时间。
   motion-easing-1:
     value: cubic-bezier(0.3, 0, 0.15, 1)
     type: cubic-bezier

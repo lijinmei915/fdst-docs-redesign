@@ -21,6 +21,8 @@ props:
     value: 12px
   radius-6:
     value: 16px
+  radius-7:
+    value: 20px
   radius-full:
     value: 9999px
   border-width-1:

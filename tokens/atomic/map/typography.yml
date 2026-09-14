@@ -87,6 +87,30 @@ props:
   line-height-13:
     value: 48px
     type: dimension
+  line-height-ratio-1:
+    value: '1.2'
+    type: number
+    comment: 单行大标题和展示型数字的紧凑行高倍率。
+  line-height-ratio-2:
+    value: '1.3'
+    type: number
+    comment: 大标题和短标题的紧凑行高倍率。
+  line-height-ratio-3:
+    value: '1.4'
+    type: number
+    comment: 界面标题和紧凑文本的常用行高倍率。
+  line-height-ratio-4:
+    value: '1.5'
+    type: number
+    comment: 正文和通用界面文本的基准行高倍率。
+  line-height-ratio-5:
+    value: '1.6'
+    type: number
+    comment: 多行正文和说明文本的宽松行高倍率。
+  line-height-ratio-6:
+    value: '1.8'
+    type: number
+    comment: 小字号辅助信息或高可读性场景的宽松行高倍率。
   font-weight-regular:
     value: '400'
     type: font-weight

@@ -83,7 +83,7 @@
 </code></pre>
 <p>不要使用：在业务组件中直接选择 Amber、Red、Green 或其他 Palette 色阶来表达状态。</p>
 <h2 id="typography">Typography</h2>
-<p>本层提供 Heading 1-5 和 Text recipe。Heading 与 Text 由颜色、字号、行高和字重组成；当前不发布字体族、Label、Caption 或 Code recipe。</p>
+<p>本层提供 Heading 1-6 和 Text recipe。Heading 与 Text 由颜色、字号、固定行高和字重组成；当前不发布字体族、Label、Caption 或 Code recipe。</p>
 <p>推荐：</p>
 <pre><code class="language-css">.page-heading {
   color: var(--fds-g-heading-color);
@@ -118,7 +118,7 @@
   transition-timing-function: var(--fds-g-motion-disclosure-easing);
 }
 </code></pre>
-<p>不要使用：业务直接选择 <code>motion-duration-*</code> 表达 fast/slow，或把 500ms 以上的特殊动画纳入 Global。</p>
+<p>不要使用：业务直接选择 <code>motion-duration-*</code> 表达 fast/slow，或把 Atomic 中 500ms 以上的长时长直接当成通用 Semantic recipe。</p>
 <h2 id="_4">边界</h2>
 <ul>
 <li>Base 不包含页面组合关系，通用页面、场景卡片和标题转到 <a href="场景语义.html">场景语义</a>。</li>

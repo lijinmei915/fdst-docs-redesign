@@ -28,6 +28,8 @@
 | 透明度、层级、阴影 | `opacity`、`z-index`、`box-shadow` |
 | 动效时长、缓动 | `transition-duration`、`transition-timing-function` |
 
+`line-height-*` 是固定 `px` 行高，`line-height-ratio-*` 是无单位字号倍率。不要在两套值之间按数字档位对应；优先使用 Heading/Text 语义 recipe，只有组件或排版适配层明确需要随字号缩放时才查询 Ratio Map。
+
 ## 示例
 
 危险状态浅背景：
@@ -51,6 +53,8 @@
 ```
 
 Dropdown 动效应查询 `Semantic/Base/Motion` 中的 Context Duration、Enter Easing 和 Exit Easing；组件仍负责选择实际过渡属性、关键帧和触发状态。
+
+`motion-duration-5..8` 的 `500/600/800/1000ms` 是受限 Atomic Map，仅在用户给出大型元素、复杂结构、分阶段演示或长距离过渡等明确场景时返回，不把它们解释为通用 slow recipe。
 
 ## 边界
 

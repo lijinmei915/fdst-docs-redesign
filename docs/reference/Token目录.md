@@ -2,7 +2,7 @@
 
 > 本文件由 `python tools/export_catalog.py` 基于 `tokens/fds-global.yml` 的 import 图自动生成，请勿手工编辑。
 
-当前 catalog 共收录 489 个 Token。原始引用和值以 [catalog JSON](../../dist/fds-token-catalog.json) 为准。
+当前 catalog 共收录 503 个 Token。原始引用和值以 [catalog JSON](../../dist/fds-token-catalog.json) 为准。
 
 ## Atomic / Seed / color
 
@@ -342,6 +342,10 @@
 | `--fds-g-motion-duration-2` | `duration` | `200ms` | `200ms` | `tokens/atomic/map/motion.yml` |
 | `--fds-g-motion-duration-3` | `duration` | `300ms` | `300ms` | `tokens/atomic/map/motion.yml` |
 | `--fds-g-motion-duration-4` | `duration` | `400ms` | `400ms` | `tokens/atomic/map/motion.yml` |
+| `--fds-g-motion-duration-5` | `duration` | `500ms` | `500ms` | `tokens/atomic/map/motion.yml` |
+| `--fds-g-motion-duration-6` | `duration` | `600ms` | `600ms` | `tokens/atomic/map/motion.yml` |
+| `--fds-g-motion-duration-7` | `duration` | `800ms` | `800ms` | `tokens/atomic/map/motion.yml` |
+| `--fds-g-motion-duration-8` | `duration` | `1000ms` | `1000ms` | `tokens/atomic/map/motion.yml` |
 | `--fds-g-motion-easing-1` | `cubic-bezier` | `cubic-bezier(0.3, 0, 0.15, 1)` | `cubic-bezier(0.3, 0, 0.15, 1)` | `tokens/atomic/map/motion.yml` |
 | `--fds-g-motion-easing-2` | `cubic-bezier` | `cubic-bezier(0, 0.3, 0.15, 1)` | `cubic-bezier(0, 0.3, 0.15, 1)` | `tokens/atomic/map/motion.yml` |
 | `--fds-g-motion-easing-3` | `cubic-bezier` | `cubic-bezier(0.3, 0, 1, 0.3)` | `cubic-bezier(0.3, 0, 1, 0.3)` | `tokens/atomic/map/motion.yml` |
@@ -358,6 +362,7 @@
 | `--fds-g-radius-4` | `dimension` | `8px` | `8px` | `tokens/atomic/map/shape.yml` |
 | `--fds-g-radius-5` | `dimension` | `12px` | `12px` | `tokens/atomic/map/shape.yml` |
 | `--fds-g-radius-6` | `dimension` | `16px` | `16px` | `tokens/atomic/map/shape.yml` |
+| `--fds-g-radius-7` | `dimension` | `20px` | `20px` | `tokens/atomic/map/shape.yml` |
 | `--fds-g-radius-full` | `dimension` | `9999px` | `9999px` | `tokens/atomic/map/shape.yml` |
 ## Atomic / Map / sizing
 
@@ -417,6 +422,12 @@
 | `--fds-g-line-height-7` | `dimension` | `30px` | `30px` | `tokens/atomic/map/typography.yml` |
 | `--fds-g-line-height-8` | `dimension` | `32px` | `32px` | `tokens/atomic/map/typography.yml` |
 | `--fds-g-line-height-9` | `dimension` | `36px` | `36px` | `tokens/atomic/map/typography.yml` |
+| `--fds-g-line-height-ratio-1` | `number` | `1.2` | `1.2` | `tokens/atomic/map/typography.yml` |
+| `--fds-g-line-height-ratio-2` | `number` | `1.3` | `1.3` | `tokens/atomic/map/typography.yml` |
+| `--fds-g-line-height-ratio-3` | `number` | `1.4` | `1.4` | `tokens/atomic/map/typography.yml` |
+| `--fds-g-line-height-ratio-4` | `number` | `1.5` | `1.5` | `tokens/atomic/map/typography.yml` |
+| `--fds-g-line-height-ratio-5` | `number` | `1.6` | `1.6` | `tokens/atomic/map/typography.yml` |
+| `--fds-g-line-height-ratio-6` | `number` | `1.8` | `1.8` | `tokens/atomic/map/typography.yml` |
 ## Semantic / Base / color
 
 | CSS Variable | 类型 | 源值 | 解析值 | 来源 |
@@ -527,6 +538,9 @@
 | `--fds-g-heading-5-line-height` | `dimension` | `{!line-height-5}` | `24px` | `tokens/semantic/base/typography.yml` |
 | `--fds-g-heading-5-size` | `dimension` | `{!font-size-5}` | `16px` | `tokens/semantic/base/typography.yml` |
 | `--fds-g-heading-5-weight` | `font-weight` | `{!font-weight-semibold}` | `600` | `tokens/semantic/base/typography.yml` |
+| `--fds-g-heading-6-line-height` | `dimension` | `{!line-height-3}` | `20px` | `tokens/semantic/base/typography.yml` |
+| `--fds-g-heading-6-size` | `dimension` | `{!font-size-3}` | `14px` | `tokens/semantic/base/typography.yml` |
+| `--fds-g-heading-6-weight` | `font-weight` | `{!font-weight-semibold}` | `600` | `tokens/semantic/base/typography.yml` |
 | `--fds-g-heading-color` | `color` | `{!color-text-primary}` | `#080504` | `tokens/semantic/base/typography.yml` |
 | `--fds-g-text-color` | `color` | `{!color-text-primary}` | `#080504` | `tokens/semantic/base/typography.yml` |
 | `--fds-g-text-line-height` | `dimension` | `{!line-height-5}` | `24px` | `tokens/semantic/base/typography.yml` |

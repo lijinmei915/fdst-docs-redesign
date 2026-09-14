@@ -506,6 +506,7 @@ a { color: var(--fds-g-color-primary); }
 .type-sheet .eyebrow { color: var(--fds-g-color-primary); font-size: var(--fds-g-font-size-3); font-weight: 600; }
 .type-sheet h2 { margin: var(--fds-g-spacing-2) 0 var(--fds-g-spacing-3); padding: 0; font-size: var(--fds-g-heading-1-size); line-height: var(--fds-g-heading-1-line-height); font-weight: var(--fds-g-heading-1-weight); }
 .type-sheet h3 { margin: var(--fds-g-spacing-5) 0 var(--fds-g-spacing-2); font-size: var(--fds-g-heading-3-size); line-height: var(--fds-g-heading-3-line-height); font-weight: var(--fds-g-heading-3-weight); }
+.type-sheet h4 { margin: var(--fds-g-spacing-3) 0 var(--fds-g-spacing-2); font-size: var(--fds-g-heading-6-size); line-height: var(--fds-g-heading-6-line-height); font-weight: var(--fds-g-heading-6-weight); }
 .type-sheet p { margin: 0; color: var(--fds-g-color-text-secondary); font-size: var(--fds-g-text-size); line-height: var(--fds-g-text-line-height); font-weight: var(--fds-g-text-weight); }
 .type-metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--fds-g-spacing-3); margin-top: var(--fds-g-spacing-5); }
 .type-metric { padding-top: var(--fds-g-spacing-3); border-top: var(--fds-g-border-width-2) solid var(--fds-g-color-primary); }

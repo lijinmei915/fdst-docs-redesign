@@ -94,6 +94,7 @@ class ExportCatalogTest(unittest.TestCase):
         for token_id in (
             "heading-1-size",
             "heading-5-size",
+            "heading-6-size",
             "text-size",
         ):
             record = EXPORT.build_search_record(tokens[token_id])
@@ -102,6 +103,18 @@ class ExportCatalogTest(unittest.TestCase):
                 record["cssExample"],
             )
         self.assertEqual("gap", EXPORT.css_property_for(tokens["spacing-4"]))
+
+    def test_relative_line_height_is_exported_as_unitless_line_height(self) -> None:
+        catalog = EXPORT.build_catalog()
+        tokens = {item["id"]: item for item in catalog["tokens"]}
+        token = tokens["line-height-ratio-4"]
+
+        self.assertEqual("number", token["type"])
+        self.assertEqual("1.5", token["resolvedValue"])
+        self.assertEqual(
+            "line-height: var(--fds-g-line-height-ratio-4);",
+            EXPORT.build_search_record(token)["cssExample"],
+        )
 
     def test_catalog_contains_only_relative_source_paths(self) -> None:
         catalog = EXPORT.build_catalog()

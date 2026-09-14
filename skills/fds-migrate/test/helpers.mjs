@@ -33,6 +33,7 @@ export const CATALOG = {
     token("card-padding", "--fds-s-card-padding", "16px", { tier: "scene", category: "scene", type: "dimension" }),
     token("icon-size-1", "--fds-g-icon-size-1", "16px", { layer: "atomic", tier: "map", category: "sizing", type: "dimension" }),
     token("radius-2", "--fds-g-radius-2", "4px", { layer: "atomic", tier: "map", category: "shape", type: "dimension" }),
+    token("line-height-ratio-4", "--fds-g-line-height-ratio-4", "1.5", { layer: "atomic", tier: "map", category: "typography", type: "number" }),
   ],
 };
 

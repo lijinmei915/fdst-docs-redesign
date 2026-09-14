@@ -134,6 +134,17 @@ test("CSS apply 按旧色板索引替换颜色并保留原值及 CRLF", async ()
   assert.ok(migrated.includes("\r\n"));
 });
 
+test("CSS apply 可将无单位行高替换为相对行高 Token", async () => {
+  const original = ".sample { line-height: 1.5; }\n";
+  const context = await fixture({ "component.css": original });
+  const result = runTool("apply", context.paths["component.css"], context.catalog, context.reportDir);
+  assert.equal(result.status, 0, result.stderr);
+  assert.equal(
+    await readFile(context.paths["component.css"], "utf8"),
+    ".sample { line-height: var(--fds-g-line-height-ratio-4, 1.5); }\n",
+  );
+});
+
 test("有彩色按旧索引直接映射，不要求新旧值相等", async () => {
   const original = ".sample { color: #FFCA7A; border-color: #123456; }\n";
   const context = await fixture({ "component.css": original });

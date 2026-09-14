@@ -98,12 +98,13 @@
 
   function renderTypography() {
     const content = `<div class="type-specimen">
-      <aside class="type-index"><strong>文本角色</strong><span>Heading 1 / 页面标题</span><span>Heading 3 / 区块标题</span><span>Text / 正文</span></aside>
+      <aside class="type-index"><strong>文本角色</strong><span>Heading 1 / 页面标题</span><span>Heading 3 / 区块标题</span><span>Heading 6 / 小节标题</span><span>Text / 正文</span></aside>
       <div class="type-sheet">
         <span class="eyebrow">客户经营概览</span>
         <h2>让信息层级先于装饰</h2>
         <p>稳定的字号、行高和字重组合，让业务信息在不同页面中保持一致的阅读节奏。</p>
         <h3>本月关键数据</h3>
+        <h4>核心指标</h4>
         <div class="type-metrics"><div class="type-metric"><strong>128</strong><span>活跃客户</span></div><div class="type-metric"><strong>76%</strong><span>目标完成率</span></div><div class="type-metric"><strong>24</strong><span>待跟进事项</span></div></div>
       </div>
     </div>`;

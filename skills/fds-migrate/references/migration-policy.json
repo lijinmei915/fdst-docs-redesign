@@ -109,7 +109,7 @@
     {
       "id": "line-height",
       "propertyPatterns": ["^line-height$"],
-      "types": ["dimension"],
+      "types": ["dimension", "number"],
       "tokenNamePatterns": ["(?:^|-)line-height(?:-|$)"],
       "allowAtomicAuto": true,
       "allowSimilarity": true,

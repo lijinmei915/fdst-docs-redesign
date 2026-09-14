@@ -250,6 +250,8 @@ def token_type(token_id: str) -> str:
         return "font-family"
     if token_id.startswith("font-weight-") or token_id.endswith("-weight"):
         return "font-weight"
+    if token_id.startswith("line-height-ratio-"):
+        return "number"
     if token_id.startswith(("font-size-", "line-height-", "spacing-", "icon-size-", "radius-", "border-width-")):
         return "dimension"
     if token_id.endswith(("-size", "-line-height", "-radius")):

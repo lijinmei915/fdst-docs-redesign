@@ -75,6 +75,13 @@ class ImportCssSnapshotTest(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "无法分类 Scene Token"):
             IMPORT.classify("unknown", "--fds-s-")
 
+    def test_relative_line_height_is_imported_as_number(self) -> None:
+        self.assertEqual(
+            "atomic/map/typography.yml",
+            IMPORT.classify("line-height-ratio-4"),
+        )
+        self.assertEqual("number", IMPORT.token_type("line-height-ratio-4"))
+
 
 if __name__ == "__main__":
     unittest.main()

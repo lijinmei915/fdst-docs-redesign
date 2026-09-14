@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="FDS 字号、行高、字重和语义排版组合">
+  <meta name="description" content="FDS 字号、固定行高、相对行高、字重和语义排版组合">
   <title>排版 | FDS Token</title>
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="../assets/fds-global-tokens.css">
@@ -27,7 +27,7 @@
       <div class="docs-breadcrumb"><span>Foundation</span><span>/</span><strong>排版</strong></div>
       <article class="docs-article"><h1 id="_1">排版</h1>
 <h2 id="_2">适用范围</h2>
-<p>本页说明 Atomic/Map 中的字号、行高和字重值域。业务标题和正文文本优先使用 Semantic 排版 recipe；标签等组件文本由组件契约负责。</p>
+<p>本页说明 Atomic/Map 中的字号、固定行高、相对行高和字重值域。业务标题和正文文本优先使用 Semantic 排版 recipe；标签等组件文本由组件契约负责。</p>
 <h2 id="_3">设计原则</h2>
 <ul>
 <li><strong>层级来自内容结构。</strong> 先判断标题、正文或标签职责，再选择排版组合，不按“看起来够大”临时挑字号。</li>
@@ -47,7 +47,7 @@
 <tbody>
 <tr>
 <td>页面与内容标题</td>
-<td><code>heading-1</code> 至 <code>heading-5</code> recipe</td>
+<td><code>heading-1</code> 至 <code>heading-6</code> recipe</td>
 <td>按信息层级选择，并完整使用 Size、Line Height、Weight</td>
 </tr>
 <tr>
@@ -87,8 +87,13 @@
 <td><code>font-size</code></td>
 </tr>
 <tr>
-<td>Line Height</td>
+<td>Fixed Line Height</td>
 <td>16、18、20、22、24、28、30、32、36、38、40、44、48px</td>
+<td><code>line-height</code></td>
+</tr>
+<tr>
+<td>Line Height Ratio</td>
+<td>1.2、1.3、1.4、1.5、1.6、1.8</td>
 <td><code>line-height</code></td>
 </tr>
 <tr>
@@ -98,7 +103,7 @@
 </tr>
 </tbody>
 </table>
-<p>数字档位只表达本领域的有序值，不表示 Heading 或 Text 用途。具体映射由 Semantic/Typography 保存。</p>
+<p>固定行高继续使用 <code>line-height-1..13</code>，确保现有变量名和值不变；相对行高使用 <code>line-height-ratio-1..6</code>，值为无单位字号倍率。数字档位只表达本领域的有序值，不表示 Heading 或 Text 用途。具体映射由 Semantic/Typography 保存。</p>
 <h2 id="_7">使用规则</h2>
 <pre><code class="language-css">.panel-title {
   color: var(--fds-g-heading-color);
@@ -115,6 +120,12 @@
 }
 </code></pre>
 <p>Heading 与 Text 使用完整 recipe，避免只替换字号而遗失匹配的行高和字重。Label 的字号、行高和字重由组件或具体场景负责。</p>
+<p>组件或排版适配层需要让行高随字号同步缩放时，可以使用相对行高：</p>
+<pre><code class="language-css">.adaptive-copy {
+  line-height: var(--fds-g-line-height-ratio-4);
+}
+</code></pre>
+<p>相对行高不是固定行高的兼容别名。现有 Heading 1-6 与 Text recipe 仍引用固定 <code>px</code> 行高，避免新增 Atomic Map 隐式改变已发布语义样式。</p>
 <h2 id="do-dont">Do / Don't</h2>
 <table>
 <thead>
@@ -145,7 +156,7 @@
 <h2 id="_8">边界</h2>
 <ul>
 <li>FDS Global Token 不发布字体族、Label、Caption 或 Code 排版 recipe；这些能力由应用、组件或具体场景负责。</li>
-<li>Atomic 字号和行高使用固定 px，不使用 <code>rem</code> 或运行时计算。</li>
+<li>Atomic 字号和固定行高使用 <code>px</code>；相对行高使用无单位 <code>number</code>，不使用 <code>rem</code>、百分比或运行时计算。</li>
 <li>本项目不定义响应式排版阶梯。</li>
 <li>组件内部排版仍可由组件 Token 约束，但应引用全局底座而非复制具体值。</li>
 </ul>
