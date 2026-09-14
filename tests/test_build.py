@@ -92,7 +92,7 @@ class BuildTest(unittest.TestCase):
         self.assertEqual("--fds-g-", namespace)
         self.assertEqual([], errors)
         self.assertEqual(37, len(sources))
-        self.assertEqual(507, len(tokens))
+        self.assertEqual(513, len(tokens))
         self.assertFalse(
             any(token_id.startswith("color-") and "-base-" in token_id for token_id in tokens)
         )
@@ -446,7 +446,7 @@ class BuildTest(unittest.TestCase):
             for token_id, token in tokens.items()
             if token.tier == "scene"
         }
-        self.assertEqual(13, len(scene_tokens))
+        self.assertEqual(19, len(scene_tokens))
         self.assertTrue(all(token.namespace == "--fds-s-" for token in scene_tokens.values()))
         self.assertTrue(all(not token_id.startswith("scene-") for token_id in scene_tokens))
         self.assertTrue(all(token.value.startswith("{!") for token in scene_tokens.values()))
@@ -456,11 +456,33 @@ class BuildTest(unittest.TestCase):
             "{!heading-5-size}",
             tokens["card-title-size"].value,
         )
+        density_expectations = {
+            "compact": ("line-height-ratio-3", "spacing-1"),
+            "comfortable": ("line-height-ratio-6", "spacing-2"),
+            "spacious": ("line-height-ratio-9", "spacing-3"),
+        }
+        for density, (line_height, spacing) in density_expectations.items():
+            self.assertEqual(
+                f"{{!{line_height}}}",
+                tokens[f"density-{density}-line-height"].value,
+            )
+            self.assertEqual(
+                f"{{!{spacing}}}",
+                tokens[f"density-{density}-spacing"].value,
+            )
 
         namespace, sources = BUILD.collect_sources()
         css = BUILD.build_css(namespace, sources, tokens)
         self.assertIn("--fds-s-card-padding: var(--fds-g-spacing-4);", css)
         self.assertIn("--fds-s-card-title-color: var(--fds-g-heading-color);", css)
+        self.assertIn(
+            "--fds-s-density-compact-line-height: var(--fds-g-line-height-ratio-3);",
+            css,
+        )
+        self.assertIn(
+            "--fds-s-density-spacious-spacing: var(--fds-g-spacing-3);",
+            css,
+        )
         self.assertNotIn("--fds-g-scene-", css)
 
     def test_scene_namespace_is_explicit_and_reserved(self) -> None:

@@ -572,6 +572,12 @@
 
   /* semantic / scene / scene · source: tokens/semantic/scene/default.yml */
   --fds-s-content-padding: var(--fds-g-spacing-6); /* 页面型场景内容与画布边界之间的默认留白。 */
+  --fds-s-density-compact-line-height: var(--fds-g-line-height-ratio-3); /* 紧凑密度场景的相对行高，适用于高信息密度排版。 */
+  --fds-s-density-compact-spacing: var(--fds-g-spacing-1); /* 紧凑密度场景的基础布局间距。 */
+  --fds-s-density-comfortable-line-height: var(--fds-g-line-height-ratio-6); /* 舒适密度场景的相对行高，作为常规阅读节奏。 */
+  --fds-s-density-comfortable-spacing: var(--fds-g-spacing-2); /* 舒适密度场景的基础布局间距。 */
+  --fds-s-density-spacious-line-height: var(--fds-g-line-height-ratio-9); /* 宽松密度场景的相对行高，适用于强调留白和可读性的排版。 */
+  --fds-s-density-spacious-spacing: var(--fds-g-spacing-3); /* 宽松密度场景的基础布局间距。 */
   --fds-s-card-gap: var(--fds-g-spacing-3); /* 页面型场景内并列或上下排列内容卡片之间的默认间距。 */
   --fds-s-card-background: var(--fds-g-background-container); /* 页面型场景中通用内容卡片的默认表面背景。 */
   --fds-s-card-border-color: var(--fds-g-border-subtle); /* 场景卡片与页面画布之间的默认弱分隔色。 */

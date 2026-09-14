@@ -116,6 +116,29 @@ class ExportCatalogTest(unittest.TestCase):
             EXPORT.build_search_record(token)["cssExample"],
         )
 
+    def test_density_scene_tokens_preserve_reference_chain_and_css_property(self) -> None:
+        catalog = EXPORT.build_catalog()
+        tokens = {item["id"]: item for item in catalog["tokens"]}
+
+        self.assertEqual(
+            ["density-compact-line-height", "line-height-ratio-3"],
+            tokens["density-compact-line-height"]["referenceChain"],
+        )
+        self.assertEqual("1.2", tokens["density-compact-line-height"]["resolvedValue"])
+        self.assertEqual(
+            "line-height: var(--fds-s-density-compact-line-height);",
+            EXPORT.build_search_record(tokens["density-compact-line-height"])["cssExample"],
+        )
+        self.assertEqual(
+            ["density-spacious-spacing", "spacing-3"],
+            tokens["density-spacious-spacing"]["referenceChain"],
+        )
+        self.assertEqual("12px", tokens["density-spacious-spacing"]["resolvedValue"])
+        self.assertEqual(
+            "gap: var(--fds-s-density-spacious-spacing);",
+            EXPORT.build_search_record(tokens["density-spacious-spacing"])["cssExample"],
+        )
+
     def test_catalog_contains_only_relative_source_paths(self) -> None:
         catalog = EXPORT.build_catalog()
 

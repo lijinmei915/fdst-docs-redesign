@@ -18,6 +18,30 @@ props:
     value: '{!spacing-6}'
     type: dimension
     comment: 页面型场景内容与画布边界之间的默认留白。
+  density-compact-line-height:
+    value: '{!line-height-ratio-3}'
+    type: number
+    comment: 紧凑密度场景的相对行高，适用于高信息密度排版。
+  density-compact-spacing:
+    value: '{!spacing-1}'
+    type: dimension
+    comment: 紧凑密度场景的基础布局间距。
+  density-comfortable-line-height:
+    value: '{!line-height-ratio-6}'
+    type: number
+    comment: 舒适密度场景的相对行高，作为常规阅读节奏。
+  density-comfortable-spacing:
+    value: '{!spacing-2}'
+    type: dimension
+    comment: 舒适密度场景的基础布局间距。
+  density-spacious-line-height:
+    value: '{!line-height-ratio-9}'
+    type: number
+    comment: 宽松密度场景的相对行高，适用于强调留白和可读性的排版。
+  density-spacious-spacing:
+    value: '{!spacing-3}'
+    type: dimension
+    comment: 宽松密度场景的基础布局间距。
   card-gap:
     value: '{!spacing-3}'
     type: dimension

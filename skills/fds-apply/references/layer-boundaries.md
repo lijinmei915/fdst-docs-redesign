@@ -9,14 +9,14 @@ Atomic / Seed -> Atomic / Map -> Semantic / Base -> Semantic / Scene
 - `Atomic/Seed`：参与派生的最小输入。当前仅保留颜色 Seed，只用于解释值的派生起点。
 - `Atomic/Map`：具体值域和固定枚举。用户明确查询色阶、尺寸档位或原子值时可返回。
 - `Semantic/Base`：跨页面、跨业务成立的基础用途，是业务 CSS 的默认推荐层。
-- `Semantic/Scene`：页面内容区、场景卡片和卡片标题等公共组合协议。
+- `Semantic/Scene`：页面内容区、紧凑/舒适/宽松密度、场景卡片和卡片标题等公共组合协议。
 
 同级引用允许；引用方向不能反向，也不能形成循环。查询脚本返回的 `referenceChain` 是该关系的机器可读证据。
 
 ## 推荐规则
 
 1. 普通业务用途先找 `Semantic/Base`。
-2. 页面内容区、场景卡片和卡片标题等公共组合找 `Semantic/Scene`。
+2. 页面内容区、排版与间距密度、场景卡片和卡片标题等公共组合找 `Semantic/Scene`；同档密度的 Line Height 与 Spacing 成对推荐。
 3. 没有合适语义入口，或用户明确询问具体值域时，才返回 `Atomic/Map`。
 4. `Atomic/Seed` 只说明颜色派生起点，不作为业务 CSS API 推荐。
 5. 查不到时说明缺口，不从相邻层级拼出一个新 Token。

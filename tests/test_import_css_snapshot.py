@@ -39,8 +39,16 @@ class ImportCssSnapshotTest(unittest.TestCase):
                 )
             )
             self.assertEqual("--fds-s-", scene_source["global"]["namespace"])
-            self.assertEqual(13, len(scene_source["props"]))
+            self.assertEqual(19, len(scene_source["props"]))
             self.assertEqual("{!spacing-4}", scene_source["props"]["card-padding"]["value"])
+            self.assertEqual(
+                "{!line-height-ratio-6}",
+                scene_source["props"]["density-comfortable-line-height"]["value"],
+            )
+            self.assertEqual(
+                "{!spacing-2}",
+                scene_source["props"]["density-comfortable-spacing"]["value"],
+            )
 
     def test_scene_namespace_is_imported_into_scene_source(self) -> None:
         match = IMPORT.DECL_RE.match(
@@ -81,6 +89,14 @@ class ImportCssSnapshotTest(unittest.TestCase):
             IMPORT.classify("line-height-ratio-4"),
         )
         self.assertEqual("number", IMPORT.token_type("line-height-ratio-4"))
+
+    def test_density_scene_tokens_keep_scene_types(self) -> None:
+        self.assertEqual(
+            "semantic/scene/default.yml",
+            IMPORT.classify("density-compact-line-height", "--fds-s-"),
+        )
+        self.assertEqual("number", IMPORT.token_type("density-compact-line-height"))
+        self.assertEqual("dimension", IMPORT.token_type("density-spacious-spacing"))
 
 
 if __name__ == "__main__":

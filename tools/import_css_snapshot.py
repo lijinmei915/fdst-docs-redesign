@@ -179,6 +179,12 @@ GROUP_FILES = {
 
 SCENE_TOKEN_TYPES = {
     "content-padding": "dimension",
+    "density-compact-line-height": "number",
+    "density-compact-spacing": "dimension",
+    "density-comfortable-line-height": "number",
+    "density-comfortable-spacing": "dimension",
+    "density-spacious-line-height": "number",
+    "density-spacious-spacing": "dimension",
     "card-gap": "dimension",
     "card-background": "color",
     "card-border-color": "color",

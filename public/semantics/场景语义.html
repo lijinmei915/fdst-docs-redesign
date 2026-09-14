@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="FDS Semantic/Scene 的页面、卡片和标题组合协议">
+  <meta name="description" content="FDS Semantic/Scene 的页面、密度、卡片和标题组合协议">
   <title>场景语义 | FDS Token</title>
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="../assets/fds-global-tokens.css">
@@ -27,7 +27,7 @@
       <div class="docs-breadcrumb"><span>语义</span><span>/</span><strong>场景语义</strong></div>
       <article class="docs-article"><h1 id="_1">场景语义</h1>
 <h2 id="_2">适用范围</h2>
-<p>Semantic/Scene 将 Base 和 Map 组合成跨业务可复用的默认页面协议。当前仅覆盖页面内容间距、Card、Card Title；它不定义具体工作台、详情页、仪表盘或组件内部样式。</p>
+<p>Semantic/Scene 将 Base 和 Map 组合成跨业务可复用的默认页面协议。当前覆盖页面内容间距、密度、Card、Card Title；它不定义具体工作台、详情页、仪表盘或组件内部样式。</p>
 <h2 id="_3">设计原则</h2>
 <ul>
 <li>Scene 描述跨业务可复用的页面组合，不绑定具体产品或业务名称。</li>
@@ -50,6 +50,44 @@
 }
 </code></pre>
 <p>不要使用：在 Global Scene 中增加某个业务页面名称，或把响应式断点推断为 Scene 能力。</p>
+<h2 id="density">Density</h2>
+<p>密度场景同时约束相对行高与基础间距，使用时应成对选择，避免排版节奏与布局留白不一致。</p>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>Line Height</th>
+<th>Spacing</th>
+<th>适用方向</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Compact / 紧凑</td>
+<td><code>--fds-s-density-compact-line-height</code> = 1.2</td>
+<td><code>--fds-s-density-compact-spacing</code> = 4px</td>
+<td>高信息密度表格、表单和操作区</td>
+</tr>
+<tr>
+<td>Comfortable / 舒适</td>
+<td><code>--fds-s-density-comfortable-line-height</code> = 1.5</td>
+<td><code>--fds-s-density-comfortable-spacing</code> = 8px</td>
+<td>常规业务阅读与操作节奏</td>
+</tr>
+<tr>
+<td>Spacious / 宽松</td>
+<td><code>--fds-s-density-spacious-line-height</code> = 1.8</td>
+<td><code>--fds-s-density-spacious-spacing</code> = 12px</td>
+<td>强调可读性、留白和低密度浏览</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-css">.record-list--compact {
+  line-height: var(--fds-s-density-compact-line-height);
+  gap: var(--fds-s-density-compact-spacing);
+}
+</code></pre>
+<p>Spacing 表示该密度的基础布局节奏，可用于 <code>gap</code>、<code>padding</code> 或 <code>margin</code>，不代表控件高度。密度选择不替代 Heading、Text recipe 或组件 Size API。</p>
 <h2 id="card">Card</h2>
 <p>场景卡片协议包含 Background、Border Color、Border Width、Radius、Padding、Shadow。它描述同一页面中多张内容卡片共享的容器规则。</p>
 <p>推荐：</p>
@@ -94,7 +132,7 @@
 </thead>
 <tbody>
 <tr>
-<td>用默认协议快速建立页面和卡片节奏</td>
+<td>用默认协议快速建立页面、密度和卡片节奏</td>
 <td>为每个业务页面新增一个 Global Scene 名称</td>
 </tr>
 <tr>
@@ -114,7 +152,7 @@
 <li><a href="../concepts/引用与边界.html">引用与边界</a></li>
 </ul></article>
     </main>
-    <aside class="docs-toc" aria-label="本页目录"><strong>本页目录</strong><a href="#_2">适用范围</a><a href="#_3">设计原则</a><a href="#page">Page</a><a href="#card">Card</a><a href="#card-title">Card Title</a><a href="#_4">业务私有场景</a><a href="#_5">边界</a><a href="#do-dont">Do / Don&#x27;t</a><a href="#_6">来源</a></aside>
+    <aside class="docs-toc" aria-label="本页目录"><strong>本页目录</strong><a href="#_2">适用范围</a><a href="#_3">设计原则</a><a href="#page">Page</a><a href="#density">Density</a><a href="#card">Card</a><a href="#card-title">Card Title</a><a href="#_4">业务私有场景</a><a href="#_5">边界</a><a href="#do-dont">Do / Don&#x27;t</a><a href="#_6">来源</a></aside>
   </div>
   <div class="docs-backdrop" data-menu-backdrop hidden></div>
   <dialog class="docs-search" data-search-dialog>

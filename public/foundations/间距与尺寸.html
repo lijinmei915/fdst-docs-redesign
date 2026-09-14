@@ -61,6 +61,11 @@
 <td>不等同于 Card 组件内部全部结构</td>
 </tr>
 <tr>
+<td>页面密度切换</td>
+<td><code>density-{compact|comfortable|spacious}-spacing</code></td>
+<td>紧凑、舒适、宽松分别为 4、8、12px，应与同档 Scene Line Height 成对选择</td>
+</tr>
+<tr>
 <td>紧凑、默认、大号控件</td>
 <td>Component Token / 组件 Size API</td>
 <td>Global 不发布通用控件高度</td>
@@ -111,6 +116,7 @@
 }
 </code></pre>
 <p>普通控件高度使用组件 Size API 或 Component Token。只有没有语义入口的局部布局，才直接选择 <code>spacing-*</code>；选定后需确认它表达的是通用间距，而不是元素固有尺寸。</p>
+<p>页面需要统一调整信息密度时，使用 <code>density-compact-spacing</code>、<code>density-comfortable-spacing</code> 或 <code>density-spacious-spacing</code>。这些 Scene Token 将现有 <code>spacing-1..3</code> 映射为 4/8/12px，不创建新的尺寸值；它们可用于 <code>gap</code>、<code>padding</code> 和 <code>margin</code>，不用于控件高度。</p>
 <h2 id="do-dont">Do / Don't</h2>
 <table>
 <thead>

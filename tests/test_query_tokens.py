@@ -146,6 +146,23 @@ class QueryTokensTest(unittest.TestCase):
         self.assertTrue(tokens[0]["cssVariable"].startswith("--fds-s-card-title-"))
         self.assertEqual("scene", tokens[0]["tier"])
 
+    def test_density_scene_search_supports_chinese_scenario_names(self) -> None:
+        expected = {
+            "紧凑": "density-compact",
+            "舒适": "density-comfortable",
+            "宽松": "density-spacious",
+        }
+        for search, prefix in expected.items():
+            result = run_query("--search", search, "--tier", "scene")
+
+            self.assertEqual(0, result.returncode, result.stderr)
+            tokens = parse_results(result)
+            self.assertEqual(
+                {f"{prefix}-line-height", f"{prefix}-spacing"},
+                {token["name"] for token in tokens},
+            )
+            self.assertTrue(all(token["cssVariable"].startswith("--fds-s-") for token in tokens))
+
     def test_dropdown_search_returns_the_context_motion_group(self) -> None:
         result = run_query(
             "--search", "Dropdown", "--category", "motion", "--tier", "base"

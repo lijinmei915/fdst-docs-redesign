@@ -52,6 +52,17 @@
 }
 ```
 
+紧凑密度场景：
+
+```css
+.dense-region {
+  line-height: var(--fds-s-density-compact-line-height);
+  gap: var(--fds-s-density-compact-spacing);
+}
+```
+
+密度场景的 Line Height 与 Spacing 成对选择。Spacing 可按实际布局用于 `gap`、`padding` 或 `margin`，不替代组件 Size API 或控件高度 Token。
+
 Dropdown 动效应查询 `Semantic/Base/Motion` 中的 Context Duration、Enter Easing 和 Exit Easing；组件仍负责选择实际过渡属性、关键帧和触发状态。
 
 `motion-duration-5..8` 的 `500/600/800/1000ms` 是受限 Atomic Map，仅在用户给出大型元素、复杂结构、分阶段演示或长距离过渡等明确场景时返回，不把它们解释为通用 slow recipe。

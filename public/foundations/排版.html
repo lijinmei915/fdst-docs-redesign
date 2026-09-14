@@ -56,6 +56,11 @@
 <td>作为跨页面稳定的正文底座</td>
 </tr>
 <tr>
+<td>页面密度切换</td>
+<td><code>density-{compact|comfortable|spacious}-line-height</code></td>
+<td>紧凑、舒适、宽松分别为 1.2、1.5、1.8，应与同档 Scene Spacing 成对选择</td>
+</tr>
+<tr>
 <td>标签和紧凑字段名</td>
 <td>Component Token</td>
 <td>当前不发布 Global Label recipe</td>
@@ -126,6 +131,7 @@
 }
 </code></pre>
 <p>相对行高不是固定行高的兼容别名。现有 Heading 1-6 与 Text recipe 仍引用固定 <code>px</code> 行高，避免新增 Atomic Map 隐式改变已发布语义样式。</p>
+<p>当页面需要统一切换信息密度时，优先使用 Semantic/Scene 的 Compact、Comfortable、Spacious 三组行高，而不是由业务直接拼装 Ratio Map。密度行高只改变相对行距，不替代 Heading/Text 的字号和字重定义。</p>
 <h2 id="do-dont">Do / Don't</h2>
 <table>
 <thead>

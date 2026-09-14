@@ -2,7 +2,7 @@
 
 > 本文件由 `python tools/export_catalog.py` 基于 `tokens/fds-global.yml` 的 import 图自动生成，请勿手工编辑。
 
-当前 catalog 共收录 507 个 Token。原始引用和值以 [catalog JSON](../../dist/fds-token-catalog.json) 为准。
+当前 catalog 共收录 513 个 Token。原始引用和值以 [catalog JSON](../../dist/fds-token-catalog.json) 为准。
 
 ## Atomic / Seed / color
 
@@ -567,3 +567,9 @@
 | `--fds-s-card-title-size` | `dimension` | `{!heading-5-size}` | `16px` | `tokens/semantic/scene/default.yml` |
 | `--fds-s-card-title-weight` | `font-weight` | `{!heading-5-weight}` | `600` | `tokens/semantic/scene/default.yml` |
 | `--fds-s-content-padding` | `dimension` | `{!spacing-6}` | `24px` | `tokens/semantic/scene/default.yml` |
+| `--fds-s-density-comfortable-line-height` | `number` | `{!line-height-ratio-6}` | `1.5` | `tokens/semantic/scene/default.yml` |
+| `--fds-s-density-comfortable-spacing` | `dimension` | `{!spacing-2}` | `8px` | `tokens/semantic/scene/default.yml` |
+| `--fds-s-density-compact-line-height` | `number` | `{!line-height-ratio-3}` | `1.2` | `tokens/semantic/scene/default.yml` |
+| `--fds-s-density-compact-spacing` | `dimension` | `{!spacing-1}` | `4px` | `tokens/semantic/scene/default.yml` |
+| `--fds-s-density-spacious-line-height` | `number` | `{!line-height-ratio-9}` | `1.8` | `tokens/semantic/scene/default.yml` |
+| `--fds-s-density-spacious-spacing` | `dimension` | `{!spacing-3}` | `12px` | `tokens/semantic/scene/default.yml` |

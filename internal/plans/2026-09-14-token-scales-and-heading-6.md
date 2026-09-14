@@ -2,7 +2,7 @@
 
 > **For Claude:** REQUIRED SUB-SKILL: Use `fspec-dev-impelement-fe` or `executing-plans` to implement this plan task-by-task.
 
-**Goal:** 保留现有固定行高契约，新增相对行高、20px 圆角、长时长梯度和 Heading 6，并同步所有生成产物、文档与 Skill。
+**Goal:** 保留现有固定行高契约，新增相对行高、20px 圆角、长时长梯度、Heading 6，以及紧凑/舒适/宽松三档密度 Scene，并同步所有生成产物、文档与 Skill。
 
 **Architecture:** `tokens/fds-global.yml` 的 YAML import 图继续作为唯一事实源。固定行高保持 `line-height-*`，单位无关倍率使用新的 `line-height-ratio-*`，生成链统一刷新 CSS、Catalog、Token 目录、两个 Skill 索引和静态文档站。
 
@@ -33,6 +33,12 @@
 1. 新增 `line-height-ratio-1..10`、`radius-7`、`motion-duration-5..8` 和 `heading-6-*`；相对行高最终值按评审补充为 `1/1.1/1.2/1.3/1.4/1.5/1.6/1.75/1.8/2`。
 2. 让 `fds-migrate` 的 `line-height` 规则同时识别 `dimension` 与 `number`。
 3. 运行目标测试，确认契约通过。
+
+### Task 2.1: 补充密度 Scene
+
+1. 新增 `density-{compact|comfortable|spacious}-{line-height|spacing}` 六个 Scene Token。
+2. Line Height 分别引用 `line-height-ratio-3/6/9`，解析值为 `1.2/1.5/1.8`；Spacing 分别引用 `spacing-1/2/3`，解析值为 `4/8/12px`。
+3. 同步 CSS 快照导入分类、中文查询别名、Skill 使用边界及 Scene 文档；密度两项成对消费，不替代组件 Size API。
 
 ### Task 3: 更新正式文档并生成产物
 
