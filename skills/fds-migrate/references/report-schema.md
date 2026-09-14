@@ -31,7 +31,8 @@
 - `rule` 和 `reason`。
 - `replacement`：只有 `replaced` / `auto-replace` 存在。
 - `selectedToken`：唯一自动候选。
-- `candidates`：最多五项，包含 `cssVariable`、`resolvedValue`、`layer`、`tier`、`category`、`match` 和可选的 `distance`；颜色索引映射的 `match` 为 `legacy-index`。
+- `candidates`：最多五项，包含 `cssVariable`、`resolvedValue`、`layer`、`tier`、`category`、`match`，以及可选的 `distance` 和 Catalog `comment`；颜色索引映射的 `match` 为 `legacy-index`，最近档为 `nearest`，固定行高换算为 `relative` / `relative-nearest`。
+- `valueChange`：可选；最近档或固定行高换算记录 `from`、`to`，固定行高另外记录 `derivedRatio` 和同块 `fontSize`。
 - `priorityProtected`：可选；为 `true` 表示声明包含组件自定义变量或 `--bc-*`，FDS 不得取得更高优先级。
 - `priorityVariables`：可选；按源码中的实际 fallback 顺序记录已有 CSS Variables。
 - `componentVariables`：可选；记录高于 FDS 的组件自定义变量和兼容识别的 `--bc-*`。
@@ -57,6 +58,8 @@
 各明细章节先按相对文件路径建立可折叠文件组，再渲染该文件的表格。表格位置列只保留行号和列号；CRLF、CR、LF 必须折叠为空格，所有源码和候选内容必须经过 HTML 转义。
 
 HTML 必须自包含，不加载 CDN、远程字体、脚本或其他外部资源。桌面端以审查表格为主，窄屏将 finding 转为带字段标签的纵向布局；索引页提供组件汇总、状态分布和组件报告链接。
+
+约定保留的硬编码使用 `exempt` 进入 JSON 事实和统计，但不进入 HTML 的迁移问题、逐项提示词或人工决策集合。最近档自动替换必须在原因列显示原值到目标值的变化，并在 Token 列和下拉选项中显示 Catalog 注释；报告提示不得通过向业务源码插入注释实现。
 
 每条人工报告项必须提供“生成提示词”入口，点击报告行也可打开同一提示词抽屉，但用户正在选择表格文本时不得触发。提示词以 finding 的结构化数据生成，并按 `auto-replace`、`replaced`、`ambiguous`、`similar`、`missing-token`、`invalid-token`、`compliant` 和 `unsupported` 分别给出处理约束；所有修改类提示词都必须要求保留原值 fallback、限制修改范围并在源码定位失效时重新扫描。
 

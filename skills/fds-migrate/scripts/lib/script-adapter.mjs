@@ -69,6 +69,7 @@ function unwrapTypeExpression(node) {
 function processStyleObject(node, context, seen) {
   if (!node || node.type !== "ObjectExpression" || seen.has(node)) return;
   seen.add(node);
+  const styleGroup = `${context.file}:${context.baseOffset + node.start}`;
   for (const member of node.properties) {
     if (member.type === "SpreadElement") {
       context.occurrences.push(unsupportedOccurrence({
@@ -118,6 +119,7 @@ function processStyleObject(node, context, seen) {
         line: position.line,
         column: position.column,
         writable: true,
+        _styleGroup: styleGroup,
       });
       continue;
     }

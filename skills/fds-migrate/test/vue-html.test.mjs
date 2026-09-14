@@ -10,7 +10,7 @@ test("HTML 静态内联 style 可迁移，普通属性字符串不参与", async
   assert.equal(result.status, 0, result.stderr);
   const migrated = await readFile(context.paths["page.html"], "utf8");
   assert.match(migrated, /title="color: #FF522A"/);
-  assert.match(migrated, /style="color: var\(--fds-g-color-red-6, #FF522A\); padding: var\(--fds-g-spacing-4, 16px\)"/);
+  assert.match(migrated, /style="color: var\(--fds-g-color-red-6, #FF522A\); padding: 16px"/);
 });
 
 test("WXML 静态内联 style 可迁移，小程序属性不参与", async () => {
@@ -20,7 +20,7 @@ test("WXML 静态内联 style 可迁移，小程序属性不参与", async () =>
   assert.equal(result.status, 0, result.stderr);
   const migrated = await readFile(context.paths["page.wxml"], "utf8");
   assert.match(migrated, /wx:if="{{visible}}" bindtap="onTap" data-note="color: #FF522A"/);
-  assert.match(migrated, /style="color: var\(--fds-g-color-red-6, #FF522A\); padding: var\(--fds-g-spacing-4, 16px\)"/);
+  assert.match(migrated, /style="color: var\(--fds-g-color-red-6, #FF522A\); padding: 16px"/);
   const report = await readReport(context.reportDir);
   assert.deepEqual(new Set(report.findings.map((item) => item.syntax)), new Set(["wxml-inline-style"]));
 });
@@ -42,11 +42,11 @@ test("WXML style 模板插值只报告人工检查，不阻止同文件静态 st
 
 test("Vue 同时处理 style、template 与 script 的确定性样式节点", async () => {
   const source = `<template>
-  <div style="padding: 16px" :style="{ color: '#FF522A' }" :data-note="'color: #FF522A'" />
+  <div style="border-radius: 4px" :style="{ color: '#FF522A' }" :data-note="'color: #FF522A'" />
 </template>
 <script setup lang="ts">
 import type { CSSProperties } from 'vue'
-const panelStyle: CSSProperties = { padding: '16px' }
+const panelStyle: CSSProperties = { borderRadius: '4px' }
 const note = 'color: #FF522A'
 </script>
 <style lang="scss">

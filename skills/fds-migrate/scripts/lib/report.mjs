@@ -329,7 +329,8 @@ function candidateHtml(finding) {
   if (!finding.candidates?.length) return '<span class="context">-</span>';
   return `<div class="token-list">${finding.candidates.map((candidate) => {
     const distance = candidate.distance === undefined ? "" : ` / distance ${escapeHtml(candidate.distance)}`;
-    return `<div class="token"><code>${escapeHtml(candidate.cssVariable)}</code><span class="token-value">${escapeHtml(candidate.resolvedValue)}${distance}</span></div>`;
+    const comment = candidate.comment ? `<span class="token-value">${escapeHtml(candidate.comment)}</span>` : "";
+    return `<div class="token"><code>${escapeHtml(candidate.cssVariable)}</code><span class="token-value">${escapeHtml(candidate.resolvedValue)}${distance}</span>${comment}</div>`;
   }).join("")}</div>`;
 }
 
@@ -340,6 +341,7 @@ function candidatePromptLines(finding) {
       `解析值 ${candidate.resolvedValue}`,
       candidate.match ? `匹配类型 ${candidate.match}` : null,
       candidate.distance === undefined ? null : `差异 ${candidate.distance}`,
+      candidate.comment ? `注释 ${candidate.comment}` : null,
     ].filter(Boolean).join("，");
     return `  - ${candidate.cssVariable}（${details}）`;
   })];
@@ -477,7 +479,7 @@ function promptItem(finding, mode) {
 function decisionControlHtml(finding) {
   const label = `${finding.file}:${finding.line}:${finding.column} ${finding.property}`;
   if (finding.candidates?.length) {
-    const options = finding.candidates.map((candidate) => `<option value="${escapeHtml(candidate.cssVariable)}">${escapeHtml(candidate.cssVariable)} · ${escapeHtml(candidate.resolvedValue)}</option>`).join("");
+    const options = finding.candidates.map((candidate) => `<option value="${escapeHtml(candidate.cssVariable)}">${escapeHtml(candidate.cssVariable)} · ${escapeHtml(candidate.resolvedValue)}${candidate.comment ? ` · ${escapeHtml(candidate.comment)}` : ""}</option>`).join("");
     return `<select class="decision-select" data-decision-select="${escapeHtml(finding.id)}" aria-label="为 ${escapeHtml(label)} 选择 Token">
       <option value="">选择 Token</option>${options}
     </select>`;

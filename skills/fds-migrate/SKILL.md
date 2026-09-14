@@ -7,7 +7,7 @@ description: 使用 Skill 内置的完整 FDS Token 与旧色板索引快照扫�
 
 ## Goal / 目标
 
-基于 Skill 内置的完整 FDS Token JSONL 与旧 `fx-style` 色板索引快照做保守迁移：默认只扫描并输出报告；只有用户明确要求执行迁移时，才把 `auto-replace` 项改成带原值 fallback 的 FDS Token。CSS Custom Property 的定义声明不迁移；组件扫描单元内定义的变量和既有 `--bc-*` 保持高于 FDS，旧色板变量保持低于 FDS。颜色不与当前 FDS 色值做相等或相似度匹配，而是按色板和索引一对一迁移：有彩色 `00–10 -> 0–10`、`neutrals01–19 -> gray-1–19`、`special01–04 -> special-1–4`；有彩色第 `11` 阶和 Gray 第 `20` 阶是扩展档，不接收旧色阶自动迁移。非颜色值仍按唯一、属性兼容的精确候选处理。
+基于 Skill 内置的完整 FDS Token JSONL 与旧 `fx-style` 色板索引快照做保守迁移：默认只扫描并输出报告；只有用户明确要求执行迁移时，才把 `auto-replace` 项改成带原值 fallback 的 FDS Token。CSS Custom Property 的定义声明不迁移；组件扫描单元内定义的变量和既有 `--bc-*` 保持高于 FDS，旧色板变量保持低于 FDS。颜色不与当前 FDS 色值做相等或相似度匹配，而是按色板和索引一对一迁移：有彩色 `00–10 -> 0–10`、`neutrals01–19 -> gray-1–19`、`special01–04 -> special-1–4`；有彩色第 `11` 阶和 Gray 第 `20` 阶是扩展档，不接收旧色阶自动迁移。字号、相对行高、圆角和透明度按各自规则选择最近档；明确保留的硬编码直接归为 `exempt`，不进入 HTML 迁移问题。
 
 ## When to Use / 使用场景
 
@@ -39,7 +39,7 @@ node <skill-root>/scripts/migrate_styles.mjs verify
 ```
 
 - `scan`：默认模式；不修改源码，生成 JSON 与自包含 HTML 报告。
-- `apply`：只写入 `auto-replace`，保留原始值 fallback；`ambiguous`、`similar` 和 `unsupported` 永不自动写入。
+- `apply`：只写入 `auto-replace`，包括规则允许的最近档替换，并保留原始值 fallback；`ambiguous`、`similar` 和 `unsupported` 永不自动写入。
 - `verify`：不修改源码；存在可迁移、不合规、解析错误或无法静态判定项时返回退出码 `3`。
 - 默认使用 Skill 自带的完整 Token JSONL，不要求调用方提供 FDST 仓库或外部 Catalog；`--catalog <json|jsonl>` 仅用于测试和受控调试覆盖。
 - 默认入口为 `src`；默认报告目录为 `.fdst/reports/migrate/<mode>/`。
@@ -59,7 +59,14 @@ node <skill-root>/scripts/migrate_styles.mjs verify
 
 ## Decision Rules / 决策规则
 
-- `auto-replace`：颜色命中唯一旧色板色系/索引并找到同索引目标，或非颜色值与唯一候选精确相等；同时要求 CSS property 兼容且源码区间可安全局部修改。
+- `auto-replace`：颜色命中唯一旧色板色系/索引并找到同索引目标；非颜色按以下规则命中精确值或最近档；同时要求 CSS property 兼容且源码区间可安全局部修改。
+- 字号：`11px` 和超过 `48px` 保留硬编码并从迁移问题中排除；其他可比较值选择绝对距离最近的 Font Size Token，等距时选择较小档。
+- 行高：硬编码无单位值只使用 `line-height-ratio-*`；硬编码固定行高只有在同一静态样式块存在同单位 `font-size` 时才换算为倍率，否则保持原值并报告证据不足。候选下拉同时提供 Compact、Comfortable、Spacious 三档 Scene 行高；已存在的固定 `line-height-*` 仍按当前 FDS 契约校验，但不作为硬编码迁移的自动目标。
+- 间距：硬编码 margin、padding、gap 统一保留并归为 `exempt`。间距可能承担布局、高度或 Label 与 Input 等特殊关系，无法可靠判断三类场景占比，不自动推荐或补充 Token。
+- 圆角：使用包含 `20px` 的当前 Radius 梯度，其他可比较尺寸按绝对距离最近档自动替换，等距时选择较小档。
+- 透明度：`0` 和 `1` 保留硬编码，且不得作为最近档目标；其他数值在非端点 Opacity Token 中选择最近档，等距时选择较小档。
+- 层级与阴影：精确命中仍按既有层级和上下文规则处理；不符合现有规范的硬编码保留为 `exempt`，不补充 Token。
+- 动效时长：当前 Atomic Map 包含 `500ms`、`600ms`、`800ms` 和 `1000ms`；精确命中可自动替换，其他值保持既有相近推荐规则。
 - `ambiguous`：存在多个精确候选，或候选需要未提供的 Scene/组件语义。
 - `similar`：没有精确候选，但存在同 property、同类型的相近候选；仅报告。
 - `missing-token`：属于 Token 管理范围，但没有可靠候选。
@@ -70,7 +77,7 @@ node <skill-root>/scripts/migrate_styles.mjs verify
 - CSS Custom Property 定义：`--component-color: #fff` 等定义声明始终保持原样，只在普通 CSS property 的消费位置迁移。
 - fallback 优先级链：固定为“组件自定义变量 / `--bc-*` > FDS > 旧色板变量 > 原值”。旧色板变量包括 11 套有彩色的 `--color-<family>00..10`、`--color-neutrals01..19` 和 `--color-special01..04`，不含 RGB 和 Dark。组件变量必须在当前组件报告单元内存在定义；`--bc-*` 作为既有组件协议兼容识别。颜色可直接从旧变量名取得索引，不要求变量链存在末端色值；链含未知变量、已有顺序错误或映射目标不唯一时不得自动改写。
 
-颜色硬编码值只与内置旧色板快照核对以定位旧索引，不与新 FDS 值比较；非颜色精确值只是候选证据，不等于语义证据，尺寸差异只用于排序。完整规则见 [匹配策略](references/matching-policy.md)。
+颜色硬编码值只与内置旧色板快照核对以定位旧索引，不与新 FDS 值比较；非颜色匹配遵守上述逐类边界。最近档替换会在报告原因中提示原值与目标值，并在候选列表和下拉中展示 Catalog Token 注释。完整规则见 [匹配策略](references/matching-policy.md)。
 
 ## Output / 输出
 

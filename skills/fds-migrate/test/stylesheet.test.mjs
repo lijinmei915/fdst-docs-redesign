@@ -17,7 +17,7 @@ test("CSS 扫描对颜色使用旧色板索引，对非颜色保持值匹配", a
     color: "auto-replace",
     "background-color": "missing-token",
     "border-color": "missing-token",
-    padding: "auto-replace",
+    padding: "exempt",
     width: "exempt",
     display: "exempt",
     "outline-color": "invalid-token",
@@ -42,7 +42,7 @@ test("CSS 扫描对颜色使用旧色板索引，对非颜色保持值匹配", a
   assert.match(html, /data-decision-count>0<\/span>/);
   assert.match(html, /data-decision-storage-key="fds-migrate-decisions:v1:/);
   const promptData = JSON.parse(html.match(/<script id="finding-prompt-data" type="application\/json">([\s\S]*?)<\/script>/)[1]);
-  assert.equal(promptData.length, 5);
+  assert.equal(promptData.length, 4);
   assert.match(promptData.find((item) => item.status === "auto-replace").prompt, /var\(--fds-g-color-red-6, #FF522A\)/);
   assert.match(promptData.find((item) => item.status === "missing-token").prompt, /没有可靠 Token 时保持源码不变/);
   assert.match(promptData.find((item) => item.status === "invalid-token").prompt, /真实、属性兼容且语义一致的 Token/);
@@ -129,7 +129,7 @@ test("CSS apply 按旧色板索引替换颜色并保留原值及 CRLF", async ()
   assert.equal(result.status, 0, result.stderr);
   const migrated = await readFile(context.paths["component.css"], "utf8");
   assert.match(migrated, /color: var\(--fds-g-color-red-6, #FF522A\);/);
-  assert.match(migrated, /padding: var\(--fds-g-spacing-4, 16px\);/);
+  assert.match(migrated, /padding: 16px;/);
   assert.match(migrated, /background-color: #FFFFFF;/);
   assert.ok(migrated.includes("\r\n"));
 });
@@ -143,6 +143,88 @@ test("CSS apply 可将无单位行高替换为相对行高 Token", async () => {
     await readFile(context.paths["component.css"], "utf8"),
     ".sample { line-height: var(--fds-g-line-height-ratio-6, 1.5); }\n",
   );
+});
+
+test("字号排除 11px 和超过 48px，其余值按最近档自动替换并提供候选", async () => {
+  const original = ".sample { font-size: 17px; }\n.small { font-size: 11.0px; }\n.large { font-size: 49px; }\n";
+  const context = await fixture({ "component.css": original });
+  const result = runTool("apply", context.paths["component.css"], context.catalog, context.reportDir);
+  assert.equal(result.status, 0, result.stderr);
+  assert.match(await readFile(context.paths["component.css"], "utf8"), /font-size: var\(--fds-g-font-size-5, 17px\)/);
+  const report = await readReport(context.reportDir);
+  const [nearest, eleven, above] = report.findings;
+  assert.equal(nearest.status, "replaced");
+  assert.equal(nearest.selectedToken.match, "nearest");
+  assert.deepEqual(nearest.valueChange, { from: "17px", to: "16px" });
+  assert.deepEqual(nearest.candidates.slice(0, 2).map((item) => item.cssVariable), ["--fds-g-font-size-5", "--fds-g-font-size-6"]);
+  assert.equal(eleven.status, "exempt");
+  assert.equal(above.status, "exempt");
+});
+
+test("固定行高按同块字号换算为相对行高，报告下拉包含三档密度语义", async () => {
+  const original = ".sample { font-size: 16px; line-height: 24px; }\n.unknown { line-height: 24px; }\n";
+  const context = await fixture({ "component.css": original });
+  const result = runTool("apply", context.paths["component.css"], context.catalog, context.reportDir);
+  assert.equal(result.status, 0, result.stderr);
+  const migrated = await readFile(context.paths["component.css"], "utf8");
+  assert.match(migrated, /line-height: var\(--fds-g-line-height-ratio-6, 24px\)/);
+  const report = await readReport(context.reportDir);
+  const converted = report.findings.find((item) => item.selector === ".sample" && item.property === "line-height");
+  const unknown = report.findings.find((item) => item.selector === ".unknown");
+  assert.equal(converted.selectedToken.match, "relative");
+  assert.deepEqual(converted.valueChange, { from: "24px", to: "1.5", derivedRatio: "1.5", fontSize: "16px" });
+  assert.deepEqual(
+    converted.candidates.filter((item) => item.tier === "scene").map((item) => item.cssVariable).sort(),
+    ["--fds-s-density-comfortable-line-height", "--fds-s-density-compact-line-height", "--fds-s-density-spacious-line-height"],
+  );
+  assert.equal(unknown.status, "missing-token");
+  assert.match(unknown.reason, /font-size/);
+  const html = await readFile(path.join(context.reportDir, "components", "component", "fds-token-migration-report.html"), "utf8");
+  assert.match(html, /--fds-s-density-comfortable-line-height/);
+  assert.match(html, /舒适密度/);
+});
+
+test("圆角和透明度按最近档自动替换，透明度端点不参与迁移", async () => {
+  const original = ".sample { border-radius: 10px; opacity: 0.7; }\n.ends { opacity: 0; }\n.full { opacity: 1.0; }\n.twenty { border-radius: 20px; }\n";
+  const context = await fixture({ "component.css": original });
+  const result = runTool("apply", context.paths["component.css"], context.catalog, context.reportDir);
+  assert.equal(result.status, 0, result.stderr);
+  const migrated = await readFile(context.paths["component.css"], "utf8");
+  assert.match(migrated, /border-radius: var\(--fds-g-radius-4, 10px\)/);
+  assert.match(migrated, /opacity: var\(--fds-g-opacity-65, 0\.7\)/);
+  assert.match(migrated, /border-radius: var\(--fds-g-radius-7, 20px\)/);
+  const report = await readReport(context.reportDir);
+  const opacity = report.findings.find((item) => item.originalValue === "0.7");
+  assert.equal(opacity.selectedToken.cssVariable, "--fds-g-opacity-65");
+  assert.ok(opacity.candidates.every((item) => !["0", "1"].includes(item.resolvedValue)));
+  assert.equal(opacity.selectedToken.comment, "加载弱化档");
+  assert.deepEqual(report.findings.filter((item) => item.property === "opacity").map((item) => item.status), ["replaced", "exempt", "exempt"]);
+});
+
+test("硬编码间距及非标准层级和阴影直接排除迁移报告", async () => {
+  const original = ".sample { padding: 16px; gap: 7px; z-index: 42; box-shadow: 0 0 12px #000; }\n";
+  const context = await fixture({ "component.css": original });
+  const result = runTool("scan", context.paths["component.css"], context.catalog, context.reportDir);
+  assert.equal(result.status, 0, result.stderr);
+  const report = await readReport(context.reportDir);
+  assert.ok(report.findings.every((item) => item.status === "exempt"));
+  assert.match(report.findings.find((item) => item.property === "padding").reason, /布局、尺寸或组件内部特殊关系/);
+  assert.match(report.findings.find((item) => item.property === "z-index").reason, /保留硬编码/);
+  assert.match(report.findings.find((item) => item.property === "box-shadow").reason, /保留硬编码/);
+  const html = await readFile(path.join(context.reportDir, "components", "component", "fds-token-migration-report.html"), "utf8");
+  const promptData = JSON.parse(html.match(/<script id="finding-prompt-data" type="application\/json">([\s\S]*?)<\/script>/)[1]);
+  assert.equal(promptData.length, 0);
+});
+
+test("内置 Catalog 支持 20px 圆角和 500/600/800/1000ms 动效时长", async () => {
+  const original = ".sample { border-radius: 20px; transition-duration: 500ms; animation-duration: 600ms; }\n.a { transition-duration: 800ms; }\n.b { animation-duration: 1000ms; }\n";
+  const context = await fixture({ "component.css": original });
+  const result = runBundledTool("apply", context.paths["component.css"], context.reportDir);
+  assert.equal(result.status, 0, result.stderr);
+  const migrated = await readFile(context.paths["component.css"], "utf8");
+  for (const variable of ["radius-7", "motion-duration-5", "motion-duration-6", "motion-duration-7", "motion-duration-8"]) {
+    assert.match(migrated, new RegExp(`--fds-g-${variable}`));
+  }
 });
 
 test("有彩色按旧索引直接映射，不要求新旧值相等", async () => {
@@ -241,7 +323,8 @@ test("CSS 变量定义保持原样，消费链按组件变量、FDS、旧色板�
   assert.match(find(":root", "--component-color").reason, /定义不属于声明值迁移范围/);
   assert.equal(find(".sample", "color").replacement, "var(--component-color, var(--fds-g-color-red-6, #FF522A))");
   assert.deepEqual(find(".sample", "color").componentVariables, ["--component-color"]);
-  assert.equal(find(".sample", "padding").replacement, "var(--bc-c-padding, var(--bc-g-padding, var(--fds-g-spacing-4, 16px)))");
+  assert.equal(find(".sample", "padding").status, "exempt");
+  assert.equal(find(".sample", "padding").replacement, undefined);
   assert.deepEqual(find(".sample", "padding").componentVariables, ["--bc-c-padding", "--bc-g-padding"]);
   assert.equal(find(".sample", "border-color").replacement, "var(--fds-g-color-blue-6, var(--color-blue06, #FF522A))");
   assert.deepEqual(find(".sample", "border-color").legacyColorVariables, ["--color-blue06"]);
@@ -258,7 +341,7 @@ test("CSS 变量定义保持原样，消费链按组件变量、FDS、旧色板�
   assert.match(migrated, /--component-color: #FF522A;/);
   assert.match(migrated, /--color-blue06: #189DFF;/);
   assert.match(migrated, /color: var\(--component-color, var\(--fds-g-color-red-6, #FF522A\)\);/);
-  assert.match(migrated, /padding: var\(--bc-c-padding, var\(--bc-g-padding, var\(--fds-g-spacing-4, 16px\)\)\);/);
+  assert.match(migrated, /padding: var\(--bc-c-padding, var\(--bc-g-padding, 16px\)\);/);
   assert.match(migrated, /border-color: var\(--fds-g-color-blue-6, var\(--color-blue06, #FF522A\)\);/);
   assert.match(migrated, /outline-color: var\(--component-color, var\(--fds-g-color-blue-6, var\(--color-blue06, #FF522A\)\)\);/);
 
@@ -267,7 +350,7 @@ test("CSS 变量定义保持原样，消费链按组件变量、FDS、旧色板�
   report = await readReport(context.reportDir);
   const verified = (property) => report.findings.find((finding) => finding.selector === ".sample" && finding.property === property);
   assert.equal(verified("color").status, "compliant");
-  assert.equal(verified("padding").status, "compliant");
+  assert.equal(verified("padding").status, "exempt");
   assert.equal(verified("border-color").status, "compliant");
   assert.equal(verified("outline-color").status, "compliant");
   assert.match(verified("color").reason, /组件自定义变量在 FDS 外层/);
@@ -324,19 +407,19 @@ test("组件变量所有权按报告单元隔离", async () => {
 });
 
 for (const [extension, source] of [
-  ["pcss", ".card { padding: 16px; }\n"],
-  ["wxss", ".card { padding: 16px; width: 32rpx; }\n"],
-  ["scss", "$space: 16px;\n.card { padding: 16px; }\n"],
-  ["less", "@space: 16px;\n.card { padding: 16px; }\n"],
-  ["sass", "$space: 16px\n.card\n  padding: 16px\n"],
+  ["pcss", ".card { border-radius: 4px; }\n"],
+  ["wxss", ".card { border-radius: 4px; width: 32rpx; }\n"],
+  ["scss", "$radius: 4px;\n.card { border-radius: 4px; }\n"],
+  ["less", "@radius: 4px;\n.card { border-radius: 4px; }\n"],
+  ["sass", "$radius: 4px\n.card\n  border-radius: 4px\n"],
 ]) {
   test(`${extension} 能按语法 AST 定位并局部替换`, async () => {
     const context = await fixture({ [`component.${extension}`]: source });
     const result = runTool("apply", context.paths[`component.${extension}`], context.catalog, context.reportDir);
     assert.equal(result.status, 0, result.stderr);
     const migrated = await readFile(context.paths[`component.${extension}`], "utf8");
-    assert.match(migrated, /padding:\s*var\(--fds-g-spacing-4, 16px\)/);
-    if (!["pcss", "wxss"].includes(extension)) assert.match(migrated, /\$space: 16px|@space: 16px/);
+    assert.match(migrated, /border-radius:\s*var\(--fds-g-radius-2, 4px\)/);
+    if (!["pcss", "wxss"].includes(extension)) assert.match(migrated, /\$radius: 4px|@radius: 4px/);
     if (extension === "wxss") assert.match(migrated, /width: 32rpx/);
   });
 }
@@ -355,11 +438,19 @@ test("任一解析错误会阻止整批 apply 并仍输出报告", async () => {
 });
 
 test("显式 Scene context 优先于 Atomic Token", async () => {
-  const context = await fixture({ "component.css": ".card { padding: 16px; }\n" });
+  const context = await fixture({ "component.css": ".card { border-radius: 4px; }\n" });
   const result = runTool("scan", context.paths["component.css"], context.catalog, context.reportDir, "--context", "card");
   assert.equal(result.status, 0, result.stderr);
   const [finding] = (await readReport(context.reportDir)).findings;
-  assert.equal(finding.selectedToken.cssVariable, "--fds-s-card-padding");
+  assert.equal(finding.selectedToken.cssVariable, "--fds-s-card-radius");
+});
+
+test("Scene context 只在同为最近档时提升优先级", async () => {
+  const context = await fixture({ "component.css": ".card { border-radius: 10px; }\n" });
+  const result = runTool("scan", context.paths["component.css"], context.catalog, context.reportDir, "--context", "card");
+  assert.equal(result.status, 0, result.stderr);
+  const [finding] = (await readReport(context.reportDir)).findings;
+  assert.equal(finding.selectedToken.cssVariable, "--fds-g-radius-4");
 });
 
 test("sizing 需要上下文，radius 按规则可选择 Atomic Map", async () => {
@@ -424,7 +515,7 @@ test("项目默认扫描 src 并将相对路径报告写入 .fdst", async () => 
 
 test("项目配置支持入口、报告目录、排除项和场景上下文", async () => {
   const context = await fixture({
-    "app/card.css": ".card { padding: 16px; }\n",
+    "app/card.css": ".card { border-radius: 4px; }\n",
     "app/skip.css": ".skip { color: #FF522A; }\n",
     ".fdst/migrate.json": `${JSON.stringify({
       schema: "fds-migrate-config/v1",
@@ -440,11 +531,11 @@ test("项目配置支持入口、报告目录、排除项和场景上下文", as
   const report = await readReport(reportDir);
   assert.equal(report.project.config, ".fdst/migrate.json");
   assert.equal(report.summary.fileCount, 1);
-  assert.equal(report.findings[0].selectedToken.cssVariable, "--fds-s-card-padding");
+  assert.equal(report.findings[0].selectedToken.cssVariable, "--fds-s-card-radius");
 });
 
 test("HTML 按文件分组、转义容器并移除 CRLF 回车", async () => {
-  const source = ".button {\r\n  &:hover,\r\n  &:focus { box-shadow: 0 0 12px #000; }\r\n}\r\n";
+  const source = ".button {\r\n  &:hover,\r\n  &:focus { border-radius: 10px; }\r\n}\r\n";
   const context = await fixture({ "src/component.less": source });
   const result = runProjectTool("scan", context.root, "--catalog", context.catalog);
   assert.equal(result.status, 0, result.stderr);

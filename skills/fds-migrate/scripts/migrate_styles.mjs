@@ -245,6 +245,19 @@ function parseSource(source) {
   throw new MigrationError(`缺少语法适配器：${source.file}`);
 }
 
+function attachStyleContext(occurrences) {
+  const groups = new Map();
+  for (const occurrence of occurrences) {
+    if (!occurrence._styleGroup) continue;
+    const properties = groups.get(occurrence._styleGroup) || new Map();
+    properties.set(occurrence.property.toLowerCase(), occurrence.originalValue);
+    groups.set(occurrence._styleGroup, properties);
+  }
+  for (const occurrence of occurrences) {
+    occurrence._contextProperties = groups.get(occurrence._styleGroup) || new Map();
+  }
+}
+
 async function applyReplacements(findings, sources) {
   const byFile = new Map();
   for (const finding of findings.filter((item) => item.status === "auto-replace")) {
@@ -274,6 +287,8 @@ async function applyReplacements(findings, sources) {
       finding.status = "replaced";
       finding.reason = finding.selectedToken?.match === "legacy-index"
         ? "已按旧色板索引映射，并保留原始值 fallback"
+        : finding.selectedToken?.match?.includes("nearest") || finding.selectedToken?.match === "relative"
+        ? `已就近替换为 ${finding.selectedToken.cssVariable}（${finding.selectedToken.resolvedValue}），并保留原始值 fallback`
         : "已替换为唯一精确候选，并保留原始值 fallback";
     }
     const encoded = Buffer.from(text, "utf8");
@@ -303,6 +318,7 @@ async function main() {
       parseErrors.push(...result.parseErrors);
       occurrences.push(...result.occurrences);
     }
+    attachStyleContext(occurrences);
     const componentVariables = new Set(occurrences
       .map((occurrence) => occurrence.property)
       .filter((property) => property.startsWith("--")));

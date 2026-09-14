@@ -68,6 +68,7 @@
       "tokenNamePatterns": ["^spacing-", "(?:padding|gap)$"],
       "allowAtomicAuto": true,
       "allowSimilarity": true,
+      "excludeHardcoded": true,
       "selectionOrder": ["scene-context", "atomic-map"]
     },
     {
@@ -86,6 +87,7 @@
       "tokenNamePatterns": ["^radius-", "radius$"],
       "allowAtomicAuto": true,
       "allowSimilarity": true,
+      "nearestAutoReplace": true,
       "selectionOrder": ["scene-context", "semantic-context", "atomic-map"]
     },
     {
@@ -104,6 +106,9 @@
       "tokenNamePatterns": ["^font-size-", "(?:^|-)size$"],
       "allowAtomicAuto": true,
       "allowSimilarity": true,
+      "nearestAutoReplace": true,
+      "excludedSourceValues": ["11px"],
+      "excludedSourceAbove": "48px",
       "selectionOrder": ["scene-context", "semantic-context", "atomic-map"]
     },
     {
@@ -113,6 +118,8 @@
       "tokenNamePatterns": ["(?:^|-)line-height(?:-|$)"],
       "allowAtomicAuto": true,
       "allowSimilarity": true,
+      "nearestAutoReplace": true,
+      "relativeLineHeightOnly": true,
       "selectionOrder": ["scene-context", "semantic-context", "atomic-map"]
     },
     {
@@ -131,6 +138,7 @@
       "tokenNamePatterns": ["(?:^|-)shadow(?:-|$)"],
       "allowAtomicAuto": true,
       "allowSimilarity": false,
+      "preserveUnmatchedHardcoded": true,
       "selectionOrder": ["scene-context", "semantic-context", "atomic-map"]
     },
     {
@@ -140,6 +148,9 @@
       "tokenNamePatterns": ["^opacity-"],
       "allowAtomicAuto": true,
       "allowSimilarity": true,
+      "nearestAutoReplace": true,
+      "excludedSourceValues": ["0", "1"],
+      "excludedTargetValues": ["0", "1"],
       "selectionOrder": ["semantic-context", "atomic-map"]
     },
     {
@@ -149,6 +160,7 @@
       "tokenNamePatterns": ["^(?:layer|z-index)-"],
       "allowAtomicAuto": false,
       "allowSimilarity": false,
+      "preserveUnmatchedHardcoded": true,
       "selectionOrder": ["semantic-context"]
     },
     {

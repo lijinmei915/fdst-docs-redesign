@@ -179,7 +179,107 @@ function candidateRecord(token, match, distance) {
     match,
   };
   if (distance !== undefined) record.distance = Number(distance.toFixed(6));
+  if (token.comment) record.comment = token.comment;
   return record;
+}
+
+function normalizedValue(value) {
+  return String(value).trim().toLowerCase();
+}
+
+function sourceExcludedByRule(value, rule) {
+  if ((rule.excludedSourceValues || []).some((excluded) =>
+    normalizedValue(excluded) === normalizedValue(value) ||
+    rule.types.some((tokenType) => valuesEqual(parseTypedValue(value, tokenType), parseTypedValue(excluded, tokenType))))) {
+    return true;
+  }
+  if (!rule.excludedSourceAbove) return false;
+  const source = parseTypedValue(value, "dimension");
+  const limit = parseTypedValue(rule.excludedSourceAbove, "dimension");
+  return source?.kind === "dimension" && limit?.kind === "dimension" &&
+    source.comparable[1] === limit.comparable[1] && source.comparable[0] > limit.comparable[0];
+}
+
+function targetAllowedByRule(token, rule) {
+  if ((rule.excludedTargetValues || []).some((excluded) => normalizedValue(excluded) === normalizedValue(token.resolvedValue))) {
+    return false;
+  }
+  if (rule.relativeLineHeightOnly && token.type !== "number") return false;
+  return true;
+}
+
+function scalarValue(parsed) {
+  if (!parsed) return Number.POSITIVE_INFINITY;
+  if (parsed.kind === "dimension") return parsed.comparable[0];
+  return typeof parsed.comparable === "number" ? parsed.comparable : Number.POSITIVE_INFINITY;
+}
+
+function nearestDistance(first, second) {
+  if (!first || !second || first.kind !== second.kind) return null;
+  if (first.kind === "dimension") {
+    return first.comparable[1] === second.comparable[1]
+      ? Math.abs(first.comparable[0] - second.comparable[0])
+      : null;
+  }
+  if (["duration", "number"].includes(first.kind)) {
+    return Math.abs(first.comparable - second.comparable);
+  }
+  return null;
+}
+
+function scoredCandidates(parsedSource, parsedCandidates) {
+  return parsedCandidates
+    .map(([token, parsed]) => [nearestDistance(parsedSource, parsed), scalarValue(parsed), token])
+    .filter(([distance]) => distance !== null)
+    .sort((a, b) => a[0] - b[0] || a[1] - b[1] || a[2].cssVariable.localeCompare(b[2].cssVariable));
+}
+
+function selectNearestCandidate(scored, rule, contexts) {
+  const order = rule.selectionOrder || ["scene-context", "semantic-base"];
+  const eligible = scored.filter(([, , token]) => order.some((groupName) =>
+    !(groupName.startsWith("atomic") && !rule.allowAtomicAuto) && candidateInGroup(token, groupName, contexts)));
+  if (!eligible.length) return null;
+  const minimumDistance = eligible[0][0];
+  const nearest = eligible.filter(([distance]) => Math.abs(distance - minimumDistance) <= 1e-9);
+  for (const groupName of order) {
+    if (groupName.startsWith("atomic") && !rule.allowAtomicAuto) continue;
+    const group = nearest.filter(([, , token]) => candidateInGroup(token, groupName, contexts));
+    if (group.length) return group[0];
+  }
+  return null;
+}
+
+function nearestReportCandidates(scored, selected, rule, maxCandidates) {
+  const ordered = [];
+  const add = (entry) => {
+    if (entry && !ordered.some((value) => value[2].cssVariable === entry[2].cssVariable)) ordered.push(entry);
+  };
+  add(selected);
+  if (rule.relativeLineHeightOnly) {
+    scored
+      .filter(([, , token]) => token.tier === "scene" && /^density-(?:compact|comfortable|spacious)-line-height$/.test(token.name))
+      .forEach(add);
+  }
+  scored.forEach(add);
+  return ordered.slice(0, maxCandidates);
+}
+
+function relativeLineHeightSource(occurrence, value) {
+  const parsed = parseTypedValue(value, "number");
+  if (parsed) return { parsed, comparisonValue: value, fixed: false };
+  const lineHeight = parseTypedValue(value, "dimension");
+  const fontSizeValue = occurrence._contextProperties?.get("font-size");
+  const fontSize = fontSizeValue ? parseTypedValue(fontSizeValue, "dimension") : null;
+  if (!lineHeight || !fontSize || lineHeight.comparable[1] !== fontSize.comparable[1] || fontSize.comparable[0] <= 0) {
+    return null;
+  }
+  const ratio = lineHeight.comparable[0] / fontSize.comparable[0];
+  return {
+    parsed: { kind: "number", comparable: ratio },
+    comparisonValue: String(Number(ratio.toFixed(6))),
+    fixed: true,
+    fontSizeValue,
+  };
 }
 
 function legacyColorRecord(record) {
@@ -491,10 +591,36 @@ export function classifyOccurrence(occurrence, tokens, policy, legacyColorIndex,
     return finding;
   }
 
+  if (rule.excludeHardcoded) {
+    finding.reason = "间距可能承担布局、尺寸或组件内部特殊关系，无法可靠判断语义，硬编码值直接排除迁移";
+    return finding;
+  }
+  if (sourceExcludedByRule(comparisonValue, rule)) {
+    finding.reason = rule.id === "font-size"
+      ? "11px 或超过 48px 的字号按约定保留硬编码，直接排除迁移"
+      : "透明度 0/1 是端点值，按约定保留硬编码且不替换为 Token";
+    return finding;
+  }
+
   let parsedSource = null;
-  for (const tokenType of rule.types) {
-    parsedSource = parseTypedValue(comparisonValue, tokenType);
-    if (parsedSource) break;
+  let relativeLineHeight = null;
+  if (rule.relativeLineHeightOnly) {
+    relativeLineHeight = relativeLineHeightSource(occurrence, comparisonValue);
+    if (!relativeLineHeight) {
+      if (parseTypedValue(comparisonValue, "dimension")) {
+        finding.status = "missing-token";
+        finding.reason = "固定行高只有在同一静态样式块存在可比较的 font-size 时才能换算为相对行高；当前证据不足，保留硬编码";
+      } else {
+        finding.reason = "当前行高不是可完整比较的固定值或无单位倍率，保持原值不变";
+      }
+      return finding;
+    }
+    parsedSource = relativeLineHeight.parsed;
+  } else {
+    for (const tokenType of rule.types) {
+      parsedSource = parseTypedValue(comparisonValue, tokenType);
+      if (parsedSource) break;
+    }
   }
   if (!parsedSource) {
     finding.reason = priorityChain
@@ -504,14 +630,60 @@ export function classifyOccurrence(occurrence, tokens, policy, legacyColorIndex,
   }
 
   const parsedCandidates = tokens
-    .filter((token) => tokenAllowed(token, rule))
+    .filter((token) => tokenAllowed(token, rule) && targetAllowedByRule(token, rule))
     .map((token) => [token, parseTypedValue(String(token.resolvedValue), token.type)])
     .filter(([, parsed]) => parsed);
+  const maxCandidates = Number(policy.similarity.maxCandidates);
+  if (rule.nearestAutoReplace) {
+    const scored = scoredCandidates(parsedSource, parsedCandidates);
+    const selectedScore = selectNearestCandidate(scored, rule, contexts);
+    const reportScores = nearestReportCandidates(scored, selectedScore, rule, maxCandidates);
+    const selected = selectedScore?.[2] || null;
+    const selectedDistance = selectedScore?.[0];
+    const valueChanged = relativeLineHeight?.fixed || (selectedDistance !== null && selectedDistance > 1e-9);
+    finding.candidates = reportScores.map(([distance, , token]) => candidateRecord(
+      token,
+      relativeLineHeight?.fixed
+        ? distance <= 1e-9 ? "relative" : "relative-nearest"
+        : distance <= 1e-9 ? "exact" : "nearest",
+      distance,
+    ));
+    if (!selected) {
+      finding.status = "missing-token";
+      finding.reason = "没有符合层级边界且可比较的最近 Token 候选";
+      return finding;
+    }
+    const selectedMatch = relativeLineHeight?.fixed
+      ? selectedDistance <= 1e-9 ? "relative" : "relative-nearest"
+      : selectedDistance <= 1e-9 ? "exact" : "nearest";
+    finding.selectedToken = candidateRecord(selected, selectedMatch, selectedDistance);
+    if (valueChanged) {
+      finding.valueChange = {
+        from: comparisonValue,
+        to: selected.resolvedValue,
+        ...(relativeLineHeight?.fixed ? { derivedRatio: relativeLineHeight.comparisonValue, fontSize: relativeLineHeight.fontSizeValue } : {}),
+      };
+    }
+    if (!occurrence.writable || !finding._span) {
+      finding.status = "unsupported";
+      finding.reason = "存在最近候选，但当前语法节点不能安全局部改写";
+      return finding;
+    }
+    finding.status = "auto-replace";
+    finding.reason = relativeLineHeight?.fixed
+      ? `固定行高 ${comparisonValue} 已按同一样式块 font-size ${relativeLineHeight.fontSizeValue} 换算为 ${relativeLineHeight.comparisonValue}，并选择最近相对行高 Token`
+      : valueChanged
+      ? `按最近档自动替换：${comparisonValue} -> ${selected.resolvedValue}；报告保留候选供人工复核`
+      : "命中精确档位；报告保留相近候选供人工复核";
+    finding.replacement = priorityChain
+      ? priorityFallbackReplacement(occurrence.originalValue, priorityChain, selected)
+      : `var(${selected.cssVariable}, ${occurrence.originalValue})`;
+    return finding;
+  }
   const exact = parsedCandidates
     .filter(([, parsed]) => valuesEqual(parsedSource, parsed))
     .map(([token]) => token)
     .sort((a, b) => a.cssVariable.localeCompare(b.cssVariable));
-  const maxCandidates = Number(policy.similarity.maxCandidates);
   if (exact.length) {
     const [selected, selection] = selectExactCandidate(exact, rule, contexts);
     finding.candidates = exact.slice(0, maxCandidates).map((token) => candidateRecord(token, "exact"));
@@ -539,6 +711,13 @@ export function classifyOccurrence(occurrence, tokens, policy, legacyColorIndex,
         : "精确候选存在，但超出自动消费层级或缺少 Scene 上下文";
       finding.reason = priorityChain ? `${reason}；已有变量 fallback 链保持不变` : reason;
     }
+    return finding;
+  }
+
+  if (rule.preserveUnmatchedHardcoded) {
+    finding.reason = rule.id === "layer"
+      ? "非标准层级值按约定保留硬编码，不补充 Token，也不列入迁移问题"
+      : "非标准阴影值按约定保留硬编码，不补充 Token，也不列入迁移问题";
     return finding;
   }
 

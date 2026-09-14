@@ -16,6 +16,7 @@ function token(name, cssVariable, resolvedValue, options = {}) {
     tier: options.tier || "base",
     category: options.category || "color",
     type: options.type || "color",
+    ...(options.comment ? { comment: options.comment } : {}),
   };
 }
 
@@ -33,7 +34,27 @@ export const CATALOG = {
     token("card-padding", "--fds-s-card-padding", "16px", { tier: "scene", category: "scene", type: "dimension" }),
     token("icon-size-1", "--fds-g-icon-size-1", "16px", { layer: "atomic", tier: "map", category: "sizing", type: "dimension" }),
     token("radius-2", "--fds-g-radius-2", "4px", { layer: "atomic", tier: "map", category: "shape", type: "dimension" }),
+    token("radius-4", "--fds-g-radius-4", "8px", { layer: "atomic", tier: "map", category: "shape", type: "dimension" }),
+    token("radius-5", "--fds-g-radius-5", "12px", { layer: "atomic", tier: "map", category: "shape", type: "dimension" }),
+    token("radius-7", "--fds-g-radius-7", "20px", { layer: "atomic", tier: "map", category: "shape", type: "dimension" }),
+    token("card-radius", "--fds-s-card-radius", "4px", { tier: "scene", category: "scene", type: "dimension" }),
+    token("font-size-1", "--fds-g-font-size-1", "12px", { layer: "atomic", tier: "map", category: "typography", type: "dimension" }),
+    token("font-size-5", "--fds-g-font-size-5", "16px", { layer: "atomic", tier: "map", category: "typography", type: "dimension" }),
+    token("font-size-6", "--fds-g-font-size-6", "18px", { layer: "atomic", tier: "map", category: "typography", type: "dimension" }),
+    token("font-size-14", "--fds-g-font-size-14", "48px", { layer: "atomic", tier: "map", category: "typography", type: "dimension" }),
+    token("line-height-5", "--fds-g-line-height-5", "24px", { layer: "atomic", tier: "map", category: "typography", type: "dimension" }),
+    token("opacity-25", "--fds-g-opacity-25", "0.25", { layer: "atomic", tier: "map", category: "effects", type: "number", comment: "较强弱化档" }),
+    token("opacity-50", "--fds-g-opacity-50", "0.5", { layer: "atomic", tier: "map", category: "effects", type: "number", comment: "半透明档" }),
+    token("opacity-65", "--fds-g-opacity-65", "0.65", { layer: "atomic", tier: "map", category: "effects", type: "number", comment: "加载弱化档" }),
+    token("opacity-80", "--fds-g-opacity-80", "0.8", { layer: "atomic", tier: "map", category: "effects", type: "number", comment: "轻度弱化档" }),
+    token("line-height-ratio-3", "--fds-g-line-height-ratio-3", "1.2", { layer: "atomic", tier: "map", category: "typography", type: "number" }),
+    token("line-height-ratio-5", "--fds-g-line-height-ratio-5", "1.4", { layer: "atomic", tier: "map", category: "typography", type: "number" }),
     token("line-height-ratio-6", "--fds-g-line-height-ratio-6", "1.5", { layer: "atomic", tier: "map", category: "typography", type: "number" }),
+    token("line-height-ratio-7", "--fds-g-line-height-ratio-7", "1.6", { layer: "atomic", tier: "map", category: "typography", type: "number" }),
+    token("line-height-ratio-9", "--fds-g-line-height-ratio-9", "1.8", { layer: "atomic", tier: "map", category: "typography", type: "number" }),
+    token("density-compact-line-height", "--fds-s-density-compact-line-height", "1.2", { tier: "scene", category: "scene", type: "number", comment: "紧凑密度" }),
+    token("density-comfortable-line-height", "--fds-s-density-comfortable-line-height", "1.5", { tier: "scene", category: "scene", type: "number", comment: "舒适密度" }),
+    token("density-spacious-line-height", "--fds-s-density-spacious-line-height", "1.8", { tier: "scene", category: "scene", type: "number", comment: "宽松密度" }),
   ],
 };
 

@@ -7,10 +7,10 @@ test("TSX 支持 JSX style、CSSProperties、白名单调用和静态模板", as
   const source = `import type { CSSProperties } from 'react'
 const note = 'color: #FF522A'
 const typed: CSSProperties = { color: '#FF522A' }
-const classes = createStyles({ root: { padding: '16px' } })
+const classes = createStyles({ root: { borderRadius: '4px' } })
 const block = css\`div { color: #FF522A; }\`
-const Styled = styled.div\`padding: 16px;\`
-export const View = () => <div style={{ color: '#FF522A', padding: '16px' }} data-note={note} />
+const Styled = styled.div\`border-radius: 4px;\`
+export const View = () => <div style={{ color: '#FF522A', borderRadius: '4px' }} data-note={note} />
 `;
   const context = await fixture({ "view.tsx": source });
   const result = runTool("apply", context.paths["view.tsx"], context.catalog, context.reportDir);
@@ -44,7 +44,7 @@ test("JS 普通对象和普通字符串不会被当作样式扫描", async () =>
 });
 
 test("JS css 对象和函数返回对象可安全改写", async () => {
-  const source = "const direct = css({ color: '#FF522A' }); const themed = makeStyles(() => ({ root: { padding: '16px' } }));\n";
+  const source = "const direct = css({ color: '#FF522A' }); const themed = makeStyles(() => ({ root: { borderRadius: '4px' } }));\n";
   const context = await fixture({ "styles.js": source });
   const result = runTool("apply", context.paths["styles.js"], context.catalog, context.reportDir);
   assert.equal(result.status, 0, result.stderr);
@@ -55,7 +55,7 @@ test("JS css 对象和函数返回对象可安全改写", async () => {
 test("TS 支持类型标注、as 和 satisfies CSSProperties", async () => {
   const source = `type CSSProperties = import('react').CSSProperties
 const first: CSSProperties = { color: '#FF522A' }
-const second = { padding: '16px' } as CSSProperties
+const second = { borderRadius: '4px' } as CSSProperties
 const third = { color: '#FF522A' } satisfies CSSProperties
 `;
   const context = await fixture({ "styles.ts": source });
