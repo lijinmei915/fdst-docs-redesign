@@ -141,7 +141,7 @@ test("CSS apply 可将无单位行高替换为相对行高 Token", async () => {
   assert.equal(result.status, 0, result.stderr);
   assert.equal(
     await readFile(context.paths["component.css"], "utf8"),
-    ".sample { line-height: var(--fds-g-line-height-ratio-4, 1.5); }\n",
+    ".sample { line-height: var(--fds-g-line-height-ratio-6, 1.5); }\n",
   );
 });
 

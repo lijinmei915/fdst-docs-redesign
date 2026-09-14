@@ -30,7 +30,7 @@
 - Modify: `tokens/semantic/base/typography.yml`
 - Modify: `skills/fds-migrate/references/migration-policy.json`
 
-1. 新增 `line-height-ratio-1..6`、`radius-7`、`motion-duration-5..8` 和 `heading-6-*`。
+1. 新增 `line-height-ratio-1..10`、`radius-7`、`motion-duration-5..8` 和 `heading-6-*`；相对行高最终值按评审补充为 `1/1.1/1.2/1.3/1.4/1.5/1.6/1.75/1.8/2`。
 2. 让 `fds-migrate` 的 `line-height` 规则同时识别 `dimension` 与 `number`。
 3. 运行目标测试，确认契约通过。
 

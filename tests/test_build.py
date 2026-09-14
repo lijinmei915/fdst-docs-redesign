@@ -92,7 +92,7 @@ class BuildTest(unittest.TestCase):
         self.assertEqual("--fds-g-", namespace)
         self.assertEqual([], errors)
         self.assertEqual(37, len(sources))
-        self.assertEqual(503, len(tokens))
+        self.assertEqual(507, len(tokens))
         self.assertFalse(
             any(token_id.startswith("color-") and "-base-" in token_id for token_id in tokens)
         )
@@ -216,11 +216,11 @@ class BuildTest(unittest.TestCase):
             [int(tokens[f"line-height-{index}"].value.removesuffix("px")) for index in range(1, 14)],
         )
         self.assertEqual(
-            ["1.2", "1.3", "1.4", "1.5", "1.6", "1.8"],
-            [tokens[f"line-height-ratio-{index}"].value for index in range(1, 7)],
+            ["1", "1.1", "1.2", "1.3", "1.4", "1.5", "1.6", "1.75", "1.8", "2"],
+            [tokens[f"line-height-ratio-{index}"].value for index in range(1, 11)],
         )
         self.assertTrue(
-            all(tokens[f"line-height-ratio-{index}"].token_type == "number" for index in range(1, 7))
+            all(tokens[f"line-height-ratio-{index}"].token_type == "number" for index in range(1, 11))
         )
         self.assertEqual("6px", tokens["radius-3"].value)
         self.assertEqual("16px", tokens["radius-6"].value)

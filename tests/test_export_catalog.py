@@ -107,12 +107,12 @@ class ExportCatalogTest(unittest.TestCase):
     def test_relative_line_height_is_exported_as_unitless_line_height(self) -> None:
         catalog = EXPORT.build_catalog()
         tokens = {item["id"]: item for item in catalog["tokens"]}
-        token = tokens["line-height-ratio-4"]
+        token = tokens["line-height-ratio-6"]
 
         self.assertEqual("number", token["type"])
         self.assertEqual("1.5", token["resolvedValue"])
         self.assertEqual(
-            "line-height: var(--fds-g-line-height-ratio-4);",
+            "line-height: var(--fds-g-line-height-ratio-6);",
             EXPORT.build_search_record(token)["cssExample"],
         )
 

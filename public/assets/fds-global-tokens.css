@@ -383,12 +383,16 @@
   --fds-g-line-height-11: 40px;
   --fds-g-line-height-12: 44px;
   --fds-g-line-height-13: 48px;
-  --fds-g-line-height-ratio-1: 1.2; /* 单行大标题和展示型数字的紧凑行高倍率。 */
-  --fds-g-line-height-ratio-2: 1.3; /* 大标题和短标题的紧凑行高倍率。 */
-  --fds-g-line-height-ratio-3: 1.4; /* 界面标题和紧凑文本的常用行高倍率。 */
-  --fds-g-line-height-ratio-4: 1.5; /* 正文和通用界面文本的基准行高倍率。 */
-  --fds-g-line-height-ratio-5: 1.6; /* 多行正文和说明文本的宽松行高倍率。 */
-  --fds-g-line-height-ratio-6: 1.8; /* 小字号辅助信息或高可读性场景的宽松行高倍率。 */
+  --fds-g-line-height-ratio-1: 1; /* 极紧凑单行文本的行高倍率，使用前必须检查字形裁切。 */
+  --fds-g-line-height-ratio-2: 1.1; /* 单行大标题和展示型数字的紧凑行高倍率。 */
+  --fds-g-line-height-ratio-3: 1.2; /* 大标题和短标题的紧凑行高倍率。 */
+  --fds-g-line-height-ratio-4: 1.3; /* 展示标题和短文本的常用行高倍率。 */
+  --fds-g-line-height-ratio-5: 1.4; /* 界面标题和紧凑文本的常用行高倍率。 */
+  --fds-g-line-height-ratio-6: 1.5; /* 正文和通用界面文本的基准行高倍率。 */
+  --fds-g-line-height-ratio-7: 1.6; /* 多行正文和说明文本的宽松行高倍率。 */
+  --fds-g-line-height-ratio-8: 1.75; /* 小字号辅助信息或高可读性场景的宽松行高倍率。 */
+  --fds-g-line-height-ratio-9: 1.8; /* 小字号辅助信息或高可读性场景的宽松行高倍率。 */
+  --fds-g-line-height-ratio-10: 2; /* 特殊高可读性或疏朗排版场景的最大行高倍率，不作为常规正文默认值。 */
   --fds-g-font-weight-regular: 400;
   --fds-g-font-weight-medium: 500;
   --fds-g-font-weight-semibold: 600;

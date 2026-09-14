@@ -2,7 +2,7 @@
 
 > 本文件由 `python tools/export_catalog.py` 基于 `tokens/fds-global.yml` 的 import 图自动生成，请勿手工编辑。
 
-当前 catalog 共收录 503 个 Token。原始引用和值以 [catalog JSON](../../dist/fds-token-catalog.json) 为准。
+当前 catalog 共收录 507 个 Token。原始引用和值以 [catalog JSON](../../dist/fds-token-catalog.json) 为准。
 
 ## Atomic / Seed / color
 
@@ -422,12 +422,16 @@
 | `--fds-g-line-height-7` | `dimension` | `30px` | `30px` | `tokens/atomic/map/typography.yml` |
 | `--fds-g-line-height-8` | `dimension` | `32px` | `32px` | `tokens/atomic/map/typography.yml` |
 | `--fds-g-line-height-9` | `dimension` | `36px` | `36px` | `tokens/atomic/map/typography.yml` |
-| `--fds-g-line-height-ratio-1` | `number` | `1.2` | `1.2` | `tokens/atomic/map/typography.yml` |
-| `--fds-g-line-height-ratio-2` | `number` | `1.3` | `1.3` | `tokens/atomic/map/typography.yml` |
-| `--fds-g-line-height-ratio-3` | `number` | `1.4` | `1.4` | `tokens/atomic/map/typography.yml` |
-| `--fds-g-line-height-ratio-4` | `number` | `1.5` | `1.5` | `tokens/atomic/map/typography.yml` |
-| `--fds-g-line-height-ratio-5` | `number` | `1.6` | `1.6` | `tokens/atomic/map/typography.yml` |
-| `--fds-g-line-height-ratio-6` | `number` | `1.8` | `1.8` | `tokens/atomic/map/typography.yml` |
+| `--fds-g-line-height-ratio-1` | `number` | `1` | `1` | `tokens/atomic/map/typography.yml` |
+| `--fds-g-line-height-ratio-10` | `number` | `2` | `2` | `tokens/atomic/map/typography.yml` |
+| `--fds-g-line-height-ratio-2` | `number` | `1.1` | `1.1` | `tokens/atomic/map/typography.yml` |
+| `--fds-g-line-height-ratio-3` | `number` | `1.2` | `1.2` | `tokens/atomic/map/typography.yml` |
+| `--fds-g-line-height-ratio-4` | `number` | `1.3` | `1.3` | `tokens/atomic/map/typography.yml` |
+| `--fds-g-line-height-ratio-5` | `number` | `1.4` | `1.4` | `tokens/atomic/map/typography.yml` |
+| `--fds-g-line-height-ratio-6` | `number` | `1.5` | `1.5` | `tokens/atomic/map/typography.yml` |
+| `--fds-g-line-height-ratio-7` | `number` | `1.6` | `1.6` | `tokens/atomic/map/typography.yml` |
+| `--fds-g-line-height-ratio-8` | `number` | `1.75` | `1.75` | `tokens/atomic/map/typography.yml` |
+| `--fds-g-line-height-ratio-9` | `number` | `1.8` | `1.8` | `tokens/atomic/map/typography.yml` |
 ## Semantic / Base / color
 
 | CSS Variable | 类型 | 源值 | 解析值 | 来源 |

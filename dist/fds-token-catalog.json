@@ -8,7 +8,7 @@
   },
   "source": "tokens/fds-global.yml",
   "generatedBy": "tools/export_catalog.py",
-  "tokenCount": 503,
+  "tokenCount": 507,
   "tokens": [
     {
       "id": "color-amber",
@@ -6915,15 +6915,33 @@
       "tier": "map",
       "category": "typography",
       "type": "number",
-      "value": "1.2",
-      "resolvedValue": "1.2",
+      "value": "1",
+      "resolvedValue": "1",
       "references": [],
       "referenceChain": [
         "line-height-ratio-1"
       ],
       "source": "tokens/atomic/map/typography.yml",
       "sourceFile": "tokens/atomic/map/typography.yml",
-      "comment": "单行大标题和展示型数字的紧凑行高倍率。"
+      "comment": "极紧凑单行文本的行高倍率，使用前必须检查字形裁切。"
+    },
+    {
+      "id": "line-height-ratio-10",
+      "name": "line-height-ratio-10",
+      "cssVariable": "--fds-g-line-height-ratio-10",
+      "layer": "atomic",
+      "tier": "map",
+      "category": "typography",
+      "type": "number",
+      "value": "2",
+      "resolvedValue": "2",
+      "references": [],
+      "referenceChain": [
+        "line-height-ratio-10"
+      ],
+      "source": "tokens/atomic/map/typography.yml",
+      "sourceFile": "tokens/atomic/map/typography.yml",
+      "comment": "特殊高可读性或疏朗排版场景的最大行高倍率，不作为常规正文默认值。"
     },
     {
       "id": "line-height-ratio-2",
@@ -6933,15 +6951,15 @@
       "tier": "map",
       "category": "typography",
       "type": "number",
-      "value": "1.3",
-      "resolvedValue": "1.3",
+      "value": "1.1",
+      "resolvedValue": "1.1",
       "references": [],
       "referenceChain": [
         "line-height-ratio-2"
       ],
       "source": "tokens/atomic/map/typography.yml",
       "sourceFile": "tokens/atomic/map/typography.yml",
-      "comment": "大标题和短标题的紧凑行高倍率。"
+      "comment": "单行大标题和展示型数字的紧凑行高倍率。"
     },
     {
       "id": "line-height-ratio-3",
@@ -6951,15 +6969,15 @@
       "tier": "map",
       "category": "typography",
       "type": "number",
-      "value": "1.4",
-      "resolvedValue": "1.4",
+      "value": "1.2",
+      "resolvedValue": "1.2",
       "references": [],
       "referenceChain": [
         "line-height-ratio-3"
       ],
       "source": "tokens/atomic/map/typography.yml",
       "sourceFile": "tokens/atomic/map/typography.yml",
-      "comment": "界面标题和紧凑文本的常用行高倍率。"
+      "comment": "大标题和短标题的紧凑行高倍率。"
     },
     {
       "id": "line-height-ratio-4",
@@ -6969,15 +6987,15 @@
       "tier": "map",
       "category": "typography",
       "type": "number",
-      "value": "1.5",
-      "resolvedValue": "1.5",
+      "value": "1.3",
+      "resolvedValue": "1.3",
       "references": [],
       "referenceChain": [
         "line-height-ratio-4"
       ],
       "source": "tokens/atomic/map/typography.yml",
       "sourceFile": "tokens/atomic/map/typography.yml",
-      "comment": "正文和通用界面文本的基准行高倍率。"
+      "comment": "展示标题和短文本的常用行高倍率。"
     },
     {
       "id": "line-height-ratio-5",
@@ -6987,15 +7005,15 @@
       "tier": "map",
       "category": "typography",
       "type": "number",
-      "value": "1.6",
-      "resolvedValue": "1.6",
+      "value": "1.4",
+      "resolvedValue": "1.4",
       "references": [],
       "referenceChain": [
         "line-height-ratio-5"
       ],
       "source": "tokens/atomic/map/typography.yml",
       "sourceFile": "tokens/atomic/map/typography.yml",
-      "comment": "多行正文和说明文本的宽松行高倍率。"
+      "comment": "界面标题和紧凑文本的常用行高倍率。"
     },
     {
       "id": "line-height-ratio-6",
@@ -7005,11 +7023,65 @@
       "tier": "map",
       "category": "typography",
       "type": "number",
+      "value": "1.5",
+      "resolvedValue": "1.5",
+      "references": [],
+      "referenceChain": [
+        "line-height-ratio-6"
+      ],
+      "source": "tokens/atomic/map/typography.yml",
+      "sourceFile": "tokens/atomic/map/typography.yml",
+      "comment": "正文和通用界面文本的基准行高倍率。"
+    },
+    {
+      "id": "line-height-ratio-7",
+      "name": "line-height-ratio-7",
+      "cssVariable": "--fds-g-line-height-ratio-7",
+      "layer": "atomic",
+      "tier": "map",
+      "category": "typography",
+      "type": "number",
+      "value": "1.6",
+      "resolvedValue": "1.6",
+      "references": [],
+      "referenceChain": [
+        "line-height-ratio-7"
+      ],
+      "source": "tokens/atomic/map/typography.yml",
+      "sourceFile": "tokens/atomic/map/typography.yml",
+      "comment": "多行正文和说明文本的宽松行高倍率。"
+    },
+    {
+      "id": "line-height-ratio-8",
+      "name": "line-height-ratio-8",
+      "cssVariable": "--fds-g-line-height-ratio-8",
+      "layer": "atomic",
+      "tier": "map",
+      "category": "typography",
+      "type": "number",
+      "value": "1.75",
+      "resolvedValue": "1.75",
+      "references": [],
+      "referenceChain": [
+        "line-height-ratio-8"
+      ],
+      "source": "tokens/atomic/map/typography.yml",
+      "sourceFile": "tokens/atomic/map/typography.yml",
+      "comment": "小字号辅助信息或高可读性场景的宽松行高倍率。"
+    },
+    {
+      "id": "line-height-ratio-9",
+      "name": "line-height-ratio-9",
+      "cssVariable": "--fds-g-line-height-ratio-9",
+      "layer": "atomic",
+      "tier": "map",
+      "category": "typography",
+      "type": "number",
       "value": "1.8",
       "resolvedValue": "1.8",
       "references": [],
       "referenceChain": [
-        "line-height-ratio-6"
+        "line-height-ratio-9"
       ],
       "source": "tokens/atomic/map/typography.yml",
       "sourceFile": "tokens/atomic/map/typography.yml",
