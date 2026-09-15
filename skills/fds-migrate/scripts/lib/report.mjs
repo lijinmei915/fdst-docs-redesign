@@ -478,11 +478,15 @@ function promptItem(finding, mode) {
 
 function decisionControlHtml(finding) {
   const label = `${finding.file}:${finding.line}:${finding.column} ${finding.property}`;
-  if (finding.candidates?.length) {
+  const isNearestAutoReplacement = ["auto-replace", "replaced"].includes(finding.status) && finding.selectedToken?.match === "nearest";
+  if (isNearestAutoReplacement && finding.candidates?.length) {
     const options = finding.candidates.map((candidate) => `<option value="${escapeHtml(candidate.cssVariable)}">${escapeHtml(candidate.cssVariable)} · ${escapeHtml(candidate.resolvedValue)}${candidate.comment ? ` · ${escapeHtml(candidate.comment)}` : ""}</option>`).join("");
     return `<select class="decision-select" data-decision-select="${escapeHtml(finding.id)}" aria-label="为 ${escapeHtml(label)} 选择 Token">
       <option value="">选择 Token</option>${options}
     </select>`;
+  }
+  if (["auto-replace", "replaced"].includes(finding.status) && finding.selectedToken) {
+    return '<span class="context">确定性自动替换</span>';
   }
   return `<textarea class="decision-note" data-decision-note="${escapeHtml(finding.id)}" aria-label="填写 ${escapeHtml(label)} 的处理说明" placeholder="填写处理说明" maxlength="500" rows="2"></textarea>`;
 }

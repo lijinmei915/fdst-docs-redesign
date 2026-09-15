@@ -20,12 +20,13 @@
 - Font Size：小于 `12px` 与超过 `48px` 的值保留硬编码并归为 `exempt`；`12px–48px` 的同单位值按绝对距离选择最近档，等距时选择较小值。
 - Line Height：固定硬编码行高直接归为 `exempt`，不换算、不替换；已使用的固定 `line-height-*` Token 继续按 Catalog 校验。无单位相对行高只精确匹配 `line-height-ratio-*` 或显式 Scene Line Height；非精确值可报告相近候选，但不得自动替换。
 - Spacing：硬编码 margin、padding、gap 直接归为 `exempt`，不推荐、不自动迁移。其值无法证明是在表达标准间距、用边距实现布局/高度，还是 Label 与 Input 等组件内部特殊关系。
+- Sizing：通用 `width` / `height` 等硬编码尺寸不得推荐 `icon-size-*`；该限制只作用于自动候选，已明确使用且真实存在的图标尺寸 Token 仍可保持合规。
 - Border Radius：包含 `20px` 档，其他同单位值按绝对距离选择最近档，等距时选择较小值。
 - Opacity：源值 `0`、`1` 保留硬编码；最近档候选排除解析值为 `0`、`1` 的 Token，其他数值按绝对距离选择最近档，等距时选择较小值。
 - Layer / Shadow：精确命中按现有上下文边界处理；无精确候选时归为 `exempt` 并保留硬编码，不补充梯度。
 - Motion Duration：Atomic Map 已包含 `500/600/800/1000ms`，精确值按既有自动迁移规则处理，非精确值不提升为最近档自动替换。
 
-最近档自动替换必须在 finding 中记录原值和目标解析值。HTML 同时展示值变化提示、Catalog `comment` 和候选下拉；源码只改声明值并保留 fallback，不额外插入迁移注释。
+最近档自动替换必须在 finding 中记录原值和目标解析值。HTML 同时展示值变化提示、Catalog `comment` 和候选下拉；精确命中的自动替换只展示选定 Token，不提供下拉。源码只改声明值并保留 fallback，不额外插入迁移注释。
 
 自动替换时保留原始字面量，包括大小写、单位和函数写法：
 
@@ -75,7 +76,7 @@ outline-color: var(--button-text-color, var(--fds-g-color-blue-6, var(--color-bl
 
 1. 旧颜色固定选择索引映射得到的 Atomic/Map Palette Token，不再从相同新色值的 Semantic/Base 候选中选择。
 2. spacing、radius、typography 等通用尺度在没有语义上下文时优先 Atomic/Map，避免把相同数值误解释为 Card、Control、Heading 或 Disabled。
-3. sizing、layer 等强场景属性必须由 `--context` 指向 `control`、`icon`、`modal` 等用途，否则不自动替换。
+3. sizing、layer 等强场景属性必须由 `--context` 指向 `control`、`modal` 等用途，否则不自动替换；`icon-size-*` 不进入通用尺寸迁移候选。
 4. Atomic/Seed 只用于解释引用链，不进入自动替换。
 
 如果同一优先级有多个精确候选，结果是 `ambiguous`。工具不得根据数组顺序选择第一个。

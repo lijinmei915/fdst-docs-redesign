@@ -44,7 +44,7 @@ node <skill-root>/scripts/migrate_styles.mjs verify
 - 默认使用 Skill 自带的完整 Token JSONL，不要求调用方提供 FDST 仓库或外部 Catalog；`--catalog <json|jsonl>` 仅用于测试和受控调试覆盖。
 - 默认入口为 `src`；默认报告目录为 `.fdst/reports/migrate/<mode>/`。
 - 每个配置 `entry` 或命令行目标都是一个组件报告单元；批量执行时根目录只生成索引，明细分别写入 `components/<组件名>/`。
-- 组件 HTML 报告中的每条结果都可生成状态化处理提示词；列表内可从本次报告候选中选择具体 Token，无候选时可填写处理说明，并统一汇总为一份可局部编辑的处理提示词。人工选择、编辑和复制不代表问题已修复，修改后仍须重新执行 `verify`。
+- 组件 HTML 报告中的每条结果都可生成状态化处理提示词；只有最近档自动替换项提供候选 Token 下拉，唯一精确命中的自动替换项只展示确定结果，其他需人工处理项可填写处理说明，并统一汇总为一份可局部编辑的处理提示词。人工选择、编辑和复制不代表问题已修复，修改后仍须重新执行 `verify`。
 - 项目级配置固定放在 `.fdst/migrate.json`；配置字段、CLI 参数和覆盖顺序见 [项目配置与 CLI](references/configuration.md)。
 - `--context card` 等显式场景可让匹配器考虑对应 Scene Token；不得仅凭文件名猜测 Scene。
 - `--include <glob>` 可重复指定扫描范围；未指定时扫描支持矩阵中的全部文件，并跳过 `.git/node_modules/dist/build/coverage`。
@@ -63,6 +63,7 @@ node <skill-root>/scripts/migrate_styles.mjs verify
 - 字号：小于 `12px` 和超过 `48px` 的值保留硬编码并从迁移问题中排除；`12px–48px` 的可比较值选择绝对距离最近的 Font Size Token，等距时选择较小档。
 - 行高：固定硬编码行高维持现状，直接排除迁移，不换算为相对行高；已存在的固定 `line-height-*` Token 保留并继续校验。无单位相对行高只在精确命中 `line-height-ratio-*` 或显式场景候选时自动替换，非精确值只报告相近候选。
 - 间距：硬编码 margin、padding、gap 统一保留并归为 `exempt`。间距可能承担布局、高度或 Label 与 Input 等特殊关系，无法可靠判断三类场景占比，不自动推荐或补充 Token。
+- 尺寸：通用 `width` / `height` 等尺寸属性的自动候选空间排除 `icon-size-*`；已明确使用的有效图标尺寸 Token 仍按现有契约校验，不因候选排除而失效。
 - 圆角：使用包含 `20px` 的当前 Radius 梯度，其他可比较尺寸按绝对距离最近档自动替换，等距时选择较小档。
 - 透明度：`0` 和 `1` 保留硬编码，且不得作为最近档目标；其他数值在非端点 Opacity Token 中选择最近档，等距时选择较小档。
 - 层级与阴影：精确命中仍按既有层级和上下文规则处理；不符合现有规范的硬编码保留为 `exempt`，不补充 Token。
@@ -77,7 +78,7 @@ node <skill-root>/scripts/migrate_styles.mjs verify
 - CSS Custom Property 定义：`--component-color: #fff` 等定义声明始终保持原样，只在普通 CSS property 的消费位置迁移。
 - fallback 优先级链：固定为“组件自定义变量 / `--bc-*` > FDS > 旧色板变量 > 原值”。旧色板变量包括 11 套有彩色的 `--color-<family>00..10`、`--color-neutrals01..19` 和 `--color-special01..04`，不含 RGB 和 Dark。组件变量必须在当前组件报告单元内存在定义；`--bc-*` 作为既有组件协议兼容识别。颜色可直接从旧变量名取得索引，不要求变量链存在末端色值；链含未知变量、已有顺序错误或映射目标不唯一时不得自动改写。
 
-颜色硬编码值只与内置旧色板快照核对以定位旧索引，不与新 FDS 值比较；非颜色匹配遵守上述逐类边界。最近档替换会在报告原因中提示原值与目标值，并在候选列表和下拉中展示 Catalog Token 注释。完整规则见 [匹配策略](references/matching-policy.md)。
+颜色硬编码值只与内置旧色板快照核对以定位旧索引，不与新 FDS 值比较；非颜色匹配遵守上述逐类边界。最近档替换会在报告原因中提示原值与目标值，并在候选列表和下拉中展示 Catalog Token 注释；精确命中的自动替换不提供下拉。完整规则见 [匹配策略](references/matching-policy.md)。
 
 ## Output / 输出
 

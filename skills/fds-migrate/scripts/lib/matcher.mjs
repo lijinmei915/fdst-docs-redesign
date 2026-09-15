@@ -29,6 +29,7 @@ export function compilePolicy(policy) {
   for (const rule of policy.rules) {
     rule._propertyRegexes = rule.propertyPatterns.map((pattern) => new RegExp(pattern, "i"));
     rule._tokenRegexes = rule.tokenNamePatterns.map((pattern) => new RegExp(pattern, "i"));
+    rule._excludedTargetRegexes = (rule.excludedTargetNamePatterns || []).map((pattern) => new RegExp(pattern, "i"));
     const unknown = (rule.selectionOrder || []).filter((group) => !SELECTION_GROUPS.has(group));
     if (unknown.length) throw new MigrationError(`迁移策略包含未知 selectionOrder：${unknown.join(", ")}`);
   }
@@ -205,6 +206,7 @@ function sourceExcludedByRule(value, rule) {
 }
 
 function targetAllowedByRule(token, rule) {
+  if (rule._excludedTargetRegexes.some((pattern) => pattern.test(token.name))) return false;
   if ((rule.excludedTargetValues || []).some((excluded) => normalizedValue(excluded) === normalizedValue(token.resolvedValue))) {
     return false;
   }
