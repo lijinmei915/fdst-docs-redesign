@@ -16,6 +16,7 @@ description: 使用 Skill 内置的完整 FDS Token 与旧色板索引快照扫�
 - 扫描 `.html/.htm/.wxml` 静态内联 `style`；WXML 模板插值只报告，不自动改写。
 - 扫描 `.js/.jsx/.ts/.tsx` 中明确的 JSX style、`CSSProperties` 和白名单 CSS-in-JS。
 - 校验现有 `--fds-g-*` / `--fds-s-*` 是否真实存在。
+- 支持 `border`、`border-top/right/bottom/left` 和 `outline` 简写中的确定颜色节点；保留宽度、线型、注释及原值 fallback，动态或多义简写只报告。
 - 输出已替换项、不符合规范项、相近 Token 推荐和无法静态判定项。
 
 不要用于创建、修改、删除或发布 FDS Token。普通业务字符串、普通数据对象、动态变量、spread、函数返回值和带插值模板不得通过正则猜测为样式。完整矩阵见 [语法支持范围](references/syntax-support.md)。

@@ -1,5 +1,13 @@
 # 语法支持范围
 
+## 边框简写
+
+`border`、`border-top/right/bottom/left`、`outline` 通过 value AST 定位单一颜色，并按 `border-color` 规则校验或迁移。只替换颜色节点，保留声明顺序、空白、注释、宽度、线型、`!important` 和原 fallback；适用于样式表及已支持的静态内联/JS 样式容器。
+
+例如 `border: 1px dashed var(--color-neutrals07, #d8dbe1)` 迁移为 `border: 1px dashed var(--fds-g-color-gray-7, var(--color-neutrals07, #d8dbe1))`。
+
+颜色为 `var()` 时须同时有明确的静态宽度和线型，变量链仅接受现有组件变量、`--bc-*`、旧色板及 FDS 协议。整条 `var(--border)`、动态宽度、未知变量、重复颜色或无法确定类型的值标为 `unsupported`，不自动改写。未指定颜色、`transparent`、`currentColor` 和独立 CSS 全局关键字保留。逻辑方向简写及其他复合属性不在本次扩展范围。
+
 “支持文件”表示工具能够用对应 AST 定位其中明确的样式容器，不表示会扫描或改写文件中的任意字符串。
 
 | 文件 / 容器 | 扫描 | 自动改写 | 首版边界 |

@@ -416,6 +416,9 @@ function makeId(occurrence) {
 }
 
 export function classifyOccurrence(occurrence, tokens, policy, legacyColorIndex, contexts = [], componentVariables = new Set()) {
+  if (/^(?:border(?:-(?:top|right|bottom|left))?|outline)$/i.test(occurrence.property) && !occurrence.unsupportedReason) {
+    return classifyBorderShorthand(occurrence, tokens, policy, legacyColorIndex, contexts, componentVariables);
+  }
   const property = occurrence.property.toLowerCase();
   const rule = findRule(property, policy);
   const finding = {
@@ -708,6 +711,52 @@ export function classifyOccurrence(occurrence, tokens, policy, legacyColorIndex,
     ? "变量链末端原值没有可靠 FDS Token 候选，保持原链不变"
     : "该 property 属于 Token 管理范围，但没有可靠候选";
   return finding;
+}
+
+function classifyBorderShorthand(occurrence, tokens, policy, legacyColorIndex, contexts, componentVariables) {
+  const value = occurrence.originalValue;
+  const nodes = significantNodes(value);
+  const base = {
+    id: makeId(occurrence), file: occurrence.file, line: occurrence.line, column: occurrence.column,
+    syntax: occurrence.syntax, container: occurrence.container, selector: occurrence.selector || occurrence.container,
+    property: occurrence.property.toLowerCase(), originalValue: value, writable: occurrence.writable,
+    status: "exempt", rule: "border-color", reason: "边框简写未指定需要迁移的颜色", candidates: [],
+    _span: occurrence.start === undefined ? undefined : [occurrence.start, occurrence.end],
+  };
+  const unsupported = () => ({ ...base, status: "unsupported", reason: "边框简写包含动态、重复或无法确定类型的值，不能安全定位颜色" });
+  if (nodes.length === 1 && /^(?:inherit|initial|unset|revert|revert-layer)$/i.test(nodes[0].value)) return base;
+  let color;
+  let width = false;
+  let style = false;
+  for (const node of nodes) {
+    const raw = value.slice(node.sourceIndex, node.sourceEndIndex);
+    if (node.type === "word" && /^(?:none|hidden|dotted|dashed|solid|double|groove|ridge|inset|outset|auto)$/i.test(raw)) {
+      if (style || (raw.toLowerCase() === "auto" && base.property !== "outline")) return unsupported();
+      style = true;
+    } else if (node.type === "word" && /^(?:thin|medium|thick|0|(?:\d+(?:\.\d+)?|\.\d+)(?:px|em|rem|ex|ch|cap|ic|lh|rlh|vw|vh|vmin|vmax|cm|mm|q|in|pt|pc))$/i.test(raw)) {
+      if (width) return unsupported();
+      width = true;
+    } else if (parseTypedValue(raw, "color") || /^(?:transparent|currentcolor)$/i.test(raw) || (node.type === "function" && node.value.toLowerCase() === "var")) {
+      if (color || node.unclosed) return unsupported();
+      color = { node, raw };
+    } else {
+      return unsupported();
+    }
+  }
+  if (!color) return base;
+  if (/^(?:transparent|currentcolor)$/i.test(color.raw)) return base;
+  // A lone var() can substitute the entire shorthand, so its color role is not proven.
+  if (color.node.type === "function" && color.node.value.toLowerCase() === "var") {
+    if (!width || !style) return unsupported();
+    const variables = collectCssVariables(color.raw);
+    if (variables.some(name => !legacyColorIndex._byVariable.has(name) && !name.startsWith("--fds-") && !name.startsWith("--bc-") && !componentVariables.has(name))) return unsupported();
+  }
+  const result = classifyOccurrence({ ...occurrence, property: "border-color", originalValue: color.raw }, tokens, policy, legacyColorIndex, contexts, componentVariables);
+  const replacement = result.replacement;
+  return {
+    ...result, id: base.id, property: base.property, originalValue: value, _span: base._span,
+    ...(replacement ? { replacement: value.slice(0, color.node.sourceIndex) + replacement + value.slice(color.node.sourceEndIndex) } : {}),
+  };
 }
 
 export function publicFinding(finding) {
