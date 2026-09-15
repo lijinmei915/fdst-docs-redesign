@@ -10,22 +10,22 @@
 
 1. CSS property 命中 `migration-policy.json` 中的规则。
 2. 颜色必须由旧变量名直接给出色板/索引，或由硬编码色值在内置旧色板中唯一定位；目标固定为该色板规则对应的 Atomic/Map Token。
-3. 非颜色值必须能够按对应 Token 类型完整解析；字号、相对行高、圆角和透明度可按下述专项规则选择最近档，其他类型仍要求候选 `resolvedValue` 与原值精确等价。
+3. 非颜色值必须能够按对应 Token 类型完整解析；字号、圆角和透明度可按下述专项规则选择最近档，相对行高及其他类型要求候选 `resolvedValue` 与原值精确等价。
 4. 候选名称和类型与 property 规则兼容；颜色索引目标只要求 property 属于颜色规则且 Catalog 中存在目标 Token。
 5. 非颜色候选按各 property 的层级顺序选择；Scene 只有通过 `--context` 显式提供场景后才参与自动决策。
 6. 原始值可以原样嵌入 `var(--token, 原值)`，不需要格式化源文件。
 
 ## 非颜色专项规则
 
-- Font Size：`11px` 与超过 `48px` 的值保留硬编码并归为 `exempt`；其他同单位值按绝对距离选择最近档，等距时选择较小值。
-- Line Height：目标只允许无单位 `line-height-ratio-*` 及密度 Scene Line Height。固定值必须能与同一静态样式块中的同单位 `font-size` 相除后再匹配；无法静态取得字号时保持硬编码并报告 `missing-token`。报告候选固定补入 Compact、Comfortable、Spacious 三档，供人工按页面密度复核。
+- Font Size：小于 `12px` 与超过 `48px` 的值保留硬编码并归为 `exempt`；`12px–48px` 的同单位值按绝对距离选择最近档，等距时选择较小值。
+- Line Height：固定硬编码行高直接归为 `exempt`，不换算、不替换；已使用的固定 `line-height-*` Token 继续按 Catalog 校验。无单位相对行高只精确匹配 `line-height-ratio-*` 或显式 Scene Line Height；非精确值可报告相近候选，但不得自动替换。
 - Spacing：硬编码 margin、padding、gap 直接归为 `exempt`，不推荐、不自动迁移。其值无法证明是在表达标准间距、用边距实现布局/高度，还是 Label 与 Input 等组件内部特殊关系。
 - Border Radius：包含 `20px` 档，其他同单位值按绝对距离选择最近档，等距时选择较小值。
 - Opacity：源值 `0`、`1` 保留硬编码；最近档候选排除解析值为 `0`、`1` 的 Token，其他数值按绝对距离选择最近档，等距时选择较小值。
 - Layer / Shadow：精确命中按现有上下文边界处理；无精确候选时归为 `exempt` 并保留硬编码，不补充梯度。
 - Motion Duration：Atomic Map 已包含 `500/600/800/1000ms`，精确值按既有自动迁移规则处理，非精确值不提升为最近档自动替换。
 
-最近档自动替换必须在 finding 中记录原值、目标解析值和可选换算依据。HTML 同时展示值变化提示、Catalog `comment` 和候选下拉；源码只改声明值并保留 fallback，不额外插入迁移注释。
+最近档自动替换必须在 finding 中记录原值和目标解析值。HTML 同时展示值变化提示、Catalog `comment` 和候选下拉；源码只改声明值并保留 fallback，不额外插入迁移注释。
 
 自动替换时保留原始字面量，包括大小写、单位和函数写法：
 

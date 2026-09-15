@@ -145,43 +145,52 @@ test("CSS apply 可将无单位行高替换为相对行高 Token", async () => {
   );
 });
 
-test("字号排除 11px 和超过 48px，其余值按最近档自动替换并提供候选", async () => {
-  const original = ".sample { font-size: 17px; }\n.small { font-size: 11.0px; }\n.large { font-size: 49px; }\n";
-  const context = await fixture({ "component.css": original });
-  const result = runTool("apply", context.paths["component.css"], context.catalog, context.reportDir);
-  assert.equal(result.status, 0, result.stderr);
-  assert.match(await readFile(context.paths["component.css"], "utf8"), /font-size: var\(--fds-g-font-size-5, 17px\)/);
-  const report = await readReport(context.reportDir);
-  const [nearest, eleven, above] = report.findings;
-  assert.equal(nearest.status, "replaced");
-  assert.equal(nearest.selectedToken.match, "nearest");
-  assert.deepEqual(nearest.valueChange, { from: "17px", to: "16px" });
-  assert.deepEqual(nearest.candidates.slice(0, 2).map((item) => item.cssVariable), ["--fds-g-font-size-5", "--fds-g-font-size-6"]);
-  assert.equal(eleven.status, "exempt");
-  assert.equal(above.status, "exempt");
-});
-
-test("固定行高按同块字号换算为相对行高，报告下拉包含三档密度语义", async () => {
-  const original = ".sample { font-size: 16px; line-height: 24px; }\n.unknown { line-height: 24px; }\n";
+test("字号排除小于 12px 和超过 48px，区间内按最近档自动替换", async () => {
+  const original = ".ten { font-size: 10px; }\n.eleven { font-size: 11px; }\n.lower { font-size: 12px; }\n.nearest { font-size: 17px; }\n.upper { font-size: 48px; }\n.above { font-size: 49px; }\n";
   const context = await fixture({ "component.css": original });
   const result = runTool("apply", context.paths["component.css"], context.catalog, context.reportDir);
   assert.equal(result.status, 0, result.stderr);
   const migrated = await readFile(context.paths["component.css"], "utf8");
-  assert.match(migrated, /line-height: var\(--fds-g-line-height-ratio-6, 24px\)/);
+  assert.match(migrated, /\.ten \{ font-size: 10px; \}/);
+  assert.match(migrated, /\.eleven \{ font-size: 11px; \}/);
+  assert.match(migrated, /\.lower \{ font-size: var\(--fds-g-font-size-1, 12px\); \}/);
+  assert.match(migrated, /\.nearest \{ font-size: var\(--fds-g-font-size-5, 17px\); \}/);
+  assert.match(migrated, /\.upper \{ font-size: var\(--fds-g-font-size-14, 48px\); \}/);
+  assert.match(migrated, /\.above \{ font-size: 49px; \}/);
   const report = await readReport(context.reportDir);
-  const converted = report.findings.find((item) => item.selector === ".sample" && item.property === "line-height");
-  const unknown = report.findings.find((item) => item.selector === ".unknown");
-  assert.equal(converted.selectedToken.match, "relative");
-  assert.deepEqual(converted.valueChange, { from: "24px", to: "1.5", derivedRatio: "1.5", fontSize: "16px" });
-  assert.deepEqual(
-    converted.candidates.filter((item) => item.tier === "scene").map((item) => item.cssVariable).sort(),
-    ["--fds-s-density-comfortable-line-height", "--fds-s-density-compact-line-height", "--fds-s-density-spacious-line-height"],
-  );
-  assert.equal(unknown.status, "missing-token");
-  assert.match(unknown.reason, /font-size/);
-  const html = await readFile(path.join(context.reportDir, "components", "component", "fds-token-migration-report.html"), "utf8");
-  assert.match(html, /--fds-s-density-comfortable-line-height/);
-  assert.match(html, /舒适密度/);
+  const find = (selector) => report.findings.find((item) => item.selector === selector);
+  const nearest = find(".nearest");
+  assert.equal(nearest.status, "replaced");
+  assert.equal(nearest.selectedToken.match, "nearest");
+  assert.deepEqual(nearest.valueChange, { from: "17px", to: "16px" });
+  assert.deepEqual(nearest.candidates.slice(0, 2).map((item) => item.cssVariable), ["--fds-g-font-size-5", "--fds-g-font-size-6"]);
+  assert.equal(find(".ten").status, "exempt");
+  assert.equal(find(".eleven").status, "exempt");
+  assert.equal(find(".lower").selectedToken.match, "exact");
+  assert.equal(find(".upper").selectedToken.match, "exact");
+  assert.equal(find(".above").status, "exempt");
+});
+
+test("固定行高不替换，已有固定 Token 保留，相对行高只精确替换", async () => {
+  const original = ".fixed { font-size: 16px; line-height: 24px; }\n.existing { line-height: var(--fds-g-line-height-5, 24px); }\n.relative { line-height: 1.5; }\n.imprecise { line-height: 1.55; }\n";
+  const context = await fixture({ "component.css": original });
+  const result = runTool("apply", context.paths["component.css"], context.catalog, context.reportDir);
+  assert.equal(result.status, 0, result.stderr);
+  const migrated = await readFile(context.paths["component.css"], "utf8");
+  assert.match(migrated, /\.fixed \{ font-size: var\(--fds-g-font-size-5, 16px\); line-height: 24px; \}/);
+  assert.match(migrated, /\.existing \{ line-height: var\(--fds-g-line-height-5, 24px\); \}/);
+  assert.match(migrated, /\.relative \{ line-height: var\(--fds-g-line-height-ratio-6, 1\.5\); \}/);
+  assert.match(migrated, /\.imprecise \{ line-height: 1\.55; \}/);
+  assert.doesNotMatch(migrated, /line-height: var\(--fds-g-line-height-ratio-6, 24px\)/);
+  const report = await readReport(context.reportDir);
+  const find = (selector) => report.findings.find((item) => item.selector === selector && item.property === "line-height");
+  assert.equal(find(".fixed").status, "exempt");
+  assert.match(find(".fixed").reason, /固定行高维持现状/);
+  assert.equal(find(".existing").status, "compliant");
+  assert.equal(find(".relative").status, "replaced");
+  assert.equal(find(".relative").selectedToken.match, "exact");
+  assert.equal(find(".imprecise").status, "similar");
+  assert.equal(find(".imprecise").selectedToken, undefined);
 });
 
 test("圆角和透明度按最近档自动替换，透明度端点不参与迁移", async () => {

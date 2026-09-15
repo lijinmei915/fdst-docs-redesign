@@ -64,7 +64,6 @@ export function parseStylesheet({ text, fullText = text, file, syntax = "css", b
       [start, end] = trimSpan(fullText, start, end);
       if (start >= end) return;
       const position = offsetToPosition(fullText, start);
-      const parentStart = declaration.parent?.source?.start?.offset ?? localStart;
       occurrences.push({
         file,
         syntax,
@@ -77,7 +76,6 @@ export function parseStylesheet({ text, fullText = text, file, syntax = "css", b
         line: position.line,
         column: position.column,
         writable: true,
-        _styleGroup: `${file}:${baseOffset + parentStart}`,
       });
     });
   } catch (error) {

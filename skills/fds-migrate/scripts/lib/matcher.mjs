@@ -193,18 +193,21 @@ function sourceExcludedByRule(value, rule) {
     rule.types.some((tokenType) => valuesEqual(parseTypedValue(value, tokenType), parseTypedValue(excluded, tokenType))))) {
     return true;
   }
-  if (!rule.excludedSourceAbove) return false;
+  if ((rule.excludedSourceTypes || []).some((tokenType) => parseTypedValue(value, tokenType))) return true;
   const source = parseTypedValue(value, "dimension");
-  const limit = parseTypedValue(rule.excludedSourceAbove, "dimension");
-  return source?.kind === "dimension" && limit?.kind === "dimension" &&
-    source.comparable[1] === limit.comparable[1] && source.comparable[0] > limit.comparable[0];
+  if (!source) return false;
+  const below = rule.excludedSourceBelow ? parseTypedValue(rule.excludedSourceBelow, "dimension") : null;
+  if (below?.kind === "dimension" && source.comparable[1] === below.comparable[1] && source.comparable[0] < below.comparable[0]) {
+    return true;
+  }
+  const above = rule.excludedSourceAbove ? parseTypedValue(rule.excludedSourceAbove, "dimension") : null;
+  return above?.kind === "dimension" && source.comparable[1] === above.comparable[1] && source.comparable[0] > above.comparable[0];
 }
 
 function targetAllowedByRule(token, rule) {
   if ((rule.excludedTargetValues || []).some((excluded) => normalizedValue(excluded) === normalizedValue(token.resolvedValue))) {
     return false;
   }
-  if (rule.relativeLineHeightOnly && token.type !== "number") return false;
   return true;
 }
 
@@ -249,37 +252,14 @@ function selectNearestCandidate(scored, rule, contexts) {
   return null;
 }
 
-function nearestReportCandidates(scored, selected, rule, maxCandidates) {
+function nearestReportCandidates(scored, selected, maxCandidates) {
   const ordered = [];
   const add = (entry) => {
     if (entry && !ordered.some((value) => value[2].cssVariable === entry[2].cssVariable)) ordered.push(entry);
   };
   add(selected);
-  if (rule.relativeLineHeightOnly) {
-    scored
-      .filter(([, , token]) => token.tier === "scene" && /^density-(?:compact|comfortable|spacious)-line-height$/.test(token.name))
-      .forEach(add);
-  }
   scored.forEach(add);
   return ordered.slice(0, maxCandidates);
-}
-
-function relativeLineHeightSource(occurrence, value) {
-  const parsed = parseTypedValue(value, "number");
-  if (parsed) return { parsed, comparisonValue: value, fixed: false };
-  const lineHeight = parseTypedValue(value, "dimension");
-  const fontSizeValue = occurrence._contextProperties?.get("font-size");
-  const fontSize = fontSizeValue ? parseTypedValue(fontSizeValue, "dimension") : null;
-  if (!lineHeight || !fontSize || lineHeight.comparable[1] !== fontSize.comparable[1] || fontSize.comparable[0] <= 0) {
-    return null;
-  }
-  const ratio = lineHeight.comparable[0] / fontSize.comparable[0];
-  return {
-    parsed: { kind: "number", comparable: ratio },
-    comparisonValue: String(Number(ratio.toFixed(6))),
-    fixed: true,
-    fontSizeValue,
-  };
 }
 
 function legacyColorRecord(record) {
@@ -597,30 +577,17 @@ export function classifyOccurrence(occurrence, tokens, policy, legacyColorIndex,
   }
   if (sourceExcludedByRule(comparisonValue, rule)) {
     finding.reason = rule.id === "font-size"
-      ? "11px 或超过 48px 的字号按约定保留硬编码，直接排除迁移"
+      ? "小于 12px 或超过 48px 的字号按约定保留硬编码，直接排除迁移"
+      : rule.id === "line-height"
+      ? "固定行高维持现状，不换算、不替换，直接排除迁移"
       : "透明度 0/1 是端点值，按约定保留硬编码且不替换为 Token";
     return finding;
   }
 
   let parsedSource = null;
-  let relativeLineHeight = null;
-  if (rule.relativeLineHeightOnly) {
-    relativeLineHeight = relativeLineHeightSource(occurrence, comparisonValue);
-    if (!relativeLineHeight) {
-      if (parseTypedValue(comparisonValue, "dimension")) {
-        finding.status = "missing-token";
-        finding.reason = "固定行高只有在同一静态样式块存在可比较的 font-size 时才能换算为相对行高；当前证据不足，保留硬编码";
-      } else {
-        finding.reason = "当前行高不是可完整比较的固定值或无单位倍率，保持原值不变";
-      }
-      return finding;
-    }
-    parsedSource = relativeLineHeight.parsed;
-  } else {
-    for (const tokenType of rule.types) {
-      parsedSource = parseTypedValue(comparisonValue, tokenType);
-      if (parsedSource) break;
-    }
+  for (const tokenType of rule.types) {
+    parsedSource = parseTypedValue(comparisonValue, tokenType);
+    if (parsedSource) break;
   }
   if (!parsedSource) {
     finding.reason = priorityChain
@@ -637,15 +604,13 @@ export function classifyOccurrence(occurrence, tokens, policy, legacyColorIndex,
   if (rule.nearestAutoReplace) {
     const scored = scoredCandidates(parsedSource, parsedCandidates);
     const selectedScore = selectNearestCandidate(scored, rule, contexts);
-    const reportScores = nearestReportCandidates(scored, selectedScore, rule, maxCandidates);
+    const reportScores = nearestReportCandidates(scored, selectedScore, maxCandidates);
     const selected = selectedScore?.[2] || null;
     const selectedDistance = selectedScore?.[0];
-    const valueChanged = relativeLineHeight?.fixed || (selectedDistance !== null && selectedDistance > 1e-9);
+    const valueChanged = selectedDistance !== null && selectedDistance > 1e-9;
     finding.candidates = reportScores.map(([distance, , token]) => candidateRecord(
       token,
-      relativeLineHeight?.fixed
-        ? distance <= 1e-9 ? "relative" : "relative-nearest"
-        : distance <= 1e-9 ? "exact" : "nearest",
+      distance <= 1e-9 ? "exact" : "nearest",
       distance,
     ));
     if (!selected) {
@@ -653,15 +618,12 @@ export function classifyOccurrence(occurrence, tokens, policy, legacyColorIndex,
       finding.reason = "没有符合层级边界且可比较的最近 Token 候选";
       return finding;
     }
-    const selectedMatch = relativeLineHeight?.fixed
-      ? selectedDistance <= 1e-9 ? "relative" : "relative-nearest"
-      : selectedDistance <= 1e-9 ? "exact" : "nearest";
+    const selectedMatch = selectedDistance <= 1e-9 ? "exact" : "nearest";
     finding.selectedToken = candidateRecord(selected, selectedMatch, selectedDistance);
     if (valueChanged) {
       finding.valueChange = {
         from: comparisonValue,
         to: selected.resolvedValue,
-        ...(relativeLineHeight?.fixed ? { derivedRatio: relativeLineHeight.comparisonValue, fontSize: relativeLineHeight.fontSizeValue } : {}),
       };
     }
     if (!occurrence.writable || !finding._span) {
@@ -670,9 +632,7 @@ export function classifyOccurrence(occurrence, tokens, policy, legacyColorIndex,
       return finding;
     }
     finding.status = "auto-replace";
-    finding.reason = relativeLineHeight?.fixed
-      ? `固定行高 ${comparisonValue} 已按同一样式块 font-size ${relativeLineHeight.fontSizeValue} 换算为 ${relativeLineHeight.comparisonValue}，并选择最近相对行高 Token`
-      : valueChanged
+    finding.reason = valueChanged
       ? `按最近档自动替换：${comparisonValue} -> ${selected.resolvedValue}；报告保留候选供人工复核`
       : "命中精确档位；报告保留相近候选供人工复核";
     finding.replacement = priorityChain

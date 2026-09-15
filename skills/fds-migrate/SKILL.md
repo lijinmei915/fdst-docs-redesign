@@ -7,7 +7,7 @@ description: 使用 Skill 内置的完整 FDS Token 与旧色板索引快照扫�
 
 ## Goal / 目标
 
-基于 Skill 内置的完整 FDS Token JSONL 与旧 `fx-style` 色板索引快照做保守迁移：默认只扫描并输出报告；只有用户明确要求执行迁移时，才把 `auto-replace` 项改成带原值 fallback 的 FDS Token。CSS Custom Property 的定义声明不迁移；组件扫描单元内定义的变量和既有 `--bc-*` 保持高于 FDS，旧色板变量保持低于 FDS。颜色不与当前 FDS 色值做相等或相似度匹配，而是按色板和索引一对一迁移：有彩色 `00–10 -> 0–10`、`neutrals01–19 -> gray-1–19`、`special01–04 -> special-1–4`；有彩色第 `11` 阶和 Gray 第 `20` 阶是扩展档，不接收旧色阶自动迁移。字号、相对行高、圆角和透明度按各自规则选择最近档；明确保留的硬编码直接归为 `exempt`，不进入 HTML 迁移问题。
+基于 Skill 内置的完整 FDS Token JSONL 与旧 `fx-style` 色板索引快照做保守迁移：默认只扫描并输出报告；只有用户明确要求执行迁移时，才把 `auto-replace` 项改成带原值 fallback 的 FDS Token。CSS Custom Property 的定义声明不迁移；组件扫描单元内定义的变量和既有 `--bc-*` 保持高于 FDS，旧色板变量保持低于 FDS。颜色不与当前 FDS 色值做相等或相似度匹配，而是按色板和索引一对一迁移：有彩色 `00–10 -> 0–10`、`neutrals01–19 -> gray-1–19`、`special01–04 -> special-1–4`；有彩色第 `11` 阶和 Gray 第 `20` 阶是扩展档，不接收旧色阶自动迁移。字号、圆角和透明度按各自规则选择最近档，相对行高只精确替换；明确保留的硬编码直接归为 `exempt`，不进入 HTML 迁移问题。
 
 ## When to Use / 使用场景
 
@@ -60,8 +60,8 @@ node <skill-root>/scripts/migrate_styles.mjs verify
 ## Decision Rules / 决策规则
 
 - `auto-replace`：颜色命中唯一旧色板色系/索引并找到同索引目标；非颜色按以下规则命中精确值或最近档；同时要求 CSS property 兼容且源码区间可安全局部修改。
-- 字号：`11px` 和超过 `48px` 保留硬编码并从迁移问题中排除；其他可比较值选择绝对距离最近的 Font Size Token，等距时选择较小档。
-- 行高：硬编码无单位值只使用 `line-height-ratio-*`；硬编码固定行高只有在同一静态样式块存在同单位 `font-size` 时才换算为倍率，否则保持原值并报告证据不足。候选下拉同时提供 Compact、Comfortable、Spacious 三档 Scene 行高；已存在的固定 `line-height-*` 仍按当前 FDS 契约校验，但不作为硬编码迁移的自动目标。
+- 字号：小于 `12px` 和超过 `48px` 的值保留硬编码并从迁移问题中排除；`12px–48px` 的可比较值选择绝对距离最近的 Font Size Token，等距时选择较小档。
+- 行高：固定硬编码行高维持现状，直接排除迁移，不换算为相对行高；已存在的固定 `line-height-*` Token 保留并继续校验。无单位相对行高只在精确命中 `line-height-ratio-*` 或显式场景候选时自动替换，非精确值只报告相近候选。
 - 间距：硬编码 margin、padding、gap 统一保留并归为 `exempt`。间距可能承担布局、高度或 Label 与 Input 等特殊关系，无法可靠判断三类场景占比，不自动推荐或补充 Token。
 - 圆角：使用包含 `20px` 的当前 Radius 梯度，其他可比较尺寸按绝对距离最近档自动替换，等距时选择较小档。
 - 透明度：`0` 和 `1` 保留硬编码，且不得作为最近档目标；其他数值在非端点 Opacity Token 中选择最近档，等距时选择较小档。

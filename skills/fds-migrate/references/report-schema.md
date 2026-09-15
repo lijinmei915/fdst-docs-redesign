@@ -31,8 +31,8 @@
 - `rule` 和 `reason`。
 - `replacement`：只有 `replaced` / `auto-replace` 存在。
 - `selectedToken`：唯一自动候选。
-- `candidates`：最多五项，包含 `cssVariable`、`resolvedValue`、`layer`、`tier`、`category`、`match`，以及可选的 `distance` 和 Catalog `comment`；颜色索引映射的 `match` 为 `legacy-index`，最近档为 `nearest`，固定行高换算为 `relative` / `relative-nearest`。
-- `valueChange`：可选；最近档或固定行高换算记录 `from`、`to`，固定行高另外记录 `derivedRatio` 和同块 `fontSize`。
+- `candidates`：最多五项，包含 `cssVariable`、`resolvedValue`、`layer`、`tier`、`category`、`match`，以及可选的 `distance` 和 Catalog `comment`；颜色索引映射的 `match` 为 `legacy-index`，最近档为 `nearest`。
+- `valueChange`：可选；最近档替换记录 `from` 和 `to`。
 - `priorityProtected`：可选；为 `true` 表示声明包含组件自定义变量或 `--bc-*`，FDS 不得取得更高优先级。
 - `priorityVariables`：可选；按源码中的实际 fallback 顺序记录已有 CSS Variables。
 - `componentVariables`：可选；记录高于 FDS 的组件自定义变量和兼容识别的 `--bc-*`。

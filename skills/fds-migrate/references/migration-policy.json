@@ -107,7 +107,7 @@
       "allowAtomicAuto": true,
       "allowSimilarity": true,
       "nearestAutoReplace": true,
-      "excludedSourceValues": ["11px"],
+      "excludedSourceBelow": "12px",
       "excludedSourceAbove": "48px",
       "selectionOrder": ["scene-context", "semantic-context", "atomic-map"]
     },
@@ -118,8 +118,7 @@
       "tokenNamePatterns": ["(?:^|-)line-height(?:-|$)"],
       "allowAtomicAuto": true,
       "allowSimilarity": true,
-      "nearestAutoReplace": true,
-      "relativeLineHeightOnly": true,
+      "excludedSourceTypes": ["dimension"],
       "selectionOrder": ["scene-context", "semantic-context", "atomic-map"]
     },
     {
