@@ -8,7 +8,7 @@
   },
   "source": "tokens/fds-global.yml",
   "generatedBy": "tools/export_catalog.py",
-  "tokenCount": 507,
+  "tokenCount": 510,
   "tokens": [
     {
       "id": "color-amber",
@@ -6150,11 +6150,45 @@
       "tier": "map",
       "category": "spacing",
       "type": "dimension",
-      "value": "4px",
-      "resolvedValue": "4px",
+      "value": "2px",
+      "resolvedValue": "2px",
       "references": [],
       "referenceChain": [
         "spacing-1"
+      ],
+      "source": "tokens/atomic/map/spacing.yml",
+      "sourceFile": "tokens/atomic/map/spacing.yml"
+    },
+    {
+      "id": "spacing-10",
+      "name": "spacing-10",
+      "cssVariable": "--fds-g-spacing-10",
+      "layer": "atomic",
+      "tier": "map",
+      "category": "spacing",
+      "type": "dimension",
+      "value": "32px",
+      "resolvedValue": "32px",
+      "references": [],
+      "referenceChain": [
+        "spacing-10"
+      ],
+      "source": "tokens/atomic/map/spacing.yml",
+      "sourceFile": "tokens/atomic/map/spacing.yml"
+    },
+    {
+      "id": "spacing-11",
+      "name": "spacing-11",
+      "cssVariable": "--fds-g-spacing-11",
+      "layer": "atomic",
+      "tier": "map",
+      "category": "spacing",
+      "type": "dimension",
+      "value": "48px",
+      "resolvedValue": "48px",
+      "references": [],
+      "referenceChain": [
+        "spacing-11"
       ],
       "source": "tokens/atomic/map/spacing.yml",
       "sourceFile": "tokens/atomic/map/spacing.yml"
@@ -6167,8 +6201,8 @@
       "tier": "map",
       "category": "spacing",
       "type": "dimension",
-      "value": "8px",
-      "resolvedValue": "8px",
+      "value": "4px",
+      "resolvedValue": "4px",
       "references": [],
       "referenceChain": [
         "spacing-2"
@@ -6184,8 +6218,8 @@
       "tier": "map",
       "category": "spacing",
       "type": "dimension",
-      "value": "12px",
-      "resolvedValue": "12px",
+      "value": "6px",
+      "resolvedValue": "6px",
       "references": [],
       "referenceChain": [
         "spacing-3"
@@ -6201,8 +6235,8 @@
       "tier": "map",
       "category": "spacing",
       "type": "dimension",
-      "value": "16px",
-      "resolvedValue": "16px",
+      "value": "8px",
+      "resolvedValue": "8px",
       "references": [],
       "referenceChain": [
         "spacing-4"
@@ -6218,8 +6252,8 @@
       "tier": "map",
       "category": "spacing",
       "type": "dimension",
-      "value": "20px",
-      "resolvedValue": "20px",
+      "value": "10px",
+      "resolvedValue": "10px",
       "references": [],
       "referenceChain": [
         "spacing-5"
@@ -6235,8 +6269,8 @@
       "tier": "map",
       "category": "spacing",
       "type": "dimension",
-      "value": "24px",
-      "resolvedValue": "24px",
+      "value": "12px",
+      "resolvedValue": "12px",
       "references": [],
       "referenceChain": [
         "spacing-6"
@@ -6252,8 +6286,8 @@
       "tier": "map",
       "category": "spacing",
       "type": "dimension",
-      "value": "32px",
-      "resolvedValue": "32px",
+      "value": "16px",
+      "resolvedValue": "16px",
       "references": [],
       "referenceChain": [
         "spacing-7"
@@ -6269,11 +6303,28 @@
       "tier": "map",
       "category": "spacing",
       "type": "dimension",
-      "value": "48px",
-      "resolvedValue": "48px",
+      "value": "20px",
+      "resolvedValue": "20px",
       "references": [],
       "referenceChain": [
         "spacing-8"
+      ],
+      "source": "tokens/atomic/map/spacing.yml",
+      "sourceFile": "tokens/atomic/map/spacing.yml"
+    },
+    {
+      "id": "spacing-9",
+      "name": "spacing-9",
+      "cssVariable": "--fds-g-spacing-9",
+      "layer": "atomic",
+      "tier": "map",
+      "category": "spacing",
+      "type": "dimension",
+      "value": "24px",
+      "resolvedValue": "24px",
+      "references": [],
+      "referenceChain": [
+        "spacing-9"
       ],
       "source": "tokens/atomic/map/spacing.yml",
       "sourceFile": "tokens/atomic/map/spacing.yml"
@@ -9039,14 +9090,14 @@
       "tier": "scene",
       "category": "scene",
       "type": "dimension",
-      "value": "{!spacing-3}",
+      "value": "{!spacing-6}",
       "resolvedValue": "12px",
       "references": [
-        "spacing-3"
+        "spacing-6"
       ],
       "referenceChain": [
         "card-gap",
-        "spacing-3"
+        "spacing-6"
       ],
       "source": "tokens/semantic/scene/default.yml",
       "sourceFile": "tokens/semantic/scene/default.yml",
@@ -9060,14 +9111,14 @@
       "tier": "scene",
       "category": "scene",
       "type": "dimension",
-      "value": "{!spacing-4}",
+      "value": "{!spacing-7}",
       "resolvedValue": "16px",
       "references": [
-        "spacing-4"
+        "spacing-7"
       ],
       "referenceChain": [
         "card-padding",
-        "spacing-4"
+        "spacing-7"
       ],
       "source": "tokens/semantic/scene/default.yml",
       "sourceFile": "tokens/semantic/scene/default.yml",
@@ -9147,14 +9198,14 @@
       "tier": "scene",
       "category": "scene",
       "type": "dimension",
-      "value": "{!spacing-3}",
+      "value": "{!spacing-6}",
       "resolvedValue": "12px",
       "references": [
-        "spacing-3"
+        "spacing-6"
       ],
       "referenceChain": [
         "card-title-gap",
-        "spacing-3"
+        "spacing-6"
       ],
       "source": "tokens/semantic/scene/default.yml",
       "sourceFile": "tokens/semantic/scene/default.yml",
@@ -9234,14 +9285,14 @@
       "tier": "scene",
       "category": "scene",
       "type": "dimension",
-      "value": "{!spacing-6}",
+      "value": "{!spacing-9}",
       "resolvedValue": "24px",
       "references": [
-        "spacing-6"
+        "spacing-9"
       ],
       "referenceChain": [
         "content-padding",
-        "spacing-6"
+        "spacing-9"
       ],
       "source": "tokens/semantic/scene/default.yml",
       "sourceFile": "tokens/semantic/scene/default.yml",
@@ -9276,14 +9327,14 @@
       "tier": "scene",
       "category": "scene",
       "type": "dimension",
-      "value": "{!spacing-2}",
+      "value": "{!spacing-4}",
       "resolvedValue": "8px",
       "references": [
-        "spacing-2"
+        "spacing-4"
       ],
       "referenceChain": [
         "density-comfortable-spacing",
-        "spacing-2"
+        "spacing-4"
       ],
       "source": "tokens/semantic/scene/default.yml",
       "sourceFile": "tokens/semantic/scene/default.yml",
@@ -9318,14 +9369,14 @@
       "tier": "scene",
       "category": "scene",
       "type": "dimension",
-      "value": "{!spacing-1}",
+      "value": "{!spacing-2}",
       "resolvedValue": "4px",
       "references": [
-        "spacing-1"
+        "spacing-2"
       ],
       "referenceChain": [
         "density-compact-spacing",
-        "spacing-1"
+        "spacing-2"
       ],
       "source": "tokens/semantic/scene/default.yml",
       "sourceFile": "tokens/semantic/scene/default.yml",
@@ -9360,14 +9411,14 @@
       "tier": "scene",
       "category": "scene",
       "type": "dimension",
-      "value": "{!spacing-3}",
+      "value": "{!spacing-6}",
       "resolvedValue": "12px",
       "references": [
-        "spacing-3"
+        "spacing-6"
       ],
       "referenceChain": [
         "density-spacious-spacing",
-        "spacing-3"
+        "spacing-6"
       ],
       "source": "tokens/semantic/scene/default.yml",
       "sourceFile": "tokens/semantic/scene/default.yml",

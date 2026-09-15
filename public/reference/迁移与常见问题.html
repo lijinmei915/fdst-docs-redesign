@@ -78,7 +78,61 @@
 <p>从旧 <code>fx-style</code> 迁移时不按色值贴近，而是保留用户熟悉的索引对应关系：有彩色 <code>00-10</code> 一对一迁移到当前 <code>0-10</code>，当前第 <code>11</code> 阶是扩展档；<code>neutrals01-19</code> 一对一迁移到 Gray <code>1-19</code>，Gray 第 <code>20</code> 阶是扩展档；<code>special01-04</code> 一对一迁移到 Special <code>1-4</code>。旧 RGB 和 Dark 色板不自动迁移。</p>
 <p>Gray 自身从早期 <code>10-200</code> 名称迁移到当前 <code>1-20</code> 时，仍按旧索引除以 10，例如 <code>color-gray-10 → color-gray-1</code>、<code>color-gray-150 → color-gray-15</code>、<code>color-gray-200 → color-gray-20</code>。</p>
 <p>这些都是公开变量的破坏性更名，不提供旧名兼容别名。尤其注意 <code>color-{family}-10</code>、<code>color-{family}-dark-10</code>、<code>color-gray-10</code> 和 <code>color-gray-20</code> 在当前规则中仍然存在，但含义可能已变化；不能只凭变量名仍可解析就认为迁移完成。业务代码应优先迁移到 Semantic Token；确需消费 Atomic Palette 时，按对应色板的索引规则逐项改名并核对解析值。</p>
-<h3 id="_6">排版变量调整</h3>
+<h3 id="_6">间距索引调整</h3>
+<p>Spacing 新增 <code>2px</code>、<code>6px</code>、<code>10px</code> 三档后按数值升序重新编号。<code>spacing-0</code> 仍为 <code>0</code>；原有非零档位按下表迁移，不提供旧索引兼容别名：</p>
+<table>
+<thead>
+<tr>
+<th>原 Token</th>
+<th>当前 Token</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>spacing-1</code></td>
+<td><code>spacing-2</code></td>
+<td><code>4px</code></td>
+</tr>
+<tr>
+<td><code>spacing-2</code></td>
+<td><code>spacing-4</code></td>
+<td><code>8px</code></td>
+</tr>
+<tr>
+<td><code>spacing-3</code></td>
+<td><code>spacing-6</code></td>
+<td><code>12px</code></td>
+</tr>
+<tr>
+<td><code>spacing-4</code></td>
+<td><code>spacing-7</code></td>
+<td><code>16px</code></td>
+</tr>
+<tr>
+<td><code>spacing-5</code></td>
+<td><code>spacing-8</code></td>
+<td><code>20px</code></td>
+</tr>
+<tr>
+<td><code>spacing-6</code></td>
+<td><code>spacing-9</code></td>
+<td><code>24px</code></td>
+</tr>
+<tr>
+<td><code>spacing-7</code></td>
+<td><code>spacing-10</code></td>
+<td><code>32px</code></td>
+</tr>
+<tr>
+<td><code>spacing-8</code></td>
+<td><code>spacing-11</code></td>
+<td><code>48px</code></td>
+</tr>
+</tbody>
+</table>
+<p>迁移时必须按原解析值改名，不能仅保留旧变量名；例如旧 <code>spacing-4</code> 是 <code>16px</code>，重排后同名变量变为 <code>8px</code>，应改用当前 <code>spacing-7</code>。</p>
+<h3 id="_7">排版变量调整</h3>
 <p>当前 YAML 已移除 Typography Token ID 中多余的 <code>typography-</code> 前缀。下表记录 Token ID；对应 CSS Variable 使用 <code>--fds-g-*</code> 前缀：</p>
 <table>
 <thead>
@@ -115,7 +169,7 @@
 </tbody>
 </table>
 <p>当前新增的 <code>heading-6-{size/line-height/weight}</code> 不属于旧变量更名，而是独立扩展的语义排版档。固定行高继续使用 <code>line-height-{step}</code>；新增的 <code>line-height-ratio-{step}</code> 是无单位字号倍率，两者不互为别名，也不自动迁移。</p>
-<h3 id="_7">精简的全局语义</h3>
+<h3 id="_8">精简的全局语义</h3>
 <p>以下表面别名已收敛到现有 Background 语义：</p>
 <table>
 <thead>
@@ -161,22 +215,22 @@
 <li><code>typography-code-font-family</code></li>
 </ul>
 <p>控件高度、图标尺寸、控件圆角、字体族、Label、Caption 和 Code 由应用、组件或具体场景负责。除上述已确认调整外，项目没有完整的旧变量映射表，不能根据名称相似自动替换。</p>
-<h2 id="_8">常见问题</h2>
+<h2 id="_9">常见问题</h2>
 <h3 id="palette">为什么不直接使用 Palette？</h3>
 <p>Palette 表达具体值域，不表达业务用途。状态、文本、背景和边框应使用 Semantic Token，后续映射调整时调用方无需重新选择色阶。</p>
 <h3 id="-fds-s-card-card-token"><code>--fds-s-card-*</code> 是 Card 组件 Token 吗？</h3>
 <p>不是。它描述页面场景中多张内容卡片共享的容器规则。Card 内部头部、操作、交互状态和尺寸由组件包维护。</p>
-<h3 id="_9">可以新增一个看起来符合规律的变量吗？</h3>
+<h3 id="_10">可以新增一个看起来符合规律的变量吗？</h3>
 <p>不可以。先在 catalog 中精确查询；不存在时需要确认层级、所有权和跨业务稳定性，再从 YAML 源新增并生成产物。</p>
-<h3 id="_10">如何覆盖某个业务场景？</h3>
+<h3 id="_11">如何覆盖某个业务场景？</h3>
 <p>在业务根作用域覆盖已发布的 Scene Token，或建立业务私有变量。不要在业务代码中定义新的 <code>--fds-g-*</code> 或 <code>--fds-s-*</code>。</p>
 <h3 id="rem-calc">为什么禁用 <code>rem</code> 和 <code>calc()</code>？</h3>
 <p>当前长度契约是设计确认的固定 px Map，不依赖运行时基础单位计算。若未来调整此原则，需要先修改体系决策和构建校验，不能由单个业务绕过。</p>
-<h3 id="_11">是否支持暗色主题或响应式断点？</h3>
+<h3 id="_12">是否支持暗色主题或响应式断点？</h3>
 <p>当前只提供 10 个固定公司色系的 Dark Atomic/Map，不提供暗色 Semantic 或主题切换；响应式断点也未纳入。不要因为存在 <code>color-{family}-dark-*</code> 就推断页面或组件已经支持暗色主题。</p>
-<h3 id="_12">校验通过是否代表已经发布？</h3>
+<h3 id="_13">校验通过是否代表已经发布？</h3>
 <p>不代表。校验只确认本地 YAML、生成物、文档链接和示例变量一致；ShareDev 发布链路仍需单独执行并验证。</p>
-<h2 id="_13">缺口记录模板</h2>
+<h2 id="_14">缺口记录模板</h2>
 <pre><code class="language-text">用途：
 影响范围：
 现有 Token 查询结果：无匹配 / 仅有近似项
@@ -185,14 +239,14 @@
 验收方式：
 </code></pre>
 <p>Token 体系本身的问题在评审前只记录为待确认项，不在文档任务中顺手修改 YAML。</p>
-<h2 id="_14">来源</h2>
+<h2 id="_15">来源</h2>
 <ul>
 <li><a href="../concepts/引用与边界.html">引用与边界</a></li>
 <li><a href="../getting-started/快速开始.html">快速开始</a></li>
 <li><a href="../engineering/版本与发布.html">版本与发布</a></li>
 </ul></article>
     </main>
-    <aside class="docs-toc" aria-label="本页目录"><strong>本页目录</strong><a href="#_2">适用范围</a><a href="#_3">从硬编码迁移</a><a href="#_4">从旧变量迁移</a><a href="#_8">常见问题</a><a href="#_13">缺口记录模板</a><a href="#_14">来源</a></aside>
+    <aside class="docs-toc" aria-label="本页目录"><strong>本页目录</strong><a href="#_2">适用范围</a><a href="#_3">从硬编码迁移</a><a href="#_4">从旧变量迁移</a><a href="#_9">常见问题</a><a href="#_14">缺口记录模板</a><a href="#_15">来源</a></aside>
   </div>
   <div class="docs-backdrop" data-menu-backdrop hidden></div>
   <dialog class="docs-search" data-search-dialog>

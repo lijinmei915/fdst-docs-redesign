@@ -493,7 +493,7 @@ test("verify 区分合规 Token、私有变量、复合表达式和失效 FDS �
     "component.css": `.sample {
   color: var(--fds-g-color-danger, #FF522A);
   background-color: var(--business-surface);
-  width: calc(100% - var(--fds-g-spacing-4));
+  width: calc(100% - var(--fds-g-spacing-7));
   border-color: var(--fds-g-does-not-exist, #000000);
 }
 `,

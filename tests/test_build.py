@@ -92,7 +92,7 @@ class BuildTest(unittest.TestCase):
         self.assertEqual("--fds-g-", namespace)
         self.assertEqual([], errors)
         self.assertEqual(36, len(sources))
-        self.assertEqual(507, len(tokens))
+        self.assertEqual(510, len(tokens))
         self.assertFalse(
             any(token_id.startswith("color-") and "-base-" in token_id for token_id in tokens)
         )
@@ -203,10 +203,10 @@ class BuildTest(unittest.TestCase):
 
         self.assertEqual([], errors)
         self.assertEqual(
-            ["0", "4px", "8px", "12px", "16px", "20px", "24px", "32px", "48px"],
-            [tokens[f"spacing-{index}"].value for index in range(9)],
+            ["0", "2px", "4px", "6px", "8px", "10px", "12px", "16px", "20px", "24px", "32px", "48px"],
+            [tokens[f"spacing-{index}"].value for index in range(12)],
         )
-        self.assertTrue(all(f"size-{index}" not in tokens for index in range(9)))
+        self.assertTrue(all(f"size-{index}" not in tokens for index in range(12)))
         self.assertEqual(
             [12, 13, 14, 15, 16, 18, 20, 22, 24, 28, 32, 36, 40, 48],
             [int(tokens[f"font-size-{index}"].value.removesuffix("px")) for index in range(1, 15)],
@@ -458,9 +458,9 @@ class BuildTest(unittest.TestCase):
             tokens["card-title-size"].value,
         )
         density_expectations = {
-            "compact": ("line-height-ratio-3", "spacing-1"),
-            "comfortable": ("line-height-ratio-6", "spacing-2"),
-            "spacious": ("line-height-ratio-9", "spacing-3"),
+            "compact": ("line-height-ratio-3", "spacing-2"),
+            "comfortable": ("line-height-ratio-6", "spacing-4"),
+            "spacious": ("line-height-ratio-9", "spacing-6"),
         }
         for density, (line_height, spacing) in density_expectations.items():
             self.assertEqual(
@@ -474,14 +474,14 @@ class BuildTest(unittest.TestCase):
 
         namespace, sources = BUILD.collect_sources()
         css = BUILD.build_css(namespace, sources, tokens)
-        self.assertIn("--fds-s-card-padding: var(--fds-g-spacing-4);", css)
+        self.assertIn("--fds-s-card-padding: var(--fds-g-spacing-7);", css)
         self.assertIn("--fds-s-card-title-color: var(--fds-g-heading-color);", css)
         self.assertIn(
             "--fds-s-density-compact-line-height: var(--fds-g-line-height-ratio-3);",
             css,
         )
         self.assertIn(
-            "--fds-s-density-spacious-spacing: var(--fds-g-spacing-3);",
+            "--fds-s-density-spacious-spacing: var(--fds-g-spacing-6);",
             css,
         )
         self.assertNotIn("--fds-g-scene-", css)

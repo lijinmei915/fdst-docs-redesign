@@ -400,14 +400,17 @@
 
   /* atomic / map / spacing · source: tokens/atomic/map/spacing.yml */
   --fds-g-spacing-0: 0;
-  --fds-g-spacing-1: 4px;
-  --fds-g-spacing-2: 8px;
-  --fds-g-spacing-3: 12px;
-  --fds-g-spacing-4: 16px;
-  --fds-g-spacing-5: 20px;
-  --fds-g-spacing-6: 24px;
-  --fds-g-spacing-7: 32px;
-  --fds-g-spacing-8: 48px;
+  --fds-g-spacing-1: 2px;
+  --fds-g-spacing-2: 4px;
+  --fds-g-spacing-3: 6px;
+  --fds-g-spacing-4: 8px;
+  --fds-g-spacing-5: 10px;
+  --fds-g-spacing-6: 12px;
+  --fds-g-spacing-7: 16px;
+  --fds-g-spacing-8: 20px;
+  --fds-g-spacing-9: 24px;
+  --fds-g-spacing-10: 32px;
+  --fds-g-spacing-11: 48px;
 
   /* atomic / map / shape · source: tokens/atomic/map/shape.yml */
   --fds-g-radius-0: 0;
@@ -563,25 +566,25 @@
   --fds-g-motion-prominent-exit-easing: var(--fds-g-motion-easing-3); /* 显著变化退出采用 Exit 曲线，避免离场拖沓。 */
 
   /* semantic / scene / scene · source: tokens/semantic/scene/default.yml */
-  --fds-s-content-padding: var(--fds-g-spacing-6); /* 页面型场景内容与画布边界之间的默认留白。 */
+  --fds-s-content-padding: var(--fds-g-spacing-9); /* 页面型场景内容与画布边界之间的默认留白。 */
   --fds-s-density-compact-line-height: var(--fds-g-line-height-ratio-3); /* 紧凑密度场景的相对行高，适用于高信息密度排版。 */
-  --fds-s-density-compact-spacing: var(--fds-g-spacing-1); /* 紧凑密度场景的基础布局间距。 */
+  --fds-s-density-compact-spacing: var(--fds-g-spacing-2); /* 紧凑密度场景的基础布局间距。 */
   --fds-s-density-comfortable-line-height: var(--fds-g-line-height-ratio-6); /* 舒适密度场景的相对行高，作为常规阅读节奏。 */
-  --fds-s-density-comfortable-spacing: var(--fds-g-spacing-2); /* 舒适密度场景的基础布局间距。 */
+  --fds-s-density-comfortable-spacing: var(--fds-g-spacing-4); /* 舒适密度场景的基础布局间距。 */
   --fds-s-density-spacious-line-height: var(--fds-g-line-height-ratio-9); /* 宽松密度场景的相对行高，适用于强调留白和可读性的排版。 */
-  --fds-s-density-spacious-spacing: var(--fds-g-spacing-3); /* 宽松密度场景的基础布局间距。 */
-  --fds-s-card-gap: var(--fds-g-spacing-3); /* 页面型场景内并列或上下排列内容卡片之间的默认间距。 */
+  --fds-s-density-spacious-spacing: var(--fds-g-spacing-6); /* 宽松密度场景的基础布局间距。 */
+  --fds-s-card-gap: var(--fds-g-spacing-6); /* 页面型场景内并列或上下排列内容卡片之间的默认间距。 */
   --fds-s-card-background: var(--fds-g-background-container); /* 页面型场景中通用内容卡片的默认表面背景。 */
   --fds-s-card-border-color: var(--fds-g-border-subtle); /* 场景卡片与页面画布之间的默认弱分隔色。 */
   --fds-s-card-border-width: var(--fds-g-border-width-1); /* 场景卡片的默认边框宽度。 */
   --fds-s-card-radius: var(--fds-g-radius-4); /* 场景卡片的默认圆角，不替代 Card 组件自身的组件 Token。 */
-  --fds-s-card-padding: var(--fds-g-spacing-4); /* 场景卡片边界与主体内容之间的默认留白。 */
+  --fds-s-card-padding: var(--fds-g-spacing-7); /* 场景卡片边界与主体内容之间的默认留白。 */
   --fds-s-card-shadow: var(--fds-g-shadow-none); /* 场景卡片默认依靠背景和边框建立层次，不预设悬浮阴影。 */
   --fds-s-card-title-color: var(--fds-g-heading-color); /* 场景卡片标题的默认文本色。 */
   --fds-s-card-title-size: var(--fds-g-heading-5-size); /* 场景卡片标题的默认字号。 */
   --fds-s-card-title-line-height: var(--fds-g-heading-5-line-height); /* 场景卡片标题的默认行高。 */
   --fds-s-card-title-weight: var(--fds-g-heading-5-weight); /* 场景卡片标题的默认字重。 */
-  --fds-s-card-title-gap: var(--fds-g-spacing-3); /* 场景卡片标题区与主体内容之间的默认间距。 */
+  --fds-s-card-title-gap: var(--fds-g-spacing-6); /* 场景卡片标题区与主体内容之间的默认间距。 */
 
 }
 

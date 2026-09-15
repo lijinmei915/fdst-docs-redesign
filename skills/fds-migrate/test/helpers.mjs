@@ -30,7 +30,7 @@ export const CATALOG = {
     token("color-blue-6", "--fds-g-color-blue-6", "#64B5FF", { layer: "atomic", tier: "map" }),
     token("background-container", "--fds-g-background-container", "#FFFFFF", { category: "layout" }),
     token("background-elevated", "--fds-g-background-elevated", "#FFFFFF", { category: "layout" }),
-    token("spacing-4", "--fds-g-spacing-4", "16px", { layer: "atomic", tier: "map", category: "spacing", type: "dimension" }),
+    token("spacing-7", "--fds-g-spacing-7", "16px", { layer: "atomic", tier: "map", category: "spacing", type: "dimension" }),
     token("card-padding", "--fds-s-card-padding", "16px", { tier: "scene", category: "scene", type: "dimension" }),
     token("radius-2", "--fds-g-radius-2", "4px", { layer: "atomic", tier: "map", category: "shape", type: "dimension" }),
     token("radius-4", "--fds-g-radius-4", "8px", { layer: "atomic", tier: "map", category: "shape", type: "dimension" }),

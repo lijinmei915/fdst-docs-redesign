@@ -112,7 +112,7 @@
   }
 
   function renderSpacing() {
-    const scales = [["1", "4px"], ["2", "8px"], ["3", "12px"], ["4", "16px"], ["5", "20px"], ["6", "24px"], ["7", "32px"], ["8", "48px"]];
+    const scales = [["1", "2px"], ["2", "4px"], ["3", "6px"], ["4", "8px"], ["5", "10px"], ["6", "12px"], ["7", "16px"], ["8", "20px"], ["9", "24px"], ["10", "32px"], ["11", "48px"]];
     const rows = scales.map(([token, value]) => `<div class="spacing-row"><code>spacing-${token}</code><div class="spacing-track"><div class="spacing-value" style="--space-value: var(--fds-g-spacing-${token})"></div></div><span>${value}</span></div>`).join("");
     return frame("间距", "通用页面与内容组合的留白节奏", `<div class="spacing-scale">${rows}</div>`);
   }

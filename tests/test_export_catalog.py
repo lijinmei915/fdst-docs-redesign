@@ -102,7 +102,7 @@ class ExportCatalogTest(unittest.TestCase):
                 f"font-size: var({tokens[token_id]['cssVariable']});",
                 record["cssExample"],
             )
-        self.assertEqual("gap", EXPORT.css_property_for(tokens["spacing-4"]))
+        self.assertEqual("gap", EXPORT.css_property_for(tokens["spacing-7"]))
 
     def test_relative_line_height_is_exported_as_unitless_line_height(self) -> None:
         catalog = EXPORT.build_catalog()
@@ -130,7 +130,7 @@ class ExportCatalogTest(unittest.TestCase):
             EXPORT.build_search_record(tokens["density-compact-line-height"])["cssExample"],
         )
         self.assertEqual(
-            ["density-spacious-spacing", "spacing-3"],
+            ["density-spacious-spacing", "spacing-6"],
             tokens["density-spacious-spacing"]["referenceChain"],
         )
         self.assertEqual("12px", tokens["density-spacious-spacing"]["resolvedValue"])

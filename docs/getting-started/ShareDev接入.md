@@ -44,7 +44,7 @@ getComputedStyle(document.documentElement)
 
 ```css
 .sales-dashboard {
-  --sales-dashboard-card-gap: var(--fds-g-spacing-4);
+  --sales-dashboard-card-gap: var(--fds-g-spacing-7);
   gap: var(--sales-dashboard-card-gap);
 }
 ```

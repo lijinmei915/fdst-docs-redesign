@@ -15,7 +15,7 @@ imports:
 - ../../atomic/map/effects.yml
 props:
   content-padding:
-    value: '{!spacing-6}'
+    value: '{!spacing-9}'
     type: dimension
     comment: 页面型场景内容与画布边界之间的默认留白。
   density-compact-line-height:
@@ -23,7 +23,7 @@ props:
     type: number
     comment: 紧凑密度场景的相对行高，适用于高信息密度排版。
   density-compact-spacing:
-    value: '{!spacing-1}'
+    value: '{!spacing-2}'
     type: dimension
     comment: 紧凑密度场景的基础布局间距。
   density-comfortable-line-height:
@@ -31,7 +31,7 @@ props:
     type: number
     comment: 舒适密度场景的相对行高，作为常规阅读节奏。
   density-comfortable-spacing:
-    value: '{!spacing-2}'
+    value: '{!spacing-4}'
     type: dimension
     comment: 舒适密度场景的基础布局间距。
   density-spacious-line-height:
@@ -39,11 +39,11 @@ props:
     type: number
     comment: 宽松密度场景的相对行高，适用于强调留白和可读性的排版。
   density-spacious-spacing:
-    value: '{!spacing-3}'
+    value: '{!spacing-6}'
     type: dimension
     comment: 宽松密度场景的基础布局间距。
   card-gap:
-    value: '{!spacing-3}'
+    value: '{!spacing-6}'
     type: dimension
     comment: 页面型场景内并列或上下排列内容卡片之间的默认间距。
   card-background:
@@ -63,7 +63,7 @@ props:
     type: dimension
     comment: 场景卡片的默认圆角，不替代 Card 组件自身的组件 Token。
   card-padding:
-    value: '{!spacing-4}'
+    value: '{!spacing-7}'
     type: dimension
     comment: 场景卡片边界与主体内容之间的默认留白。
   card-shadow:
@@ -87,6 +87,6 @@ props:
     type: font-weight
     comment: 场景卡片标题的默认字重。
   card-title-gap:
-    value: '{!spacing-3}'
+    value: '{!spacing-6}'
     type: dimension
     comment: 场景卡片标题区与主体内容之间的默认间距。

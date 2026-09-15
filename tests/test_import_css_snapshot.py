@@ -40,19 +40,19 @@ class ImportCssSnapshotTest(unittest.TestCase):
             )
             self.assertEqual("--fds-s-", scene_source["global"]["namespace"])
             self.assertEqual(19, len(scene_source["props"]))
-            self.assertEqual("{!spacing-4}", scene_source["props"]["card-padding"]["value"])
+            self.assertEqual("{!spacing-7}", scene_source["props"]["card-padding"]["value"])
             self.assertEqual(
                 "{!line-height-ratio-6}",
                 scene_source["props"]["density-comfortable-line-height"]["value"],
             )
             self.assertEqual(
-                "{!spacing-2}",
+                "{!spacing-4}",
                 scene_source["props"]["density-comfortable-spacing"]["value"],
             )
 
     def test_scene_namespace_is_imported_into_scene_source(self) -> None:
         match = IMPORT.DECL_RE.match(
-            "  --fds-s-card-padding: var(--fds-g-spacing-4);"
+            "  --fds-s-card-padding: var(--fds-g-spacing-7);"
         )
 
         self.assertIsNotNone(match)
@@ -62,7 +62,7 @@ class ImportCssSnapshotTest(unittest.TestCase):
         self.assertEqual("semantic/scene/default.yml", IMPORT.classify("card-padding", "--fds-s-"))
         self.assertEqual("dimension", IMPORT.token_type("card-padding"))
         self.assertEqual(
-            "{!spacing-4}",
+            "{!spacing-7}",
             IMPORT.CSS_REFERENCE_RE.sub(
                 lambda reference: f"{{!{reference.group(1)}}}",
                 match.group("value"),

@@ -2,7 +2,7 @@
 
 > 本文件由 `python tools/export_catalog.py` 基于 `tokens/fds-global.yml` 的 import 图自动生成，请勿手工编辑。
 
-当前 catalog 共收录 507 个 Token。原始引用和值以 [catalog JSON](../../dist/fds-token-catalog.json) 为准。
+当前 catalog 共收录 510 个 Token。原始引用和值以 [catalog JSON](../../dist/fds-token-catalog.json) 为准。
 
 ## Atomic / Seed / color
 
@@ -369,14 +369,17 @@
 | CSS Variable | 类型 | 源值 | 解析值 | 来源 |
 | --- | --- | --- | --- | --- |
 | `--fds-g-spacing-0` | `dimension` | `0` | `0` | `tokens/atomic/map/spacing.yml` |
-| `--fds-g-spacing-1` | `dimension` | `4px` | `4px` | `tokens/atomic/map/spacing.yml` |
-| `--fds-g-spacing-2` | `dimension` | `8px` | `8px` | `tokens/atomic/map/spacing.yml` |
-| `--fds-g-spacing-3` | `dimension` | `12px` | `12px` | `tokens/atomic/map/spacing.yml` |
-| `--fds-g-spacing-4` | `dimension` | `16px` | `16px` | `tokens/atomic/map/spacing.yml` |
-| `--fds-g-spacing-5` | `dimension` | `20px` | `20px` | `tokens/atomic/map/spacing.yml` |
-| `--fds-g-spacing-6` | `dimension` | `24px` | `24px` | `tokens/atomic/map/spacing.yml` |
-| `--fds-g-spacing-7` | `dimension` | `32px` | `32px` | `tokens/atomic/map/spacing.yml` |
-| `--fds-g-spacing-8` | `dimension` | `48px` | `48px` | `tokens/atomic/map/spacing.yml` |
+| `--fds-g-spacing-1` | `dimension` | `2px` | `2px` | `tokens/atomic/map/spacing.yml` |
+| `--fds-g-spacing-10` | `dimension` | `32px` | `32px` | `tokens/atomic/map/spacing.yml` |
+| `--fds-g-spacing-11` | `dimension` | `48px` | `48px` | `tokens/atomic/map/spacing.yml` |
+| `--fds-g-spacing-2` | `dimension` | `4px` | `4px` | `tokens/atomic/map/spacing.yml` |
+| `--fds-g-spacing-3` | `dimension` | `6px` | `6px` | `tokens/atomic/map/spacing.yml` |
+| `--fds-g-spacing-4` | `dimension` | `8px` | `8px` | `tokens/atomic/map/spacing.yml` |
+| `--fds-g-spacing-5` | `dimension` | `10px` | `10px` | `tokens/atomic/map/spacing.yml` |
+| `--fds-g-spacing-6` | `dimension` | `12px` | `12px` | `tokens/atomic/map/spacing.yml` |
+| `--fds-g-spacing-7` | `dimension` | `16px` | `16px` | `tokens/atomic/map/spacing.yml` |
+| `--fds-g-spacing-8` | `dimension` | `20px` | `20px` | `tokens/atomic/map/spacing.yml` |
+| `--fds-g-spacing-9` | `dimension` | `24px` | `24px` | `tokens/atomic/map/spacing.yml` |
 ## Atomic / Map / typography
 
 | CSS Variable | 类型 | 源值 | 解析值 | 来源 |
@@ -547,19 +550,19 @@
 | `--fds-s-card-background` | `color` | `{!background-container}` | `#FFFFFF` | `tokens/semantic/scene/default.yml` |
 | `--fds-s-card-border-color` | `color` | `{!border-subtle}` | `#E5E5E4` | `tokens/semantic/scene/default.yml` |
 | `--fds-s-card-border-width` | `dimension` | `{!border-width-1}` | `1px` | `tokens/semantic/scene/default.yml` |
-| `--fds-s-card-gap` | `dimension` | `{!spacing-3}` | `12px` | `tokens/semantic/scene/default.yml` |
-| `--fds-s-card-padding` | `dimension` | `{!spacing-4}` | `16px` | `tokens/semantic/scene/default.yml` |
+| `--fds-s-card-gap` | `dimension` | `{!spacing-6}` | `12px` | `tokens/semantic/scene/default.yml` |
+| `--fds-s-card-padding` | `dimension` | `{!spacing-7}` | `16px` | `tokens/semantic/scene/default.yml` |
 | `--fds-s-card-radius` | `dimension` | `{!radius-4}` | `8px` | `tokens/semantic/scene/default.yml` |
 | `--fds-s-card-shadow` | `shadow` | `{!shadow-none}` | `none` | `tokens/semantic/scene/default.yml` |
 | `--fds-s-card-title-color` | `color` | `{!heading-color}` | `#080504` | `tokens/semantic/scene/default.yml` |
-| `--fds-s-card-title-gap` | `dimension` | `{!spacing-3}` | `12px` | `tokens/semantic/scene/default.yml` |
+| `--fds-s-card-title-gap` | `dimension` | `{!spacing-6}` | `12px` | `tokens/semantic/scene/default.yml` |
 | `--fds-s-card-title-line-height` | `dimension` | `{!heading-5-line-height}` | `24px` | `tokens/semantic/scene/default.yml` |
 | `--fds-s-card-title-size` | `dimension` | `{!heading-5-size}` | `16px` | `tokens/semantic/scene/default.yml` |
 | `--fds-s-card-title-weight` | `font-weight` | `{!heading-5-weight}` | `600` | `tokens/semantic/scene/default.yml` |
-| `--fds-s-content-padding` | `dimension` | `{!spacing-6}` | `24px` | `tokens/semantic/scene/default.yml` |
+| `--fds-s-content-padding` | `dimension` | `{!spacing-9}` | `24px` | `tokens/semantic/scene/default.yml` |
 | `--fds-s-density-comfortable-line-height` | `number` | `{!line-height-ratio-6}` | `1.5` | `tokens/semantic/scene/default.yml` |
-| `--fds-s-density-comfortable-spacing` | `dimension` | `{!spacing-2}` | `8px` | `tokens/semantic/scene/default.yml` |
+| `--fds-s-density-comfortable-spacing` | `dimension` | `{!spacing-4}` | `8px` | `tokens/semantic/scene/default.yml` |
 | `--fds-s-density-compact-line-height` | `number` | `{!line-height-ratio-3}` | `1.2` | `tokens/semantic/scene/default.yml` |
-| `--fds-s-density-compact-spacing` | `dimension` | `{!spacing-1}` | `4px` | `tokens/semantic/scene/default.yml` |
+| `--fds-s-density-compact-spacing` | `dimension` | `{!spacing-2}` | `4px` | `tokens/semantic/scene/default.yml` |
 | `--fds-s-density-spacious-line-height` | `number` | `{!line-height-ratio-9}` | `1.8` | `tokens/semantic/scene/default.yml` |
-| `--fds-s-density-spacious-spacing` | `dimension` | `{!spacing-3}` | `12px` | `tokens/semantic/scene/default.yml` |
+| `--fds-s-density-spacious-spacing` | `dimension` | `{!spacing-6}` | `12px` | `tokens/semantic/scene/default.yml` |

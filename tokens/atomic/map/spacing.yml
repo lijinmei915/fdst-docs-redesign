@@ -10,18 +10,24 @@ props:
   spacing-0:
     value: '0'
   spacing-1:
-    value: 4px
+    value: 2px
   spacing-2:
-    value: 8px
+    value: 4px
   spacing-3:
-    value: 12px
+    value: 6px
   spacing-4:
-    value: 16px
+    value: 8px
   spacing-5:
-    value: 20px
+    value: 10px
   spacing-6:
-    value: 24px
+    value: 12px
   spacing-7:
-    value: 32px
+    value: 16px
   spacing-8:
+    value: 20px
+  spacing-9:
+    value: 24px
+  spacing-10:
+    value: 32px
+  spacing-11:
     value: 48px

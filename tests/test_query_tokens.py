@@ -195,7 +195,7 @@ class QueryTokensTest(unittest.TestCase):
         tokens = parse_results(result)
         self.assertEqual(["card-padding"], [token["name"] for token in tokens])
         self.assertEqual("--fds-s-card-padding", tokens[0]["cssVariable"])
-        self.assertEqual(["card-padding", "spacing-4"], tokens[0]["referenceChain"])
+        self.assertEqual(["card-padding", "spacing-7"], tokens[0]["referenceChain"])
 
         removed = run_query("--name", "--fds-g-scene-card-padding")
         self.assertEqual(0, removed.returncode, removed.stderr)
@@ -225,7 +225,7 @@ class QueryTokensTest(unittest.TestCase):
         self.assertEqual([], parse_results(result))
 
     def test_spacing_scale_uses_explicit_spacing_name(self) -> None:
-        result = run_query("--name", "--fds-g-spacing-4")
+        result = run_query("--name", "--fds-g-spacing-7")
 
         self.assertEqual(0, result.returncode, result.stderr)
         self.assertEqual("16px", parse_results(result)[0]["resolvedValue"])
