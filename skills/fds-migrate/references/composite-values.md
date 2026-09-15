@@ -14,7 +14,8 @@
 | text-decoration-color、text-emphasis-color | 独立颜色属性按前景色匹配 | 对应简写须人工检查 |
 | box-shadow | 整体精确匹配 | 非标准硬编码按既定规则保留，不拆颜色强行替换 |
 | animation、background-image、text-shadow、文字装饰简写、filter、backdrop-filter、border-image、mask、mask-image | 本轮不自动拆解 | 非结构值标 unsupported，避免静默漏检；none 等结构值保留 |
-| margin、padding、gap、固定行高、非标准层级和阴影 | 沿用已确认的保留政策 | 不因复合值支持而扩大迁移 |
+| margin、padding、gap | 单值、物理 1–4 值、逻辑方向及 gap 1–2 值逐项精确匹配 | 未命中值、0、auto、百分比保留；动态表达式及非法数量为 unsupported |
+| 固定行高、非标准层级和阴影 | 沿用已确认的保留政策 | 不因复合值支持而扩大迁移 |
 
 ## 报告与写入
 

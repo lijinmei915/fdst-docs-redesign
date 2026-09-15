@@ -17,7 +17,7 @@ test("CSS 扫描对颜色使用旧色板索引，对非颜色保持值匹配", a
     color: "auto-replace",
     "background-color": "missing-token",
     "border-color": "missing-token",
-    padding: "exempt",
+    padding: "auto-replace",
     width: "exempt",
     display: "exempt",
     "outline-color": "invalid-token",
@@ -44,7 +44,7 @@ test("CSS 扫描对颜色使用旧色板索引，对非颜色保持值匹配", a
   assert.match(html, /data-decision-count>0<\/span>/);
   assert.match(html, /data-decision-storage-key="fds-migrate-decisions:v1:/);
   const promptData = JSON.parse(html.match(/<script id="finding-prompt-data" type="application\/json">([\s\S]*?)<\/script>/)[1]);
-  assert.equal(promptData.length, 4);
+  assert.equal(promptData.length, 5);
   assert.match(promptData.find((item) => item.status === "auto-replace").prompt, /var\(--fds-g-color-red-6, #FF522A\)/);
   assert.match(promptData.find((item) => item.status === "missing-token").prompt, /没有可靠 Token 时保持源码不变/);
   assert.match(promptData.find((item) => item.status === "invalid-token").prompt, /真实、属性兼容且语义一致的 Token/);
@@ -131,7 +131,7 @@ test("CSS apply 按旧色板索引替换颜色并保留原值及 CRLF", async ()
   assert.equal(result.status, 0, result.stderr);
   const migrated = await readFile(context.paths["component.css"], "utf8");
   assert.match(migrated, /color: var\(--fds-g-color-red-6, #FF522A\);/);
-  assert.match(migrated, /padding: 16px;/);
+  assert.match(migrated, /padding: var\(--fds-g-spacing-7, 16px\);/);
   assert.match(migrated, /background-color: #FFFFFF;/);
   assert.ok(migrated.includes("\r\n"));
 });
@@ -226,14 +226,14 @@ test("圆角和透明度只有最近档自动替换提供下拉，精确命中�
   assert.match(rowFor(exactRadius), /确定性自动替换/);
 });
 
-test("硬编码间距及非标准层级和阴影直接排除迁移报告", async () => {
-  const original = ".sample { padding: 16px; gap: 7px; z-index: 42; box-shadow: 0 0 12px #000; }\n";
+test("未命中的间距及非标准层级和阴影排除迁移报告", async () => {
+  const original = ".sample { padding: 17px; gap: 7px; z-index: 42; box-shadow: 0 0 12px #000; }\n";
   const context = await fixture({ "component.css": original });
   const result = runTool("scan", context.paths["component.css"], context.catalog, context.reportDir);
   assert.equal(result.status, 0, result.stderr);
   const report = await readReport(context.reportDir);
   assert.ok(report.findings.every((item) => item.status === "exempt"));
-  assert.match(report.findings.find((item) => item.property === "padding").reason, /布局、尺寸或组件内部特殊关系/);
+  assert.match(report.findings.find((item) => item.property === "padding").reason, /未精确命中 Token/);
   assert.match(report.findings.find((item) => item.property === "z-index").reason, /保留硬编码/);
   assert.match(report.findings.find((item) => item.property === "box-shadow").reason, /保留硬编码/);
   const html = await readFile(path.join(context.reportDir, "components", "component", "fds-token-migration-report.html"), "utf8");
@@ -348,8 +348,8 @@ test("CSS 变量定义保持原样，消费链按组件变量、FDS、旧色板�
   assert.match(find(":root", "--component-color").reason, /定义不属于声明值迁移范围/);
   assert.equal(find(".sample", "color").replacement, "var(--component-color, var(--fds-g-color-red-6, #FF522A))");
   assert.deepEqual(find(".sample", "color").componentVariables, ["--component-color"]);
-  assert.equal(find(".sample", "padding").status, "exempt");
-  assert.equal(find(".sample", "padding").replacement, undefined);
+  assert.equal(find(".sample", "padding").status, "auto-replace");
+  assert.equal(find(".sample", "padding").replacement, "var(--bc-c-padding, var(--bc-g-padding, var(--fds-g-spacing-7, 16px)))");
   assert.deepEqual(find(".sample", "padding").componentVariables, ["--bc-c-padding", "--bc-g-padding"]);
   assert.equal(find(".sample", "border-color").replacement, "var(--fds-g-color-blue-6, var(--color-blue06, #FF522A))");
   assert.deepEqual(find(".sample", "border-color").legacyColorVariables, ["--color-blue06"]);
@@ -366,7 +366,7 @@ test("CSS 变量定义保持原样，消费链按组件变量、FDS、旧色板�
   assert.match(migrated, /--component-color: #FF522A;/);
   assert.match(migrated, /--color-blue06: #189DFF;/);
   assert.match(migrated, /color: var\(--component-color, var\(--fds-g-color-red-6, #FF522A\)\);/);
-  assert.match(migrated, /padding: var\(--bc-c-padding, var\(--bc-g-padding, 16px\)\);/);
+  assert.match(migrated, /padding: var\(--bc-c-padding, var\(--bc-g-padding, var\(--fds-g-spacing-7, 16px\)\)\);/);
   assert.match(migrated, /border-color: var\(--fds-g-color-blue-6, var\(--color-blue06, #FF522A\)\);/);
   assert.match(migrated, /outline-color: var\(--component-color, var\(--fds-g-color-blue-6, var\(--color-blue06, #FF522A\)\)\);/);
 
@@ -375,7 +375,7 @@ test("CSS 变量定义保持原样，消费链按组件变量、FDS、旧色板�
   report = await readReport(context.reportDir);
   const verified = (property) => report.findings.find((finding) => finding.selector === ".sample" && finding.property === property);
   assert.equal(verified("color").status, "compliant");
-  assert.equal(verified("padding").status, "exempt");
+  assert.equal(verified("padding").status, "compliant");
   assert.equal(verified("border-color").status, "compliant");
   assert.equal(verified("outline-color").status, "compliant");
   assert.match(verified("color").reason, /组件自定义变量在 FDS 外层/);

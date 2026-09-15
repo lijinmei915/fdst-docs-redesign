@@ -42,6 +42,11 @@ export function expandCompositeOccurrence(occurrence, tokens = []) {
     }
     return groups;
   };
+  if (/^(?:(?:margin|padding)(?:-(?:top|right|bottom|left|inline|block)(?:-(?:start|end))?)?|gap|row-gap|column-gap)$/.test(property)) {
+    const max = /^(?:margin|padding)$/.test(property) ? 4 : /^(?:(?:margin|padding)-(?:inline|block)|gap)$/.test(property) ? 2 : 1;
+    if (!nodes.length || nodes.length > max || nodes.some(n => n.unclosed || !(LENGTH.test(raw(n)) || /^-?(?:\d+(?:\.\d+)?|\.\d+)(?:px|em|rem|%)$/i.test(raw(n)) || /^(?:auto|normal)$/.test(raw(n)) || variable(n)))) return uncertain();
+    return nodes.length === 1 ? [occurrence] : nodes.map(n => part(n, property));
+  }
   const colorList = /^(?:border(?:-(?:top|right|bottom|left|block|inline)(?:-(?:start|end))?)?-color)$/;
   const widthList = /^(?:border(?:-(?:top|right|bottom|left|block|inline)(?:-(?:start|end))?)?-width)$/;
   const radius = /^border(?:-(?:top-left|top-right|bottom-left|bottom-right|start-start|start-end|end-start|end-end))?-radius$/;

@@ -67,8 +67,8 @@
       "types": ["dimension"],
       "tokenNamePatterns": ["^spacing-", "(?:padding|gap)$"],
       "allowAtomicAuto": true,
-      "allowSimilarity": true,
-      "excludeHardcoded": true,
+      "allowSimilarity": false,
+      "preserveUnmatchedHardcoded": true,
       "selectionOrder": ["scene-context", "atomic-map"]
     },
     {

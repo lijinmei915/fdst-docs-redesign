@@ -19,7 +19,7 @@
 
 - Font Size：小于 `12px` 与超过 `48px` 的值保留硬编码并归为 `exempt`；`12px–48px` 的同单位值按绝对距离选择最近档，等距时选择较小值。
 - Line Height：固定硬编码行高直接归为 `exempt`，不换算、不替换；已使用的固定 `line-height-*` Token 继续按 Catalog 校验。无单位相对行高只精确匹配 `line-height-ratio-*` 或显式 Scene Line Height；非精确值可报告相近候选，但不得自动替换。
-- Spacing：硬编码 margin、padding、gap 直接归为 `exempt`，不推荐、不自动迁移。其值无法证明是在表达标准间距、用边距实现布局/高度，还是 Label 与 Input 等组件内部特殊关系。
+- Spacing：margin、padding、gap 及方向属性逐值精确匹配；唯一且属性、层级兼容的候选自动替换，保留原值 fallback。未精确命中的硬编码为 `exempt`，不推荐相近档；多义候选和动态表达式保持人工检查边界。
 - Border Radius：包含 `20px` 档，其他同单位值按绝对距离选择最近档，等距时选择较小值。
 - Opacity：源值 `0`、`1` 保留硬编码；最近档候选排除解析值为 `0`、`1` 的 Token，其他数值按绝对距离选择最近档，等距时选择较小值。
 - Layer / Shadow：精确命中按现有上下文边界处理；无精确候选时归为 `exempt` 并保留硬编码，不补充梯度。

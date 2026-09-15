@@ -50,6 +50,6 @@ test("逻辑边框和分栏边框复用颜色映射，动态及复杂语法显�
   const ctx = await fixture({ 'component.css': original });
   assert.equal(runBundledTool('apply', ctx.paths['component.css'], ctx.reportDir).status, 0);
   const output = await readFile(ctx.paths['component.css'], 'utf8');
-  assert.equal(output, original.replace('var(--color-neutrals05)', 'var(--fds-g-color-gray-5, var(--color-neutrals05))').replace('var(--color-neutrals07)', 'var(--fds-g-color-gray-7, var(--color-neutrals07))'));
-  assert.deepEqual((await readReport(ctx.reportDir)).findings.map(f => f.status), ['replaced', 'replaced', 'unsupported', 'unsupported', 'unsupported', 'unsupported', 'exempt', 'exempt']);
+  assert.equal(output, original.replace('var(--color-neutrals05)', 'var(--fds-g-color-gray-5, var(--color-neutrals05))').replace('var(--color-neutrals07)', 'var(--fds-g-color-gray-7, var(--color-neutrals07))').replace('margin: 1px 2px', 'margin: 1px var(--fds-g-spacing-1, 2px)'));
+  assert.deepEqual((await readReport(ctx.reportDir)).findings.map(f => f.status), ['replaced', 'replaced', 'unsupported', 'unsupported', 'unsupported', 'unsupported', 'exempt', 'exempt', 'replaced']);
 });

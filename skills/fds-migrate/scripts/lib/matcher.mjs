@@ -582,10 +582,6 @@ export function classifyOccurrence(occurrence, tokens, policy, legacyColorIndex,
     return finding;
   }
 
-  if (rule.excludeHardcoded) {
-    finding.reason = "间距可能承担布局、尺寸或组件内部特殊关系，无法可靠判断语义，硬编码值直接排除迁移";
-    return finding;
-  }
   if (sourceExcludedByRule(comparisonValue, rule)) {
     finding.reason = rule.id === "font-size"
       ? "小于 12px 或超过 48px 的字号按约定保留硬编码，直接排除迁移"
@@ -687,7 +683,9 @@ export function classifyOccurrence(occurrence, tokens, policy, legacyColorIndex,
   }
 
   if (rule.preserveUnmatchedHardcoded) {
-    finding.reason = rule.id === "layer"
+    finding.reason = rule.id === "spacing"
+      ? "间距未精确命中 Token，保留硬编码，不推荐相近档位"
+      : rule.id === "layer"
       ? "非标准层级值按约定保留硬编码，不补充 Token，也不列入迁移问题"
       : "非标准阴影值按约定保留硬编码，不补充 Token，也不列入迁移问题";
     return finding;
