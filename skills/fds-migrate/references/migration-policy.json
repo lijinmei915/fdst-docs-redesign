@@ -79,6 +79,7 @@
       "allowAtomicAuto": true,
       "allowSimilarity": true,
       "nearestAutoReplace": true,
+      "maxNearestDistancePx": 2,
       "selectionOrder": ["scene-context", "semantic-context", "atomic-map"]
     },
     {

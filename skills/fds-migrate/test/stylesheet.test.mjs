@@ -226,6 +226,36 @@ test("圆角和透明度只有最近档自动替换提供下拉，精确命中�
   assert.match(rowFor(exactRadius), /确定性自动替换/);
 });
 
+test("圆角允许两像素内收敛，但保留超限值避免明显改变形状", async () => {
+  const values = [5, 7, 11, 14, 19, 20, 22, 22.001, 27];
+  const original = values.map((value, index) => `.r${index} { border-radius: ${value}px; }`).join("\n");
+  const context = await fixture({ "component.css": original });
+  const result = runBundledTool("apply", context.paths["component.css"], context.reportDir);
+  assert.equal(result.status, 0, result.stderr);
+  const migrated = await readFile(context.paths["component.css"], "utf8");
+  const report = await readReport(context.reportDir);
+  const expected = [4, 6, 12, 12, 20, 20, 20];
+  values.forEach((value, index) => {
+    const finding = report.findings.find((item) => item.selector === `.r${index}`);
+    if (index < expected.length) {
+      assert.equal(finding.status, "replaced");
+      assert.equal(finding.selectedToken.resolvedValue, `${expected[index]}px`);
+      assert.ok(migrated.includes(`.r${index} { border-radius: var(${finding.selectedToken.cssVariable}, ${value}px); }`));
+    } else {
+      assert.equal(finding.status, "similar");
+      assert.equal(finding.replacement, undefined);
+      assert.equal(finding.candidates[0].resolvedValue, "20px");
+      assert.ok(migrated.includes(`.r${index} { border-radius: ${value}px; }`));
+    }
+  });
+  const verified = runBundledTool("verify", context.paths["component.css"], context.reportDir);
+  assert.equal(verified.status, 3, verified.stderr);
+  const verification = await readReport(context.reportDir);
+  assert.equal(verification.summary.statusCounts.similar, 2);
+  assert.equal(verification.summary.statusCounts.compliant, 7);
+  assert.equal(verification.summary.statusCounts["auto-replace"], undefined);
+});
+
 test("未命中的间距及非标准层级和阴影排除迁移报告", async () => {
   const original = ".sample { padding: 17px; gap: 7px; z-index: 42; box-shadow: 0 0 12px #000; }\n";
   const context = await fixture({ "component.css": original });

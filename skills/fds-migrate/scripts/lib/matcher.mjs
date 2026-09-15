@@ -639,6 +639,12 @@ export function classifyOccurrence(occurrence, tokens, policy, legacyColorIndex,
       finding.reason = "存在最近候选，但当前语法节点不能安全局部改写";
       return finding;
     }
+    if (valueChanged && rule.maxNearestDistancePx !== undefined &&
+        (parsedSource.comparable[1] !== "px" || selectedDistance > rule.maxNearestDistancePx + 1e-9)) {
+      finding.status = "similar";
+      finding.reason = `最近圆角 ${comparisonValue} -> ${selected.resolvedValue} 未满足绝对偏差 ≤ ${rule.maxNearestDistancePx}px，保留原值，仅推荐候选`;
+      return finding;
+    }
     finding.status = "auto-replace";
     finding.reason = valueChanged
       ? `按最近档自动替换：${comparisonValue} -> ${selected.resolvedValue}；报告保留候选供人工复核`
