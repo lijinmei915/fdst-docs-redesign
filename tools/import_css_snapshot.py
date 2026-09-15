@@ -80,10 +80,6 @@ SOURCE_FILES = {
         "global": {"layer": "atomic", "tier": "map", "category": "spacing", "type": "dimension", "scope": "global", "primitive": True},
         "imports": [],
     },
-    "atomic/map/sizing.yml": {
-        "global": {"layer": "atomic", "tier": "map", "category": "sizing", "type": "dimension", "scope": "global", "primitive": True},
-        "imports": [],
-    },
     "atomic/map/shape.yml": {
         "global": {"layer": "atomic", "tier": "map", "category": "shape", "type": "dimension", "scope": "global", "primitive": True},
         "imports": [],
@@ -106,7 +102,7 @@ SOURCE_FILES = {
     },
     "semantic/base/layout.yml": {
         "global": {"layer": "semantic", "tier": "base", "category": "layout", "scope": "global", "primitive": False},
-        "imports": ["./color.yml", "../../atomic/map/spacing.yml", "../../atomic/map/sizing.yml", "../../atomic/map/shape.yml", "../../atomic/map/effects.yml"],
+        "imports": ["./color.yml", "../../atomic/map/spacing.yml", "../../atomic/map/shape.yml", "../../atomic/map/effects.yml"],
     },
     "semantic/base/effects.yml": {
         "global": {"layer": "semantic", "tier": "base", "category": "effects", "type": "shadow", "scope": "global", "primitive": False},
@@ -152,7 +148,7 @@ GROUP_FILES = {
     },
     "atomic/map/base.yml": {
         "schema": "fds-token-group/v1",
-        "imports": ["./color/base.yml", "./typography.yml", "./spacing.yml", "./sizing.yml", "./shape.yml", "./effects.yml", "./motion.yml"],
+        "imports": ["./color/base.yml", "./typography.yml", "./spacing.yml", "./shape.yml", "./effects.yml", "./motion.yml"],
     },
     "atomic/map/color/base.yml": {
         "schema": "fds-token-group/v1",
@@ -222,8 +218,6 @@ def classify(token_id: str, namespace: str = DEFAULT_NAMESPACE) -> str:
         return "atomic/map/typography.yml"
     if token_id.startswith("spacing-"):
         return "atomic/map/spacing.yml"
-    if token_id.startswith("icon-size-") and token_id.rsplit("-", 1)[-1].isdigit():
-        return "atomic/map/sizing.yml"
     if token_id.startswith(("radius-", "border-width-")):
         return "atomic/map/shape.yml"
     if token_id.startswith(("motion-duration-", "motion-easing-")):
@@ -258,7 +252,7 @@ def token_type(token_id: str) -> str:
         return "font-weight"
     if token_id.startswith("line-height-ratio-"):
         return "number"
-    if token_id.startswith(("font-size-", "line-height-", "spacing-", "icon-size-", "radius-", "border-width-")):
+    if token_id.startswith(("font-size-", "line-height-", "spacing-", "radius-", "border-width-")):
         return "dimension"
     if token_id.endswith(("-size", "-line-height", "-radius")):
         return "dimension"

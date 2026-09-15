@@ -72,16 +72,6 @@
       "selectionOrder": ["scene-context", "atomic-map"]
     },
     {
-      "id": "sizing",
-      "propertyPatterns": ["^(?:width|height|min-width|max-width|min-height|max-height)$"],
-      "types": ["dimension"],
-      "tokenNamePatterns": ["^(?:control-height|icon-size)-"],
-      "excludedTargetNamePatterns": ["^icon-size-"],
-      "allowAtomicAuto": true,
-      "allowSimilarity": true,
-      "selectionOrder": ["semantic-context", "atomic-context"]
-    },
-    {
       "id": "border-radius",
       "propertyPatterns": ["^border(?:-(?:top-left|top-right|bottom-left|bottom-right))?-radius$"],
       "types": ["dimension"],

@@ -2,7 +2,7 @@
 
 > 本文件由 `python tools/export_catalog.py` 基于 `tokens/fds-global.yml` 的 import 图自动生成，请勿手工编辑。
 
-当前 catalog 共收录 513 个 Token。原始引用和值以 [catalog JSON](../../dist/fds-token-catalog.json) 为准。
+当前 catalog 共收录 507 个 Token。原始引用和值以 [catalog JSON](../../dist/fds-token-catalog.json) 为准。
 
 ## Atomic / Seed / color
 
@@ -364,16 +364,6 @@
 | `--fds-g-radius-6` | `dimension` | `16px` | `16px` | `tokens/atomic/map/shape.yml` |
 | `--fds-g-radius-7` | `dimension` | `20px` | `20px` | `tokens/atomic/map/shape.yml` |
 | `--fds-g-radius-full` | `dimension` | `9999px` | `9999px` | `tokens/atomic/map/shape.yml` |
-## Atomic / Map / sizing
-
-| CSS Variable | 类型 | 源值 | 解析值 | 来源 |
-| --- | --- | --- | --- | --- |
-| `--fds-g-icon-size-1` | `dimension` | `12px` | `12px` | `tokens/atomic/map/sizing.yml` |
-| `--fds-g-icon-size-2` | `dimension` | `16px` | `16px` | `tokens/atomic/map/sizing.yml` |
-| `--fds-g-icon-size-3` | `dimension` | `20px` | `20px` | `tokens/atomic/map/sizing.yml` |
-| `--fds-g-icon-size-4` | `dimension` | `24px` | `24px` | `tokens/atomic/map/sizing.yml` |
-| `--fds-g-icon-size-5` | `dimension` | `32px` | `32px` | `tokens/atomic/map/sizing.yml` |
-| `--fds-g-icon-size-6` | `dimension` | `48px` | `48px` | `tokens/atomic/map/sizing.yml` |
 ## Atomic / Map / spacing
 
 | CSS Variable | 类型 | 源值 | 解析值 | 来源 |

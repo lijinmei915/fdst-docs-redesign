@@ -32,7 +32,6 @@ export const CATALOG = {
     token("background-elevated", "--fds-g-background-elevated", "#FFFFFF", { category: "layout" }),
     token("spacing-4", "--fds-g-spacing-4", "16px", { layer: "atomic", tier: "map", category: "spacing", type: "dimension" }),
     token("card-padding", "--fds-s-card-padding", "16px", { tier: "scene", category: "scene", type: "dimension" }),
-    token("icon-size-1", "--fds-g-icon-size-1", "16px", { layer: "atomic", tier: "map", category: "sizing", type: "dimension" }),
     token("radius-2", "--fds-g-radius-2", "4px", { layer: "atomic", tier: "map", category: "shape", type: "dimension" }),
     token("radius-4", "--fds-g-radius-4", "8px", { layer: "atomic", tier: "map", category: "shape", type: "dimension" }),
     token("radius-5", "--fds-g-radius-5", "12px", { layer: "atomic", tier: "map", category: "shape", type: "dimension" }),

@@ -114,9 +114,7 @@
   function renderSpacing() {
     const scales = [["1", "4px"], ["2", "8px"], ["3", "12px"], ["4", "16px"], ["5", "20px"], ["6", "24px"], ["7", "32px"], ["8", "48px"]];
     const rows = scales.map(([token, value]) => `<div class="spacing-row"><code>spacing-${token}</code><div class="spacing-track"><div class="spacing-value" style="--space-value: var(--fds-g-spacing-${token})"></div></div><span>${value}</span></div>`).join("");
-    const icons = [["1", "12px"], ["2", "16px"], ["3", "20px"], ["4", "24px"], ["5", "32px"], ["6", "48px"]];
-    const samples = `<div class="icon-stack">${icons.map(([token, value]) => `<div class="icon-sample"><span style="--icon-sample-size: var(--fds-g-icon-size-${token})"></span><code>icon-size-${token}</code><strong>${value}</strong></div>`).join("")}</div>`;
-    return frame("间距与图标尺寸", "通用留白节奏与六档图标尺寸", `<div class="spacing-layout"><div class="spacing-scale">${rows}</div>${samples}</div>`);
+    return frame("间距", "通用页面与内容组合的留白节奏", `<div class="spacing-scale">${rows}</div>`);
   }
 
   function renderRadius() {

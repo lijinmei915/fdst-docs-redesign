@@ -409,14 +409,6 @@
   --fds-g-spacing-7: 32px;
   --fds-g-spacing-8: 48px;
 
-  /* atomic / map / sizing · source: tokens/atomic/map/sizing.yml */
-  --fds-g-icon-size-1: 12px;
-  --fds-g-icon-size-2: 16px;
-  --fds-g-icon-size-3: 20px;
-  --fds-g-icon-size-4: 24px;
-  --fds-g-icon-size-5: 32px;
-  --fds-g-icon-size-6: 48px;
-
   /* atomic / map / shape · source: tokens/atomic/map/shape.yml */
   --fds-g-radius-0: 0;
   --fds-g-radius-1: 2px;

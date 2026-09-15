@@ -3,7 +3,6 @@ imports:
 - ./color/base.yml
 - ./typography.yml
 - ./spacing.yml
-- ./sizing.yml
 - ./shape.yml
 - ./effects.yml
 - ./motion.yml

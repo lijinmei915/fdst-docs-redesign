@@ -513,17 +513,10 @@ a { color: var(--fds-g-color-primary); }
 .type-metric strong { display: block; font-size: var(--fds-g-heading-2-size); line-height: var(--fds-g-heading-2-line-height); }
 .type-metric span { color: var(--fds-g-color-text-tertiary); font-size: 12px; }
 
-.spacing-layout { display: grid; grid-template-columns: minmax(0, 1fr) 260px; gap: var(--fds-g-spacing-5); }
 .spacing-scale { display: grid; gap: var(--fds-g-spacing-3); }
 .spacing-row { display: grid; grid-template-columns: 76px minmax(0, 1fr) 40px; align-items: center; gap: var(--fds-g-spacing-3); font-size: 12px; }
 .spacing-track { height: 12px; background: var(--fds-g-background-main); border-radius: var(--fds-g-radius-full); }
 .spacing-value { width: var(--space-value); height: 100%; background: var(--fds-g-color-primary); border-radius: inherit; }
-.icon-stack { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--fds-g-spacing-3); }
-.icon-sample { min-width: 0; display: grid; place-items: center; gap: var(--fds-g-spacing-1); padding: var(--fds-g-spacing-2); background: var(--fds-g-color-primary-background); border: var(--fds-g-border-width-1) solid var(--fds-g-color-primary); border-radius: var(--fds-g-radius-2); font-size: 11px; }
-.icon-sample span { width: var(--icon-sample-size); height: var(--icon-sample-size); background: var(--fds-g-color-primary); border-radius: var(--fds-g-radius-1); }
-.icon-sample code { max-width: 100%; padding: 0; color: var(--fds-g-color-text-tertiary); background: transparent; font-size: 9px; overflow-wrap: anywhere; }
-.icon-sample strong { font-size: 11px; }
-
 .radius-grid,
 .shadow-grid {
   display: grid;
@@ -606,7 +599,7 @@ a { color: var(--fds-g-color-primary); }
   .semantic-action { grid-template-columns: repeat(4, minmax(96px, 1fr)); overflow-x: auto; }
   .semantic-action-label { grid-column: 1 / -1; }
   .status-grid, .radius-grid, .shadow-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .type-specimen, .spacing-layout { grid-template-columns: 1fr; }
+  .type-specimen { grid-template-columns: 1fr; }
   .type-index { display: none; }
   .workbench-intro { grid-template-columns: 1fr; }
   .architecture-flow { grid-template-columns: repeat(2, minmax(0, 1fr)); }

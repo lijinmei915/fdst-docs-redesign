@@ -91,8 +91,8 @@ class BuildTest(unittest.TestCase):
 
         self.assertEqual("--fds-g-", namespace)
         self.assertEqual([], errors)
-        self.assertEqual(37, len(sources))
-        self.assertEqual(513, len(tokens))
+        self.assertEqual(36, len(sources))
+        self.assertEqual(507, len(tokens))
         self.assertFalse(
             any(token_id.startswith("color-") and "-base-" in token_id for token_id in tokens)
         )
@@ -235,6 +235,7 @@ class BuildTest(unittest.TestCase):
                 "control-height-compact",
                 "control-height-default",
                 "control-height-large",
+                *(f"icon-size-{index}" for index in range(1, 7)),
                 "control-radius",
                 "container-radius",
             }.isdisjoint(tokens)

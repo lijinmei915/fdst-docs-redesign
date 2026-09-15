@@ -43,8 +43,6 @@ FORBIDDEN_LENGTH_SEEDS = {
     "font-size-base",
     "line-height-base",
     "size-base",
-    "control-height-base",
-    "icon-size-base",
     "radius-base",
     "border-width-base",
     "shadow-size-base",

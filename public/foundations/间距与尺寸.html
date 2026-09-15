@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="FDS 通用间距、图标尺寸和组件尺寸边界">
+  <meta name="description" content="FDS 通用间距和组件尺寸边界">
   <title>间距与尺寸 | FDS Token</title>
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="../assets/fds-global-tokens.css">
@@ -27,10 +27,10 @@
       <div class="docs-breadcrumb"><span>Foundation</span><span>/</span><strong>间距与尺寸</strong></div>
       <article class="docs-article"><h1 id="_1">间距与尺寸</h1>
 <h2 id="_2">适用范围</h2>
-<p>本页区分通用间距和元素尺寸。两者都属于 Atomic/Map 固定枚举，不从长度 Seed 派生。</p>
+<p>本页区分通用间距和元素尺寸职责。Global Token 只提供 Atomic/Map 的通用间距固定枚举，不提供通用控件高度或图标尺寸。</p>
 <h2 id="_3">设计原则</h2>
 <ul>
-<li><strong>间距表达关系，尺寸表达对象。</strong> Padding、Margin、Gap 使用 Spacing；图标大小使用 Icon Size，控件高度由组件契约负责。</li>
+<li><strong>间距表达关系，尺寸表达对象。</strong> Padding、Margin、Gap 使用 Spacing；控件高度和图标尺寸由组件或具体实现负责。</li>
 <li><strong>优先使用组合语义。</strong> 页面边界、卡片间距和卡片内边距优先使用 Scene，不在每个页面重复选数值。</li>
 <li><strong>保持有限梯度。</strong> 新场景从现有档位选择，不为轻微视觉差异新增任意 px。</li>
 <li><strong>组件尺寸由组件负责。</strong> Button、Input 等控件高度通过组件 Size API 或 Component Token 管理，不进入 Global。</li>
@@ -71,11 +71,6 @@
 <td>Global 不发布通用控件高度</td>
 </tr>
 <tr>
-<td>图标尺寸</td>
-<td><code>--fds-g-icon-size-*</code></td>
-<td>组件或图标实现按实际尺寸选择</td>
-</tr>
-<tr>
 <td>没有现成语义的局部布局</td>
 <td><code>--fds-g-spacing-*</code></td>
 <td>仅在确认属于通用间距时使用</td>
@@ -83,7 +78,7 @@
 </tbody>
 </table>
 <h2 id="_5">视觉预览</h2>
-<p>下面同时展示 Spacing 与 Icon Size 梯度，所有尺寸直接读取当前 CSS Variable。</p>
+<p>下面展示 Spacing 梯度，所有尺寸直接读取当前 CSS Variable。</p>
 <div class="fds-demo" data-demo="spacing"></div>
 
 <h2 id="_6">当前值域</h2>
@@ -100,11 +95,6 @@
 <td>Spacing</td>
 <td>0、4、8、12、16、20、24、32、48px</td>
 <td><code>padding</code>、<code>margin</code>、<code>gap</code> 等通用间距</td>
-</tr>
-<tr>
-<td>Icon Size</td>
-<td>12、16、20、24、32、48px</td>
-<td>图标宽高底座</td>
 </tr>
 </tbody>
 </table>
@@ -131,7 +121,7 @@
 <td>每个页面重新选择一组近似 Padding 和 Gap</td>
 </tr>
 <tr>
-<td>将 Spacing、Icon Size 和组件尺寸分开判断</td>
+<td>将 Spacing 和元素尺寸分开判断</td>
 <td>用 <code>spacing-*</code> 冒充控件高度或图标尺寸</td>
 </tr>
 <tr>
@@ -146,8 +136,8 @@
 </table>
 <h2 id="_8">边界</h2>
 <ul>
-<li>Icon Size 和组件尺寸不属于通用间距，不能用 <code>spacing-*</code> 替代。</li>
-<li>当前 Global Token 不发布 Control Height；控件尺寸由组件契约负责。</li>
+<li>控件高度和图标尺寸不属于通用间距，不能用 <code>spacing-*</code> 替代。</li>
+<li>当前 Global Token 不发布 Control Height 或 Icon Size；相关尺寸由组件 Size API、Component Token 或具体实现负责。</li>
 <li>数字档位不代表组件 Size API，组件仍负责自己的尺寸映射。</li>
 <li>当前不包含栅格、断点、容器宽度和响应式规则。</li>
 <li>不新增长度 Seed，不在源值中使用 <code>rem</code> 或 <code>calc()</code>。</li>
@@ -155,7 +145,6 @@
 <h2 id="_9">来源</h2>
 <ul>
 <li><a href="https://git.firstshare.cn/fx/fdst/-/blob/master/tokens/atomic/map/spacing.yml">通用间距</a></li>
-<li><a href="https://git.firstshare.cn/fx/fdst/-/blob/master/tokens/atomic/map/sizing.yml">元素尺寸</a></li>
 <li><a href="https://git.firstshare.cn/fx/fdst/-/blob/master/tokens/semantic/base/layout.yml">布局语义</a></li>
 </ul></article>
     </main>

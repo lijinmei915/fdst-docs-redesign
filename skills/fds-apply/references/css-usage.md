@@ -23,12 +23,13 @@
 | 边框颜色、边框宽度 | `border-color`、`border-width` |
 | 字号、行高、字重 | `font-size`、`line-height`、`font-weight` |
 | 间距和留白 | `gap`、`padding`、`margin` |
-| 图标尺寸 | `height`、`width`、`font-size` |
 | 圆角 | `border-radius` |
 | 透明度、层级、阴影 | `opacity`、`z-index`、`box-shadow` |
 | 动效时长、缓动 | `transition-duration`、`transition-timing-function` |
 
 `line-height-*` 是固定 `px` 行高，`line-height-ratio-*` 是无单位字号倍率。不要在两套值之间按数字档位对应；优先使用 Heading/Text 语义 recipe，只有组件或排版适配层明确需要随字号缩放时才查询 Ratio Map。
+
+Global Token 不提供控件高度或图标尺寸；这类尺寸由组件 Size API、Component Token 或图标实现负责，不按硬编码值从 Global Catalog 猜测。
 
 ## 示例
 

@@ -478,21 +478,14 @@ test("Scene context 只在同为最近档时提升优先级", async () => {
   assert.equal(finding.selectedToken.cssVariable, "--fds-g-radius-4");
 });
 
-test("通用尺寸不推荐 icon-size，已有图标尺寸 Token 仍保持合规", async () => {
-  const context = await fixture({ "component.css": ".sample { height: 16px; border-radius: 4px; }\n.icon { width: var(--fds-g-icon-size-1, 16px); }\n" });
-  let result = runTool("scan", context.paths["component.css"], context.catalog, context.reportDir);
+test("通用尺寸不属于 Global Token 迁移范围", async () => {
+  const context = await fixture({ "component.css": ".sample { width: 16px; height: 16px; border-radius: 4px; }\n" });
+  const result = runTool("scan", context.paths["component.css"], context.catalog, context.reportDir, "--context", "icon");
   assert.equal(result.status, 0, result.stderr);
-  let report = await readReport(context.reportDir);
-  assert.equal(report.findings.find((item) => item.property === "height").status, "missing-token");
-  assert.equal(report.findings.find((item) => item.property === "width").status, "compliant");
+  const report = await readReport(context.reportDir);
+  assert.equal(report.findings.find((item) => item.property === "width").status, "exempt");
+  assert.equal(report.findings.find((item) => item.property === "height").status, "exempt");
   assert.equal(report.findings.find((item) => item.property === "border-radius").selectedToken.cssVariable, "--fds-g-radius-2");
-
-  result = runTool("scan", context.paths["component.css"], context.catalog, context.reportDir, "--context", "icon");
-  assert.equal(result.status, 0, result.stderr);
-  report = await readReport(context.reportDir);
-  const height = report.findings.find((item) => item.property === "height");
-  assert.equal(height.status, "missing-token");
-  assert.ok(height.candidates.every((item) => !item.cssVariable.includes("icon-size")));
 });
 
 test("verify 区分合规 Token、私有变量、复合表达式和失效 FDS 变量", async () => {
@@ -501,7 +494,7 @@ test("verify 区分合规 Token、私有变量、复合表达式和失效 FDS �
   color: var(--fds-g-color-danger, #FF522A);
   background-color: var(--business-surface);
   width: calc(100% - var(--fds-g-spacing-4));
-  height: calc(100% - var(--fds-g-does-not-exist));
+  border-color: var(--fds-g-does-not-exist, #000000);
 }
 `,
   });
