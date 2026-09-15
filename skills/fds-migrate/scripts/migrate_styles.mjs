@@ -9,6 +9,7 @@ import { parseMarkup, parseVue } from "./lib/markup-adapter.mjs";
 import { buildReport, writeReportSet } from "./lib/report.mjs";
 import { parseScript } from "./lib/script-adapter.mjs";
 import { parseStylesheet } from "./lib/stylesheet-adapter.mjs";
+import { expandCompositeOccurrence } from "./lib/composite-adapter.mjs";
 
 const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
 const SKILL_ROOT = path.dirname(SCRIPT_DIR);
@@ -308,7 +309,7 @@ async function main() {
     const componentVariables = new Set(occurrences
       .map((occurrence) => occurrence.property)
       .filter((property) => property.startsWith("--")));
-    const findings = occurrences.map((occurrence) => classifyOccurrence(
+    const findings = occurrences.flatMap(occurrence => expandCompositeOccurrence(occurrence, catalog.tokens)).map((occurrence) => classifyOccurrence(
       occurrence,
       catalog.tokens,
       policy,

@@ -416,7 +416,7 @@ function makeId(occurrence) {
 }
 
 export function classifyOccurrence(occurrence, tokens, policy, legacyColorIndex, contexts = [], componentVariables = new Set()) {
-  if (/^(?:border(?:-(?:top|right|bottom|left))?|outline)$/i.test(occurrence.property) && !occurrence.unsupportedReason) {
+  if (/^(?:border(?:-(?:top|right|bottom|left|block|inline)(?:-(?:start|end))?)?|outline|column-rule)$/i.test(occurrence.property) && !occurrence.unsupportedReason) {
     return classifyBorderShorthand(occurrence, tokens, policy, legacyColorIndex, contexts, componentVariables);
   }
   const property = occurrence.property.toLowerCase();
@@ -429,7 +429,8 @@ export function classifyOccurrence(occurrence, tokens, policy, legacyColorIndex,
     syntax: occurrence.syntax,
     container: occurrence.container,
     selector: occurrence.selector || occurrence.container,
-    property,
+    property: occurrence.sourceProperty || property,
+    ...(occurrence.sourceProperty ? { matchedProperty: property, declarationId: occurrence.declarationId } : {}),
     originalValue: occurrence.originalValue,
     writable: occurrence.writable,
     status: "exempt",
@@ -448,8 +449,15 @@ export function classifyOccurrence(occurrence, tokens, policy, legacyColorIndex,
     finding.reason = "CSS Custom Property 定义不属于声明值迁移范围";
     return finding;
   }
+  if (property === "background") {
+    return classifyBackground(occurrence, finding, tokens, policy, legacyColorIndex, contexts, componentVariables);
+  }
   if (!rule) {
     finding.reason = "该 CSS property 不属于当前 Token 迁移规则";
+    return finding;
+  }
+  if (rule.types.includes("color") && /^(?:transparent|currentcolor|inherit|initial|unset|revert|revert-layer)$/i.test(occurrence.originalValue.trim())) {
+    finding.reason = "颜色结构值保持语义，不替换为色板 Token";
     return finding;
   }
 
@@ -593,6 +601,7 @@ export function classifyOccurrence(occurrence, tokens, policy, legacyColorIndex,
     if (parsedSource) break;
   }
   if (!parsedSource) {
+    if (!/^(?:normal|bold|bolder|lighter|thin|medium|thick|smaller|larger|xx-small|x-small|small|large|x-large|xx-large|ease|linear|ease-in|ease-out|ease-in-out|step-start|step-end|(?:\d+(?:\.\d+)?|\.\d+)%)$/i.test(comparisonValue.trim()) && !rule.preserveUnmatchedHardcoded) finding.status = "unsupported";
     finding.reason = priorityChain
       ? "变量链末端 fallback 不是可完整比较的单一 Token 值，保持原链不变"
       : "当前值不是可完整比较的单一 Token 值，未处理 shorthand 或动态表达式";
@@ -756,6 +765,31 @@ function classifyBorderShorthand(occurrence, tokens, policy, legacyColorIndex, c
   return {
     ...result, id: base.id, property: base.property, originalValue: value, _span: base._span,
     ...(replacement ? { replacement: value.slice(0, color.node.sourceIndex) + replacement + value.slice(color.node.sourceEndIndex) } : {}),
+  };
+}
+
+function classifyBackground(occurrence, base, tokens, policy, legacyColorIndex, contexts, componentVariables) {
+  const value = occurrence.originalValue;
+  const nodes = significantNodes(value);
+  const node = nodes[0];
+  const unsupported = () => ({ ...base, status: "unsupported", reason: "background 无法静态证明为单一颜色；复合背景或未知变量须人工检查" });
+  if (nodes.length !== 1 || node.unclosed) return unsupported();
+  const raw = value.slice(node.sourceIndex, node.sourceEndIndex);
+  if (/^(?:none|transparent|currentcolor|inherit|initial|unset|revert|revert-layer)$/i.test(raw) || (node.type === "function" && node.value.toLowerCase() === "url")) {
+    return { ...base, reason: "背景结构值或图片资源保持原样" };
+  }
+  if (node.type === "function" && node.value.toLowerCase() === "var") {
+    const chain = analyzePriorityChain(parseVariableChain(raw), componentVariables, legacyColorIndex);
+    if (!chain) return unsupported();
+    // Existing FDS references still need the normal compatibility/error checks.
+    if (!chain.fds.length && ((chain.fallback && !parseTypedValue(chain.fallback.value, "color")) || (!chain.fallback && !chain.legacyColor.length))) return unsupported();
+  } else if (!parseTypedValue(raw, "color")) {
+    return unsupported();
+  }
+  const result = classifyOccurrence({ ...occurrence, property: "background-color", originalValue: raw }, tokens, policy, legacyColorIndex, contexts, componentVariables);
+  return {
+    ...result, id: base.id, property: "background", originalValue: value,
+    ...(result.replacement ? { replacement: value.slice(0, node.sourceIndex) + result.replacement + value.slice(node.sourceEndIndex) } : {}),
   };
 }
 

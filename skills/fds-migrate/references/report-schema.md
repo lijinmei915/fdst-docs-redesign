@@ -1,5 +1,7 @@
 # FDS Token 迁移报告契约
 
+复合值补充：一个声明可对应多个 finding。`property` 为原声明属性，`matchedProperty` 为子值匹配属性，`declarationId` 为不透明分组标识。`originalValue` 和行列指向子值。`occurrenceCount` 为值项数，`declarationCount` 为去重声明数，详见 [复合样式支持矩阵](composite-values.md)。
+
 ## JSON
 
 每个组件目录下的 `fds-token-migration-report.json` 是机器可读事实源，schema 为 `fds-token-migration-report/v2`。批量执行根目录同时生成 `fds-token-migration-index.json`，schema 为 `fds-token-migration-index/v2`，只保存汇总、组件入口及各明细报告相对链接；组件项使用 `jsonReport` 和 `htmlReport` 指向两类产物。

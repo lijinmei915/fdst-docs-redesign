@@ -18,7 +18,7 @@
   "rules": [
     {
       "id": "foreground-color",
-      "propertyPatterns": ["^color$"],
+      "propertyPatterns": ["^(?:color|text-decoration-color|text-emphasis-color)$"],
       "types": ["color"],
       "tokenNamePatterns": [
         "^color-(?:danger|info|primary|success|warning)(?:-(?:active|disabled|hover))?$",
@@ -45,7 +45,7 @@
     },
     {
       "id": "border-color",
-      "propertyPatterns": ["^(?:border(?:-(?:top|right|bottom|left))?-color|outline-color)$"],
+      "propertyPatterns": ["^(?:border(?:-(?:top|right|bottom|left|block|inline)(?:-(?:start|end))?)?-color|outline-color|column-rule-color)$"],
       "types": ["color"],
       "tokenNamePatterns": ["^border-", "^card-border-color$"],
       "allowAtomicAuto": false,
@@ -73,7 +73,7 @@
     },
     {
       "id": "border-radius",
-      "propertyPatterns": ["^border(?:-(?:top-left|top-right|bottom-left|bottom-right))?-radius$"],
+      "propertyPatterns": ["^border(?:-(?:top-left|top-right|bottom-left|bottom-right|start-start|start-end|end-start|end-end))?-radius$"],
       "types": ["dimension"],
       "tokenNamePatterns": ["^radius-", "radius$"],
       "allowAtomicAuto": true,
@@ -83,7 +83,7 @@
     },
     {
       "id": "border-width",
-      "propertyPatterns": ["^(?:border(?:-(?:top|right|bottom|left))?-width|outline-width)$"],
+      "propertyPatterns": ["^(?:border(?:-(?:top|right|bottom|left|block|inline)(?:-(?:start|end))?)?-width|outline-width|column-rule-width)$"],
       "types": ["dimension"],
       "tokenNamePatterns": ["^border-width-", "border-width$"],
       "allowAtomicAuto": true,

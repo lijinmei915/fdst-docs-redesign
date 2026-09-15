@@ -73,7 +73,7 @@ export async function buildReport({ mode, catalogPath, catalogSource, catalog, l
     summary: {
       fileCount,
       occurrenceCount: findings.length,
-      declarationCount: findings.length,
+      declarationCount: new Set(findings.map(finding => finding.declarationId || finding.id)).size,
       parseErrorCount: parseErrors.length,
       unsupportedFileCount: unsupportedFiles.length,
       unsupportedNodeCount: findings.filter((finding) => finding.status === "unsupported").length,
