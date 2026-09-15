@@ -28,7 +28,7 @@
       <article class="docs-article"><h1 id="fds-token">FDS Token 文档</h1>
 <p>这里是 FDS Token 的统一文档入口，面向设计师、产品、业务开发者、组件开发者和 Token 维护者。详细 Token 规范在 <code>fdst</code> 维护；SDS 保留宏观 FDS、Components 和其他非 Token 设计规范，并链接到这里。</p>
 <p>正式阅读入口是由本目录同源生成的 <a href="index.html">FDS Token 可视化文档站</a>。Markdown 保存可审查的规范正文，文档站提供导航、搜索、页内目录和与正文原位结合的视觉示例。</p>
-<p>页面和组件运行时使用 <a href="https://git.firstshare.cn/fx/fdst/-/blob/master/dist/fds-global-tokens.css">FDS CSS</a>。Token 是否存在、类型、源值和解析值，以 <code>tokens/fds-global.yml</code> 的 import 图及其生成物为准；catalog JSON 只服务文档生成、查询和校验，不要求设计读者或普通业务接入。</p>
+<p>页面和组件运行时使用 <a href="https://git.firstshare.cn/fx/fdst/-/blob/master/release/fds-global-tokens.css">FDS CSS</a>。Token 是否存在、类型、源值和解析值，以 <code>tokens/fds-global.yml</code> 的 import 图及其生成物为准；catalog JSON 只服务文档生成、查询和校验，不要求设计读者或普通业务接入。</p>
 <div class="fds-demo" data-demo="overview"></div>
 
 <h2 id="_1">按角色开始</h2>
@@ -98,12 +98,12 @@
 </thead>
 <tbody>
 <tr>
-<td><code>dist/fds-global-tokens.css</code></td>
+<td><code>release/fds-global-tokens.css</code></td>
 <td>页面、组件、文档预览</td>
 <td>浏览器运行时直接消费</td>
 </tr>
 <tr>
-<td><code>dist/fds-global-tokens.min.css</code></td>
+<td><code>release/fds-global-tokens.min.css</code></td>
 <td>生产环境</td>
 <td>与普通版等价的压缩产物</td>
 </tr>
@@ -118,7 +118,7 @@
 <td>从 <code>docs/</code> 生成的可展示站点</td>
 </tr>
 <tr>
-<td><code>dist/fds-token-catalog.json</code></td>
+<td><code>release/fds-token-catalog.json</code></td>
 <td>生成器、校验器、查询工具</td>
 <td>机器读取的派生数据，不是设计侧接入要求</td>
 </tr>

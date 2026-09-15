@@ -72,17 +72,32 @@ python tools/build_docs.py --check
 <tbody>
 <tr>
 <td>CSS Variables</td>
-<td><code>dist/fds-global-tokens.css</code></td>
+<td><code>release/fds-global-tokens.css</code></td>
 <td>浏览器运行时消费</td>
 </tr>
 <tr>
 <td>Minified CSS Variables</td>
-<td><code>dist/fds-global-tokens.min.css</code></td>
+<td><code>release/fds-global-tokens.min.css</code></td>
 <td>生产环境按需直接引入</td>
 </tr>
 <tr>
+<td>Hash CSS Variables</td>
+<td><code>release/fds-global-tokens.&lt;hash&gt;.css</code></td>
+<td>按内容版本引入普通版 CSS</td>
+</tr>
+<tr>
+<td>Hash Minified CSS Variables</td>
+<td><code>release/fds-global-tokens.min.&lt;hash&gt;.css</code></td>
+<td>按内容版本引入生产版 CSS</td>
+</tr>
+<tr>
+<td>资源入口清单</td>
+<td><code>release/tpl_config</code></td>
+<td><code>fdstCssEntry</code> 映射到当次 min hash CSS 文件名</td>
+</tr>
+<tr>
 <td>Catalog JSON</td>
-<td><code>dist/fds-token-catalog.json</code></td>
+<td><code>release/fds-token-catalog.json</code></td>
 <td>精确查询、文档生成和其他只读工具</td>
 </tr>
 <tr>
@@ -105,6 +120,11 @@ python tools/build_docs.py --check
 <p>普通版保留来源注释和换行，便于开发与审查；min 版移除注释和非必要空白。两份 CSS 由同一次构建从同一 Token 图生成，声明和值完全一致，不应分别维护。
 | Token 目录 | <code>docs/reference/Token目录.md</code> | 开发者可读索引 |</p>
 <h2 id="_6">校验范围</h2>
+<p>每次 CSS 构建还会为普通版和 min 版各追加一份带 hash 的副本，字节内容与对应固定名文件完全相同。<code>&lt;hash&gt;</code> 使用各自最终 UTF-8 文件内容的 SHA-256 前 12 位，与时间、路径无关。相同内容名称稳定，内容变化生成新名称；<code>--check</code> 不写任何产物。构建不会清理历史 hash 文件，发布侧需根据实际引用管理保留周期。CSS 和 Catalog 输出目录统一为 <code>release/</code>，文档站继续使用自身的 <code>assets/fds-global-tokens.css</code>。</p>
+<p><code>build.py</code> 在 CSS 写入后生成 <code>release/tpl_config</code>，格式参考 <code>fx-paas-components/build/plugin/extract-entry-webpack-plugin.js</code>：每行使用 <code>入口名:文件名</code>，文件名不含目录，UTF-8 编码并以 LF 结尾。当前只有一个生产入口：</p>
+<pre><code class="language-text">fdstCssEntry:fds-global-tokens.min.&lt;hash&gt;.css
+</code></pre>
+<p>清单始终指向当次生成的 min hash 文件，不扫描历史文件。原 <code>dist/</code> 消费路径需迁移到 <code>release/</code>；回退时恢复构建及消费路径，并重建产物与文档站。</p>
 <p>构建器检查 import 文件缺失/循环、schema 与层级、目录与元数据一致性、Token ID、重复定义、未定义引用、反向引用、类型和引用循环，并拒绝源文件中的 CSS Variable、<code>var()</code>、<code>rem</code>、<code>calc()</code> 与长度 Seed。</p>
 <p>文档生成器检查：</p>
 <ul>

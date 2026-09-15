@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import importlib.util
+import hashlib
 import sys
 import tempfile
 import unittest
@@ -53,6 +54,14 @@ class BuildTest(unittest.TestCase):
 
             self.assertTrue(output.is_file())
             self.assertTrue(minified_output.is_file())
+            self.assertEqual(5, len(list(Path(directory).iterdir())))
+            for path in (output, minified_output):
+                content = path.read_bytes()
+                content_hash = hashlib.sha256(content).hexdigest()[:12]
+                hashed_path = path.with_name(f"{path.stem}.{content_hash}{path.suffix}")
+                self.assertEqual(content, hashed_path.read_bytes())
+            tpl_config = (Path(directory) / "tpl_config").read_bytes()
+            self.assertEqual(f"fdstCssEntry:{hashed_path.name}\n".encode("utf-8"), tpl_config)
             pretty_css = output.read_text(encoding="utf-8")
             minified_css = minified_output.read_text(encoding="utf-8")
             self.assertNotIn("\n", minified_css)
@@ -71,6 +80,37 @@ class BuildTest(unittest.TestCase):
                 )
                 self.assertIn(declaration, minified_css, token.token_id)
 
+    def test_content_hash_is_stable_and_changes_with_content(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            output = Path(directory) / "fds-global-tokens.css"
+            minified_output = Path(directory) / "fds-global-tokens.min.css"
+            with (
+                mock.patch.object(BUILD, "OUTPUT", output),
+                mock.patch.object(BUILD, "MINIFIED_OUTPUT", minified_output),
+                mock.patch.object(sys, "argv", ["build.py"]),
+            ):
+                self.assertEqual(0, BUILD.main())
+                original = {path.name: path.read_bytes() for path in Path(directory).iterdir()}
+                self.assertEqual(0, BUILD.main())
+                self.assertEqual(
+                    original,
+                    {path.name: path.read_bytes() for path in Path(directory).iterdir()},
+                )
+                with mock.patch.object(BUILD, "build_minified_css", return_value=":root{--test:1;}"):
+                    self.assertEqual(0, BUILD.main())
+
+            added = set(path.name for path in Path(directory).iterdir()) - original.keys()
+            self.assertEqual(1, len(added))
+            new_name = added.pop()
+            self.assertEqual(minified_output.read_bytes(), (Path(directory) / new_name).read_bytes())
+            self.assertEqual(
+                f"fdstCssEntry:{new_name}\n",
+                (Path(directory) / "tpl_config").read_text(encoding="utf-8"),
+            )
+            for name, content in original.items():
+                if name not in (minified_output.name, "tpl_config"):
+                    self.assertEqual(content, (Path(directory) / name).read_bytes())
+
     def test_check_mode_does_not_write_css(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             output = Path(directory) / "fds-global-tokens.css"
@@ -84,6 +124,7 @@ class BuildTest(unittest.TestCase):
 
             self.assertFalse(output.exists())
             self.assertFalse(minified_output.exists())
+            self.assertEqual([], list(Path(directory).iterdir()))
 
     def test_current_sources_are_valid(self) -> None:
         namespace, sources = BUILD.collect_sources()

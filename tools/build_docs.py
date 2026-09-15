@@ -23,8 +23,8 @@ ROOT = Path(__file__).resolve().parents[1]
 DOCS_ROOT = ROOT / "docs"
 ASSETS_ROOT = DOCS_ROOT / "site-assets"
 PUBLIC_ROOT = ROOT / "public"
-TOKEN_CSS = ROOT / "dist" / "fds-global-tokens.css"
-TOKEN_CATALOG = ROOT / "dist" / "fds-token-catalog.json"
+TOKEN_CSS = ROOT / "release" / "fds-global-tokens.css"
+TOKEN_CATALOG = ROOT / "release" / "fds-token-catalog.json"
 GENERATED_MARKER = ".generated-by-fdst-docs"
 REPOSITORY_BLOB_URL = "https://git.firstshare.cn/fx/fdst/-/blob/master"
 

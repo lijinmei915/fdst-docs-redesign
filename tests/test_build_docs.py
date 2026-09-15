@@ -50,7 +50,7 @@ class BuildDocsTest(unittest.TestCase):
 
         self.assertIn('href="foundations/颜色.html"', home)
         self.assertNotIn('href="foundations/颜色.md"', home)
-        self.assertIn("https://git.firstshare.cn/fx/fdst/-/blob/master/dist/fds-global-tokens.css", home)
+        self.assertIn("https://git.firstshare.cn/fx/fdst/-/blob/master/release/fds-global-tokens.css", home)
 
     def test_write_then_check_detects_drift(self) -> None:
         expected = {PurePosixPath("index.html"): "ok\n", PurePosixPath(BUILD_DOCS.GENERATED_MARKER): "marker\n"}

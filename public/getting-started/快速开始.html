@@ -29,7 +29,7 @@
 <h2 id="_2">适用范围</h2>
 <p>本页说明如何在已经能够加载 FDS CSS 产物的页面中使用 Global Token。项目如何打包或发布该 CSS，请转到 <a href="ShareDev接入.html">ShareDev 接入</a> 和 <a href="../engineering/版本与发布.html">版本与发布</a>。</p>
 <h2 id="1-css">1. 引入 CSS</h2>
-<p>将普通版 <code>dist/fds-global-tokens.css</code> 或压缩版 <code>dist/fds-global-tokens.min.css</code> 纳入应用的全局样式入口。两份文件的变量和行为一致，同一页面只加载一份。下面是普通 CSS 入口示例，实际相对路径由消费项目决定：</p>
+<p>将普通版 <code>release/fds-global-tokens.css</code> 或压缩版 <code>release/fds-global-tokens.min.css</code> 纳入应用的全局样式入口。两份文件的变量和行为一致，同一页面只加载一份。下面是普通 CSS 入口示例，实际相对路径由消费项目决定：</p>
 <pre><code class="language-css">@import url(&quot;./fds-global-tokens.css&quot;);
 </code></pre>
 <p>产物在 <code>:root</code> 上声明变量，因此页面不需要逐个复制变量。</p>
@@ -69,8 +69,8 @@
 <h2 id="_4">来源</h2>
 <ul>
 <li><a href="https://git.firstshare.cn/fx/fdst/-/blob/master/tokens/fds-global.yml">YAML 包入口</a></li>
-<li><a href="https://git.firstshare.cn/fx/fdst/-/blob/master/dist/fds-global-tokens.css">生成的 CSS</a></li>
-<li><a href="https://git.firstshare.cn/fx/fdst/-/blob/master/dist/fds-global-tokens.min.css">生成的 Minified CSS</a></li>
+<li><a href="https://git.firstshare.cn/fx/fdst/-/blob/master/release/fds-global-tokens.css">生成的 CSS</a></li>
+<li><a href="https://git.firstshare.cn/fx/fdst/-/blob/master/release/fds-global-tokens.min.css">生成的 Minified CSS</a></li>
 <li><a href="../concepts/引用与边界.html">引用与边界</a></li>
 </ul></article>
     </main>

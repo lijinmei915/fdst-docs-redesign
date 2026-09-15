@@ -15,7 +15,7 @@ import build as token_build
 
 ROOT = Path(__file__).resolve().parents[1]
 DOCS_ROOT = ROOT / "docs"
-CATALOG_OUTPUT = ROOT / "dist" / "fds-token-catalog.json"
+CATALOG_OUTPUT = ROOT / "release" / "fds-token-catalog.json"
 SKILL_SEARCH_INDEX_OUTPUT = (
     ROOT
     / "skills"
@@ -269,7 +269,7 @@ def render_token_index(catalog: dict) -> str:
         "",
         "> 本文件由 `python tools/export_catalog.py` 基于 `tokens/fds-global.yml` 的 import 图自动生成，请勿手工编辑。",
         "",
-        f"当前 catalog 共收录 {catalog['tokenCount']} 个 Token。原始引用和值以 [catalog JSON](../../dist/fds-token-catalog.json) 为准。",
+        f"当前 catalog 共收录 {catalog['tokenCount']} 个 Token。原始引用和值以 [catalog JSON](../../release/fds-token-catalog.json) 为准。",
         "",
     ]
     current_group: tuple[str, str, str] | None = None
@@ -404,7 +404,7 @@ def main() -> int:
                 return 1
             print(
                 f"生成物校验通过：{catalog['tokenCount']} 个 Token，"
-                "dist catalog、Skill Token 快照、链接和示例变量均有效"
+                "release catalog、Skill Token 快照、链接和示例变量均有效"
             )
             return 0
 

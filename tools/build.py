@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import re
 import sys
 from dataclasses import dataclass
@@ -15,8 +16,8 @@ import yaml
 ROOT = Path(__file__).resolve().parents[1]
 TOKENS_ROOT = ROOT / "tokens"
 ENTRY = TOKENS_ROOT / "fds-global.yml"
-OUTPUT = ROOT / "dist" / "fds-global-tokens.css"
-MINIFIED_OUTPUT = ROOT / "dist" / "fds-global-tokens.min.css"
+OUTPUT = ROOT / "release" / "fds-global-tokens.css"
+MINIFIED_OUTPUT = ROOT / "release" / "fds-global-tokens.min.css"
 DEFAULT_NAMESPACE = "--fds-g-"
 SCENE_NAMESPACE = "--fds-s-"
 TOKEN_ID_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
@@ -362,8 +363,21 @@ def main() -> int:
             OUTPUT.parent.mkdir(parents=True, exist_ok=True)
             OUTPUT.write_text(output, encoding="utf-8", newline="\n")
             MINIFIED_OUTPUT.write_text(minified_output, encoding="utf-8", newline="\n")
+            hashed_outputs = []
+            for path in (OUTPUT, MINIFIED_OUTPUT):
+                content = path.read_bytes()
+                content_hash = hashlib.sha256(content).hexdigest()[:12]
+                hashed_path = path.with_name(f"{path.stem}.{content_hash}{path.suffix}")
+                hashed_path.write_bytes(content)
+                hashed_outputs.append(hashed_path)
+            tpl_config = OUTPUT.parent / "tpl_config"
+            tpl_config.write_text(
+                f"fdstCssEntry:{hashed_outputs[1].name}\n",
+                encoding="utf-8",
+                newline="\n",
+            )
             print(
-                f"Token 构建完成：{OUTPUT}、{MINIFIED_OUTPUT}"
+                f"Token 构建完成：{'、'.join(str(path) for path in (OUTPUT, MINIFIED_OUTPUT, *hashed_outputs, tpl_config))}"
                 f"（{len(tokens)} 个变量）"
             )
         return 0

@@ -28,7 +28,7 @@ class ImportCssSnapshotTest(unittest.TestCase):
                 mock.patch.object(
                     sys,
                     "argv",
-                    ["import_css_snapshot.py", str(ROOT / "dist" / "fds-global-tokens.css")],
+                    ["import_css_snapshot.py", str(ROOT / "release" / "fds-global-tokens.css")],
                 ),
             ):
                 self.assertEqual(0, IMPORT.main())

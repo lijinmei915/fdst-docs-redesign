@@ -63,7 +63,7 @@ YAML 中只使用 `{!token-id}`，不写 CSS `var()`。构建器按被引用 Tok
 ## 修改流程
 
 1. 从包入口沿 imports 找到对应叶子文件。
-2. 修改 props，不编辑 `dist`、catalog 或自动生成的 Token 目录。
+2. 修改 props，不编辑 `release`、catalog 或自动生成的 Token 目录。
 3. 运行 [构建与校验](构建与校验.md) 中的完整命令。
 4. 评审 YAML、CSS、catalog 和文档 diff 是否一致。
 
