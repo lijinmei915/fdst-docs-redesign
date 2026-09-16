@@ -7,7 +7,7 @@ description: 使用 Skill 内置的完整 FDS Token 与旧色板索引快照扫�
 
 ## Goal / 目标
 
-基于 Skill 内置的完整 FDS Token JSONL 与旧 `fx-style` 色板索引快照做保守迁移：默认只扫描并输出报告；只有用户明确要求执行迁移时，才把 `auto-replace` 项改成带原值 fallback 的 FDS Token。CSS Custom Property 的定义声明不迁移；组件扫描单元内定义的变量和既有 `--bc-*` 保持高于 FDS，旧色板变量保持低于 FDS。颜色不与当前 FDS 色值做相等或相似度匹配，而是按色板和索引一对一迁移：有彩色 `00–10 -> 0–10`、`neutrals01–19 -> gray-1–19`、`special01–04 -> special-1–4`；有彩色第 `11` 阶和 Gray 第 `20` 阶是扩展档，不接收旧色阶自动迁移。字号、圆角和透明度按各自规则选择最近档，相对行高只精确替换；明确保留的硬编码直接归为 `exempt`，不进入 HTML 迁移问题。
+基于 Skill 内置的完整 FDS Token JSONL 与旧 `fx-style` 色板索引快照做保守迁移：默认只扫描并输出报告；只有用户明确要求执行迁移时，才把 `auto-replace` 项改成带原值 fallback 的 FDS Token。CSS Custom Property 的定义声明不迁移；组件扫描单元内定义的变量和既有 `--bc-*` 保持高于 FDS，旧色板变量保持低于 FDS。颜色不与当前 FDS 色值做相等或相似度匹配，而是按色板和索引一对一迁移：有彩色 `00–10 -> 0–10`、`neutrals01–19 -> gray-1–19`、`special01–04 -> special-1–4`；有彩色第 `11` 阶和 Gray 第 `20` 阶是扩展档，不接收旧色阶自动迁移。圆角和透明度按各自规则选择最近档，字号和相对行高只精确替换；明确保留的硬编码直接归为 `exempt`，不进入 Markdown 迁移问题。
 
 ## When to Use / 使用场景
 
@@ -25,9 +25,9 @@ description: 使用 Skill 内置的完整 FDS Token 与旧色板索引快照扫�
 ## Preconditions / 前置条件
 
 1. 在目标项目根目录运行；无显式目标时默认扫描 `src`，并自动读取可选的 `.fdst/migrate.json`。
-2. Token 数据默认读取本 Skill 的 `references/fds-token-catalog.jsonl`；旧有彩色定位读取 `references/legacy-color-index.json`。不得从调用方仓库、Markdown、CSS 示例或命名规律构造 Token。
+2. Token、旧色板和策略默认使用已安装 `@sharecrm/sds-linter@0.1.1` 包内的固定快照。Skill 的 `references/` 中的数据保留为维护端生成/校验来源。不得从调用方仓库、Markdown、CSS 示例或命名规律构造 Token。
 3. 检查工作树状态并保留用户已有修改。
-4. 使用 Node.js 16+，首次运行先在本 Skill 目录执行 `npm ci --ignore-scripts`。
+4. 使用 Node.js 16+（本次验证为 Node.js 18）与 npm。首次使用或 lockfile 更新后，执行 `npm ci --prefix <skill-root> --ignore-scripts --registry=https://registry-npm.firstshare.cn/`；需要内部 registry 访问权限。依赖只装在 Skill 目录，安装后运行无需联网。源码在独立 `fx/sds-linter` 仓库维护。
 5. 修改源码前必须得到明确授权；“扫描”“检查”“生成报告”只授权 `scan`，不授权 `apply`。
 
 ## ToolsList / 工具列表
@@ -40,20 +40,20 @@ node <skill-root>/scripts/migrate_styles.mjs apply
 node <skill-root>/scripts/migrate_styles.mjs verify
 ```
 
-- `scan`：默认模式；不修改源码，生成 JSON 与自包含 HTML 报告。
+- `scan`：默认模式；不修改源码，生成 JSON 与 Markdown 报告。
 - `apply`：只写入 `auto-replace`，包括规则允许的最近档替换，并保留原始值 fallback；`ambiguous`、`similar` 和 `unsupported` 永不自动写入。
 - `verify`：不修改源码；存在可迁移、不合规、解析错误或无法静态判定项时返回退出码 `3`。
-- 默认使用 Skill 自带的完整 Token JSONL，不要求调用方提供 FDST 仓库或外部 Catalog；`--catalog <json|jsonl>` 仅用于测试和受控调试覆盖。
+- 默认使用 npm 包内的完整 Token JSONL，不要求调用方提供 FDST 仓库或外部 Catalog；`--catalog <json|jsonl>` 仅用于测试和受控调试覆盖。`scripts/migrate_styles.mjs` 转发到 Skill 本地安装的固定 npm 版本；依赖缺失时先执行上述安装命令，不自动切换引擎。
 - 默认入口为 `src`；默认报告目录为 `.fdst/reports/migrate/<mode>/`。
 - 每个配置 `entry` 或命令行目标都是一个组件报告单元；批量执行时根目录只生成索引，明细分别写入 `components/<组件名>/`。
-- 组件 HTML 报告中的每条结果都可生成状态化处理提示词；只有最近档自动替换项提供候选 Token 下拉，唯一精确命中的自动替换项只展示确定结果，其他需人工处理项可填写处理说明，并统一汇总为一份可局部编辑的处理提示词。人工选择、编辑和复制不代表问题已修复，修改后仍须重新执行 `verify`。
+- Markdown 报告按文件列出状态、位置、原值、候选与原因；修改源码后仍须重新执行 `verify`。
 - 项目级配置固定放在 `.fdst/migrate.json`；配置字段、CLI 参数和覆盖顺序见 [项目配置与 CLI](references/configuration.md)。
 - `--context card` 等显式场景可让匹配器考虑对应 Scene Token；不得仅凭文件名猜测 Scene。
 - `--include <glob>` 可重复指定扫描范围；未指定时扫描支持矩阵中的全部文件，并跳过 `.git/node_modules/dist/build/coverage`。
 
 ## Workflow / 工作流
 
-1. 先运行 `scan`，读取报告摘要和每项证据。
+1. 先运行 `scan`，读取报告摘要和每项证据。若旧版引擎将字号近似值标记为 `auto-replace`，不得直接 apply；先升级至字号仅精确匹配的引擎。
 2. 对 `ambiguous` 检查 DOM、组件职责和状态；对 `similar` 只交给人工评估；对 `unsupported` 先补静态证据或人工判断。
 3. 向用户说明预计修改的文件数和 occurrence 数；得到明确授权后运行 `apply`。
 4. 审查实际 diff，确认每项保留原始文本 fallback，且未改动不相关格式。
@@ -62,7 +62,7 @@ node <skill-root>/scripts/migrate_styles.mjs verify
 ## Decision Rules / 决策规则
 
 - `auto-replace`：颜色命中唯一旧色板色系/索引并找到同索引目标；非颜色按以下规则命中精确值或最近档；同时要求 CSS property 兼容且源码区间可安全局部修改。
-- 字号：小于 `12px` 和超过 `48px` 的值保留硬编码并从迁移问题中排除；`12px–48px` 的可比较值选择绝对距离最近的 Font Size Token，等距时选择较小档。
+- 字号：小于 `12px` 和超过 `48px` 的值保留硬编码并从迁移问题中排除；`12px–48px` 仅替换解析值精确相等且属性、层级兼容的 Font Size Token；非精确值保持原样，相近候选只报告，禁止按最近档自动替换。
 - 行高：固定硬编码行高维持现状，直接排除迁移，不换算为相对行高；已存在的固定 `line-height-*` Token 保留并继续校验。无单位相对行高只在精确命中 `line-height-ratio-*` 或显式场景候选时自动替换，非精确值只报告相近候选。
 - 间距：margin、padding、gap（含方向属性和多值简写）逐值精确匹配；唯一且属性、层级兼容的 Token 自动替换并保留原值 fallback。未精确命中的硬编码归为 `exempt`，不推荐最近档、不补充 Token；多义候选或动态值不自动改写。
 - 圆角：使用包含 `20px` 的当前 Radius 梯度，精确值可自动替换；其他可比较 px 尺寸选择最近档，等距时选择较小档，仅在绝对偏差 ≤ `2px` 时自动替换，不限制相对百分比。超过 `2px` 保留原值，归为 `similar` 仅推荐候选，例如 `5→4px`、`7→6px`、`14→12px` 可替换，`27→20px` 不替换。
@@ -79,29 +79,32 @@ node <skill-root>/scripts/migrate_styles.mjs verify
 - CSS Custom Property 定义：`--component-color: #fff` 等定义声明始终保持原样，只在普通 CSS property 的消费位置迁移。
 - fallback 优先级链：固定为“组件自定义变量 / `--bc-*` > FDS > 旧色板变量 > 原值”。旧色板变量包括 11 套有彩色的 `--color-<family>00..10`、`--color-neutrals01..19` 和 `--color-special01..04`，不含 RGB 和 Dark。组件变量必须在当前组件报告单元内存在定义；`--bc-*` 作为既有组件协议兼容识别。颜色可直接从旧变量名取得索引，不要求变量链存在末端色值；链含未知变量、已有顺序错误或映射目标不唯一时不得自动改写。
 
-颜色硬编码值只与内置旧色板快照核对以定位旧索引，不与新 FDS 值比较；非颜色匹配遵守上述逐类边界。最近档替换会在报告原因中提示原值与目标值，并在候选列表和下拉中展示 Catalog Token 注释；精确命中的自动替换不提供下拉。完整规则见 [匹配策略](references/matching-policy.md)。
+颜色硬编码值只与内置旧色板快照核对以定位旧索引，不与新 FDS 值比较；非颜色匹配遵守上述逐类边界。最近档替换会在报告原因中提示原值与目标值，并在 Markdown 候选列表中展示 Catalog Token 注释。完整规则见 [匹配策略](references/matching-policy.md)。
 
 ## Output / 输出
 
 每个组件单元生成：
 
 - `fds-token-migration-report.json`：机器可读事实源，供 CI、复核和后续工具消费。
-- `fds-token-migration-report.html`：面向人工审查，包含已替换、可自动替换、不符合规范、已有变量优先、需人工检查和解析错误；相近 Token 在“不符合规范”内筛选和展示，不重复生成独立章节。
+- `fds-token-migration-report.md`：面向人工审查，按文件列出迁移结果、候选及人工检查项。
 
-批量执行另外生成 `fds-token-migration-index.json` 和 `fds-token-migration-index.html`，只汇总组件状态并链接各组件明细，不集中复制全部 finding。
+批量执行另外生成 `fds-token-migration-index.json` 和 `fds-token-migration-index.md`，只汇总组件状态并链接各组件明细，不集中复制全部 finding。
 
-报告中的源码路径全部相对项目根目录；HTML 先按文件分组，明细表内只保留行号和列号，并提供适合桌面与窄屏审查的自包含样式，不加载外部资源。候选选择和无候选处理说明只属于浏览器本地交互状态，不写回 JSON 事实源或源码。默认报告属于本地生成物，建议通过 `.fdst/.gitignore` 忽略 `reports/`；需要留档时使用 `--report-dir` 输出到受版本控制目录。
+报告中的源码路径全部相对项目根目录。Markdown 不包含浏览器交互，JSON 保持事实源；编辑报告不会修改源码。默认报告属于本地生成物，建议通过 `.fdst/.gitignore` 忽略 `reports/`；需要留档时使用 `--report-dir` 输出到受版本控制目录。
 
 报告字段与状态含义见 [报告契约](references/report-schema.md)。报告中的候选必须逐字来自本次内置 Token 快照，包含 CSS Variable、解析值、层级、匹配类型和未自动替换原因。
 
 ## Resources / 资源
 
-- `scripts/migrate_styles.mjs`：统一 CLI、受控写入和全局失败保护。
-- `scripts/lib/`：确定性 matcher、报告和各语法 AST 适配器。
+- `package.json`、`package-lock.json`、`.npmrc`：固定 npm 版本、依赖完整性和内部 registry。
+- `bin/sds-linter.mjs`：备用便携产物，当前默认入口不使用它。独立 Linter 构建的压缩单文件 CLI，内嵌第三方解析器、Token/旧色板/策略和完整许可证；Node 内置 Brotli 在内存解压，可单独复制运行，无需下载或写临时执行文件。
+- `bin/sds-linter.manifest.json`：版本、构建输入、数据来源与 SHA-256 校验清单，仅供维护/审计，运行时无需读取。
+- `scripts/migrate_styles.mjs`：npm CLI 兼容转发；保持调用方项目目录与参数。
+- `scripts/lib/`：过渡期保留的历史源码/测试参考；Skill 实际运行实现由独立 `fx/sds-linter` 统一维护。
 - `references/fds-token-catalog.jsonl`：随 Skill 打包的完整 Token 快照，每行一个 Token；由正式 YAML import 图自动生成，不手工维护。
 - `references/legacy-color-index.json`：旧 `fx-style` 11 套有彩色 `00–10`、Gray `neutrals01–19` 和 `special01–04` 快照，以及各色板的一对一索引映射依据；排除 RGB 与 Dark。
 - `references/migration-policy.json`：CSS property、Token 类型、命名边界和相似度阈值；不保存 Token 值。
 - `references/matching-policy.md`：自动替换门槛、Scene/Atomic 边界和近似推荐规则。
 - `references/syntax-support.md`：文件类型、样式容器和自动改写边界。
-- `references/report-schema.md`：JSON 与 HTML 报告契约。
+- `references/report-schema.md`：JSON 与 Markdown 报告契约。
 - `references/configuration.md`：`.fdst/migrate.json`、默认入口、报告目录和 CLI 覆盖规则。

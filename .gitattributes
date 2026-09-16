@@ -1,0 +1,5 @@
+# 单文件发布物与来源哈希必须跨平台保持字节一致。
+skills/fds-migrate/bin/* -text
+
+# 上游参考快照按来源清单保留原始字节。
+internal/references/salesforce-slds-skills/** -text

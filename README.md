@@ -42,10 +42,13 @@ CSS Variable 使用两套公开前缀：Atomic/Map 与 Semantic/Base 使用 `--f
 | 资源入口清单 | `release/tpl_config` | `fdstCssEntry` 映射到当次 min hash CSS 文件名 |
 | Catalog JSON | `release/fds-token-catalog.json` | 确定性查询和文档生成 |
 | FDS Apply 索引 | `skills/fds-apply/references/fds-token-search.jsonl` | `fds-apply` 查询和推荐使用的单行索引，由 catalog 自动刷新 |
-| FDS Migrate 快照 | `skills/fds-migrate/references/fds-token-catalog.jsonl` | `fds-migrate` 自带的完整 Token 数据，由 catalog 自动刷新 |
+| FDS Migrate 快照 | `skills/fds-migrate/references/fds-token-catalog.jsonl` | 由 catalog 自动刷新，作为独立 Linter 单文件构建的校验来源 |
+| FDS Migrate 备用运行包 | `skills/fds-migrate/bin/sds-linter.mjs` | 内嵌引擎、依赖和数据的备用单文件；默认入口使用固定 npm 包 |
 | FDS Migrate | `skills/fds-migrate` | 独立扫描并迁移 CSS/WXSS、Vue/HTML/WXML、JS/TS 与受控 CSS-in-JS，输出审计报告 |
 | Token 目录 | `docs/reference/Token目录.md` | 开发者可读的完整索引 |
 | 可视化文档站 | `public/` | 由 `docs/` 同源生成，提供导航、搜索和正文内嵌 Demo |
+
+迁移工具源码由独立 [fx/sds-linter](https://git.firstshare.cn/fx/sds-linter) 维护。Skill 默认使用 package-lock.json 固定的 npm 包，首次安装需执行 Skill 中的 npm ci；旧脚本路径转发到安装包。Token/旧色板/策略变化后需同步元数据并发布新 npm 包，同时重建、验证并同步备用单文件。
 
 ## 常用命令
 

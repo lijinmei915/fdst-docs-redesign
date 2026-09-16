@@ -1,0 +1,1210 @@
+{
+  "schema": "upstream-skill-snapshot/v1",
+  "repository": "https://github.com/forcedotcom/sf-skills",
+  "commit": "91488fd1660b95a31911214187d76229f2610135",
+  "retrievedAt": "2026-09-16T06:43:11.100207+00:00",
+  "archiveUrl": "https://codeload.github.com/forcedotcom/sf-skills/zip/91488fd1660b95a31911214187d76229f2610135",
+  "archiveSha256": "3736d36d39bde3a0855d201c3778bbd5c0b1b47d3c1159d3b63deb23a47f8124",
+  "scope": "Three SLDS design-system skills and directly related accessibility validation skill",
+  "filesPreservedWithoutModification": true,
+  "skills": [
+    {
+      "name": "design-systems-slds-apply",
+      "fileCount": 151,
+      "bytes": 2637978
+    },
+    {
+      "name": "design-systems-slds-validate",
+      "fileCount": 4,
+      "bytes": 50284
+    },
+    {
+      "name": "design-systems-slds2-migrate",
+      "fileCount": 10,
+      "bytes": 84294
+    },
+    {
+      "name": "experience-accessibility-validate",
+      "fileCount": 30,
+      "bytes": 226212
+    }
+  ],
+  "files": [
+    {
+      "path": "LICENSE.txt",
+      "upstreamPath": "LICENSE.txt",
+      "bytes": 11444,
+      "sha256": "7f32b32434490332df34d81b4b91f310f5885920ecb9890774b38b772f08c660"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/SKILL.md",
+      "upstreamPath": "skills/design-systems-slds-apply/SKILL.md",
+      "bytes": 14953,
+      "sha256": "c54bf1ab0706fc1010ef7ae463e2bf56455af9ad23d3e9a76d1fa6dbff989fdd"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/README.md",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/README.md",
+      "bytes": 2381,
+      "sha256": "5e87bad9a40b94e5d9c65ef1b0626206ec5fb13151b05703eb894544a969db82"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/accordion.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/accordion.yaml",
+      "bytes": 15403,
+      "sha256": "df57623f25f71f84536a2205b6b8ee6eaa8ef50a31c0ddd25d5bdb4b39d63a05"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/activity-timeline.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/activity-timeline.yaml",
+      "bytes": 3875,
+      "sha256": "8611a6513c61dabd0ced43db104719526bd5d8129b88a0a19d728c0a0eefc5f5"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/alert.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/alert.yaml",
+      "bytes": 4513,
+      "sha256": "865212a53f0b1b2bbda543839b55fd3ccfd1fad13ff5aa6aa005ac832f022879"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/app-launcher.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/app-launcher.yaml",
+      "bytes": 3843,
+      "sha256": "ecbf36e525ba384a43bcd110e0ff1810effcb094050ae17884fe5e9d82c158f3"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/avatar-group.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/avatar-group.yaml",
+      "bytes": 3258,
+      "sha256": "cd66b17cfb4f1f20a33db3fbaea38cf5727eae69dc6f868bb6341c05b885e60d"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/avatar.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/avatar.yaml",
+      "bytes": 3537,
+      "sha256": "c33eed834d1920b72d584846ebc95353d4ba86782566674aeefa3a533f4fa53e"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/badges.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/badges.yaml",
+      "bytes": 3339,
+      "sha256": "eaecad5dc122e9e1520bd490e798f672bcb361ee687b8c3061a2c9fc9e701375"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/brand-band.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/brand-band.yaml",
+      "bytes": 13169,
+      "sha256": "dafdcd6aaa14dd7c26fdd7444d68682d4263ab45633619d0da932055b78c47ed"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/breadcrumbs.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/breadcrumbs.yaml",
+      "bytes": 4112,
+      "sha256": "51be8ce13b39c6436661860ddd99cde7b399fe71e7476d894ebe5d7cc8c9c48d"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/builder-header.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/builder-header.yaml",
+      "bytes": 10340,
+      "sha256": "80be239014c262745a935545f894691247fcf6a6e3d5909c615ac6ee253b3115"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/button-groups.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/button-groups.yaml",
+      "bytes": 3157,
+      "sha256": "ae025cb9e07727df69aba3e9a55a4e629f988684a5fb0207a6bb7e92148ef21d"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/button-icons.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/button-icons.yaml",
+      "bytes": 13254,
+      "sha256": "2a62f5604a31dce3eb793a6041cc8dd4f7e5f5c7ee09c1242af62290647dd653"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/buttons.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/buttons.yaml",
+      "bytes": 9595,
+      "sha256": "9fc5b41594404a5ed1828fcc4ff0a15bfd4fd1b18e1e7c032a41be0f51988351"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/cards.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/cards.yaml",
+      "bytes": 4759,
+      "sha256": "807b3acebac9f1418d24538a2080e6fd39f6dbbc8e3fc7265cebdc2bc1778f8f"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/carousel.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/carousel.yaml",
+      "bytes": 6113,
+      "sha256": "fd1937c754e686b9afecf2d2d5fda00b6167f9838f820906b5c1a6f88be601e2"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/chat.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/chat.yaml",
+      "bytes": 9890,
+      "sha256": "7f792cdf58271dbf6b25ef5fae8c1ad0e794bce96445511f9307af3ed8d97b0b"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/checkbox-button-group.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/checkbox-button-group.yaml",
+      "bytes": 8449,
+      "sha256": "c8e112ad69659956bd37818ba7c1bd9e77fc74da0df9847b562472305bf73133"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/checkbox-button.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/checkbox-button.yaml",
+      "bytes": 14097,
+      "sha256": "1cb2dd5759157581e0e101769038aafad5e8254dc792281ddd4cefa034da5a1b"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/checkbox-toggle.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/checkbox-toggle.yaml",
+      "bytes": 7923,
+      "sha256": "d940d6260d3837c8b95fd8d7ca9352047a82ddbea526d7d7bf6e90abfb68b186"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/checkbox.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/checkbox.yaml",
+      "bytes": 4463,
+      "sha256": "777a74cda557d71be9c061aa3c3e97a1dc35c9a82e32182446926dc880e5dd52"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/color-picker.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/color-picker.yaml",
+      "bytes": 8715,
+      "sha256": "9458e49795e8bda13afb29c837285d39162afa967a7efe51a76d5229e7fda95a"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/combobox.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/combobox.yaml",
+      "bytes": 5600,
+      "sha256": "14e77995a535c66ebbf074ea9b17b3f2311ce8a798eedc5a9a9857a91edd715b"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/counter.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/counter.yaml",
+      "bytes": 6722,
+      "sha256": "698f17d753e5768e23e482113d718a3393ed4a5f451acef370c2e26eb52156c1"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/data-tables.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/data-tables.yaml",
+      "bytes": 6106,
+      "sha256": "9f46d2d0c102767db9a782f47cf665c8d5973ef319e76acbe17fbd0ea110a7f8"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/datepickers.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/datepickers.yaml",
+      "bytes": 6244,
+      "sha256": "ece4abdf22cb064df37ba51bb4bdc11e6fe0d8bd5c5c44f38e1eb069f0e74ec9"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/datetime-picker.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/datetime-picker.yaml",
+      "bytes": 7594,
+      "sha256": "553034671d25d2a42c638147a48eec9d6b8398e41e278e59754cbb2698bad9cd"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/docked-composer.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/docked-composer.yaml",
+      "bytes": 13626,
+      "sha256": "1474d45ec0bae884760a2baf600bbbda02965d01d2a073a53f15a70d9312819a"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/docked-form-footer.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/docked-form-footer.yaml",
+      "bytes": 6238,
+      "sha256": "3a02ca798e4e16f3c84e779647f9873bed6979092561309d8820c9461031c52f"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/docked-utility-bar.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/docked-utility-bar.yaml",
+      "bytes": 11145,
+      "sha256": "d2e0a437337ce31cee498a1e51bf09281691df61f34a3c4376d24b3c63beb0ae"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/drop-zone.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/drop-zone.yaml",
+      "bytes": 4575,
+      "sha256": "d816e1097516267ad34826d51636eb9ef5c9504d0029ab76fa0893ad1a977764"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/dueling-picklist.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/dueling-picklist.yaml",
+      "bytes": 9009,
+      "sha256": "62d1053ef619bbccfa274417bf48577ce95f551d739e489fadb33e7fc53722da"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/dynamic-icons.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/dynamic-icons.yaml",
+      "bytes": 5146,
+      "sha256": "652975eb8eb8bb5498bd4ab4c2dedb64d5549854fc25ab8cb0f8c2c9f5702f36"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/dynamic-menu.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/dynamic-menu.yaml",
+      "bytes": 7840,
+      "sha256": "e6827afe5b7b09c46016441f939e6055461f2fb85fcaa8333b01cfb73c92b035"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/expandable-section.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/expandable-section.yaml",
+      "bytes": 4702,
+      "sha256": "7b3c5751181f86dfb6832e542ce50df4da235ef575cfcad1607962bafa9344ef"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/expression.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/expression.yaml",
+      "bytes": 7484,
+      "sha256": "d0246fbd3fccfc3db433b57f44425e47c2cfbe69c4a8e058705ef41260076c34"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/feeds.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/feeds.yaml",
+      "bytes": 5811,
+      "sha256": "d78ab4948113ddfabaea9dd73df39121119fd882fdec36940566e60823bcde07"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/file-selector.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/file-selector.yaml",
+      "bytes": 6920,
+      "sha256": "a268aa4d6c47a18667accc726ea5c9e3b4ea4231256758cacdd87b9fdfac597b"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/files.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/files.yaml",
+      "bytes": 4881,
+      "sha256": "e5f49196870016752927106c1cf4b8468a6cbf88693ec33aa22faca723d576f2"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/form-element.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/form-element.yaml",
+      "bytes": 6252,
+      "sha256": "c9249479e7c791f03953f59a6bb0b3c527176893a22bbf82f5e1b5f446122010"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/global-header.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/global-header.yaml",
+      "bytes": 4792,
+      "sha256": "e66aa570331bfa7885552c7dd4de80e6dd814639031c59c01147e93c5afef1ac"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/global-navigation.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/global-navigation.yaml",
+      "bytes": 4424,
+      "sha256": "5e69d79dda2c285c7a5c4359e65bc3683a6e9b1386944ee9881ccd2d769c315b"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/icons.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/icons.yaml",
+      "bytes": 5253,
+      "sha256": "1913061e71060a675f674e19d5b885fa1cfbb649278f6b7d716063e5fcbb8614"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/illustration.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/illustration.yaml",
+      "bytes": 8709,
+      "sha256": "b2db4ae8c93de3b8f90ad55b80a7056c25507c6201fd8a83bf7d6bbc4430f56f"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/input.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/input.yaml",
+      "bytes": 5486,
+      "sha256": "bf4d3032f6cd60cf3aef0fbbfe3b94ef39cfe319d6f8f60accd94adec567adda"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/list-builder.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/list-builder.yaml",
+      "bytes": 6337,
+      "sha256": "9ce70669c9d3af6c71924fe162d79f4cef59780455d20a084708333f54a64888"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/lookups.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/lookups.yaml",
+      "bytes": 5919,
+      "sha256": "299c41d4e12ee9096337bc3bd39af0c433d499d9a8b7c101b97652beec4215a0"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/map.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/map.yaml",
+      "bytes": 5115,
+      "sha256": "dcf9c98cf147ca23ba9ee0e5ff2b7951398ce91d020366d75f05cd5c8f2adc60"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/menus.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/menus.yaml",
+      "bytes": 5582,
+      "sha256": "bd49290944ce301f87cd7818df52c6e1b616f45724c8f3693a1a3e5c0453e6c5"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/modals.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/modals.yaml",
+      "bytes": 6227,
+      "sha256": "b8db0eb1a8c2655e8832bdb4537f5d392b52c1f7923dc2ac46a612d2d0549b35"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/notifications.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/notifications.yaml",
+      "bytes": 3171,
+      "sha256": "94325d49491b8ac05157fa46450daed99b5fb1e254bc1bca7a561c41dcd2d094"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/page-headers.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/page-headers.yaml",
+      "bytes": 6140,
+      "sha256": "cdd378514ab2204e1e09124110c5bc454ba6aba45db36ab9300a1460ba2aa0fe"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/panels.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/panels.yaml",
+      "bytes": 6974,
+      "sha256": "a10fb77156b7189f1d0bf623bd75f22d5bc2ceee227468b746e0790da7622e7d"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/path.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/path.yaml",
+      "bytes": 6578,
+      "sha256": "d49d0e1d7b0aca368fceeb071ad16e16ec5eb2731b90ce926554f20ac9d29bf5"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/picklist.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/picklist.yaml",
+      "bytes": 5294,
+      "sha256": "b067c5810182a9dbe196771be7c45dc32bc440c2ad940a840178481d141a2208"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/pills.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/pills.yaml",
+      "bytes": 6016,
+      "sha256": "4cf815d72611f277aba4e15c44ca8455da145108de4c9ce3a2e44d555c53c1a2"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/popovers.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/popovers.yaml",
+      "bytes": 4708,
+      "sha256": "4ef9e664c8859a07cd66698301fd44717faea74fea44c759fe5a94219bfbfe90"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/progress-bar.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/progress-bar.yaml",
+      "bytes": 4527,
+      "sha256": "9db0c0a50f4ebb9ce76505cf04de5ef107c15c0898f476064f2d2b33d87d87c1"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/progress-indicator.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/progress-indicator.yaml",
+      "bytes": 5727,
+      "sha256": "e425477368d71bf686e7c5b1c08832b2b83ef12e7be5c754b2885029b2adb421"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/progress-ring.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/progress-ring.yaml",
+      "bytes": 4103,
+      "sha256": "5f2fd5a6d4a75ed6e3c4c81d926ffd2bc33f1933d2af5b6c552e39a1a3383fe2"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/prompt.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/prompt.yaml",
+      "bytes": 5655,
+      "sha256": "90d1848989dbcd7ae4220a0e418486c3c5d640bf15bbbff02228a6748cca750f"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/publishers.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/publishers.yaml",
+      "bytes": 7139,
+      "sha256": "9c92573d368bda30a56edf049279cc5b69895824c2305b38772e0da6b92ed2f2"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/radio-button-group.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/radio-button-group.yaml",
+      "bytes": 7445,
+      "sha256": "c8a82c90777681853d6240f12f580f4650c9fd03b2f9cd68a559a68ab4e79743"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/radio-group.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/radio-group.yaml",
+      "bytes": 5078,
+      "sha256": "9f74d6d2d5b2773c105e4ee17d7dd927fd0f27026481d9e648f96f326aa2c08d"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/rich-text-editor.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/rich-text-editor.yaml",
+      "bytes": 6133,
+      "sha256": "5cfe15399f50e3767ca1d5775ded1d189da3a0f1858df92b019bac4c50b9f137"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/scoped-notifications.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/scoped-notifications.yaml",
+      "bytes": 7771,
+      "sha256": "228a0169097f6db084d4555e3fb7f835e5a1b16e43e14cab28d6e72d016f47a5"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/scoped-tabs.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/scoped-tabs.yaml",
+      "bytes": 3782,
+      "sha256": "33f9d3f40a2bcf57fff941100edc2cce1ac509e48b7f65153c68471e3418bc8a"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/select.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/select.yaml",
+      "bytes": 4437,
+      "sha256": "08ca745191a7da6fd3434a4ab44c39dfcb06f04e2d88c96c5cdc831979b6dd1a"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/setup-assistant.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/setup-assistant.yaml",
+      "bytes": 8996,
+      "sha256": "935370793cd5ceb9676af8fb0b8c8d0768281e1c4711250ec4a4bf5264e84c23"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/slider.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/slider.yaml",
+      "bytes": 4351,
+      "sha256": "4ca7c82b80002fde93e5c4bf64bfd6364abd802592e40ba04fb39fea96adc9f5"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/spinners.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/spinners.yaml",
+      "bytes": 5545,
+      "sha256": "7b132a582a288830cf01a5c4d3b96a0fbe8033b1bfb44be1468309748de8da6a"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/split-view.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/split-view.yaml",
+      "bytes": 4516,
+      "sha256": "3a057f5f2aea1c6e2c7aaa72db12ae76dd7b2719d7f781bc33bff6f7e6e48479"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/summary-detail.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/summary-detail.yaml",
+      "bytes": 4224,
+      "sha256": "89755099a14ed088186655a6fbb91d71af753c9e14455bb075f2b9bc17daa809"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/tabs.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/tabs.yaml",
+      "bytes": 6210,
+      "sha256": "f84268909db258731a0cef8b174ccaf60ddda1edcb70884d0faa357542f2bb3a"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/textarea.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/textarea.yaml",
+      "bytes": 4672,
+      "sha256": "e7cacd1660f8a386a580391e7307a4be7088b6c817166b0c16afed9249a5b47c"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/tiles.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/tiles.yaml",
+      "bytes": 4147,
+      "sha256": "03ff825efb8861c69915e70a50e85da1e9f1fe1dca54f75e9ec3d59356d31196"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/timepicker.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/timepicker.yaml",
+      "bytes": 5208,
+      "sha256": "b9c4742aeca5056e0aaac0b7927bdc968627c5798e727bed506299566af751e0"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/toast.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/toast.yaml",
+      "bytes": 6655,
+      "sha256": "0c8b4cbd057d8b25925d67b7e1c14b484f51ec94f3d6586cf4aa6ec599aa1afb"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/tooltips.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/tooltips.yaml",
+      "bytes": 4203,
+      "sha256": "b7a3aecf3b5b24dfb35ccbb93367573dc25e121be8fe7fd3939b72b7a87f30da"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/tree-grid.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/tree-grid.yaml",
+      "bytes": 5021,
+      "sha256": "67de40bab8b946c7e8cf66384154359ba012f71eee0deaba9524d42e557c029a"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/trees.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/trees.yaml",
+      "bytes": 4870,
+      "sha256": "9111e3af3271354c42cdbe773686d9b9f7b9c13c7f0bdee4ae0ac793706ef0df"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/trial-bar.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/trial-bar.yaml",
+      "bytes": 4299,
+      "sha256": "3891e68d915640b021f373b8702c86f7928f9211aff3cbd0c97d0c805cb68335"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/vertical-navigation.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/vertical-navigation.yaml",
+      "bytes": 5317,
+      "sha256": "f4ce53a3bad2c7f6644f4e992b9c3f6863b33e1ffe6c87be6b10dbe818c47dab"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/vertical-tabs.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/vertical-tabs.yaml",
+      "bytes": 7071,
+      "sha256": "5175edeeb44cd77c980f89add6a2967980a53c1d3ab2f034cff9fd34785bd595"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/visual-picker.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/visual-picker.yaml",
+      "bytes": 6914,
+      "sha256": "faffc5f8a4d22410b642ee86f14e01653cb638e8581332a0a816b51bff251d81"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/blueprints/components/welcome-mat.yaml",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/blueprints/components/welcome-mat.yaml",
+      "bytes": 5640,
+      "sha256": "0a691eecea6bdbff899fd124a44e6abc83a4708fdca27056c6c1c15f6b713bb3"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/hooks-index.json",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/hooks-index.json",
+      "bytes": 144523,
+      "sha256": "be9c8a947d81cd7413157dcbea1b63de8e80114e66afce79448d542bab196d75"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/icon-metadata.json",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/icon-metadata.json",
+      "bytes": 941350,
+      "sha256": "1a88567d0335c9f6a7627bee90d33f6d5025d9d1127c58b59fa4e4740a4f3697"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/assets/utilities-index.json",
+      "upstreamPath": "skills/design-systems-slds-apply/assets/utilities-index.json",
+      "bytes": 520829,
+      "sha256": "160ea7f9b9a7125ea640b62fb26202b59d0a5c92f91b04608a661a74f00489ca"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/references/README.md",
+      "upstreamPath": "skills/design-systems-slds-apply/references/README.md",
+      "bytes": 5973,
+      "sha256": "ca42a98ef201f8dbb9428797c60b8a31ff4735ab0f2d9438d39fefbd6bf5094a"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/references/blueprints-index.md",
+      "upstreamPath": "skills/design-systems-slds-apply/references/blueprints-index.md",
+      "bytes": 9184,
+      "sha256": "64fb9f42a37190dbca1022bf179edb16b1989538151c566d0a77e014f94dde73"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/references/checklists.md",
+      "upstreamPath": "skills/design-systems-slds-apply/references/checklists.md",
+      "bytes": 3886,
+      "sha256": "e9a2e3ccf396789457e6aaa40940a3bb097aaff3dd6b9d0403c4f5945a78b7e7"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/references/component-selection.md",
+      "upstreamPath": "skills/design-systems-slds-apply/references/component-selection.md",
+      "bytes": 3812,
+      "sha256": "7541c6de8fbcb03d11bba24bad4d4cc6a9a96cbdf3fd16fce6fc92609f31526e"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/references/examples.md",
+      "upstreamPath": "skills/design-systems-slds-apply/references/examples.md",
+      "bytes": 8310,
+      "sha256": "c57073d0cd0b51928997ba7a83117563fe3ac06ccb2aa96054959453820a421a"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/references/icons-decision-guide.md",
+      "upstreamPath": "skills/design-systems-slds-apply/references/icons-decision-guide.md",
+      "bytes": 3863,
+      "sha256": "a8704324c66b6beb07d9defd12023eda8371396b96ed2496289d99d43589f487"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/references/icons-guidance.md",
+      "upstreamPath": "skills/design-systems-slds-apply/references/icons-guidance.md",
+      "bytes": 6308,
+      "sha256": "5fe0cfc296479693f100fedcea4d868f3e3c1e7b0741c1c0efbea5bb8cc98e67"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/references/overviews/borders.md",
+      "upstreamPath": "skills/design-systems-slds-apply/references/overviews/borders.md",
+      "bytes": 11265,
+      "sha256": "c116dbf6ebe96d755a9c4b1edd3011b211684bacc9afe3d9da26ea485514d751"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/references/overviews/color.md",
+      "upstreamPath": "skills/design-systems-slds-apply/references/overviews/color.md",
+      "bytes": 12333,
+      "sha256": "cbe2a3d49f6f24e16e6021bef64e39e9b9cdb0ee7319e2d49bc1669b1fdf653a"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/references/overviews/display-density.md",
+      "upstreamPath": "skills/design-systems-slds-apply/references/overviews/display-density.md",
+      "bytes": 19116,
+      "sha256": "66357cd84dba6932ef8d8eea1f23290e9053b091835df73748f67b4e0ca09854"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/references/overviews/icons.md",
+      "upstreamPath": "skills/design-systems-slds-apply/references/overviews/icons.md",
+      "bytes": 9566,
+      "sha256": "5e258a7c975f287af828a70f85669757f1390bce62f23fb3ced55b4a20fa4581"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/references/overviews/illustrations.md",
+      "upstreamPath": "skills/design-systems-slds-apply/references/overviews/illustrations.md",
+      "bytes": 10570,
+      "sha256": "e747b2fe24cef610d606ff0a1888cfa216406d62ec41424d2ab71f407c5fde3c"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/references/overviews/shadows.md",
+      "upstreamPath": "skills/design-systems-slds-apply/references/overviews/shadows.md",
+      "bytes": 7133,
+      "sha256": "cbc78e0fb3b48a176257aca85dd908405eb321bfd233efc5451a174f8fcc2a34"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/references/overviews/spacing.md",
+      "upstreamPath": "skills/design-systems-slds-apply/references/overviews/spacing.md",
+      "bytes": 10074,
+      "sha256": "316e1edb181bfca851157506b055968169a5cfeca8619a6f9b9e025b64137806"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/references/overviews/typography.md",
+      "upstreamPath": "skills/design-systems-slds-apply/references/overviews/typography.md",
+      "bytes": 15178,
+      "sha256": "e105f3bf72ac42d7bb2a3961640d72652d4a4ce6c48fbd7f07625b2df65977ab"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/references/overviews/utilities.md",
+      "upstreamPath": "skills/design-systems-slds-apply/references/overviews/utilities.md",
+      "bytes": 24494,
+      "sha256": "b7a3876e2d8520559efd90f1ba3eccadacad5d9abf93e8e969b8adc0ccf08e6b"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/references/slds-development-guide.md",
+      "upstreamPath": "skills/design-systems-slds-apply/references/slds-development-guide.md",
+      "bytes": 8974,
+      "sha256": "6ad6a2d107407163105a1f8855060a87ee2fd131ef9c6a92419e979c1ec35bde"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/references/styling-decision-guide.md",
+      "upstreamPath": "skills/design-systems-slds-apply/references/styling-decision-guide.md",
+      "bytes": 9498,
+      "sha256": "243ab3dd3b1c1822be122fd52aeb4f0d8fe74f87d96230940a132753f33d943c"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/references/styling-hooks/borders.md",
+      "upstreamPath": "skills/design-systems-slds-apply/references/styling-hooks/borders.md",
+      "bytes": 9257,
+      "sha256": "b81c852a2a2c0c99f1a0f85126821506821b93698d60b27538703d5a8cdb9226"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/references/styling-hooks/color/expressive-palette-hooks.md",
+      "upstreamPath": "skills/design-systems-slds-apply/references/styling-hooks/color/expressive-palette-hooks.md",
+      "bytes": 6886,
+      "sha256": "bff6aaa0c5cb7f2a9dfd701d75bf6154c81615c33c90cba32de3ecdd08a3854c"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/references/styling-hooks/color/index.md",
+      "upstreamPath": "skills/design-systems-slds-apply/references/styling-hooks/color/index.md",
+      "bytes": 6655,
+      "sha256": "a69ef738ca8695ff0bbf606cb8b0a76b3d0e8fbd8d92765ea95a4b18ba157ca5"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/references/styling-hooks/color/semantic/accent-hooks.md",
+      "upstreamPath": "skills/design-systems-slds-apply/references/styling-hooks/color/semantic/accent-hooks.md",
+      "bytes": 10099,
+      "sha256": "8b5907b42f510a87864349cfcf3922354b90c6c84d2950b3c94348874ca42426"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/references/styling-hooks/color/semantic/feedback-hooks.md",
+      "upstreamPath": "skills/design-systems-slds-apply/references/styling-hooks/color/semantic/feedback-hooks.md",
+      "bytes": 34228,
+      "sha256": "f2310d798f463a0b855ccbe7e199ec04151905d66765615260743bd09f9964e6"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/references/styling-hooks/color/semantic/surface-hooks.md",
+      "upstreamPath": "skills/design-systems-slds-apply/references/styling-hooks/color/semantic/surface-hooks.md",
+      "bytes": 17541,
+      "sha256": "c232c0c068995dd942d08a7dd9b7c817bc6c0ad81f506cc3874c42a49965549e"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/references/styling-hooks/color/system-hooks.md",
+      "upstreamPath": "skills/design-systems-slds-apply/references/styling-hooks/color/system-hooks.md",
+      "bytes": 5928,
+      "sha256": "af974de1ccc7407c35cf79eb9004fc0dcac356fb916ef7c56e28e1d6972514b0"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/references/styling-hooks/index.md",
+      "upstreamPath": "skills/design-systems-slds-apply/references/styling-hooks/index.md",
+      "bytes": 11101,
+      "sha256": "93e4afea8a75999f32e4874bbf5e0fe3ad0e6c5dd464db0faade7ce8b996e56b"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/references/styling-hooks/shadows.md",
+      "upstreamPath": "skills/design-systems-slds-apply/references/styling-hooks/shadows.md",
+      "bytes": 8531,
+      "sha256": "f6097fddc8bb5eea6cef885cd7260494678c824fcd3b06543a16d985d3bff450"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/references/styling-hooks/spacing.md",
+      "upstreamPath": "skills/design-systems-slds-apply/references/styling-hooks/spacing.md",
+      "bytes": 12563,
+      "sha256": "3187a52a26d732b51c2f334026e3aa9330510bb1a631af2a4c678efd7e0bb6f6"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/references/styling-hooks/typography.md",
+      "upstreamPath": "skills/design-systems-slds-apply/references/styling-hooks/typography.md",
+      "bytes": 18198,
+      "sha256": "4ab96b419f6809c5dd021111e5aa3a67191004153d976747abb53f107a3a66a9"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/references/utilities-quick-ref.md",
+      "upstreamPath": "skills/design-systems-slds-apply/references/utilities-quick-ref.md",
+      "bytes": 3770,
+      "sha256": "1a7161168a0b616e4091ab8d8c5542fd2f4315920c713240d74d61c8223e004c"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/references/utilities/alignment.md",
+      "upstreamPath": "skills/design-systems-slds-apply/references/utilities/alignment.md",
+      "bytes": 3826,
+      "sha256": "9af24462adf50163571bf56197f1d4637a1460450e9f9adc732f6be0a844bdd9"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/references/utilities/borders.md",
+      "upstreamPath": "skills/design-systems-slds-apply/references/utilities/borders.md",
+      "bytes": 4111,
+      "sha256": "3cf9b155ab9e9a1a1ff0ac8f8463ad8a5f624bfcf7b1a6846c07519bbdbe88e5"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/references/utilities/box.md",
+      "upstreamPath": "skills/design-systems-slds-apply/references/utilities/box.md",
+      "bytes": 4390,
+      "sha256": "4a5e982302c1d2b09ab3c79253e57436733575cc4b0b20f81d2fccda730055ec"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/references/utilities/color.md",
+      "upstreamPath": "skills/design-systems-slds-apply/references/utilities/color.md",
+      "bytes": 7927,
+      "sha256": "a710d85d1801214c19cf9de12a2850e92481bb72d315e8374c68f7660d0da841"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/references/utilities/dark-mode.md",
+      "upstreamPath": "skills/design-systems-slds-apply/references/utilities/dark-mode.md",
+      "bytes": 3533,
+      "sha256": "480ff3f9e216d4ffe3acffd8cd7b6146fd3e8f390891434a279b5c066295f747"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/references/utilities/description-list.md",
+      "upstreamPath": "skills/design-systems-slds-apply/references/utilities/description-list.md",
+      "bytes": 5674,
+      "sha256": "476075d32b5bb2b56c71378e4f0ac699c11e418962505635600c620a5bf6323e"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/references/utilities/floats.md",
+      "upstreamPath": "skills/design-systems-slds-apply/references/utilities/floats.md",
+      "bytes": 3865,
+      "sha256": "f493c556abdce3a693a6ff05b64e169b03e4777cd4db812c6ca3ea4184f0ac88"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/references/utilities/grid.md",
+      "upstreamPath": "skills/design-systems-slds-apply/references/utilities/grid.md",
+      "bytes": 9975,
+      "sha256": "277198c6ca5333291c7121d40a6b6a929646f2b0f573803c4b34af941f5574cd"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/references/utilities/horizontal-list.md",
+      "upstreamPath": "skills/design-systems-slds-apply/references/utilities/horizontal-list.md",
+      "bytes": 3766,
+      "sha256": "1d6bbabc31fe89c9fa625abf9235328ddb4f5b3207dfc12d58f29e9a4996483b"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/references/utilities/hyphenation.md",
+      "upstreamPath": "skills/design-systems-slds-apply/references/utilities/hyphenation.md",
+      "bytes": 2329,
+      "sha256": "177af2532bd061b5770d86347b7d08a5d2d1af14438576b3931b2131a21c02db"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/references/utilities/index.md",
+      "upstreamPath": "skills/design-systems-slds-apply/references/utilities/index.md",
+      "bytes": 6801,
+      "sha256": "e638772c5b5eab019a76891e6dd74bcb3761854b051a26a2c7018ed750fd4751"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/references/utilities/interactions.md",
+      "upstreamPath": "skills/design-systems-slds-apply/references/utilities/interactions.md",
+      "bytes": 3131,
+      "sha256": "53d90457c5aa2e0b0c6438ec942c9f73a2c6c29b6aec6ece86dcdc3b126d87f8"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/references/utilities/layout.md",
+      "upstreamPath": "skills/design-systems-slds-apply/references/utilities/layout.md",
+      "bytes": 3727,
+      "sha256": "918fe1bb2595103eb54b75fb360f121ce0b87a13c1fd576849e2a3430f4e34f6"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/references/utilities/line-clamp.md",
+      "upstreamPath": "skills/design-systems-slds-apply/references/utilities/line-clamp.md",
+      "bytes": 4417,
+      "sha256": "92f033318573445c7b8767835ca6e1c1766b8607edff8ede0d2bd59b5b5345d3"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/references/utilities/margin.md",
+      "upstreamPath": "skills/design-systems-slds-apply/references/utilities/margin.md",
+      "bytes": 5372,
+      "sha256": "bf13887d46a75d166f8d5942f058e697108b6db0a42df163fbfc040579c5f57c"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/references/utilities/media-object.md",
+      "upstreamPath": "skills/design-systems-slds-apply/references/utilities/media-object.md",
+      "bytes": 5388,
+      "sha256": "e3d52515c9bcda277849ca83bd81d4f625f713d1ab50a3a3a639736b32b00040"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/references/utilities/name-value-list.md",
+      "upstreamPath": "skills/design-systems-slds-apply/references/utilities/name-value-list.md",
+      "bytes": 4937,
+      "sha256": "c58a22c181eca653cca04fdc75191ec5a9f6deeea432e55d7e893829f8b3c6df"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/references/utilities/padding.md",
+      "upstreamPath": "skills/design-systems-slds-apply/references/utilities/padding.md",
+      "bytes": 5448,
+      "sha256": "44588ba5abdb00074bda9a0a0e90c13bfe0bacd8b86fc7dbb41b82b05bf74163"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/references/utilities/position.md",
+      "upstreamPath": "skills/design-systems-slds-apply/references/utilities/position.md",
+      "bytes": 6027,
+      "sha256": "0e261afbaddbc3fc32858f274d3768d8a7f85ed4d9b55f85c1d6a69e826494fb"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/references/utilities/print.md",
+      "upstreamPath": "skills/design-systems-slds-apply/references/utilities/print.md",
+      "bytes": 3056,
+      "sha256": "8f7e2290464cc7137af178b6f15ca68c71b70537bc0014dcb0a53c55162c698a"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/references/utilities/scrollable.md",
+      "upstreamPath": "skills/design-systems-slds-apply/references/utilities/scrollable.md",
+      "bytes": 4151,
+      "sha256": "b55d54e115f47ae0a8e6f52bc39253561859e9147be89b3428d8aecee30d6a97"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/references/utilities/sizing.md",
+      "upstreamPath": "skills/design-systems-slds-apply/references/utilities/sizing.md",
+      "bytes": 5830,
+      "sha256": "f96de19c4d7cb9132f9fc3246bf01d438c70be3913ba7cfc8553e1f8c38c1d19"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/references/utilities/themes.md",
+      "upstreamPath": "skills/design-systems-slds-apply/references/utilities/themes.md",
+      "bytes": 4129,
+      "sha256": "9f674a4f0e52c76e7392f576c4077043981d196b0cddadd961511f2d2cf27239"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/references/utilities/truncate.md",
+      "upstreamPath": "skills/design-systems-slds-apply/references/utilities/truncate.md",
+      "bytes": 3758,
+      "sha256": "4ad130de3714f8b2b783676c25edfccb1268e94e8570e56eac1906d3a9dff955"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/references/utilities/typography.md",
+      "upstreamPath": "skills/design-systems-slds-apply/references/utilities/typography.md",
+      "bytes": 4718,
+      "sha256": "4162611515857e8862c33f762dfa3307565101303ca16d8847a06ab59ca9a773"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/references/utilities/vertical-list.md",
+      "upstreamPath": "skills/design-systems-slds-apply/references/utilities/vertical-list.md",
+      "bytes": 5188,
+      "sha256": "df19d118dbd2f4fb95f40f2aa32cbf3028c62b6e90aa6c1c3f0c15f265d86e8b"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/references/utilities/visibility.md",
+      "upstreamPath": "skills/design-systems-slds-apply/references/utilities/visibility.md",
+      "bytes": 6272,
+      "sha256": "24bdc040818cd78070da6c637c4b061dc3382b7c257e884548c47400ffe4a92d"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/scripts/search-blueprints.cjs",
+      "upstreamPath": "skills/design-systems-slds-apply/scripts/search-blueprints.cjs",
+      "bytes": 3727,
+      "sha256": "a5a2948be81ba8af71dc17e40e53a80ad7153b01e36b769fcb25be28c24ee330"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/scripts/search-hooks.cjs",
+      "upstreamPath": "skills/design-systems-slds-apply/scripts/search-hooks.cjs",
+      "bytes": 4496,
+      "sha256": "9eca1e8f21231f2ffb7fd00f6c52b4e8533483e4b17a933c1b6f0a611de887f9"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/scripts/search-icons.cjs",
+      "upstreamPath": "skills/design-systems-slds-apply/scripts/search-icons.cjs",
+      "bytes": 6202,
+      "sha256": "324ee0abe92262c6379681b1e17cc8095e616e72e6bf21655b41f36112cc8669"
+    },
+    {
+      "path": "skills/design-systems-slds-apply/scripts/search-utilities.cjs",
+      "upstreamPath": "skills/design-systems-slds-apply/scripts/search-utilities.cjs",
+      "bytes": 5397,
+      "sha256": "992cd74e6bc9fa0fd5248f398f4a97d00e4114b095aa02fd0416686e9497aa2a"
+    },
+    {
+      "path": "skills/design-systems-slds-validate/SKILL.md",
+      "upstreamPath": "skills/design-systems-slds-validate/SKILL.md",
+      "bytes": 12591,
+      "sha256": "7a045967d62056586d3b4e55b970b591ad3a01f0e785b6bae26d6adcfdbb1afa"
+    },
+    {
+      "path": "skills/design-systems-slds-validate/references/quality-checks.md",
+      "upstreamPath": "skills/design-systems-slds-validate/references/quality-checks.md",
+      "bytes": 13527,
+      "sha256": "09384e95199d5199e10e8db5dc49ff79eb9834a7ade7de0029554f8bc4fec414"
+    },
+    {
+      "path": "skills/design-systems-slds-validate/references/report-format.md",
+      "upstreamPath": "skills/design-systems-slds-validate/references/report-format.md",
+      "bytes": 8155,
+      "sha256": "19248dcfd832fadd0f408ea95a7cd0a2c9c542324e47353e532b9e0286e0d11e"
+    },
+    {
+      "path": "skills/design-systems-slds-validate/scripts/analyze-quality.cjs",
+      "upstreamPath": "skills/design-systems-slds-validate/scripts/analyze-quality.cjs",
+      "bytes": 16011,
+      "sha256": "2a2f69b3d6ebffd073c4e3dbd427bc1b5d8d803b83718f69b9bc35a5f8fe8c17"
+    },
+    {
+      "path": "skills/design-systems-slds2-migrate/SKILL.md",
+      "upstreamPath": "skills/design-systems-slds2-migrate/SKILL.md",
+      "bytes": 12815,
+      "sha256": "671dd03f4026880af2575a8b5ad8892eb7ec7e76a59e6846da1ea690d2265459"
+    },
+    {
+      "path": "skills/design-systems-slds2-migrate/references/color-hooks-decision-guide.md",
+      "upstreamPath": "skills/design-systems-slds2-migrate/references/color-hooks-decision-guide.md",
+      "bytes": 17912,
+      "sha256": "22870873a1524961d8c162b6754260b08e97027f91b56a2c4653af2ef97e4b2a"
+    },
+    {
+      "path": "skills/design-systems-slds2-migrate/references/common-patterns.md",
+      "upstreamPath": "skills/design-systems-slds2-migrate/references/common-patterns.md",
+      "bytes": 2925,
+      "sha256": "958868d09b98a9ed7c8109f969ce610380b16ec850f5d66d3f65dfa678dc1043"
+    },
+    {
+      "path": "skills/design-systems-slds2-migrate/references/examples.md",
+      "upstreamPath": "skills/design-systems-slds2-migrate/references/examples.md",
+      "bytes": 11063,
+      "sha256": "69baf7a7938cbcbb8c6e514a724b945e9b6024213f220d473094a0c0fe182df8"
+    },
+    {
+      "path": "skills/design-systems-slds2-migrate/references/migration-checklist.md",
+      "upstreamPath": "skills/design-systems-slds2-migrate/references/migration-checklist.md",
+      "bytes": 2689,
+      "sha256": "7af579b153b47edb5a60c6b8fc4b6a7da6c6b3adeac1c542ba9e95c147e5252c"
+    },
+    {
+      "path": "skills/design-systems-slds2-migrate/references/non-color-hooks-decision-guide.md",
+      "upstreamPath": "skills/design-systems-slds2-migrate/references/non-color-hooks-decision-guide.md",
+      "bytes": 13586,
+      "sha256": "f054d0c317961c18d5a9356d08b1926e4646fdf38fc0f97061f227264fb472e7"
+    },
+    {
+      "path": "skills/design-systems-slds2-migrate/references/rule-lwc-token-to-slds-hook.md",
+      "upstreamPath": "skills/design-systems-slds2-migrate/references/rule-lwc-token-to-slds-hook.md",
+      "bytes": 5071,
+      "sha256": "da04daa81dd4387e987f106e79ecbb72e91c4f3eabf4489983bc93e3fbb21990"
+    },
+    {
+      "path": "skills/design-systems-slds2-migrate/references/rule-no-deprecated-tokens-slds1.md",
+      "upstreamPath": "skills/design-systems-slds2-migrate/references/rule-no-deprecated-tokens-slds1.md",
+      "bytes": 7643,
+      "sha256": "be297c41f041cac310590465312cd528b7faa2ea8794ca403149e951230e3f54"
+    },
+    {
+      "path": "skills/design-systems-slds2-migrate/references/rule-no-hardcoded-values.md",
+      "upstreamPath": "skills/design-systems-slds2-migrate/references/rule-no-hardcoded-values.md",
+      "bytes": 6974,
+      "sha256": "29f1c6b9507d80b80d014b260dfc0c2260286e13ff366c6251b17230926c0480"
+    },
+    {
+      "path": "skills/design-systems-slds2-migrate/references/rule-no-slds-class-overrides.md",
+      "upstreamPath": "skills/design-systems-slds2-migrate/references/rule-no-slds-class-overrides.md",
+      "bytes": 3616,
+      "sha256": "1c1233086d7928e322c69f3b932cf75b45240ae7a7bd83b52c55c110e9898eb8"
+    },
+    {
+      "path": "skills/experience-accessibility-validate/SKILL.md",
+      "upstreamPath": "skills/experience-accessibility-validate/SKILL.md",
+      "bytes": 6387,
+      "sha256": "ca01ccaf511990415146bd85308aa4ab3556f157a2c0d08d7fbc42fbbd15b44c"
+    },
+    {
+      "path": "skills/experience-accessibility-validate/references/reviewers/sc-1-1-1-non-text-content.md",
+      "upstreamPath": "skills/experience-accessibility-validate/references/reviewers/sc-1-1-1-non-text-content.md",
+      "bytes": 7693,
+      "sha256": "01e8d552771dae7a7ec74051aba4d965fdfcdae9e6fa126276c4cce9282c00e0"
+    },
+    {
+      "path": "skills/experience-accessibility-validate/references/reviewers/sc-1-3-1-i-lists.md",
+      "upstreamPath": "skills/experience-accessibility-validate/references/reviewers/sc-1-3-1-i-lists.md",
+      "bytes": 7164,
+      "sha256": "ef5d50d2a8273f6d29ba38b980a52f746c4d8bee56216ea84f038ce6cc3c64fa"
+    },
+    {
+      "path": "skills/experience-accessibility-validate/references/reviewers/sc-1-3-1-ii-tables.md",
+      "upstreamPath": "skills/experience-accessibility-validate/references/reviewers/sc-1-3-1-ii-tables.md",
+      "bytes": 12139,
+      "sha256": "055bf71ad25bfff1bf1fa12bec978a161457c33ac7c2b1b8dd500ca0a5410243"
+    },
+    {
+      "path": "skills/experience-accessibility-validate/references/reviewers/sc-1-3-1-iii-form-labels.md",
+      "upstreamPath": "skills/experience-accessibility-validate/references/reviewers/sc-1-3-1-iii-form-labels.md",
+      "bytes": 6301,
+      "sha256": "4f4ea66808581ac71c132df7cd395cf500297b070868986923c9027ee6fec4f4"
+    },
+    {
+      "path": "skills/experience-accessibility-validate/references/reviewers/sc-1-3-1-iv-regions.md",
+      "upstreamPath": "skills/experience-accessibility-validate/references/reviewers/sc-1-3-1-iv-regions.md",
+      "bytes": 5196,
+      "sha256": "2e260d2ee28ff04167fd52692532208536e26555f0a71ca64c6cd6bb030b1e81"
+    },
+    {
+      "path": "skills/experience-accessibility-validate/references/reviewers/sc-1-3-1-v-groups.md",
+      "upstreamPath": "skills/experience-accessibility-validate/references/reviewers/sc-1-3-1-v-groups.md",
+      "bytes": 9636,
+      "sha256": "d72167214ec6dfc4a804f2b114bf1a0cf2c4ba8226aa66d983d828b4c702d95d"
+    },
+    {
+      "path": "skills/experience-accessibility-validate/references/reviewers/sc-1-3-5-identify-input.md",
+      "upstreamPath": "skills/experience-accessibility-validate/references/reviewers/sc-1-3-5-identify-input.md",
+      "bytes": 8907,
+      "sha256": "bb77591ba74f3bb59efcef55af52f8cc97342bb519f57a63725a7b2a096f4473"
+    },
+    {
+      "path": "skills/experience-accessibility-validate/references/reviewers/sc-1-4-3-contrast.md",
+      "upstreamPath": "skills/experience-accessibility-validate/references/reviewers/sc-1-4-3-contrast.md",
+      "bytes": 12263,
+      "sha256": "31fe4b1aecb2fe206a895eb2f0a8a94986585676aa07adf539e8b6164fc13d44"
+    },
+    {
+      "path": "skills/experience-accessibility-validate/references/reviewers/sc-2-1-1-keyboard.md",
+      "upstreamPath": "skills/experience-accessibility-validate/references/reviewers/sc-2-1-1-keyboard.md",
+      "bytes": 7873,
+      "sha256": "68aef1c370f9752d7d556699ed5a69f4cdb61be267899071c88d6a454e01a4be"
+    },
+    {
+      "path": "skills/experience-accessibility-validate/references/reviewers/sc-2-4-4-link-purpose.md",
+      "upstreamPath": "skills/experience-accessibility-validate/references/reviewers/sc-2-4-4-link-purpose.md",
+      "bytes": 5894,
+      "sha256": "be618d12d047658892bdd1a0eeef0ce4a5b2dcbd5a95275d596ca449bb8a5dd1"
+    },
+    {
+      "path": "skills/experience-accessibility-validate/references/reviewers/sc-2-4-6-headings-labels.md",
+      "upstreamPath": "skills/experience-accessibility-validate/references/reviewers/sc-2-4-6-headings-labels.md",
+      "bytes": 8149,
+      "sha256": "4fd37da8d19377778dd001f75f310f4f9bfda966d50afe53cb56a846cdce2970"
+    },
+    {
+      "path": "skills/experience-accessibility-validate/references/reviewers/sc-2-5-1-pointer-gestures.md",
+      "upstreamPath": "skills/experience-accessibility-validate/references/reviewers/sc-2-5-1-pointer-gestures.md",
+      "bytes": 6593,
+      "sha256": "c50ec38ea1557205aab5ad91f90c2759a3103cb0f82b6e51862d10069fddc6dc"
+    },
+    {
+      "path": "skills/experience-accessibility-validate/references/reviewers/sc-2-5-2-pointer-cancellation.md",
+      "upstreamPath": "skills/experience-accessibility-validate/references/reviewers/sc-2-5-2-pointer-cancellation.md",
+      "bytes": 7642,
+      "sha256": "6de186883d80a8e625b04d514b87ecbe8ebeaceadad8a4af680d7725451f4996"
+    },
+    {
+      "path": "skills/experience-accessibility-validate/references/reviewers/sc-2-5-3-label-in-name.md",
+      "upstreamPath": "skills/experience-accessibility-validate/references/reviewers/sc-2-5-3-label-in-name.md",
+      "bytes": 10120,
+      "sha256": "b88c5ea7e52ff80690464366e8228a12e1963d8eb4ba6ac858c970ecf5858fbe"
+    },
+    {
+      "path": "skills/experience-accessibility-validate/references/reviewers/sc-2-5-7-dragging-movement.md",
+      "upstreamPath": "skills/experience-accessibility-validate/references/reviewers/sc-2-5-7-dragging-movement.md",
+      "bytes": 7155,
+      "sha256": "3e7ceee15e705cf16020ad522001aac2dc1dd6f42d4b482a22e271b1c6c6380d"
+    },
+    {
+      "path": "skills/experience-accessibility-validate/references/reviewers/sc-3-2-1-on-focus.md",
+      "upstreamPath": "skills/experience-accessibility-validate/references/reviewers/sc-3-2-1-on-focus.md",
+      "bytes": 7228,
+      "sha256": "006768e4ef1529dd287ab38444038f9e8fa0954d85b431cc5dfe036727928c1f"
+    },
+    {
+      "path": "skills/experience-accessibility-validate/references/reviewers/sc-3-2-2-on-input.md",
+      "upstreamPath": "skills/experience-accessibility-validate/references/reviewers/sc-3-2-2-on-input.md",
+      "bytes": 8250,
+      "sha256": "70962728723b7ad66a68a7b0d6c7b094a5fea144f7a087dca42418a7f0480fca"
+    },
+    {
+      "path": "skills/experience-accessibility-validate/references/reviewers/sc-3-3-1-error-identification.md",
+      "upstreamPath": "skills/experience-accessibility-validate/references/reviewers/sc-3-3-1-error-identification.md",
+      "bytes": 12064,
+      "sha256": "04ebee167ef9ac97496d3c8ef4d7cb92658a39c08eb8d431802f1e28d02e95d4"
+    },
+    {
+      "path": "skills/experience-accessibility-validate/references/reviewers/sc-3-3-2-labels-instructions.md",
+      "upstreamPath": "skills/experience-accessibility-validate/references/reviewers/sc-3-3-2-labels-instructions.md",
+      "bytes": 6465,
+      "sha256": "2f10b89d7f8b56e6462b7606cfd59e39970cd871666c580e50d709f25b0f46bd"
+    },
+    {
+      "path": "skills/experience-accessibility-validate/references/reviewers/sc-3-3-3-error-suggestion.md",
+      "upstreamPath": "skills/experience-accessibility-validate/references/reviewers/sc-3-3-3-error-suggestion.md",
+      "bytes": 8575,
+      "sha256": "a8504b72138555454e7328a935cc0fb157680aa1ad8b461673d54b6322224d6d"
+    },
+    {
+      "path": "skills/experience-accessibility-validate/references/reviewers/sc-4-1-2-i-name.md",
+      "upstreamPath": "skills/experience-accessibility-validate/references/reviewers/sc-4-1-2-i-name.md",
+      "bytes": 15746,
+      "sha256": "1fb21619bc47044802b6d69ace645390b8c84409f8f89444cc2cea90abe75608"
+    },
+    {
+      "path": "skills/experience-accessibility-validate/references/reviewers/sc-4-1-2-ii-role.md",
+      "upstreamPath": "skills/experience-accessibility-validate/references/reviewers/sc-4-1-2-ii-role.md",
+      "bytes": 8906,
+      "sha256": "1f4bbc983e2424f2ddac0026fd33289233a820fec3a0723be982de3145a87c89"
+    },
+    {
+      "path": "skills/experience-accessibility-validate/references/reviewers/sc-4-1-2-iii-value.md",
+      "upstreamPath": "skills/experience-accessibility-validate/references/reviewers/sc-4-1-2-iii-value.md",
+      "bytes": 9655,
+      "sha256": "253816be302a729a95fb8f1f1bbd47f3f69f500c77d206bf2b43e3716bc1a377"
+    },
+    {
+      "path": "skills/experience-accessibility-validate/references/vision/sc-1-1-1-non-text-content.md",
+      "upstreamPath": "skills/experience-accessibility-validate/references/vision/sc-1-1-1-non-text-content.md",
+      "bytes": 4343,
+      "sha256": "90df4ba79a6ab288678f5809686123fba56b6891bfd15bbcee3a65c27958f709"
+    },
+    {
+      "path": "skills/experience-accessibility-validate/references/vision/sc-1-4-1-use-of-color.md",
+      "upstreamPath": "skills/experience-accessibility-validate/references/vision/sc-1-4-1-use-of-color.md",
+      "bytes": 5362,
+      "sha256": "1ff9ebe5c491ceeadf8c48ca2df1ee06584ba0fafe5a6045111dbcaef35a548b"
+    },
+    {
+      "path": "skills/experience-accessibility-validate/references/vision/sc-1-4-10-resize-reflow.md",
+      "upstreamPath": "skills/experience-accessibility-validate/references/vision/sc-1-4-10-resize-reflow.md",
+      "bytes": 1022,
+      "sha256": "d558306ecbd2f01532a4c4b93c40660521608b2e6813c6b20c184b2a39885c9d"
+    },
+    {
+      "path": "skills/experience-accessibility-validate/references/vision/sc-1-4-11-non-text-contrast.md",
+      "upstreamPath": "skills/experience-accessibility-validate/references/vision/sc-1-4-11-non-text-contrast.md",
+      "bytes": 2851,
+      "sha256": "9472024bef0c1e520c5017e4f9a3634457237abca73e15ad38bfff89e6713b85"
+    },
+    {
+      "path": "skills/experience-accessibility-validate/references/vision/sc-1-4-3-contrast.md",
+      "upstreamPath": "skills/experience-accessibility-validate/references/vision/sc-1-4-3-contrast.md",
+      "bytes": 1522,
+      "sha256": "edb6d1aeb96ef0dab42b3ef21d795a9d25c1961bb7ad95772042f260b212bdde"
+    },
+    {
+      "path": "skills/experience-accessibility-validate/scripts/contrast-ratio.py",
+      "upstreamPath": "skills/experience-accessibility-validate/scripts/contrast-ratio.py",
+      "bytes": 5111,
+      "sha256": "7e9d5a455f9ee15e1786c96a1121fb76a8e7716be8805cdc2a92ee57e6007bf3"
+    }
+  ]
+}

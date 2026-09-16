@@ -6,4 +6,8 @@
 - `legacy/`：完成迁移后保留的旧版文档，用于追溯原始决策。
 - `references/`：正式文档引用的固定外部资料快照，用于离线校验和结论追溯。
 
+## 外部参考资料
+
+- [Salesforce SLDS Skill 官方快照](references/salesforce-slds-skills/README.md)：固定 `forcedotcom/sf-skills@91488fd1660b95a31911214187d76229f2610135`，包含 Apply、Validate、Migrate 和关联的 Accessibility Validate 共 4 个完整 Skill，保留上游许可证与逐文件 SHA-256 清单，用于研究和对照。
+
 面向开发者的当前文档统一从 [`docs/README.md`](../docs/README.md) 进入；Token 精确清单以自动生成的 [`docs/reference/Token目录.md`](../docs/reference/Token目录.md) 为准。

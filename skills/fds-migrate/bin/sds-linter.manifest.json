@@ -1,0 +1,236 @@
+{
+  "schema": "sds-bundle-manifest/v1",
+  "package": "@sharecrm/sds-linter",
+  "version": "0.1.1",
+  "sourceRepository": "https://git.firstshare.cn/fx/sds-linter.git",
+  "sourceCommit": "56290a1db30dae1d36ca28eacf88d9529faa7762",
+  "sourceDirty": true,
+  "builder": {
+    "name": "esbuild",
+    "version": "0.28.2",
+    "target": "node16",
+    "format": "esm"
+  },
+  "compression": {
+    "format": "brotli-base64",
+    "quality": 11,
+    "payloadBytes": 2084474,
+    "payloadSha256": "66c277aafe3efc32ca2929a8db4deab96d594bd214e32ee64caecbc711fe557c",
+    "compressedBytes": 330469
+  },
+  "artifact": {
+    "file": "sds-linter.mjs",
+    "bytes": 441031,
+    "sha256": "a4c78f1a6a6357900c3436420957957fdc74e2c4d3f65d1e2ba461222433050a"
+  },
+  "metadata": {
+    "schema": "sds-metadata-manifest/v1",
+    "sourceRepository": "https://git.firstshare.cn/fx/fdst.git",
+    "sourceCommit": "e0db27af4986d38eb65971f77566d9d55b147ab9",
+    "files": [
+      {
+        "path": "references/fds-token-catalog.jsonl",
+        "sourcePath": "skills/fds-migrate/references/fds-token-catalog.jsonl",
+        "sha256": "e7dcb045470bc08ac1face6b902a2ecff6117f67766567ac807e2b0b6e9d1f20"
+      },
+      {
+        "path": "references/legacy-color-index.json",
+        "sourcePath": "skills/fds-migrate/references/legacy-color-index.json",
+        "sha256": "8de32534f6bb415b52e189dd77cf4b231eb582105f7a7f671940c25c5013a0ec"
+      },
+      {
+        "path": "references/migration-policy.json",
+        "sourcePath": "skills/fds-migrate/references/migration-policy.json",
+        "sha256": "a206752b4f1e02a76f9482771e1ed78878485b573f0e5d6bf685ed834adeee8f"
+      }
+    ]
+  },
+  "externalImports": [
+    "fs",
+    "node:crypto",
+    "node:fs/promises",
+    "node:path",
+    "node:url",
+    "node:util",
+    "path",
+    "url",
+    "node:zlib"
+  ],
+  "dependencies": [
+    {
+      "name": "@babel/helper-string-parser",
+      "version": "7.29.7",
+      "license": "MIT",
+      "notices": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "@babel/helper-validator-identifier",
+      "version": "7.29.7",
+      "license": "MIT",
+      "notices": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "@babel/parser",
+      "version": "7.28.4",
+      "license": "MIT",
+      "notices": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "@babel/types",
+      "version": "7.29.8",
+      "license": "MIT",
+      "notices": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "@vue/compiler-core",
+      "version": "3.5.21",
+      "license": "MIT",
+      "notices": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "@vue/compiler-dom",
+      "version": "3.5.21",
+      "license": "MIT",
+      "notices": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "@vue/compiler-sfc",
+      "version": "3.5.21",
+      "license": "MIT",
+      "notices": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "@vue/shared",
+      "version": "3.5.21",
+      "license": "MIT",
+      "notices": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "culori",
+      "version": "4.0.2",
+      "license": "MIT",
+      "notices": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "entities",
+      "version": "4.5.0",
+      "license": "BSD-2-Clause",
+      "notices": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "estree-walker",
+      "version": "2.0.2",
+      "license": "MIT",
+      "notices": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "gonzales-pe",
+      "version": "4.3.0",
+      "license": "MIT",
+      "notices": [
+        "MIT-LICENSE.txt"
+      ]
+    },
+    {
+      "name": "nanoid",
+      "version": "3.3.18",
+      "license": "MIT",
+      "notices": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "picocolors",
+      "version": "1.1.1",
+      "license": "ISC",
+      "notices": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "postcss",
+      "version": "8.5.28",
+      "license": "MIT",
+      "notices": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "postcss-less",
+      "version": "6.0.0",
+      "license": "MIT",
+      "notices": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "postcss-sass",
+      "version": "0.5.0",
+      "license": "MIT",
+      "notices": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "postcss-scss",
+      "version": "4.0.9",
+      "license": "MIT",
+      "notices": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "postcss-value-parser",
+      "version": "4.2.0",
+      "license": "MIT",
+      "notices": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "source-map-js",
+      "version": "1.2.1",
+      "license": "BSD-3-Clause",
+      "notices": [
+        "LICENSE"
+      ]
+    }
+  ],
+  "sourceInputs": {
+    "bin/sds-linter.mjs": "ccf25f708d34319cf9d9582eed11b5c4dbaa6249a2e66b4b8b2411fa71bb354f",
+    "package-lock.json": "d6daade0ee9726624c9d890381c89b51531a769c9707c29c9a0cc8124c93a5f8",
+    "package.json": "1e41afe86b09e19f9ec0b83b8d5abadfb120752f4e118da8d2cf2d759dec1903",
+    "provenance/metadata-manifest.json": "875b12d8aa2dc7871ca1886f230c5d83b8c45490f785fa4b75e057097ad19ecd",
+    "scripts/build-bundle.mjs": "54128f83006b767c1c77bf30d83494a3f3f71004f433fc22a9be17fe02a152d5",
+    "scripts/lib/composite-adapter.mjs": "e948cd280cf5351cbbd29c8b630474d283196ed50eba5b16eb67616b5a834a36",
+    "scripts/lib/markup-adapter.mjs": "bcad2fa265caffde1133fad92bec7a8c4eb8c34e27de58456df7abbe80f9a6fb",
+    "scripts/lib/matcher.mjs": "c913c20398d938f41f50461e59eaa170d01d9c9da6b43dea4e3af1328bf0c26b",
+    "scripts/lib/report.mjs": "10ba120e58cfe799c0f8aa5d516d513c1cfed4514a950f9b210649e441c57e57",
+    "scripts/lib/resources.mjs": "b0873ccc2fffefc93dcf0d48e7334468a4d2dd59719621bcf5e188c7b1bdec7d",
+    "scripts/lib/script-adapter.mjs": "b0a52208a8d920c8b8fa88a5e9c20b7628bc370745bdca899224f0aaed0da31c",
+    "scripts/lib/stylesheet-adapter.mjs": "566afb2b65330a46e0b9cbe4e68f1bbb9251198dec87e1df2dcf03a4deb91335",
+    "scripts/migrate_styles.mjs": "a315add63408d1afa69fde390825193d42926602985bbec054706faa3cd7d07b"
+  }
+}

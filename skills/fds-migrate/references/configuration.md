@@ -7,7 +7,7 @@
 - 扫描入口：`src`
 - 配置文件：`.fdst/migrate.json`（可选）
 - 报告目录：`.fdst/reports/migrate/<mode>/`
-- Token Catalog：Skill 内置完整快照
+- Token Catalog：已安装的 `@sharecrm/sds-linter` 包内完整快照；首次在 Skill 目录执行 SKILL.md 中的 npm ci 命令
 
 建议提交 `.fdst/migrate.json`，并创建 `.fdst/.gitignore` 忽略 `reports/`。报告需要作为审计记录提交时，使用 `--report-dir` 指向项目的正式文档目录。
 
@@ -61,14 +61,14 @@
 ```text
 .fdst/reports/migrate/scan/
 ├─ fds-token-migration-index.json
-├─ fds-token-migration-index.html
+├─ fds-token-migration-index.md
 └─ components/
    ├─ button/
    │  ├─ fds-token-migration-report.json
-   │  └─ fds-token-migration-report.html
+   │  └─ fds-token-migration-report.md
    └─ table/
       ├─ fds-token-migration-report.json
-      └─ fds-token-migration-report.html
+      └─ fds-token-migration-report.md
 ```
 
 不同入口不能重复或互相包含，避免同一源码在一次批量 `apply` 中被重复处理。批量 `apply` 仍保持全局保护：任一组件存在解析错误时，整批不写入。

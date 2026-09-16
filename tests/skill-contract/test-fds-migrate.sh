@@ -7,8 +7,8 @@ SKILL_DIR="$ROOT_DIR/skills/fds-migrate"
 for file in \
     "$SKILL_DIR/SKILL.md" \
     "$SKILL_DIR/agents/openai.yaml" \
-    "$SKILL_DIR/package.json" \
-    "$SKILL_DIR/package-lock.json" \
+    "$SKILL_DIR/bin/sds-linter.mjs" \
+    "$SKILL_DIR/bin/sds-linter.manifest.json" \
     "$SKILL_DIR/scripts/migrate_styles.mjs" \
     "$SKILL_DIR/references/fds-token-catalog.jsonl" \
     "$SKILL_DIR/references/legacy-color-index.json" \
@@ -21,8 +21,8 @@ do
     [[ -f "$file" ]] || { echo "Missing required Skill file: $file" >&2; exit 1; }
 done
 
-if ! command -v node >/dev/null 2>&1 || ! command -v npm >/dev/null 2>&1; then
-    echo "Node.js 16+ and npm are required" >&2
+if ! command -v node >/dev/null 2>&1; then
+    echo "Node.js 16+ is required" >&2
     exit 1
 fi
 
@@ -33,7 +33,7 @@ const fs = require("node:fs");
 const path = require("node:path");
 const root = process.argv[2];
 const skill = fs.readFileSync(path.join(root, "SKILL.md"), "utf8");
-const frontmatter = skill.match(/^---\n([\s\S]*?)\n---\n/);
+const frontmatter = skill.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n/);
 if (!frontmatter) throw new Error("SKILL.md 缺少 YAML frontmatter");
 if (!frontmatter[0].includes("name: fds-migrate")) throw new Error("Skill name 不正确");
 if (/TODO|EXAMPLE/.test(skill)) throw new Error("SKILL.md 包含占位内容");
@@ -41,7 +41,7 @@ for (const term of ["scan", "apply", "verify", "auto-replace", "ambiguous", "sim
   if (!skill.includes(term)) throw new Error(`SKILL.md 缺少关键契约：${term}`);
 }
 const configuration = fs.readFileSync(path.join(root, "references", "configuration.md"), "utf8");
-for (const term of ["fds-migrate-config/v1", "src", "reportRoot", "include", "exclude", "contexts", "fds-token-migration-index.json", "fds-token-migration-index.html"]) {
+for (const term of ["fds-migrate-config/v1", "src", "reportRoot", "include", "exclude", "contexts", "fds-token-migration-index.json", "fds-token-migration-index.md"]) {
   if (!configuration.includes(term)) throw new Error(`项目配置文档缺少关键契约：${term}`);
 }
 const policy = JSON.parse(fs.readFileSync(path.join(root, "references", "migration-policy.json"), "utf8"));
@@ -83,6 +83,5 @@ for (const [legacyFamily, scale] of Object.entries(legacyColorIndex.scales)) {
 if (recordCount !== 144) throw new Error(`旧色板记录数应为 144，实际 ${recordCount}`);
 JS
 
-npm --prefix "$SKILL_DIR" ci --ignore-scripts --no-audit --no-fund
-npm --prefix "$SKILL_DIR" test
+node "$ROOT_DIR/tests/skill-contract/test-fds-migrate-bundle.mjs"
 echo 'fds-migrate Skill contract passed'
