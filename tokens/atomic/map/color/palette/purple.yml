@@ -9,26 +9,26 @@ global:
   source: manual
 props:
   color-purple-0:
-    value: '#F5F4FF'
+    value: '#F8F0FF'
   color-purple-1:
-    value: '#E4E1FE'
+    value: '#F7F0FF'
   color-purple-2:
-    value: '#D1CAFA'
+    value: '#F5EDFF'
   color-purple-3:
-    value: '#BFB4F9'
+    value: '#DDC4FF'
   color-purple-4:
-    value: '#AF9EF7'
+    value: '#BC97F7'
   color-purple-5:
-    value: '#9F88F6'
+    value: '#976AEB'
   color-purple-6:
-    value: '#9071F1'
-  color-purple-7:
-    value: '#8159E9'
-  color-purple-8:
     value: '#7341DE'
+  color-purple-7:
+    value: '#542CB8'
+  color-purple-8:
+    value: '#391C91'
   color-purple-9:
-    value: '#6134BE'
+    value: '#230F6B'
   color-purple-10:
-    value: '#3E1983'
+    value: '#140945'
   color-purple-11:
     value: '#250D53'

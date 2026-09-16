@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import importlib.util
 import hashlib
+import json
 import sys
 import tempfile
 import unittest
@@ -43,8 +44,15 @@ def source(
 class BuildTest(unittest.TestCase):
     def test_build_writes_pretty_and_minified_css(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
-            output = Path(directory) / "fds-global-tokens.css"
-            minified_output = Path(directory) / "fds-global-tokens.min.css"
+            release = Path(directory) / "release"
+            stale = release / "old" / "stale.css"
+            stale.parent.mkdir(parents=True)
+            stale.write_text("old build", encoding="utf-8")
+            (release / "fds-token-catalog.json").write_text("{}", encoding="utf-8")
+            sibling = Path(directory) / "keep.txt"
+            sibling.write_text("outside release", encoding="utf-8")
+            output = release / "fds-global-tokens.css"
+            minified_output = release / "fds-global-tokens.min.css"
             with (
                 mock.patch.object(BUILD, "OUTPUT", output),
                 mock.patch.object(BUILD, "MINIFIED_OUTPUT", minified_output),
@@ -54,13 +62,16 @@ class BuildTest(unittest.TestCase):
 
             self.assertTrue(output.is_file())
             self.assertTrue(minified_output.is_file())
-            self.assertEqual(5, len(list(Path(directory).iterdir())))
+            self.assertFalse(stale.parent.exists())
+            self.assertFalse((release / "fds-token-catalog.json").exists())
+            self.assertEqual("outside release", sibling.read_text(encoding="utf-8"))
+            self.assertEqual(5, len(list(release.iterdir())))
             for path in (output, minified_output):
                 content = path.read_bytes()
                 content_hash = hashlib.sha256(content).hexdigest()[:12]
                 hashed_path = path.with_name(f"{path.stem}.{content_hash}{path.suffix}")
                 self.assertEqual(content, hashed_path.read_bytes())
-            tpl_config = (Path(directory) / "tpl_config").read_bytes()
+            tpl_config = (release / "tpl_config").read_bytes()
             self.assertEqual(f"fdstCssEntry:{hashed_path.name}\n".encode("utf-8"), tpl_config)
             pretty_css = output.read_text(encoding="utf-8")
             minified_css = minified_output.read_text(encoding="utf-8")
@@ -108,13 +119,18 @@ class BuildTest(unittest.TestCase):
                 (Path(directory) / "tpl_config").read_text(encoding="utf-8"),
             )
             for name, content in original.items():
-                if name not in (minified_output.name, "tpl_config"):
+                if name.startswith("fds-global-tokens.min.") and name != minified_output.name:
+                    self.assertFalse((Path(directory) / name).exists())
+                elif name not in (minified_output.name, "tpl_config"):
                     self.assertEqual(content, (Path(directory) / name).read_bytes())
+            self.assertEqual(5, len(list(Path(directory).iterdir())))
 
     def test_check_mode_does_not_write_css(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             output = Path(directory) / "fds-global-tokens.css"
             minified_output = Path(directory) / "fds-global-tokens.min.css"
+            existing = Path(directory) / "existing.css"
+            existing.write_bytes(b"previous build")
             with (
                 mock.patch.object(BUILD, "OUTPUT", output),
                 mock.patch.object(BUILD, "MINIFIED_OUTPUT", minified_output),
@@ -124,7 +140,20 @@ class BuildTest(unittest.TestCase):
 
             self.assertFalse(output.exists())
             self.assertFalse(minified_output.exists())
-            self.assertEqual([], list(Path(directory).iterdir()))
+            self.assertEqual([existing], list(Path(directory).iterdir()))
+            self.assertEqual(b"previous build", existing.read_bytes())
+
+    def test_invalid_sources_preserve_previous_release(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            output = Path(directory) / "fds-global-tokens.css"
+            output.write_bytes(b"previous build")
+            with (
+                mock.patch.object(BUILD, "OUTPUT", output),
+                mock.patch.object(BUILD, "validate_sources", return_value=({}, ["invalid token"])),
+                mock.patch.object(sys, "argv", ["build.py"]),
+            ):
+                self.assertEqual(1, BUILD.main())
+            self.assertEqual(b"previous build", output.read_bytes())
 
     def test_current_sources_are_valid(self) -> None:
         namespace, sources = BUILD.collect_sources()
@@ -164,7 +193,16 @@ class BuildTest(unittest.TestCase):
                 if token.layer == "atomic" and token.tier == "seed" and token.category == "color"
             },
         )
-        for family, seed in seeds.items():
+        legacy = json.loads(
+            (ROOT / "skills/fds-migrate/references/legacy-color-index.json").read_text(encoding="utf-8")
+        )
+        extensions = {
+            "brand": "#3A1600", "amber": "#3A1600", "yellow": "#2F1E00",
+            "yellow-green": "#152800", "green": "#002A13", "teal": "#002826",
+            "blue": "#002340", "indigo": "#001C52", "purple": "#250D53",
+            "magenta": "#460010", "red": "#430900",
+        }
+        for old_family, family in legacy["familyMappings"].items():
             scale = [tokens[f"color-{family}-{step}"] for step in range(12)]
             self.assertEqual(12, len(scale))
             self.assertTrue(
@@ -173,7 +211,15 @@ class BuildTest(unittest.TestCase):
                     for token in scale
                 )
             )
-            self.assertEqual(seed, tokens[f"color-{family}-8"].value)
+            self.assertEqual(
+                legacy["palettes"][old_family] + [extensions[family]],
+                [token.value for token in scale],
+            )
+            hex_value = tokens[f"color-{family}-8"].value
+            self.assertEqual(
+                ", ".join(str(int(hex_value[i:i + 2], 16)) for i in (1, 3, 5)),
+                tokens[f"color-{family}-8-rgb"].value,
+            )
 
         fixed_families = tuple(family for family in seeds if family != "brand")
         self.assertFalse(any(token_id.startswith("color-brand-dark-") for token_id in tokens))
@@ -209,24 +255,24 @@ class BuildTest(unittest.TestCase):
         self.assertEqual(
             [
                 "#FFFFFF",
-                "#F9F9F9",
-                "#F1F0F0",
-                "#E5E5E4",
-                "#D7D6D6",
-                "#C9C8C7",
-                "#B8B7B6",
-                "#A8A6A5",
-                "#989695",
-                "#888685",
-                "#797675",
-                "#6A6765",
-                "#5B5856",
-                "#4D4A48",
-                "#3F3C3A",
-                "#322E2C",
-                "#25211F",
-                "#1B1715",
-                "#110D0B",
+                "#FAFAFA",
+                "#F2F3F5",
+                "#EAEBEE",
+                "#DEE1E8",
+                "#CED1D9",
+                "#C1C5CE",
+                "#ADB1BA",
+                "#A3A7B0",
+                "#999DA6",
+                "#91959E",
+                "#80858F",
+                "#737881",
+                "#606570",
+                "#545861",
+                "#444852",
+                "#343841",
+                "#272B34",
+                "#181C25",
                 "#080504",
             ],
             [gray_tokens[f"color-gray-{step}"].value for step in range(1, 21)],

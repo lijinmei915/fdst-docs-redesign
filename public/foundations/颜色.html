@@ -175,7 +175,7 @@
 </tr>
 </tbody>
 </table>
-<p>当前有彩色系为 1 个 Brand，以及 Amber、Yellow、Yellow Green、Green、Teal、Blue、Indigo、Purple、Magenta、Red 这 10 个固定公司色系。Base Palette 与固定 Dark Palette 都使用 <code>0-11</code> 索引，第 <code>8</code> 阶是 Seed，第 <code>11</code> 阶是扩展档；Brand 与 Amber 当前 Seed 都是 <code>#FF7C19</code>，但职责不同。Dark Map 仅包含 10 个固定公司色系，不包含 Brand。Gray 使用 <code>1-20</code>，Special 使用 <code>1-4</code>，各自保留原有用户索引认知。完整色阶和具体值见 <a href="../reference/Token目录.html">Token 目录</a>。</p>
+<p>当前有彩色系为 1 个 Brand，以及 Amber、Yellow、Yellow Green、Green、Teal、Blue、Indigo、Purple、Magenta、Red 这 10 个固定公司色系。Base Palette 与固定 Dark Palette 都使用 <code>0-11</code> 索引，第 <code>11</code> 阶是扩展档。Base 的 <code>0-10</code> 按现有映射恢复 fx-style 同索引色值：primary→brand、warning→amber、success→green、info→indigo、danger→red，其余同名对应；第 <code>11</code> 阶保留原值。Base 第 <code>8</code> 阶不再等于 Seed；RGB 仍对应同名第 <code>8</code> 阶。Seed 与 Dark 保留历史设计值，Dark 第 <code>8</code> 阶仍是 Seed。Dark Map 仅包含 10 个固定公司色系，不包含 Brand。Gray 使用 <code>1-20</code>，其中 <code>1-19</code> 恢复 fx-style neutrals 同索引值，<code>20</code> 保留原扩展值；Special 使用 <code>1-4</code>，色值已与旧版一致。完整色阶和具体值见 <a href="../reference/Token目录.html">Token 目录</a>。</p>
 <h2 id="_7">使用规则</h2>
 <p>业务状态使用语义颜色：</p>
 <pre><code class="language-css">.success-note {
@@ -224,10 +224,11 @@
 <li>不为透明度组合重复维护所有色阶的 RGB，仅保留基准色阶 RGB。</li>
 <li>组件状态应建立组件语义，不让业务调用方选择原始色阶。</li>
 <li>浅色交互背景统一使用 0 / 1 / 2，实心交互使用 8 / 7 / 9，禁用使用 4。</li>
-<li>Seed 到 Map 的算法只用于人工对照验证，不是 Palette 的真相源，也不进入 CI 发布门禁。</li>
+<li>Seed 到 Map 的算法只用于人工对照历史设计；Base 恢复 fx-style 后与算法存在预期差异，算法不覆盖 Palette，也不进入 CI 发布门禁。</li>
 </ul>
 <h2 id="_10">来源</h2>
 <ul>
+<li><a href="https://git.firstshare.cn/fx/fx-style/-/blob/5b4d893aecee745b986b10e190fe068d6e5355a7/src/vars/_theme-colors.css">fx-style 色板固定版本</a></li>
 <li><a href="https://git.firstshare.cn/fx/fdst/-/blob/master/tokens/atomic/seed/color.yml">颜色 Seed</a></li>
 <li><a href="https://git.firstshare.cn/fx/fdst/-/blob/master/tokens/atomic/map/color/base.yml">颜色 Map 聚合入口</a></li>
 <li><a href="https://git.firstshare.cn/fx/fdst/-/blob/master/tokens/atomic/map/color/dark/base.yml">Dark Map 聚合入口</a></li>

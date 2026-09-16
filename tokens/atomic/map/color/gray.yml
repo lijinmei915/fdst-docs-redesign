@@ -12,41 +12,41 @@ props:
   color-gray-1:
     value: '#FFFFFF'
   color-gray-2:
-    value: '#F9F9F9'
+    value: '#FAFAFA'
   color-gray-3:
-    value: '#F1F0F0'
+    value: '#F2F3F5'
   color-gray-4:
-    value: '#E5E5E4'
+    value: '#EAEBEE'
   color-gray-5:
-    value: '#D7D6D6'
+    value: '#DEE1E8'
   color-gray-6:
-    value: '#C9C8C7'
+    value: '#CED1D9'
   color-gray-7:
-    value: '#B8B7B6'
+    value: '#C1C5CE'
   color-gray-8:
-    value: '#A8A6A5'
+    value: '#ADB1BA'
   color-gray-9:
-    value: '#989695'
+    value: '#A3A7B0'
   color-gray-10:
-    value: '#888685'
+    value: '#999DA6'
   color-gray-11:
-    value: '#797675'
+    value: '#91959E'
   color-gray-12:
-    value: '#6A6765'
+    value: '#80858F'
   color-gray-13:
-    value: '#5B5856'
+    value: '#737881'
   color-gray-14:
-    value: '#4D4A48'
+    value: '#606570'
   color-gray-15:
-    value: '#3F3C3A'
+    value: '#545861'
   color-gray-16:
-    value: '#322E2C'
+    value: '#444852'
   color-gray-17:
-    value: '#25211F'
+    value: '#343841'
   color-gray-18:
-    value: '#1B1715'
+    value: '#272B34'
   color-gray-19:
-    value: '#110D0B'
+    value: '#181C25'
   color-gray-20:
     value: '#080504'
   color-white:

@@ -9,26 +9,26 @@ global:
   source: manual
 props:
   color-red-0:
-    value: '#FFF2EF'
+    value: '#FFF6F0'
   color-red-1:
-    value: '#FFE3DC'
+    value: '#FFF5F0'
   color-red-2:
-    value: '#FFD0C5'
+    value: '#FFDCCC'
   color-red-3:
-    value: '#FFBFB0'
+    value: '#FFBDA3'
   color-red-4:
-    value: '#FFAD99'
+    value: '#FF9C7A'
   color-red-5:
-    value: '#FF9A82'
+    value: '#FF7752'
   color-red-6:
-    value: '#FF8569'
-  color-red-7:
-    value: '#FF6E4E'
-  color-red-8:
     value: '#FF522A'
+  color-red-7:
+    value: '#D93518'
+  color-red-8:
+    value: '#B31E0B'
   color-red-9:
-    value: '#D53D18'
+    value: '#8C0D01'
   color-red-10:
-    value: '#801A00'
+    value: '#660500'
   color-red-11:
     value: '#430900'

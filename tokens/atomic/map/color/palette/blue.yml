@@ -9,26 +9,26 @@ global:
   source: manual
 props:
   color-blue-0:
-    value: '#EEF6FF'
+    value: '#F0FCFF'
   color-blue-1:
-    value: '#DBEDFF'
+    value: '#E6F9FF'
   color-blue-2:
-    value: '#C3E1FF'
+    value: '#BAEBFF'
   color-blue-3:
-    value: '#ADD6FF'
+    value: '#91DCFF'
   color-blue-4:
-    value: '#96CBFF'
+    value: '#69CAFF'
   color-blue-5:
-    value: '#7EC0FF'
+    value: '#40B6FF'
   color-blue-6:
-    value: '#64B5FF'
-  color-blue-7:
-    value: '#46A9FF'
-  color-blue-8:
     value: '#189DFF'
+  color-blue-7:
+    value: '#097BD9'
+  color-blue-8:
+    value: '#005CB3'
   color-blue-9:
-    value: '#0080D4'
+    value: '#00448C'
   color-blue-10:
-    value: '#00487C'
+    value: '#002E66'
   color-blue-11:
     value: '#002340'

@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import re
+import shutil
 import sys
 from dataclasses import dataclass
 from pathlib import Path
@@ -360,6 +361,8 @@ def main() -> int:
         else:
             output = build_css(namespace, sources, tokens)
             minified_output = build_minified_css(namespace, sources, tokens)
+            if OUTPUT.parent.exists():
+                shutil.rmtree(OUTPUT.parent)
             OUTPUT.parent.mkdir(parents=True, exist_ok=True)
             OUTPUT.write_text(output, encoding="utf-8", newline="\n")
             MINIFIED_OUTPUT.write_text(minified_output, encoding="utf-8", newline="\n")

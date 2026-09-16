@@ -9,26 +9,26 @@ global:
   source: manual
 props:
   color-teal-0:
-    value: '#EEF7F6'
+    value: '#F0FFFB'
   color-teal-1:
-    value: '#DCF0ED'
+    value: '#E1F5F1'
   color-teal-2:
-    value: '#C5E7E3'
+    value: '#B0E8DE'
   color-teal-3:
-    value: '#AEDFDA'
+    value: '#84DBCE'
   color-teal-4:
-    value: '#95D7D0'
+    value: '#5BCFC1'
   color-teal-5:
-    value: '#7ACFC7'
+    value: '#36C2B6'
   color-teal-6:
-    value: '#5EC6BE'
-  color-teal-7:
-    value: '#3FBEB5'
-  color-teal-8:
     value: '#16B4AB'
+  color-teal-7:
+    value: '#0A8F8D'
+  color-teal-8:
+    value: '#026769'
   color-teal-9:
-    value: '#00938B'
+    value: '#003F42'
   color-teal-10:
-    value: '#00534E'
+    value: '#001A1C'
   color-teal-11:
     value: '#002826'

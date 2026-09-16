@@ -9,26 +9,26 @@ global:
   source: manual
 props:
   color-yellow-0:
-    value: '#FAF4EB'
+    value: '#FFFEF0'
   color-yellow-1:
-    value: '#FBEED9'
+    value: '#FFFCE6'
   color-yellow-2:
-    value: '#FCE6C3'
+    value: '#FFF2A6'
   color-yellow-3:
-    value: '#FDDEAC'
+    value: '#FFE77D'
   color-yellow-4:
-    value: '#FFD693'
+    value: '#FFDA54'
   color-yellow-5:
-    value: '#FFCF7D'
+    value: '#FFCA2B'
   color-yellow-6:
-    value: '#FFC764'
-  color-yellow-7:
-    value: '#FFBE45'
-  color-yellow-8:
     value: '#FFB602'
+  color-yellow-7:
+    value: '#D99400'
+  color-yellow-8:
+    value: '#B37400'
   color-yellow-9:
-    value: '#CD9100'
+    value: '#8C5600'
   color-yellow-10:
-    value: '#6D4C00'
+    value: '#663C00'
   color-yellow-11:
     value: '#2F1E00'

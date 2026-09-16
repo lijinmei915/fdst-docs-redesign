@@ -9,26 +9,26 @@ global:
   source: manual
 props:
   color-magenta-0:
-    value: '#FFF1F2'
+    value: '#FFF1F0'
   color-magenta-1:
-    value: '#FFE2E3'
+    value: '#FFF0F0'
   color-magenta-2:
-    value: '#FFCFD0'
+    value: '#FFEDED'
   color-magenta-3:
-    value: '#FFBDBF'
+    value: '#FFC4C7'
   color-magenta-4:
-    value: '#FFAAAE'
+    value: '#FF9CA4'
   color-magenta-5:
-    value: '#FF969D'
+    value: '#FF7383'
   color-magenta-6:
-    value: '#FF818B'
-  color-magenta-7:
-    value: '#FF6979'
-  color-magenta-8:
     value: '#FF4A66'
+  color-magenta-7:
+    value: '#D93452'
+  color-magenta-8:
+    value: '#B32241'
   color-magenta-9:
-    value: '#D43550'
+    value: '#8C1432'
   color-magenta-10:
-    value: '#850226'
+    value: '#660D26'
   color-magenta-11:
     value: '#460010'

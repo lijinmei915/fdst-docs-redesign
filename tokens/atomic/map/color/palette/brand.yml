@@ -9,27 +9,27 @@ global:
   source: manual
 props:
   color-brand-0:
-    value: '#FEF3EC'
+    value: '#FFFBF0'
   color-brand-1:
-    value: '#FFE6D9'
+    value: '#FFF7E6'
   color-brand-2:
-    value: '#FFD8C3'
+    value: '#FFDDA3'
   color-brand-3:
-    value: '#FFCAAD'
+    value: '#FFCA7A'
   color-brand-4:
-    value: '#FFBC97'
+    value: '#FFB452'
   color-brand-5:
-    value: '#FFAD80'
+    value: '#FF9B29'
   color-brand-6:
-    value: '#FF9E66'
+    value: '#FF8000'
   color-brand-7:
-    value: '#FF8E48'
+    value: '#D96500'
   color-brand-8:
-    value: '#FF7C19'
+    value: '#B34D00'
   color-brand-9:
-    value: '#D26200'
+    value: '#8C3800'
   color-brand-10:
-    value: '#763400'
+    value: '#662500'
   color-brand-11:
     value: '#3A1600'
   color-brand-vivid:

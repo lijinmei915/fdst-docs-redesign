@@ -9,26 +9,26 @@ global:
   source: manual
 props:
   color-indigo-0:
-    value: '#F0F5FF'
+    value: '#F0F9FF'
   color-indigo-1:
-    value: '#D9E7FF'
+    value: '#E6F4FF'
   color-indigo-2:
-    value: '#BDD6FF'
+    value: '#B0DAFF'
   color-indigo-3:
-    value: '#A4C6FF'
+    value: '#87C3FF'
   color-indigo-4:
-    value: '#8AB6FF'
+    value: '#5EA9FF'
   color-indigo-5:
-    value: '#70A5FF'
+    value: '#368DFF'
   color-indigo-6:
-    value: '#5593FF'
-  color-indigo-7:
-    value: '#3781FF'
-  color-indigo-8:
     value: '#0C6CFF'
+  color-indigo-7:
+    value: '#004FD9'
+  color-indigo-8:
+    value: '#003BB3'
   color-indigo-9:
-    value: '#0158D9'
+    value: '#002A8C'
   color-indigo-10:
-    value: '#003589'
+    value: '#001B66'
   color-indigo-11:
     value: '#001C52'

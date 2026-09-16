@@ -12,24 +12,24 @@ imports:
 - ./palette/base.yml
 props:
   color-brand-8-rgb:
-    value: 255, 124, 25
+    value: 179, 77, 0
   color-amber-8-rgb:
-    value: 255, 124, 25
+    value: 179, 65, 0
   color-yellow-8-rgb:
-    value: 255, 182, 2
+    value: 179, 116, 0
   color-yellow-green-8-rgb:
-    value: 135, 204, 59
+    value: 71, 128, 24
   color-green-8-rgb:
-    value: 48, 199, 118
+    value: 17, 122, 73
   color-teal-8-rgb:
-    value: 22, 180, 171
+    value: 2, 103, 105
   color-blue-8-rgb:
-    value: 24, 157, 255
+    value: 0, 92, 179
   color-indigo-8-rgb:
-    value: 12, 108, 255
+    value: 0, 59, 179
   color-purple-8-rgb:
-    value: 115, 65, 222
+    value: 57, 28, 145
   color-magenta-8-rgb:
-    value: 255, 74, 102
+    value: 179, 34, 65
   color-red-8-rgb:
-    value: 255, 82, 42
+    value: 179, 30, 11

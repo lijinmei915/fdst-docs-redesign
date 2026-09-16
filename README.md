@@ -64,7 +64,7 @@ python tools/build_docs.py --check
 
 `python tools/build.py` 会同时生成普通版和 min 版 CSS，两者变量与运行时行为一致，不得手工维护。`python tools/export_catalog.py` 会同时更新 `release` catalog、`fds-apply` 查询 JSONL、`fds-migrate` 完整 Token JSONL 和 Token 目录。`python tools/build_docs.py` 将 Markdown、站点资产和当前 CSS 生成到 `public/`，该目录同样不得手工编辑。Token 更新后重新执行三个生成命令即可刷新全部产物。两个 Skill 均不在运行时读取 FDST 仓库中的 YAML 或 `release`。Python、PyYAML 和 Python-Markdown 只用于 FDS 源码维护端；`fds-apply` 使用蜂巢平台预置 Bash 的内建能力，不依赖 Python、Node.js、`grep`、`rg`、`sed`、`awk` 或 `jq`。`fds-migrate` 因需要多语法 AST，独立要求 Node.js 16+，依赖锁定在其自身目录。
 
-构建还会为普通版和 min 版各追加一份带 hash 的 CSS，内容与对应固定名文件逐字节一致。`<hash>` 为各自文件内容的 SHA-256 前 12 位；相同内容重复构建名称不变，内容变化时生成新名称。构建不删除历史 hash 文件，发布侧按引用情况管理保留周期；`--check` 不写入任何产物。
+构建还会为普通版和 min 版各追加一份带 hash 的 CSS，内容与对应固定名文件逐字节一致。`<hash>` 为各自文件内容的 SHA-256 前 12 位；相同内容重复构建名称不变，内容变化时生成新名称。正式打包在源校验和 CSS 内容生成成功后，先清空 `release/`（包括旧 hash、Catalog 和子目录），再写入当次 CSS 与 `tpl_config`；随后执行 `export_catalog.py` 重建 Catalog。`--check` 不清理、不写入任何产物；源校验失败时保留上次产物。
 
 输出目录统一为 `release/`。`build.py` 同时写入 `release/tpl_config`，沿用 `fx-paas-components` 的纯文本 `入口名:文件名` 格式：`fdstCssEntry:fds-global-tokens.min.<hash>.css`，行末保留换行。入口始终指向当次生成的压缩版 CSS，文件名不含目录。原先使用 `dist/` 的消费方需同步更新路径。
 
@@ -78,4 +78,4 @@ python tools/build_docs.py --check
 - [SLDS primitive/base.yml](https://github.com/salesforce-ux/design-system/blob/9bc6a4046d10d95b4f3fb9cee7c7dc036bf43ad2/design-tokens/primitive/base.yml)
 - [SLDS Token 构建脚本](https://github.com/salesforce-ux/design-system/blob/9bc6a4046d10d95b4f3fb9cee7c7dc036bf43ad2/scripts/gulp/generate/tokens.js)
 
-颜色基础来源固定于 [sharecrm-design-system 提交 38667a8f](https://git.firstshare.cn/bigfe/sharecrm-design-system/-/commit/38667a8f693ef0682560c18f782156d5a644c42d)。FDS 保持现有 Token 命名，并将设计确认的 Base 与 Dark Map 保存为具体 Hex。`tools/generate_color_palettes.py --check` 仅用于人工复核设计公式，不参与正式构建，也不覆盖 Palette YAML。
+有彩色 Base Palette 的 `0-10` 色值来自 [fx-style 色板固定版本](https://git.firstshare.cn/fx/fx-style/-/blob/5b4d893aecee745b986b10e190fe068d6e5355a7/src/vars/_theme-colors.css)，沿用现有色系映射与 Token 命名，`11` 保留原扩展值，RGB 与对应 Hex 同步。Gray `1-19` 恢复 neutrals 同索引值，`20` 保留原扩展值。Seed、Dark Map 与扩展色仍保留 [sharecrm-design-system 提交 38667a8f](https://git.firstshare.cn/bigfe/sharecrm-design-system/-/commit/38667a8f693ef0682560c18f782156d5a644c42d) 的既有值。`tools/generate_color_palettes.py --check` 仅用于人工复核历史设计公式；Base 恢复 fx-style 后与公式存在预期差异，不参与正式构建，也不覆盖 Palette YAML。

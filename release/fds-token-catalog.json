@@ -216,8 +216,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FEF3EC",
-      "resolvedValue": "#FEF3EC",
+      "value": "#FFFAF0",
+      "resolvedValue": "#FFFAF0",
       "references": [],
       "referenceChain": [
         "color-amber-0"
@@ -234,8 +234,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FFE6D9",
-      "resolvedValue": "#FFE6D9",
+      "value": "#FFF5E6",
+      "resolvedValue": "#FFF5E6",
       "references": [],
       "referenceChain": [
         "color-amber-1"
@@ -252,8 +252,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#763400",
-      "resolvedValue": "#763400",
+      "value": "#661F00",
+      "resolvedValue": "#661F00",
       "references": [],
       "referenceChain": [
         "color-amber-10"
@@ -288,8 +288,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FFD8C3",
-      "resolvedValue": "#FFD8C3",
+      "value": "#FFE2BD",
+      "resolvedValue": "#FFE2BD",
       "references": [],
       "referenceChain": [
         "color-amber-2"
@@ -306,8 +306,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FFCAAD",
-      "resolvedValue": "#FFCAAD",
+      "value": "#FFCD94",
+      "resolvedValue": "#FFCD94",
       "references": [],
       "referenceChain": [
         "color-amber-3"
@@ -324,8 +324,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FFBC97",
-      "resolvedValue": "#FFBC97",
+      "value": "#FFB56B",
+      "resolvedValue": "#FFB56B",
       "references": [],
       "referenceChain": [
         "color-amber-4"
@@ -342,8 +342,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FFAD80",
-      "resolvedValue": "#FFAD80",
+      "value": "#FF9A42",
+      "resolvedValue": "#FF9A42",
       "references": [],
       "referenceChain": [
         "color-amber-5"
@@ -360,8 +360,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FF9E66",
-      "resolvedValue": "#FF9E66",
+      "value": "#FF7C19",
+      "resolvedValue": "#FF7C19",
       "references": [],
       "referenceChain": [
         "color-amber-6"
@@ -378,8 +378,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FF8E48",
-      "resolvedValue": "#FF8E48",
+      "value": "#D95D0B",
+      "resolvedValue": "#D95D0B",
       "references": [],
       "referenceChain": [
         "color-amber-7"
@@ -396,8 +396,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FF7C19",
-      "resolvedValue": "#FF7C19",
+      "value": "#B34100",
+      "resolvedValue": "#B34100",
       "references": [],
       "referenceChain": [
         "color-amber-8"
@@ -414,8 +414,8 @@
       "tier": "map",
       "category": "color",
       "type": "string",
-      "value": "255, 124, 25",
-      "resolvedValue": "255, 124, 25",
+      "value": "179, 65, 0",
+      "resolvedValue": "179, 65, 0",
       "references": [],
       "referenceChain": [
         "color-amber-8-rgb"
@@ -432,8 +432,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#D26200",
-      "resolvedValue": "#D26200",
+      "value": "#8C2F00",
+      "resolvedValue": "#8C2F00",
       "references": [],
       "referenceChain": [
         "color-amber-9"
@@ -687,8 +687,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#EEF6FF",
-      "resolvedValue": "#EEF6FF",
+      "value": "#F0FCFF",
+      "resolvedValue": "#F0FCFF",
       "references": [],
       "referenceChain": [
         "color-blue-0"
@@ -705,8 +705,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#DBEDFF",
-      "resolvedValue": "#DBEDFF",
+      "value": "#E6F9FF",
+      "resolvedValue": "#E6F9FF",
       "references": [],
       "referenceChain": [
         "color-blue-1"
@@ -723,8 +723,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#00487C",
-      "resolvedValue": "#00487C",
+      "value": "#002E66",
+      "resolvedValue": "#002E66",
       "references": [],
       "referenceChain": [
         "color-blue-10"
@@ -759,8 +759,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#C3E1FF",
-      "resolvedValue": "#C3E1FF",
+      "value": "#BAEBFF",
+      "resolvedValue": "#BAEBFF",
       "references": [],
       "referenceChain": [
         "color-blue-2"
@@ -777,8 +777,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#ADD6FF",
-      "resolvedValue": "#ADD6FF",
+      "value": "#91DCFF",
+      "resolvedValue": "#91DCFF",
       "references": [],
       "referenceChain": [
         "color-blue-3"
@@ -795,8 +795,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#96CBFF",
-      "resolvedValue": "#96CBFF",
+      "value": "#69CAFF",
+      "resolvedValue": "#69CAFF",
       "references": [],
       "referenceChain": [
         "color-blue-4"
@@ -813,8 +813,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#7EC0FF",
-      "resolvedValue": "#7EC0FF",
+      "value": "#40B6FF",
+      "resolvedValue": "#40B6FF",
       "references": [],
       "referenceChain": [
         "color-blue-5"
@@ -831,8 +831,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#64B5FF",
-      "resolvedValue": "#64B5FF",
+      "value": "#189DFF",
+      "resolvedValue": "#189DFF",
       "references": [],
       "referenceChain": [
         "color-blue-6"
@@ -849,8 +849,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#46A9FF",
-      "resolvedValue": "#46A9FF",
+      "value": "#097BD9",
+      "resolvedValue": "#097BD9",
       "references": [],
       "referenceChain": [
         "color-blue-7"
@@ -867,8 +867,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#189DFF",
-      "resolvedValue": "#189DFF",
+      "value": "#005CB3",
+      "resolvedValue": "#005CB3",
       "references": [],
       "referenceChain": [
         "color-blue-8"
@@ -885,8 +885,8 @@
       "tier": "map",
       "category": "color",
       "type": "string",
-      "value": "24, 157, 255",
-      "resolvedValue": "24, 157, 255",
+      "value": "0, 92, 179",
+      "resolvedValue": "0, 92, 179",
       "references": [],
       "referenceChain": [
         "color-blue-8-rgb"
@@ -903,8 +903,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#0080D4",
-      "resolvedValue": "#0080D4",
+      "value": "#00448C",
+      "resolvedValue": "#00448C",
       "references": [],
       "referenceChain": [
         "color-blue-9"
@@ -1137,8 +1137,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FEF3EC",
-      "resolvedValue": "#FEF3EC",
+      "value": "#FFFBF0",
+      "resolvedValue": "#FFFBF0",
       "references": [],
       "referenceChain": [
         "color-brand-0"
@@ -1155,8 +1155,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FFE6D9",
-      "resolvedValue": "#FFE6D9",
+      "value": "#FFF7E6",
+      "resolvedValue": "#FFF7E6",
       "references": [],
       "referenceChain": [
         "color-brand-1"
@@ -1173,8 +1173,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#763400",
-      "resolvedValue": "#763400",
+      "value": "#662500",
+      "resolvedValue": "#662500",
       "references": [],
       "referenceChain": [
         "color-brand-10"
@@ -1209,8 +1209,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FFD8C3",
-      "resolvedValue": "#FFD8C3",
+      "value": "#FFDDA3",
+      "resolvedValue": "#FFDDA3",
       "references": [],
       "referenceChain": [
         "color-brand-2"
@@ -1227,8 +1227,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FFCAAD",
-      "resolvedValue": "#FFCAAD",
+      "value": "#FFCA7A",
+      "resolvedValue": "#FFCA7A",
       "references": [],
       "referenceChain": [
         "color-brand-3"
@@ -1245,8 +1245,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FFBC97",
-      "resolvedValue": "#FFBC97",
+      "value": "#FFB452",
+      "resolvedValue": "#FFB452",
       "references": [],
       "referenceChain": [
         "color-brand-4"
@@ -1263,8 +1263,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FFAD80",
-      "resolvedValue": "#FFAD80",
+      "value": "#FF9B29",
+      "resolvedValue": "#FF9B29",
       "references": [],
       "referenceChain": [
         "color-brand-5"
@@ -1281,8 +1281,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FF9E66",
-      "resolvedValue": "#FF9E66",
+      "value": "#FF8000",
+      "resolvedValue": "#FF8000",
       "references": [],
       "referenceChain": [
         "color-brand-6"
@@ -1299,8 +1299,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FF8E48",
-      "resolvedValue": "#FF8E48",
+      "value": "#D96500",
+      "resolvedValue": "#D96500",
       "references": [],
       "referenceChain": [
         "color-brand-7"
@@ -1317,8 +1317,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FF7C19",
-      "resolvedValue": "#FF7C19",
+      "value": "#B34D00",
+      "resolvedValue": "#B34D00",
       "references": [],
       "referenceChain": [
         "color-brand-8"
@@ -1335,8 +1335,8 @@
       "tier": "map",
       "category": "color",
       "type": "string",
-      "value": "255, 124, 25",
-      "resolvedValue": "255, 124, 25",
+      "value": "179, 77, 0",
+      "resolvedValue": "179, 77, 0",
       "references": [],
       "referenceChain": [
         "color-brand-8-rgb"
@@ -1353,8 +1353,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#D26200",
-      "resolvedValue": "#D26200",
+      "value": "#8C3800",
+      "resolvedValue": "#8C3800",
       "references": [],
       "referenceChain": [
         "color-brand-9"
@@ -1407,8 +1407,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#888685",
-      "resolvedValue": "#888685",
+      "value": "#999DA6",
+      "resolvedValue": "#999DA6",
       "references": [],
       "referenceChain": [
         "color-gray-10"
@@ -1425,8 +1425,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#797675",
-      "resolvedValue": "#797675",
+      "value": "#91959E",
+      "resolvedValue": "#91959E",
       "references": [],
       "referenceChain": [
         "color-gray-11"
@@ -1443,8 +1443,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#6A6765",
-      "resolvedValue": "#6A6765",
+      "value": "#80858F",
+      "resolvedValue": "#80858F",
       "references": [],
       "referenceChain": [
         "color-gray-12"
@@ -1461,8 +1461,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#5B5856",
-      "resolvedValue": "#5B5856",
+      "value": "#737881",
+      "resolvedValue": "#737881",
       "references": [],
       "referenceChain": [
         "color-gray-13"
@@ -1479,8 +1479,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#4D4A48",
-      "resolvedValue": "#4D4A48",
+      "value": "#606570",
+      "resolvedValue": "#606570",
       "references": [],
       "referenceChain": [
         "color-gray-14"
@@ -1497,8 +1497,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#3F3C3A",
-      "resolvedValue": "#3F3C3A",
+      "value": "#545861",
+      "resolvedValue": "#545861",
       "references": [],
       "referenceChain": [
         "color-gray-15"
@@ -1515,8 +1515,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#322E2C",
-      "resolvedValue": "#322E2C",
+      "value": "#444852",
+      "resolvedValue": "#444852",
       "references": [],
       "referenceChain": [
         "color-gray-16"
@@ -1533,8 +1533,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#25211F",
-      "resolvedValue": "#25211F",
+      "value": "#343841",
+      "resolvedValue": "#343841",
       "references": [],
       "referenceChain": [
         "color-gray-17"
@@ -1551,8 +1551,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#1B1715",
-      "resolvedValue": "#1B1715",
+      "value": "#272B34",
+      "resolvedValue": "#272B34",
       "references": [],
       "referenceChain": [
         "color-gray-18"
@@ -1569,8 +1569,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#110D0B",
-      "resolvedValue": "#110D0B",
+      "value": "#181C25",
+      "resolvedValue": "#181C25",
       "references": [],
       "referenceChain": [
         "color-gray-19"
@@ -1587,8 +1587,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#F9F9F9",
-      "resolvedValue": "#F9F9F9",
+      "value": "#FAFAFA",
+      "resolvedValue": "#FAFAFA",
       "references": [],
       "referenceChain": [
         "color-gray-2"
@@ -1623,8 +1623,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#F1F0F0",
-      "resolvedValue": "#F1F0F0",
+      "value": "#F2F3F5",
+      "resolvedValue": "#F2F3F5",
       "references": [],
       "referenceChain": [
         "color-gray-3"
@@ -1641,8 +1641,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#E5E5E4",
-      "resolvedValue": "#E5E5E4",
+      "value": "#EAEBEE",
+      "resolvedValue": "#EAEBEE",
       "references": [],
       "referenceChain": [
         "color-gray-4"
@@ -1659,8 +1659,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#D7D6D6",
-      "resolvedValue": "#D7D6D6",
+      "value": "#DEE1E8",
+      "resolvedValue": "#DEE1E8",
       "references": [],
       "referenceChain": [
         "color-gray-5"
@@ -1677,8 +1677,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#C9C8C7",
-      "resolvedValue": "#C9C8C7",
+      "value": "#CED1D9",
+      "resolvedValue": "#CED1D9",
       "references": [],
       "referenceChain": [
         "color-gray-6"
@@ -1695,8 +1695,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#B8B7B6",
-      "resolvedValue": "#B8B7B6",
+      "value": "#C1C5CE",
+      "resolvedValue": "#C1C5CE",
       "references": [],
       "referenceChain": [
         "color-gray-7"
@@ -1713,8 +1713,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#A8A6A5",
-      "resolvedValue": "#A8A6A5",
+      "value": "#ADB1BA",
+      "resolvedValue": "#ADB1BA",
       "references": [],
       "referenceChain": [
         "color-gray-8"
@@ -1731,8 +1731,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#989695",
-      "resolvedValue": "#989695",
+      "value": "#A3A7B0",
+      "resolvedValue": "#A3A7B0",
       "references": [],
       "referenceChain": [
         "color-gray-9"
@@ -1749,8 +1749,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#EEF8F1",
-      "resolvedValue": "#EEF8F1",
+      "value": "#F0FFF3",
+      "resolvedValue": "#F0FFF3",
       "references": [],
       "referenceChain": [
         "color-green-0"
@@ -1767,8 +1767,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#DDF3E3",
-      "resolvedValue": "#DDF3E3",
+      "value": "#F0FFF4",
+      "resolvedValue": "#F0FFF4",
       "references": [],
       "referenceChain": [
         "color-green-1"
@@ -1785,8 +1785,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#005A2F",
-      "resolvedValue": "#005A2F",
+      "value": "#042E1D",
+      "resolvedValue": "#042E1D",
       "references": [],
       "referenceChain": [
         "color-green-10"
@@ -1821,8 +1821,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#C8ECD3",
-      "resolvedValue": "#C8ECD3",
+      "value": "#DCFAE6",
+      "resolvedValue": "#DCFAE6",
       "references": [],
       "referenceChain": [
         "color-green-2"
@@ -1839,8 +1839,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#B3E7C3",
-      "resolvedValue": "#B3E7C3",
+      "value": "#ABEDC3",
+      "resolvedValue": "#ABEDC3",
       "references": [],
       "referenceChain": [
         "color-green-3"
@@ -1857,8 +1857,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#9BE2B2",
-      "resolvedValue": "#9BE2B2",
+      "value": "#7EE0A5",
+      "resolvedValue": "#7EE0A5",
       "references": [],
       "referenceChain": [
         "color-green-4"
@@ -1875,8 +1875,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#82DCA1",
-      "resolvedValue": "#82DCA1",
+      "value": "#55D48C",
+      "resolvedValue": "#55D48C",
       "references": [],
       "referenceChain": [
         "color-green-5"
@@ -1893,8 +1893,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#69D692",
-      "resolvedValue": "#69D692",
+      "value": "#30C776",
+      "resolvedValue": "#30C776",
       "references": [],
       "referenceChain": [
         "color-green-6"
@@ -1911,8 +1911,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#4DCF83",
-      "resolvedValue": "#4DCF83",
+      "value": "#1FA160",
+      "resolvedValue": "#1FA160",
       "references": [],
       "referenceChain": [
         "color-green-7"
@@ -1929,8 +1929,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#30C776",
-      "resolvedValue": "#30C776",
+      "value": "#117A49",
+      "resolvedValue": "#117A49",
       "references": [],
       "referenceChain": [
         "color-green-8"
@@ -1947,8 +1947,8 @@
       "tier": "map",
       "category": "color",
       "type": "string",
-      "value": "48, 199, 118",
-      "resolvedValue": "48, 199, 118",
+      "value": "17, 122, 73",
+      "resolvedValue": "17, 122, 73",
       "references": [],
       "referenceChain": [
         "color-green-8-rgb"
@@ -1965,8 +1965,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#14A25C",
-      "resolvedValue": "#14A25C",
+      "value": "#085433",
+      "resolvedValue": "#085433",
       "references": [],
       "referenceChain": [
         "color-green-9"
@@ -2199,8 +2199,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#F0F5FF",
-      "resolvedValue": "#F0F5FF",
+      "value": "#F0F9FF",
+      "resolvedValue": "#F0F9FF",
       "references": [],
       "referenceChain": [
         "color-indigo-0"
@@ -2217,8 +2217,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#D9E7FF",
-      "resolvedValue": "#D9E7FF",
+      "value": "#E6F4FF",
+      "resolvedValue": "#E6F4FF",
       "references": [],
       "referenceChain": [
         "color-indigo-1"
@@ -2235,8 +2235,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#003589",
-      "resolvedValue": "#003589",
+      "value": "#001B66",
+      "resolvedValue": "#001B66",
       "references": [],
       "referenceChain": [
         "color-indigo-10"
@@ -2271,8 +2271,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#BDD6FF",
-      "resolvedValue": "#BDD6FF",
+      "value": "#B0DAFF",
+      "resolvedValue": "#B0DAFF",
       "references": [],
       "referenceChain": [
         "color-indigo-2"
@@ -2289,8 +2289,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#A4C6FF",
-      "resolvedValue": "#A4C6FF",
+      "value": "#87C3FF",
+      "resolvedValue": "#87C3FF",
       "references": [],
       "referenceChain": [
         "color-indigo-3"
@@ -2307,8 +2307,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#8AB6FF",
-      "resolvedValue": "#8AB6FF",
+      "value": "#5EA9FF",
+      "resolvedValue": "#5EA9FF",
       "references": [],
       "referenceChain": [
         "color-indigo-4"
@@ -2325,8 +2325,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#70A5FF",
-      "resolvedValue": "#70A5FF",
+      "value": "#368DFF",
+      "resolvedValue": "#368DFF",
       "references": [],
       "referenceChain": [
         "color-indigo-5"
@@ -2343,8 +2343,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#5593FF",
-      "resolvedValue": "#5593FF",
+      "value": "#0C6CFF",
+      "resolvedValue": "#0C6CFF",
       "references": [],
       "referenceChain": [
         "color-indigo-6"
@@ -2361,8 +2361,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#3781FF",
-      "resolvedValue": "#3781FF",
+      "value": "#004FD9",
+      "resolvedValue": "#004FD9",
       "references": [],
       "referenceChain": [
         "color-indigo-7"
@@ -2379,8 +2379,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#0C6CFF",
-      "resolvedValue": "#0C6CFF",
+      "value": "#003BB3",
+      "resolvedValue": "#003BB3",
       "references": [],
       "referenceChain": [
         "color-indigo-8"
@@ -2397,8 +2397,8 @@
       "tier": "map",
       "category": "color",
       "type": "string",
-      "value": "12, 108, 255",
-      "resolvedValue": "12, 108, 255",
+      "value": "0, 59, 179",
+      "resolvedValue": "0, 59, 179",
       "references": [],
       "referenceChain": [
         "color-indigo-8-rgb"
@@ -2415,8 +2415,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#0158D9",
-      "resolvedValue": "#0158D9",
+      "value": "#002A8C",
+      "resolvedValue": "#002A8C",
       "references": [],
       "referenceChain": [
         "color-indigo-9"
@@ -2649,8 +2649,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FFF1F2",
-      "resolvedValue": "#FFF1F2",
+      "value": "#FFF1F0",
+      "resolvedValue": "#FFF1F0",
       "references": [],
       "referenceChain": [
         "color-magenta-0"
@@ -2667,8 +2667,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FFE2E3",
-      "resolvedValue": "#FFE2E3",
+      "value": "#FFF0F0",
+      "resolvedValue": "#FFF0F0",
       "references": [],
       "referenceChain": [
         "color-magenta-1"
@@ -2685,8 +2685,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#850226",
-      "resolvedValue": "#850226",
+      "value": "#660D26",
+      "resolvedValue": "#660D26",
       "references": [],
       "referenceChain": [
         "color-magenta-10"
@@ -2721,8 +2721,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FFCFD0",
-      "resolvedValue": "#FFCFD0",
+      "value": "#FFEDED",
+      "resolvedValue": "#FFEDED",
       "references": [],
       "referenceChain": [
         "color-magenta-2"
@@ -2739,8 +2739,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FFBDBF",
-      "resolvedValue": "#FFBDBF",
+      "value": "#FFC4C7",
+      "resolvedValue": "#FFC4C7",
       "references": [],
       "referenceChain": [
         "color-magenta-3"
@@ -2757,8 +2757,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FFAAAE",
-      "resolvedValue": "#FFAAAE",
+      "value": "#FF9CA4",
+      "resolvedValue": "#FF9CA4",
       "references": [],
       "referenceChain": [
         "color-magenta-4"
@@ -2775,8 +2775,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FF969D",
-      "resolvedValue": "#FF969D",
+      "value": "#FF7383",
+      "resolvedValue": "#FF7383",
       "references": [],
       "referenceChain": [
         "color-magenta-5"
@@ -2793,8 +2793,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FF818B",
-      "resolvedValue": "#FF818B",
+      "value": "#FF4A66",
+      "resolvedValue": "#FF4A66",
       "references": [],
       "referenceChain": [
         "color-magenta-6"
@@ -2811,8 +2811,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FF6979",
-      "resolvedValue": "#FF6979",
+      "value": "#D93452",
+      "resolvedValue": "#D93452",
       "references": [],
       "referenceChain": [
         "color-magenta-7"
@@ -2829,8 +2829,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FF4A66",
-      "resolvedValue": "#FF4A66",
+      "value": "#B32241",
+      "resolvedValue": "#B32241",
       "references": [],
       "referenceChain": [
         "color-magenta-8"
@@ -2847,8 +2847,8 @@
       "tier": "map",
       "category": "color",
       "type": "string",
-      "value": "255, 74, 102",
-      "resolvedValue": "255, 74, 102",
+      "value": "179, 34, 65",
+      "resolvedValue": "179, 34, 65",
       "references": [],
       "referenceChain": [
         "color-magenta-8-rgb"
@@ -2865,8 +2865,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#D43550",
-      "resolvedValue": "#D43550",
+      "value": "#8C1432",
+      "resolvedValue": "#8C1432",
       "references": [],
       "referenceChain": [
         "color-magenta-9"
@@ -3099,8 +3099,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#F5F4FF",
-      "resolvedValue": "#F5F4FF",
+      "value": "#F8F0FF",
+      "resolvedValue": "#F8F0FF",
       "references": [],
       "referenceChain": [
         "color-purple-0"
@@ -3117,8 +3117,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#E4E1FE",
-      "resolvedValue": "#E4E1FE",
+      "value": "#F7F0FF",
+      "resolvedValue": "#F7F0FF",
       "references": [],
       "referenceChain": [
         "color-purple-1"
@@ -3135,8 +3135,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#3E1983",
-      "resolvedValue": "#3E1983",
+      "value": "#140945",
+      "resolvedValue": "#140945",
       "references": [],
       "referenceChain": [
         "color-purple-10"
@@ -3171,8 +3171,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#D1CAFA",
-      "resolvedValue": "#D1CAFA",
+      "value": "#F5EDFF",
+      "resolvedValue": "#F5EDFF",
       "references": [],
       "referenceChain": [
         "color-purple-2"
@@ -3189,8 +3189,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#BFB4F9",
-      "resolvedValue": "#BFB4F9",
+      "value": "#DDC4FF",
+      "resolvedValue": "#DDC4FF",
       "references": [],
       "referenceChain": [
         "color-purple-3"
@@ -3207,8 +3207,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#AF9EF7",
-      "resolvedValue": "#AF9EF7",
+      "value": "#BC97F7",
+      "resolvedValue": "#BC97F7",
       "references": [],
       "referenceChain": [
         "color-purple-4"
@@ -3225,8 +3225,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#9F88F6",
-      "resolvedValue": "#9F88F6",
+      "value": "#976AEB",
+      "resolvedValue": "#976AEB",
       "references": [],
       "referenceChain": [
         "color-purple-5"
@@ -3243,8 +3243,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#9071F1",
-      "resolvedValue": "#9071F1",
+      "value": "#7341DE",
+      "resolvedValue": "#7341DE",
       "references": [],
       "referenceChain": [
         "color-purple-6"
@@ -3261,8 +3261,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#8159E9",
-      "resolvedValue": "#8159E9",
+      "value": "#542CB8",
+      "resolvedValue": "#542CB8",
       "references": [],
       "referenceChain": [
         "color-purple-7"
@@ -3279,8 +3279,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#7341DE",
-      "resolvedValue": "#7341DE",
+      "value": "#391C91",
+      "resolvedValue": "#391C91",
       "references": [],
       "referenceChain": [
         "color-purple-8"
@@ -3297,8 +3297,8 @@
       "tier": "map",
       "category": "color",
       "type": "string",
-      "value": "115, 65, 222",
-      "resolvedValue": "115, 65, 222",
+      "value": "57, 28, 145",
+      "resolvedValue": "57, 28, 145",
       "references": [],
       "referenceChain": [
         "color-purple-8-rgb"
@@ -3315,8 +3315,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#6134BE",
-      "resolvedValue": "#6134BE",
+      "value": "#230F6B",
+      "resolvedValue": "#230F6B",
       "references": [],
       "referenceChain": [
         "color-purple-9"
@@ -3549,8 +3549,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FFF2EF",
-      "resolvedValue": "#FFF2EF",
+      "value": "#FFF6F0",
+      "resolvedValue": "#FFF6F0",
       "references": [],
       "referenceChain": [
         "color-red-0"
@@ -3567,8 +3567,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FFE3DC",
-      "resolvedValue": "#FFE3DC",
+      "value": "#FFF5F0",
+      "resolvedValue": "#FFF5F0",
       "references": [],
       "referenceChain": [
         "color-red-1"
@@ -3585,8 +3585,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#801A00",
-      "resolvedValue": "#801A00",
+      "value": "#660500",
+      "resolvedValue": "#660500",
       "references": [],
       "referenceChain": [
         "color-red-10"
@@ -3621,8 +3621,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FFD0C5",
-      "resolvedValue": "#FFD0C5",
+      "value": "#FFDCCC",
+      "resolvedValue": "#FFDCCC",
       "references": [],
       "referenceChain": [
         "color-red-2"
@@ -3639,8 +3639,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FFBFB0",
-      "resolvedValue": "#FFBFB0",
+      "value": "#FFBDA3",
+      "resolvedValue": "#FFBDA3",
       "references": [],
       "referenceChain": [
         "color-red-3"
@@ -3657,8 +3657,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FFAD99",
-      "resolvedValue": "#FFAD99",
+      "value": "#FF9C7A",
+      "resolvedValue": "#FF9C7A",
       "references": [],
       "referenceChain": [
         "color-red-4"
@@ -3675,8 +3675,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FF9A82",
-      "resolvedValue": "#FF9A82",
+      "value": "#FF7752",
+      "resolvedValue": "#FF7752",
       "references": [],
       "referenceChain": [
         "color-red-5"
@@ -3693,8 +3693,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FF8569",
-      "resolvedValue": "#FF8569",
+      "value": "#FF522A",
+      "resolvedValue": "#FF522A",
       "references": [],
       "referenceChain": [
         "color-red-6"
@@ -3711,8 +3711,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FF6E4E",
-      "resolvedValue": "#FF6E4E",
+      "value": "#D93518",
+      "resolvedValue": "#D93518",
       "references": [],
       "referenceChain": [
         "color-red-7"
@@ -3729,8 +3729,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FF522A",
-      "resolvedValue": "#FF522A",
+      "value": "#B31E0B",
+      "resolvedValue": "#B31E0B",
       "references": [],
       "referenceChain": [
         "color-red-8"
@@ -3747,8 +3747,8 @@
       "tier": "map",
       "category": "color",
       "type": "string",
-      "value": "255, 82, 42",
-      "resolvedValue": "255, 82, 42",
+      "value": "179, 30, 11",
+      "resolvedValue": "179, 30, 11",
       "references": [],
       "referenceChain": [
         "color-red-8-rgb"
@@ -3765,8 +3765,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#D53D18",
-      "resolvedValue": "#D53D18",
+      "value": "#8C0D01",
+      "resolvedValue": "#8C0D01",
       "references": [],
       "referenceChain": [
         "color-red-9"
@@ -4071,8 +4071,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#EEF7F6",
-      "resolvedValue": "#EEF7F6",
+      "value": "#F0FFFB",
+      "resolvedValue": "#F0FFFB",
       "references": [],
       "referenceChain": [
         "color-teal-0"
@@ -4089,8 +4089,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#DCF0ED",
-      "resolvedValue": "#DCF0ED",
+      "value": "#E1F5F1",
+      "resolvedValue": "#E1F5F1",
       "references": [],
       "referenceChain": [
         "color-teal-1"
@@ -4107,8 +4107,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#00534E",
-      "resolvedValue": "#00534E",
+      "value": "#001A1C",
+      "resolvedValue": "#001A1C",
       "references": [],
       "referenceChain": [
         "color-teal-10"
@@ -4143,8 +4143,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#C5E7E3",
-      "resolvedValue": "#C5E7E3",
+      "value": "#B0E8DE",
+      "resolvedValue": "#B0E8DE",
       "references": [],
       "referenceChain": [
         "color-teal-2"
@@ -4161,8 +4161,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#AEDFDA",
-      "resolvedValue": "#AEDFDA",
+      "value": "#84DBCE",
+      "resolvedValue": "#84DBCE",
       "references": [],
       "referenceChain": [
         "color-teal-3"
@@ -4179,8 +4179,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#95D7D0",
-      "resolvedValue": "#95D7D0",
+      "value": "#5BCFC1",
+      "resolvedValue": "#5BCFC1",
       "references": [],
       "referenceChain": [
         "color-teal-4"
@@ -4197,8 +4197,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#7ACFC7",
-      "resolvedValue": "#7ACFC7",
+      "value": "#36C2B6",
+      "resolvedValue": "#36C2B6",
       "references": [],
       "referenceChain": [
         "color-teal-5"
@@ -4215,8 +4215,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#5EC6BE",
-      "resolvedValue": "#5EC6BE",
+      "value": "#16B4AB",
+      "resolvedValue": "#16B4AB",
       "references": [],
       "referenceChain": [
         "color-teal-6"
@@ -4233,8 +4233,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#3FBEB5",
-      "resolvedValue": "#3FBEB5",
+      "value": "#0A8F8D",
+      "resolvedValue": "#0A8F8D",
       "references": [],
       "referenceChain": [
         "color-teal-7"
@@ -4251,8 +4251,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#16B4AB",
-      "resolvedValue": "#16B4AB",
+      "value": "#026769",
+      "resolvedValue": "#026769",
       "references": [],
       "referenceChain": [
         "color-teal-8"
@@ -4269,8 +4269,8 @@
       "tier": "map",
       "category": "color",
       "type": "string",
-      "value": "22, 180, 171",
-      "resolvedValue": "22, 180, 171",
+      "value": "2, 103, 105",
+      "resolvedValue": "2, 103, 105",
       "references": [],
       "referenceChain": [
         "color-teal-8-rgb"
@@ -4287,8 +4287,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#00938B",
-      "resolvedValue": "#00938B",
+      "value": "#003F42",
+      "resolvedValue": "#003F42",
       "references": [],
       "referenceChain": [
         "color-teal-9"
@@ -4542,8 +4542,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FAF4EB",
-      "resolvedValue": "#FAF4EB",
+      "value": "#FFFEF0",
+      "resolvedValue": "#FFFEF0",
       "references": [],
       "referenceChain": [
         "color-yellow-0"
@@ -4560,8 +4560,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FBEED9",
-      "resolvedValue": "#FBEED9",
+      "value": "#FFFCE6",
+      "resolvedValue": "#FFFCE6",
       "references": [],
       "referenceChain": [
         "color-yellow-1"
@@ -4578,8 +4578,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#6D4C00",
-      "resolvedValue": "#6D4C00",
+      "value": "#663C00",
+      "resolvedValue": "#663C00",
       "references": [],
       "referenceChain": [
         "color-yellow-10"
@@ -4614,8 +4614,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FCE6C3",
-      "resolvedValue": "#FCE6C3",
+      "value": "#FFF2A6",
+      "resolvedValue": "#FFF2A6",
       "references": [],
       "referenceChain": [
         "color-yellow-2"
@@ -4632,8 +4632,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FDDEAC",
-      "resolvedValue": "#FDDEAC",
+      "value": "#FFE77D",
+      "resolvedValue": "#FFE77D",
       "references": [],
       "referenceChain": [
         "color-yellow-3"
@@ -4650,8 +4650,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FFD693",
-      "resolvedValue": "#FFD693",
+      "value": "#FFDA54",
+      "resolvedValue": "#FFDA54",
       "references": [],
       "referenceChain": [
         "color-yellow-4"
@@ -4668,8 +4668,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FFCF7D",
-      "resolvedValue": "#FFCF7D",
+      "value": "#FFCA2B",
+      "resolvedValue": "#FFCA2B",
       "references": [],
       "referenceChain": [
         "color-yellow-5"
@@ -4686,8 +4686,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FFC764",
-      "resolvedValue": "#FFC764",
+      "value": "#FFB602",
+      "resolvedValue": "#FFB602",
       "references": [],
       "referenceChain": [
         "color-yellow-6"
@@ -4704,8 +4704,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FFBE45",
-      "resolvedValue": "#FFBE45",
+      "value": "#D99400",
+      "resolvedValue": "#D99400",
       "references": [],
       "referenceChain": [
         "color-yellow-7"
@@ -4722,8 +4722,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#FFB602",
-      "resolvedValue": "#FFB602",
+      "value": "#B37400",
+      "resolvedValue": "#B37400",
       "references": [],
       "referenceChain": [
         "color-yellow-8"
@@ -4740,8 +4740,8 @@
       "tier": "map",
       "category": "color",
       "type": "string",
-      "value": "255, 182, 2",
-      "resolvedValue": "255, 182, 2",
+      "value": "179, 116, 0",
+      "resolvedValue": "179, 116, 0",
       "references": [],
       "referenceChain": [
         "color-yellow-8-rgb"
@@ -4758,8 +4758,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#CD9100",
-      "resolvedValue": "#CD9100",
+      "value": "#8C5600",
+      "resolvedValue": "#8C5600",
       "references": [],
       "referenceChain": [
         "color-yellow-9"
@@ -4992,8 +4992,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#F1F7ED",
-      "resolvedValue": "#F1F7ED",
+      "value": "#FBFFF0",
+      "resolvedValue": "#FBFFF0",
       "references": [],
       "referenceChain": [
         "color-yellow-green-0"
@@ -5010,8 +5010,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#E6F3DC",
-      "resolvedValue": "#E6F3DC",
+      "value": "#FAFFF0",
+      "resolvedValue": "#FAFFF0",
       "references": [],
       "referenceChain": [
         "color-yellow-green-1"
@@ -5028,8 +5028,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#355A00",
-      "resolvedValue": "#355A00",
+      "value": "#183307",
+      "resolvedValue": "#183307",
       "references": [],
       "referenceChain": [
         "color-yellow-green-10"
@@ -5064,8 +5064,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#D7EDC7",
-      "resolvedValue": "#D7EDC7",
+      "value": "#F9FFED",
+      "resolvedValue": "#F9FFED",
       "references": [],
       "referenceChain": [
         "color-yellow-green-2"
@@ -5082,8 +5082,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#C9E8B1",
-      "resolvedValue": "#C9E8B1",
+      "value": "#DDF2BB",
+      "resolvedValue": "#DDF2BB",
       "references": [],
       "referenceChain": [
         "color-yellow-green-3"
@@ -5100,8 +5100,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#BBE49A",
-      "resolvedValue": "#BBE49A",
+      "value": "#C0E68C",
+      "resolvedValue": "#C0E68C",
       "references": [],
       "referenceChain": [
         "color-yellow-green-4"
@@ -5118,8 +5118,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#ACDF81",
-      "resolvedValue": "#ACDF81",
+      "value": "#A3D962",
+      "resolvedValue": "#A3D962",
       "references": [],
       "referenceChain": [
         "color-yellow-green-5"
@@ -5136,8 +5136,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#9FD96A",
-      "resolvedValue": "#9FD96A",
+      "value": "#87CC3B",
+      "resolvedValue": "#87CC3B",
       "references": [],
       "referenceChain": [
         "color-yellow-green-6"
@@ -5154,8 +5154,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#92D352",
-      "resolvedValue": "#92D352",
+      "value": "#65A628",
+      "resolvedValue": "#65A628",
       "references": [],
       "referenceChain": [
         "color-yellow-green-7"
@@ -5172,8 +5172,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#87CC3B",
-      "resolvedValue": "#87CC3B",
+      "value": "#478018",
+      "resolvedValue": "#478018",
       "references": [],
       "referenceChain": [
         "color-yellow-green-8"
@@ -5190,8 +5190,8 @@
       "tier": "map",
       "category": "color",
       "type": "string",
-      "value": "135, 204, 59",
-      "resolvedValue": "135, 204, 59",
+      "value": "71, 128, 24",
+      "resolvedValue": "71, 128, 24",
       "references": [],
       "referenceChain": [
         "color-yellow-green-8-rgb"
@@ -5208,8 +5208,8 @@
       "tier": "map",
       "category": "color",
       "type": "color",
-      "value": "#69A522",
-      "resolvedValue": "#69A522",
+      "value": "#2C590C",
+      "resolvedValue": "#2C590C",
       "references": [],
       "referenceChain": [
         "color-yellow-green-9"
@@ -5568,7 +5568,7 @@
       "category": "effects",
       "type": "shadow",
       "value": "0 0 2px {!color-brand-8}",
-      "resolvedValue": "0 0 2px #FF7C19",
+      "resolvedValue": "0 0 2px #B34D00",
       "references": [
         "color-brand-8"
       ],
@@ -7045,7 +7045,7 @@
       "category": "color",
       "type": "color",
       "value": "{!color-gray-5}",
-      "resolvedValue": "#D7D6D6",
+      "resolvedValue": "#DEE1E8",
       "references": [
         "color-gray-5"
       ],
@@ -7065,7 +7065,7 @@
       "category": "color",
       "type": "color",
       "value": "{!color-gray-2}",
-      "resolvedValue": "#F9F9F9",
+      "resolvedValue": "#FAFAFA",
       "references": [
         "color-gray-2"
       ],
@@ -7085,7 +7085,7 @@
       "category": "color",
       "type": "color",
       "value": "{!color-danger}",
-      "resolvedValue": "#FF522A",
+      "resolvedValue": "#B31E0B",
       "references": [
         "color-danger"
       ],
@@ -7106,7 +7106,7 @@
       "category": "color",
       "type": "color",
       "value": "{!color-primary}",
-      "resolvedValue": "#FF7C19",
+      "resolvedValue": "#B34D00",
       "references": [
         "color-primary"
       ],
@@ -7127,7 +7127,7 @@
       "category": "color",
       "type": "color",
       "value": "{!color-gray-4}",
-      "resolvedValue": "#E5E5E4",
+      "resolvedValue": "#EAEBEE",
       "references": [
         "color-gray-4"
       ],
@@ -7147,7 +7147,7 @@
       "category": "color",
       "type": "color",
       "value": "{!color-red-8}",
-      "resolvedValue": "#FF522A",
+      "resolvedValue": "#B31E0B",
       "references": [
         "color-red-8"
       ],
@@ -7167,7 +7167,7 @@
       "category": "color",
       "type": "color",
       "value": "{!color-red-9}",
-      "resolvedValue": "#D53D18",
+      "resolvedValue": "#8C0D01",
       "references": [
         "color-red-9"
       ],
@@ -7187,7 +7187,7 @@
       "category": "color",
       "type": "color",
       "value": "{!color-red-0}",
-      "resolvedValue": "#FFF2EF",
+      "resolvedValue": "#FFF6F0",
       "references": [
         "color-red-0"
       ],
@@ -7207,7 +7207,7 @@
       "category": "color",
       "type": "color",
       "value": "{!color-red-2}",
-      "resolvedValue": "#FFD0C5",
+      "resolvedValue": "#FFDCCC",
       "references": [
         "color-red-2"
       ],
@@ -7227,7 +7227,7 @@
       "category": "color",
       "type": "color",
       "value": "{!color-red-1}",
-      "resolvedValue": "#FFE3DC",
+      "resolvedValue": "#FFF5F0",
       "references": [
         "color-red-1"
       ],
@@ -7247,7 +7247,7 @@
       "category": "color",
       "type": "color",
       "value": "{!color-red-4}",
-      "resolvedValue": "#FFAD99",
+      "resolvedValue": "#FF9C7A",
       "references": [
         "color-red-4"
       ],
@@ -7267,7 +7267,7 @@
       "category": "color",
       "type": "color",
       "value": "{!color-red-7}",
-      "resolvedValue": "#FF6E4E",
+      "resolvedValue": "#D93518",
       "references": [
         "color-red-7"
       ],
@@ -7287,7 +7287,7 @@
       "category": "color",
       "type": "color",
       "value": "{!color-gray-6}",
-      "resolvedValue": "#C9C8C7",
+      "resolvedValue": "#CED1D9",
       "references": [
         "color-gray-6"
       ],
@@ -7327,7 +7327,7 @@
       "category": "color",
       "type": "color",
       "value": "{!color-gray-11}",
-      "resolvedValue": "#797675",
+      "resolvedValue": "#91959E",
       "references": [
         "color-gray-11"
       ],
@@ -7347,7 +7347,7 @@
       "category": "color",
       "type": "color",
       "value": "{!color-blue-8}",
-      "resolvedValue": "#189DFF",
+      "resolvedValue": "#005CB3",
       "references": [
         "color-blue-8"
       ],
@@ -7367,7 +7367,7 @@
       "category": "color",
       "type": "color",
       "value": "{!color-blue-9}",
-      "resolvedValue": "#0080D4",
+      "resolvedValue": "#00448C",
       "references": [
         "color-blue-9"
       ],
@@ -7387,7 +7387,7 @@
       "category": "color",
       "type": "color",
       "value": "{!color-blue-0}",
-      "resolvedValue": "#EEF6FF",
+      "resolvedValue": "#F0FCFF",
       "references": [
         "color-blue-0"
       ],
@@ -7407,7 +7407,7 @@
       "category": "color",
       "type": "color",
       "value": "{!color-blue-2}",
-      "resolvedValue": "#C3E1FF",
+      "resolvedValue": "#BAEBFF",
       "references": [
         "color-blue-2"
       ],
@@ -7427,7 +7427,7 @@
       "category": "color",
       "type": "color",
       "value": "{!color-blue-1}",
-      "resolvedValue": "#DBEDFF",
+      "resolvedValue": "#E6F9FF",
       "references": [
         "color-blue-1"
       ],
@@ -7447,7 +7447,7 @@
       "category": "color",
       "type": "color",
       "value": "{!color-blue-4}",
-      "resolvedValue": "#96CBFF",
+      "resolvedValue": "#69CAFF",
       "references": [
         "color-blue-4"
       ],
@@ -7467,7 +7467,7 @@
       "category": "color",
       "type": "color",
       "value": "{!color-blue-7}",
-      "resolvedValue": "#46A9FF",
+      "resolvedValue": "#097BD9",
       "references": [
         "color-blue-7"
       ],
@@ -7504,7 +7504,7 @@
       "category": "color",
       "type": "color",
       "value": "{!color-brand-8}",
-      "resolvedValue": "#FF7C19",
+      "resolvedValue": "#B34D00",
       "references": [
         "color-brand-8"
       ],
@@ -7524,7 +7524,7 @@
       "category": "color",
       "type": "color",
       "value": "{!color-brand-9}",
-      "resolvedValue": "#D26200",
+      "resolvedValue": "#8C3800",
       "references": [
         "color-brand-9"
       ],
@@ -7544,7 +7544,7 @@
       "category": "color",
       "type": "color",
       "value": "{!color-brand-0}",
-      "resolvedValue": "#FEF3EC",
+      "resolvedValue": "#FFFBF0",
       "references": [
         "color-brand-0"
       ],
@@ -7564,7 +7564,7 @@
       "category": "color",
       "type": "color",
       "value": "{!color-brand-2}",
-      "resolvedValue": "#FFD8C3",
+      "resolvedValue": "#FFDDA3",
       "references": [
         "color-brand-2"
       ],
@@ -7584,7 +7584,7 @@
       "category": "color",
       "type": "color",
       "value": "{!color-brand-1}",
-      "resolvedValue": "#FFE6D9",
+      "resolvedValue": "#FFF7E6",
       "references": [
         "color-brand-1"
       ],
@@ -7604,7 +7604,7 @@
       "category": "color",
       "type": "color",
       "value": "{!color-brand-4}",
-      "resolvedValue": "#FFBC97",
+      "resolvedValue": "#FFB452",
       "references": [
         "color-brand-4"
       ],
@@ -7624,7 +7624,7 @@
       "category": "color",
       "type": "color",
       "value": "{!color-brand-7}",
-      "resolvedValue": "#FF8E48",
+      "resolvedValue": "#D96500",
       "references": [
         "color-brand-7"
       ],
@@ -7644,7 +7644,7 @@
       "category": "color",
       "type": "color",
       "value": "{!color-green-8}",
-      "resolvedValue": "#30C776",
+      "resolvedValue": "#117A49",
       "references": [
         "color-green-8"
       ],
@@ -7664,7 +7664,7 @@
       "category": "color",
       "type": "color",
       "value": "{!color-green-9}",
-      "resolvedValue": "#14A25C",
+      "resolvedValue": "#085433",
       "references": [
         "color-green-9"
       ],
@@ -7684,7 +7684,7 @@
       "category": "color",
       "type": "color",
       "value": "{!color-green-0}",
-      "resolvedValue": "#EEF8F1",
+      "resolvedValue": "#F0FFF3",
       "references": [
         "color-green-0"
       ],
@@ -7704,7 +7704,7 @@
       "category": "color",
       "type": "color",
       "value": "{!color-green-2}",
-      "resolvedValue": "#C8ECD3",
+      "resolvedValue": "#DCFAE6",
       "references": [
         "color-green-2"
       ],
@@ -7724,7 +7724,7 @@
       "category": "color",
       "type": "color",
       "value": "{!color-green-1}",
-      "resolvedValue": "#DDF3E3",
+      "resolvedValue": "#F0FFF4",
       "references": [
         "color-green-1"
       ],
@@ -7744,7 +7744,7 @@
       "category": "color",
       "type": "color",
       "value": "{!color-green-4}",
-      "resolvedValue": "#9BE2B2",
+      "resolvedValue": "#7EE0A5",
       "references": [
         "color-green-4"
       ],
@@ -7764,7 +7764,7 @@
       "category": "color",
       "type": "color",
       "value": "{!color-green-7}",
-      "resolvedValue": "#4DCF83",
+      "resolvedValue": "#1FA160",
       "references": [
         "color-green-7"
       ],
@@ -7784,7 +7784,7 @@
       "category": "color",
       "type": "color",
       "value": "{!color-gray-6}",
-      "resolvedValue": "#C9C8C7",
+      "resolvedValue": "#CED1D9",
       "references": [
         "color-gray-6"
       ],
@@ -7844,7 +7844,7 @@
       "category": "color",
       "type": "color",
       "value": "{!color-gray-15}",
-      "resolvedValue": "#3F3C3A",
+      "resolvedValue": "#545861",
       "references": [
         "color-gray-15"
       ],
@@ -7864,7 +7864,7 @@
       "category": "color",
       "type": "color",
       "value": "{!color-gray-12}",
-      "resolvedValue": "#6A6765",
+      "resolvedValue": "#80858F",
       "references": [
         "color-gray-12"
       ],
@@ -7884,7 +7884,7 @@
       "category": "color",
       "type": "color",
       "value": "{!color-amber-8}",
-      "resolvedValue": "#FF7C19",
+      "resolvedValue": "#B34100",
       "references": [
         "color-amber-8"
       ],
@@ -7904,7 +7904,7 @@
       "category": "color",
       "type": "color",
       "value": "{!color-amber-9}",
-      "resolvedValue": "#D26200",
+      "resolvedValue": "#8C2F00",
       "references": [
         "color-amber-9"
       ],
@@ -7924,7 +7924,7 @@
       "category": "color",
       "type": "color",
       "value": "{!color-amber-0}",
-      "resolvedValue": "#FEF3EC",
+      "resolvedValue": "#FFFAF0",
       "references": [
         "color-amber-0"
       ],
@@ -7944,7 +7944,7 @@
       "category": "color",
       "type": "color",
       "value": "{!color-amber-2}",
-      "resolvedValue": "#FFD8C3",
+      "resolvedValue": "#FFE2BD",
       "references": [
         "color-amber-2"
       ],
@@ -7964,7 +7964,7 @@
       "category": "color",
       "type": "color",
       "value": "{!color-amber-1}",
-      "resolvedValue": "#FFE6D9",
+      "resolvedValue": "#FFF5E6",
       "references": [
         "color-amber-1"
       ],
@@ -7984,7 +7984,7 @@
       "category": "color",
       "type": "color",
       "value": "{!color-amber-4}",
-      "resolvedValue": "#FFBC97",
+      "resolvedValue": "#FFB56B",
       "references": [
         "color-amber-4"
       ],
@@ -8004,7 +8004,7 @@
       "category": "color",
       "type": "color",
       "value": "{!color-amber-7}",
-      "resolvedValue": "#FF8E48",
+      "resolvedValue": "#D95D0B",
       "references": [
         "color-amber-7"
       ],
@@ -8024,7 +8024,7 @@
       "category": "effects",
       "type": "shadow",
       "value": "{!shadow-1}",
-      "resolvedValue": "0 0 2px #FF7C19",
+      "resolvedValue": "0 0 2px #B34D00",
       "references": [
         "shadow-1"
       ],
@@ -8129,7 +8129,7 @@
       "category": "layout",
       "type": "color",
       "value": "{!color-gray-2}",
-      "resolvedValue": "#F9F9F9",
+      "resolvedValue": "#FAFAFA",
       "references": [
         "color-gray-2"
       ],
@@ -8169,7 +8169,7 @@
       "category": "layout",
       "type": "color",
       "value": "{!color-gray-3}",
-      "resolvedValue": "#F1F0F0",
+      "resolvedValue": "#F2F3F5",
       "references": [
         "color-gray-3"
       ],
@@ -9048,7 +9048,7 @@
       "category": "scene",
       "type": "color",
       "value": "{!border-subtle}",
-      "resolvedValue": "#E5E5E4",
+      "resolvedValue": "#EAEBEE",
       "references": [
         "border-subtle"
       ],
