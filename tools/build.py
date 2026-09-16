@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""校验 FDS Token YAML 依赖图并生成 CSS Custom Properties。"""
+"""校验 FDS Token YAML 依赖图并生成 CSS / WXSS Custom Properties。"""
 
 from __future__ import annotations
 
@@ -263,14 +263,19 @@ def to_css_value(value: str, tokens: dict[str, Token]) -> str:
     )
 
 
-def build_css(namespace: str, sources: list[tuple[str, dict]], tokens: dict[str, Token]) -> str:
+def build_css(
+    namespace: str,
+    sources: list[tuple[str, dict]],
+    tokens: dict[str, Token],
+    selector: str = ":root",
+) -> str:
     lines = [
         "/**",
         " * FDS Global CSS Token（由 YAML 源文件生成，请勿直接编辑）。",
         " * 层级：Atomic（Seed / Map）-> Semantic（Base / Scene）。",
         " */",
         "",
-        ":root {",
+        f"{selector} {{",
     ]
     for relative, source in sources:
         meta = source["global"]
@@ -299,7 +304,7 @@ def build_css(namespace: str, sources: list[tuple[str, dict]], tokens: dict[str,
                 "",
                 "/* 减少动态效果时统一关闭语义动效；组件应消费语义 Motion Token。 */",
                 "@media (prefers-reduced-motion: reduce) {",
-                "  :root {",
+                f"  {selector} {{",
             ]
         )
         reduced_motion_value = tokens["motion-duration-0"]
@@ -361,11 +366,14 @@ def main() -> int:
         else:
             output = build_css(namespace, sources, tokens)
             minified_output = build_minified_css(namespace, sources, tokens)
+            wxss_output = build_css(namespace, sources, tokens, selector="Page")
+            wxss_path = OUTPUT.with_suffix(".wxss")
             if OUTPUT.parent.exists():
                 shutil.rmtree(OUTPUT.parent)
             OUTPUT.parent.mkdir(parents=True, exist_ok=True)
             OUTPUT.write_text(output, encoding="utf-8", newline="\n")
             MINIFIED_OUTPUT.write_text(minified_output, encoding="utf-8", newline="\n")
+            wxss_path.write_text(wxss_output, encoding="utf-8", newline="\n")
             hashed_outputs = []
             for path in (OUTPUT, MINIFIED_OUTPUT):
                 content = path.read_bytes()
@@ -380,7 +388,7 @@ def main() -> int:
                 newline="\n",
             )
             print(
-                f"Token 构建完成：{'、'.join(str(path) for path in (OUTPUT, MINIFIED_OUTPUT, *hashed_outputs, tpl_config))}"
+                f"Token 构建完成：{'、'.join(str(path) for path in (OUTPUT, MINIFIED_OUTPUT, wxss_path, *hashed_outputs, tpl_config))}"
                 f"（{len(tokens)} 个变量）"
             )
         return 0

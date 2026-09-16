@@ -76,6 +76,11 @@ python tools/build_docs.py --check
 <td>浏览器运行时消费</td>
 </tr>
 <tr>
+<td>WXSS Variables</td>
+<td><code>release/fds-global-tokens.wxss</code></td>
+<td>小程序消费，使用 <code>Page</code> 选择器包裹变量</td>
+</tr>
+<tr>
 <td>Minified CSS Variables</td>
 <td><code>release/fds-global-tokens.min.css</code></td>
 <td>生产环境按需直接引入</td>
@@ -120,6 +125,7 @@ python tools/build_docs.py --check
 <p>普通版保留来源注释和换行，便于开发与审查；min 版移除注释和非必要空白。两份 CSS 由同一次构建从同一 Token 图生成，声明和值完全一致，不应分别维护。
 | Token 目录 | <code>docs/reference/Token目录.md</code> | 开发者可读索引 |</p>
 <h2 id="_6">校验范围</h2>
+<p>每次打包还会生成一份固定名 <code>release/fds-global-tokens.wxss</code>。它与普通 CSS 共享 Token 渲染逻辑，按小程序接入样例将普通声明和 <code>prefers-reduced-motion</code> 内的选择器均改为 <code>Page</code>，保留变量、值、单位和来源注释。不额外生成 WXSS min/hash 副本，也不修改 <code>tpl_config</code> 的 CSS 入口。<code>--check</code> 同样不写入 WXSS。构建测试校验两种格式声明一致、减少动态效果规则和重复构建稳定性；小程序运行时兼容性仍需由消费方在目标环境验收。回退此能力时移除 WXSS 生成步骤及对应产物即可。</p>
 <p>每次 CSS 构建还会为普通版和 min 版各追加一份带 hash 的副本，字节内容与对应固定名文件完全相同。<code>&lt;hash&gt;</code> 使用各自最终 UTF-8 文件内容的 SHA-256 前 12 位，与时间、路径无关。相同内容名称稳定，内容变化生成新名称；<code>--check</code> 不写任何产物。正式打包在源校验和 CSS 内容生成成功后清空整个 <code>release/</code>，删除旧 hash、Catalog 及子目录，再写入当次 CSS 和 <code>tpl_config</code>；必须按上述顺序继续执行 <code>export_catalog.py</code> 重建 Catalog。<code>--check</code> 不清理目录，源校验失败时保留上次产物。历史发布包需在发布侧另行归档；回退构建逻辑时恢复清理步骤前的实现。CSS 和 Catalog 输出目录统一为 <code>release/</code>，文档站继续使用自身的 <code>assets/fds-global-tokens.css</code>。</p>
 <p><code>build.py</code> 在 CSS 写入后生成 <code>release/tpl_config</code>，格式参考 <code>fx-paas-components/build/plugin/extract-entry-webpack-plugin.js</code>：每行使用 <code>入口名:文件名</code>，文件名不含目录，UTF-8 编码并以 LF 结尾。当前只有一个生产入口：</p>
 <pre><code class="language-text">fdstCssEntry:fds-global-tokens.min.&lt;hash&gt;.css

@@ -42,7 +42,7 @@ def source(
 
 
 class BuildTest(unittest.TestCase):
-    def test_build_writes_pretty_and_minified_css(self) -> None:
+    def test_build_writes_pretty_minified_css_and_wxss(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             release = Path(directory) / "release"
             stale = release / "old" / "stale.css"
@@ -65,7 +65,7 @@ class BuildTest(unittest.TestCase):
             self.assertFalse(stale.parent.exists())
             self.assertFalse((release / "fds-token-catalog.json").exists())
             self.assertEqual("outside release", sibling.read_text(encoding="utf-8"))
-            self.assertEqual(5, len(list(release.iterdir())))
+            self.assertEqual(6, len(list(release.iterdir())))
             for path in (output, minified_output):
                 content = path.read_bytes()
                 content_hash = hashlib.sha256(content).hexdigest()[:12]
@@ -74,6 +74,11 @@ class BuildTest(unittest.TestCase):
             tpl_config = (release / "tpl_config").read_bytes()
             self.assertEqual(f"fdstCssEntry:{hashed_path.name}\n".encode("utf-8"), tpl_config)
             pretty_css = output.read_text(encoding="utf-8")
+            wxss = output.with_suffix(".wxss").read_text(encoding="utf-8")
+            self.assertNotIn(":root", wxss)
+            self.assertIn("\nPage {\n", wxss)
+            self.assertIn("@media (prefers-reduced-motion: reduce) {\n  Page {", wxss)
+            self.assertEqual(pretty_css.replace(":root {", "Page {"), wxss)
             minified_css = minified_output.read_text(encoding="utf-8")
             self.assertNotIn("\n", minified_css)
             self.assertNotIn("/*", minified_css)
@@ -123,7 +128,7 @@ class BuildTest(unittest.TestCase):
                     self.assertFalse((Path(directory) / name).exists())
                 elif name not in (minified_output.name, "tpl_config"):
                     self.assertEqual(content, (Path(directory) / name).read_bytes())
-            self.assertEqual(5, len(list(Path(directory).iterdir())))
+            self.assertEqual(6, len(list(Path(directory).iterdir())))
 
     def test_check_mode_does_not_write_css(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
@@ -140,6 +145,7 @@ class BuildTest(unittest.TestCase):
 
             self.assertFalse(output.exists())
             self.assertFalse(minified_output.exists())
+            self.assertFalse(output.with_suffix(".wxss").exists())
             self.assertEqual([existing], list(Path(directory).iterdir()))
             self.assertEqual(b"previous build", existing.read_bytes())
 

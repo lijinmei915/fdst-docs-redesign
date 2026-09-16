@@ -35,6 +35,7 @@ CSS Variable 使用两套公开前缀：Atomic/Map 与 Semantic/Base 使用 `--f
 | 产物 | 路径 | 用途 |
 | --- | --- | --- |
 | CSS Variables | `release/fds-global-tokens.css` | 浏览器运行时消费 |
+| WXSS Variables | `release/fds-global-tokens.wxss` | 小程序消费，使用 `Page` 选择器包裹变量 |
 | Minified CSS Variables | `release/fds-global-tokens.min.css` | 生产环境按需直接引入 |
 | Hash CSS Variables | `release/fds-global-tokens.<hash>.css` | 按内容版本引入普通版 CSS |
 | Hash Minified CSS Variables | `release/fds-global-tokens.min.<hash>.css` | 按内容版本引入生产版 CSS |
@@ -67,6 +68,8 @@ python tools/build_docs.py --check
 构建还会为普通版和 min 版各追加一份带 hash 的 CSS，内容与对应固定名文件逐字节一致。`<hash>` 为各自文件内容的 SHA-256 前 12 位；相同内容重复构建名称不变，内容变化时生成新名称。正式打包在源校验和 CSS 内容生成成功后，先清空 `release/`（包括旧 hash、Catalog 和子目录），再写入当次 CSS 与 `tpl_config`；随后执行 `export_catalog.py` 重建 Catalog。`--check` 不清理、不写入任何产物；源校验失败时保留上次产物。
 
 输出目录统一为 `release/`。`build.py` 同时写入 `release/tpl_config`，沿用 `fx-paas-components` 的纯文本 `入口名:文件名` 格式：`fdstCssEntry:fds-global-tokens.min.<hash>.css`，行末保留换行。入口始终指向当次生成的压缩版 CSS，文件名不含目录。原先使用 `dist/` 的消费方需同步更新路径。
+
+每次打包额外生成一份固定名 `release/fds-global-tokens.wxss`，由同一 YAML Token 图生成。按小程序接入样例使用 `Page` 包裹普通声明及 `prefers-reduced-motion` 内的覆盖声明，变量、值和单位与 CSS 一致；WXSS 不追加 min/hash 副本，不新增 `tpl_config` 入口。
 
 完整维护流程和错误排查见 [构建与校验](docs/engineering/构建与校验.md)；版本、发布与回退边界见 [版本与发布](docs/engineering/版本与发布.md)。
 
