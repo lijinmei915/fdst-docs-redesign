@@ -54,8 +54,8 @@
       "tier": "seed",
       "category": "color",
       "type": "color",
-      "value": "#FF7C19",
-      "resolvedValue": "#FF7C19",
+      "value": "#FF8000",
+      "resolvedValue": "#FF8000",
       "references": [],
       "referenceChain": [
         "color-brand"

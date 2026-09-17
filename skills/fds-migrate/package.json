@@ -10,6 +10,6 @@
     "test": "node --test"
   },
   "dependencies": {
-    "@sharecrm/sds-linter": "0.1.1"
+    "@sharecrm/sds-linter": "0.1.2"
   }
 }

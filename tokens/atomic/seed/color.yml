@@ -9,7 +9,7 @@ global:
   source: manual
 props:
   color-brand:
-    value: '#FF7C19'
+    value: '#FF8000'
   color-amber:
     value: '#FF7C19'
   color-yellow:

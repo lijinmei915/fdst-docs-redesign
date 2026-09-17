@@ -175,7 +175,7 @@
 </tr>
 </tbody>
 </table>
-<p>当前有彩色系为 1 个 Brand，以及 Amber、Yellow、Yellow Green、Green、Teal、Blue、Indigo、Purple、Magenta、Red 这 10 个固定公司色系。Base Palette 与固定 Dark Palette 都使用 <code>0-11</code> 索引，第 <code>11</code> 阶是扩展档。Base 的 <code>0-10</code> 按现有映射恢复 fx-style 同索引色值：primary→brand、warning→amber、success→green、info→indigo、danger→red，其余同名对应；第 <code>11</code> 阶保留原值。Base 第 <code>8</code> 阶不再等于 Seed；RGB 仍对应同名第 <code>8</code> 阶。Seed 与 Dark 保留历史设计值，Dark 第 <code>8</code> 阶仍是 Seed。Dark Map 仅包含 10 个固定公司色系，不包含 Brand。Gray 使用 <code>1-20</code>，其中 <code>1-19</code> 恢复 fx-style neutrals 同索引值，<code>20</code> 保留原扩展值；Special 使用 <code>1-4</code>，色值已与旧版一致。完整色阶和具体值见 <a href="../reference/Token目录.html">Token 目录</a>。</p>
+<p>当前有彩色系为 1 个 Brand，以及 Amber、Yellow、Yellow Green、Green、Teal、Blue、Indigo、Purple、Magenta、Red 这 10 个固定公司色系。Base Palette 与固定 Dark Palette 都使用 <code>0-11</code> 索引，第 <code>11</code> 阶是扩展档。Base 的 <code>0-10</code> 按现有映射恢复 fx-style 同索引色值：primary→brand、warning→amber、success→green、info→indigo、danger→red，其余同名对应；第 <code>11</code> 阶保留原值。Base 第 <code>8</code> 阶不再等于 Seed；RGB 仍对应同名第 <code>8</code> 阶。Seed 与 fx-style 各色系第 <code>06</code> 阶一致（Brand 为 <code>#FF8000</code>）；Dark 保留历史设计值，Dark 第 <code>8</code> 阶仍是对应公司色 Seed。Dark Map 仅包含 10 个固定公司色系，不包含 Brand。Gray 使用 <code>1-20</code>，其中 <code>1-19</code> 恢复 fx-style neutrals 同索引值，<code>20</code> 保留原扩展值；Special 使用 <code>1-4</code>，色值已与旧版一致。完整色阶和具体值见 <a href="../reference/Token目录.html">Token 目录</a>。</p>
 <h2 id="_7">使用规则</h2>
 <p>业务状态使用语义颜色：</p>
 <pre><code class="language-css">.success-note {

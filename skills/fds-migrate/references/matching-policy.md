@@ -101,3 +101,10 @@ outline-color: var(--button-text-color, var(--fds-g-color-blue-6, var(--color-bl
 CSS、SCSS、Sass、Less、WXSS、Vue、HTML、WXML、JS、JSX、TS、TSX 和白名单 CSS-in-JS 分别由专用 AST 适配器定位。适配器只能提交完整样式值及其原文件 offset，不参与 Token 选择。
 
 普通字符串和普通数据对象不扫描。动态表达式、spread、跨变量引用、数值 style 和模板插值标记为 `unsupported`，不因文件扩展名已支持而自动改写。详见 [语法支持范围](syntax-support.md)。
+
+
+## 0.1.2：无适用 Token 的保留边界
+
+参照 SLDS 2 的 no-hardcoded-values 原则，合法且可解析的非颜色值，没有精确或规则内近似候选时为 exempt；不能强制近似或发明 Token。similar、ambiguous、缺失旧色板映射目标、无旧色板映射颜色仍保留问题状态。疑似非法长度单位与无法验证的缓动表达式不得豁免。组件变量末端 currentColor/unset 等颜色结构值保留语义；存在 FDS 引用时先按原规则校验。不是所有 missing-token 都可直接改成 exempt。
+
+参考：[Salesforce 官方规则（固定提交）](https://github.com/forcedotcom/sf-skills/blob/91488fd1660b95a31911214187d76229f2610135/skills/design-systems-slds2-migrate/references/rule-no-hardcoded-values.md)。不照搬 SLDS 缺少的 opacity/duration 能力，FDS 现有精确迁移和用户确认的最近档规则保持。

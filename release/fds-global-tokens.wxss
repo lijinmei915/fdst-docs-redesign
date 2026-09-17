@@ -5,7 +5,7 @@
 
 Page {
   /* atomic / seed / color · source: tokens/atomic/seed/color.yml */
-  --fds-g-color-brand: #FF7C19;
+  --fds-g-color-brand: #FF8000;
   --fds-g-color-amber: #FF7C19;
   --fds-g-color-yellow: #FFB602;
   --fds-g-color-yellow-green: #87CC3B;

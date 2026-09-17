@@ -87,10 +87,10 @@ class GenerateColorPalettesTest(unittest.TestCase):
         with self.assertRaises(ValueError):
             PALETTES.generate_dark_palette("brand", "#FF7C19")
 
-    def test_brand_and_amber_share_values_but_remain_separate_maps(self) -> None:
+    def test_brand_and_amber_use_distinct_seeds_and_separate_maps(self) -> None:
         palettes = PALETTES.generate_all_palettes()
 
-        self.assertEqual(palettes["amber"], palettes["brand"])
+        self.assertNotEqual(palettes["amber"], palettes["brand"])
         self.assertIn("brand", palettes)
         self.assertIn("amber", palettes)
 

@@ -5,6 +5,19 @@ description: 使用 Skill 内置的完整 FDS Token 与旧色板索引快照扫�
 
 # FDS Token 迁移
 
+## SLDS 2 收敛规则（sds-linter 0.1.2）
+
+参照 Salesforce 官方 `design-systems-slds2-migrate` 固定提交 `91488fd1660b95a31911214187d76229f2610135` 的 `rule-no-hardcoded-values.md`：无适用 hook 的值允许保留，不以硬编码清零作为验收目标。下列规则覆盖后文旧版对应说明，其余规则不变。
+
+- 已解析的非颜色值无精确或规则内近似候选时归为 `exempt`，保留原值；不得发明 Token。近似候选仍是 `similar`，不强制替换，不引入额外容差。
+- 静态图片/渐变背景与纯文字装饰关键字归为 `exempt`。包含 FDS 引用、未知变量或无法解析的复合表达式不因该规则豁免；复杂动画仍报告。
+- 组件变量链末端的 `currentColor`、`unset` 等保留继承/重置语义；已有 FDS 引用仍校验存在性、属性和优先级。
+- 无旧色板映射的颜色仍为 `missing-token`，需结合用途判断；不能以颜色相近自动选语义 Token。疑似无效长度单位或无法验证的缓动表达式仍报告，不能归为无 Token 保留。
+- 只有用户明确不处理 JS 动态值时使用 `--dynamic-styles exclude`，或项目配置 `"dynamicStyles": "exclude"`。默认 `report`；命令行优先。排除项留在 JSON 为 `exempt` 并注明原因，不进入 Markdown 问题清单；静态 JS 样式、数值单位不明项和解析错误仍检查。该开关是项目范围选择，不是 Salesforce 官方的全局 JS 排除规则。
+- `exempt` 不等于主题、视觉或功能已验收；verify 原有错误/未决项门禁不变，不修改报告冒充通过。
+
+每次调用必须先通过本 Skill 的 `scripts/migrate_styles.mjs` 入口更新 linter：从内部 registry 获取 `@sharecrm/sds-linter@latest`，精确写入本 Skill 的 package.json / package-lock.json，再执行原命令。不得绕过入口直接调用旧 node_modules 或备用 bundle；更新失败立即报错，不静默降级。首次调用也会自动安装，调用方项目依赖不受影响。
+
 ## Goal / 目标
 
 基于 Skill 内置的完整 FDS Token JSONL 与旧 `fx-style` 色板索引快照做保守迁移：默认只扫描并输出报告；只有用户明确要求执行迁移时，才把 `auto-replace` 项改成带原值 fallback 的 FDS Token。CSS Custom Property 的定义声明不迁移；组件扫描单元内定义的变量和既有 `--bc-*` 保持高于 FDS，旧色板变量保持低于 FDS。颜色不与当前 FDS 色值做相等或相似度匹配，而是按色板和索引一对一迁移：有彩色 `00–10 -> 0–10`、`neutrals01–19 -> gray-1–19`、`special01–04 -> special-1–4`；有彩色第 `11` 阶和 Gray 第 `20` 阶是扩展档，不接收旧色阶自动迁移。圆角和透明度按各自规则选择最近档，字号和相对行高只精确替换；明确保留的硬编码直接归为 `exempt`，不进入 Markdown 迁移问题。
@@ -25,9 +38,9 @@ description: 使用 Skill 内置的完整 FDS Token 与旧色板索引快照扫�
 ## Preconditions / 前置条件
 
 1. 在目标项目根目录运行；无显式目标时默认扫描 `src`，并自动读取可选的 `.fdst/migrate.json`。
-2. Token、旧色板和策略默认使用已安装 `@sharecrm/sds-linter@0.1.1` 包内的固定快照。Skill 的 `references/` 中的数据保留为维护端生成/校验来源。不得从调用方仓库、Markdown、CSS 示例或命名规律构造 Token。
+2. Token、旧色板和策略默认使用每次调用更新后的 `@sharecrm/sds-linter` 包内快照。Skill 的 `references/` 中的数据保留为维护端生成/校验来源。不得从调用方仓库、Markdown、CSS 示例或命名规律构造 Token。
 3. 检查工作树状态并保留用户已有修改。
-4. 使用 Node.js 16+（本次验证为 Node.js 18）与 npm。首次使用或 lockfile 更新后，执行 `npm ci --prefix <skill-root> --ignore-scripts --registry=https://registry-npm.firstshare.cn/`；需要内部 registry 访问权限。依赖只装在 Skill 目录，安装后运行无需联网。源码在独立 `fx/sds-linter` 仓库维护。
+4. 使用 Node.js 16+（本次验证为 Node.js 18）与 npm。每次调用入口自动执行内部最新版安装；手动恢复当前 lockfile 时可执行 `npm ci --prefix <skill-root> --ignore-scripts --registry=https://registry-npm.firstshare.cn/`；需要内部 registry 访问权限。依赖只装在 Skill 目录；每次调用的更新步骤需要联网，后续扫描在本地运行。源码在独立 `fx/fds-linter` 仓库维护。
 5. 修改源码前必须得到明确授权；“扫描”“检查”“生成报告”只授权 `scan`，不授权 `apply`。
 
 ## ToolsList / 工具列表
@@ -43,7 +56,7 @@ node <skill-root>/scripts/migrate_styles.mjs verify
 - `scan`：默认模式；不修改源码，生成 JSON 与 Markdown 报告。
 - `apply`：只写入 `auto-replace`，包括规则允许的最近档替换，并保留原始值 fallback；`ambiguous`、`similar` 和 `unsupported` 永不自动写入。
 - `verify`：不修改源码；存在可迁移、不合规、解析错误或无法静态判定项时返回退出码 `3`。
-- 默认使用 npm 包内的完整 Token JSONL，不要求调用方提供 FDST 仓库或外部 Catalog；`--catalog <json|jsonl>` 仅用于测试和受控调试覆盖。`scripts/migrate_styles.mjs` 转发到 Skill 本地安装的固定 npm 版本；依赖缺失时先执行上述安装命令，不自动切换引擎。
+- 默认使用 npm 包内的完整 Token JSONL，不要求调用方提供 FDST 仓库或外部 Catalog；`--catalog <json|jsonl>` 仅用于测试和受控调试覆盖。`scripts/migrate_styles.mjs` 每次先更新内部最新版，成功后转发命令；安装失败不调用旧引擎。
 - 默认入口为 `src`；默认报告目录为 `.fdst/reports/migrate/<mode>/`。
 - 每个配置 `entry` 或命令行目标都是一个组件报告单元；批量执行时根目录只生成索引，明细分别写入 `components/<组件名>/`。
 - Markdown 报告按文件列出状态、位置、原值、候选与原因；修改源码后仍须重新执行 `verify`。
@@ -96,11 +109,11 @@ node <skill-root>/scripts/migrate_styles.mjs verify
 
 ## Resources / 资源
 
-- `package.json`、`package-lock.json`、`.npmrc`：固定 npm 版本、依赖完整性和内部 registry。
+- `package.json`、`package-lock.json`、`.npmrc`：记录最近一次更新的精确 npm 版本、依赖完整性和内部 registry。
 - `bin/sds-linter.mjs`：备用便携产物，当前默认入口不使用它。独立 Linter 构建的压缩单文件 CLI，内嵌第三方解析器、Token/旧色板/策略和完整许可证；Node 内置 Brotli 在内存解压，可单独复制运行，无需下载或写临时执行文件。
 - `bin/sds-linter.manifest.json`：版本、构建输入、数据来源与 SHA-256 校验清单，仅供维护/审计，运行时无需读取。
-- `scripts/migrate_styles.mjs`：npm CLI 兼容转发；保持调用方项目目录与参数。
-- `scripts/lib/`：过渡期保留的历史源码/测试参考；Skill 实际运行实现由独立 `fx/sds-linter` 统一维护。
+- `scripts/migrate_styles.mjs`：每次更新内部最新版后转发 npm CLI；保持调用方项目目录与参数。
+- `scripts/lib/`：过渡期保留的历史源码/测试参考；Skill 实际运行实现由独立 `fx/fds-linter` 统一维护。
 - `references/fds-token-catalog.jsonl`：随 Skill 打包的完整 Token 快照，每行一个 Token；由正式 YAML import 图自动生成，不手工维护。
 - `references/legacy-color-index.json`：旧 `fx-style` 11 套有彩色 `00–10`、Gray `neutrals01–19` 和 `special01–04` 快照，以及各色板的一对一索引映射依据；排除 RGB 与 Dark。
 - `references/migration-policy.json`：CSS property、Token 类型、命名边界和相似度阈值；不保存 Token 值。

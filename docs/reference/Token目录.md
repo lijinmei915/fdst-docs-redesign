@@ -10,7 +10,7 @@
 | --- | --- | --- | --- | --- |
 | `--fds-g-color-amber` | `color` | `#FF7C19` | `#FF7C19` | `tokens/atomic/seed/color.yml` |
 | `--fds-g-color-blue` | `color` | `#189DFF` | `#189DFF` | `tokens/atomic/seed/color.yml` |
-| `--fds-g-color-brand` | `color` | `#FF7C19` | `#FF7C19` | `tokens/atomic/seed/color.yml` |
+| `--fds-g-color-brand` | `color` | `#FF8000` | `#FF8000` | `tokens/atomic/seed/color.yml` |
 | `--fds-g-color-green` | `color` | `#30C776` | `#30C776` | `tokens/atomic/seed/color.yml` |
 | `--fds-g-color-indigo` | `color` | `#0C6CFF` | `#0C6CFF` | `tokens/atomic/seed/color.yml` |
 | `--fds-g-color-magenta` | `color` | `#FF4A66` | `#FF4A66` | `tokens/atomic/seed/color.yml` |

@@ -179,7 +179,7 @@ class BuildTest(unittest.TestCase):
 
         self.assertEqual([], errors)
         seeds = {
-            "brand": "#FF7C19",
+            "brand": "#FF8000",
             "amber": "#FF7C19",
             "yellow": "#FFB602",
             "yellow-green": "#87CC3B",

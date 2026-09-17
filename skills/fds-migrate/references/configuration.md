@@ -72,3 +72,8 @@
 ```
 
 不同入口不能重复或互相包含，避免同一源码在一次批量 `apply` 中被重复处理。批量 `apply` 仍保持全局保护：任一组件存在解析错误时，整批不写入。
+
+
+## 0.1.2：显式排除 JS 动态样式
+
+项目配置增加 `"dynamicStyles": "report"`（默认）或 `"dynamicStyles": "exclude"`。CLI `--dynamic-styles report|exclude` 优先于配置。只有用户明确排除动态数据流时启用 exclude；保留 JSON occurrence 和排除原因，归为 exempt，不列入 Markdown 问题。静态 JS 样式、数值单位不明项、解析错误及 WXML 插值仍报告。未知选项值报错。
