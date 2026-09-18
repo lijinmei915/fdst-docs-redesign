@@ -135,9 +135,12 @@ matches_line() {
     [[ -z "$CATEGORY" || "$line" == *"\"category\":\"$CATEGORY\""* ]] || return 1
     [[ -z "$TOKEN_TYPE" || "$line" == *"\"type\":\"$TOKEN_TYPE\""* ]] || return 1
 
-    for term in "${SEARCH_TERMS[@]}"; do
-        [[ "$line" == *"$term"* ]] || return 1
-    done
+    # Bash 3.2 treats an empty array as unset under set -u.
+    if [[ -n "$SEARCH" ]]; then
+        for term in "${SEARCH_TERMS[@]}"; do
+            [[ "$line" == *"$term"* ]] || return 1
+        done
+    fi
     return 0
 }
 

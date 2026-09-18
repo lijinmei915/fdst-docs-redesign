@@ -7106,14 +7106,14 @@
       "category": "color",
       "type": "color",
       "value": "{!color-primary}",
-      "resolvedValue": "#B34D00",
+      "resolvedValue": "#FF8000",
       "references": [
         "color-primary"
       ],
       "referenceChain": [
         "border-focus",
         "color-primary",
-        "color-brand-8"
+        "color-brand-6"
       ],
       "source": "tokens/semantic/base/color.yml",
       "sourceFile": "tokens/semantic/base/color.yml"
@@ -7503,14 +7503,14 @@
       "tier": "base",
       "category": "color",
       "type": "color",
-      "value": "{!color-brand-8}",
-      "resolvedValue": "#B34D00",
+      "value": "{!color-brand-6}",
+      "resolvedValue": "#FF8000",
       "references": [
-        "color-brand-8"
+        "color-brand-6"
       ],
       "referenceChain": [
         "color-primary",
-        "color-brand-8"
+        "color-brand-6"
       ],
       "source": "tokens/semantic/base/color.yml",
       "sourceFile": "tokens/semantic/base/color.yml"

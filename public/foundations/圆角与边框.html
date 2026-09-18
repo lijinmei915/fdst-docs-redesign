@@ -6,25 +6,26 @@
   <meta name="description" content="FDS 圆角、边框宽度及场景与组件的职责边界">
   <title>圆角与边框 | FDS Token</title>
   <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="../assets/fds-global-tokens.css">
-  <link rel="stylesheet" href="../assets/fds-docs.css">
+  <link rel="stylesheet" href="../assets/fds-global-tokens.css?v=b9933184a930">
+  <link rel="stylesheet" href="../assets/fds-docs.css?v=ebe8f19fd084">
   <script defer src="../assets/search-index.js"></script>
-  <script defer src="../assets/fds-demos.js"></script>
+  <script defer src="../assets/fds-demo-data.js?v=087e7c1e9111"></script>
+  <script defer src="../assets/fds-demos.js?v=1a85d93207b4"></script>
   <script defer src="../assets/fds-docs.js"></script>
 </head>
 <body data-page="foundations/圆角与边框.md" data-root="..">
   <header class="docs-topbar">
     <a class="docs-brand" href="../index.html" aria-label="FDS Token 文档首页"><span>FDS</span><strong>Token</strong></a>
-    <span class="docs-area">Foundation</span>
+    <nav class="docs-primary-nav" aria-label="文档分区"><a class="docs-section-link is-active" href="index.html" aria-current="location">基础规范</a><a class="docs-section-link" href="../getting-started/快速开始.html">使用指南</a><a class="docs-section-link" href="../reference/Token目录.html">Token 目录</a><a class="docs-section-link" href="../engineering/YAML源文件.html">内部工程</a></nav>
     <div class="docs-topbar-actions">
       <button class="docs-search-trigger" type="button" data-search-open>搜索文档</button>
       <button class="docs-menu-trigger" type="button" data-menu-toggle aria-expanded="false">目录</button>
     </div>
   </header>
   <div class="docs-shell">
-    <aside class="docs-sidebar" data-sidebar aria-label="文档导航"><section class="docs-nav-group"><h2>概览</h2><a class="docs-nav-link" href="../index.html">文档首页</a><a class="docs-nav-link" href="../examples/index.html">视觉工作台</a></section><section class="docs-nav-group"><h2>Foundation</h2><a class="docs-nav-link" href="index.html">基础规范</a><a class="docs-nav-link" href="颜色.html">颜色</a><a class="docs-nav-link" href="排版.html">排版</a><a class="docs-nav-link" href="间距与尺寸.html">间距与尺寸</a><a class="docs-nav-link is-active" href="圆角与边框.html" aria-current="page">圆角与边框</a><a class="docs-nav-link" href="阴影与层级.html">阴影与层级</a><a class="docs-nav-link" href="动效.html">动效</a></section><section class="docs-nav-group"><h2>语义</h2><a class="docs-nav-link" href="../semantics/基础语义.html">基础语义</a><a class="docs-nav-link" href="../semantics/场景语义.html">场景语义</a></section><section class="docs-nav-group"><h2>开始使用</h2><a class="docs-nav-link" href="../getting-started/快速开始.html">快速开始</a><a class="docs-nav-link" href="../getting-started/ShareDev接入.html">ShareDev 接入</a></section><section class="docs-nav-group"><h2>概念</h2><a class="docs-nav-link" href="../concepts/分层模型.html">分层模型</a><a class="docs-nav-link" href="../concepts/命名规则.html">命名规则</a><a class="docs-nav-link" href="../concepts/引用与边界.html">引用与边界</a></section><section class="docs-nav-group"><h2>工程维护</h2><a class="docs-nav-link" href="../engineering/YAML源文件.html">YAML 源文件</a><a class="docs-nav-link" href="../engineering/构建与校验.html">构建与校验</a><a class="docs-nav-link" href="../engineering/版本与发布.html">版本与发布</a><a class="docs-nav-link" href="../engineering/文档维护.html">文档维护</a></section><section class="docs-nav-group"><h2>参考</h2><a class="docs-nav-link" href="../reference/Token目录.html">Token 目录</a><a class="docs-nav-link" href="../reference/迁移与常见问题.html">迁移与常见问题</a></section></aside>
+    <aside class="docs-sidebar" data-sidebar aria-label="文档导航"><nav class="docs-mobile-sections" aria-label="文档分区"><a class="docs-section-link is-active" href="index.html" aria-current="location">基础规范</a><a class="docs-section-link" href="../getting-started/快速开始.html">使用指南</a><a class="docs-section-link" href="../reference/Token目录.html">Token 目录</a><a class="docs-section-link" href="../engineering/YAML源文件.html">内部工程</a></nav><section class="docs-nav-group"><h2>视觉基础</h2><a class="docs-nav-link" href="index.html">基础规范</a><a class="docs-nav-link" href="颜色.html">颜色</a><a class="docs-nav-link" href="排版.html">排版</a><a class="docs-nav-link" href="间距与尺寸.html">间距与尺寸</a><a class="docs-nav-link is-active" href="圆角与边框.html" aria-current="page">圆角与边框</a><a class="docs-nav-link" href="阴影与层级.html">阴影与层级</a><a class="docs-nav-link" href="动效.html">动效</a></section><section class="docs-nav-group"><h2>语义</h2><a class="docs-nav-link" href="../semantics/基础语义.html">基础语义</a><a class="docs-nav-link" href="../semantics/场景语义.html">场景语义</a></section><section class="docs-nav-group"><h2>视觉预览</h2><a class="docs-nav-link" href="../examples/index.html">视觉工作台</a></section></aside>
     <main class="docs-main">
-      <div class="docs-breadcrumb"><span>Foundation</span><span>/</span><strong>圆角与边框</strong></div>
+      <div class="docs-breadcrumb"><a href="index.html">基础规范</a><span>/</span><span>视觉基础</span><span>/</span><strong>圆角与边框</strong></div>
       <article class="docs-article"><h1 id="_1">圆角与边框</h1>
 <h2 id="_2">适用范围</h2>
 <p>本页说明 Atomic/Map 的圆角和边框宽度值域，以及 Scene、组件和业务容器各自负责的圆角入口。</p>
@@ -81,24 +82,24 @@
 <thead>
 <tr>
 <th>类别</th>
-<th>当前范围</th>
-<th>适用属性</th>
+<th>当前值（来自 Catalog JSON）</th>
+<th>用途</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Radius</td>
-<td>0、2、4、6、8、12、16、20、9999px</td>
+<td>0、2px、4px、6px、8px、12px、16px、20px、9999px</td>
 <td><code>border-radius</code></td>
 </tr>
 <tr>
 <td>Border Width</td>
-<td>1、2px</td>
+<td>1px、2px</td>
 <td><code>border-width</code></td>
 </tr>
 </tbody>
 </table>
-<p><code>9999px</code> 表示 full 圆角的固定枚举；它不是需要调用方计算的百分比。</p>
+<p><code>radius-full</code> 的当前解析值由上方 Catalog 表格给出；它表示固定枚举，不需要调用方计算百分比。</p>
 <h2 id="_7">使用规则</h2>
 <pre><code class="language-css">.scene-panel {
   border: var(--fds-g-border-width-1) solid var(--fds-g-border-default);
@@ -142,7 +143,7 @@
 <li>Border Width 只描述几何宽度，颜色和状态由 Semantic/Color 提供。</li>
 <li><code>radius-full</code> 适合胶囊或圆形实现底座，不代表所有圆形组件都应直接消费 Atomic。</li>
 <li>组件特殊轮廓和内部结构由组件 Token 负责。</li>
-<li><code>radius-7</code> 提供 20px 大圆角底层映射；是否用于具体组件或场景仍由对应契约决定。</li>
+<li><code>radius-7</code> 是底层圆角档位；当前值以 Catalog 表格为准。是否用于具体组件或场景仍由对应契约决定。</li>
 </ul>
 <h2 id="_9">来源</h2>
 <ul>

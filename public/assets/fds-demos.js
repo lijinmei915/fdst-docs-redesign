@@ -1,14 +1,6 @@
 (function () {
   "use strict";
 
-  const FAMILIES = ["brand", "amber", "yellow", "yellow-green", "green", "teal", "blue", "indigo", "purple", "magenta", "red"];
-  const DARK_FAMILIES = FAMILIES.filter((family) => family !== "brand");
-  const STEPS = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120];
-
-  function valueOf(variable) {
-    return getComputedStyle(document.documentElement).getPropertyValue(variable).trim();
-  }
-
   function contrastColor(value) {
     const match = value.match(/^#([0-9a-f]{6})$/i);
     if (!match) return "var(--fds-g-color-text-primary)";
@@ -41,38 +33,38 @@
   }
 
   function renderSemanticColors() {
-    const actionStates = [
-      ["Default", "--fds-g-color-primary"],
-      ["Hover", "--fds-g-color-primary-hover"],
-      ["Active", "--fds-g-color-primary-active"],
-      ["Disabled", "--fds-g-color-primary-disabled"],
-    ];
+    const actionStates = window.FDS_DEMO_DATA?.primaryColors || [];
+    const statuses = window.FDS_DEMO_DATA?.statusColors || [];
+    if (!actionStates.length || !statuses.length) return frame("语义颜色", "数据来自当前 Catalog", "<p>语义颜色数据未加载，请刷新页面。</p>");
     const action = `<div class="semantic-action">
       <div class="semantic-action-label"><strong>Primary action</strong><span>同一意图的四个交互状态</span></div>
-      ${actionStates.map(([label, variable]) => `<div class="semantic-state" style="--demo-color: var(${variable}); --demo-foreground: ${contrastColor(valueOf(variable))}"><span>${label}</span><code>${valueOf(variable)}</code></div>`).join("")}
+      ${actionStates.map(({ name, cssVariable, resolvedValue }) => {
+        const state = name.slice("color-primary-".length);
+        const label = name === "color-primary" ? "Default" : state[0].toUpperCase() + state.slice(1);
+        return `<div class="semantic-state" style="--demo-color: var(${cssVariable}); --demo-foreground: ${contrastColor(resolvedValue)}"><span>${label}</span><code>${resolvedValue}</code></div>`;
+      }).join("")}
     </div>`;
-    const statuses = [
-      ["Danger", "--fds-g-color-danger", "--fds-g-color-danger-background"],
-      ["Warning", "--fds-g-color-warning", "--fds-g-color-warning-background"],
-      ["Success", "--fds-g-color-success", "--fds-g-color-success-background"],
-      ["Info", "--fds-g-color-info", "--fds-g-color-info-background"],
-    ];
-    const status = `<div class="status-grid">${statuses.map(([label, color, background]) => `
-      <div class="status-sample" style="--status-color: var(${color}); --status-bg: var(${background}); --status-border: var(${color})">
-        <strong>${label}</strong><div></div>
+    const status = `<div class="status-grid">${statuses.map(({ name, color, background }) => `
+      <div class="status-sample" style="--status-color: var(${color.cssVariable}); --status-bg: var(${background.cssVariable}); --status-border: var(${color.cssVariable})">
+        <strong>${name[0].toUpperCase() + name.slice(1)}</strong><div></div>
       </div>`).join("")}</div>`;
     return frame("语义颜色", "先选用途，再使用对应状态组", action + status);
   }
 
   function paletteMarkup(mode) {
-    const families = mode === "dark" ? DARK_FAMILIES : FAMILIES;
-    return `<div class="palette-list">${families.map((family) => {
-      const variables = STEPS.map((step) => `--fds-g-color-${family}-${mode === "dark" ? "dark-" : ""}${step}`);
+    const preview = window.FDS_DEMO_DATA?.project9Palette;
+    const families = preview?.palettes?.[mode] || [];
+    if (!families.length) return '<p>色板数据未加载，请刷新页面。</p>';
+    return `<p class="palette-source">项目9本地评审色板 · 临时预览，尚未写入公司 Token</p><div class="palette-list">${families.map(({ family, swatches }) => {
+      const representativeStep = family === "brand" ? 7 : 8;
+      const representative = swatches.find((swatch) => swatch.step === representativeStep) || swatches[0];
+      const representativeValue = representative.cssValue || representative.resolvedValue;
       return `<section class="palette-family">
-        <div class="palette-family-head"><strong>${family.replace("-", " ")}</strong><code>${variables[8]}</code></div>
-        <div class="palette-ramp">${variables.map((variable, index) => {
-          const color = valueOf(variable);
-          return `<button class="palette-chip" type="button" data-copy-token="${variable}" title="${variable}: ${color}" style="--chip-color: var(${variable}); --chip-foreground: ${contrastColor(color)}">${STEPS[index]}</button>`;
+        <div class="palette-family-head"><strong>${family.replaceAll("-", " ")}</strong><code>${representative.cssVariable} · ${representativeValue.startsWith("#") ? representativeValue : "OKLCH"}</code></div>
+        <div class="palette-ramp" style="--palette-steps: ${swatches.length}">${swatches.map(({ step, cssVariable, cssValue, resolvedValue }) => {
+          const value = cssValue || resolvedValue;
+          const foreground = value.startsWith("#") ? contrastColor(value) : ((mode === "dark" && step < 10) || (mode === "base" && step >= 9)) ? "var(--fds-g-color-text-inverse)" : "var(--fds-g-color-text-primary)";
+          return `<button class="palette-chip" type="button" data-copy-token="${cssVariable}" title="${cssVariable}: ${value}" style="--chip-color: ${value}; --chip-foreground: ${foreground}">${step}</button>`;
         }).join("")}</div>
       </section>`;
     }).join("")}</div>`;
@@ -83,22 +75,26 @@
       <button type="button" data-palette-mode="base" aria-pressed="true">Base</button>
       <button type="button" data-palette-mode="dark" aria-pressed="false">Dark Map</button>
     </div>`;
-    container.innerHTML = frame("固定色板", "每个色系 12 阶，点击色块复制变量名", '<div data-palette-canvas></div>', controls);
+    container.innerHTML = frame("色阶色板", "项目9方案供评审预览，点击色块复制项目9变量名", '<div data-palette-canvas></div>', controls);
     const canvas = container.querySelector("[data-palette-canvas]");
-    const update = (mode) => {
+    let mode = "base";
+    const update = () => {
       canvas.innerHTML = paletteMarkup(mode);
       container.querySelectorAll("[data-palette-mode]").forEach((button) => button.setAttribute("aria-pressed", String(button.dataset.paletteMode === mode)));
     };
     container.addEventListener("click", (event) => {
-      const button = event.target.closest("[data-palette-mode]");
-      if (button) update(button.dataset.paletteMode);
+      const modeButton = event.target.closest("[data-palette-mode]");
+      if (modeButton) mode = modeButton.dataset.paletteMode;
+      if (modeButton) update();
     });
-    update("base");
+    update();
   }
 
   function renderTypography() {
+    const recipes = window.FDS_DEMO_DATA?.typography || [];
+    if (!recipes.length) return frame("排版角色", "数据来自当前 Catalog", "<p>排版数据未加载，请刷新页面。</p>");
     const content = `<div class="type-specimen">
-      <aside class="type-index"><strong>文本角色</strong><span>Heading 1 / 页面标题</span><span>Heading 3 / 区块标题</span><span>Heading 6 / 小节标题</span><span>Text / 正文</span></aside>
+      <aside class="type-index"><strong>文本角色</strong>${recipes.map(({ name }) => `<span>${name === "text" ? "Text / 正文" : name.replace("heading-", "Heading ")}</span>`).join("")}</aside>
       <div class="type-sheet">
         <span class="eyebrow">客户经营概览</span>
         <h2>让信息层级先于装饰</h2>
@@ -107,41 +103,46 @@
         <h4>核心指标</h4>
         <div class="type-metrics"><div class="type-metric"><strong>128</strong><span>活跃客户</span></div><div class="type-metric"><strong>76%</strong><span>目标完成率</span></div><div class="type-metric"><strong>24</strong><span>待跟进事项</span></div></div>
       </div>
-    </div>`;
-    return frame("排版角色", "同一业务片段中的标题、正文与数据", content);
+    </div><div class="type-recipes">${recipes.map((recipe) => `<div class="type-recipe" style="--recipe-size:var(${recipe.size.cssVariable});--recipe-line-height:var(${recipe["line-height"].cssVariable});--recipe-weight:var(${recipe.weight.cssVariable})"><strong>${recipe.name === "text" ? "Text" : recipe.name.replace("heading-", "Heading ")}</strong><span>让信息层级清晰可读</span><code>${recipe.size.resolvedValue} / ${recipe["line-height"].resolvedValue} / ${recipe.weight.resolvedValue}</code></div>`).join("")}</div>`;
+    return frame("排版角色", "角色、字号、行高和字重来自当前 Catalog JSON", content);
   }
 
   function renderSpacing() {
-    const scales = [["1", "2px"], ["2", "4px"], ["3", "6px"], ["4", "8px"], ["5", "10px"], ["6", "12px"], ["7", "16px"], ["8", "20px"], ["9", "24px"], ["10", "32px"], ["11", "48px"]];
-    const rows = scales.map(([token, value]) => `<div class="spacing-row"><code>spacing-${token}</code><div class="spacing-track"><div class="spacing-value" style="--space-value: var(--fds-g-spacing-${token})"></div></div><span>${value}</span></div>`).join("");
+    const scales = window.FDS_DEMO_DATA?.spacing || [];
+    if (!scales.length) return frame("间距", "数据来自当前 Catalog", "<p>间距数据未加载，请刷新页面。</p>");
+    const rows = scales.map(({ name, cssVariable, resolvedValue }) => `<div class="spacing-row"><code>${name}</code><div class="spacing-track"><div class="spacing-value" style="--space-value: var(${cssVariable})"></div></div><span>${resolvedValue}</span></div>`).join("");
     return frame("间距", "通用页面与内容组合的留白节奏", `<div class="spacing-scale">${rows}</div>`);
   }
 
   function renderRadius() {
-    const radii = [["None", "--fds-g-radius-0"], ["4px", "--fds-g-radius-2"], ["8px", "--fds-g-radius-4"], ["Full", "--fds-g-radius-full"]];
-    const content = `<div class="radius-grid">${radii.map(([label, variable]) => `<div class="radius-sample" style="--sample-radius: var(${variable})"><strong>${label}</strong><code>${variable}</code></div>`).join("")}</div>`;
+    const radii = window.FDS_DEMO_DATA?.radius || [];
+    if (!radii.length) return frame("圆角层级", "圆角数据来自当前 Catalog", "<p>圆角数据未加载，请刷新页面。</p>");
+    const content = `<div class="radius-grid">${radii.map(({ name, cssVariable, resolvedValue }) => {
+      const label = name === "radius-full" ? "Full" : resolvedValue === "0" ? "None" : resolvedValue;
+      return `<div class="radius-sample" style="--sample-radius: var(${cssVariable})"><strong>${label}</strong><code>${cssVariable}</code></div>`;
+    }).join("")}</div>`;
     return frame("圆角层级", "形态跟随对象职责，不按装饰偏好选择", content);
   }
 
   function renderEffects() {
-    const shadows = [["Static", "--fds-g-shadow-none"], ["Active", "--fds-g-shadow-active"], ["Drag", "--fds-g-shadow-drag"], ["Dropdown", "--fds-g-shadow-dropdown"]];
-    const opacities = [["25%", "--fds-g-opacity-25"], ["50%", "--fds-g-opacity-50"], ["65%", "--fds-g-opacity-65"], ["80%", "--fds-g-opacity-80"], ["100%", "--fds-g-opacity-100"]];
-    const layers = [["Sticky", "--fds-g-layer-sticky", "100"], ["Popup", "--fds-g-layer-popup", "1000"], ["Overlay", "--fds-g-layer-overlay", "4000"], ["Modal", "--fds-g-layer-modal", "5000"], ["Feedback", "--fds-g-layer-feedback", "9000"]];
+    const shadows = window.FDS_DEMO_DATA?.shadows || [];
+    const opacities = (window.FDS_DEMO_DATA?.opacity || []).filter(({ resolvedValue }) => Number(resolvedValue) > 0);
+    const layers = (window.FDS_DEMO_DATA?.layers || []).filter(({ name }) => name !== "layer-base");
+    if (!shadows.length || !opacities.length || !layers.length) return frame("效果与层级", "数据来自当前 Catalog", "<p>效果数据未加载，请刷新页面。</p>");
     const content = `
-      <section class="effects-section"><strong>阴影表达层级</strong><div class="shadow-grid">${shadows.map(([label, variable]) => `<div class="shadow-sample" style="--sample-shadow: var(${variable})"><strong>${label}</strong><code>${variable}</code></div>`).join("")}</div></section>
-      <section class="effects-section"><strong>透明度档位</strong><div class="opacity-scale">${opacities.map(([label, variable]) => `<div class="opacity-sample" style="--sample-opacity: var(${variable})">${label}</div>`).join("")}</div></section>
-      <section class="effects-section"><strong>覆盖层级</strong><div class="layer-stack">${layers.map(([label, variable, start]) => `<div class="layer-row"><strong>${label}</strong><code>${variable}</code><span>${start}+</span></div>`).join("")}</div></section>`;
+      <section class="effects-section"><strong>阴影表达层级</strong><div class="shadow-grid">${shadows.map(({ name, cssVariable }) => `<div class="shadow-sample" style="--sample-shadow: var(${cssVariable})"><strong>${name === "shadow-none" ? "Static" : name.slice("shadow-".length).replace(/\b\w/g, (letter) => letter.toUpperCase())}</strong><code>${cssVariable}</code></div>`).join("")}</div></section>
+      <section class="effects-section"><strong>透明度档位</strong><div class="opacity-scale">${opacities.map(({ cssVariable, resolvedValue }) => `<div class="opacity-sample" style="--sample-opacity: var(${cssVariable})">${Math.round(Number(resolvedValue) * 100)}%</div>`).join("")}</div></section>
+      <section class="effects-section"><strong>覆盖层级</strong><div class="layer-stack">${layers.map(({ name, cssVariable, resolvedValue }) => `<div class="layer-row"><strong>${name.slice("layer-".length).replace(/\b\w/g, (letter) => letter.toUpperCase())}</strong><code>${cssVariable}</code><span>${resolvedValue}+</span></div>`).join("")}</div></section>`;
     return frame("效果与层级", "阴影、透明度和 z-index 各自表达不同维度", content);
   }
 
   function renderMotion(container) {
-    const motions = [
-      ["Feedback", "--fds-g-motion-feedback-duration", "--fds-g-motion-feedback-easing", "100ms"],
-      ["Context", "--fds-g-motion-context-duration", "--fds-g-motion-context-enter-easing", "200ms"],
-      ["Disclosure", "--fds-g-motion-disclosure-duration", "--fds-g-motion-disclosure-easing", "300ms"],
-      ["Prominent", "--fds-g-motion-prominent-duration", "--fds-g-motion-prominent-enter-easing", "400ms"],
-    ];
-    const content = `<div class="motion-list">${motions.map(([label, duration, easing, value]) => `<div class="motion-row" style="--motion-duration: var(${duration}); --motion-easing: var(${easing})"><span>${label}</span><div class="motion-track"><div class="motion-dot"></div></div><span>${value}</span></div>`).join("")}</div>`;
+    const motions = window.FDS_DEMO_DATA?.motions || [];
+    if (!motions.length) {
+      container.innerHTML = frame("语义动效", "数据来自当前 Catalog", "<p>动效数据未加载，请刷新页面。</p>");
+      return;
+    }
+    const content = `<div class="motion-list">${motions.map(({ name, duration, easing }) => `<div class="motion-row" style="--motion-duration: var(${duration.cssVariable}); --motion-easing: var(${easing.cssVariable})"><span>${name[0].toUpperCase() + name.slice(1)}</span><div class="motion-track"><div class="motion-dot"></div></div><span>${duration.resolvedValue}</span></div>`).join("")}</div>`;
     container.innerHTML = frame("语义动效", "四类任务使用不同的时长与缓动", content, '<button class="motion-play" type="button" data-motion-play>播放</button>');
     container.querySelector("[data-motion-play]")?.addEventListener("click", () => {
       const rows = container.querySelectorAll(".motion-row");

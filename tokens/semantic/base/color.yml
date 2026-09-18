@@ -11,7 +11,7 @@ imports:
 - ../../atomic/map/color/gray.yml
 props:
   color-primary:
-    value: '{!color-brand-8}'
+    value: '{!color-brand-6}'
   color-primary-background:
     value: '{!color-brand-0}'
   color-primary-background-hover:

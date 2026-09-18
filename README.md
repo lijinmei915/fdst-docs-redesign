@@ -2,12 +2,16 @@
 
 本目录是 FDS Global CSS Token 的工程化维护入口。`tokens/fds-global.yml` 的 import 图是唯一 Token 事实源；CSS、catalog 和 Token 目录均由它生成。业务和组件只消费构建产物，不直接读取或修改 YAML。
 
+本地项目12跟随公司仓库 `https://git.firstshare.cn/fx/fdst`，该仓库是 FDST 工程唯一上游真相源。项目9独立维护，不跟随公司版本，也不反向覆盖公司标准；两项目不建立跨目录源码依赖。同步和发布边界见[版本与发布](docs/engineering/版本与发布.md)。
+
 Token 的详细设计说明与工程文档统一在本仓库维护。SDS 继续维护宏观 FDS、Components 和其他非 Token 设计规范，并通过链接引用本仓库文档，不再维护第二份 Token 名称、取值或色板。
 
 ## 开始使用
 
 - [FDS Global Token 文档首页](docs/README.md)
 - [FDS Token 可视化文档站](public/index.html)
+- [对外网站预览](public-external/index.html)（尚未发布）
+- [站点内容分流清单](docs/站点内容分流清单.md)
 - [面向设计读者的 Foundation 入口](docs/foundations/README.md)
 - [快速开始](docs/getting-started/快速开始.md)
 - [ShareDev 接入](docs/getting-started/ShareDev接入.md)
@@ -47,6 +51,7 @@ CSS Variable 使用两套公开前缀：Atomic/Map 与 Semantic/Base 使用 `--f
 | FDS Migrate | `skills/fds-migrate` | 独立扫描并迁移 CSS/WXSS、Vue/HTML/WXML、JS/TS 与受控 CSS-in-JS，输出审计报告 |
 | Token 目录 | `docs/reference/Token目录.md` | 开发者可读的完整索引 |
 | 可视化文档站 | `public/` | 由 `docs/` 同源生成，提供导航、搜索和正文内嵌 Demo |
+| 对外网站预览 | `public-external/` | 仅从明确允许的对外文稿生成，不包含内部导航、搜索或候选 Token |
 
 迁移工具源码由独立 [fx/sds-linter](https://git.firstshare.cn/fx/sds-linter) 维护。Skill 默认使用 package-lock.json 固定的 npm 包，首次安装需执行 Skill 中的 npm ci；旧脚本路径转发到安装包。Token/旧色板/策略变化后需同步元数据并发布新 npm 包，同时重建、验证并同步备用单文件。
 
@@ -66,7 +71,7 @@ python tools/build_docs.py
 python tools/build_docs.py --check
 ```
 
-`python tools/build.py` 会同时生成普通版和 min 版 CSS，两者变量与运行时行为一致，不得手工维护。`python tools/export_catalog.py` 会同时更新 `release` catalog、`fds-apply` 查询 JSONL、`fds-migrate` 完整 Token JSONL 和 Token 目录。`python tools/build_docs.py` 将 Markdown、站点资产和当前 CSS 生成到 `public/`，该目录同样不得手工编辑。Token 更新后重新执行三个生成命令即可刷新全部产物。两个 Skill 均不在运行时读取 FDST 仓库中的 YAML 或 `release`。Python、PyYAML 和 Python-Markdown 只用于 FDS 源码维护端；`fds-apply` 使用蜂巢平台预置 Bash 的内建能力，不依赖 Python、Node.js、`grep`、`rg`、`sed`、`awk` 或 `jq`。`fds-migrate` 因需要多语法 AST，独立要求 Node.js 16+，依赖锁定在其自身目录。
+`python tools/build.py` 会同时生成普通版和 min 版 CSS，两者变量与运行时行为一致，不得手工维护。`python tools/export_catalog.py` 会同时更新 `release` catalog、`fds-apply` 查询 JSONL、`fds-migrate` 完整 Token JSONL 和 Token 目录。`python tools/build_docs.py` 默认生成内部预览 `public/` 和对外预览 `public-external/`；也可用 `--site internal` 或 `--site external` 单独处理。两个输出目录都不得手工编辑。对外预览尚未完成正式内容及访问部署审批，不能直接发布。Token 更新后重新执行三个生成命令即可刷新全部产物。两个 Skill 均不在运行时读取 FDST 仓库中的 YAML 或 `release`。Python、PyYAML 和 Python-Markdown 只用于 FDS 源码维护端；`fds-apply` 使用蜂巢平台预置 Bash 的内建能力，不依赖 Python、Node.js、`grep`、`rg`、`sed`、`awk` 或 `jq`。`fds-migrate` 因需要多语法 AST，独立要求 Node.js 16+，依赖锁定在其自身目录。
 
 构建还会为普通版和 min 版各追加一份带 hash 的 CSS，内容与对应固定名文件逐字节一致。`<hash>` 为各自文件内容的 SHA-256 前 12 位；相同内容重复构建名称不变，内容变化时生成新名称。正式打包在源校验和 CSS 内容生成成功后，先清空 `release/`（包括旧 hash、Catalog 和子目录），再写入当次 CSS 与 `tpl_config`；随后执行 `export_catalog.py` 重建 Catalog。`--check` 不清理、不写入任何产物；源校验失败时保留上次产物。
 

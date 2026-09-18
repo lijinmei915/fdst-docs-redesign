@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <title>文档站对外／内部逐页清单 | FDS Token</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="./assets/fds-global-tokens.css?v=b9933184a930">
+  <link rel="stylesheet" href="./assets/fds-docs.css?v=ebe8f19fd084">
+  <script defer src="./assets/search-index.js"></script>
+  <script defer src="./assets/fds-demo-data.js?v=087e7c1e9111"></script>
+  <script defer src="./assets/fds-demos.js?v=1a85d93207b4"></script>
+  <script defer src="./assets/fds-docs.js"></script>
+</head>
+<body data-page="站点内容分流清单.md" data-root=".">
+  <header class="docs-topbar">
+    <a class="docs-brand" href="./index.html" aria-label="FDS Token 文档首页"><span>FDS</span><strong>Token</strong></a>
+    <nav class="docs-primary-nav" aria-label="文档分区"><a class="docs-section-link" href="foundations/index.html">基础规范</a><a class="docs-section-link" href="getting-started/快速开始.html">使用指南</a><a class="docs-section-link" href="reference/Token目录.html">Token 目录</a><a class="docs-section-link is-active" href="engineering/YAML源文件.html" aria-current="location">内部工程</a></nav>
+    <div class="docs-topbar-actions">
+      <button class="docs-search-trigger" type="button" data-search-open>搜索文档</button>
+      <button class="docs-menu-trigger" type="button" data-menu-toggle aria-expanded="false">目录</button>
+    </div>
+  </header>
+  <div class="docs-shell">
+    <aside class="docs-sidebar" data-sidebar aria-label="文档导航"><nav class="docs-mobile-sections" aria-label="文档分区"><a class="docs-section-link" href="foundations/index.html">基础规范</a><a class="docs-section-link" href="getting-started/快速开始.html">使用指南</a><a class="docs-section-link" href="reference/Token目录.html">Token 目录</a><a class="docs-section-link is-active" href="engineering/YAML源文件.html" aria-current="location">内部工程</a></nav><section class="docs-nav-group"><h2>工程维护</h2><a class="docs-nav-link" href="engineering/YAML源文件.html">YAML 源文件</a><a class="docs-nav-link" href="engineering/构建与校验.html">构建与校验</a><a class="docs-nav-link" href="engineering/版本与发布.html">版本与发布</a><a class="docs-nav-link" href="engineering/文档维护.html">文档维护</a><a class="docs-nav-link is-active" href="站点内容分流清单.html" aria-current="page">站点内容分流清单</a></section></aside>
+    <main class="docs-main">
+      <div class="docs-breadcrumb"><a href="engineering/YAML源文件.html">内部工程</a><span>/</span><span>工程维护</span><span>/</span><strong>文档站对外／内部逐页清单</strong></div>
+      <article class="docs-article"><h1 id="_1">文档站对外／内部逐页清单</h1>
+<p>本清单记录现有 22 篇 <code>docs/</code> 页面及本清单自身进入哪种网站。公司仓库仍是正式 Token 的唯一上游；项目 9 色板只是本地候选预览。<code>public/</code> 是现有内部预览，<code>public-external/</code> 是独立生成的对外<strong>预览</strong>，均不代表已经完成公开发布。两个网站共用工程中的 Token 源，不另建一套 Token。</p>
+<table>
+<thead>
+<tr>
+<th>当前页面</th>
+<th>分类</th>
+<th>处理方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>README.md</code> 文档首页</td>
+<td>待改写</td>
+<td>内部保留；对外改用 <code>external/README.md</code>，移除工程路径和内部接入信息</td>
+</tr>
+<tr>
+<td><code>examples/README.md</code> 视觉工作台</td>
+<td>内部</td>
+<td>保留候选色板、视觉校验与预览</td>
+</tr>
+<tr>
+<td><code>foundations/README.md</code> 基础规范</td>
+<td>待改写</td>
+<td>清理内部维护链接，按已发布版本对外展示</td>
+</tr>
+<tr>
+<td><code>foundations/颜色.md</code></td>
+<td>待改写</td>
+<td>项目 9 候选色板留内部；正式色板经评审后再编写对外页</td>
+</tr>
+<tr>
+<td><code>foundations/排版.md</code></td>
+<td>待改写</td>
+<td>核准当前 Catalog 值并移除私有源文件链接</td>
+</tr>
+<tr>
+<td><code>foundations/间距与尺寸.md</code></td>
+<td>待改写</td>
+<td>核准当前 Catalog 值并移除私有源文件链接</td>
+</tr>
+<tr>
+<td><code>foundations/圆角与边框.md</code></td>
+<td>待改写</td>
+<td>核准当前 Catalog 值并移除私有源文件链接</td>
+</tr>
+<tr>
+<td><code>foundations/阴影与层级.md</code></td>
+<td>待改写</td>
+<td>核准当前 Catalog 值并移除内部参考文件链接</td>
+</tr>
+<tr>
+<td><code>foundations/动效.md</code></td>
+<td>待改写</td>
+<td>核准当前 Catalog 值并移除私有源文件链接</td>
+</tr>
+<tr>
+<td><code>semantics/基础语义.md</code></td>
+<td>待改写</td>
+<td>核准正式变量与来源，移除私有源文件链接</td>
+</tr>
+<tr>
+<td><code>semantics/场景语义.md</code></td>
+<td>待改写</td>
+<td>核准正式变量与来源，移除私有源文件链接</td>
+</tr>
+<tr>
+<td><code>getting-started/快速开始.md</code></td>
+<td>待改写</td>
+<td>去掉公司内部接入和仓库路径，补正式下载与版本信息</td>
+</tr>
+<tr>
+<td><code>getting-started/ShareDev接入.md</code></td>
+<td>内部</td>
+<td>ShareDev 专项接入及尚未确定的发布流程不公开</td>
+</tr>
+<tr>
+<td><code>concepts/分层模型.md</code></td>
+<td>待改写</td>
+<td>用通用语言说明分层，移除私有仓库引用</td>
+</tr>
+<tr>
+<td><code>concepts/命名规则.md</code></td>
+<td>待改写</td>
+<td>保留已发布命名规则，移除内部构建说明</td>
+</tr>
+<tr>
+<td><code>concepts/引用与边界.md</code></td>
+<td>待改写</td>
+<td>保留使用原则，移除内部校验与源文件链接</td>
+</tr>
+<tr>
+<td><code>engineering/YAML源文件.md</code></td>
+<td>内部</td>
+<td>源文件维护说明</td>
+</tr>
+<tr>
+<td><code>engineering/构建与校验.md</code></td>
+<td>内部</td>
+<td>构建命令与校验流程</td>
+</tr>
+<tr>
+<td><code>engineering/版本与发布.md</code></td>
+<td>内部</td>
+<td>版本责任和公司发布边界</td>
+</tr>
+<tr>
+<td><code>engineering/文档维护.md</code></td>
+<td>内部</td>
+<td>文档生成和候选数据维护</td>
+</tr>
+<tr>
+<td><code>站点内容分流清单.md</code></td>
+<td>内部</td>
+<td>记录对外发布边界与逐页状态</td>
+</tr>
+<tr>
+<td><code>reference/Token目录.md</code></td>
+<td>待改写</td>
+<td>只从确认发布的 Catalog 生成对外目录，附版本号</td>
+</tr>
+<tr>
+<td><code>reference/迁移与常见问题.md</code></td>
+<td>待改写</td>
+<td>旧系统迁移映射留内部；通用常见问题另写对外版</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_2">生成边界</h2>
+<ul>
+<li>内部预览由 <code>python tools/build_docs.py --site internal</code> 生成到 <code>public/</code>，保留上述现有页面。它目前只是本机／局域网静态预览，<strong>没有登录保护</strong>。</li>
+<li>对外预览由 <code>python tools/build_docs.py --site external</code> 生成到 <code>public-external/</code>。目前只收录 <code>external/</code> 下明确标记为 <code>audience: external</code>、<code>status: preview</code> 的两页说明文稿。</li>
+<li>默认命令与 <code>--check</code> 同时处理两个网站。对外生成物不复制内部导航、搜索索引、Token CSS、演示数据、项目 9 色板或公司 Git 链接。</li>
+<li>正式对外发布需先批准公开内容和具体 Token 版本，再建立部署及访问控制。局域网地址仅用于临时预览。</li>
+</ul></article>
+    </main>
+    <aside class="docs-toc" aria-label="本页目录"><strong>本页目录</strong><a href="#_2">生成边界</a></aside>
+  </div>
+  <div class="docs-backdrop" data-menu-backdrop hidden></div>
+  <dialog class="docs-search" data-search-dialog>
+    <form method="dialog" class="docs-search-head"><label for="docs-search-input">搜索文档</label><button type="submit">关闭</button></form>
+    <input id="docs-search-input" type="search" autocomplete="off" placeholder="输入 Token、用途或规范名称" data-search-input>
+    <div class="docs-search-results" data-search-results></div>
+  </dialog>
+</body>
+</html>

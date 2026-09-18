@@ -6,25 +6,26 @@
   <meta name="description" content="FDS Semantic/Base 如何把基础值映射为跨页面稳定用途">
   <title>基础语义 | FDS Token</title>
   <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="../assets/fds-global-tokens.css">
-  <link rel="stylesheet" href="../assets/fds-docs.css">
+  <link rel="stylesheet" href="../assets/fds-global-tokens.css?v=b9933184a930">
+  <link rel="stylesheet" href="../assets/fds-docs.css?v=ebe8f19fd084">
   <script defer src="../assets/search-index.js"></script>
-  <script defer src="../assets/fds-demos.js"></script>
+  <script defer src="../assets/fds-demo-data.js?v=087e7c1e9111"></script>
+  <script defer src="../assets/fds-demos.js?v=1a85d93207b4"></script>
   <script defer src="../assets/fds-docs.js"></script>
 </head>
 <body data-page="semantics/基础语义.md" data-root="..">
   <header class="docs-topbar">
     <a class="docs-brand" href="../index.html" aria-label="FDS Token 文档首页"><span>FDS</span><strong>Token</strong></a>
-    <span class="docs-area">Foundation</span>
+    <nav class="docs-primary-nav" aria-label="文档分区"><a class="docs-section-link is-active" href="../foundations/index.html" aria-current="location">基础规范</a><a class="docs-section-link" href="../getting-started/快速开始.html">使用指南</a><a class="docs-section-link" href="../reference/Token目录.html">Token 目录</a><a class="docs-section-link" href="../engineering/YAML源文件.html">内部工程</a></nav>
     <div class="docs-topbar-actions">
       <button class="docs-search-trigger" type="button" data-search-open>搜索文档</button>
       <button class="docs-menu-trigger" type="button" data-menu-toggle aria-expanded="false">目录</button>
     </div>
   </header>
   <div class="docs-shell">
-    <aside class="docs-sidebar" data-sidebar aria-label="文档导航"><section class="docs-nav-group"><h2>概览</h2><a class="docs-nav-link" href="../index.html">文档首页</a><a class="docs-nav-link" href="../examples/index.html">视觉工作台</a></section><section class="docs-nav-group"><h2>Foundation</h2><a class="docs-nav-link" href="../foundations/index.html">基础规范</a><a class="docs-nav-link" href="../foundations/颜色.html">颜色</a><a class="docs-nav-link" href="../foundations/排版.html">排版</a><a class="docs-nav-link" href="../foundations/间距与尺寸.html">间距与尺寸</a><a class="docs-nav-link" href="../foundations/圆角与边框.html">圆角与边框</a><a class="docs-nav-link" href="../foundations/阴影与层级.html">阴影与层级</a><a class="docs-nav-link" href="../foundations/动效.html">动效</a></section><section class="docs-nav-group"><h2>语义</h2><a class="docs-nav-link is-active" href="基础语义.html" aria-current="page">基础语义</a><a class="docs-nav-link" href="场景语义.html">场景语义</a></section><section class="docs-nav-group"><h2>开始使用</h2><a class="docs-nav-link" href="../getting-started/快速开始.html">快速开始</a><a class="docs-nav-link" href="../getting-started/ShareDev接入.html">ShareDev 接入</a></section><section class="docs-nav-group"><h2>概念</h2><a class="docs-nav-link" href="../concepts/分层模型.html">分层模型</a><a class="docs-nav-link" href="../concepts/命名规则.html">命名规则</a><a class="docs-nav-link" href="../concepts/引用与边界.html">引用与边界</a></section><section class="docs-nav-group"><h2>工程维护</h2><a class="docs-nav-link" href="../engineering/YAML源文件.html">YAML 源文件</a><a class="docs-nav-link" href="../engineering/构建与校验.html">构建与校验</a><a class="docs-nav-link" href="../engineering/版本与发布.html">版本与发布</a><a class="docs-nav-link" href="../engineering/文档维护.html">文档维护</a></section><section class="docs-nav-group"><h2>参考</h2><a class="docs-nav-link" href="../reference/Token目录.html">Token 目录</a><a class="docs-nav-link" href="../reference/迁移与常见问题.html">迁移与常见问题</a></section></aside>
+    <aside class="docs-sidebar" data-sidebar aria-label="文档导航"><nav class="docs-mobile-sections" aria-label="文档分区"><a class="docs-section-link is-active" href="../foundations/index.html" aria-current="location">基础规范</a><a class="docs-section-link" href="../getting-started/快速开始.html">使用指南</a><a class="docs-section-link" href="../reference/Token目录.html">Token 目录</a><a class="docs-section-link" href="../engineering/YAML源文件.html">内部工程</a></nav><section class="docs-nav-group"><h2>视觉基础</h2><a class="docs-nav-link" href="../foundations/index.html">基础规范</a><a class="docs-nav-link" href="../foundations/颜色.html">颜色</a><a class="docs-nav-link" href="../foundations/排版.html">排版</a><a class="docs-nav-link" href="../foundations/间距与尺寸.html">间距与尺寸</a><a class="docs-nav-link" href="../foundations/圆角与边框.html">圆角与边框</a><a class="docs-nav-link" href="../foundations/阴影与层级.html">阴影与层级</a><a class="docs-nav-link" href="../foundations/动效.html">动效</a></section><section class="docs-nav-group"><h2>语义</h2><a class="docs-nav-link is-active" href="基础语义.html" aria-current="page">基础语义</a><a class="docs-nav-link" href="场景语义.html">场景语义</a></section><section class="docs-nav-group"><h2>视觉预览</h2><a class="docs-nav-link" href="../examples/index.html">视觉工作台</a></section></aside>
     <main class="docs-main">
-      <div class="docs-breadcrumb"><span>语义</span><span>/</span><strong>基础语义</strong></div>
+      <div class="docs-breadcrumb"><a href="../foundations/index.html">基础规范</a><span>/</span><span>语义</span><span>/</span><strong>基础语义</strong></div>
       <article class="docs-article"><h1 id="_1">基础语义</h1>
 <h2 id="_2">适用范围</h2>
 <p>Semantic/Base 将 Atomic 值映射为跨页面、跨业务成立的稳定用途。普通业务代码应先在本层查找，再考虑 Scene、Component 或 Atomic。</p>
@@ -118,7 +119,7 @@
   transition-timing-function: var(--fds-g-motion-disclosure-easing);
 }
 </code></pre>
-<p>不要使用：业务直接选择 <code>motion-duration-*</code> 表达 fast/slow，或把 Atomic 中 500ms 以上的长时长直接当成通用 Semantic recipe。</p>
+<p>不要使用：业务直接选择 <code>motion-duration-*</code> 表达 fast/slow，或把较长的 Atomic 时长直接当成通用 Semantic recipe。当前数值以 Catalog JSON 为准。</p>
 <h2 id="_4">边界</h2>
 <ul>
 <li>Base 不包含页面组合关系，通用页面、场景卡片和标题转到 <a href="场景语义.html">场景语义</a>。</li>

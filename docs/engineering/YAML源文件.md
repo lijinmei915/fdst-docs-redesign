@@ -23,21 +23,9 @@ imports:
 
 ## 叶子文件结构
 
-```yaml
-schema: fds-token-source/v1
-global:
-  layer: semantic
-  tier: base
-  category: color
-  type: color
-  scope: global
-  primitive: false
-imports:
-- ../../atomic/map/color/palette/base.yml
-props:
-  color-primary:
-    value: '{!color-brand-9}'
-```
+以下是叶子文件的结构示意，并非源文件全文；其中 `color-primary` 引用从当前 Catalog JSON 生成：
+
+<!-- fds-catalog-table:primaryleaf -->
 
 | 字段 | 规则 |
 | --- | --- |
@@ -56,7 +44,9 @@ props:
 
 ## 引用规则
 
-YAML 中只使用 `{!token-id}`，不写 CSS `var()`。构建器按被引用 Token 的 namespace 生成 CSS：Base 引用转换为 `var(--fds-g-color-brand-9)`，Scene 引用 Base/Map 时同样指向 `--fds-g-*`。
+YAML 中只使用 `{!token-id}`，不写 CSS `var()`。构建器按被引用 Token 的 namespace 生成 CSS；Scene 引用 Base/Map 时同样指向 `--fds-g-*`。上例当前生成的 CSS 引用为：
+
+<!-- fds-catalog-table:primarycss -->
 
 依赖只允许沿 `Atomic/Seed -> Atomic/Map -> Semantic/Base -> Semantic/Scene` 正向或同级流动，禁止反向和循环引用。引用的类型必须一致；Shadow 组合 Color 是当前受支持的例外。
 

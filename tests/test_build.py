@@ -474,7 +474,8 @@ class BuildTest(unittest.TestCase):
         self.assertEqual("{!color-brand-0}", tokens["color-primary-background"].value)
         self.assertEqual("{!color-brand-4}", tokens["color-primary-disabled"].value)
         self.assertEqual("{!color-brand-7}", tokens["color-primary-hover"].value)
-        self.assertEqual("{!color-brand-8}", tokens["color-primary"].value)
+        self.assertEqual("{!color-brand-6}", tokens["color-primary"].value)
+        self.assertEqual("#FF8000", tokens["color-brand-6"].value)
         self.assertEqual("{!color-brand-9}", tokens["color-primary-active"].value)
 
     def test_gray_semantic_scale_mapping(self) -> None:

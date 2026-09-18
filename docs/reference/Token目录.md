@@ -432,7 +432,7 @@
 | `--fds-g-border-default` | `color` | `{!color-gray-5}` | `#DEE1E8` | `tokens/semantic/base/color.yml` |
 | `--fds-g-border-disabled` | `color` | `{!color-gray-2}` | `#FAFAFA` | `tokens/semantic/base/color.yml` |
 | `--fds-g-border-error` | `color` | `{!color-danger}` | `#B31E0B` | `tokens/semantic/base/color.yml` |
-| `--fds-g-border-focus` | `color` | `{!color-primary}` | `#B34D00` | `tokens/semantic/base/color.yml` |
+| `--fds-g-border-focus` | `color` | `{!color-primary}` | `#FF8000` | `tokens/semantic/base/color.yml` |
 | `--fds-g-border-subtle` | `color` | `{!color-gray-4}` | `#EAEBEE` | `tokens/semantic/base/color.yml` |
 | `--fds-g-color-danger` | `color` | `{!color-red-8}` | `#B31E0B` | `tokens/semantic/base/color.yml` |
 | `--fds-g-color-danger-active` | `color` | `{!color-red-9}` | `#8C0D01` | `tokens/semantic/base/color.yml` |
@@ -452,7 +452,7 @@
 | `--fds-g-color-info-disabled` | `color` | `{!color-blue-4}` | `#69CAFF` | `tokens/semantic/base/color.yml` |
 | `--fds-g-color-info-hover` | `color` | `{!color-blue-7}` | `#097BD9` | `tokens/semantic/base/color.yml` |
 | `--fds-g-color-mask` | `color` | `rgb(8 5 4 / 20%)` | `rgb(8 5 4 / 20%)` | `tokens/semantic/base/color.yml` |
-| `--fds-g-color-primary` | `color` | `{!color-brand-8}` | `#B34D00` | `tokens/semantic/base/color.yml` |
+| `--fds-g-color-primary` | `color` | `{!color-brand-6}` | `#FF8000` | `tokens/semantic/base/color.yml` |
 | `--fds-g-color-primary-active` | `color` | `{!color-brand-9}` | `#8C3800` | `tokens/semantic/base/color.yml` |
 | `--fds-g-color-primary-background` | `color` | `{!color-brand-0}` | `#FFFBF0` | `tokens/semantic/base/color.yml` |
 | `--fds-g-color-primary-background-active` | `color` | `{!color-brand-2}` | `#FFDDA3` | `tokens/semantic/base/color.yml` |

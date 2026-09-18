@@ -6,28 +6,29 @@
   <meta name="description" content="FDS 字号、固定行高、相对行高、字重和语义排版组合">
   <title>排版 | FDS Token</title>
   <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="../assets/fds-global-tokens.css">
-  <link rel="stylesheet" href="../assets/fds-docs.css">
+  <link rel="stylesheet" href="../assets/fds-global-tokens.css?v=b9933184a930">
+  <link rel="stylesheet" href="../assets/fds-docs.css?v=ebe8f19fd084">
   <script defer src="../assets/search-index.js"></script>
-  <script defer src="../assets/fds-demos.js"></script>
+  <script defer src="../assets/fds-demo-data.js?v=087e7c1e9111"></script>
+  <script defer src="../assets/fds-demos.js?v=1a85d93207b4"></script>
   <script defer src="../assets/fds-docs.js"></script>
 </head>
 <body data-page="foundations/排版.md" data-root="..">
   <header class="docs-topbar">
     <a class="docs-brand" href="../index.html" aria-label="FDS Token 文档首页"><span>FDS</span><strong>Token</strong></a>
-    <span class="docs-area">Foundation</span>
+    <nav class="docs-primary-nav" aria-label="文档分区"><a class="docs-section-link is-active" href="index.html" aria-current="location">基础规范</a><a class="docs-section-link" href="../getting-started/快速开始.html">使用指南</a><a class="docs-section-link" href="../reference/Token目录.html">Token 目录</a><a class="docs-section-link" href="../engineering/YAML源文件.html">内部工程</a></nav>
     <div class="docs-topbar-actions">
       <button class="docs-search-trigger" type="button" data-search-open>搜索文档</button>
       <button class="docs-menu-trigger" type="button" data-menu-toggle aria-expanded="false">目录</button>
     </div>
   </header>
   <div class="docs-shell">
-    <aside class="docs-sidebar" data-sidebar aria-label="文档导航"><section class="docs-nav-group"><h2>概览</h2><a class="docs-nav-link" href="../index.html">文档首页</a><a class="docs-nav-link" href="../examples/index.html">视觉工作台</a></section><section class="docs-nav-group"><h2>Foundation</h2><a class="docs-nav-link" href="index.html">基础规范</a><a class="docs-nav-link" href="颜色.html">颜色</a><a class="docs-nav-link is-active" href="排版.html" aria-current="page">排版</a><a class="docs-nav-link" href="间距与尺寸.html">间距与尺寸</a><a class="docs-nav-link" href="圆角与边框.html">圆角与边框</a><a class="docs-nav-link" href="阴影与层级.html">阴影与层级</a><a class="docs-nav-link" href="动效.html">动效</a></section><section class="docs-nav-group"><h2>语义</h2><a class="docs-nav-link" href="../semantics/基础语义.html">基础语义</a><a class="docs-nav-link" href="../semantics/场景语义.html">场景语义</a></section><section class="docs-nav-group"><h2>开始使用</h2><a class="docs-nav-link" href="../getting-started/快速开始.html">快速开始</a><a class="docs-nav-link" href="../getting-started/ShareDev接入.html">ShareDev 接入</a></section><section class="docs-nav-group"><h2>概念</h2><a class="docs-nav-link" href="../concepts/分层模型.html">分层模型</a><a class="docs-nav-link" href="../concepts/命名规则.html">命名规则</a><a class="docs-nav-link" href="../concepts/引用与边界.html">引用与边界</a></section><section class="docs-nav-group"><h2>工程维护</h2><a class="docs-nav-link" href="../engineering/YAML源文件.html">YAML 源文件</a><a class="docs-nav-link" href="../engineering/构建与校验.html">构建与校验</a><a class="docs-nav-link" href="../engineering/版本与发布.html">版本与发布</a><a class="docs-nav-link" href="../engineering/文档维护.html">文档维护</a></section><section class="docs-nav-group"><h2>参考</h2><a class="docs-nav-link" href="../reference/Token目录.html">Token 目录</a><a class="docs-nav-link" href="../reference/迁移与常见问题.html">迁移与常见问题</a></section></aside>
+    <aside class="docs-sidebar" data-sidebar aria-label="文档导航"><nav class="docs-mobile-sections" aria-label="文档分区"><a class="docs-section-link is-active" href="index.html" aria-current="location">基础规范</a><a class="docs-section-link" href="../getting-started/快速开始.html">使用指南</a><a class="docs-section-link" href="../reference/Token目录.html">Token 目录</a><a class="docs-section-link" href="../engineering/YAML源文件.html">内部工程</a></nav><section class="docs-nav-group"><h2>视觉基础</h2><a class="docs-nav-link" href="index.html">基础规范</a><a class="docs-nav-link" href="颜色.html">颜色</a><a class="docs-nav-link is-active" href="排版.html" aria-current="page">排版</a><a class="docs-nav-link" href="间距与尺寸.html">间距与尺寸</a><a class="docs-nav-link" href="圆角与边框.html">圆角与边框</a><a class="docs-nav-link" href="阴影与层级.html">阴影与层级</a><a class="docs-nav-link" href="动效.html">动效</a></section><section class="docs-nav-group"><h2>语义</h2><a class="docs-nav-link" href="../semantics/基础语义.html">基础语义</a><a class="docs-nav-link" href="../semantics/场景语义.html">场景语义</a></section><section class="docs-nav-group"><h2>视觉预览</h2><a class="docs-nav-link" href="../examples/index.html">视觉工作台</a></section></aside>
     <main class="docs-main">
-      <div class="docs-breadcrumb"><span>Foundation</span><span>/</span><strong>排版</strong></div>
+      <div class="docs-breadcrumb"><a href="index.html">基础规范</a><span>/</span><span>视觉基础</span><span>/</span><strong>排版</strong></div>
       <article class="docs-article"><h1 id="_1">排版</h1>
 <h2 id="_2">适用范围</h2>
-<p>本页说明 Atomic/Map 中的字号、固定行高、相对行高和字重值域。业务标题和正文文本优先使用 Semantic 排版 recipe；标签等组件文本由组件契约负责。</p>
+<p>本页展示 Catalog JSON 中的排版 Token：Atomic/Map 的字号、行高与字重，以及 Semantic 的 Heading、Text 和场景密度组合。下文的 Token 名称、变量和值由构建器读取 JSON 生成。</p>
 <h2 id="_3">设计原则</h2>
 <ul>
 <li><strong>层级来自内容结构。</strong> 先判断标题、正文或标签职责，再选择排版组合，不按“看起来够大”临时挑字号。</li>
@@ -35,65 +36,125 @@
 <li><strong>同级保持一致。</strong> 同一页面中承担相同职责的标题和正文使用同一 recipe，不因容器不同随意变化。</li>
 <li><strong>可读性优先。</strong> 长文本、窄容器和中文混排需要检查换行、行高和信息密度，不能仅验收单行样张。</li>
 </ul>
-<h2 id="_4">按场景选择</h2>
+<h2 id="_4">使用建议</h2>
+<p>标题按内容层级选择下方 Heading recipe，正文使用 Text recipe；选定角色后同时使用字号、行高和字重。页面需要调整信息密度时，对照下方场景密度组合查看行高与间距。组件内部的特殊文字样式应由对应组件规范说明。</p>
+<h2 id="_5">视觉预览</h2>
+<p>下面的样张和对应数值从 Catalog JSON 生成，用于核对字号、行高和字重。</p>
+<div class="fds-demo" data-demo="typography"></div>
+
+<h2 id="_6">角色与当前值</h2>
 <table>
 <thead>
 <tr>
-<th>场景</th>
-<th>推荐入口</th>
-<th>说明</th>
+<th>角色</th>
+<th>字号</th>
+<th>行高</th>
+<th>字重</th>
+<th>对应 CSS 变量</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>页面与内容标题</td>
-<td><code>heading-1</code> 至 <code>heading-6</code> recipe</td>
-<td>按信息层级选择，并完整使用 Size、Line Height、Weight</td>
+<td>Heading 1</td>
+<td>32px</td>
+<td>48px</td>
+<td>700</td>
+<td><code>--fds-g-heading-1-size</code><br><code>--fds-g-heading-1-line-height</code><br><code>--fds-g-heading-1-weight</code></td>
 </tr>
 <tr>
-<td>常规正文</td>
-<td><code>text</code> recipe</td>
-<td>作为跨页面稳定的正文底座</td>
+<td>Heading 2</td>
+<td>24px</td>
+<td>36px</td>
+<td>700</td>
+<td><code>--fds-g-heading-2-size</code><br><code>--fds-g-heading-2-line-height</code><br><code>--fds-g-heading-2-weight</code></td>
 </tr>
 <tr>
-<td>页面密度切换</td>
-<td><code>density-{compact|comfortable|spacious}-line-height</code></td>
-<td>紧凑、舒适、宽松分别为 1.2、1.5、1.8，应与同档 Scene Spacing 成对选择</td>
+<td>Heading 3</td>
+<td>20px</td>
+<td>32px</td>
+<td>600</td>
+<td><code>--fds-g-heading-3-size</code><br><code>--fds-g-heading-3-line-height</code><br><code>--fds-g-heading-3-weight</code></td>
 </tr>
 <tr>
-<td>标签和紧凑字段名</td>
-<td>Component Token</td>
-<td>当前不发布 Global Label recipe</td>
+<td>Heading 4</td>
+<td>18px</td>
+<td>28px</td>
+<td>600</td>
+<td><code>--fds-g-heading-4-size</code><br><code>--fds-g-heading-4-line-height</code><br><code>--fds-g-heading-4-weight</code></td>
 </tr>
 <tr>
-<td>组件内部特殊文本</td>
-<td>Component Token</td>
-<td>不在页面调用处拼装新的全局文本角色</td>
+<td>Heading 5</td>
+<td>16px</td>
+<td>24px</td>
+<td>600</td>
+<td><code>--fds-g-heading-5-size</code><br><code>--fds-g-heading-5-line-height</code><br><code>--fds-g-heading-5-weight</code></td>
+</tr>
+<tr>
+<td>Heading 6</td>
+<td>14px</td>
+<td>20px</td>
+<td>600</td>
+<td><code>--fds-g-heading-6-size</code><br><code>--fds-g-heading-6-line-height</code><br><code>--fds-g-heading-6-weight</code></td>
+</tr>
+<tr>
+<td>Text</td>
+<td>14px</td>
+<td>24px</td>
+<td>400</td>
+<td><code>--fds-g-text-size</code><br><code>--fds-g-text-line-height</code><br><code>--fds-g-text-weight</code></td>
 </tr>
 </tbody>
 </table>
-<h2 id="_5">视觉预览</h2>
-<p>下面的业务片段直接组合当前 Heading、Text 和 Label Token，用于检查真实信息层级，而不是孤立展示字号列表。</p>
-<div class="fds-demo" data-demo="typography"></div>
-
-<h2 id="_6">当前值域</h2>
+<h2 id="_7">场景密度</h2>
+<table>
+<thead>
+<tr>
+<th>密度</th>
+<th>行高倍率</th>
+<th>对应间距</th>
+<th>CSS 变量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Compact / 紧凑</td>
+<td>1.2</td>
+<td>4px</td>
+<td><code>--fds-s-density-compact-line-height</code><br><code>--fds-s-density-compact-spacing</code></td>
+</tr>
+<tr>
+<td>Comfortable / 舒适</td>
+<td>1.5</td>
+<td>8px</td>
+<td><code>--fds-s-density-comfortable-line-height</code><br><code>--fds-s-density-comfortable-spacing</code></td>
+</tr>
+<tr>
+<td>Spacious / 宽松</td>
+<td>1.8</td>
+<td>12px</td>
+<td><code>--fds-s-density-spacious-line-height</code><br><code>--fds-s-density-spacious-spacing</code></td>
+</tr>
+</tbody>
+</table>
+<p>场景密度 Token 提供成对的行高倍率和间距。它们与上面的 Heading、Text recipe 各自承担不同用途，使用时以当前产品的排版规范为准。</p>
+<h2 id="atomic">Atomic 值域</h2>
 <table>
 <thead>
 <tr>
 <th>类别</th>
-<th>当前范围</th>
-<th>适用属性</th>
+<th>当前值（来自 Catalog JSON）</th>
+<th>用途</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Font Size</td>
-<td>12、13、14、15、16、18、20、22、24、28、32、36、40、48px</td>
+<td>12px、13px、14px、15px、16px、18px、20px、22px、24px、28px、32px、36px、40px、48px</td>
 <td><code>font-size</code></td>
 </tr>
 <tr>
 <td>Fixed Line Height</td>
-<td>16、18、20、22、24、28、30、32、36、38、40、44、48px</td>
+<td>16px、18px、20px、22px、24px、28px、30px、32px、36px、38px、40px、44px、48px</td>
 <td><code>line-height</code></td>
 </tr>
 <tr>
@@ -108,8 +169,9 @@
 </tr>
 </tbody>
 </table>
-<p>固定行高继续使用 <code>line-height-1..13</code>，确保现有变量名和值不变；相对行高使用 <code>line-height-ratio-1..10</code>，值为无单位字号倍率。数字档位只表达本领域的有序值，不表示 Heading 或 Text 用途。具体映射由 Semantic/Typography 保存。</p>
-<h2 id="_7">使用规则</h2>
+<p>数字档位是基础值的索引；实际页面优先按上方语义角色选择。当前取值和映射以 Catalog JSON 为准。</p>
+<h2 id="css">CSS 接入示例</h2>
+<p>下面的变量名由 Catalog JSON 生成，并在构建时核对是否存在。</p>
 <pre><code class="language-css">.panel-title {
   color: var(--fds-g-heading-color);
   font-size: var(--fds-g-heading-5-size);
@@ -124,14 +186,7 @@
   font-weight: var(--fds-g-text-weight);
 }
 </code></pre>
-<p>Heading 与 Text 使用完整 recipe，避免只替换字号而遗失匹配的行高和字重。Label 的字号、行高和字重由组件或具体场景负责。</p>
-<p>组件或排版适配层需要让行高随字号同步缩放时，可以使用相对行高：</p>
-<pre><code class="language-css">.adaptive-copy {
-  line-height: var(--fds-g-line-height-ratio-6);
-}
-</code></pre>
-<p>相对行高不是固定行高的兼容别名。现有 Heading 1-6 与 Text recipe 仍引用固定 <code>px</code> 行高，避免新增 Atomic Map 隐式改变已发布语义样式。</p>
-<p>当页面需要统一切换信息密度时，优先使用 Semantic/Scene 的 Compact、Comfortable、Spacious 三组行高，而不是由业务直接拼装 Ratio Map。密度行高只改变相对行距，不替代 Heading/Text 的字号和字重定义。</p>
+<p>Heading 与 Text 使用完整 recipe，避免只替换字号而遗失匹配的行高和字重。需要调整场景密度时，请先核对产品是否采用对应的场景 Token。</p>
 <h2 id="do-dont">Do / Don't</h2>
 <table>
 <thead>
@@ -161,18 +216,13 @@
 </table>
 <h2 id="_8">边界</h2>
 <ul>
-<li>FDS Global Token 不发布字体族、Label、Caption 或 Code 排版 recipe；这些能力由应用、组件或具体场景负责。</li>
-<li>Atomic 字号和固定行高使用 <code>px</code>；相对行高使用无单位 <code>number</code>，不使用 <code>rem</code>、百分比或运行时计算。</li>
-<li>本项目不定义响应式排版阶梯。</li>
-<li>组件内部排版仍可由组件 Token 约束，但应引用全局底座而非复制具体值。</li>
+<li>本页只呈现 Catalog JSON 已收录的 Global 与 Scene 排版 Token。组件专用的排版要求由组件文档另行说明。</li>
+<li>响应式排版策略需由产品或组件规范确定，不根据本页基础值自行推断。</li>
 </ul>
-<h2 id="_9">来源</h2>
-<ul>
-<li><a href="https://git.firstshare.cn/fx/fdst/-/blob/master/tokens/atomic/map/typography.yml">Atomic 排版</a></li>
-<li><a href="https://git.firstshare.cn/fx/fdst/-/blob/master/tokens/semantic/base/typography.yml">Semantic 排版</a></li>
-</ul></article>
+<h2 id="_9">数据来源</h2>
+<p>Token 名称、变量、解析值、角色表、密度表和 CSS 示例均读取同一份 <code>release/fds-token-catalog.json</code>。本页其他文字是使用建议，更新 Token 后仍需人工核对是否适用。</p></article>
     </main>
-    <aside class="docs-toc" aria-label="本页目录"><strong>本页目录</strong><a href="#_2">适用范围</a><a href="#_3">设计原则</a><a href="#_4">按场景选择</a><a href="#_5">视觉预览</a><a href="#_6">当前值域</a><a href="#_7">使用规则</a><a href="#do-dont">Do / Don&#x27;t</a><a href="#_8">边界</a><a href="#_9">来源</a></aside>
+    <aside class="docs-toc" aria-label="本页目录"><strong>本页目录</strong><a href="#_2">适用范围</a><a href="#_3">设计原则</a><a href="#_4">使用建议</a><a href="#_5">视觉预览</a><a href="#_6">角色与当前值</a><a href="#_7">场景密度</a><a href="#atomic">Atomic 值域</a><a href="#css">CSS 接入示例</a><a href="#do-dont">Do / Don&#x27;t</a><a href="#_8">边界</a><a href="#_9">数据来源</a></aside>
   </div>
   <div class="docs-backdrop" data-menu-backdrop hidden></div>
   <dialog class="docs-search" data-search-dialog>

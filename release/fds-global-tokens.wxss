@@ -458,7 +458,7 @@ Page {
   --fds-g-motion-easing-3: cubic-bezier(0.3, 0, 1, 0.3); /* Exit 曲线；离场阶段逐步加速，避免消失过程阻塞操作。 */
 
   /* semantic / base / color · source: tokens/semantic/base/color.yml */
-  --fds-g-color-primary: var(--fds-g-color-brand-8);
+  --fds-g-color-primary: var(--fds-g-color-brand-6);
   --fds-g-color-primary-background: var(--fds-g-color-brand-0);
   --fds-g-color-primary-background-hover: var(--fds-g-color-brand-1);
   --fds-g-color-primary-background-active: var(--fds-g-color-brand-2);
