@@ -3,116 +3,85 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="FDS Token 的角色入口、色板预览、分层架构与 CSS 接入方式">
+  <meta name="description" content="基于官方 510 个设计变量 JSON Catalog 构建的 FDS Token 视觉工作台与全量检索中心，包含四层分层模型、色彩阶梯、排版间距与场景语义规范。">
+  <meta property="og:title" content="FDS Token">
+  <meta property="og:description" content="基于官方 510 个设计变量 JSON Catalog 构建的 FDS Token 视觉工作台与全量检索中心，包含四层分层模型、色彩阶梯、排版间距与场景语义规范。">
   <title>FDS Token</title>
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="./assets/fds-global-tokens.css?v=b9933184a930">
   <link rel="stylesheet" href="./assets/fds-docs.css?v=ebe8f19fd084">
   <script defer src="./assets/search-index.js"></script>
   <script defer src="./assets/fds-demo-data.js?v=087e7c1e9111"></script>
+  <script defer src="./assets/fds-catalog-data.js"></script>
   <script defer src="./assets/fds-demos.js?v=1a85d93207b4"></script>
   <script defer src="./assets/fds-docs.js"></script>
+  <script defer src="./assets/fds-workbench.js"></script>
 </head>
 <body data-page="README.md" data-root=".">
   <header class="docs-topbar">
-    <a class="docs-brand" href="./index.html" aria-label="FDS Token 文档首页" aria-current="page"><span>F</span><strong>FDS Token</strong></a>
-    <nav class="docs-home-breadcrumb" aria-label="当前位置"><a href="./index.html">概览</a> / <span aria-current="page">文档首页</span></nav>
+    <div class="docs-topbar-left">
+      <a class="docs-brand" href="./index.html" aria-label="FDS Token 设计系统中心" aria-current="page">
+        <span class="docs-brand-logo">F</span>
+        <strong class="docs-brand-name">FDS Token</strong>
+        <span class="docs-brand-version">v1.0</span>
+      </a>
+    </div>
+
+    <nav class="docs-topbar-nav" id="hub-main-nav" aria-label="设计系统主导航">
+      <button type="button" class="docs-nav-tab is-active" data-view="overview" id="nav-tab-overview">
+        <svg class="fds-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 12.5-8.58 3.91a2 2 0 0 1-1.66 0L2 12.5"/><path d="m22 17.5-8.58 3.91a2 2 0 0 1-1.66 0L2 17.5"/></svg>
+        <span>全景概览</span>
+      </button>
+      <button type="button" class="docs-nav-tab" data-view="workbench" id="nav-tab-workbench">
+        <svg class="fds-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
+        <span>基础规范</span>
+      </button>
+      <button type="button" class="docs-nav-tab" data-view="scene" id="nav-tab-scene">
+        <svg class="fds-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg>
+        <span>场景语义</span>
+        <span class="docs-nav-badge" id="nav-badge-scene">19</span>
+      </button>
+      <button type="button" class="docs-nav-tab" data-view="integration" id="nav-tab-integration">
+        <svg class="fds-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        <span>快速接入</span>
+      </button>
+      <a class="docs-nav-tab docs-nav-link" href="foundations/颜色.html" id="nav-tab-docs">
+        <svg class="fds-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        <span>规范手册</span>
+      </a>
+    </nav>
+
     <div class="docs-topbar-actions">
-      <button class="docs-search-trigger" type="button" data-search-open>搜索</button>
-      <a class="docs-home-repository" href="https://git.firstshare.cn/fx/fdst/-/blob/master">代码仓库</a>
+      <button class="docs-search-trigger" type="button" data-search-open title="搜索规范或 Token (⌘K)">
+        <svg class="fds-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <span>搜索 (⌘K)</span>
+      </button>
+      <a class="docs-home-repository" href="https://git.firstshare.cn/fx/fdst/-/blob/master" target="_blank" rel="noopener" title="查看 Git 代码仓库">
+        <svg class="fds-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M18 15V9a9 9 0 0 0-9-9"/><circle cx="18" cy="6" r="3"/><path d="M6 9v12"/></svg>
+        <span>代码仓库</span>
+      </a>
     </div>
   </header>
   <div class="docs-shell">
-    
     <main class="docs-main">
-      
-      <article class="docs-article"><section class="proto-hero">
-<h1 id="fds-token">FDS Token</h1>
-<p>统一的设计 Token 体系。从种子色到场景语义，四层架构驱动一致的用户体验。</p>
-</section>
-<section class="proto-role-grid" aria-label="按角色开始">
-  <div class="proto-role-card">
-    <div class="proto-role-tag">设计师 / 产品</div>
-    <h2>视觉规范</h2>
-    <p>了解颜色、排版、间距等基础规范的设计原则和使用场景。</p>
-    <div class="proto-role-links">
-      <a class="proto-role-link" href="foundations/颜色.html">颜色</a>
-      <a class="proto-role-link" href="foundations/排版.html">排版</a>
-      <a class="proto-role-link" href="foundations/间距与尺寸.html">间距</a>
-    </div>
-  </div>
-  <div class="proto-role-card">
-    <div class="proto-role-tag">业务开发者</div>
-    <h2>快速接入</h2>
-    <p>一行 CSS 引入全部 Token，在 ShareDev 工程中直接使用。</p>
-    <div class="proto-role-links">
-      <a class="proto-role-link" href="getting-started/快速开始.html">快速开始</a>
-      <a class="proto-role-link" href="getting-started/ShareDev接入.html">ShareDev 接入</a>
-    </div>
-  </div>
-  <div class="proto-role-card">
-    <div class="proto-role-tag">组件开发者</div>
-    <h2>架构理解</h2>
-    <p>理解 Global、Scene、组件 Token 的职责边界和引用规则。</p>
-    <div class="proto-role-links">
-      <a class="proto-role-link" href="concepts/分层模型.html">分层模型</a>
-      <a class="proto-role-link" href="concepts/引用与边界.html">引用与边界</a>
-    </div>
-  </div>
-  <div class="proto-role-card">
-    <div class="proto-role-tag">维护者</div>
-    <h2>工程维护</h2>
-    <p>修改 YAML 源文件、构建校验、版本管理和发布流程。</p>
-    <div class="proto-role-links">
-      <a class="proto-role-link" href="engineering/YAML源文件.html">YAML 源文件</a>
-      <a class="proto-role-link" href="engineering/构建与校验.html">构建与校验</a>
-    </div>
-  </div>
-</section>
-
-<section class="proto-preview-section" aria-labelledby="palette-preview">
-  <div class="proto-preview-header">
-    <h2 id="palette-preview">色板预览</h2>
-    <a href="reference/Token目录.html">查看完整目录 →</a>
-  </div>
-  <div class="proto-color-grid"><div class="proto-color-family"><div class="proto-color-family-name">Brand</div><div class="proto-color-ramp"><div style="background:#FFFBF0" title="--fds-g-color-brand-0: #FFFBF0" aria-label="--fds-g-color-brand-0: #FFFBF0"></div><div style="background:#FFF7E6" title="--fds-g-color-brand-1: #FFF7E6" aria-label="--fds-g-color-brand-1: #FFF7E6"></div><div style="background:#FFDDA3" title="--fds-g-color-brand-2: #FFDDA3" aria-label="--fds-g-color-brand-2: #FFDDA3"></div><div style="background:#FFCA7A" title="--fds-g-color-brand-3: #FFCA7A" aria-label="--fds-g-color-brand-3: #FFCA7A"></div><div style="background:#FFB452" title="--fds-g-color-brand-4: #FFB452" aria-label="--fds-g-color-brand-4: #FFB452"></div><div style="background:#FF9B29" title="--fds-g-color-brand-5: #FF9B29" aria-label="--fds-g-color-brand-5: #FF9B29"></div><div style="background:#FF8000" title="--fds-g-color-brand-6: #FF8000" aria-label="--fds-g-color-brand-6: #FF8000"></div><div style="background:#D96500" title="--fds-g-color-brand-7: #D96500" aria-label="--fds-g-color-brand-7: #D96500"></div><div style="background:#B34D00" title="--fds-g-color-brand-8: #B34D00" aria-label="--fds-g-color-brand-8: #B34D00"></div><div style="background:#8C3800" title="--fds-g-color-brand-9: #8C3800" aria-label="--fds-g-color-brand-9: #8C3800"></div><div style="background:#662500" title="--fds-g-color-brand-10: #662500" aria-label="--fds-g-color-brand-10: #662500"></div><div style="background:#3A1600" title="--fds-g-color-brand-11: #3A1600" aria-label="--fds-g-color-brand-11: #3A1600"></div></div></div><div class="proto-color-family"><div class="proto-color-family-name">Blue</div><div class="proto-color-ramp"><div style="background:#F0FCFF" title="--fds-g-color-blue-0: #F0FCFF" aria-label="--fds-g-color-blue-0: #F0FCFF"></div><div style="background:#E6F9FF" title="--fds-g-color-blue-1: #E6F9FF" aria-label="--fds-g-color-blue-1: #E6F9FF"></div><div style="background:#BAEBFF" title="--fds-g-color-blue-2: #BAEBFF" aria-label="--fds-g-color-blue-2: #BAEBFF"></div><div style="background:#91DCFF" title="--fds-g-color-blue-3: #91DCFF" aria-label="--fds-g-color-blue-3: #91DCFF"></div><div style="background:#69CAFF" title="--fds-g-color-blue-4: #69CAFF" aria-label="--fds-g-color-blue-4: #69CAFF"></div><div style="background:#40B6FF" title="--fds-g-color-blue-5: #40B6FF" aria-label="--fds-g-color-blue-5: #40B6FF"></div><div style="background:#189DFF" title="--fds-g-color-blue-6: #189DFF" aria-label="--fds-g-color-blue-6: #189DFF"></div><div style="background:#097BD9" title="--fds-g-color-blue-7: #097BD9" aria-label="--fds-g-color-blue-7: #097BD9"></div><div style="background:#005CB3" title="--fds-g-color-blue-8: #005CB3" aria-label="--fds-g-color-blue-8: #005CB3"></div><div style="background:#00448C" title="--fds-g-color-blue-9: #00448C" aria-label="--fds-g-color-blue-9: #00448C"></div><div style="background:#002E66" title="--fds-g-color-blue-10: #002E66" aria-label="--fds-g-color-blue-10: #002E66"></div><div style="background:#002340" title="--fds-g-color-blue-11: #002340" aria-label="--fds-g-color-blue-11: #002340"></div></div></div><div class="proto-color-family"><div class="proto-color-family-name">Green</div><div class="proto-color-ramp"><div style="background:#F0FFF3" title="--fds-g-color-green-0: #F0FFF3" aria-label="--fds-g-color-green-0: #F0FFF3"></div><div style="background:#F0FFF4" title="--fds-g-color-green-1: #F0FFF4" aria-label="--fds-g-color-green-1: #F0FFF4"></div><div style="background:#DCFAE6" title="--fds-g-color-green-2: #DCFAE6" aria-label="--fds-g-color-green-2: #DCFAE6"></div><div style="background:#ABEDC3" title="--fds-g-color-green-3: #ABEDC3" aria-label="--fds-g-color-green-3: #ABEDC3"></div><div style="background:#7EE0A5" title="--fds-g-color-green-4: #7EE0A5" aria-label="--fds-g-color-green-4: #7EE0A5"></div><div style="background:#55D48C" title="--fds-g-color-green-5: #55D48C" aria-label="--fds-g-color-green-5: #55D48C"></div><div style="background:#30C776" title="--fds-g-color-green-6: #30C776" aria-label="--fds-g-color-green-6: #30C776"></div><div style="background:#1FA160" title="--fds-g-color-green-7: #1FA160" aria-label="--fds-g-color-green-7: #1FA160"></div><div style="background:#117A49" title="--fds-g-color-green-8: #117A49" aria-label="--fds-g-color-green-8: #117A49"></div><div style="background:#085433" title="--fds-g-color-green-9: #085433" aria-label="--fds-g-color-green-9: #085433"></div><div style="background:#042E1D" title="--fds-g-color-green-10: #042E1D" aria-label="--fds-g-color-green-10: #042E1D"></div><div style="background:#002A13" title="--fds-g-color-green-11: #002A13" aria-label="--fds-g-color-green-11: #002A13"></div></div></div><div class="proto-color-family"><div class="proto-color-family-name">Red</div><div class="proto-color-ramp"><div style="background:#FFF6F0" title="--fds-g-color-red-0: #FFF6F0" aria-label="--fds-g-color-red-0: #FFF6F0"></div><div style="background:#FFF5F0" title="--fds-g-color-red-1: #FFF5F0" aria-label="--fds-g-color-red-1: #FFF5F0"></div><div style="background:#FFDCCC" title="--fds-g-color-red-2: #FFDCCC" aria-label="--fds-g-color-red-2: #FFDCCC"></div><div style="background:#FFBDA3" title="--fds-g-color-red-3: #FFBDA3" aria-label="--fds-g-color-red-3: #FFBDA3"></div><div style="background:#FF9C7A" title="--fds-g-color-red-4: #FF9C7A" aria-label="--fds-g-color-red-4: #FF9C7A"></div><div style="background:#FF7752" title="--fds-g-color-red-5: #FF7752" aria-label="--fds-g-color-red-5: #FF7752"></div><div style="background:#FF522A" title="--fds-g-color-red-6: #FF522A" aria-label="--fds-g-color-red-6: #FF522A"></div><div style="background:#D93518" title="--fds-g-color-red-7: #D93518" aria-label="--fds-g-color-red-7: #D93518"></div><div style="background:#B31E0B" title="--fds-g-color-red-8: #B31E0B" aria-label="--fds-g-color-red-8: #B31E0B"></div><div style="background:#8C0D01" title="--fds-g-color-red-9: #8C0D01" aria-label="--fds-g-color-red-9: #8C0D01"></div><div style="background:#660500" title="--fds-g-color-red-10: #660500" aria-label="--fds-g-color-red-10: #660500"></div><div style="background:#430900" title="--fds-g-color-red-11: #430900" aria-label="--fds-g-color-red-11: #430900"></div></div></div><div class="proto-color-family"><div class="proto-color-family-name">Purple</div><div class="proto-color-ramp"><div style="background:#F8F0FF" title="--fds-g-color-purple-0: #F8F0FF" aria-label="--fds-g-color-purple-0: #F8F0FF"></div><div style="background:#F7F0FF" title="--fds-g-color-purple-1: #F7F0FF" aria-label="--fds-g-color-purple-1: #F7F0FF"></div><div style="background:#F5EDFF" title="--fds-g-color-purple-2: #F5EDFF" aria-label="--fds-g-color-purple-2: #F5EDFF"></div><div style="background:#DDC4FF" title="--fds-g-color-purple-3: #DDC4FF" aria-label="--fds-g-color-purple-3: #DDC4FF"></div><div style="background:#BC97F7" title="--fds-g-color-purple-4: #BC97F7" aria-label="--fds-g-color-purple-4: #BC97F7"></div><div style="background:#976AEB" title="--fds-g-color-purple-5: #976AEB" aria-label="--fds-g-color-purple-5: #976AEB"></div><div style="background:#7341DE" title="--fds-g-color-purple-6: #7341DE" aria-label="--fds-g-color-purple-6: #7341DE"></div><div style="background:#542CB8" title="--fds-g-color-purple-7: #542CB8" aria-label="--fds-g-color-purple-7: #542CB8"></div><div style="background:#391C91" title="--fds-g-color-purple-8: #391C91" aria-label="--fds-g-color-purple-8: #391C91"></div><div style="background:#230F6B" title="--fds-g-color-purple-9: #230F6B" aria-label="--fds-g-color-purple-9: #230F6B"></div><div style="background:#140945" title="--fds-g-color-purple-10: #140945" aria-label="--fds-g-color-purple-10: #140945"></div><div style="background:#250D53" title="--fds-g-color-purple-11: #250D53" aria-label="--fds-g-color-purple-11: #250D53"></div></div></div><div class="proto-color-family"><div class="proto-color-family-name">Gray</div><div class="proto-color-ramp"><div style="background:#FFFFFF" title="--fds-g-color-gray-1: #FFFFFF" aria-label="--fds-g-color-gray-1: #FFFFFF"></div><div style="background:#FAFAFA" title="--fds-g-color-gray-2: #FAFAFA" aria-label="--fds-g-color-gray-2: #FAFAFA"></div><div style="background:#F2F3F5" title="--fds-g-color-gray-3: #F2F3F5" aria-label="--fds-g-color-gray-3: #F2F3F5"></div><div style="background:#EAEBEE" title="--fds-g-color-gray-4: #EAEBEE" aria-label="--fds-g-color-gray-4: #EAEBEE"></div><div style="background:#DEE1E8" title="--fds-g-color-gray-5: #DEE1E8" aria-label="--fds-g-color-gray-5: #DEE1E8"></div><div style="background:#CED1D9" title="--fds-g-color-gray-6: #CED1D9" aria-label="--fds-g-color-gray-6: #CED1D9"></div><div style="background:#C1C5CE" title="--fds-g-color-gray-7: #C1C5CE" aria-label="--fds-g-color-gray-7: #C1C5CE"></div><div style="background:#ADB1BA" title="--fds-g-color-gray-8: #ADB1BA" aria-label="--fds-g-color-gray-8: #ADB1BA"></div><div style="background:#A3A7B0" title="--fds-g-color-gray-9: #A3A7B0" aria-label="--fds-g-color-gray-9: #A3A7B0"></div><div style="background:#999DA6" title="--fds-g-color-gray-10: #999DA6" aria-label="--fds-g-color-gray-10: #999DA6"></div><div style="background:#91959E" title="--fds-g-color-gray-11: #91959E" aria-label="--fds-g-color-gray-11: #91959E"></div><div style="background:#80858F" title="--fds-g-color-gray-12: #80858F" aria-label="--fds-g-color-gray-12: #80858F"></div><div style="background:#737881" title="--fds-g-color-gray-13: #737881" aria-label="--fds-g-color-gray-13: #737881"></div><div style="background:#606570" title="--fds-g-color-gray-14: #606570" aria-label="--fds-g-color-gray-14: #606570"></div><div style="background:#545861" title="--fds-g-color-gray-15: #545861" aria-label="--fds-g-color-gray-15: #545861"></div><div style="background:#444852" title="--fds-g-color-gray-16: #444852" aria-label="--fds-g-color-gray-16: #444852"></div><div style="background:#343841" title="--fds-g-color-gray-17: #343841" aria-label="--fds-g-color-gray-17: #343841"></div><div style="background:#272B34" title="--fds-g-color-gray-18: #272B34" aria-label="--fds-g-color-gray-18: #272B34"></div><div style="background:#181C25" title="--fds-g-color-gray-19: #181C25" aria-label="--fds-g-color-gray-19: #181C25"></div><div style="background:#080504" title="--fds-g-color-gray-20: #080504" aria-label="--fds-g-color-gray-20: #080504"></div></div></div></div>
-</section>
-
-<section class="proto-specs" aria-label="体系概览">
-  <div class="proto-spec-card">
-    <h2>架构层级</h2>
-    <div class="proto-spec-row"><span>Atomic / Seed</span><span>种子色值</span></div>
-    <div class="proto-spec-row"><span>Atomic / Map</span><span>色阶映射与原子值</span></div>
-    <div class="proto-spec-row"><span>Semantic / Base</span><span>语义基础</span></div>
-    <div class="proto-spec-row"><span>Semantic / Scene</span><span>场景语义</span></div>
-  </div>
-  <div class="proto-spec-card">
-    <h2>命名空间</h2>
-    <div class="proto-spec-row"><span>Global Token</span><span>--fds-g-*</span></div>
-    <div class="proto-spec-row"><span>Scene Token</span><span>--fds-s-*</span></div>
-    <div class="proto-spec-row"><span>Component</span><span>组件包维护</span></div>
-    <div class="proto-spec-row"><span>Private</span><span>业务作用域</span></div>
-  </div>
-</section>
-
-<pre class="proto-code-block"><code><span class="comment">/* 一行引入，即可使用全部 Token */</span>
-<span class="keyword">&lt;link</span> <span class="prop">rel=</span><span class="string">"stylesheet"</span> <span class="prop">href=</span><span class="string">"<a href="https://git.firstshare.cn/fx/fdst/-/blob/master/release/fds-global-tokens.css">fds-global-tokens.css</a>"</span><span class="keyword">&gt;</span>
-
-<span class="comment">/* 在样式中直接使用 */</span>
-.button {
-  <span class="prop">background</span>: <span class="string">var(--fds-g-color-primary)</span>;
-  <span class="prop">color</span>: <span class="string">var(--fds-g-color-text-inverse)</span>;
-  <span class="prop">border-radius</span>: <span class="string">var(--fds-g-radius-3)</span>;
-}</code></pre>
-
-<footer class="proto-footer">FDS Token · 设计系统文档</footer></article>
+      <article class="docs-article">
+        <div id="fds-hub-root">
+          <!-- Hub UI will be initialized here by fds-workbench.js -->
+        </div>
+        <footer class="proto-footer">FDS Token · 企业级设计变量规范与交付体系</footer>
+      </article>
     </main>
-    
   </div>
   <div class="docs-backdrop" data-menu-backdrop hidden></div>
   <dialog class="docs-search" data-search-dialog>
-    <form method="dialog" class="docs-search-head"><label for="docs-search-input">搜索文档</label><button type="submit">关闭</button></form>
-    <input id="docs-search-input" type="search" autocomplete="off" placeholder="输入 Token、用途或规范名称" data-search-input>
+    <form method="dialog" class="docs-search-head">
+      <label for="docs-search-input">
+        <svg class="fds-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;margin-right:6px;"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        全量检索 (规范文档 + 510 Token)
+      </label>
+      <button type="submit" aria-label="关闭搜索">Esc 关闭</button>
+    </form>
+    <input id="docs-search-input" type="search" autocomplete="off" placeholder="输入变量名、十六进制色值、间距或文档关键词（如 color-primary, #FF8000, 16px, ShareDev）..." data-search-input>
     <div class="docs-search-results" data-search-results></div>
   </dialog>
 </body>

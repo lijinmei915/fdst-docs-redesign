@@ -462,10 +462,11 @@ def render_nav(current_source: PurePosixPath, navigation=NAVIGATION) -> str:
         for source_name, label in pages:
             source = PurePosixPath(source_name)
             active = source == current_source
+            current_attr = ' aria-current="page"' if active else ""
             links.append(
                 f'<a class="docs-nav-link{" is-active" if active else ""}" '
                 f'href="{html.escape(relative_href(output_path(current_source), output_path(source)))}"'
-                f'{" aria-current=\"page\"" if active else ""}>{html.escape(label)}</a>'
+                f'{current_attr}>{html.escape(label)}</a>'
             )
         groups.append(
             f'<section class="docs-nav-group"><h2>{html.escape(group)}</h2>{"".join(links)}</section>'
@@ -489,9 +490,10 @@ def render_top_nav(source: PurePosixPath, class_name: str) -> str:
     for label, landing, _ in TOP_SECTIONS:
         active = current_section is not None and current_section[0] == label
         href = relative_href(output_path(source), output_path(PurePosixPath(landing)))
+        loc_attr = ' aria-current="location"' if active else ""
         links.append(
             f'<a class="docs-section-link{" is-active" if active else ""}" href="{html.escape(href)}"'
-            f'{" aria-current=\"location\"" if active else ""}>{html.escape(label)}</a>'
+            f'{loc_attr}>{html.escape(label)}</a>'
         )
     return f'<nav class="{class_name}" aria-label="文档分区">{"".join(links)}</nav>'
 
@@ -536,6 +538,7 @@ def render_page(
         header_nav = '<nav class="docs-home-breadcrumb" aria-label="当前位置"><a href="./index.html">概览</a> / <span aria-current="page">文档首页</span></nav>'
         header_links = f'<a class="docs-home-repository" href="{REPOSITORY_BLOB_URL}">代码仓库</a>'
         sidebar = breadcrumb = page_toc = ""
+    home_current_attr = ' aria-current="page"' if is_home else ""
     return f'''<!doctype html>
 <html lang="zh-CN">
 <head>
@@ -553,7 +556,7 @@ def render_page(
 </head>
 <body data-page="{html.escape(source.as_posix())}" data-root="{html.escape(root_prefix)}">
   <header class="docs-topbar">
-    <a class="docs-brand" href="{root_prefix}/index.html" aria-label="FDS Token 文档首页"{" aria-current=\"page\"" if is_home else ""}><span>{"F" if is_home else "FDS"}</span><strong>{"FDS Token" if is_home else "Token"}</strong></a>
+    <a class="docs-brand" href="{root_prefix}/index.html" aria-label="FDS Token 文档首页"{home_current_attr}><span>{"F" if is_home else "FDS"}</span><strong>{"FDS Token" if is_home else "Token"}</strong></a>
     {header_nav}
     <div class="docs-topbar-actions">
       <button class="docs-search-trigger" type="button" data-search-open>{"搜索" if is_home else "搜索文档"}</button>

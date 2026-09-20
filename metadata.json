@@ -1,0 +1,8 @@
+{
+  "name": "FDS Token",
+  "description": "基于官方 510 个设计变量 JSON Catalog 构建的 FDS Token 视觉工作台与全量检索中心，包含四层分层模型、色彩阶梯、排版间距与场景语义规范。",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
